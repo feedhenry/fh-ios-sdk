@@ -69,8 +69,9 @@
 		A2CD342D14D0677500C4D3F0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD342C14D0677500C4D3F0 /* Reachability.m */; };
 		A2CD342E14D0677500C4D3F0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD342C14D0677500C4D3F0 /* Reachability.m */; };
 		A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
-		D82B24AD14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
 		D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
+		D8B94CC114D06E8F003F7945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B94CC014D06E8F003F7945 /* JSONKit.m */; };
+		D8B94CC214D06E8F003F7945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B94CC014D06E8F003F7945 /* JSONKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,7 +159,8 @@
 		A2CD342F14D067A700C4D3F0 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		D82B24AB14D06CC200F91FB4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		D82B24AC14D06CC200F91FB4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		D8B94CBF14D06E8F003F7945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		D8B94CC014D06E8F003F7945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,9 +272,7 @@
 		A2CD322D14D0301000C4D3F0 /* fh-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				A2CD342B14D0677500C4D3F0 /* Reachability.h */,
-				A2CD342C14D0677500C4D3F0 /* Reachability.m */,
-				A2CD338E14D0671700C4D3F0 /* ASIHTTP */,
+				D8B94CC514D06EAA003F7945 /* ThirdParty */,
 			);
 			name = "fh-ios-sdk";
 			sourceTree = "<group>";
@@ -358,13 +358,32 @@
 			path = S3;
 			sourceTree = "<group>";
 		};
-		D82B24A914D06CAF00F91FB4 /* JSONKit */ = {
+		D8B94CC414D06E9D003F7945 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
-				D82B24AB14D06CC200F91FB4 /* JSONKit.m */,
-				D82B24AC14D06CC200F91FB4 /* JSONKit.h */,
+				D8B94CBF14D06E8F003F7945 /* JSONKit.h */,
+				D8B94CC014D06E8F003F7945 /* JSONKit.m */,
 			);
 			name = JSONKit;
+			sourceTree = "<group>";
+		};
+		D8B94CC514D06EAA003F7945 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				D8B94CC614D06EBD003F7945 /* Reachability */,
+				A2CD338E14D0671700C4D3F0 /* ASIHTTP */,
+				D8B94CC414D06E9D003F7945 /* JSONKit */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		D8B94CC614D06EBD003F7945 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				A2CD342B14D0677500C4D3F0 /* Reachability.h */,
+				A2CD342C14D0677500C4D3F0 /* Reachability.m */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,6 +518,7 @@
 				A2CD340914D0671800C4D3F0 /* ASIS3Request.m in Sources */,
 				A2CD340B14D0671800C4D3F0 /* ASIS3ServiceRequest.m in Sources */,
 				A2CD342D14D0677500C4D3F0 /* Reachability.m in Sources */,
+				D8B94CC114D06E8F003F7945 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +551,7 @@
 				A2CD340C14D0671800C4D3F0 /* ASIS3ServiceRequest.m in Sources */,
 				A2CD342E14D0677500C4D3F0 /* Reachability.m in Sources */,
 				D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */,
+				D8B94CC214D06E8F003F7945 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +709,7 @@
 				A2CD322914D0300200C4D3F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2CD322A14D0300200C4D3F0 /* Build configuration list for PBXNativeTarget "fh-ios-sdkTests" */ = {
 			isa = XCConfigurationList;
@@ -696,6 +718,7 @@
 				A2CD322C14D0300200C4D3F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
