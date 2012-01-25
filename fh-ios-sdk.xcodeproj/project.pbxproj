@@ -277,7 +277,7 @@
 			name = "fh-ios-sdk";
 			sourceTree = "<group>";
 		};
-		A2CD338E14D0671700C4D3F0 /* ASIHTTP */ = {
+		A2CD338E14D0671700C4D3F0 /* ASIHTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
 				A2CD338F14D0671700C4D3F0 /* ASIAuthenticationDialog.h */,
@@ -304,7 +304,7 @@
 				A2CD33A614D0671700C4D3F0 /* CloudFiles */,
 				A2CD33B514D0671700C4D3F0 /* S3 */,
 			);
-			name = ASIHTTP;
+			name = ASIHTTPRequest;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -371,7 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				D8B94CC614D06EBD003F7945 /* Reachability */,
-				A2CD338E14D0671700C4D3F0 /* ASIHTTP */,
+				A2CD338E14D0671700C4D3F0 /* ASIHTTPRequest */,
 				D8B94CC414D06E9D003F7945 /* JSONKit */,
 			);
 			name = ThirdParty;
