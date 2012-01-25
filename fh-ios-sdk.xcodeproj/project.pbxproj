@@ -72,6 +72,8 @@
 		D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
 		D8B94CC114D06E8F003F7945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B94CC014D06E8F003F7945 /* JSONKit.m */; };
 		D8B94CC214D06E8F003F7945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B94CC014D06E8F003F7945 /* JSONKit.m */; };
+		D8CA41B114D0713100824A61 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CA41B014D0713100824A61 /* FHResponse.m */; };
+		D8CA41B214D0713100824A61 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CA41B014D0713100824A61 /* FHResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +163,9 @@
 		D82B24AB14D06CC200F91FB4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		D8B94CBF14D06E8F003F7945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		D8B94CC014D06E8F003F7945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		D8CA41AE14D0704B00824A61 /* FHResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHResponseDelegate.h; sourceTree = "<group>"; };
+		D8CA41AF14D0713100824A61 /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHResponse.h; sourceTree = "<group>"; };
+		D8CA41B014D0713100824A61 /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +278,9 @@
 			isa = PBXGroup;
 			children = (
 				D8B94CC514D06EAA003F7945 /* ThirdParty */,
+				D8CA41AE14D0704B00824A61 /* FHResponseDelegate.h */,
+				D8CA41AF14D0713100824A61 /* FHResponse.h */,
+				D8CA41B014D0713100824A61 /* FHResponse.m */,
 			);
 			name = "fh-ios-sdk";
 			sourceTree = "<group>";
@@ -519,6 +527,7 @@
 				A2CD340B14D0671800C4D3F0 /* ASIS3ServiceRequest.m in Sources */,
 				A2CD342D14D0677500C4D3F0 /* Reachability.m in Sources */,
 				D8B94CC114D06E8F003F7945 /* JSONKit.m in Sources */,
+				D8CA41B114D0713100824A61 /* FHResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +561,7 @@
 				A2CD342E14D0677500C4D3F0 /* Reachability.m in Sources */,
 				D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */,
 				D8B94CC214D06E8F003F7945 /* JSONKit.m in Sources */,
+				D8CA41B214D0713100824A61 /* FHResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
