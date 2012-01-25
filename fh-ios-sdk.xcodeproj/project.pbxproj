@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A25396B214D06CBC004275D1 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = A25396AE14D06CBC004275D1 /* CHANGELOG.md */; };
-		A25396B314D06CBC004275D1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A25396B014D06CBC004275D1 /* JSONKit.m */; };
-		A25396B414D06CBC004275D1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A25396B114D06CBC004275D1 /* README.md */; };
 		A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
 		A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
 		A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */; };
@@ -87,10 +84,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A25396AE14D06CBC004275D1 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
-		A25396AF14D06CBC004275D1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		A25396B014D06CBC004275D1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		A25396B114D06CBC004275D1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A2CD31FA14D0300200C4D3F0 /* fh-ios-sdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fh-ios-sdk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CD31FE14D0300200C4D3F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A2CD320014D0300200C4D3F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -197,18 +190,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A25396AD14D06CBC004275D1 /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				A25396AE14D06CBC004275D1 /* CHANGELOG.md */,
-				A25396AF14D06CBC004275D1 /* JSONKit.h */,
-				A25396B014D06CBC004275D1 /* JSONKit.m */,
-				A25396B114D06CBC004275D1 /* README.md */,
-			);
-			name = JSONKit;
-			path = ../../lib/JSONKit;
-			sourceTree = "<group>";
-		};
 		A2CD31EF14D0300200C4D3F0 = {
 			isa = PBXGroup;
 			children = (
@@ -289,7 +270,6 @@
 		A2CD322D14D0301000C4D3F0 /* fh-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				A25396AD14D06CBC004275D1 /* JSONKit */,
 				A2CD342B14D0677500C4D3F0 /* Reachability.h */,
 				A2CD342C14D0677500C4D3F0 /* Reachability.m */,
 				A2CD338E14D0671700C4D3F0 /* ASIHTTP */,
@@ -460,8 +440,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2CD320914D0300200C4D3F0 /* InfoPlist.strings in Resources */,
-				A25396B214D06CBC004275D1 /* CHANGELOG.md in Resources */,
-				A25396B414D06CBC004275D1 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +499,6 @@
 				A2CD340914D0671800C4D3F0 /* ASIS3Request.m in Sources */,
 				A2CD340B14D0671800C4D3F0 /* ASIS3ServiceRequest.m in Sources */,
 				A2CD342D14D0677500C4D3F0 /* Reachability.m in Sources */,
-				A25396B314D06CBC004275D1 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,7 +688,6 @@
 				A2CD322914D0300200C4D3F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		A2CD322A14D0300200C4D3F0 /* Build configuration list for PBXNativeTarget "fh-ios-sdkTests" */ = {
 			isa = XCConfigurationList;
@@ -720,7 +696,6 @@
 				A2CD322C14D0300200C4D3F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
