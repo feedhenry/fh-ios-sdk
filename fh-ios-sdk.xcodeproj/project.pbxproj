@@ -195,12 +195,6 @@
 		A2CD31EF14D0300200C4D3F0 = {
 			isa = PBXGroup;
 			children = (
-				A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */,
-				A2CD342F14D067A700C4D3F0 /* libxml2.dylib */,
-				A2CD323614D065F100C4D3F0 /* libz.dylib */,
-				A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */,
-				A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */,
-				A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */,
 				A2CD320414D0300200C4D3F0 /* fh-ios-sdk */,
 				A2CD321C14D0300200C4D3F0 /* fh-ios-sdkTests */,
 				A2CD31FD14D0300200C4D3F0 /* Frameworks */,
@@ -220,6 +214,12 @@
 		A2CD31FD14D0300200C4D3F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */,
+				A2CD342F14D067A700C4D3F0 /* libxml2.dylib */,
+				A2CD323614D065F100C4D3F0 /* libz.dylib */,
+				A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */,
+				A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */,
+				A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */,
 				A2CD31FE14D0300200C4D3F0 /* UIKit.framework */,
 				A2CD320014D0300200C4D3F0 /* Foundation.framework */,
 				A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */,
