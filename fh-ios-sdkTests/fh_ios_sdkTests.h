@@ -7,7 +7,8 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-
+#import "FHRemote.h"
+#import "FH.h"
 @interface fh_ios_sdkTests : SenTestCase
-
+    
 @end

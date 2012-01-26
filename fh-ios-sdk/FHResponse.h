@@ -6,13 +6,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FHResponse : NSObject
+@interface FHResponse : NSObject{
+    NSData * rawResponse;
+    NSString * rawResponseString;
+    NSDictionary * parsedResponse;
+    
+}
 
 
 
-- (NSData *)rawResponse;
-- (NSString *)rawResponseAsString;
-- (NSDictionary *)parsedResponse;
+@property(nonatomic,retain)NSData * rawResponse;
+@property(nonatomic,retain)NSString * rawResponseAsString;
+@property(nonatomic,retain)NSDictionary * parsedResponse;
 
-
+- (void) parseResponseString :(NSString *)res;
+- (void) parseResponseData : (NSData *)dat;
 @end

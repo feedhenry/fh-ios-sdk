@@ -9,18 +9,17 @@
 #import "FHAct.h"
 
 @implementation FHAct
-@synthesize method, args, delegate;
+@synthesize method, args, delegate, cacheTimeout, _location;
 
-- (id)initWithMethod:(NSString *)meth Args:(NSDictionary *)args AndDelegate:(id)del{
+- (id)initWithMethod:(NSString *)meth Args:(NSDictionary *)arguments AndDelegate:(id)del{
     self = [super init];
     if(self){
         self.method             = meth;
-        self.args               = args;
+        self.args               = arguments;
         if(del)self.delegate    = del;
     }
     return self;
 }
-
 
 
 

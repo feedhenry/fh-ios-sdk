@@ -6,8 +6,11 @@
 //  Copyright (c) 2012 Feedhenry. All rights reserved.
 //
 
+
+
 #import <Foundation/Foundation.h>
 @class FHResponse;
+@class FHRemote;
 @class FHAct;
 @protocol FHResponseDelegate <NSObject>
 
@@ -19,14 +22,25 @@
 @end
 
 
-@interface FH : NSObject{
+typedef enum{
+    FH_ACTION_ACT,
+    FH_ACTION_AUTH
+}FH_ACTION;
+
+#import "ASIHTTPRequestDelegate.h"
+
+
+@interface FH : NSObject<ASIHTTPRequestDelegate>{
     
 }
+- (FHAct *)buildAction:(FH_ACTION)action;
+- (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments;
+/**
+ builder actions may need seperate class?
+*/
+- (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del;
 
-- (FHAct *)act:(NSString *)act WithResponseDelegate:(id<FHResponseDelegate>)del;
-- (void)makeRemoteCallWithSuccess:(void (^)(id success))suc AndFailure:(void (^)(id failed))fail;
-- (void)makeRemoteCall;
-- (void)delegateResponse;
-+ (FH *)sharedInstance;
++ (void)act:(FHAct *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
+
 
 @end

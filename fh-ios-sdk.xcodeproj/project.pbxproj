@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A28DFC0714D161FC00128B50 /* FHRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC0614D161FC00128B50 /* FHRemote.m */; };
+		A28DFC0B14D1638900128B50 /* FHLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC0A14D1638900128B50 /* FHLocal.m */; };
+		A28DFC0C14D18B6100128B50 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
+		A28DFC0D14D18B7600128B50 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD342F14D067A700C4D3F0 /* libxml2.dylib */; };
 		A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
 		A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
 		A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */; };
@@ -91,6 +95,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A28DFC0514D161FC00128B50 /* FHRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHRemote.h; sourceTree = "<group>"; };
+		A28DFC0614D161FC00128B50 /* FHRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHRemote.m; sourceTree = "<group>"; };
+		A28DFC0914D1638900128B50 /* FHLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHLocal.h; sourceTree = "<group>"; };
+		A28DFC0A14D1638900128B50 /* FHLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHLocal.m; sourceTree = "<group>"; };
 		A2CD31FA14D0300200C4D3F0 /* fh-ios-sdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fh-ios-sdk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CD31FE14D0300200C4D3F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A2CD320014D0300200C4D3F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -195,6 +203,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A28DFC0D14D18B7600128B50 /* libxml2.dylib in Frameworks */,
+				A28DFC0C14D18B6100128B50 /* libxml2.2.dylib in Frameworks */,
 				A2CD321714D0300200C4D3F0 /* SenTestingKit.framework in Frameworks */,
 				A2CD321814D0300200C4D3F0 /* UIKit.framework in Frameworks */,
 				A2CD321914D0300200C4D3F0 /* Foundation.framework in Frameworks */,
@@ -291,6 +301,10 @@
 				D89E034114D15AD6006E24D6 /* FHAct.h */,
 				D89E034214D15AD6006E24D6 /* FHResponse.h */,
 				D8B94CC514D06EAA003F7945 /* ThirdParty */,
+				A28DFC0514D161FC00128B50 /* FHRemote.h */,
+				A28DFC0614D161FC00128B50 /* FHRemote.m */,
+				A28DFC0914D1638900128B50 /* FHLocal.h */,
+				A28DFC0A14D1638900128B50 /* FHLocal.m */,
 			);
 			name = "fh-ios-sdk";
 			sourceTree = "<group>";
@@ -540,6 +554,8 @@
 				D89E034314D15AD6006E24D6 /* FH.m in Sources */,
 				D89E034514D15AD6006E24D6 /* FHAct.m in Sources */,
 				D89E034714D15AD6006E24D6 /* FHResponse.m in Sources */,
+				A28DFC0714D161FC00128B50 /* FHRemote.m in Sources */,
+				A28DFC0B14D1638900128B50 /* FHLocal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
