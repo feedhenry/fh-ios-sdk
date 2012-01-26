@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apiurl</key>
+	<string>https://apps.feedhenry.com/box/srv/1.1/</string>
+	<key>guit</key>
+	<string>55IZPhdt8xoCdA2_nBHRVjNT</string>
+	<key>domain</key>
+	<string>apps</string>
+	<key>appinstid</key>
+	<string>55IZPidQp47xFEftB0EWfTVL</string>
+</dict>
+</plist>

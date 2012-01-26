@@ -28,17 +28,18 @@ typedef enum{
 }FH_ACTION;
 
 #import "ASIHTTPRequestDelegate.h"
-
+#import "FHRemote.h"
+#import "FHResponse.h"
 
 @interface FH : NSObject<ASIHTTPRequestDelegate>{
     
 }
-- (FHAct *)buildAction:(FH_ACTION)action;
-- (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments;
++ (FHAct *)buildAction:(FH_ACTION)action;
++ (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments;
 /**
  builder actions may need seperate class?
 */
-- (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del;
++(FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del;
 
 + (void)act:(FHAct *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 

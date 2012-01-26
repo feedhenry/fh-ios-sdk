@@ -28,6 +28,7 @@
     [method release];
     args = nil;
     [args release];
+   
     [super dealloc];
 }
 

@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "FH.h"
-#import "FHRemote.h"
+#import "EventsViewController.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -24,21 +23,14 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    
+    EventsViewController * viewController = [[EventsViewController alloc]init];
+    [self.window setRootViewController:viewController];
+    
     [self.window makeKeyAndVisible];
     
-    //very bad but anywat
-    FH * feedhenry = [[FH alloc]init];
-    FHRemote * action = (FHRemote *) [feedhenry buildAction:FH_ACTION_ACT];
-    action.url = [NSURL URLWithString:@"https://diageo.feedhenry.com/box/srv/1.1/act/diageo/Hw1ahAKdL48pysizZJ5pdiJQ/getQuestions/Hw1ahBfiT2KEBVq9bxz8Qc8H"];
-    void (^succeedblock)(id) = ^(id res){
-        NSLog(@"succeed block was called");
-    };   
-    void (^failed)(id) = ^(id res){
-        NSLog(@"failed called");  
-    };
-    
-    
-    [FH act:action WithSuccess:succeedblock AndFailure:failed];
+
     
     return YES;
 }

@@ -9,13 +9,15 @@
 #import "FH.h"
 #import "FHRemote.h"
 #import "FHLocal.h"
-#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 #import "FHResponse.h"
 
 @implementation FH
+/*
+  Action factory should perhaps move to its own class
+ */
 
-
-- (FHAct *)buildAction:(FH_ACTION)action{
++ (FHAct *)buildAction:(FH_ACTION)action{
     FHAct * act = nil;
     switch (action) {
         case FH_ACTION_ACT:
@@ -32,14 +34,14 @@
     }
     return act;
 };
-- (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments{
++ (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments{
     //calls builaction
     FHAct * act = [self buildAction:action];
     act.args = arguments;
     return act;
 };
 
-- (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del{
++ (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del{
     FHAct * act     = [self buildAction:action];
     act.args        = arguments;
     act.delegate    = del;
@@ -50,16 +52,29 @@
         
     }else if(action._location == FH_LOCATION_REMOTE){
         FHRemote * remoteAction = (FHRemote *)action;
+        [remoteAction buildURL];         
         NSURL * apicall = remoteAction.url;
         //startrequest
-        __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
+        __block ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:apicall];
+        
+        if(action.args && [action.args count]>0){
+            NSArray * keys = [action.args allKeys];
+            for (NSString * key in keys ) {
+                id ob = [action.args objectForKey:key];
+                if([ob isKindOfClass:[NSString class]]){
+                    [request setPostValue:ob forKey:key];
+                }
+            }
+        }
+        
         [request setCompletionBlock:^{
             NSString * resposne = [request responseString];
+            NSLog(@"full response string %@ ",resposne);
             FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
             [fhResponse parseResponseString:resposne];
 
             //parse build response delegate
-            if(sucornil)sucornil(resposne);
+            if(sucornil)sucornil(fhResponse);
             else{
                 SEL sucSel = @selector(requestDidSucceedWithResponse:);
                 if (action.delegate && [action.delegate respondsToSelector:sucSel]) {

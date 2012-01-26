@@ -19,6 +19,7 @@ typedef enum{
     id  delegate;
     NSUInteger cacheTimeout;
     FH_LOCATION _location;
+    
 }
 @property(nonatomic,retain)NSString * method;
 @property(nonatomic,retain)NSDictionary * args;

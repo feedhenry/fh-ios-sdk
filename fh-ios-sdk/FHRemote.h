@@ -10,8 +10,10 @@
 #import "FHAct.h"
 @interface FHRemote : FHAct{
     NSURL * url;
+    NSDictionary * appProperties;
+    NSString * remoteAction;
 }
 @property(nonatomic,retain)NSURL * url;
-
+@property(nonatomic,retain)NSString * remoteAction;
 
 @end

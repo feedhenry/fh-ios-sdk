@@ -12,7 +12,7 @@
 
 
 - (void)parseResponseString:(NSString *)res{
-    self.parsedResponse =  [res objectFromJSONString];
+    self.parsedResponse =  [res objectFromJSONString];    
 }
 
 - (void)parseResponseData:(NSData *)dat{
