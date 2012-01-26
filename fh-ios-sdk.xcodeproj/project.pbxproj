@@ -70,10 +70,14 @@
 		A2CD342E14D0677500C4D3F0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD342C14D0677500C4D3F0 /* Reachability.m */; };
 		A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
 		D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
+		D89E034314D15AD6006E24D6 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033D14D15AD6006E24D6 /* FH.m */; };
+		D89E034414D15AD6006E24D6 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033D14D15AD6006E24D6 /* FH.m */; };
+		D89E034514D15AD6006E24D6 /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033E14D15AD6006E24D6 /* FHAct.m */; };
+		D89E034614D15AD6006E24D6 /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033E14D15AD6006E24D6 /* FHAct.m */; };
+		D89E034714D15AD6006E24D6 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033F14D15AD6006E24D6 /* FHResponse.m */; };
+		D89E034814D15AD6006E24D6 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033F14D15AD6006E24D6 /* FHResponse.m */; };
 		D8B94CC114D06E8F003F7945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B94CC014D06E8F003F7945 /* JSONKit.m */; };
 		D8B94CC214D06E8F003F7945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B94CC014D06E8F003F7945 /* JSONKit.m */; };
-		D8CA41B114D0713100824A61 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CA41B014D0713100824A61 /* FHResponse.m */; };
-		D8CA41B214D0713100824A61 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CA41B014D0713100824A61 /* FHResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,11 +165,14 @@
 		A2CD342F14D067A700C4D3F0 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		D82B24AB14D06CC200F91FB4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		D89E033D14D15AD6006E24D6 /* FH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FH.m; sourceTree = "<group>"; };
+		D89E033E14D15AD6006E24D6 /* FHAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAct.m; sourceTree = "<group>"; };
+		D89E033F14D15AD6006E24D6 /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHResponse.m; sourceTree = "<group>"; };
+		D89E034014D15AD6006E24D6 /* FH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FH.h; sourceTree = "<group>"; };
+		D89E034114D15AD6006E24D6 /* FHAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAct.h; sourceTree = "<group>"; };
+		D89E034214D15AD6006E24D6 /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHResponse.h; sourceTree = "<group>"; };
 		D8B94CBF14D06E8F003F7945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		D8B94CC014D06E8F003F7945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		D8CA41AE14D0704B00824A61 /* FHResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHResponseDelegate.h; sourceTree = "<group>"; };
-		D8CA41AF14D0713100824A61 /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHResponse.h; sourceTree = "<group>"; };
-		D8CA41B014D0713100824A61 /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,10 +284,13 @@
 		A2CD322D14D0301000C4D3F0 /* fh-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				D89E033D14D15AD6006E24D6 /* FH.m */,
+				D89E033E14D15AD6006E24D6 /* FHAct.m */,
+				D89E033F14D15AD6006E24D6 /* FHResponse.m */,
+				D89E034014D15AD6006E24D6 /* FH.h */,
+				D89E034114D15AD6006E24D6 /* FHAct.h */,
+				D89E034214D15AD6006E24D6 /* FHResponse.h */,
 				D8B94CC514D06EAA003F7945 /* ThirdParty */,
-				D8CA41AE14D0704B00824A61 /* FHResponseDelegate.h */,
-				D8CA41AF14D0713100824A61 /* FHResponse.h */,
-				D8CA41B014D0713100824A61 /* FHResponse.m */,
 			);
 			name = "fh-ios-sdk";
 			sourceTree = "<group>";
@@ -527,7 +537,9 @@
 				A2CD340B14D0671800C4D3F0 /* ASIS3ServiceRequest.m in Sources */,
 				A2CD342D14D0677500C4D3F0 /* Reachability.m in Sources */,
 				D8B94CC114D06E8F003F7945 /* JSONKit.m in Sources */,
-				D8CA41B114D0713100824A61 /* FHResponse.m in Sources */,
+				D89E034314D15AD6006E24D6 /* FH.m in Sources */,
+				D89E034514D15AD6006E24D6 /* FHAct.m in Sources */,
+				D89E034714D15AD6006E24D6 /* FHResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,7 +573,9 @@
 				A2CD342E14D0677500C4D3F0 /* Reachability.m in Sources */,
 				D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */,
 				D8B94CC214D06E8F003F7945 /* JSONKit.m in Sources */,
-				D8CA41B214D0713100824A61 /* FHResponse.m in Sources */,
+				D89E034414D15AD6006E24D6 /* FH.m in Sources */,
+				D89E034614D15AD6006E24D6 /* FHAct.m in Sources */,
+				D89E034814D15AD6006E24D6 /* FHResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
