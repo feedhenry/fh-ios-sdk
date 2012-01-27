@@ -8,6 +8,8 @@
 
 #import "FHRemote.h"
 #import "FHAct.h"
+#import "FH.h"
+#import "NSString+Validation.h"
 @implementation FHRemote
 @synthesize url, remoteAction;
 
@@ -16,23 +18,35 @@
     if(self){
         _location = FH_LOCATION_REMOTE;
         NSString * path = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
-        appProperties = [NSDictionary dictionaryWithContentsOfFile:path];
+        appProperties   = [NSDictionary dictionaryWithContentsOfFile:path];
     }
     return self;
 }
 
 - (void)buildURL{
     //use parents properties to build url
+    
     NSMutableString * tempString = [[NSMutableString alloc] init];
     NSString * domain   = [appProperties objectForKey:@"domain"];
-    NSString * guit     = [appProperties objectForKey:@"guit"];
+    NSString * guid     = [appProperties objectForKey:@"guid"];
     NSString * instid   = [appProperties objectForKey:@"appinstid"];
     NSString * api      = [appProperties objectForKey:@"apiurl"];
+    
+    guid = ([guid validateGuid] == true)?guid:@"";
+    
     NSLog(@"the remote action is %@",remoteAction);
     
-    NSString * turl     = [tempString stringByAppendingFormat:@"%@%@/%@/%@/%@/%@",api,self.method,domain,guit,self.remoteAction,instid];
+    
+    NSString * turl = nil; 
+    if([self.method isEqualToString:@"act"]){
+       turl = [tempString stringByAppendingFormat:@"%@%@/%@/%@/%@/%@",api,self.method,domain,guid,self.remoteAction,instid];
+    }else if([self.method isEqualToString:@"auth"]){
+        
+        turl = [tempString stringByAppendingFormat:@"%@arm/user/auth",api];
+    }
 
     NSURL * uri = [[NSURL alloc]initWithString:turl];
+    NSLog(@"built uri = %@",turl);
     self.url = uri;
 
     [tempString release];

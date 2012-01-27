@@ -9,17 +9,6 @@
 
 
 #import <Foundation/Foundation.h>
-@class FHResponse;
-@class FHRemote;
-@class FHAct;
-@protocol FHResponseDelegate <NSObject>
-
-@required
-- (void)requestDidSucceedWithResponse:(FHResponse *)res;
-- (void)requestDidFailWithError:(NSError *)er;
-@optional
-- (void)requestDidFailWithResponse:(FHResponse *)res;
-@end
 
 
 typedef enum{
@@ -27,12 +16,14 @@ typedef enum{
     FH_ACTION_AUTH
 }FH_ACTION;
 
+
 #import "ASIHTTPRequestDelegate.h"
 #import "FHRemote.h"
 #import "FHResponse.h"
+#import "FHResponseDelegate.h"
 
 @interface FH : NSObject<ASIHTTPRequestDelegate>{
-    
+        
 }
 + (FHAct *)buildAction:(FH_ACTION)action;
 + (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments;

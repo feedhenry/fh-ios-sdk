@@ -20,11 +20,11 @@
 }
 
 - (void)dealloc{
-    rawResponse = nil;
+    rawResponse         = nil;
     [rawResponse release];
     rawResponseAsString = nil;
     [rawResponseAsString release];
-    parsedResponse = nil;
+    parsedResponse      = nil;
     [parsedResponse release];
     
 }

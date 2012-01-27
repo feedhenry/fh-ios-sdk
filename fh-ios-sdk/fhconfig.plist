@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>apiurl</key>
-	<string>https://apps.feedhenry.com/box/srv/1.1/</string>
-	<key>guit</key>
-	<string>55IZPhdt8xoCdA2_nBHRVjNT</string>
+	<string>https://diageo.feedhenry.com/box/srv/1.1/</string>
+	<key>guid</key>
+	<string>Hw1ahBfiT2KEBVq9bxz8Qc8H</string>
 	<key>domain</key>
 	<string>apps</string>
 	<key>appinstid</key>

@@ -44,13 +44,20 @@
     };
     [super viewDidLoad];
     
-    
+     
     
     // Do any additional setup after loading the view from its nib.
     FHRemote * action = (FHRemote *) [FH buildAction:FH_ACTION_ACT];
     action.remoteAction = @"getEventsByLocation";
-    action.args = [NSDictionary dictionaryWithObjectsAndKeys:@"-7.127205999999999",@"longi",@"52.25227",@"lati", nil];
+    action.cacheTimeout = (60 * 60 * 2); //2 hours
+    [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.127205999999999",@"longi",@"52.25227",@"lati", nil]];
     [FH act:action WithSuccess:success AndFailure:failure];
+    
+    FHRemote * auth = (FHRemote *)[FH buildAction:FH_ACTION_AUTH];
+    [auth setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"admin@test.com",@"userId",@"abcd",@"password", nil]];
+    [FH act:auth WithSuccess:^(FHResponse * res){
+        NSLog(@"response from auth %@",res.parsedResponse);
+    } AndFailure:failure];
     
     
 }

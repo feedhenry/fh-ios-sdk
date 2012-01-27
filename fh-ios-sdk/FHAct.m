@@ -7,28 +7,45 @@
 //
 
 #import "FHAct.h"
-
+#import "JSONKit.h"
 @implementation FHAct
-@synthesize method, args, delegate, cacheTimeout, _location;
+@synthesize method, delegate, cacheTimeout, _location;
 
-- (id)initWithMethod:(NSString *)meth Args:(NSDictionary *)arguments AndDelegate:(id)del{
+- (id)initWithMethod:(NSString *)meth Args:(NSMutableDictionary *)arguments AndDelegate:(id)del{
     self = [super init];
     if(self){
         self.method             = meth;
-        self.args               = arguments;
         if(del)self.delegate    = del;
+        [self setArgs:arguments];
     }
     return self;
 }
 
+- (void)setArgs:(NSDictionary * )arguments{
+    if(args && self.method !=@"auth"){
+        [args addEntriesFromDictionary:arguments];
+    }else if(args && self.method == @"auth"){
+        NSMutableDictionary * innerProps = [args objectForKey:@"params"];
+        [innerProps addEntriesFromDictionary:arguments];
+        NSString * jsonified = [innerProps JSONString];
+        NSLog(@"jsoned args %@",jsonified);
+        [args setValue:jsonified forKey:@"params"];
+    }
+    else{
+        args = [[NSMutableDictionary alloc]initWithDictionary:arguments];
+    }
+}
+
+- (NSDictionary *)args{
+    return (NSDictionary *) args;
+}
 
 
 - (void)dealloc{
-    method = nil;
+    method  = nil;
     [method release];
-    args = nil;
+    args    = nil;
     [args release];
-   
     [super dealloc];
 }
 
