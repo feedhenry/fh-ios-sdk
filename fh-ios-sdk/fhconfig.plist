@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>apiurl</key>
-	<string>https://diageo.feedhenry.com/box/srv/1.1/</string>
+	<string>https://psdev.feedhenry.com/box/srv/1.1/</string>
 	<key>guid</key>
-	<string>Hw1ahBfiT2KEBVq9bxz8Qc8H</string>
+	<string>EeeVJqJmkN0AxPZNN0uHCGUH</string>
 	<key>domain</key>
-	<string>apps</string>
+	<string>psdev</string>
 	<key>appinstid</key>
-	<string>55IZPidQp47xFEftB0EWfTVL</string>
+	<string>EeeVJqJmkN0AxPZNN0uHCGUH</string>
 </dict>
 </plist>

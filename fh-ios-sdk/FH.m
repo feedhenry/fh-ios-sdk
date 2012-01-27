@@ -35,9 +35,6 @@
             act.method  = @"act";
             break;
         case FH_ACTION_AUTH:
-            /*
-        {"type":"default","params":{"userId":"admin@test.com","password":"abcd","appId":"Hw1ahBfiT2KEBVq9bxz8Qc8H","device":"52FD84C26CA740B283F4C38B469DD394"},"__fh":{"cuid":"52FD84C26CA740B283F4C38B469DD394","destination":"embed","domain":"diageo","version":1269}}
-            */
             
             act                             = [[[FHRemote alloc] init] autorelease];
             act.method                      = @"auth";

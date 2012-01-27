@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "EventsViewController.h"
+#import "LoginController.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -25,7 +26,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     
-    EventsViewController * viewController = [[EventsViewController alloc]init];
+    LoginController * viewController = [[LoginController alloc]init];
     [self.window setRootViewController:viewController];
     
     [self.window makeKeyAndVisible];

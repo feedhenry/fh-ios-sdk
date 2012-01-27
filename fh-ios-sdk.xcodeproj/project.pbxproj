@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2530A1414D2DAB8006F36D8 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2530A1214D2DAB8006F36D8 /* LoginController.m */; };
+		A2530A1514D2DAB8006F36D8 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2530A1314D2DAB8006F36D8 /* LoginController.xib */; };
 		A25F599D14D2D23E00E131BE /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = A25F599C14D2D23E00E131BE /* NSString+Validation.m */; };
 		A28DFC0714D161FC00128B50 /* FHRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC0614D161FC00128B50 /* FHRemote.m */; };
 		A28DFC0B14D1638900128B50 /* FHLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC0A14D1638900128B50 /* FHLocal.m */; };
@@ -99,6 +101,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A2530A1114D2DAB8006F36D8 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		A2530A1214D2DAB8006F36D8 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		A2530A1314D2DAB8006F36D8 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		A25F599B14D2D23E00E131BE /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		A25F599C14D2D23E00E131BE /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		A28DFC0514D161FC00128B50 /* FHRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHRemote.h; sourceTree = "<group>"; };
@@ -280,6 +285,9 @@
 				A28DFC1014D1B0CA00128B50 /* EventsViewController.h */,
 				A28DFC1114D1B0CB00128B50 /* EventsViewController.m */,
 				A28DFC1214D1B0CB00128B50 /* EventsViewController.xib */,
+				A2530A1114D2DAB8006F36D8 /* LoginController.h */,
+				A2530A1214D2DAB8006F36D8 /* LoginController.m */,
+				A2530A1314D2DAB8006F36D8 /* LoginController.xib */,
 			);
 			path = "fh-ios-sdk";
 			sourceTree = "<group>";
@@ -318,12 +326,12 @@
 			isa = PBXGroup;
 			children = (
 				A25F599614D2CF2000E131BE /* categories */,
-				D89E033D14D15AD6006E24D6 /* FH.m */,
 				D89E034114D15AD6006E24D6 /* FHAct.h */,
 				D89E033E14D15AD6006E24D6 /* FHAct.m */,
 				D89E033F14D15AD6006E24D6 /* FHResponse.m */,
-				D89E034014D15AD6006E24D6 /* FH.h */,
 				D89E034214D15AD6006E24D6 /* FHResponse.h */,
+				D89E034014D15AD6006E24D6 /* FH.h */,
+				D89E033D14D15AD6006E24D6 /* FH.m */,
 				D8B94CC514D06EAA003F7945 /* ThirdParty */,
 				A28DFC0514D161FC00128B50 /* FHRemote.h */,
 				A28DFC0614D161FC00128B50 /* FHRemote.m */,
@@ -519,6 +527,7 @@
 				A2CD320914D0300200C4D3F0 /* InfoPlist.strings in Resources */,
 				A28DFC0F14D19B0300128B50 /* fhconfig.plist in Resources */,
 				A28DFC1414D1B0CB00128B50 /* EventsViewController.xib in Resources */,
+				A2530A1514D2DAB8006F36D8 /* LoginController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +595,7 @@
 				A28DFC0B14D1638900128B50 /* FHLocal.m in Sources */,
 				A28DFC1314D1B0CB00128B50 /* EventsViewController.m in Sources */,
 				A25F599D14D2D23E00E131BE /* NSString+Validation.m in Sources */,
+				A2530A1414D2DAB8006F36D8 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

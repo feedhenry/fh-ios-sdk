@@ -8,6 +8,7 @@
 
 #import "EventsViewController.h"
 #import "FH.h"
+#import "LoginController.h"
 @implementation EventsViewController
 @synthesize eventsTable;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad
 {
+   
+    
     events = [NSArray array];
     void (^success)(FHResponse *)=^(FHResponse * res){
         
@@ -52,12 +55,6 @@
     action.cacheTimeout = (60 * 60 * 2); //2 hours
     [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.127205999999999",@"longi",@"52.25227",@"lati", nil]];
     [FH act:action WithSuccess:success AndFailure:failure];
-    
-    FHRemote * auth = (FHRemote *)[FH buildAction:FH_ACTION_AUTH];
-    [auth setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"admin@test.com",@"userId",@"abcd",@"password", nil]];
-    [FH act:auth WithSuccess:^(FHResponse * res){
-        NSLog(@"response from auth %@",res.parsedResponse);
-    } AndFailure:failure];
     
     
 }
