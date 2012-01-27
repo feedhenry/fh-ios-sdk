@@ -54,7 +54,9 @@
     action.remoteAction = @"getEventsByLocation";
     action.cacheTimeout = (60 * 60 * 2); //2 hours
     [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.127205999999999",@"longi",@"52.25227",@"lati", nil]];
-    [FH act:action WithSuccess:success AndFailure:failure];
+    action.delegate = self;
+    [FH act:action WithSuccess:nil AndFailure:nil];
+    
     
     
 }
@@ -105,6 +107,19 @@
     events = nil;
     [events release];
     [super dealloc];
+}
+
+#pragma mark FHResponseDelegate
+
+- (void)requestDidSucceedWithResponse:(FHResponse *)res{
+    NSLog(@"delegate method called with response %@",res.parsedResponse);
+    events = (NSArray *) res.parsedResponse;
+    [eventsTable reloadData];
+}
+
+
+- (void)requestDidFailWithError:(NSError *)er{
+    
 }
 
 @end

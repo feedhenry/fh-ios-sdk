@@ -713,12 +713,14 @@
 		A2CD322814D0300200C4D3F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FeedHenry Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "fh-ios-sdk/fh-ios-sdk-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7E5F0A63-052A-4F6B-AAB8-6935101B3B51";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -726,12 +728,14 @@
 		A2CD322914D0300200C4D3F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FeedHenry Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "fh-ios-sdk/fh-ios-sdk-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7E5F0A63-052A-4F6B-AAB8-6935101B3B51";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

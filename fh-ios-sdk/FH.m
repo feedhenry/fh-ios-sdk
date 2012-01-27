@@ -107,9 +107,9 @@
         [request setCompletionBlock:^{
             NSLog(@"reused cache %@",[request didUseCachedResponse]);
             //parse, build response, delegate
-            NSString * resposne = [request responseString];
+            NSData * responseData = [request responseData];
             FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
-            [fhResponse parseResponseString:resposne];
+            [fhResponse parseResponseData:responseData];
             //if user has defined their own call back pass control to them
             if(sucornil)sucornil(fhResponse);
             else{
@@ -131,6 +131,7 @@
         }];
         
         if(action.cacheTimeout > 0){
+            [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
             [request setDownloadCache:[ASIDownloadCache sharedCache]];
             [request setSecondsToCache:action.cacheTimeout];
         }

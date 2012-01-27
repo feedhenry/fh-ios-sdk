@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface EventsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
+#import "FHResponseDelegate.h"
+@interface EventsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, FHResponseDelegate>{
     UITableView * eventsTable;
     NSArray * events;
 }
