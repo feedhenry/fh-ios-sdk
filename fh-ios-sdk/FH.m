@@ -21,6 +21,7 @@
 #import "ASIFormDataRequest.h"
 #import "ASIDownloadCache.h"
 #import "FHResponse.h"
+#import "JSONKit.h"
 
 @implementation FH
 /*
@@ -43,14 +44,19 @@
             NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
 
             
-            NSString * uid                  = [[UIDevice currentDevice] uniqueIdentifier];
+            NSString * uid                  = [[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""];
             NSString * path                 = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
             NSDictionary * props            = [NSDictionary dictionaryWithContentsOfFile:path];
             
             [innerP setValue:uid forKey:@"device"];
             [innerP setValue:[props objectForKey:@"appinstid"] forKey:@"appId"];
             [params setValue:@"default" forKey:@"type"];
+            
+            NSDictionary * __fh = [NSDictionary dictionaryWithObjectsAndKeys:uid,@"cuid",[props objectForKey:@"domain"],@"domain",@"studio",@"destination", nil];
+            [params setValue:[__fh JSONString] forKey:@"__fh"];
+            
             [params setValue:innerP forKey:@"params"];
+            NSLog(@"params set to %@",[params JSONString]);
             [act setArgs:params];
             break;
         default:

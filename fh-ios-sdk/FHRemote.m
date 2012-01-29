@@ -19,6 +19,8 @@
         _location = FH_LOCATION_REMOTE;
         NSString * path = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
         appProperties   = [NSDictionary dictionaryWithContentsOfFile:path];
+                         
+        
     }
     return self;
 }
