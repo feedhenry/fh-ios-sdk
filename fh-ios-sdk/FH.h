@@ -9,17 +9,25 @@
 
 
 #import <Foundation/Foundation.h>
-
-
-
 #import "FHDefines.h"
 
 #import "ASIHTTPRequestDelegate.h"
 #import "FHRemote.h"
+#import "FHLocal.h"
 #import "FHResponse.h"
 #import "FHResponseDelegate.h"
 
-@interface FH : NSObject<ASIHTTPRequestDelegate>{
+
+@protocol FHActionDelegate <NSObject>
+
+@required
++ (void)performLocalAction:(FHLocal *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
++ (void)performRemoteAction:(FHRemote *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
+@end
+
+
+
+@interface FH : NSObject<ASIHTTPRequestDelegate, FHActionDelegate>{
         
 }
 + (FHAct *)buildAction:(FH_ACTION)action;

@@ -10,7 +10,7 @@
 typedef enum{
     FH_ACTION_ACT,
     FH_ACTION_AUTH,
-    FH_ACTION_STORE
+    FH_ACTION_DATA_STORE
 }FH_ACTION;
 
 typedef enum{

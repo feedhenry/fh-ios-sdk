@@ -16,11 +16,8 @@
  
 
 #import "FH.h"
-#import "FHRemote.h"
-#import "FHLocal.h"
 #import "ASIFormDataRequest.h"
 #import "ASIDownloadCache.h"
-#import "FHResponse.h"
 #import "JSONKit.h"
 
 @implementation FH
@@ -44,16 +41,18 @@
             //auth requires some particular params so we can add those here
             NSMutableDictionary * params    = [NSMutableDictionary dictionary];
             NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
+            /**
+             TODO need some fix for uid. ID sent to FHAuth needs to be a 32 char string MD5
+            */ 
             NSString * uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
             
             [innerP setValue:uid forKey:@"device"];
             [innerP setValue:[props objectForKey:@"appinstid"] forKey:@"appId"];
             [params setValue:@"default" forKey:@"type"];
-            
             [params setValue:innerP forKey:@"params"];
             [act setArgs:params];
             break;
-        case FH_ACTION_STORE:
+        case FH_ACTION_DATA_STORE:
             break;
         default:
             @throw([NSException exceptionWithName:@"Unknown Action" reason:@"you asked for an action that is not available or unknown" userInfo:[NSDictionary dictionary]]); 
@@ -79,70 +78,81 @@
 */ 
 + (void)act:(FHAct *)action WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
     if(action._location == FH_LOCATION_DEVICE){
+        FHLocal * localAction = (FHLocal *)action;
         //reserved for local on device apis that we may wish to wrap up
+        [FH performLocalAction:localAction WithSuccess:sucornil AndFailure:failornil];
         
     }else if(action._location == FH_LOCATION_REMOTE){ 
         //create new instance of FHRemote
         FHRemote * remoteAction = (FHRemote *)action;
-        
-        [remoteAction buildURL];         
-        
-        NSURL * apicall = remoteAction.url; //get the built request url and start the request
-        //startrequest
-        __block ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:apicall];
-         //add params to the post request
-        
-        if(action.args && [action.args count]>0){
-            NSArray * keys = [action.args allKeys];
-            for (NSString * key in keys ) {
-                NSLog(@"setting value for %@",key);
-                id ob = [action.args objectForKey:key];
-                if([ob isKindOfClass:[NSString class]]){
-                    //set post value on request
-                    [request setPostValue:ob forKey:key];
-                }
-            }
-        }
-        //wrap the passed block inside our own success block to allow for
-        //further manipulation
-        [request setCompletionBlock:^{
-            NSLog(@"reused cache %@",[request didUseCachedResponse]);
-            //parse, build response, delegate
-            NSData * responseData = [request responseData];
-            FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
-            [fhResponse parseResponseData:responseData];
-            //if user has defined their own call back pass control to them
-            if(sucornil)sucornil(fhResponse);
-            else{
-                //look to pass to delegate object
-                SEL sucSel = @selector(requestDidSucceedWithResponse:);
-                if (action.delegate && [action.delegate respondsToSelector:sucSel]) {
-                    [action.delegate performSelectorOnMainThread:sucSel withObject:fhResponse waitUntilDone:YES];
-                }
-            }
-        }];
-        //again wrap the fail block in our own block
-        [request setFailedBlock:^{
-            NSError * reqError = [request error];
-            if(failornil)failornil(reqError);
-            SEL delFailSel = @selector(requestDidFailWithError:);
-            if (action.delegate && [action.delegate respondsToSelector:delFailSel]) {
-                [action.delegate performSelectorOnMainThread:delFailSel withObject:reqError waitUntilDone:YES];
-            }
-        }];
-        
-        if(action.cacheTimeout > 0){
-            [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
-            [request setDownloadCache:[ASIDownloadCache sharedCache]];
-            [request setSecondsToCache:action.cacheTimeout];
-        }
-        
-        [request startAsynchronous];
+        [FH performRemoteAction:remoteAction WithSuccess:sucornil AndFailure:failornil];
     }
     
 };
 
++ (void)performLocalAction:(FHLocal *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
 
+}
+
+
+
++ (void)performRemoteAction:(FHRemote *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
+    
+    [act buildURL];         
+    
+    NSURL * apicall = act.url; //get the built request url and start the request
+    //startrequest
+    __block ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:apicall];
+    //add params to the post request
+    
+    if(act.args && [act.args count]>0){
+        NSArray * keys = [act.args allKeys];
+        for (NSString * key in keys ) {
+            NSLog(@"setting value for %@",key);
+            id ob = [act.args objectForKey:key];
+            if([ob isKindOfClass:[NSString class]]){
+                //set post value on request
+                [request setPostValue:ob forKey:key];
+            }
+        }
+    }
+    //wrap the passed block inside our own success block to allow for
+    //further manipulation
+    [request setCompletionBlock:^{
+        NSLog(@"reused cache %@",[request didUseCachedResponse]);
+        //parse, build response, delegate
+        NSData * responseData = [request responseData];
+        FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
+        [fhResponse parseResponseData:responseData];
+        //if user has defined their own call back pass control to them
+        if(sucornil)sucornil(fhResponse);
+        else{
+            //look to pass to delegate object
+            SEL sucSel = @selector(requestDidSucceedWithResponse:);
+            if (act.delegate && [act.delegate respondsToSelector:sucSel]) {
+                [act.delegate performSelectorOnMainThread:sucSel withObject:fhResponse waitUntilDone:YES];
+            }
+        }
+    }];
+    //again wrap the fail block in our own block
+    [request setFailedBlock:^{
+        NSError * reqError = [request error];
+        if(failornil)failornil(reqError);
+        SEL delFailSel = @selector(requestDidFailWithError:);
+        if (act.delegate && [act.delegate respondsToSelector:delFailSel]) {
+            [act.delegate performSelectorOnMainThread:delFailSel withObject:reqError waitUntilDone:YES];
+        }
+    }];
+    
+    if(act.cacheTimeout > 0){
+        [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
+        [request setDownloadCache:[ASIDownloadCache sharedCache]];
+        [request setSecondsToCache:act.cacheTimeout];
+    }
+    
+    [request startAsynchronous];
+
+}
 
 
 @end
