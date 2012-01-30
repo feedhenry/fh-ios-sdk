@@ -21,6 +21,7 @@
 @protocol FHActionDelegate <NSObject>
 
 @required
+
 + (void)performLocalAction:(FHLocal *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 + (void)performRemoteAction:(FHRemote *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 @end
@@ -30,6 +31,7 @@
 @interface FH : NSObject<ASIHTTPRequestDelegate, FHActionDelegate>{
         
 }
++ (void)initializeFH;
 + (FHAct *)buildAction:(FH_ACTION)action;
 + (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments;
 /**

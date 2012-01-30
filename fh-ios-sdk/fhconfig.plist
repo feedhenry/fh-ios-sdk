@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>apiurl</key>
-	<string>https://psdev.feedhenry.com/box/srv/1.1/</string>
+	<string>https://psdev.feedhenry.com</string>
 	<key>guid</key>
 	<string>EeeVJqJmkN0AxPZNN0uHCGUH</string>
 	<key>domain</key>

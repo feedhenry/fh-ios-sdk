@@ -13,7 +13,9 @@ typedef enum{
     FH_ACTION_LOCAL_DATA_STORE,
     FH_ACTION_RETRIEVE_LOCAL_DATA,
     FH_ACTION_PERSISTANT_DATA_STORE,
-    FH_ACTION_RETRIEVE_PERSISTANT_DATA
+    FH_ACTION_RETRIEVE_PERSISTANT_DATA,
+    FH_ACTION_RETRIEVE_USER_DATA,
+    FH_ACTION_USER_DATA_STORE
 }FH_ACTION;
 
 typedef enum{
@@ -25,3 +27,4 @@ typedef enum{
 #define FH_AUTH @"auth"
 #define FH_DATA @"data"
 #define FH_REMOTE_DATA @"remotedata"
+#define API_APPEND @"box/srv/1.1/"

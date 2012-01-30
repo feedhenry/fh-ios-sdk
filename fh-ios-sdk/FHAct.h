@@ -17,6 +17,7 @@
     NSUInteger cacheTimeout;
     FH_LOCATION _location;
     NSDictionary * fhProps;
+    NSString * uid;
     
 }
 @property(nonatomic,retain)NSString * method;

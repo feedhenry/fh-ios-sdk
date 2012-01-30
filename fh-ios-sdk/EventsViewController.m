@@ -59,7 +59,8 @@
     
     //store remote data
 //    FHRemote * store = (FHRemote *) [FH buildAction:FH_ACTION_PERSISTANT_DATA_STORE];
-//    [store setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"somevalue",@"val",@"myval",@"key", nil]];
+//    NSDictionary * toStore = [NSDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:@"craig",@"username",@"abcd",@"password", nil],@"val",@"myparams",@"key", nil];
+//    [store setArgs:toStore];
 //    [FH act:store WithSuccess:^(FHResponse * res){
 //        NSLog(@"the response %@", res.parsedResponse);
 //    } AndFailure:^(FHResponse * res){
@@ -68,7 +69,7 @@
     
     //ret remote data
     FHRemote * ret = (FHRemote *)[FH buildAction:FH_ACTION_RETRIEVE_PERSISTANT_DATA];
-    [ret setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"myval",@"key", nil]];
+    [ret setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"myparams",@"key", nil]];
     [FH act:ret WithSuccess:^(FHResponse *ret){
     
         NSLog(@"ret from cloud %@",ret.parsedResponse);

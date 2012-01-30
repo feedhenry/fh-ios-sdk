@@ -17,6 +17,7 @@
         args = [NSMutableDictionary dictionary];
         NSString * path = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
         fhProps = [NSDictionary dictionaryWithContentsOfFile:path];
+        uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
     }
     return self;
 }
@@ -27,20 +28,20 @@
         self.method             = meth;
         if(del)self.delegate    = del;
         [self setArgs:arguments];
+
     }
     return self;
 }
 
 - (void)setArgs:(NSDictionary * )arguments {
     
-    //fix for fhAuth
+    
     if(self.method == FH_AUTH ){
         NSMutableDictionary * params    = [NSMutableDictionary dictionary];
         NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
         /**
          TODO need some fix for uid. ID sent to FHAuth needs to be a 32 char string MD5
          */ 
-        NSString * uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
         
         [innerP setValue:uid forKey:@"device"];
         [innerP setValue:[fhProps objectForKey:@"appinstid"] forKey:@"appId"];

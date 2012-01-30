@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "EventsViewController.h"
 #import "LoginController.h"
+#import "FH.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -21,6 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [FH initializeFH];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

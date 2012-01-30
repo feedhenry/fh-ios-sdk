@@ -40,7 +40,9 @@
     NSString * domain   = [appProperties objectForKey:@"domain"];
     NSString * guid     = [appProperties objectForKey:@"guid"];
     NSString * instid   = [appProperties objectForKey:@"appinstid"];
-    NSString * api      = [appProperties objectForKey:@"apiurl"];
+    NSString * apiurl   = [appProperties objectForKey:@"apiurl"];
+    NSString * format   = ([[apiurl substringToIndex:[apiurl length]-1] isEqualToString:@"/"]) ? @"%@%@" : @"%@/%@";
+    NSString * api      = [NSMutableString stringWithFormat:format,[appProperties objectForKey:@"apiurl"],API_APPEND];
     
     guid = ([guid validateGuid] == true)?guid:@"";
     
@@ -50,13 +52,13 @@
     NSString * turl = nil; 
     if([self.method isEqualToString:@"act"]){
        turl = [tempString stringByAppendingFormat:@"%@%@/%@/%@/%@/%@",api,self.method,domain,guid,self.remoteAction,instid];
+        
     }else if([self.method isEqualToString:@"auth"]){
         
         turl = [tempString stringByAppendingFormat:@"%@arm/user/auth",api];
     }
 
     NSURL * uri = [[NSURL alloc]initWithString:turl];
-    NSLog(@"built uri = %@",turl);
     self.url = uri;
 
     [tempString release];

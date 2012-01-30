@@ -19,25 +19,30 @@
 #import "ASIFormDataRequest.h"
 #import "ASIDownloadCache.h"
 #import "JSONKit.h"
-
+static BOOL ready = false;
 @implementation FH
 /*
   Action factory should perhaps move to its own class
  */
 
+
++ (void)initializeFH{
+    ready = true;
+}
+
 + (FHAct *)buildAction:(FH_ACTION)action{
+
     FHAct * act = nil;
-    NSString * path                 = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
-    NSDictionary * props            = [NSDictionary dictionaryWithContentsOfFile:path];
-    
+    //needs to be shared 
+    NSString * uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
     switch (action) {
         case FH_ACTION_ACT:
             act         = [[[FHRemote alloc] init] autorelease];
             act.method  = FH_ACT;
             break;
         case FH_ACTION_AUTH:
-            act                             = [[[FHRemote alloc] init] autorelease];
-            act.method                      = FH_AUTH;
+            act         = [[[FHRemote alloc] init] autorelease];
+            act.method  = FH_AUTH;
             //auth requires some particular params so we add those here before the api user begins to interact
             break;
         case FH_ACTION_LOCAL_DATA_STORE:
@@ -48,9 +53,11 @@
         case FH_ACTION_PERSISTANT_DATA_STORE:
             act         = [[FHRemote alloc]initWithRemoteAction:@"persist"];
             act.method  = FH_ACT;
+            [act setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"keyvalstore",@"type", nil]];
             break;
         case FH_ACTION_RETRIEVE_PERSISTANT_DATA:
             act = [[FHRemote alloc] initWithRemoteAction:@"get"];
+            [act setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"keyvalstore",@"type", nil]];
             act.method = FH_ACT;
             break;
         default:
@@ -76,6 +83,7 @@
  if no blocks are specified it looks for a delegate and calls the FHResponseDelegate methods on the delegate
 */ 
 + (void)act:(FHAct *)action WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
+    
     if(action._location == FH_LOCATION_DEVICE){
         FHLocal * localAction = (FHLocal *)action;
         //reserved for local on device apis that we may wish to wrap up
@@ -90,12 +98,21 @@
 };
 
 + (void)performLocalAction:(FHLocal *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
-
+    if(!ready){
+        failornil([NSError errorWithDomain:@"You need to ensure [FH initializeFH] is called in applicationDidFinishLaunching" code:500 userInfo:nil]);
+        return;
+    }
+        
+    
 }
 
 
 
 + (void)performRemoteAction:(FHRemote *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
+    if(!ready){
+        failornil([NSError errorWithDomain:@"You need to ensure [FH initializeFH] is called in applicationDidFinishLaunching" code:500 userInfo:nil]);
+        return;  
+    }
     
     [act buildURL];         
     
