@@ -30,38 +30,33 @@
 
 + (FHAct *)buildAction:(FH_ACTION)action{
     FHAct * act = nil;
+    NSString * path                 = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
+    NSDictionary * props            = [NSDictionary dictionaryWithContentsOfFile:path];
+    
     switch (action) {
         case FH_ACTION_ACT:
             act         = [[[FHRemote alloc] init] autorelease];
-            act.method  = @"act";
+            act.method  = FH_ACT;
             break;
         case FH_ACTION_AUTH:
-            
             act                             = [[[FHRemote alloc] init] autorelease];
-            act.method                      = @"auth";
+            act.method                      = FH_AUTH;
             //auth requires some particular params so we can add those here
             NSMutableDictionary * params    = [NSMutableDictionary dictionary];
             NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
-
-            
-            NSString * uid                  = [[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""];
-            NSString * path                 = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
-            NSDictionary * props            = [NSDictionary dictionaryWithContentsOfFile:path];
+            NSString * uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
             
             [innerP setValue:uid forKey:@"device"];
             [innerP setValue:[props objectForKey:@"appinstid"] forKey:@"appId"];
             [params setValue:@"default" forKey:@"type"];
             
-            NSDictionary * __fh = [NSDictionary dictionaryWithObjectsAndKeys:uid,@"cuid",[props objectForKey:@"domain"],@"domain",@"studio",@"destination", nil];
-            [params setValue:[__fh JSONString] forKey:@"__fh"];
-            
             [params setValue:innerP forKey:@"params"];
-            NSLog(@"params set to %@",[params JSONString]);
             [act setArgs:params];
             break;
+        case FH_ACTION_STORE:
+            break;
         default:
-            act         = [[[FHAct alloc] init] autorelease];
-            act.method  = @"unknown";
+            @throw([NSException exceptionWithName:@"Unknown Action" reason:@"you asked for an action that is not available or unknown" userInfo:[NSDictionary dictionary]]); 
             break;
     }
     return act;

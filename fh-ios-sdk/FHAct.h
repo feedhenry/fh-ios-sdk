@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum{
- FH_LOCATION_REMOTE,
- FH_LOCATION_DEVICE   
-}FH_LOCATION;
+#import "FHDefines.h"
 
 @interface FHAct : NSObject{
     NSString * method;

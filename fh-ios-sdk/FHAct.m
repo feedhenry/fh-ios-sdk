@@ -22,9 +22,10 @@
 }
 
 - (void)setArgs:(NSDictionary * )arguments{
-    if(args && self.method !=@"auth"){
+    if(args && self.method != FH_AUTH){
         [args addEntriesFromDictionary:arguments];
-    }else if(args && self.method == @"auth"){
+        
+    }else if(args && self.method == FH_AUTH){
         NSMutableDictionary * innerProps = [args objectForKey:@"params"];
         [innerProps addEntriesFromDictionary:arguments];
         NSString * jsonified = [innerProps JSONString];

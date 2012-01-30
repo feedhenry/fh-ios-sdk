@@ -11,11 +11,8 @@
 #import <Foundation/Foundation.h>
 
 
-typedef enum{
-    FH_ACTION_ACT,
-    FH_ACTION_AUTH
-}FH_ACTION;
 
+#import "FHDefines.h"
 
 #import "ASIHTTPRequestDelegate.h"
 #import "FHRemote.h"
@@ -33,6 +30,7 @@ typedef enum{
 +(FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del;
 
 + (void)act:(FHAct *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
+
 
 
 @end
