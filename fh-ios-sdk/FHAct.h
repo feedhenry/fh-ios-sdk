@@ -16,6 +16,7 @@
     id  delegate;
     NSUInteger cacheTimeout;
     FH_LOCATION _location;
+    NSDictionary * fhProps;
     
 }
 @property(nonatomic,retain)NSString * method;

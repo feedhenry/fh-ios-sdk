@@ -38,21 +38,20 @@
         case FH_ACTION_AUTH:
             act                             = [[[FHRemote alloc] init] autorelease];
             act.method                      = FH_AUTH;
-            //auth requires some particular params so we can add those here
-            NSMutableDictionary * params    = [NSMutableDictionary dictionary];
-            NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
-            /**
-             TODO need some fix for uid. ID sent to FHAuth needs to be a 32 char string MD5
-            */ 
-            NSString * uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
-            
-            [innerP setValue:uid forKey:@"device"];
-            [innerP setValue:[props objectForKey:@"appinstid"] forKey:@"appId"];
-            [params setValue:@"default" forKey:@"type"];
-            [params setValue:innerP forKey:@"params"];
-            [act setArgs:params];
+            //auth requires some particular params so we add those here before the api user begins to interact
             break;
-        case FH_ACTION_DATA_STORE:
+        case FH_ACTION_LOCAL_DATA_STORE:
+            act         = [[[FHLocal alloc]init] autorelease];
+            act.method  = FH_DATA;
+            break;
+            
+        case FH_ACTION_PERSISTANT_DATA_STORE:
+            act         = [[FHRemote alloc]initWithRemoteAction:@"persist"];
+            act.method  = FH_ACT;
+            break;
+        case FH_ACTION_RETRIEVE_PERSISTANT_DATA:
+            act = [[FHRemote alloc] initWithRemoteAction:@"get"];
+            act.method = FH_ACT;
             break;
         default:
             @throw([NSException exceptionWithName:@"Unknown Action" reason:@"you asked for an action that is not available or unknown" userInfo:[NSDictionary dictionary]]); 
@@ -147,6 +146,7 @@
     if(act.cacheTimeout > 0){
         [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
         [request setDownloadCache:[ASIDownloadCache sharedCache]];
+       
         [request setSecondsToCache:act.cacheTimeout];
     }
     

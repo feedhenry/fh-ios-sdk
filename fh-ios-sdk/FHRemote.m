@@ -19,8 +19,16 @@
         _location = FH_LOCATION_REMOTE;
         NSString * path = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
         appProperties   = [NSDictionary dictionaryWithContentsOfFile:path];
-                         
-        
+
+    }
+    return self;
+}
+
+
+- (id)initWithRemoteAction:(NSString *)act{
+    self = [self init];
+    if(self){
+        self.remoteAction = act;
     }
     return self;
 }

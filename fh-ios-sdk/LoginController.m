@@ -59,7 +59,7 @@
     NSString * username = self.usernameField.text;
     NSString * password = self.passwordField.text;
     FHRemote * act = (FHRemote *) [FH buildAction:FH_ACTION_AUTH];
-    [act setArgs:[NSDictionary dictionaryWithObjectsAndKeys:username,@"userId",password,@"password", nil]];
+    [act setArgs:[NSDictionary dictionaryWithObjectsAndKeys:username,@"username",password,@"password", nil]];
     [FH act:act WithSuccess:^(FHResponse * res){
         NSLog(@"auth returned %@",res.parsedResponse);
         self.messageLabel.textColor = [UIColor redColor];

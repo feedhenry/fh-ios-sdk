@@ -11,8 +11,18 @@
 @implementation FHAct
 @synthesize method, delegate, cacheTimeout, _location;
 
-- (id)initWithMethod:(NSString *)meth Args:(NSMutableDictionary *)arguments AndDelegate:(id)del{
+- (id)init{
     self = [super init];
+    if(self){
+        args = [NSMutableDictionary dictionary];
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
+        fhProps = [NSDictionary dictionaryWithContentsOfFile:path];
+    }
+    return self;
+}
+
+- (id)initWithMethod:(NSString *)meth Args:(NSMutableDictionary *)arguments AndDelegate:(id)del{
+    self = [self init];
     if(self){
         self.method             = meth;
         if(del)self.delegate    = del;
@@ -21,20 +31,46 @@
     return self;
 }
 
-- (void)setArgs:(NSDictionary * )arguments{
-    if(args && self.method != FH_AUTH){
-        [args addEntriesFromDictionary:arguments];
+- (void)setArgs:(NSDictionary * )arguments {
+    
+    //fix for fhAuth
+    if(self.method == FH_AUTH ){
+        NSMutableDictionary * params    = [NSMutableDictionary dictionary];
+        NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
+        /**
+         TODO need some fix for uid. ID sent to FHAuth needs to be a 32 char string MD5
+         */ 
+        NSString * uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
         
-    }else if(args && self.method == FH_AUTH){
-        NSMutableDictionary * innerProps = [args objectForKey:@"params"];
-        [innerProps addEntriesFromDictionary:arguments];
-        NSString * jsonified = [innerProps JSONString];
-        NSLog(@"jsoned args %@",jsonified);
-        [args setValue:jsonified forKey:@"params"];
+        [innerP setValue:uid forKey:@"device"];
+        [innerP setValue:[fhProps objectForKey:@"appinstid"] forKey:@"appId"];
+        [params setValue:@"default" forKey:@"type"];
+        NSString * username = [arguments objectForKey:@"username"];
+        NSString * password = [arguments objectForKey:@"password"];
+        if(username && password){
+            [innerP setValue:username forKey:@"userId"];
+            [innerP setValue:password forKey:@"password"];
+        }
+        [params setValue:[innerP JSONString] forKey:@"params"];
+        args = params;
+         NSLog(@"args set to  %@",args);
+        return;
+        
     }
-    else{
-        args = [[NSMutableDictionary alloc]initWithDictionary:arguments];
+    NSArray * keys = [arguments allKeys];
+    for (id key in keys) {
+        if([key isKindOfClass:[NSString class]]){
+            id ob = [arguments objectForKey:key];
+            //if it is one deep can set value straight
+            if([ob isKindOfClass:[NSString class]]){
+                [args setValue:ob forKey:key];
+            }else if([ob isKindOfClass:[NSArray class]] || [ob isKindOfClass:[NSDictionary class]]){
+                //else convert native collection type to json string
+                [args setValue:[ob JSONString] forKey:key];
+            }
+        }
     }
+    NSLog(@"args set to  %@",args);
 }
 
 - (NSDictionary *)args{

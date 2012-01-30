@@ -54,8 +54,27 @@
     action.remoteAction = @"getEventsByLocation";
     action.cacheTimeout = (60 * 60 * 2); //2 hours
     [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.127205999999999",@"longi",@"52.25227",@"lati", nil]];
-    action.delegate = self;
-    [FH act:action WithSuccess:nil AndFailure:nil];
+    [FH act:action WithSuccess:success AndFailure:failure];
+    
+    
+    //store remote data
+//    FHRemote * store = (FHRemote *) [FH buildAction:FH_ACTION_PERSISTANT_DATA_STORE];
+//    [store setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"somevalue",@"val",@"myval",@"key", nil]];
+//    [FH act:store WithSuccess:^(FHResponse * res){
+//        NSLog(@"the response %@", res.parsedResponse);
+//    } AndFailure:^(FHResponse * res){
+//                    NSLog(@"the failed response %@", res);
+//    }];
+    
+    //ret remote data
+    FHRemote * ret = (FHRemote *)[FH buildAction:FH_ACTION_RETRIEVE_PERSISTANT_DATA];
+    [ret setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"myval",@"key", nil]];
+    [FH act:ret WithSuccess:^(FHResponse *ret){
+    
+        NSLog(@"ret from cloud %@",ret.parsedResponse);
+    } AndFailure:^(FHResponse *ret){
+                NSLog(@"ret from cloud %@",ret);
+    }]; 
     
     
     

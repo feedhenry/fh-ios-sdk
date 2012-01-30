@@ -10,7 +10,10 @@
 typedef enum{
     FH_ACTION_ACT,
     FH_ACTION_AUTH,
-    FH_ACTION_DATA_STORE
+    FH_ACTION_LOCAL_DATA_STORE,
+    FH_ACTION_RETRIEVE_LOCAL_DATA,
+    FH_ACTION_PERSISTANT_DATA_STORE,
+    FH_ACTION_RETRIEVE_PERSISTANT_DATA
 }FH_ACTION;
 
 typedef enum{
@@ -21,3 +24,4 @@ typedef enum{
 #define FH_ACT @"act"
 #define FH_AUTH @"auth"
 #define FH_DATA @"data"
+#define FH_REMOTE_DATA @"remotedata"
