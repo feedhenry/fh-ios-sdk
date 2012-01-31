@@ -19,13 +19,17 @@
 #import "ASIFormDataRequest.h"
 #import "ASIDownloadCache.h"
 #import "JSONKit.h"
+#import "FHConfig.h"
 static BOOL ready = false;
 @implementation FH
 /*
   Action factory should perhaps move to its own class
  */
 
-
+/**
+ initializeFH must be called before any other FH method can be used.
+ If it is not called FH will throw an exception
+*/ 
 + (void)initializeFH{
     
     FHRemote * remoteInit   = [[FHRemote alloc]init];
@@ -41,18 +45,16 @@ static BOOL ready = false;
     }];
     [request setFailedBlock:^{
         NSLog(@"init failed");
+        ready = false;
     }];
     [request startAsynchronous];
-    
-    
-    
 }
 
 + (FHAct *)buildAction:(FH_ACTION)action{
 
     FHAct * act = nil;
     //needs to be shared 
-    NSString * uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
+
     switch (action) {
         case FH_ACTION_ACT:
             act         = [[[FHRemote alloc] init] autorelease];
@@ -61,7 +63,6 @@ static BOOL ready = false;
         case FH_ACTION_AUTH:
             act         = [[[FHRemote alloc] init] autorelease];
             act.method  = FH_AUTH;
-            //auth requires some particular params so we add those here before the api user begins to interact
             break;
         case FH_ACTION_LOCAL_DATA_STORE:
             act         = [[[FHLocal alloc]init] autorelease];

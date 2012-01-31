@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Login";
    
     // Do any additional setup after loading the view from its nib.
 }
@@ -67,9 +68,7 @@
         self.messageLabel.text = [res.parsedResponse objectForKey:@"message"];
         
         if([[res.parsedResponse objectForKey:@"message"] isEqualToString:@"ok"]){
-            NSLog(@"present events");
-            EventsViewController * events = [[EventsViewController alloc]init];
-            [self presentModalViewController:events animated:YES];
+            
         }
         
     } AndFailure:^(FHResponse * res){

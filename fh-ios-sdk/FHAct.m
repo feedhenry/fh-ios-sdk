@@ -8,6 +8,7 @@
 
 #import "FHAct.h"
 #import "JSONKit.h"
+#import "FHConfig.h"
 @implementation FHAct
 @synthesize method, delegate, cacheTimeout, _location;
 
@@ -17,7 +18,7 @@
         args = [NSMutableDictionary dictionary];
         NSString * path = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
         fhProps = [NSDictionary dictionaryWithContentsOfFile:path];
-        uid = [[[[[UIDevice currentDevice] uniqueIdentifier]stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString] substringToIndex:32];
+        uid =     [[FHConfig getSharedInstance] uid];
     }
     return self;
 }

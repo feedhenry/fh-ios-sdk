@@ -6,6 +6,7 @@
 
 #import "FHResponse.h"
 #import "JSONKit.h"
+
 @implementation FHResponse
 @synthesize rawResponse, rawResponseAsString, parsedResponse;
 

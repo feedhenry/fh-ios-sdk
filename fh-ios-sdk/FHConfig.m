@@ -7,16 +7,49 @@
 //
 
 #import "FHConfig.h"
-
+#import "NSString+MD5.h"
+static FHConfig * shared;
 @implementation FHConfig
 
-
-+ (NSString *)getConfigValueForKey:(NSString *)key{
-    
+- (id)init{
+    self = [super init];
+    if(self){
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
+        if(path){
+            propertiesPath  = path;
+            properties      = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+        }else{
+            @throw ([NSException exceptionWithName:@"fhconfigException" reason:@"fhconfig.plist was not located" userInfo:nil]);
+        }
+    }
+    return self;
 }
 
-+ (void)setConfigValue:(NSString *)val ForKey:(NSString *)key{
-    
++ (void)initialize{
+    static BOOL initialized = NO;
+    if(!initialized){
+        initialized = YES;
+        shared = [[FHConfig alloc]init];
+    }
 }
+
++ (FHConfig *)getSharedInstance{
+    return shared;
+}
+
+
+- (NSString *)getConfigValueForKey:(NSString *)key{
+    return [properties objectForKey:key];
+}
+- (void)setConfigValue:(NSString *)val ForKey:(NSString *)key{
+    [properties setValue:val forKey:key];
+}
+
+- (NSString *)uid{
+    return [[[UIDevice currentDevice] uniqueIdentifier] MD5Hash];
+}
+
+
+
 
 @end

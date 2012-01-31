@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
    
+    self.navigationItem.title = @"Local Events";
     
     events = [NSArray array];
     void (^success)(FHResponse *)=^(FHResponse * res){
@@ -56,26 +57,6 @@
     [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.127205999999999",@"longi",@"52.25227",@"lati", nil]];
     [FH act:action WithSuccess:success AndFailure:failure];
     
-    
-    //store remote data
-//    FHRemote * store = (FHRemote *) [FH buildAction:FH_ACTION_PERSISTANT_DATA_STORE];
-//    NSDictionary * toStore = [NSDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:@"craig",@"username",@"abcd",@"password", nil],@"val",@"myparams",@"key", nil];
-//    [store setArgs:toStore];
-//    [FH act:store WithSuccess:^(FHResponse * res){
-//        NSLog(@"the response %@", res.parsedResponse);
-//    } AndFailure:^(FHResponse * res){
-//                    NSLog(@"the failed response %@", res);
-//    }];
-    
-    //ret remote data
-    FHRemote * ret = (FHRemote *)[FH buildAction:FH_ACTION_RETRIEVE_PERSISTANT_DATA];
-    [ret setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"myparams",@"key", nil]];
-    [FH act:ret WithSuccess:^(FHResponse *ret){
-    
-        NSLog(@"ret from cloud %@",ret.parsedResponse);
-    } AndFailure:^(FHResponse *ret){
-                NSLog(@"ret from cloud %@",ret);
-    }]; 
     
     
     

@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FHConfig : NSObject
+@interface FHConfig : NSObject{
+    NSMutableDictionary * properties;
+    NSString * propertiesPath;
+}
 
-+ (NSString *)getConfigValueForKey:(NSString *)key;
-+ (void)setConfigValue:(NSString *)val ForKey:(NSString *)key;
-
+- (NSString *)getConfigValueForKey:(NSString *)key;
+- (void)setConfigValue:(NSString *)val ForKey:(NSString *)key;
+- (NSString *)uid;
++ (FHConfig *)getSharedInstance;
 @end

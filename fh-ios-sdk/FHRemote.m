@@ -10,6 +10,10 @@
 #import "FHAct.h"
 #import "FH.h"
 #import "NSString+Validation.h"
+@interface FHRemote()
+
+- (void)buildURL;
+@end
 @implementation FHRemote
 @synthesize url, remoteAction;
 

@@ -9,21 +9,21 @@
 #import <Foundation/Foundation.h>
 
 #import "FHDefines.h"
-
+#import "FHResponseDelegate.h"
 @interface FHAct : NSObject{
     NSString * method;
     NSMutableDictionary * args;
-    id  delegate;
+    id<FHResponseDelegate>  delegate;
     NSUInteger cacheTimeout;
     FH_LOCATION _location;
     NSDictionary * fhProps;
     NSString * uid;
     
 }
-@property(nonatomic,retain)NSString * method;
-@property(nonatomic,assign)id delegate;
-@property(nonatomic)NSUInteger cacheTimeout;
-@property(nonatomic)FH_LOCATION _location;
+@property(strong)NSString * method;
+@property(weak, readwrite)id<FHResponseDelegate> delegate;
+@property NSUInteger cacheTimeout;
+@property FH_LOCATION _location;
 
 - (id)initWithMethod:(NSString *)meth Args:(NSMutableDictionary *)args AndDelegate:(id)del;
 - (void)setArgs:(NSDictionary *) arguments;

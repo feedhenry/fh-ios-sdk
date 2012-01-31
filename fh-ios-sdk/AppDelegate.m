@@ -10,9 +10,10 @@
 #import "EventsViewController.h"
 #import "LoginController.h"
 #import "FH.h"
+#import "RootViewController.h"
 @implementation AppDelegate
 
-@synthesize window = _window;
+@synthesize window = _window , tabBar;
 
 - (void)dealloc
 {
@@ -28,8 +29,26 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     
-    LoginController * viewController = [[LoginController alloc]init];
-    [self.window setRootViewController:viewController];
+
+    
+    UITabBarController * tabBarController = [[UITabBarController alloc]init];
+    self.tabBar = tabBarController;
+    [tabBarController release];
+    RootViewController * authTab    = [[[RootViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    RootViewController * actTab     = [[[RootViewController alloc]initWithNibName:nil bundle:nil] autorelease];
+    RootViewController * persistTab = [[[RootViewController alloc]initWithNibName:nil bundle:nil] autorelease];
+    
+    authTab.tabBarItem.title    = @"FHauth";
+    authTab.tabBarItem.tag      = 100;
+    actTab.tabBarItem.title     = @"FHAct";
+    actTab.tabBarItem.tag       = 101;
+    persistTab.tabBarItem.title = @"FHPersist?";
+    persistTab.tabBarItem.tag   = 102;
+    
+    self.tabBar.viewControllers = [NSArray arrayWithObjects:authTab,actTab,persistTab, nil];
+    
+    
+    [self.window setRootViewController:self.tabBar];
     
     [self.window makeKeyAndVisible];
     
