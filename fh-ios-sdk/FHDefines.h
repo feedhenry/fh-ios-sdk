@@ -26,5 +26,6 @@ typedef enum{
 #define FH_ACT @"act"
 #define FH_AUTH @"auth"
 #define FH_DATA @"data"
+#define FH_INIT @"initiliase"
 #define FH_REMOTE_DATA @"remotedata"
 #define API_APPEND @"box/srv/1.1/"

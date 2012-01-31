@@ -27,7 +27,25 @@ static BOOL ready = false;
 
 
 + (void)initializeFH{
-    ready = true;
+    
+    FHRemote * remoteInit   = [[FHRemote alloc]init];
+    remoteInit.method       = FH_INIT;
+    [remoteInit buildURL];
+    NSURL * remoteUrl       = remoteInit.url;
+    
+    __block ASIFormDataRequest * request = [[ASIFormDataRequest alloc] initWithURL:remoteUrl];
+    [request setCompletionBlock:^{
+        NSString * resp = [request responseString];
+        NSLog(@"the response from init %@",resp);
+        ready = true;
+    }];
+    [request setFailedBlock:^{
+        NSLog(@"init failed");
+    }];
+    [request startAsynchronous];
+    
+    
+    
 }
 
 + (FHAct *)buildAction:(FH_ACTION)action{
