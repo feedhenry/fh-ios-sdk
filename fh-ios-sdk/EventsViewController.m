@@ -43,7 +43,7 @@
         [eventsTable reloadData];
     };
     
-    void (^failure)(id)=^(id res){
+    void (^failure)(id)=^(FHResponse * res){
         NSLog(@"failed");  
     };
     [super viewDidLoad];
@@ -54,7 +54,7 @@
     FHRemote * action = (FHRemote *) [FH buildAction:FH_ACTION_ACT];
     action.remoteAction = @"getEventsByLocation";
     action.cacheTimeout = (60 * 60 * 2); //2 hours
-    [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.127205999999999",@"longi",@"52.25227",@"lati", nil]];
+    [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.12",@"longi",@"52.25",@"lati", nil]];
     [FH act:action WithSuccess:success AndFailure:failure];
     
     
@@ -119,7 +119,7 @@
 }
 
 
-- (void)requestDidFailWithError:(NSError *)er{
+- (void)requestDidFailWithResponse:(FHResponse *)res {
     
 }
 

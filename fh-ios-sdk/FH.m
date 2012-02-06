@@ -47,7 +47,7 @@ static BOOL ready = false;
         NSLog(@"init failed");
         ready = false;
     }];
-    [request startAsynchronous];
+    [request startSynchronous];
 }
 
 + (FHAct *)buildAction:(FH_ACTION)action{
@@ -118,19 +118,15 @@ static BOOL ready = false;
 
 + (void)performLocalAction:(FHLocal *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
     if(!ready){
-        failornil([NSError errorWithDomain:@"You need to ensure [FH initializeFH] is called in applicationDidFinishLaunching" code:500 userInfo:nil]);
-        return;
+        @throw ([NSException exceptionWithName:@"FHReadyNotCalled" reason:@"You need to ensure [FH initializeFH] is called in applicationDidFinishLaunching" userInfo:nil]);
     }
-        
-    
 }
 
 
 
 + (void)performRemoteAction:(FHRemote *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
     if(!ready){
-        failornil([NSError errorWithDomain:@"You need to ensure [FH initializeFH] is called in applicationDidFinishLaunching" code:500 userInfo:nil]);
-        return;  
+        @throw ([NSException exceptionWithName:@"FHReadyNotCalled" reason:@"You need to ensure [FH initializeFH] is called in applicationDidFinishLaunching" userInfo:nil]);
     }
     
     [act buildURL];         
@@ -165,7 +161,7 @@ static BOOL ready = false;
             //look to pass to delegate object
             SEL sucSel = @selector(requestDidSucceedWithResponse:);
             if (act.delegate && [act.delegate respondsToSelector:sucSel]) {
-                [act.delegate performSelectorOnMainThread:sucSel withObject:fhResponse waitUntilDone:YES];
+                [(FHAct *)act.delegate performSelectorOnMainThread:sucSel withObject:fhResponse waitUntilDone:YES];
             }
         }
     }];
@@ -175,7 +171,7 @@ static BOOL ready = false;
         if(failornil)failornil(reqError);
         SEL delFailSel = @selector(requestDidFailWithError:);
         if (act.delegate && [act.delegate respondsToSelector:delFailSel]) {
-            [act.delegate performSelectorOnMainThread:delFailSel withObject:reqError waitUntilDone:YES];
+            [(FHAct *)act.delegate performSelectorOnMainThread:delFailSel withObject:reqError waitUntilDone:YES];
         }
     }];
     

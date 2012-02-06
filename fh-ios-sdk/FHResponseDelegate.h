@@ -16,9 +16,9 @@
 
 @required
 - (void)requestDidSucceedWithResponse:(FHResponse *)res;
-- (void)requestDidFailWithError:(NSError *)er;
-@optional
 - (void)requestDidFailWithResponse:(FHResponse *)res;
+@optional
+- (void)requestDidFailWithError:(NSError *)er;
 @end
 
 

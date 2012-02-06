@@ -17,5 +17,6 @@
 @property(nonatomic,retain)NSString * remoteAction;
 
 - (id)initWithRemoteAction:(NSString *)act;
+- (void)buildURL;
 
 @end
