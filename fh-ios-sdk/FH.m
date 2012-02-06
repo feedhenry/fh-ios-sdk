@@ -30,7 +30,7 @@ static BOOL ready = false;
  initializeFH must be called before any other FH method can be used.
  If it is not called FH will throw an exception
 */ 
-+ (void)initializeFH{
++ (void)initializeFH {
     
     FHRemote * remoteInit   = [[FHRemote alloc]init];
     remoteInit.method       = FH_INIT;
@@ -84,19 +84,21 @@ static BOOL ready = false;
             break;
     }
     return act;
-};
+}
+
 + (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments{
     //calls builaction
     FHAct * act = [self buildAction:action];
     [act setArgs:arguments];
     return act;
-};
+}
 
 + (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del{
     FHAct * act     = [self buildAction:action WithArgs:arguments];
     act.delegate    = del;
     return act;
-};
+}
+
 /**
  act makes the remote or local call and then delegates the response to either the block success or failure callbacks
  if no blocks are specified it looks for a delegate and calls the FHResponseDelegate methods on the delegate
@@ -114,7 +116,7 @@ static BOOL ready = false;
         [FH performRemoteAction:remoteAction WithSuccess:sucornil AndFailure:failornil];
     }
     
-};
+}
 
 + (void)performLocalAction:(FHLocal *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
     if(!ready){
