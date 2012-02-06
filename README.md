@@ -4,7 +4,7 @@ This SDK should provide you with all you'll need to start developing cloud-conne
 
 ### Examples
 
-FeedHenry Action Call:
+FeedHenry Action Call (with blocks):
 
 	void (^success)(FHResponse *)=^(FHResponse * res){
 	    NSLog(@"%@", res.parsedResponse);
@@ -20,3 +20,17 @@ FeedHenry Action Call:
 	[action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.12", @"lon", @"52.25", @"lat", nil]];
 	    
 	[FH act:action WithSuccess:success AndFailure:failure];
+
+
+FeedHenry Auth Call (with blocks):
+
+	FHRemote * act = [FH buildAction:FH_ACTION_AUTH];
+
+	[act setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"joe_bloggs@example.com", @"username",
+	@"opensesame", @"password", nil]];
+
+	[FH act:act WithSuccess:^ (FHResponse * res){
+	    NSLog(@"auth OK %@", res.parsedResponse);
+	} AndFailure:^(FHResponse * res){
+	    NSLog(@"auth failed %@",res.parsedResponse);
+	}];
