@@ -18,7 +18,7 @@ To use the iOS SDK with your app, you'll need to configure the SDK by editing th
 * **apiurl** - this is the base SDK URL, by default this is *http://apps.feedhenry.com* - change this if your app lives on another domain.
 * **domain** - the domain is a shortened version of the apiurl - it's name which proceeds *.feedhenry.com* (e.g. the domain for http://**apps**.feedhenry.com is **apps**)
 * **app** & **inst** - these is the app's identifiers (**app** being an app's unique ID, an **inst** being an identifier for a particular version of an app). These can be obtained by logging into the Studio, opening your app and pressing **CTRL+ALT+G**
-* With these configured, you can now make Cloud action calls with the FeedHenry iOS SDK. Examples of Cloud calls are included in the SDK, as well as below. Developers may choose to either use callbacks via *blocks* or *delegate method*s. FHRemote *remoteActions* refer to the Cloud actions you have setup in your main.js on FeedHenry's cloud. Please refer to the links below for more information regarding how to create server-side Cloud actions.
+* With these configured, you can now make Cloud action calls with the FeedHenry iOS SDK. Examples of Cloud calls are included in the SDK, as well as below. Developers may choose to either use callbacks via *blocks* or *delegate method*s. **FHRemote** *remoteActions* refer to the Cloud actions you have setup in your main.js on FeedHenry's cloud. Please refer to the links below for more information regarding how to create server-side Cloud actions.
 
 ### Examples
 
