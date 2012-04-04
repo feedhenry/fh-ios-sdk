@@ -31,8 +31,6 @@
 		A2CD321714D0300200C4D3F0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */; };
 		A2CD321814D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
 		A2CD321914D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
-		A2CD322114D0300200C4D3F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2CD321F14D0300200C4D3F0 /* InfoPlist.strings */; };
-		A2CD322414D0300200C4D3F0 /* fh_ios_sdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD322314D0300200C4D3F0 /* fh_ios_sdkTests.m */; };
 		A2CD322F14D0633600C4D3F0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */; };
 		A2CD323114D063FE00C4D3F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */; };
 		A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */; };
@@ -142,10 +140,6 @@
 		A2CD320E14D0300200C4D3F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A2CD321514D0300200C4D3F0 /* fh-ios-sdkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fh-ios-sdkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		A2CD321E14D0300200C4D3F0 /* fh-ios-sdkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "fh-ios-sdkTests-Info.plist"; sourceTree = "<group>"; };
-		A2CD322014D0300200C4D3F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A2CD322214D0300200C4D3F0 /* fh_ios_sdkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fh_ios_sdkTests.h; sourceTree = "<group>"; };
-		A2CD322314D0300200C4D3F0 /* fh_ios_sdkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fh_ios_sdkTests.m; sourceTree = "<group>"; };
 		A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -262,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				A2CD320414D0300200C4D3F0 /* fh-ios-sdk */,
-				A2CD321C14D0300200C4D3F0 /* fh-ios-sdkTests */,
 				A2CD31FD14D0300200C4D3F0 /* Frameworks */,
 				A2CD31FB14D0300200C4D3F0 /* Products */,
 			);
@@ -324,25 +317,6 @@
 				A2CD320714D0300200C4D3F0 /* InfoPlist.strings */,
 				A2CD320A14D0300200C4D3F0 /* main.m */,
 				A2CD320C14D0300200C4D3F0 /* fh-ios-sdk-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A2CD321C14D0300200C4D3F0 /* fh-ios-sdkTests */ = {
-			isa = PBXGroup;
-			children = (
-				A2CD322214D0300200C4D3F0 /* fh_ios_sdkTests.h */,
-				A2CD322314D0300200C4D3F0 /* fh_ios_sdkTests.m */,
-				A2CD321D14D0300200C4D3F0 /* Supporting Files */,
-			);
-			path = "fh-ios-sdkTests";
-			sourceTree = "<group>";
-		};
-		A2CD321D14D0300200C4D3F0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A2CD321E14D0300200C4D3F0 /* fh-ios-sdkTests-Info.plist */,
-				A2CD321F14D0300200C4D3F0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -565,7 +539,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2CD322114D0300200C4D3F0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +610,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2CD322414D0300200C4D3F0 /* fh_ios_sdkTests.m in Sources */,
 				A2CD33E214D0671700C4D3F0 /* ASIAuthenticationDialog.m in Sources */,
 				A2CD33E414D0671700C4D3F0 /* ASIDataCompressor.m in Sources */,
 				A2CD33E614D0671700C4D3F0 /* ASIDataDecompressor.m in Sources */,
@@ -684,14 +656,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				A2CD320814D0300200C4D3F0 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A2CD321F14D0300200C4D3F0 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A2CD322014D0300200C4D3F0 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
