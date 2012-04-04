@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>apiurl</key>
-	<string>https://psdev.feedhenry.com</string>
-	<key>guid</key>
+	<string>https://apps.feedhenry.com</string>
+	<key>app</key>
 	<string>EeeVJqJmkN0AxPZNN0uHCGUH</string>
 	<key>domain</key>
-	<string>psdev</string>
-	<key>appinstid</key>
+	<string>apps</string>
+	<key>inst</key>
 	<string>EeeVJqJmkN0AxPZNN0uHCGUH</string>
 </dict>
 </plist>

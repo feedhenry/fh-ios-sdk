@@ -42,8 +42,8 @@
     
     NSMutableString * tempString= [[NSMutableString alloc] init];
     NSString * domain           = [appProperties objectForKey:@"domain"];
-    NSString * guid             = [appProperties objectForKey:@"guid"];
-    NSString * instid           = [appProperties objectForKey:@"appinstid"];
+    NSString * guid             = [appProperties objectForKey:@"app"];
+    NSString * instid           = [appProperties objectForKey:@"inst"];
     NSString * apiurl           = [appProperties objectForKey:@"apiurl"];
     NSString * format           = ([[apiurl substringToIndex:[apiurl length]-1] isEqualToString:@"/"]) ? @"%@%@" : @"%@/%@";
     NSString * api              = [NSMutableString stringWithFormat:format,[appProperties objectForKey:@"apiurl"],API_APPEND];

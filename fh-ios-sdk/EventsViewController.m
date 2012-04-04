@@ -46,19 +46,13 @@
         NSLog(@"failed");  
     };
     [super viewDidLoad];
-    
-     
-    
+        
     // Do any additional setup after loading the view from its nib.
     FHRemote * action = (FHRemote *) [FH buildAction:FH_ACTION_ACT];
     action.remoteAction = @"getEventsByLocation";
     action.cacheTimeout = (60 * 60 * 2); //2 hours
     [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.12",@"longi",@"52.25",@"lati", nil]];
     [FH act:action WithSuccess:success AndFailure:failure];
-    
-    
-    
-    
 }
 
 - (void)viewDidUnload
