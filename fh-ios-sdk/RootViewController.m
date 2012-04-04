@@ -7,9 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "LoginController.h"
 #import "EventsViewController.h"
-#import "PersistView.h"
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,18 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.tabBarItem.tag == 100) {
-        LoginController * viewController = [[LoginController alloc]init];
-        [self pushViewController:viewController animated:NO];
-        [viewController release];
-    }else if(self.tabBarItem.tag == 101){
+    if(self.tabBarItem.tag == 101){
         EventsViewController * eventsController = [[EventsViewController alloc]init];
         [self pushViewController:eventsController animated:NO];
         [eventsController release];
-    }else if(self.tabBarItem.tag == 102){
-        PersistView * persist = [[PersistView alloc]initWithNibName:nil bundle:nil];
-        [self pushViewController:persist animated:NO];
-        [persist release];
     }
     // Do any additional setup after loading the view from its nib.
 }

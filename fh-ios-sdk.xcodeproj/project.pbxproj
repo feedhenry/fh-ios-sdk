@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A205911614D6A52400621C8D /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A205911514D6A52400621C8D /* FHConfig.m */; };
-		A2530A1414D2DAB8006F36D8 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2530A1214D2DAB8006F36D8 /* LoginController.m */; };
-		A2530A1514D2DAB8006F36D8 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2530A1314D2DAB8006F36D8 /* LoginController.xib */; };
 		A25F599D14D2D23E00E131BE /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = A25F599C14D2D23E00E131BE /* NSString+Validation.m */; };
 		A28DFC0714D161FC00128B50 /* FHRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC0614D161FC00128B50 /* FHRemote.m */; };
 		A28DFC0B14D1638900128B50 /* FHLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC0A14D1638900128B50 /* FHLocal.m */; };
@@ -20,8 +18,6 @@
 		A28DFC1414D1B0CB00128B50 /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DFC1214D1B0CB00128B50 /* EventsViewController.xib */; };
 		A2C1018D14D8138900BEF54F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C1018B14D8138900BEF54F /* RootViewController.m */; };
 		A2C1018E14D8138900BEF54F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C1018C14D8138900BEF54F /* RootViewController.xib */; };
-		A2C1019714D819E800BEF54F /* PersistView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C1019514D819E800BEF54F /* PersistView.m */; };
-		A2C1019814D819E800BEF54F /* PersistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C1019614D819E800BEF54F /* PersistView.xib */; };
 		A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
 		A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
 		A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */; };
@@ -108,9 +104,6 @@
 		A205911414D6A52400621C8D /* FHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHConfig.h; sourceTree = "<group>"; };
 		A205911514D6A52400621C8D /* FHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHConfig.m; sourceTree = "<group>"; };
 		A205911814D6A90300621C8D /* FHDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHDefines.h; sourceTree = "<group>"; };
-		A2530A1114D2DAB8006F36D8 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
-		A2530A1214D2DAB8006F36D8 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
-		A2530A1314D2DAB8006F36D8 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		A25F599B14D2D23E00E131BE /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		A25F599C14D2D23E00E131BE /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		A28DFC0514D161FC00128B50 /* FHRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHRemote.h; sourceTree = "<group>"; };
@@ -125,9 +118,6 @@
 		A2C1018A14D8138900BEF54F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A2C1018B14D8138900BEF54F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A2C1018C14D8138900BEF54F /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
-		A2C1019414D819E700BEF54F /* PersistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistView.h; sourceTree = "<group>"; };
-		A2C1019514D819E800BEF54F /* PersistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistView.m; sourceTree = "<group>"; };
-		A2C1019614D819E800BEF54F /* PersistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersistView.xib; sourceTree = "<group>"; };
 		A2CD31FA14D0300200C4D3F0 /* fh-ios-sdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fh-ios-sdk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CD31FE14D0300200C4D3F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A2CD320014D0300200C4D3F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -297,15 +287,9 @@
 				A28DFC1014D1B0CA00128B50 /* EventsViewController.h */,
 				A28DFC1114D1B0CB00128B50 /* EventsViewController.m */,
 				A28DFC1214D1B0CB00128B50 /* EventsViewController.xib */,
-				A2530A1114D2DAB8006F36D8 /* LoginController.h */,
-				A2530A1214D2DAB8006F36D8 /* LoginController.m */,
-				A2530A1314D2DAB8006F36D8 /* LoginController.xib */,
 				A2C1018A14D8138900BEF54F /* RootViewController.h */,
 				A2C1018B14D8138900BEF54F /* RootViewController.m */,
 				A2C1018C14D8138900BEF54F /* RootViewController.xib */,
-				A2C1019414D819E700BEF54F /* PersistView.h */,
-				A2C1019514D819E800BEF54F /* PersistView.m */,
-				A2C1019614D819E800BEF54F /* PersistView.xib */,
 			);
 			path = "fh-ios-sdk";
 			sourceTree = "<group>";
@@ -529,9 +513,7 @@
 				A2CD320914D0300200C4D3F0 /* InfoPlist.strings in Resources */,
 				A28DFC0F14D19B0300128B50 /* fhconfig.plist in Resources */,
 				A28DFC1414D1B0CB00128B50 /* EventsViewController.xib in Resources */,
-				A2530A1514D2DAB8006F36D8 /* LoginController.xib in Resources */,
 				A2C1018E14D8138900BEF54F /* RootViewController.xib in Resources */,
-				A2C1019814D819E800BEF54F /* PersistView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,10 +580,8 @@
 				A28DFC0B14D1638900128B50 /* FHLocal.m in Sources */,
 				A28DFC1314D1B0CB00128B50 /* EventsViewController.m in Sources */,
 				A25F599D14D2D23E00E131BE /* NSString+Validation.m in Sources */,
-				A2530A1414D2DAB8006F36D8 /* LoginController.m in Sources */,
 				A205911614D6A52400621C8D /* FHConfig.m in Sources */,
 				A2C1018D14D8138900BEF54F /* RootViewController.m in Sources */,
-				A2C1019714D819E800BEF54F /* PersistView.m in Sources */,
 				D82ED04D14DFEB9B003E5784 /* NSString+MD5.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

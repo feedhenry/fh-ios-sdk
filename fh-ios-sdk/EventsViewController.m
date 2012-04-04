@@ -8,7 +8,6 @@
 
 #import "EventsViewController.h"
 #import "FH.h"
-#import "LoginController.h"
 @implementation EventsViewController
 @synthesize eventsTable;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

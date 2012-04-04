@@ -27,6 +27,7 @@
     [rawResponseAsString release];
     parsedResponse      = nil;
     [parsedResponse release];
+    [super dealloc];
     
 }
 
