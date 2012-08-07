@@ -80,6 +80,10 @@
 		A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
 		D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
 		D82ED04D14DFEB9B003E5784 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D82ED04C14DFEB9B003E5784 /* NSString+MD5.m */; };
+		D87B687015D176B000F7F22E /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = D87B686E15D176B000F7F22E /* OpenUDID.m */; };
+		D87B687115D176B000F7F22E /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = D87B686E15D176B000F7F22E /* OpenUDID.m */; };
+		D87B687215D176B000F7F22E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D87B686F15D176B000F7F22E /* README.md */; };
+		D87B687315D176B000F7F22E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D87B686F15D176B000F7F22E /* README.md */; };
 		D89E034314D15AD6006E24D6 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033D14D15AD6006E24D6 /* FH.m */; };
 		D89E034414D15AD6006E24D6 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033D14D15AD6006E24D6 /* FH.m */; };
 		D89E034514D15AD6006E24D6 /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E033E14D15AD6006E24D6 /* FHAct.m */; };
@@ -190,6 +194,9 @@
 		D82B24AB14D06CC200F91FB4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		D82ED04B14DFEB9B003E5784 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		D82ED04C14DFEB9B003E5784 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		D87B686D15D176B000F7F22E /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		D87B686E15D176B000F7F22E /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		D87B686F15D176B000F7F22E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		D89E033D14D15AD6006E24D6 /* FH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FH.m; sourceTree = "<group>"; };
 		D89E033E14D15AD6006E24D6 /* FHAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAct.m; sourceTree = "<group>"; };
 		D89E033F14D15AD6006E24D6 /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHResponse.m; sourceTree = "<group>"; };
@@ -410,6 +417,16 @@
 			path = S3;
 			sourceTree = "<group>";
 		};
+		D87B686B15D1766500F7F22E /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				D87B686D15D176B000F7F22E /* OpenUDID.h */,
+				D87B686E15D176B000F7F22E /* OpenUDID.m */,
+				D87B686F15D176B000F7F22E /* README.md */,
+			);
+			name = OpenUDID;
+			sourceTree = "<group>";
+		};
 		D8B94CC414D06E9D003F7945 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +439,7 @@
 		D8B94CC514D06EAA003F7945 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				D87B686B15D1766500F7F22E /* OpenUDID */,
 				D8B94CC614D06EBD003F7945 /* Reachability */,
 				A2CD338E14D0671700C4D3F0 /* ASIHTTPRequest */,
 				D8B94CC414D06E9D003F7945 /* JSONKit */,
@@ -514,6 +532,7 @@
 				A28DFC0F14D19B0300128B50 /* fhconfig.plist in Resources */,
 				A28DFC1414D1B0CB00128B50 /* EventsViewController.xib in Resources */,
 				A2C1018E14D8138900BEF54F /* RootViewController.xib in Resources */,
+				D87B687215D176B000F7F22E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +540,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87B687315D176B000F7F22E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +603,7 @@
 				A205911614D6A52400621C8D /* FHConfig.m in Sources */,
 				A2C1018D14D8138900BEF54F /* RootViewController.m in Sources */,
 				D82ED04D14DFEB9B003E5784 /* NSString+MD5.m in Sources */,
+				D87B687015D176B000F7F22E /* OpenUDID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +639,7 @@
 				D89E034414D15AD6006E24D6 /* FH.m in Sources */,
 				D89E034614D15AD6006E24D6 /* FHAct.m in Sources */,
 				D89E034814D15AD6006E24D6 /* FHResponse.m in Sources */,
+				D87B687115D176B000F7F22E /* OpenUDID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

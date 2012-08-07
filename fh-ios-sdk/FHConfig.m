@@ -8,6 +8,8 @@
 
 #import "FHConfig.h"
 #import "NSString+MD5.h"
+#include "OpenUDID.h"
+
 static FHConfig * shared;
 @implementation FHConfig
 
@@ -37,7 +39,6 @@ static FHConfig * shared;
     return shared;
 }
 
-
 - (NSString *)getConfigValueForKey:(NSString *)key{
     return [properties objectForKey:key];
 }
@@ -46,10 +47,8 @@ static FHConfig * shared;
 }
 
 - (NSString *)uid{
-    return [[[UIDevice currentDevice] uniqueIdentifier] MD5Hash];
+    NSString *openUDID = [OpenUDID value];
+    return [openUDID MD5Hash];
 }
-
-
-
 
 @end

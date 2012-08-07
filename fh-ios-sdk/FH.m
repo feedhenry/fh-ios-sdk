@@ -152,7 +152,7 @@ static BOOL ready = false;
     //wrap the passed block inside our own success block to allow for
     //further manipulation
     [request setCompletionBlock:^{
-        NSLog(@"reused cache %@",[request didUseCachedResponse]);
+        NSLog(@"reused cache %c",[request didUseCachedResponse]);
         //parse, build response, delegate
         NSData * responseData = [request responseData];
         FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
