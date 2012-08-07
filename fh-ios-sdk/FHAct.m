@@ -40,9 +40,6 @@
     if(self.method == FH_AUTH ){
         NSMutableDictionary * params    = [NSMutableDictionary dictionary];
         NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
-        /**
-         TODO need some fix for uid. ID sent to FHAuth needs to be a 32 char string MD5
-         */ 
         
         [innerP setValue:uid forKey:@"device"];
         [innerP setValue:[fhProps objectForKey:@"appinstid"] forKey:@"appId"];

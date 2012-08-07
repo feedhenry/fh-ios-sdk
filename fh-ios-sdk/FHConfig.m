@@ -47,8 +47,7 @@ static FHConfig * shared;
 }
 
 - (NSString *)uid{
-    NSString *openUDID = [OpenUDID value];
-    return [openUDID MD5Hash];
+    return [[OpenUDID value] MD5Hash];
 }
 
 @end
