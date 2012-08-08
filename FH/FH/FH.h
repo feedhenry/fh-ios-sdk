@@ -16,6 +16,7 @@
 #import "FHLocal.h"
 #import "FHResponse.h"
 #import "FHResponseDelegate.h"
+#import "NSString+MD5.h"
 
 
 @protocol FHActionDelegate <NSObject>

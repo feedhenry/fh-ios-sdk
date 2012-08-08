@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+MD5.h"
 
 @interface FHConfig : NSObject{
     NSMutableDictionary * properties;
