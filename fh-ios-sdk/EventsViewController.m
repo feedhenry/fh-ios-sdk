@@ -50,10 +50,8 @@
     [super viewDidLoad];
         
     // Do any additional setup after loading the view from its nib.
-    FHCloudRequest * action = (FHCloudRequest *) [FH buildAction:FH_ACTION_CLOUD];
-    action.remoteAction = @"getEventsByLocation";
+  FHCloudRequest * action = (FHCloudRequest *) [FH buildCloudRequest:@"getEventsByLocation" WithArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.12",@"longi",@"52.25",@"lati", nil]];
     action.cacheTimeout = (60 * 60 * 2); //2 hours
-    [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.12",@"longi",@"52.25",@"lati", nil]];
   [action execWithSuccess:success AndFailure:failure];
 }
 
