@@ -22,6 +22,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B3346E9515D3D3A000220E6B /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHCloudRequest.h */; };
+		B3346E9615D3D3A000220E6B /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHCloudRequest.m */; };
+		B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */; };
+		B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
+		B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9C15D3F92900220E6B /* FHInitRequest.h */; };
+		B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
 		B3D7C48715D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C48D15D28BE30019262E /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C48C15D28BE30019262E /* FH.m */; };
 		B3D7C49515D28BE30019262E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C49415D28BE30019262E /* SenTestingKit.framework */; };
@@ -34,10 +40,6 @@
 		B3D7C4BE15D28DF40019262E /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B215D28DF40019262E /* FHConfig.h */; };
 		B3D7C4BF15D28DF40019262E /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
 		B3D7C4C015D28DF40019262E /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B415D28DF40019262E /* FHDefines.h */; };
-		B3D7C4C115D28DF40019262E /* FHLocal.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B515D28DF40019262E /* FHLocal.h */; };
-		B3D7C4C215D28DF40019262E /* FHLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B615D28DF40019262E /* FHLocal.m */; };
-		B3D7C4C315D28DF40019262E /* FHRemote.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B715D28DF40019262E /* FHRemote.h */; };
-		B3D7C4C415D28DF40019262E /* FHRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B815D28DF40019262E /* FHRemote.m */; };
 		B3D7C4C515D28DF40019262E /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B915D28DF40019262E /* FHResponse.h */; };
 		B3D7C4C615D28DF40019262E /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4BA15D28DF40019262E /* FHResponse.m */; };
 		B3D7C4C715D28DF40019262E /* FHResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4BB15D28DF40019262E /* FHResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -92,8 +94,8 @@
 		B3D7C53A15D28E130019262E /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4FF15D28E130019262E /* ASIS3ServiceRequest.m */; };
 		B3D7C53B15D28E130019262E /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50115D28E130019262E /* JSONKit.h */; };
 		B3D7C53C15D28E130019262E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50215D28E130019262E /* JSONKit.m */; };
-		B3D7C53D15D28E130019262E /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50415D28E130019262E /* OpenUDID.h */; };
-		B3D7C53E15D28E130019262E /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50515D28E130019262E /* OpenUDID.m */; };
+		B3D7C53D15D28E130019262E /* FH_OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50415D28E130019262E /* FH_OpenUDID.h */; };
+		B3D7C53E15D28E130019262E /* FH_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50515D28E130019262E /* FH_OpenUDID.m */; };
 		B3D7C53F15D28E130019262E /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50815D28E130019262E /* Reachability.h */; };
 		B3D7C54015D28E130019262E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50915D28E130019262E /* Reachability.m */; };
 		B3D7C54615D28E2A0019262E /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C54215D28E2A0019262E /* NSString+MD5.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -124,6 +126,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B3346E9315D3D3A000220E6B /* FHCloudRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHCloudRequest.h; sourceTree = "<group>"; };
+		B3346E9415D3D3A000220E6B /* FHCloudRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHCloudRequest.m; sourceTree = "<group>"; };
+		B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAuthReqeust.h; sourceTree = "<group>"; };
+		B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAuthReqeust.m; sourceTree = "<group>"; };
+		B3346E9C15D3F92900220E6B /* FHInitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHInitRequest.h; sourceTree = "<group>"; };
+		B3346E9D15D3F92900220E6B /* FHInitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHInitRequest.m; sourceTree = "<group>"; };
 		B3951AAB15D2B96A0091054A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		B3951AAE15D2B96A0091054A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B3951AAF15D2B96A0091054A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -133,7 +141,7 @@
 		B3D7C48615D28BE30019262E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3D7C48A15D28BE30019262E /* FH-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FH-Prefix.pch"; sourceTree = "<group>"; };
 		B3D7C48B15D28BE30019262E /* FH.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = FH.h; sourceTree = "<group>"; tabWidth = 2; wrapsLines = 1; };
-		B3D7C48C15D28BE30019262E /* FH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FH.m; sourceTree = "<group>"; };
+		B3D7C48C15D28BE30019262E /* FH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FH.m; sourceTree = "<group>"; wrapsLines = 1; };
 		B3D7C49315D28BE30019262E /* FHTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FHTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D7C49415D28BE30019262E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B3D7C49615D28BE30019262E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -146,10 +154,6 @@
 		B3D7C4B215D28DF40019262E /* FHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHConfig.h; sourceTree = "<group>"; };
 		B3D7C4B315D28DF40019262E /* FHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHConfig.m; sourceTree = "<group>"; };
 		B3D7C4B415D28DF40019262E /* FHDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHDefines.h; sourceTree = "<group>"; };
-		B3D7C4B515D28DF40019262E /* FHLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHLocal.h; sourceTree = "<group>"; };
-		B3D7C4B615D28DF40019262E /* FHLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHLocal.m; sourceTree = "<group>"; };
-		B3D7C4B715D28DF40019262E /* FHRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHRemote.h; sourceTree = "<group>"; };
-		B3D7C4B815D28DF40019262E /* FHRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHRemote.m; sourceTree = "<group>"; };
 		B3D7C4B915D28DF40019262E /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHResponse.h; sourceTree = "<group>"; };
 		B3D7C4BA15D28DF40019262E /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHResponse.m; sourceTree = "<group>"; };
 		B3D7C4BB15D28DF40019262E /* FHResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHResponseDelegate.h; sourceTree = "<group>"; };
@@ -204,8 +208,8 @@
 		B3D7C4FF15D28E130019262E /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
 		B3D7C50115D28E130019262E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		B3D7C50215D28E130019262E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		B3D7C50415D28E130019262E /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
-		B3D7C50515D28E130019262E /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		B3D7C50415D28E130019262E /* FH_OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FH_OpenUDID.h; sourceTree = "<group>"; };
+		B3D7C50515D28E130019262E /* FH_OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FH_OpenUDID.m; sourceTree = "<group>"; };
 		B3D7C50615D28E130019262E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		B3D7C50815D28E130019262E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B3D7C50915D28E130019262E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -300,16 +304,18 @@
 				B3D7C4B215D28DF40019262E /* FHConfig.h */,
 				B3D7C4B315D28DF40019262E /* FHConfig.m */,
 				B3D7C4B415D28DF40019262E /* FHDefines.h */,
-				B3D7C4B515D28DF40019262E /* FHLocal.h */,
-				B3D7C4B615D28DF40019262E /* FHLocal.m */,
-				B3D7C4B715D28DF40019262E /* FHRemote.h */,
-				B3D7C4B815D28DF40019262E /* FHRemote.m */,
 				B3D7C4B915D28DF40019262E /* FHResponse.h */,
 				B3D7C4BA15D28DF40019262E /* FHResponse.m */,
 				B3D7C4BB15D28DF40019262E /* FHResponseDelegate.h */,
 				B3D7C48B15D28BE30019262E /* FH.h */,
 				B3D7C48C15D28BE30019262E /* FH.m */,
 				B3D7C48915D28BE30019262E /* Supporting Files */,
+				B3346E9315D3D3A000220E6B /* FHCloudRequest.h */,
+				B3346E9415D3D3A000220E6B /* FHCloudRequest.m */,
+				B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */,
+				B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */,
+				B3346E9C15D3F92900220E6B /* FHInitRequest.h */,
+				B3346E9D15D3F92900220E6B /* FHInitRequest.m */,
 			);
 			path = FH;
 			sourceTree = "<group>";
@@ -444,8 +450,8 @@
 		B3D7C50315D28E130019262E /* OpenUDID */ = {
 			isa = PBXGroup;
 			children = (
-				B3D7C50415D28E130019262E /* OpenUDID.h */,
-				B3D7C50515D28E130019262E /* OpenUDID.m */,
+				B3D7C50415D28E130019262E /* FH_OpenUDID.h */,
+				B3D7C50515D28E130019262E /* FH_OpenUDID.m */,
 				B3D7C50615D28E130019262E /* README.md */,
 			);
 			path = OpenUDID;
@@ -481,8 +487,6 @@
 				B3D7C4BC15D28DF40019262E /* FHAct.h in Headers */,
 				B3D7C4BE15D28DF40019262E /* FHConfig.h in Headers */,
 				B3D7C4C015D28DF40019262E /* FHDefines.h in Headers */,
-				B3D7C4C115D28DF40019262E /* FHLocal.h in Headers */,
-				B3D7C4C315D28DF40019262E /* FHRemote.h in Headers */,
 				B3D7C4C515D28DF40019262E /* FHResponse.h in Headers */,
 				B3D7C4C715D28DF40019262E /* FHResponseDelegate.h in Headers */,
 				B3D7C50A15D28E130019262E /* ASIAuthenticationDialog.h in Headers */,
@@ -513,11 +517,14 @@
 				B3D7C53715D28E130019262E /* ASIS3Request.h in Headers */,
 				B3D7C53915D28E130019262E /* ASIS3ServiceRequest.h in Headers */,
 				B3D7C53B15D28E130019262E /* JSONKit.h in Headers */,
-				B3D7C53D15D28E130019262E /* OpenUDID.h in Headers */,
+				B3D7C53D15D28E130019262E /* FH_OpenUDID.h in Headers */,
 				B3D7C53F15D28E130019262E /* Reachability.h in Headers */,
 				B3D7C54615D28E2A0019262E /* NSString+MD5.h in Headers */,
 				B3D7C54815D28E2A0019262E /* NSString+Validation.h in Headers */,
 				B3D7C54A15D28EDB0019262E /* FH.h in Headers */,
+				B3346E9515D3D3A000220E6B /* FHCloudRequest.h in Headers */,
+				B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */,
+				B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,8 +659,6 @@
 				B3D7C48D15D28BE30019262E /* FH.m in Sources */,
 				B3D7C4BD15D28DF40019262E /* FHAct.m in Sources */,
 				B3D7C4BF15D28DF40019262E /* FHConfig.m in Sources */,
-				B3D7C4C215D28DF40019262E /* FHLocal.m in Sources */,
-				B3D7C4C415D28DF40019262E /* FHRemote.m in Sources */,
 				B3D7C4C615D28DF40019262E /* FHResponse.m in Sources */,
 				B3D7C50B15D28E130019262E /* ASIAuthenticationDialog.m in Sources */,
 				B3D7C50E15D28E130019262E /* ASIDataCompressor.m in Sources */,
@@ -678,10 +683,13 @@
 				B3D7C53815D28E130019262E /* ASIS3Request.m in Sources */,
 				B3D7C53A15D28E130019262E /* ASIS3ServiceRequest.m in Sources */,
 				B3D7C53C15D28E130019262E /* JSONKit.m in Sources */,
-				B3D7C53E15D28E130019262E /* OpenUDID.m in Sources */,
+				B3D7C53E15D28E130019262E /* FH_OpenUDID.m in Sources */,
 				B3D7C54015D28E130019262E /* Reachability.m in Sources */,
 				B3D7C54715D28E2A0019262E /* NSString+MD5.m in Sources */,
 				B3D7C54915D28E2A0019262E /* NSString+Validation.m in Sources */,
+				B3346E9615D3D3A000220E6B /* FHCloudRequest.m in Sources */,
+				B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */,
+				B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,37 +11,14 @@
 #import <Foundation/Foundation.h>
 #import "FHDefines.h"
 
-#import "ASIHTTPRequestDelegate.h"
-#import "FHRemote.h"
-#import "FHLocal.h"
-#import "FHResponse.h"
-#import "FHResponseDelegate.h"
-#import "NSString+MD5.h"
+#import "FHCloudRequest.h"
+#import "FHAuthReqeust.h"
 
-
-@protocol FHActionDelegate <NSObject>
-
-@required
-
-+ (void)performLocalAction:(FHLocal *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
-+ (void)performRemoteAction:(FHRemote *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
-@end
-
-
-
-@interface FH : NSObject<ASIHTTPRequestDelegate, FHActionDelegate>{
+@interface FH : NSObject{
         
 }
-+ (void)initializeFH;
-+ (FHAct *)buildAction:(FH_ACTION)action;
-+ (FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments;
-/**
- builder actions may need seperate class?
-*/
-+(FHAct *)buildAction:(FH_ACTION)action WithArgs:(NSDictionary *)arguments AndResponseDelegate:(id<FHResponseDelegate>)del;
 
-+ (void)act:(FHAct *)act WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
-
-
-
++ (void)init;
++ (FHCloudRequest *) buildCloudRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments; 
++ (FHAuthReqeust *) buildAuthRequest;
 @end

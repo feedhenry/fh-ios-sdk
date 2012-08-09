@@ -8,6 +8,8 @@
 
 #import "EventsViewController.h"
 #import "FH.h"
+#import "FHResponse.h"
+
 @implementation EventsViewController
 @synthesize eventsTable;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,11 +50,11 @@
     [super viewDidLoad];
         
     // Do any additional setup after loading the view from its nib.
-    FHRemote * action = (FHRemote *) [FH buildAction:FH_ACTION_ACT];
+    FHCloudRequest * action = (FHCloudRequest *) [FH buildAction:FH_ACTION_CLOUD];
     action.remoteAction = @"getEventsByLocation";
     action.cacheTimeout = (60 * 60 * 2); //2 hours
     [action setArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.12",@"longi",@"52.25",@"lati", nil]];
-    [FH act:action WithSuccess:success AndFailure:failure];
+  [action execWithSuccess:success AndFailure:failure];
 }
 
 - (void)viewDidUnload

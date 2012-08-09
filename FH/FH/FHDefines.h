@@ -8,24 +8,11 @@
 
 
 typedef enum{
-    FH_ACTION_ACT,
-    FH_ACTION_AUTH,
-    FH_ACTION_LOCAL_DATA_STORE,
-    FH_ACTION_RETRIEVE_LOCAL_DATA,
-    FH_ACTION_PERSISTANT_DATA_STORE,
-    FH_ACTION_RETRIEVE_PERSISTANT_DATA,
-    FH_ACTION_RETRIEVE_USER_DATA,
-    FH_ACTION_USER_DATA_STORE
+  FH_ACTION_CLOUD,
+  FH_ACTION_AUTH,
+  FH_ACTION_INIT
 }FH_ACTION;
 
-typedef enum{
-    FH_LOCATION_REMOTE,
-    FH_LOCATION_DEVICE   
-}FH_LOCATION;
-
-#define FH_ACT @"act"
+#define FH_CLOUD @"cloud"
 #define FH_AUTH @"auth"
-#define FH_DATA @"data"
-#define FH_INIT @"initiliase"
-#define FH_REMOTE_DATA @"remotedata"
-#define API_APPEND @"box/srv/1.1/"
+#define FH_INIT @"init"

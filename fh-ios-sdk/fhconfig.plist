@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>apiurl</key>
+	<key>host</key>
 	<string>https://apps.feedhenry.com</string>
-	<key>app</key>
+	<key>appID</key>
 	<string>EeeVJqJmkN0AxPZNN0uHCGUH</string>
-	<key>domain</key>
-	<string>apps</string>
-	<key>inst</key>
-	<string>EeeVJqJmkN0AxPZNN0uHCGUH</string>
+	<key>appKey</key>
+	<string>TESTKEY</string>
+	<key>mode</key>
+	<string>dev</string>
 </dict>
 </plist>
