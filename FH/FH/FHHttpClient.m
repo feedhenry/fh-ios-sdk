@@ -11,6 +11,7 @@
 #import "FHResponse.h"
 #import "ASIDownloadCache.h"
 
+
 @implementation FHHttpClient
 
 - (id) init
@@ -37,8 +38,8 @@
 #endif
   //startrequest
   __block ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:apicall];
+  [request addRequestHeader:@"X-FH-SDK" value:@"ios-1.0.0"];
   //add params to the post request
-  
   if([fhact args] && [[fhact args] count]>0){
     NSArray * keys = [[fhact args] allKeys];
     for (NSString * key in keys ) {

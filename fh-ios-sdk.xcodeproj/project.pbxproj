@@ -36,7 +36,7 @@
 		B308507B15D943A6007E6AD5 /* auth_google.png in Resources */ = {isa = PBXBuildFile; fileRef = B308507915D943A6007E6AD5 /* auth_google.png */; };
 		B308507F15D95268007E6AD5 /* FHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B308507D15D95268007E6AD5 /* FHLoginViewController.m */; };
 		B308508015D95268007E6AD5 /* FHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B308507E15D95268007E6AD5 /* FHLoginViewController.xib */; };
-		B3FC32CC15D2D85E0036AC19 /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FC32BB15D2D8350036AC19 /* libFH.a */; };
+		B339FA9E15DA7D9E0040E5FF /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FA9915DA7D900040E5FF /* libFH.a */; };
 		D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
 /* End PBXBuildFile section */
 
@@ -48,23 +48,23 @@
 			remoteGlobalIDString = A2CD31F914D0300200C4D3F0;
 			remoteInfo = "fh-ios-sdk";
 		};
-		B3FC32BA15D2D8350036AC19 /* PBXContainerItemProxy */ = {
+		B339FA9815DA7D900040E5FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B3FC32B415D2D8350036AC19 /* FH.xcodeproj */;
+			containerPortal = B339FA8F15DA7D900040E5FF /* FH.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B3D7C48315D28BE30019262E;
 			remoteInfo = FH;
 		};
-		B3FC32BC15D2D8350036AC19 /* PBXContainerItemProxy */ = {
+		B339FA9A15DA7D900040E5FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B3FC32B415D2D8350036AC19 /* FH.xcodeproj */;
+			containerPortal = B339FA8F15DA7D900040E5FF /* FH.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B3D7C49315D28BE30019262E;
 			remoteInfo = FHTests;
 		};
-		B3FC32CA15D2D8530036AC19 /* PBXContainerItemProxy */ = {
+		B339FA9C15DA7D990040E5FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B3FC32B415D2D8350036AC19 /* FH.xcodeproj */;
+			containerPortal = B339FA8F15DA7D900040E5FF /* FH.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = B3D7C48215D28BE30019262E;
 			remoteInfo = FH;
@@ -111,7 +111,7 @@
 		B308507C15D95267007E6AD5 /* FHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHLoginViewController.h; sourceTree = "<group>"; };
 		B308507D15D95268007E6AD5 /* FHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHLoginViewController.m; sourceTree = "<group>"; };
 		B308507E15D95268007E6AD5 /* FHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FHLoginViewController.xib; sourceTree = "<group>"; };
-		B3FC32B415D2D8350036AC19 /* FH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FH.xcodeproj; path = FH/FH.xcodeproj; sourceTree = "<group>"; };
+		B339FA8F15DA7D900040E5FF /* FH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FH.xcodeproj; path = FH/FH.xcodeproj; sourceTree = "<group>"; };
 		D82B24AB14D06CC200F91FB4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3FC32CC15D2D85E0036AC19 /* libFH.a in Frameworks */,
+				B339FA9E15DA7D9E0040E5FF /* libFH.a in Frameworks */,
 				A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */,
 				A2CD323714D065F100C4D3F0 /* libz.dylib in Frameworks */,
 				A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */,
@@ -149,7 +149,7 @@
 		A2CD31EF14D0300200C4D3F0 = {
 			isa = PBXGroup;
 			children = (
-				B3FC32B415D2D8350036AC19 /* FH.xcodeproj */,
+				B339FA8F15DA7D900040E5FF /* FH.xcodeproj */,
 				A2CD320414D0300200C4D3F0 /* fh-ios-sdk */,
 				A2CD31FD14D0300200C4D3F0 /* Frameworks */,
 				A2CD31FB14D0300200C4D3F0 /* Products */,
@@ -232,11 +232,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B3FC32B515D2D8350036AC19 /* Products */ = {
+		B339FA9015DA7D900040E5FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3FC32BB15D2D8350036AC19 /* libFH.a */,
-				B3FC32BD15D2D8350036AC19 /* FHTests.octest */,
+				B339FA9915DA7D900040E5FF /* libFH.a */,
+				B339FA9B15DA7D900040E5FF /* FHTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B3FC32CB15D2D8530036AC19 /* PBXTargetDependency */,
+				B339FA9D15DA7D990040E5FF /* PBXTargetDependency */,
 			);
 			name = "fh-ios-sdk";
 			productName = "fh-ios-sdk";
@@ -303,8 +303,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = B3FC32B515D2D8350036AC19 /* Products */;
-					ProjectRef = B3FC32B415D2D8350036AC19 /* FH.xcodeproj */;
+					ProductGroup = B339FA9015DA7D900040E5FF /* Products */;
+					ProjectRef = B339FA8F15DA7D900040E5FF /* FH.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -316,18 +316,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B3FC32BB15D2D8350036AC19 /* libFH.a */ = {
+		B339FA9915DA7D900040E5FF /* libFH.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libFH.a;
-			remoteRef = B3FC32BA15D2D8350036AC19 /* PBXContainerItemProxy */;
+			remoteRef = B339FA9815DA7D900040E5FF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B3FC32BD15D2D8350036AC19 /* FHTests.octest */ = {
+		B339FA9B15DA7D900040E5FF /* FHTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = FHTests.octest;
-			remoteRef = B3FC32BC15D2D8350036AC19 /* PBXContainerItemProxy */;
+			remoteRef = B339FA9A15DA7D900040E5FF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -406,10 +406,10 @@
 			target = A2CD31F914D0300200C4D3F0 /* fh-ios-sdk */;
 			targetProxy = A2CD321A14D0300200C4D3F0 /* PBXContainerItemProxy */;
 		};
-		B3FC32CB15D2D8530036AC19 /* PBXTargetDependency */ = {
+		B339FA9D15DA7D990040E5FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FH;
-			targetProxy = B3FC32CA15D2D8530036AC19 /* PBXContainerItemProxy */;
+			targetProxy = B339FA9C15DA7D990040E5FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -482,6 +482,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/FH/dist/fh-framework-1.0.0\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
@@ -515,6 +517,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/FH/dist/fh-framework-1.0.0\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
