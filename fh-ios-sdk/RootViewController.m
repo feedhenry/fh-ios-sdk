@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "EventsViewController.h"
 #import "AuthViewController.h"
+#import "FH.h"
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [FH init];
     if(self.tabBarItem.tag == 101){
         EventsViewController * eventsController = [[EventsViewController alloc]init];
         [self pushViewController:eventsController animated:NO];

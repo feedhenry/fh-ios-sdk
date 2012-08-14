@@ -77,9 +77,9 @@
 		B3D7C4A415D28BE30019262E /* FHConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4A315D28BE30019262E /* FHConfigTests.m */; };
 		B3D7C4BC15D28DF40019262E /* FHAct.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B015D28DF40019262E /* FHAct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4BD15D28DF40019262E /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B115D28DF40019262E /* FHAct.m */; };
-		B3D7C4BE15D28DF40019262E /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B215D28DF40019262E /* FHConfig.h */; };
+		B3D7C4BE15D28DF40019262E /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B215D28DF40019262E /* FHConfig.h */; settings = {ATTRIBUTES = (); }; };
 		B3D7C4BF15D28DF40019262E /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
-		B3D7C4C015D28DF40019262E /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B415D28DF40019262E /* FHDefines.h */; };
+		B3D7C4C015D28DF40019262E /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B415D28DF40019262E /* FHDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4C515D28DF40019262E /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B915D28DF40019262E /* FHResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4C615D28DF40019262E /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4BA15D28DF40019262E /* FHResponse.m */; };
 		B3D7C4C715D28DF40019262E /* FHResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4BB15D28DF40019262E /* FHResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };

@@ -25,4 +25,9 @@ fi
 cd "build/Release-iphoneos/"
 zip -9ry "../../$DIST_DIR/fh-framework-$FH_SDK_VERSION.zip" "FH.framework"
 
+cp -R "FH.framework" "../../../FHStarterProject/"
+cd "../../../"
+rm -rf "FHStarterProject/FHStarterProject.xcodeproj/xcuserdata"
+rm -rf "FHStarterProject/FHStarterProject.xcodeproj/project.xcworkspace"
+zip -9ry "FH/dist/fh-starter-project-$FH_SDK_VERSION.zip" "FHStarterProject"
 
