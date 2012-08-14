@@ -7,20 +7,21 @@
 //
 
 #import "FHCloudRequest.h"
+#import "FHConfig.h"
 
 @implementation FHCloudRequest
 
 @synthesize remoteAction;
 
 - (NSURL *)buildURL {
-  NSString * mode = [appConfig getConfigValueForKey:@"mode"];
-  NSString * propName = @"development-url";
-  if( mode == @"prod"){
-    propName = @"live-url";
+  NSString * mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
+  NSString * propName = @"debugCloudUrl";
+  if( [mode isEqualToString:@"prod"]){
+    propName = @"releaseCloudUrl";
   }
   NSString * cloudUrl = [[cloudProps objectForKey:@"hosts"] objectForKey:propName];
-  NSString * format           = ([[cloudUrl substringToIndex:[cloudUrl length]-1] isEqualToString:@"/"]) ? @"%@%@" : @"%@/%@";
-  NSString * api              = [NSMutableString stringWithFormat:format,cloudUrl,[self getPath]];
+  NSString * format   = ([[cloudUrl substringToIndex:[cloudUrl length]-1] isEqualToString:@"/"]) ? @"%@%@" : @"%@/%@";
+  NSString * api      = [NSMutableString stringWithFormat:format,cloudUrl,[self getPath]];
   NSURL * uri = [[NSURL alloc]initWithString:api];
   return uri;
 }

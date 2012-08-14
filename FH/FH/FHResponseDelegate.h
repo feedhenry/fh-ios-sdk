@@ -10,15 +10,12 @@
 #define fh_ios_sdk_FHResponseDelegate_h
 
 @class FHResponse;
-@class FHRemote;
 @class FHAct;
 @protocol FHResponseDelegate <NSObject>
 
 @required
 - (void)requestDidSucceedWithResponse:(FHResponse *)res;
 - (void)requestDidFailWithResponse:(FHResponse *)res;
-@optional
-- (void)requestDidFailWithError:(NSError *)er;
 @end
 
 

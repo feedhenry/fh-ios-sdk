@@ -33,25 +33,32 @@ static BOOL ready = false;
 static NSDictionary *props;
 
 + (void)init {
-  
-  FHInitRequest * init   = [[FHInitRequest alloc]init];
-  init.method       = FH_INIT;
-  
-  void (^success)(FHResponse *) = ^(FHResponse * res){
-    NSLog(@"the response from init %@",[res rawResponseAsString]);
-    props = [res parsedResponse];
-    ready = true;
-  };
-  
-  void (^failure)(FHResponse *) = ^(FHResponse * res){
-    NSLog(@"init failed");
-    ready = false;
-  };
-  
-  [init execWithSuccess:success AndFailure:failure];
+  if(!ready){
+    FHInitRequest * init   = [[FHInitRequest alloc] initWithProps:props];
+    init.method       = FH_INIT;
+    
+    void (^success)(FHResponse *) = ^(FHResponse * res){
+      NSLog(@"the response from init %@",[res rawResponseAsString]);
+      props = [res parsedResponse];
+      ready = true;
+    };
+    
+    void (^failure)(FHResponse *) = ^(FHResponse * res){
+      NSLog(@"init failed");
+      ready = false;
+    };
+    
+    [init execWithSuccess:success AndFailure:failure];
+  } else {
+    NSLog(@"FH is ready"); 
+  }
 }
 
 + (FHAct *)buildAction:(FH_ACTION)action{
+  
+  if(!ready){
+    @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:[NSDictionary dictionary]]);
+  }
   
   FHAct * act = nil;
   //needs to be shared 

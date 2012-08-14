@@ -14,6 +14,8 @@
     NSString * propertiesPath;
 }
 
+@property(nonatomic, retain) NSDictionary* properties;
+
 - (NSString *)getConfigValueForKey:(NSString *)key;
 - (void)setConfigValue:(NSString *)val ForKey:(NSString *)key;
 - (NSString *)uid;

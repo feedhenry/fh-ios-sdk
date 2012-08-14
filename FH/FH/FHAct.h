@@ -10,16 +10,18 @@
 
 #import "FHDefines.h"
 #import "FHResponseDelegate.h"
-#import "FHConfig.h"
+
+@class FHHttpClient;
 
 @interface FHAct : NSObject{
   NSString * method;
   NSMutableDictionary * args;
   id<FHResponseDelegate>  delegate;
   NSUInteger cacheTimeout;
-  FHConfig * appConfig;
   NSDictionary * cloudProps;
   NSString * uid;
+  BOOL async;
+  FHHttpClient * httpClient;
 }
 
 @property(strong)NSString * method;
@@ -31,6 +33,7 @@
 - (NSDictionary *)args;
 - (NSURL *)buildURL;
 - (NSString *) getPath;
+- (BOOL) isAsync;
 - (void) execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 - (void) execAsyncWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 

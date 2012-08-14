@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "EventsViewController.h"
+#import "AuthViewController.h"
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,6 +37,10 @@
         EventsViewController * eventsController = [[EventsViewController alloc]init];
         [self pushViewController:eventsController animated:NO];
         [eventsController release];
+    } else if(self.tabBarItem.tag == 102){
+      AuthViewController * authViewController = [[AuthViewController alloc] init];
+      [self pushViewController:authViewController animated:NO];
+      [authViewController release];
     }
     // Do any additional setup after loading the view from its nib.
 }

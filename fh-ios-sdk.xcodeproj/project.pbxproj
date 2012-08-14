@@ -27,6 +27,15 @@
 		A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */; };
 		A2CD323714D065F100C4D3F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323614D065F100C4D3F0 /* libz.dylib */; };
 		A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
+		B308505D15D93BE8007E6AD5 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B308505B15D93BE8007E6AD5 /* AuthViewController.m */; };
+		B308505E15D93BE8007E6AD5 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B308505C15D93BE8007E6AD5 /* AuthViewController.xib */; };
+		B308506115D940C8007E6AD5 /* AuthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B308506015D940C8007E6AD5 /* AuthMethod.m */; };
+		B308506415D942B7007E6AD5 /* FHAuthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B308506315D942B7007E6AD5 /* FHAuthMethod.m */; };
+		B308506715D942CF007E6AD5 /* GoogleAuthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B308506615D942CF007E6AD5 /* GoogleAuthMethod.m */; };
+		B308507A15D943A6007E6AD5 /* auth_feedhenry.png in Resources */ = {isa = PBXBuildFile; fileRef = B308507815D943A6007E6AD5 /* auth_feedhenry.png */; };
+		B308507B15D943A6007E6AD5 /* auth_google.png in Resources */ = {isa = PBXBuildFile; fileRef = B308507915D943A6007E6AD5 /* auth_google.png */; };
+		B308507F15D95268007E6AD5 /* FHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B308507D15D95268007E6AD5 /* FHLoginViewController.m */; };
+		B308508015D95268007E6AD5 /* FHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B308507E15D95268007E6AD5 /* FHLoginViewController.xib */; };
 		B3FC32CC15D2D85E0036AC19 /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FC32BB15D2D8350036AC19 /* libFH.a */; };
 		D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
 /* End PBXBuildFile section */
@@ -88,6 +97,20 @@
 		A2CD323614D065F100C4D3F0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		A2CD342F14D067A700C4D3F0 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		B308505A15D93BE8007E6AD5 /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		B308505B15D93BE8007E6AD5 /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		B308505C15D93BE8007E6AD5 /* AuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
+		B308505F15D940C8007E6AD5 /* AuthMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthMethod.h; sourceTree = "<group>"; };
+		B308506015D940C8007E6AD5 /* AuthMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthMethod.m; sourceTree = "<group>"; };
+		B308506215D942B7007E6AD5 /* FHAuthMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAuthMethod.h; sourceTree = "<group>"; };
+		B308506315D942B7007E6AD5 /* FHAuthMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAuthMethod.m; sourceTree = "<group>"; };
+		B308506515D942CE007E6AD5 /* GoogleAuthMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAuthMethod.h; sourceTree = "<group>"; };
+		B308506615D942CF007E6AD5 /* GoogleAuthMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAuthMethod.m; sourceTree = "<group>"; };
+		B308507815D943A6007E6AD5 /* auth_feedhenry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = auth_feedhenry.png; sourceTree = "<group>"; };
+		B308507915D943A6007E6AD5 /* auth_google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = auth_google.png; sourceTree = "<group>"; };
+		B308507C15D95267007E6AD5 /* FHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHLoginViewController.h; sourceTree = "<group>"; };
+		B308507D15D95268007E6AD5 /* FHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHLoginViewController.m; sourceTree = "<group>"; };
+		B308507E15D95268007E6AD5 /* FHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FHLoginViewController.xib; sourceTree = "<group>"; };
 		B3FC32B415D2D8350036AC19 /* FH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FH.xcodeproj; path = FH/FH.xcodeproj; sourceTree = "<group>"; };
 		D82B24AB14D06CC200F91FB4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +185,7 @@
 		A2CD320414D0300200C4D3F0 /* fh-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				B308507715D943A6007E6AD5 /* Resources */,
 				A28DFC0E14D19B0300128B50 /* fhconfig.plist */,
 				A2CD320514D0300200C4D3F0 /* Supporting Files */,
 				A2CD320D14D0300200C4D3F0 /* AppDelegate.h */,
@@ -172,6 +196,18 @@
 				A2C1018A14D8138900BEF54F /* RootViewController.h */,
 				A2C1018B14D8138900BEF54F /* RootViewController.m */,
 				A2C1018C14D8138900BEF54F /* RootViewController.xib */,
+				B308505A15D93BE8007E6AD5 /* AuthViewController.h */,
+				B308505B15D93BE8007E6AD5 /* AuthViewController.m */,
+				B308505C15D93BE8007E6AD5 /* AuthViewController.xib */,
+				B308505F15D940C8007E6AD5 /* AuthMethod.h */,
+				B308506015D940C8007E6AD5 /* AuthMethod.m */,
+				B308506215D942B7007E6AD5 /* FHAuthMethod.h */,
+				B308506315D942B7007E6AD5 /* FHAuthMethod.m */,
+				B308506515D942CE007E6AD5 /* GoogleAuthMethod.h */,
+				B308506615D942CF007E6AD5 /* GoogleAuthMethod.m */,
+				B308507C15D95267007E6AD5 /* FHLoginViewController.h */,
+				B308507D15D95268007E6AD5 /* FHLoginViewController.m */,
+				B308507E15D95268007E6AD5 /* FHLoginViewController.xib */,
 			);
 			path = "fh-ios-sdk";
 			sourceTree = "<group>";
@@ -185,6 +221,15 @@
 				A2CD320C14D0300200C4D3F0 /* fh-ios-sdk-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B308507715D943A6007E6AD5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B308507815D943A6007E6AD5 /* auth_feedhenry.png */,
+				B308507915D943A6007E6AD5 /* auth_google.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B3FC32B515D2D8350036AC19 /* Products */ = {
@@ -296,6 +341,10 @@
 				A28DFC0F14D19B0300128B50 /* fhconfig.plist in Resources */,
 				A28DFC1414D1B0CB00128B50 /* EventsViewController.xib in Resources */,
 				A2C1018E14D8138900BEF54F /* RootViewController.xib in Resources */,
+				B308505E15D93BE8007E6AD5 /* AuthViewController.xib in Resources */,
+				B308507A15D943A6007E6AD5 /* auth_feedhenry.png in Resources */,
+				B308507B15D943A6007E6AD5 /* auth_google.png in Resources */,
+				B308508015D95268007E6AD5 /* FHLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +382,11 @@
 				A2CD320F14D0300200C4D3F0 /* AppDelegate.m in Sources */,
 				A28DFC1314D1B0CB00128B50 /* EventsViewController.m in Sources */,
 				A2C1018D14D8138900BEF54F /* RootViewController.m in Sources */,
+				B308505D15D93BE8007E6AD5 /* AuthViewController.m in Sources */,
+				B308506115D940C8007E6AD5 /* AuthMethod.m in Sources */,
+				B308506415D942B7007E6AD5 /* FHAuthMethod.m in Sources */,
+				B308506715D942CF007E6AD5 /* GoogleAuthMethod.m in Sources */,
+				B308507F15D95268007E6AD5 /* FHLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +477,8 @@
 		A2CD322814D0300200C4D3F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FeedHenry Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
@@ -444,6 +499,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -454,7 +510,8 @@
 		A2CD322914D0300200C4D3F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FeedHenry Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
@@ -475,6 +532,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
 				VALID_ARCHS = "armv6 armv7 i386";

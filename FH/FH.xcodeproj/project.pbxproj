@@ -22,25 +22,65 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		B3346E9515D3D3A000220E6B /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHCloudRequest.h */; };
+		B3346E9515D3D3A000220E6B /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9615D3D3A000220E6B /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHCloudRequest.m */; };
-		B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */; };
+		B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
-		B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9C15D3F92900220E6B /* FHInitRequest.h */; };
+		B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9C15D3F92900220E6B /* FHInitRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
+		B3AE9D5C15D51017004EF454 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
+		B3AE9D5D15D5112E004EF454 /* FH_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50515D28E130019262E /* FH_OpenUDID.m */; };
+		B3AE9D6015D51733004EF454 /* FHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AE9D5E15D51733004EF454 /* FHHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3AE9D6115D51733004EF454 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D5F15D51733004EF454 /* FHHttpClient.m */; };
+		B3AE9D6415D520C8004EF454 /* MockFHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D6315D520C8004EF454 /* MockFHHttpClient.m */; };
+		B3AE9D6715D52604004EF454 /* FHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D6615D52604004EF454 /* FHTests.m */; };
+		B3AE9D6B15D52A5F004EF454 /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B115D28DF40019262E /* FHAct.m */; };
+		B3AE9D6C15D52A62004EF454 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D5F15D51733004EF454 /* FHHttpClient.m */; };
+		B3AE9D6D15D52C40004EF454 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4BA15D28DF40019262E /* FHResponse.m */; };
+		B3AE9D6E15D52C52004EF454 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
+		B3AE9D6F15D52C55004EF454 /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHCloudRequest.m */; };
+		B3AE9D7015D52C5A004EF454 /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
+		B3AE9D7115D52C70004EF454 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D415D28E130019262E /* ASIDownloadCache.m */; };
+		B3AE9D7215D52C75004EF454 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D615D28E130019262E /* ASIFormDataRequest.m */; };
+		B3AE9D7315D52C87004EF454 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D815D28E130019262E /* ASIHTTPRequest.m */; };
+		B3AE9D7415D52CEB004EF454 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
+		B3AE9D7615D52D10004EF454 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4CD15D28E130019262E /* ASIAuthenticationDialog.m */; };
+		B3AE9D7915D52D10004EF454 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D015D28E130019262E /* ASIDataCompressor.m */; };
+		B3AE9D7B15D52D10004EF454 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D215D28E130019262E /* ASIDataDecompressor.m */; };
+		B3AE9D8215D52D10004EF454 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4DC15D28E130019262E /* ASIInputStream.m */; };
+		B3AE9D8415D52D10004EF454 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4DE15D28E130019262E /* ASINetworkQueue.m */; };
+		B3AE9D8615D52D42004EF454 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
+		B3AE9D8715D52D56004EF454 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50215D28E130019262E /* JSONKit.m */; };
+		B3AE9D8815D52D5E004EF454 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50915D28E130019262E /* Reachability.m */; };
+		B3AE9D8915D52DB6004EF454 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C48C15D28BE30019262E /* FH.m */; };
+		B3AE9D8A15D52DEE004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
+		B3AE9D8B15D52DFF004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
+		B3AE9D9015D52EC6004EF454 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
+		B3AE9D9215D52F19004EF454 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */; };
+		B3AE9D9315D52F5D004EF454 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */; };
+		B3AE9D9415D52FA1004EF454 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */; };
+		B3AE9D9515D53134004EF454 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */; };
+		B3AE9D9615D5313A004EF454 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */; };
+		B3AE9D9715D53141004EF454 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */; };
+		B3AE9D9B15D5353F004EF454 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3AE9D5915D50C0C004EF454 /* fhconfig.plist */; };
+		B3AE9DA015D54796004EF454 /* FHAct+SetHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D9F15D54796004EF454 /* FHAct+SetHttpClient.m */; };
+		B3AE9DA115D55093004EF454 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C54315D28E2A0019262E /* NSString+MD5.m */; };
+		B3AE9DA215D5509A004EF454 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C54515D28E2A0019262E /* NSString+Validation.m */; };
+		B3AE9DA915D566DD004EF454 /* FHOAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AE9DA715D566DD004EF454 /* FHOAuthViewController.h */; };
+		B3AE9DAA15D566DD004EF454 /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
 		B3D7C48715D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C48D15D28BE30019262E /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C48C15D28BE30019262E /* FH.m */; };
 		B3D7C49515D28BE30019262E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C49415D28BE30019262E /* SenTestingKit.framework */; };
 		B3D7C49715D28BE30019262E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C49615D28BE30019262E /* UIKit.framework */; };
 		B3D7C49815D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C4A115D28BE30019262E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3D7C49F15D28BE30019262E /* InfoPlist.strings */; };
-		B3D7C4A415D28BE30019262E /* FHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4A315D28BE30019262E /* FHTests.m */; };
-		B3D7C4BC15D28DF40019262E /* FHAct.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B015D28DF40019262E /* FHAct.h */; };
+		B3D7C4A415D28BE30019262E /* FHConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4A315D28BE30019262E /* FHConfigTests.m */; };
+		B3D7C4BC15D28DF40019262E /* FHAct.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B015D28DF40019262E /* FHAct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4BD15D28DF40019262E /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B115D28DF40019262E /* FHAct.m */; };
 		B3D7C4BE15D28DF40019262E /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B215D28DF40019262E /* FHConfig.h */; };
 		B3D7C4BF15D28DF40019262E /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
 		B3D7C4C015D28DF40019262E /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B415D28DF40019262E /* FHDefines.h */; };
-		B3D7C4C515D28DF40019262E /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B915D28DF40019262E /* FHResponse.h */; };
+		B3D7C4C515D28DF40019262E /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B915D28DF40019262E /* FHResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4C615D28DF40019262E /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4BA15D28DF40019262E /* FHResponse.m */; };
 		B3D7C4C715D28DF40019262E /* FHResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4BB15D28DF40019262E /* FHResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C50A15D28E130019262E /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4CC15D28E130019262E /* ASIAuthenticationDialog.h */; };
@@ -92,7 +132,7 @@
 		B3D7C53815D28E130019262E /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4FD15D28E130019262E /* ASIS3Request.m */; };
 		B3D7C53915D28E130019262E /* ASIS3ServiceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4FE15D28E130019262E /* ASIS3ServiceRequest.h */; };
 		B3D7C53A15D28E130019262E /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4FF15D28E130019262E /* ASIS3ServiceRequest.m */; };
-		B3D7C53B15D28E130019262E /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50115D28E130019262E /* JSONKit.h */; };
+		B3D7C53B15D28E130019262E /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50115D28E130019262E /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C53C15D28E130019262E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50215D28E130019262E /* JSONKit.m */; };
 		B3D7C53D15D28E130019262E /* FH_OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50415D28E130019262E /* FH_OpenUDID.h */; };
 		B3D7C53E15D28E130019262E /* FH_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50515D28E130019262E /* FH_OpenUDID.m */; };
@@ -106,6 +146,7 @@
 		B3D7C54D15D291B40019262E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
 		B3D7C54F15D291EF0019262E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
+		B3F31DAC15D5C16000CE9D8F /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +178,20 @@
 		B3951AAF15D2B96A0091054A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B3951AB015D2B96A0091054A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3951AC315D2BA020091054A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		B3AE9D5915D50C0C004EF454 /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fhconfig.plist; sourceTree = "<group>"; };
+		B3AE9D5E15D51733004EF454 /* FHHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHHttpClient.h; sourceTree = "<group>"; };
+		B3AE9D5F15D51733004EF454 /* FHHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHHttpClient.m; sourceTree = "<group>"; };
+		B3AE9D6215D520C8004EF454 /* MockFHHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockFHHttpClient.h; sourceTree = "<group>"; };
+		B3AE9D6315D520C8004EF454 /* MockFHHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockFHHttpClient.m; sourceTree = "<group>"; };
+		B3AE9D6515D52604004EF454 /* FHTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHTests.h; sourceTree = "<group>"; };
+		B3AE9D6615D52604004EF454 /* FHTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHTests.m; sourceTree = "<group>"; };
+		B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B3AE9D9E15D54796004EF454 /* FHAct+SetHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FHAct+SetHttpClient.h"; sourceTree = "<group>"; };
+		B3AE9D9F15D54796004EF454 /* FHAct+SetHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FHAct+SetHttpClient.m"; sourceTree = "<group>"; };
+		B3AE9DA715D566DD004EF454 /* FHOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHOAuthViewController.h; sourceTree = "<group>"; };
+		B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHOAuthViewController.m; sourceTree = "<group>"; };
 		B3D7C48315D28BE30019262E /* libFH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFH.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D7C48615D28BE30019262E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3D7C48A15D28BE30019262E /* FH-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FH-Prefix.pch"; sourceTree = "<group>"; };
@@ -147,8 +202,8 @@
 		B3D7C49615D28BE30019262E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B3D7C49E15D28BE30019262E /* FHTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FHTests-Info.plist"; sourceTree = "<group>"; };
 		B3D7C4A015D28BE30019262E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B3D7C4A215D28BE30019262E /* FHTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FHTests.h; sourceTree = "<group>"; };
-		B3D7C4A315D28BE30019262E /* FHTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FHTests.m; sourceTree = "<group>"; };
+		B3D7C4A215D28BE30019262E /* FHConfigTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FHConfigTests.h; sourceTree = "<group>"; };
+		B3D7C4A315D28BE30019262E /* FHConfigTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FHConfigTests.m; sourceTree = "<group>"; };
 		B3D7C4B015D28DF40019262E /* FHAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAct.h; sourceTree = "<group>"; };
 		B3D7C4B115D28DF40019262E /* FHAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAct.m; sourceTree = "<group>"; };
 		B3D7C4B215D28DF40019262E /* FHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHConfig.h; sourceTree = "<group>"; };
@@ -228,6 +283,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3AE9D9715D53141004EF454 /* SystemConfiguration.framework in Frameworks */,
+				B3AE9D9615D5313A004EF454 /* CoreGraphics.framework in Frameworks */,
+				B3AE9D9515D53134004EF454 /* MobileCoreServices.framework in Frameworks */,
+				B3AE9D8B15D52DFF004EF454 /* CoreFoundation.framework in Frameworks */,
 				B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */,
 				B3D7C54F15D291EF0019262E /* libz.dylib in Frameworks */,
 				B3D7C54D15D291B40019262E /* libxml2.2.dylib in Frameworks */,
@@ -239,6 +298,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3AE9D9415D52FA1004EF454 /* CoreGraphics.framework in Frameworks */,
+				B3AE9D9315D52F5D004EF454 /* MobileCoreServices.framework in Frameworks */,
+				B3AE9D9215D52F19004EF454 /* SystemConfiguration.framework in Frameworks */,
+				B3AE9D9015D52EC6004EF454 /* libxml2.2.dylib in Frameworks */,
+				B3AE9D8A15D52DEE004EF454 /* CoreFoundation.framework in Frameworks */,
+				B3AE9D8615D52D42004EF454 /* libz.dylib in Frameworks */,
+				B3AE9D7415D52CEB004EF454 /* CFNetwork.framework in Frameworks */,
 				B3D7C49515D28BE30019262E /* SenTestingKit.framework in Frameworks */,
 				B3D7C49715D28BE30019262E /* UIKit.framework in Frameworks */,
 				B3D7C49815D28BE30019262E /* Foundation.framework in Frameworks */,
@@ -256,6 +322,15 @@
 				B3951AB015D2B96A0091054A /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		B3AE9DA615D5669B004EF454 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				B3AE9DA715D566DD004EF454 /* FHOAuthViewController.h */,
+				B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */,
+			);
+			name = OAuth;
 			sourceTree = "<group>";
 		};
 		B3D7C47815D28BE30019262E = {
@@ -280,6 +355,9 @@
 		B3D7C48515D28BE30019262E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */,
+				B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */,
+				B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */,
 				B3D7C55215D292A10019262E /* libxml2.dylib */,
 				B3D7C55015D2923C0019262E /* CFNetwork.framework */,
 				B3D7C54E15D291EF0019262E /* libz.dylib */,
@@ -297,6 +375,7 @@
 		B3D7C48815D28BE30019262E /* FH */ = {
 			isa = PBXGroup;
 			children = (
+				B3AE9DA615D5669B004EF454 /* OAuth */,
 				B3D7C54115D28E2A0019262E /* Categories */,
 				B3D7C4CA15D28E130019262E /* ThirdParty */,
 				B3D7C4B015D28DF40019262E /* FHAct.h */,
@@ -316,6 +395,8 @@
 				B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */,
 				B3346E9C15D3F92900220E6B /* FHInitRequest.h */,
 				B3346E9D15D3F92900220E6B /* FHInitRequest.m */,
+				B3AE9D5E15D51733004EF454 /* FHHttpClient.h */,
+				B3AE9D5F15D51733004EF454 /* FHHttpClient.m */,
 			);
 			path = FH;
 			sourceTree = "<group>";
@@ -331,9 +412,16 @@
 		B3D7C49C15D28BE30019262E /* FHTests */ = {
 			isa = PBXGroup;
 			children = (
-				B3D7C4A215D28BE30019262E /* FHTests.h */,
-				B3D7C4A315D28BE30019262E /* FHTests.m */,
+				B3AE9D5915D50C0C004EF454 /* fhconfig.plist */,
+				B3D7C4A215D28BE30019262E /* FHConfigTests.h */,
+				B3D7C4A315D28BE30019262E /* FHConfigTests.m */,
 				B3D7C49D15D28BE30019262E /* Supporting Files */,
+				B3AE9D6215D520C8004EF454 /* MockFHHttpClient.h */,
+				B3AE9D6315D520C8004EF454 /* MockFHHttpClient.m */,
+				B3AE9D6515D52604004EF454 /* FHTests.h */,
+				B3AE9D6615D52604004EF454 /* FHTests.m */,
+				B3AE9D9E15D54796004EF454 /* FHAct+SetHttpClient.h */,
+				B3AE9D9F15D54796004EF454 /* FHAct+SetHttpClient.m */,
 			);
 			path = FHTests;
 			sourceTree = "<group>";
@@ -525,6 +613,8 @@
 				B3346E9515D3D3A000220E6B /* FHCloudRequest.h in Headers */,
 				B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */,
 				B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */,
+				B3AE9D6015D51733004EF454 /* FHHttpClient.h in Headers */,
+				B3AE9DA915D566DD004EF454 /* FHOAuthViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +692,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3D7C4A115D28BE30019262E /* InfoPlist.strings in Resources */,
+				B3AE9D9B15D5353F004EF454 /* fhconfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +781,8 @@
 				B3346E9615D3D3A000220E6B /* FHCloudRequest.m in Sources */,
 				B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */,
 				B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */,
+				B3AE9D6115D51733004EF454 /* FHHttpClient.m in Sources */,
+				B3AE9DAA15D566DD004EF454 /* FHOAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,7 +790,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3D7C4A415D28BE30019262E /* FHTests.m in Sources */,
+				B3AE9D8915D52DB6004EF454 /* FH.m in Sources */,
+				B3AE9D8815D52D5E004EF454 /* Reachability.m in Sources */,
+				B3AE9D8715D52D56004EF454 /* JSONKit.m in Sources */,
+				B3AE9D7615D52D10004EF454 /* ASIAuthenticationDialog.m in Sources */,
+				B3AE9D7915D52D10004EF454 /* ASIDataCompressor.m in Sources */,
+				B3AE9D7B15D52D10004EF454 /* ASIDataDecompressor.m in Sources */,
+				B3AE9D8215D52D10004EF454 /* ASIInputStream.m in Sources */,
+				B3AE9D8415D52D10004EF454 /* ASINetworkQueue.m in Sources */,
+				B3D7C4A415D28BE30019262E /* FHConfigTests.m in Sources */,
+				B3AE9D5C15D51017004EF454 /* FHConfig.m in Sources */,
+				B3AE9D5D15D5112E004EF454 /* FH_OpenUDID.m in Sources */,
+				B3AE9D6415D520C8004EF454 /* MockFHHttpClient.m in Sources */,
+				B3AE9D6715D52604004EF454 /* FHTests.m in Sources */,
+				B3AE9D6B15D52A5F004EF454 /* FHAct.m in Sources */,
+				B3AE9D6C15D52A62004EF454 /* FHHttpClient.m in Sources */,
+				B3AE9D6D15D52C40004EF454 /* FHResponse.m in Sources */,
+				B3AE9D6E15D52C52004EF454 /* FHInitRequest.m in Sources */,
+				B3AE9D6F15D52C55004EF454 /* FHCloudRequest.m in Sources */,
+				B3AE9D7015D52C5A004EF454 /* FHAuthReqeust.m in Sources */,
+				B3AE9D7115D52C70004EF454 /* ASIDownloadCache.m in Sources */,
+				B3AE9D7215D52C75004EF454 /* ASIFormDataRequest.m in Sources */,
+				B3AE9D7315D52C87004EF454 /* ASIHTTPRequest.m in Sources */,
+				B3AE9DA015D54796004EF454 /* FHAct+SetHttpClient.m in Sources */,
+				B3AE9DA115D55093004EF454 /* NSString+MD5.m in Sources */,
+				B3AE9DA215D5509A004EF454 /* NSString+Validation.m in Sources */,
+				B3F31DAC15D5C16000CE9D8F /* FHOAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +976,7 @@
 				GCC_PREFIX_HEADER = "FH/FH-Prefix.pch";
 				INFOPLIST_FILE = "FHTests/FHTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -873,6 +992,7 @@
 				GCC_PREFIX_HEADER = "FH/FH-Prefix.pch";
 				INFOPLIST_FILE = "FHTests/FHTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

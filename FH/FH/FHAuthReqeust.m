@@ -7,13 +7,24 @@
 //
 
 #import "FHAuthReqeust.h"
-
+#import "FHConfig.h"
+#import "FHHttpClient.h"
+#import "FHOAuthViewController.h"
 #import "JSONKit.h"
 
 #define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"
 
 @implementation FHAuthReqeust
-@dynamic policyId,userId,password;
+@synthesize policyId,userId,password,parentViewController;
+
+- (id) initWithProps:(NSDictionary *)props AndViewController:(UIViewController*) viewController
+{
+  self = [super initWithProps:props];
+  if(self){
+    self.parentViewController = viewController;
+  }
+  return self;
+}
 
 - (NSString *) getPath {
   return FH_AUTH_PATH;
@@ -37,9 +48,9 @@
   
   [params setValue:policyId forKey:@"policyId"];
   [params setValue:uid forKey:@"device"];
-  [params setValue:[appConfig getConfigValueForKey:@"appID"] forKey:@"clientToken"];
+  [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appID"] forKey:@"clientToken"];
   
-
+  
   if(self.userId && self.password){
     [innerP setValue:userId forKey:@"userId"];
     [innerP setValue:password forKey:@"password"];
@@ -48,6 +59,42 @@
   args = params;
   NSLog(@"args set to  %@",args);
   return;
+}
+
+- (void) exec:(BOOL)pAsync WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
+  async = pAsync;
+  void (^tmpSuccess)(FHResponse *)=^(FHResponse * res){
+    NSDictionary* result = res.parsedResponse;
+    NSString* status = [result valueForKey:@"status"];
+    if(status && [status isEqualToString:@"ok"]){
+      NSString* oauthUrl = [result valueForKey:@"url"];
+      if(oauthUrl && self.parentViewController != nil){
+        void (^complete)(FHResponse *)=^(FHResponse * resp){
+          if(sucornil){
+            sucornil(resp);
+          }else{
+            SEL sucSel = @selector(requestDidSucceedWithResponse:);
+            if (self.delegate && [self.delegate respondsToSelector:sucSel]) {
+              [(FHAct *)self.delegate performSelectorOnMainThread:sucSel withObject:resp waitUntilDone:YES];
+            }
+          }
+        };
+        NSURL* request = [NSURL URLWithString:oauthUrl];
+        FHOAuthViewController* controller = [[[FHOAuthViewController alloc] initWith:request completeHandler:complete] autorelease];
+        [self.parentViewController presentModalViewController:controller animated:YES];
+      } else {
+        if(sucornil){
+          sucornil(res);
+        } else {
+          SEL sucSel = @selector(requestDidSucceedWithResponse:);
+          if (self.delegate && [self.delegate respondsToSelector:sucSel]) {
+            [(FHAct *)self.delegate performSelectorOnMainThread:sucSel withObject:res waitUntilDone:YES];
+          }
+        }
+      }
+    }
+  };
+  [httpClient sendRequest:self AndSuccess:tmpSuccess AndFailure:failornil];
 }
 
 - (void)dealloc

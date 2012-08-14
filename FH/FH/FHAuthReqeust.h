@@ -7,17 +7,21 @@
 //
 
 #import "FHAct.h"
+#import <UIKit/UIViewController.h>
 
 @interface FHAuthReqeust : FHAct {
   NSString * policyId;
   NSString * userId;
   NSString * password;
+  UIViewController* parentViewController;
 }
 
 @property (nonatomic, retain)NSString *policyId;
 @property (nonatomic, retain)NSString *userId;
 @property (nonatomic, retain)NSString *password;
+@property (nonatomic, retain)UIViewController* parentViewController;
 
+- (id) initWithProps:(NSDictionary *)props AndViewController:(UIViewController*) viewController;
 - (void) authWithPolicyId:(NSString *)policyId;
 - (void) authWithPolicyId:(NSString *)policyId UserId:(NSString *)userId Password:(NSString *)password;  
 

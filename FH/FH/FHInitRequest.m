@@ -8,6 +8,7 @@
 
 #import "FHInitRequest.h"
 #import <UIKit/UIDevice.h>
+#import "FHConfig.h"
 
 #define FH_INIT_PATH @"box/srv/1.1/app/init"
 
@@ -22,8 +23,8 @@
 }
 
 - (void) initArgs{
-  [args setValue:[appConfig getConfigValueForKey:@"appID"] forKey:@"appID"];
-  [args setValue:[appConfig getConfigValueForKey:@"appKey"] forKey:@"appKey"];
+  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appID"] forKey:@"appId"];
+  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appKey"] forKey:@"appKey"];
   [args setValue:uid forKey:@"deviceID"];
   NSString * destination = @"iphone";
   if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){

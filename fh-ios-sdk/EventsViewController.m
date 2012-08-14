@@ -34,24 +34,27 @@
 - (void)viewDidLoad
 {
    
-    self.navigationItem.title = @"Local Events";
+    self.navigationItem.title = @"FeedHenry Tweets";
     
     events = [NSArray array];
     void (^success)(FHResponse *)=^(FHResponse * res){
-        
+#if DEBUG
         NSLog(@"parsed response %@ type=%@",res.parsedResponse,[res.parsedResponse class]);
-        events = (NSArray *) res.parsedResponse;
-        [eventsTable reloadData];
+#endif
+      events = (NSArray *) [res.parsedResponse objectForKey:@"tweets"];
+      [eventsTable reloadData];
+        
     };
     
     void (^failure)(id)=^(FHResponse * res){
-        NSLog(@"failed");  
+      NSLog(@"failed");  
+      [self showErrorMessage:[res.error localizedDescription]];
     };
     [super viewDidLoad];
         
     // Do any additional setup after loading the view from its nib.
-  FHCloudRequest * action = (FHCloudRequest *) [FH buildCloudRequest:@"getEventsByLocation" WithArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"-7.12",@"longi",@"52.25",@"lati", nil]];
-    action.cacheTimeout = (60 * 60 * 2); //2 hours
+  FHCloudRequest * action = (FHCloudRequest *) [FH buildCloudRequest:@"getTweets" WithArgs:[NSDictionary dictionary]];
+  action.cacheTimeout = (60 * 60 * 2); //2 hours
   [action execWithSuccess:success AndFailure:failure];
 }
 
@@ -88,12 +91,21 @@
     if(cell == nil){
         cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid] autorelease];
     }
+#if DEBUG
     NSLog(@"event = %@",[events objectAtIndex:[indexPath row]]);
-    cell.textLabel.text = (NSString *)[[events objectAtIndex:[indexPath row]]objectForKey:@"title"];
+#endif
+    cell.textLabel.text = (NSString *)[[events objectAtIndex:[indexPath row]]objectForKey:@"text"];
     return cell;
 }
 
 #pragma mark memory
+
+- (void) showErrorMessage:(NSString* ) errorMessage
+{
+  UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
 
 - (void)dealloc{
     eventsTable = nil;
@@ -107,7 +119,7 @@
 
 - (void)requestDidSucceedWithResponse:(FHResponse *)res{
     NSLog(@"delegate method called with response %@",res.parsedResponse);
-    events = (NSArray *) res.parsedResponse;
+    events = (NSArray *) [res.parsedResponse objectForKey:@"tweets"];
     [eventsTable reloadData];
 }
 

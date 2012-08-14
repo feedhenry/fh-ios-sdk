@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>host</key>
-	<string>http://testing.stg2.feedhenry.com</string>
+	<string>http://testing.feedhenry.com</string>
 	<key>appID</key>
-	<string>CEpUXC8POovveav8d_lL1gXW</string>
+	<string>testappid</string>
 	<key>appKey</key>
-	<string>CEpUXC8POovveav8d_lL1gXW</string>
+	<string>testkey</string>
 	<key>mode</key>
 	<string>dev</string>
 </dict>

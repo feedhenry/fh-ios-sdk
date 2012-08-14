@@ -8,7 +8,7 @@
 #import "JSONKit.h"
 
 @implementation FHResponse
-@synthesize rawResponse, rawResponseAsString, parsedResponse;
+@synthesize rawResponse, rawResponseAsString, parsedResponse, responseStatusCode, error;
 
 
 
