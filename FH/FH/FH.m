@@ -32,7 +32,7 @@
 static BOOL ready = false;
 static NSDictionary *props;
 
-+ (void)init {
++ (void)initWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
   if(!ready){
     FHInitRequest * init   = [[FHInitRequest alloc] initWithProps:props];
     init.method       = FH_INIT;
@@ -41,16 +41,25 @@ static NSDictionary *props;
       NSLog(@"the response from init %@",[res rawResponseAsString]);
       props = [res parsedResponse];
       ready = true;
+      if(sucornil){
+        sucornil(nil);
+      }
     };
     
     void (^failure)(FHResponse *) = ^(FHResponse * res){
       NSLog(@"init failed");
       ready = false;
+      if(failornil){
+        failornil(res);
+      }
     };
     
-    [init execWithSuccess:success AndFailure:failure];
+    [init execAsyncWithSuccess:success AndFailure:failure];
   } else {
     NSLog(@"FH is ready"); 
+    if (sucornil) {
+      sucornil(nil);
+    }
   }
 }
 

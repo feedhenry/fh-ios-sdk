@@ -10,54 +10,62 @@
 #import "EventsViewController.h"
 #import "AuthViewController.h"
 #import "FH.h"
+#import "FHResponse.h"
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
+  }
+  return self;
 }
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
+  
+  // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    [FH init];
+  [super viewDidLoad];
+  void (^success)(FHResponse *)=^(FHResponse * res){
     if(self.tabBarItem.tag == 101){
-        EventsViewController * eventsController = [[EventsViewController alloc]init];
-        [self pushViewController:eventsController animated:NO];
-        [eventsController release];
+      EventsViewController * eventsController = [[EventsViewController alloc]init];
+      [self pushViewController:eventsController animated:NO];
+      [eventsController release];
     } else if(self.tabBarItem.tag == 102){
       AuthViewController * authViewController = [[AuthViewController alloc] init];
       [self pushViewController:authViewController animated:NO];
       [authViewController release];
     }
-    // Do any additional setup after loading the view from its nib.
+  };
+  
+  void (^failure)(id)=^(FHResponse * res){
+    NSLog(@"FH init failed. Response = %@", res.rawResponse);
+  };
+  
+  [FH initWithSuccess:success AndFailure:failure];
+  // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+  // Return YES for supported orientations
+  return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

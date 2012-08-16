@@ -18,7 +18,7 @@
         
 }
 
-+ (void)init;
++ (void)initWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 + (FHCloudRequest *) buildCloudRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments; 
 + (FHAuthReqeust *) buildAuthRequest;
 @end

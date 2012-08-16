@@ -35,7 +35,6 @@
 {
    
     self.navigationItem.title = @"FeedHenry Tweets";
-    
     events = [NSArray array];
     void (^success)(FHResponse *)=^(FHResponse * res){
 #if DEBUG

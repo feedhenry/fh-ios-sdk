@@ -8,6 +8,7 @@
 
 #import "FHStarterProjectViewController.h"
 #import "FH/FH.h"
+#import "FH/FHResponse.h"
 
 @interface FHStarterProjectViewController ()
 
@@ -28,9 +29,16 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
+  void (^success)(FHResponse *)=^(FHResponse * res){
+    //Call any other FH APIs after init suceeds
+  };
+  
+  void (^failure)(id)=^(FHResponse * res){
+    NSLog(@"FH init failed. Response = %@", res.rawResponse);
+  };
   
   //View loaded, you can uncomment the following code to init FH object
-  //[FH init];
+  //[FH initWithSuccess:success AndFailure:failure];
 }
 
 - (void)viewDidUnload
