@@ -8,7 +8,7 @@
 
 #import "FHAct.h"
 
-@interface FHCloudRequest : FHAct{
+@interface FHActRequest : FHAct{
   NSString * remoteAction;
 }
 @property(nonatomic,retain)NSString * remoteAction;

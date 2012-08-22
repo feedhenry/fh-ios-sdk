@@ -74,7 +74,7 @@ static NSDictionary *props;
   
   switch (action) {
     case FH_ACTION_CLOUD:
-      act         = [[[FHCloudRequest alloc] initWithProps:props] autorelease];
+      act         = [[[FHActRequest alloc] initWithProps:props] autorelease];
       act.method  = FH_CLOUD;
       break;
     case FH_ACTION_AUTH:
@@ -88,8 +88,8 @@ static NSDictionary *props;
   return act;
 }
 
-+ (FHCloudRequest *) buildCloudRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments {
-  FHCloudRequest * act = (FHCloudRequest *) [self buildAction:FH_ACTION_CLOUD];
++ (FHActRequest *) buildActRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments {
+  FHActRequest * act = (FHActRequest *) [self buildAction:FH_ACTION_CLOUD];
   act.remoteAction = funcName;
   [act setArgs:arguments];
   return act;

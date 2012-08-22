@@ -33,8 +33,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		B3346E9515D3D3A000220E6B /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3346E9615D3D3A000220E6B /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHCloudRequest.m */; };
+		B3346E9515D3D3A000220E6B /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHActRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3346E9615D3D3A000220E6B /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHActRequest.m */; };
 		B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
 		B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9C15D3F92900220E6B /* FHInitRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,7 +49,7 @@
 		B3AE9D6C15D52A62004EF454 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D5F15D51733004EF454 /* FHHttpClient.m */; };
 		B3AE9D6D15D52C40004EF454 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4BA15D28DF40019262E /* FHResponse.m */; };
 		B3AE9D6E15D52C52004EF454 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
-		B3AE9D6F15D52C55004EF454 /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHCloudRequest.m */; };
+		B3AE9D6F15D52C55004EF454 /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHActRequest.m */; };
 		B3AE9D7015D52C5A004EF454 /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
 		B3AE9D7115D52C70004EF454 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D415D28E130019262E /* ASIDownloadCache.m */; };
 		B3AE9D7215D52C75004EF454 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D615D28E130019262E /* ASIFormDataRequest.m */; };
@@ -178,8 +178,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B3346E9315D3D3A000220E6B /* FHCloudRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHCloudRequest.h; sourceTree = "<group>"; };
-		B3346E9415D3D3A000220E6B /* FHCloudRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHCloudRequest.m; sourceTree = "<group>"; };
+		B3346E9315D3D3A000220E6B /* FHActRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHActRequest.h; sourceTree = "<group>"; };
+		B3346E9415D3D3A000220E6B /* FHActRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHActRequest.m; sourceTree = "<group>"; };
 		B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAuthReqeust.h; sourceTree = "<group>"; };
 		B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAuthReqeust.m; sourceTree = "<group>"; };
 		B3346E9C15D3F92900220E6B /* FHInitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHInitRequest.h; sourceTree = "<group>"; };
@@ -400,8 +400,8 @@
 				B3D7C48B15D28BE30019262E /* FH.h */,
 				B3D7C48C15D28BE30019262E /* FH.m */,
 				B3D7C48915D28BE30019262E /* Supporting Files */,
-				B3346E9315D3D3A000220E6B /* FHCloudRequest.h */,
-				B3346E9415D3D3A000220E6B /* FHCloudRequest.m */,
+				B3346E9315D3D3A000220E6B /* FHActRequest.h */,
+				B3346E9415D3D3A000220E6B /* FHActRequest.m */,
 				B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */,
 				B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */,
 				B3346E9C15D3F92900220E6B /* FHInitRequest.h */,
@@ -621,7 +621,7 @@
 				B3D7C54615D28E2A0019262E /* NSString+MD5.h in Headers */,
 				B3D7C54815D28E2A0019262E /* NSString+Validation.h in Headers */,
 				B3D7C54A15D28EDB0019262E /* FH.h in Headers */,
-				B3346E9515D3D3A000220E6B /* FHCloudRequest.h in Headers */,
+				B3346E9515D3D3A000220E6B /* FHActRequest.h in Headers */,
 				B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */,
 				B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */,
 				B3AE9D6015D51733004EF454 /* FHHttpClient.h in Headers */,
@@ -804,7 +804,7 @@
 				B3D7C54015D28E130019262E /* Reachability.m in Sources */,
 				B3D7C54715D28E2A0019262E /* NSString+MD5.m in Sources */,
 				B3D7C54915D28E2A0019262E /* NSString+Validation.m in Sources */,
-				B3346E9615D3D3A000220E6B /* FHCloudRequest.m in Sources */,
+				B3346E9615D3D3A000220E6B /* FHActRequest.m in Sources */,
 				B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */,
 				B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */,
 				B3AE9D6115D51733004EF454 /* FHHttpClient.m in Sources */,
@@ -833,7 +833,7 @@
 				B3AE9D6C15D52A62004EF454 /* FHHttpClient.m in Sources */,
 				B3AE9D6D15D52C40004EF454 /* FHResponse.m in Sources */,
 				B3AE9D6E15D52C52004EF454 /* FHInitRequest.m in Sources */,
-				B3AE9D6F15D52C55004EF454 /* FHCloudRequest.m in Sources */,
+				B3AE9D6F15D52C55004EF454 /* FHActRequest.m in Sources */,
 				B3AE9D7015D52C5A004EF454 /* FHAuthReqeust.m in Sources */,
 				B3AE9D7115D52C70004EF454 /* ASIDownloadCache.m in Sources */,
 				B3AE9D7215D52C75004EF454 /* ASIFormDataRequest.m in Sources */,
@@ -1047,6 +1047,7 @@
 				B33842F315E237B3004DE63E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B349A04A15D2A96900254861 /* Build configuration list for PBXAggregateTarget "framework" */ = {
 			isa = XCConfigurationList;

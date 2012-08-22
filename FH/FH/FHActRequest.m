@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 FeedHenry. All rights reserved.
 //
 
-#import "FHCloudRequest.h"
+#import "FHActRequest.h"
 #import "FHConfig.h"
 
-@implementation FHCloudRequest
+@implementation FHActRequest
 
 @synthesize remoteAction;
 
