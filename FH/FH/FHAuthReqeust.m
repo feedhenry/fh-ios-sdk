@@ -61,6 +61,11 @@
   return;
 }
 
+- (NSDictionary *)args{
+  [args setObject:[self getDefaultParams] forKey:@"__fh"];
+  return (NSDictionary *) args;
+}
+
 - (void) exec:(BOOL)pAsync WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
   async = pAsync;
   void (^tmpSuccess)(FHResponse *)=^(FHResponse * res){

@@ -33,6 +33,7 @@
 - (NSDictionary *)args;
 - (NSURL *)buildURL;
 - (NSString *) getPath;
+- (NSDictionary *) getDefaultParams;
 - (BOOL) isAsync;
 - (void) execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 - (void) execAsyncWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;

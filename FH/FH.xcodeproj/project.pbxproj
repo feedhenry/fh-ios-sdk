@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		B33842F115E237B3004DE63E /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B33842F415E237B3004DE63E /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				B33842F615E237BB004DE63E /* Build Documentation */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
 		B349A04915D2A96900254861 /* framework */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B349A04A15D2A96900254861 /* Build configuration list for PBXAggregateTarget "framework" */;
@@ -682,6 +693,7 @@
 				B3D7C48215D28BE30019262E /* FH */,
 				B3D7C49215D28BE30019262E /* FHTests */,
 				B349A04915D2A96900254861 /* framework */,
+				B33842F115E237B3004DE63E /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -699,6 +711,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B33842F615E237BB004DE63E /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore UnitTest \\\n--docsetutil-path \"/Developer/Xcode-4.3.2.app/Contents/Developer/usr/bin/docsetutil\" \\\n\"${PROJECT_DIR}/FH\"";
+		};
 		B349A04F15D2A98500254861 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,6 +872,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B33842F215E237B3004DE63E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B33842F315E237B3004DE63E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B349A04B15D2A96900254861 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1000,6 +1040,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B33842F415E237B3004DE63E /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B33842F215E237B3004DE63E /* Debug */,
+				B33842F315E237B3004DE63E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B349A04A15D2A96900254861 /* Build configuration list for PBXAggregateTarget "framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

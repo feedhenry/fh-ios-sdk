@@ -62,6 +62,17 @@
   return nil;
 }
 
+- (NSDictionary *) getDefaultParams
+{
+  NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appID"];
+  NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appKey"];
+  NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
+  [fhparams setObject:uid forKey:@"cuid"];
+  [fhparams setObject:appId forKey:@"appid"];
+  [fhparams setObject:appKey forKey:@"appkey"];
+  return fhparams;
+}
+
 - (void) execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
   [self exec:FALSE WithSuccess:sucornil AndFailure:failornil];
 }
