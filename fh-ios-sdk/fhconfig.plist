@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>host</key>
-	<string>http://testing.stg2.feedhenry.com</string>
+	<string>{host where your app is located}</string>
 	<key>appID</key>
-	<string>CEpUXC8POovveav8d_lL1gXW</string>
+	<string>{app id}</string>
 	<key>appKey</key>
-	<string>CEpUXC8POovveav8d_lL1gXW</string>
+	<string>{app api key}</string>
 	<key>mode</key>
-	<string>dev</string>
+	<string>{mode e.g. dev or live}</string>
 </dict>
 </plist>
