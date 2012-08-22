@@ -9,6 +9,6 @@
 	<key>appKey</key>
 	<string>&lt;Replace with your app key&gt;</string>
 	<key>mode</key>
-	<string>&lt;dev or prod&gt;</string>
+	<string>&lt;dev or live&gt;</string>
 </dict>
 </plist>
