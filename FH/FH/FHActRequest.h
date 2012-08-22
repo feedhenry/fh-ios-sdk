@@ -6,10 +6,15 @@
 //  Copyright (c) 2012 FeedHenry. All rights reserved.
 //
 
+/** Calling cloud side functions on FeedHenry */
+
 #import "FHAct.h"
 
 @interface FHActRequest : FHAct{
   NSString * remoteAction;
 }
+
+/** The cloud side function name */
 @property(nonatomic,retain)NSString * remoteAction;
+
 @end

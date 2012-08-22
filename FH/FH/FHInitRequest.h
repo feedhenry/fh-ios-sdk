@@ -8,6 +8,8 @@
 
 #import "FHAct.h"
 
+/** Used internally to read app configurations fromt the server. */
+
 @interface FHInitRequest : FHAct
 
 @end

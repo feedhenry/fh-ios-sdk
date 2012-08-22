@@ -95,9 +95,30 @@ static NSDictionary *props;
   return act;
 }
 
++ (void) performActRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
+{
+  FHActRequest * request = [self buildActRequest:funcName WithArgs:arguments];
+  [request execAsyncWithSuccess:sucornil AndFailure:failornil];
+}
+
 + (FHAuthReqeust *) buildAuthRequest {
   FHAuthReqeust * act = (FHAuthReqeust *) [self buildAction:FH_ACTION_AUTH];
   return act;
 }
+
++ (void) performAuthRequest:(NSString *) policyId AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil
+{
+  FHAuthReqeust * auth = [self buildAuthRequest];
+  [auth authWithPolicyId:policyId];
+  [auth execAsyncWithSuccess:sucornil AndFailure:failornil];
+}
+
++ (void) performAuthRequest:(NSString *) policyId WithUserName:(NSString* )username UserPassword:(NSString*)userpass AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil
+{
+  FHAuthReqeust * auth = [self buildAuthRequest];
+  [auth authWithPolicyId:policyId UserId:username Password:userpass];
+  [auth execAsyncWithSuccess:sucornil AndFailure:failornil];
+}
+
 
 @end

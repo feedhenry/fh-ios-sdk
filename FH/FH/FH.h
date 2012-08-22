@@ -37,6 +37,55 @@
 
 /** @name Create API request instances */
 
-+ (FHActRequest *) buildActRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments; 
+/** Create a new instance of FHActRequest class to perform cloud side functions.
+ 
+ @param funcName The cloud side function name
+ @param arguments The parameters for the cloud side functions
+ @return Returns a new instance of FHActRequest
+ */
++ (FHActRequest *) buildActRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments;
+
+/** Create a new instance of FHAuthRequest class to perform authentication.
+ 
+ @return Returns a new instance of FHAuthRequest
+ */
 + (FHAuthReqeust *) buildAuthRequest;
+
+
+/** @name Build and execute API requests */
+
+/** Create a new instance of FHActRequest class and execute it immediately with the success and failure blocks.
+ 
+ The request runs asynchronously.
+ 
+ @param funcName The cloud side function name
+ @param arguments The parameters for the cloud side functions
+ @param sucornil Block to be executed if the execution of the cloud side function is successful
+ @param failornil Block to be executed if the execution of the cloud side function is failed 
+ */
++ (void) performActRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil;
+
+/** Create a new instance of FHAuthRequest class with the given auth policy id and execute it immediately with the success and failure blocks.
+ 
+ The request runs asynchronously. It should be used if the user credentials are not required at this point (for example, OAuth).
+ 
+ @param policyId The policyId associated with the auth request
+ @param sucornil Block to be executed if the authentication process is successful
+ @param failornil Block to be executed if the authentication process is failed
+ */
++ (void) performAuthRequest:(NSString *) policyId AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil;
+
+
+/** Create a new instance of FHAuthRequest class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.
+ 
+ The request runs asynchronously. It should be used if the user credentials should be provided at this point (for example, LDAP).
+ 
+ @param policyId The policyId associated with the auth request
+ @param username Username
+ @param userpass User password
+ @param sucornil Block to be executed if the authentication process is successful
+ @param failornil Block to be executed if the authentication process is failed
+ */
++ (void) performAuthRequest:(NSString *) policyId WithUserName:(NSString* )username UserPassword:(NSString*)userpass AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil;
+
 @end

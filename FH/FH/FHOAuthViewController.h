@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FHResponse.h"
 
+/** Present a customized UIWebView to perform OAuth authentication. */
+
 @interface FHOAuthViewController : UIViewController <UIWebViewDelegate>{
   UIView *topView;
   UINavigationBar* titleBar;
