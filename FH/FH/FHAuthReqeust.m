@@ -48,7 +48,7 @@
   
   [params setValue:policyId forKey:@"policyId"];
   [params setValue:uid forKey:@"device"];
-  [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appID"] forKey:@"clientToken"];
+  [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"clientToken"];
   
   
   if(self.userId && self.password){

@@ -28,7 +28,7 @@
   if([appType isEqualToString:@"node"]){
     api = [api stringByAppendingString:[self getPath]];
   } else {
-    NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appID"];
+    NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
     api = [api stringByAppendingFormat:@"box/srv/1.1/act/%@/%@/%@/%@",[cloudProps objectForKey:@"domain"],appId,self.remoteAction,appId];
   }
   NSLog(@"Request url is %@", api);

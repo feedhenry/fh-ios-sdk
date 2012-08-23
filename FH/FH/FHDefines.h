@@ -16,3 +16,4 @@ typedef enum{
 #define FH_CLOUD @"cloud"
 #define FH_AUTH @"auth"
 #define FH_INIT @"init"
+#define FH_SDK_VERSION @"1.0.0"

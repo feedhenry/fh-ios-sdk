@@ -7,8 +7,8 @@
 //
 
 #import "FHInitRequest.h"
-#import <UIKit/UIDevice.h>
 #import "FHConfig.h"
+#import "FHDefines.h"
 
 #define FH_INIT_PATH @"box/srv/1.1/app/init"
 
@@ -23,14 +23,11 @@
 }
 
 - (void) initArgs{
-  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appID"] forKey:@"appId"];
-  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appKey"] forKey:@"appKey"];
-  [args setValue:uid forKey:@"deviceID"];
-  NSString * destination = @"iphone";
-  if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
-    destination = @"ipad";
-  }
-  [args setValue:destination forKey:@"destination"];
+  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"appid"];
+  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"] forKey:@"appkey"];
+  [args setValue:uid forKey:@"cuid"];
+  [args setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
+  [args setValue:@"ios" forKey:@"destination"];
 }
 
 - (NSString *) getPath {

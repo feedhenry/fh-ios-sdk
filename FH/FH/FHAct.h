@@ -48,7 +48,7 @@
 
 /** Create a new instance of the API request with the given configurations. 
  
- @param props The configurations of the application (i.e. host, appId, appKey, mode)
+ @param props The configurations of the application (i.e. host, appid, appkey, mode)
  */
 - (id)initWithProps:(NSDictionary *) props;
 

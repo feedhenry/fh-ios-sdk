@@ -29,9 +29,9 @@
 {
   FHConfig* fhconfig = [FHConfig getSharedInstance];
   NSLog(@"%@", [fhconfig getConfigValueForKey:@"host"]);
-  NSLog(@"%@", [fhconfig getConfigValueForKey:@"appID"]);
+  NSLog(@"%@", [fhconfig getConfigValueForKey:@"appid"]);
   STAssertTrue([[fhconfig getConfigValueForKey:@"host"] isEqualToString: @"http://testing.feedhenry.com"] , @"");
-  STAssertTrue([[fhconfig getConfigValueForKey:@"appID"] isEqualToString:@"testappid"], @"");
+  STAssertTrue([[fhconfig getConfigValueForKey:@"appid"] isEqualToString:@"testappid"], @"");
 }
 
 @end

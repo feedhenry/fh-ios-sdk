@@ -64,8 +64,8 @@
 
 - (NSDictionary *) getDefaultParams
 {
-  NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appID"];
-  NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appKey"];
+  NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
+  NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
   NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
   [fhparams setObject:uid forKey:@"cuid"];
   [fhparams setObject:appId forKey:@"appid"];

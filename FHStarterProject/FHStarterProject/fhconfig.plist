@@ -4,9 +4,9 @@
 <dict>
 	<key>host</key>
 	<string>&lt;Replace with the corret host value&gt;</string>
-	<key>appID</key>
+	<key>appid</key>
 	<string>&lt;Replace with your app id&gt;</string>
-	<key>appKey</key>
+	<key>appkey</key>
 	<string>&lt;Replace with your app key&gt;</string>
 	<key>mode</key>
 	<string>&lt;dev or live&gt;</string>

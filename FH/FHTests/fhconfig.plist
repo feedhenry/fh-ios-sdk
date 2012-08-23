@@ -4,9 +4,9 @@
 <dict>
 	<key>host</key>
 	<string>http://testing.feedhenry.com</string>
-	<key>appID</key>
+	<key>appid</key>
 	<string>testappid</string>
-	<key>appKey</key>
+	<key>appkey</key>
 	<string>testkey</string>
 	<key>mode</key>
 	<string>dev</string>
