@@ -29,5 +29,6 @@ cp -R "FH.framework" "../../../FHStarterProject/"
 cd "../../../"
 rm -rf "FHStarterProject/FHStarterProject.xcodeproj/xcuserdata"
 rm -rf "FHStarterProject/FHStarterProject.xcodeproj/project.xcworkspace"
+rm -rf "FHStarterProject/build"
 zip -9ry "FH/dist/fh-starter-project-$FH_SDK_VERSION.zip" "FHStarterProject"
 
