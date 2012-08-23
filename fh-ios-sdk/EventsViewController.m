@@ -54,7 +54,7 @@
     // Do any additional setup after loading the view from its nib.
   FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getTweets" WithArgs:[NSDictionary dictionary]];
   action.cacheTimeout = (60 * 60 * 2); //2 hours
-  [action execWithSuccess:success AndFailure:failure];
+  [action execAsyncWithSuccess:success AndFailure:failure];
 }
 
 - (void)viewDidUnload
