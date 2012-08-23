@@ -23,11 +23,7 @@
 }
 
 - (void) initArgs{
-  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"appid"];
-  [args setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"] forKey:@"appkey"];
-  [args setValue:uid forKey:@"cuid"];
-  [args setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
-  [args setValue:@"ios" forKey:@"destination"];
+  args = [self getDefaultParams];
 }
 
 - (NSString *) getPath {

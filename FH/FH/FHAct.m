@@ -10,6 +10,7 @@
 #import "JSONKit.h"
 #import "FHConfig.h"
 #import "FHHttpClient.h"
+#import "FHDefines.h"
 
 @implementation FHAct
 @synthesize method, delegate, cacheTimeout;
@@ -70,6 +71,9 @@
   [fhparams setObject:uid forKey:@"cuid"];
   [fhparams setObject:appId forKey:@"appid"];
   [fhparams setObject:appKey forKey:@"appkey"];
+  [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
+  [fhparams setValue:@"ios" forKey:@"destination"];
+
   return fhparams;
 }
 
