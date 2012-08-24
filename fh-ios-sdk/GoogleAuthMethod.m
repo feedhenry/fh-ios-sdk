@@ -36,7 +36,7 @@
     [self showMessage:@"Failed" message:res.rawResponseAsString];
   };
 
-  [authRequest execWithSuccess:success AndFailure:failure];
+  [authRequest execAsyncWithSuccess:success AndFailure:failure];
 }
 
 - (void) showMessage:(NSString* )title message:(NSString*)msg 
