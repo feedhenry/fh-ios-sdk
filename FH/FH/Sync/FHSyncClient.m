@@ -49,7 +49,7 @@ static FHSyncClient* shared = nil;
   self = [super init];
   if(self){
     [self registerForNetworkReachabilityNotifications];
-    _syncConfig = config;
+    _syncConfig = [config retain];
     _runningTasks = [[NSMutableDictionary dictionary] retain];
     NSString* storageFilePath = [self getStorageFilePath];
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:storageFilePath];
@@ -241,8 +241,36 @@ static FHSyncClient* shared = nil;
 
 - (void) doNotifyWithDataId:(NSString*) dataId uid:(NSString*) uid code:(NSString*) code message:(NSString*) message
 {
-  FHSyncNotificationMessage * notification = [[FHSyncNotificationMessage alloc] initWithDataId:dataId AndUID:uid AndCode:code AndMessage:message];
-  [[NSNotificationCenter defaultCenter] postNotificationName:kFHSyncStateChangedNotification object:notification];
+  BOOL doSend = NO;
+  if(_syncConfig.notifySyncStarted && [code isEqualToString:SYNC_STARTED_MESSAGE]){
+    doSend = YES;
+  }
+  if(_syncConfig.notifySyncCompleted && [code isEqualToString:SYNC_COMPLETE_MESSAGE]) {
+    doSend = YES;
+  }
+  if(_syncConfig.notifyClientStorageFailed && [code isEqualToString:CLIENT_STORAGE_FAILED_MESSAGE]){
+    doSend = YES;
+  }
+  if(_syncConfig.notifyDeltaReceived && [code isEqualToString:DELTA_RECEIVED_MESSAGE ]){
+    doSend = YES;
+  }
+  if(_syncConfig.notifyOfflineUpdate && [code isEqualToString:OFFLINE_UPDATE_MESSAGE]){
+    doSend = YES;
+  }
+  if(_syncConfig.notifySyncCollision && [code isEqualToString:COLLISION_DETECTED_MESSAGE]){
+    doSend = YES;
+  }
+  if(_syncConfig.notifyUpdateApplied && [code isEqualToString:UPDATE_APPLIED_MESSAGE]){
+    doSend = YES;
+  }
+  if(_syncConfig.notifyUpdateFailed && [code isEqualToString:UPDATE_FAILED_MESSAGE]){
+    doSend = YES;
+  }
+  if(doSend){
+    FHSyncNotificationMessage * notification = [[FHSyncNotificationMessage alloc] initWithDataId:dataId AndUID:uid AndCode:code AndMessage:message];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFHSyncStateChangedNotification object:notification];
+    [notification release];
+  }
 }
 
 - (NSString*) generateHashWithString:(NSString*) text

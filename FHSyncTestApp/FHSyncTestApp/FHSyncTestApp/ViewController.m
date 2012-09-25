@@ -43,7 +43,10 @@
   _fhSyncClient = [FHSyncClient getInstance];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncMessage:) name:kFHSyncStateChangedNotification object:nil];
   FHSyncConfig* conf = [[FHSyncConfig alloc] init];
+  conf.notifySyncStarted = YES;
+  conf.notifySyncCompleted = YES;
   [_fhSyncClient initWithConfig:conf];
+  [conf release];
   [_fhSyncClient manageWithDataId:@"foo" AndQuery:[NSMutableDictionary dictionary]];
 }
 
