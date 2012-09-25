@@ -27,24 +27,17 @@
 }
 
 - (void)setArgs:(NSDictionary * )arguments {
-  NSArray * keys = [arguments allKeys];
-  for (id key in keys) {
-    if([key isKindOfClass:[NSString class]]){
-      id ob = [arguments objectForKey:key];
-      //if it is one deep can set value straight
-      if([ob isKindOfClass:[NSString class]]){
-        [args setValue:ob forKey:key];
-      }else if([ob isKindOfClass:[NSArray class]] || [ob isKindOfClass:[NSDictionary class]]){
-        //else convert native collection type to json string
-        [args setValue:[ob JSONString] forKey:key];
-      }
-    }
-  }
+  args = [NSMutableDictionary dictionaryWithDictionary:arguments];
   NSLog(@"args set to  %@",args);
 }
 
 - (NSDictionary *)args{
   return (NSDictionary *) args;
+}
+
+- (NSString *) argsAsString
+{
+  return [args JSONString];
 }
 
 - (BOOL) isAsync {

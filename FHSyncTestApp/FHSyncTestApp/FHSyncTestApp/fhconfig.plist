@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>host</key>
+    <string>https://testing-lon3.feedhenry.com</string>
+    <key>appid</key>
+    <string>jnEfpgvm9s7CI_W5gRegltHy</string>
+    <key>appkey</key>
+    <string>7d4e1edec8a42436adf35e080181141003255c15</string>
+    <key>mode</key>
+    <string>dev</string>
+  </dict>
+</plist>

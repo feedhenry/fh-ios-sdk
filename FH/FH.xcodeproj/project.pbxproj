@@ -33,6 +33,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B32B65661610EC6A008B0DF5 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = B32B65641610EC6A008B0DF5 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B32B65671610EC6A008B0DF5 /* FHSyncNotificationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B65651610EC6A008B0DF5 /* FHSyncNotificationMessage.m */; };
 		B3346E9515D3D3A000220E6B /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHActRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9615D3D3A000220E6B /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHActRequest.m */; };
 		B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,6 +81,10 @@
 		B3AE9DA215D5509A004EF454 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C54515D28E2A0019262E /* NSString+Validation.m */; };
 		B3AE9DA915D566DD004EF454 /* FHOAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AE9DA715D566DD004EF454 /* FHOAuthViewController.h */; };
 		B3AE9DAA15D566DD004EF454 /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
+		B3C3D96C1610BB4E00943838 /* FHSyncClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B3C3D96A1610BB4E00943838 /* FHSyncClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3C3D96D1610BB4E00943838 /* FHSyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C3D96B1610BB4E00943838 /* FHSyncClient.m */; };
+		B3C3D9701610BC4600943838 /* FHSyncConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3C3D96E1610BC4600943838 /* FHSyncConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3C3D9711610BC4600943838 /* FHSyncConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C3D96F1610BC4600943838 /* FHSyncConfig.m */; };
 		B3D7C48715D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C48D15D28BE30019262E /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C48C15D28BE30019262E /* FH.m */; };
 		B3D7C49515D28BE30019262E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C49415D28BE30019262E /* SenTestingKit.framework */; };
@@ -178,6 +184,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B32B65641610EC6A008B0DF5 /* FHSyncNotificationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncNotificationMessage.h; path = Sync/FHSyncNotificationMessage.h; sourceTree = "<group>"; };
+		B32B65651610EC6A008B0DF5 /* FHSyncNotificationMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncNotificationMessage.m; path = Sync/FHSyncNotificationMessage.m; sourceTree = "<group>"; };
 		B3346E9315D3D3A000220E6B /* FHActRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHActRequest.h; sourceTree = "<group>"; };
 		B3346E9415D3D3A000220E6B /* FHActRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHActRequest.m; sourceTree = "<group>"; };
 		B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAuthReqeust.h; sourceTree = "<group>"; };
@@ -203,6 +211,10 @@
 		B3AE9D9F15D54796004EF454 /* FHAct+SetHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FHAct+SetHttpClient.m"; sourceTree = "<group>"; };
 		B3AE9DA715D566DD004EF454 /* FHOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHOAuthViewController.h; sourceTree = "<group>"; };
 		B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHOAuthViewController.m; sourceTree = "<group>"; };
+		B3C3D96A1610BB4E00943838 /* FHSyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncClient.h; path = Sync/FHSyncClient.h; sourceTree = "<group>"; };
+		B3C3D96B1610BB4E00943838 /* FHSyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncClient.m; path = Sync/FHSyncClient.m; sourceTree = "<group>"; };
+		B3C3D96E1610BC4600943838 /* FHSyncConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncConfig.h; path = Sync/FHSyncConfig.h; sourceTree = "<group>"; };
+		B3C3D96F1610BC4600943838 /* FHSyncConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncConfig.m; path = Sync/FHSyncConfig.m; sourceTree = "<group>"; };
 		B3D7C48315D28BE30019262E /* libFH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFH.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D7C48615D28BE30019262E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3D7C48A15D28BE30019262E /* FH-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FH-Prefix.pch"; sourceTree = "<group>"; };
@@ -344,6 +356,19 @@
 			name = OAuth;
 			sourceTree = "<group>";
 		};
+		B3C3D9681610BB0A00943838 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				B3C3D96A1610BB4E00943838 /* FHSyncClient.h */,
+				B3C3D96B1610BB4E00943838 /* FHSyncClient.m */,
+				B3C3D96E1610BC4600943838 /* FHSyncConfig.h */,
+				B3C3D96F1610BC4600943838 /* FHSyncConfig.m */,
+				B32B65641610EC6A008B0DF5 /* FHSyncNotificationMessage.h */,
+				B32B65651610EC6A008B0DF5 /* FHSyncNotificationMessage.m */,
+			);
+			name = Sync;
+			sourceTree = "<group>";
+		};
 		B3D7C47815D28BE30019262E = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +411,7 @@
 		B3D7C48815D28BE30019262E /* FH */ = {
 			isa = PBXGroup;
 			children = (
+				B3C3D9681610BB0A00943838 /* Sync */,
 				B3AE9DA615D5669B004EF454 /* OAuth */,
 				B3D7C54115D28E2A0019262E /* Categories */,
 				B3D7C4CA15D28E130019262E /* ThirdParty */,
@@ -626,6 +652,9 @@
 				B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */,
 				B3AE9D6015D51733004EF454 /* FHHttpClient.h in Headers */,
 				B3AE9DA915D566DD004EF454 /* FHOAuthViewController.h in Headers */,
+				B3C3D96C1610BB4E00943838 /* FHSyncClient.h in Headers */,
+				B3C3D9701610BC4600943838 /* FHSyncConfig.h in Headers */,
+				B32B65661610EC6A008B0DF5 /* FHSyncNotificationMessage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +704,7 @@
 		B3D7C47A15D28BE30019262E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = FeedHenry;
 			};
 			buildConfigurationList = B3D7C47D15D28BE30019262E /* Build configuration list for PBXProject "FH" */;
@@ -809,6 +838,9 @@
 				B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */,
 				B3AE9D6115D51733004EF454 /* FHHttpClient.m in Sources */,
 				B3AE9DAA15D566DD004EF454 /* FHOAuthViewController.m in Sources */,
+				B3C3D96D1610BB4E00943838 /* FHSyncClient.m in Sources */,
+				B3C3D9711610BC4600943838 /* FHSyncConfig.m in Sources */,
+				B32B65671610EC6A008B0DF5 /* FHSyncNotificationMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,9 +959,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv6";
 			};
 			name = Debug;
 		};
@@ -945,10 +978,11 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv6";
 			};
 			name = Release;
 		};

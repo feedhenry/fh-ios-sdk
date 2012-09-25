@@ -37,21 +37,12 @@
   }
 #endif
   //startrequest
-  __block ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:apicall];
+  __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
+  [request addRequestHeader:@"Content-Type" value:@"application/json"];
   //add params to the post request
   if([fhact args] && [[fhact args] count]>0){
-    NSArray * keys = [[fhact args] allKeys];
-    for (NSString * key in keys ) {
-#if DEBUG
-      NSLog(@"setting value for %@",key);
-#endif
-      id ob = [[fhact args] objectForKey:key];
-      if([ob isKindOfClass:[NSString class]]){
-        //set post value on request
-        [request setPostValue:ob forKey:key];
-      }
-    }
-  }
+    [request setPostBody:[NSMutableData dataWithData:[[fhact argsAsString] dataUsingEncoding:NSUTF8StringEncoding]]];
+   }
   //wrap the passed block inside our own success block to allow for
   //further manipulation
   [request setCompletionBlock:^{

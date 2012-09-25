@@ -64,6 +64,12 @@
  */
 - (NSDictionary *)args;
 
+/** Get the parameters for the API request as NSString.
+ 
+ @return Returns the parameters as string.
+ */
+- (NSString *) argsAsString;
+
 /** Get the URL of the API request 
  
  @return Returns the URL 

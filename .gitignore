@@ -3,7 +3,7 @@ build/*
 FH/build/*
 FHStarterProject/build/*
 FHStarterProject/FH.framework/*
- 
+FHSyncTestApp/FHSyncTestApp/build/*
 # Exclude temp nibs and swap files
 *~.nib
 *.swp
