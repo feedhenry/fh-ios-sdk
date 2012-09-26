@@ -56,7 +56,7 @@
   return nil;
 }
 
-- (NSDictionary *) getDefaultParams
+- (NSMutableDictionary *) getDefaultParams
 {
   NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
   NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
