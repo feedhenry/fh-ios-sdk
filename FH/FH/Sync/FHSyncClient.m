@@ -44,7 +44,7 @@
 
 static FHSyncClient* shared = nil;
 
-- (id) initWithConfig:(FHSyncConfig*) config
+- (void) initWithConfig:(FHSyncConfig*) config
 {
   self = [super init];
   if(self){
@@ -67,7 +67,6 @@ static FHSyncClient* shared = nil;
     }
     _initialized = YES;
   }
-  return self;
 }
 
 + (FHSyncClient*) getInstance
@@ -381,7 +380,7 @@ static FHSyncClient* shared = nil;
     __block NSMutableDictionary* recHash = [NSMutableDictionary dictionary];
     if(localdataset){
       [localdataset enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
-        if ([obj class] == [NSDictionary class] ) {
+        if ([[obj class] isSubclassOfClass:[NSMutableDictionary class]] ) {
           [recHash setObject:[obj objectForKey:@"hash"] forKey:key];
         }
       }];
