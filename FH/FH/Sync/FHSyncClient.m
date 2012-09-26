@@ -314,6 +314,9 @@ static FHSyncClient* shared = nil;
       NSMutableDictionary* params = [NSMutableDictionary dictionary];
       [params setValue:@"sync" forKey:@"fn"];
       [params setValue:dataId forKey:@"dataset_id"];
+      if ([dataSet objectForKey:@"hash"]) {
+        [params setValue:[dataSet objectForKey:@"hash"] forKey:@"dataset_hash"];
+      }
       [params setValue:[[dataSet objectForKey:@"config"] objectForKey:@"query_params"] forKey:@"query_params"];
       NSDictionary* pendings = [dataSet objectForKey:@"pending"];
       __block NSMutableArray* pendingArray = [NSMutableArray array];
