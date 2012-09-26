@@ -296,7 +296,7 @@ static FHSyncClient* shared = nil;
       [params setValue:pendingArray forKey:@"pending"];
       [FH performActRequest:dataId WithArgs:params AndSuccess:^(FHResponse* fhres){
         NSLog(@"FHSync success response: %@", [[fhres parsedResponse] JSONString]);
-        NSDictionary* resData = [fhres parsedResponse];
+        NSMutableDictionary* resData = [[fhres parsedResponse] mutableCopy];
         if ([resData objectForKey:@"updates"]) {
           NSDictionary* updatesData = [resData objectForKey:@"updates"];
           if([updatesData objectForKey:@"applied"]){
@@ -311,7 +311,7 @@ static FHSyncClient* shared = nil;
         }
        if([resData objectForKey:@"records"]){
          NSMutableDictionary * dataSet = [_dataSets objectForKey:dataId];
-         [dataSet setObject:[resData objectForKey:@"records"] forKey:@"data"];
+         [dataSet setObject:[[resData objectForKey:@"records"] mutableCopy] forKey:@"data"];
          [dataSet setObject:[resData objectForKey:@"hash"] forKey:@"hash"];
          [self doNotifyWithDataId:dataId uid:nil code:DELTA_RECEIVED_MESSAGE message:nil];
          [self syncCompleteWithStatus:@"online" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
@@ -355,7 +355,7 @@ static FHSyncClient* shared = nil;
 {
   NSMutableDictionary* dataSet = [_dataSets objectForKey:dataId];
   if(dataSet){
-    NSDictionary* localdataset = [dataSet objectForKey:@"data"];
+    NSMutableDictionary* localdataset = [dataSet objectForKey:@"data"];
     __block NSMutableDictionary* recHash = [NSMutableDictionary dictionary];
     if(localdataset){
       [localdataset enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
@@ -372,7 +372,7 @@ static FHSyncClient* shared = nil;
     
     [FH performActRequest:dataId WithArgs:syncRecParams AndSuccess:^(FHResponse * fhres){
       NSLog(@"FHSyncRecords success response: %@", [[fhres parsedResponse] JSONString]);
-      NSDictionary* resData = [fhres parsedResponse];
+      NSMutableDictionary* resData = [[fhres parsedResponse] mutableCopy];
       __block NSMutableDictionary* localdataset = [dataSet objectForKey:@"data"];
       if(!localdataset){
         localdataset = [NSMutableDictionary dictionary];
@@ -391,10 +391,11 @@ static FHSyncClient* shared = nil;
       if([resData objectForKey:@"update"]){
         NSDictionary* updateData = [resData objectForKey:@"update"];
         [updateData enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
-          NSMutableDictionary* rec = [localdataset objectForKey:key];
+          NSMutableDictionary* rec = [[localdataset objectForKey:key] mutableCopy];
           if(rec){
             [rec setObject:[obj objectForKey:@"hash"] forKey:@"hash"];
             [rec setObject:[obj objectForKey:@"data"] forKey:@"data"];
+            [localdataset setObject:rec forKey:key];
           }
           [self doNotifyWithDataId:dataId uid:key code:DELTA_RECEIVED_MESSAGE message:@"update"];
         }];
