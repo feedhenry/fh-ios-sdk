@@ -86,7 +86,7 @@
  
  @return Pamaters for certain API requests
  */
-- (NSDictionary *) getDefaultParams;
+- (NSMutableDictionary *) getDefaultParams;
 
 /** If the API request will be running asynchronously.
  
