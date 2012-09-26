@@ -11,6 +11,7 @@
 #import "FH.h"
 #import "FHSyncClient.h"
 #import "FHSyncNotificationMessage.h"
+#import "FHResponse.h"
 
 @interface ViewController ()
 {
@@ -28,7 +29,8 @@
     
     
   } AndFailure:^(FHResponse* fhres){
-    
+    NSLog(@"Init Failed. Error: %@", fhres.error);
+    [self startSyncClient];
   }];
 }
 
@@ -40,7 +42,7 @@
 
 - (void) startSyncClient
 {
-  _fhSyncClient = [FHSyncClient getInstance];
+  _fhSyncClient = [[FHSyncClient getInstance] retain];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncMessage:) name:kFHSyncStateChangedNotification object:nil];
   FHSyncConfig* conf = [[FHSyncConfig alloc] init];
   conf.notifySyncStarted = YES;
@@ -57,13 +59,15 @@
   NSString* code = [msg getCode];
   if([code isEqualToString:SYNC_COMPLETE_MESSAGE]){
     NSDictionary* data = [_fhSyncClient listWithDataId:@"foo"];
-    [self setResultText:data];
+    [self performSelectorOnMainThread:@selector(setResultText:) withObject:data waitUntilDone:NO];
   }
 }
 
 - (void) setResultText:(NSDictionary*) data
 {
-  resultView.text = [NSString stringWithFormat:@"%f \n %@", [[NSDate date] timeIntervalSince1970], [data JSONString]];
+  if(data){
+    resultView.text = [NSString stringWithFormat:@"%f \n %@", [[NSDate date] timeIntervalSince1970], [data JSONString]];
+  }
 }
 
 - (IBAction)selectCreateButton:(id)sender

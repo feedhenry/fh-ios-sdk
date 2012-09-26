@@ -18,6 +18,7 @@
   BOOL _notifyUpdateApplied;
   BOOL _notifyDeltaReceived;
   BOOL _notifyClientStorageFailed;
+  BOOL _notifySyncFailed;
 }
 
 @property double syncFrequency;
@@ -29,6 +30,7 @@
 @property BOOL notifyUpdateApplied;
 @property BOOL notifyDeltaReceived;
 @property BOOL notifyClientStorageFailed;
+@property BOOL notifySyncFailed;
 
 - (id) init;
 @end

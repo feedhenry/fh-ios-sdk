@@ -10,6 +10,7 @@
 #import "ASIFormDataRequest.h"
 #import "FHResponse.h"
 #import "ASIDownloadCache.h"
+#import "FH.h"
 
 
 @implementation FHHttpClient
@@ -24,10 +25,6 @@
 }
 
 - (void)sendRequest:(FHAct*)fhact AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
-  NSURL* apicall = [fhact buildURL];
-#if DEBUG
-  NSLog(@"Request URL is : %@", [apicall absoluteString]);
-#endif
 #if NS_BLOCKS_AVAILABLE
   if (sucornil) {
     successHandler = [sucornil copy];
@@ -35,6 +32,16 @@
   if (failornil) {
     failureHandler = [failornil copy];
   }
+#endif
+  if (![FH isOnline]) {
+    FHResponse* res = [[[FHResponse alloc] init] autorelease];
+    [res setError:[NSError errorWithDomain:@"FHHttpClient" code:FHSDKNetworkOfflineErrorType userInfo:[NSDictionary dictionaryWithObject:@"offline" forKey:@"error"]]];
+    [self failWithResponse:res AndAction:fhact];
+    return;
+  }
+  NSURL* apicall = [fhact buildURL];
+#if DEBUG
+  NSLog(@"Request URL is : %@", [apicall absoluteString]);
 #endif
   //startrequest
   __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];

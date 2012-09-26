@@ -10,7 +10,6 @@
 #import "FHSyncClient.h"
 #import "FHSyncConfig.h"
 #import "JSONKit.h"
-#import "Reachability.h"
 #import "FHSyncNotificationMessage.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "FH.h"
@@ -25,22 +24,18 @@
   NSMutableDictionary * _dataSets;
   FHSyncConfig * _syncConfig;
   BOOL _initialized;
-  BOOL _isOnline;
-  Reachability* _reachability;
   NSMutableDictionary* _runningTasks;
 }
 
 @property (nonatomic, retain) NSMutableDictionary* dataSets;
 @property (nonatomic, retain) FHSyncConfig* syncConfig;
 @property (nonatomic, retain) NSMutableDictionary* runningTasks;
-@property (nonatomic, retain) Reachability* reachability;
 @end
 
 @implementation FHSyncClient
 @synthesize dataSets = _dataSets;
 @synthesize syncConfig = _syncConfig;
 @synthesize runningTasks = _runningTasks;
-@synthesize reachability = _reachability;
 
 static FHSyncClient* shared = nil;
 
@@ -48,7 +43,6 @@ static FHSyncClient* shared = nil;
 {
   self = [super init];
   if(self){
-    [self registerForNetworkReachabilityNotifications];
     _syncConfig = [config retain];
     _runningTasks = [[NSMutableDictionary dictionary] retain];
     NSString* storageFilePath = [self getStorageFilePath];
@@ -79,34 +73,9 @@ static FHSyncClient* shared = nil;
   return shared;
 }
 
-- (void) registerForNetworkReachabilityNotifications
+- (BOOL) isOnline
 {
-  _reachability = [Reachability reachabilityForInternetConnection];
-  if([_reachability currentReachabilityStatus] == ReachableViaWiFi || [_reachability currentReachabilityStatus] == ReachableViaWWAN ){
-    _isOnline = YES;
-  } else {
-    _isOnline = NO;
-  }
-  [_reachability startNotifier];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-}
-
-- (void) unregisterForNetworkReachabilityNotification
-{
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-  if(_reachability){
-    [_reachability stopNotifier];
-  }
-}
-
-- (void) networkReachabilityChanged:(NSNotification *)note
-{
-  Reachability* reachable = (Reachability*) note;
-  if([reachable currentReachabilityStatus] == ReachableViaWiFi || [reachable currentReachabilityStatus] == ReachableViaWWAN){
-    _isOnline = YES;
-  } else {
-    _isOnline = NO;
-  }
+  return [FH isOnline];
 }
 
 - (NSString*) getStorageFilePath
@@ -147,8 +116,6 @@ static FHSyncClient* shared = nil;
     [_dataSets enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
       [self stopWithDataId:key];
     }];
-    [self unregisterForNetworkReachabilityNotification];
-    _reachability = nil;
     _dataSets = nil;
     _syncConfig = nil;
     _initialized = NO;
@@ -192,7 +159,7 @@ static FHSyncClient* shared = nil;
 
 - (NSDictionary*) addPendingObjectWithDataId:(NSString*) dataId uid:(NSString*) uid data:(NSDictionary*) data AndAction:(NSString*) action
 {
-  if(!_isOnline){
+  if(![self isOnline]){
     [self doNotifyWithDataId:dataId uid:uid code:OFFLINE_UPDATE_MESSAGE message:action];
   }
   NSDictionary* existingData = [self readWidthDataId:dataId AndUID:uid];
@@ -265,6 +232,9 @@ static FHSyncClient* shared = nil;
   if(_syncConfig.notifyUpdateFailed && [code isEqualToString:UPDATE_FAILED_MESSAGE]){
     doSend = YES;
   }
+  if(_syncConfig.notifySyncFailed && [code isEqualToString:SYNC_FAILED_MESSAGE]){
+    doSend = YES;
+  }
   if(doSend){
     FHSyncNotificationMessage * notification = [[FHSyncNotificationMessage alloc] initWithDataId:dataId AndUID:uid AndCode:code AndMessage:message];
     [[NSNotificationCenter defaultCenter] postNotificationName:kFHSyncStateChangedNotification object:notification];
@@ -300,14 +270,14 @@ static FHSyncClient* shared = nil;
 {
   NSDictionary* userInfo = [timer userInfo];
   NSString* dataId = [userInfo objectForKey:@"dataId"];
-  [self startSyncTaskWithDataId:dataId];
+  [self performSelectorInBackground:@selector(startSyncTaskWithDataId:) withObject:dataId];
 }
 
 - (void) startSyncTaskWithDataId:(NSString*) dataId
 {
   [self doNotifyWithDataId:dataId uid:nil code:SYNC_STARTED_MESSAGE message:nil];
-  if(!_isOnline){
-    [self syncCompleteWithStatus:@"offline" dataId:dataId];
+  if(![self isOnline]){
+    [self syncCompleteWithStatus:@"offline" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
   } else {
     NSMutableDictionary* dataSet = [_dataSets objectForKey:dataId];
     if(dataSet){
@@ -341,7 +311,7 @@ static FHSyncClient* shared = nil;
          [dataSet setObject:[resData objectForKey:@"records"] forKey:@"data"];
          [dataSet setObject:[resData objectForKey:@"hash"] forKey:@"hash"];
          [self doNotifyWithDataId:dataId uid:nil code:DELTA_RECEIVED_MESSAGE message:nil];
-         [self syncCompleteWithStatus:@"online" dataId:dataId];
+         [self syncCompleteWithStatus:@"online" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
        } else if([resData objectForKey:@"hash"]){
          NSString* resDataSetHash = (NSString* )[resData objectForKey:@"hash"];
          NSMutableDictionary * dataSet = [_dataSets objectForKey:dataId];
@@ -349,14 +319,20 @@ static FHSyncClient* shared = nil;
          if(![resDataSetHash isEqualToString:localhash]){
            [self syncRecordsWithDataId:dataId];
          } else {
-           [self syncCompleteWithStatus:@"online" dataId:dataId];
+           [self syncCompleteWithStatus:@"online" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
          }
        } else {
-         [self syncCompleteWithStatus:@"online" dataId:dataId];
+         [self syncCompleteWithStatus:@"online" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
        }
       } AndFailure: ^(FHResponse* fhres){
-        NSLog(@"FHSync failed. Reponse: %@", [fhres rawResponseAsString]);
-        [self syncCompleteWithStatus:[fhres rawResponseAsString] dataId:dataId];
+        //the offline event may happen during the call, if it's the case, return complete with the offline message
+        if (![FH isOnline]) {
+          NSLog(@"FHSync failed because the device is offline during the call.");
+          [self syncCompleteWithStatus:@"offline" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
+        } else {
+          NSLog(@"FHSync failed. Reponse: %@", [fhres rawResponseAsString]);
+          [self syncCompleteWithStatus:[fhres rawResponseAsString] dataId:dataId code: SYNC_FAILED_MESSAGE];
+        }
       }];
     }
   }
@@ -430,26 +406,53 @@ static FHSyncClient* shared = nil;
       if([resData objectForKey:@"hash"]){
         [localdataset setObject:[resData objectForKey:@"hash"] forKey:@"hash"];
       }
-      [self syncCompleteWithStatus:@"online" dataId:dataId];
+      [self syncCompleteWithStatus:@"online" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
     } AndFailure:^(FHResponse* fhres){
-      NSLog(@"FhSyncRecords failed response: %@", [fhres rawResponseAsString]);
-      [self syncCompleteWithStatus:[fhres rawResponseAsString] dataId:dataId];
+      if (![FH isOnline]) {
+        NSLog(@"FhSyncRecords failed because the device is offline during the call.");
+        [self syncCompleteWithStatus:@"offline" dataId:dataId code:SYNC_COMPLETE_MESSAGE];
+      } else {
+        NSLog(@"FhSyncRecords failed response: %@", [fhres rawResponseAsString]);
+        [self syncCompleteWithStatus:[fhres rawResponseAsString] dataId:dataId code:SYNC_FAILED_MESSAGE];
+      }
     }];
   }
 }
 
-- (void) syncCompleteWithStatus:(NSString*) status dataId:(NSString*) dataId
+/*
+ FH will run all the callbacks on the main thread. Because this syncCompleteWithStatus function is called mostly from the callback functions, 
+ if the device is online, the function will be executed on the main thread and it may bloack the UI when saving large data.
+ However, if the device is offline, this function may get called from the background thread. But the background thread could be kill by the os
+ as soon as the function finishes, the NSTimer instance will not be executed. 
+ 
+ So, we always put the NSTimer instance on the main thread, which means the startSyncTaskWithTimer will be called from the main thread.Then in that
+ function we invoke the sync task on a background thread and we always do the data saving on the background thread.
+ */
+- (void) syncCompleteWithStatus:(NSString*) status dataId:(NSString*) dataId code:(NSString*) code
 {
-  [self saveData];
-  [self doNotifyWithDataId:dataId uid:nil code:SYNC_COMPLETE_MESSAGE message:status];
+  [self doNotifyWithDataId:dataId uid:nil code:code message:status];
+  BOOL isMainThread = [NSThread isMainThread];
+  if (isMainThread) {
+    [self performSelectorInBackground:@selector(saveData) withObject:nil];
+    [self scheduleNextRun:dataId];
+  } else {
+    [self performSelectorOnMainThread:@selector(scheduleNextRun:) withObject:dataId waitUntilDone:NO];
+    [self saveData];
+  }
+}
+
+- (void) scheduleNextRun:(NSString*) dataId
+{
   NSString* keepRunning = [_runningTasks objectForKey:dataId];
   if ([keepRunning isEqualToString:@"YES"]) {
-    NSLog(@"Task is not cancelled. Sleep for %f seconds and start syncing again", [_syncConfig syncFrequency]);
     [NSTimer scheduledTimerWithTimeInterval:[_syncConfig syncFrequency] target:self selector:@selector(startSyncTaskWithTimer:) userInfo:[NSDictionary dictionaryWithObject:dataId forKey:@"dataId"] repeats:NO];
+    //NSLog(@"nstimer inited %d", [timer isValid]);
+    NSLog(@"Task is not cancelled. Sleep for %f seconds and start syncing again", [_syncConfig syncFrequency]);
   } else {
     NSLog(@"Task has been cancelled with dataId %@. Stop syncing.", dataId);
     [_runningTasks removeObjectForKey:dataId];
   }
+
 }
 
 - (void) dealloc

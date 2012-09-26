@@ -19,6 +19,7 @@
 @synthesize notifySyncStarted = _notifySyncStarted;
 @synthesize notifyUpdateApplied = _notifyUpdateApplied;
 @synthesize notifyUpdateFailed = _notifyUpdateFailed;
+@synthesize notifySyncFailed = _notifySyncFailed;
 
 
 - (id) init
@@ -34,6 +35,7 @@
     self.notifySyncStarted = NO;
     self.notifyUpdateApplied = NO;
     self.notifyUpdateFailed = NO;
+    self.notifySyncFailed = NO;
   }
   return self;
 }
