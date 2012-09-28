@@ -47,6 +47,9 @@
   FHSyncConfig* conf = [[FHSyncConfig alloc] init];
   conf.notifySyncStarted = YES;
   conf.notifySyncCompleted = YES;
+  conf.notifyRemoteUpdateApplied = YES;
+  conf.notifyRemoteUpdateFailed = YES;
+  conf.notifyLocalUpdateApplied = YES;
   [_fhSyncClient initWithConfig:conf];
   [conf release];
   [_fhSyncClient manageWithDataId:@"foo" AndQuery:[NSMutableDictionary dictionary]];

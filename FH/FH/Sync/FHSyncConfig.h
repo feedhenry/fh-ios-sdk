@@ -14,8 +14,9 @@
   BOOL _notifySyncCompleted;
   BOOL _notifySyncCollision;
   BOOL _notifyOfflineUpdate;
-  BOOL _notifyUpdateFailed;
-  BOOL _notifyUpdateApplied;
+  BOOL _notifyRemoteUpdateFailed;
+  BOOL _notifyRemoteUpdateApplied;
+  BOOL _notifyLocalUpdateApplied;
   BOOL _notifyDeltaReceived;
   BOOL _notifyClientStorageFailed;
   BOOL _notifySyncFailed;
@@ -26,8 +27,9 @@
 @property BOOL notifySyncCompleted;
 @property BOOL notifySyncCollision;
 @property BOOL notifyOfflineUpdate;
-@property BOOL notifyUpdateFailed;
-@property BOOL notifyUpdateApplied;
+@property BOOL notifyRemoteUpdateFailed;
+@property BOOL notifyRemoteUpdateApplied;
+@property BOOL notifyLocalUpdateApplied;
 @property BOOL notifyDeltaReceived;
 @property BOOL notifyClientStorageFailed;
 @property BOOL notifySyncFailed;

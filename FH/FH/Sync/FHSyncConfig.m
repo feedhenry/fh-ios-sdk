@@ -17,8 +17,9 @@
 @synthesize notifySyncCollision = _notifySyncCollision;
 @synthesize notifySyncCompleted = _notifySyncCompleted;
 @synthesize notifySyncStarted = _notifySyncStarted;
-@synthesize notifyUpdateApplied = _notifyUpdateApplied;
-@synthesize notifyUpdateFailed = _notifyUpdateFailed;
+@synthesize notifyRemoteUpdateApplied = _notifyRemoteUpdateApplied;
+@synthesize notifyLocalUpdateApplied = _notifyLocalUpdateApplied;
+@synthesize notifyRemoteUpdateFailed = _notifyRemoteUpdateFailed;
 @synthesize notifySyncFailed = _notifySyncFailed;
 
 
@@ -33,8 +34,9 @@
     self.notifySyncCollision = NO;
     self.notifySyncCompleted = NO;
     self.notifySyncStarted = NO;
-    self.notifyUpdateApplied = NO;
-    self.notifyUpdateFailed = NO;
+    self.notifyRemoteUpdateApplied = NO;
+    self.notifyLocalUpdateApplied = NO;
+    self.notifyRemoteUpdateFailed = NO;
     self.notifySyncFailed = NO;
   }
   return self;

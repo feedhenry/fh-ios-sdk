@@ -183,7 +183,9 @@ static FHSyncClient* shared = nil;
   NSMutableDictionary * dataSet = [_dataSets objectForKey:dataId];
   if (dataSet) {
     [[dataSet objectForKey:@"pending"] setObject:pendingObj forKey:hash];
+    [[dataSet objectForKey:@"data"] setObject:data forKey:uid];
     [self saveData];
+    [self doNotifyWithDataId:dataId uid:uid code:LOCAL_UPDATE_APPLIED_MESSAGE message:action];
   }
   return pendingObj;
 }
@@ -226,10 +228,13 @@ static FHSyncClient* shared = nil;
   if(_syncConfig.notifySyncCollision && [code isEqualToString:COLLISION_DETECTED_MESSAGE]){
     doSend = YES;
   }
-  if(_syncConfig.notifyUpdateApplied && [code isEqualToString:UPDATE_APPLIED_MESSAGE]){
+  if(_syncConfig.notifyRemoteUpdateApplied && [code isEqualToString:REMOTE_UPDATE_APPLIED_MESSAGE]){
     doSend = YES;
   }
-  if(_syncConfig.notifyUpdateFailed && [code isEqualToString:UPDATE_FAILED_MESSAGE]){
+  if(_syncConfig.notifyRemoteUpdateFailed && [code isEqualToString:REMOTE_UPDATE_FAILED_MESSAGE]){
+    doSend = YES;
+  }
+  if(_syncConfig.notifyRemoteUpdateApplied && [code isEqualToString:LOCAL_UPDATE_APPLIED_MESSAGE]){
     doSend = YES;
   }
   if(_syncConfig.notifySyncFailed && [code isEqualToString:SYNC_FAILED_MESSAGE]){
@@ -300,10 +305,10 @@ static FHSyncClient* shared = nil;
         if ([resData objectForKey:@"updates"]) {
           NSDictionary* updatesData = [resData objectForKey:@"updates"];
           if([updatesData objectForKey:@"applied"]){
-            [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"applied"] AndCode:UPDATE_APPLIED_MESSAGE];
+            [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"applied"] AndCode:REMOTE_UPDATE_APPLIED_MESSAGE];
           }
           if ([resData objectForKey:@"failed"]) {
-            [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"failed"] AndCode:UPDATE_FAILED_MESSAGE];
+            [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"failed"] AndCode:REMOTE_UPDATE_FAILED_MESSAGE];
           }
           if([resData objectForKey:@"collisions"]) {
             [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"collisions"] AndCode:COLLISION_DETECTED_MESSAGE];
