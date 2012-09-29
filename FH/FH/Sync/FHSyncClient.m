@@ -169,7 +169,11 @@ static FHSyncClient* shared = nil;
   }
   [pendingObj setValue:action forKey:@"action"];
   if(existingData){
-    [pendingObj setObject:[existingData objectForKey:@"data"] forKey:@"pre"];
+    if ([existingData objectForKey:@"data"]) {
+      [pendingObj setObject:[existingData objectForKey:@"data"] forKey:@"pre"];
+    } else {
+      NSLog(@"@pre is nil");
+    }
   }
   if(data){
     [pendingObj setObject:data forKey:@"post"];
