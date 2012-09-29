@@ -168,12 +168,8 @@ static FHSyncClient* shared = nil;
     [pendingObj setValue:uid forKey:@"uid"];
   }
   [pendingObj setValue:action forKey:@"action"];
-  if(existingData){
-    if ([existingData objectForKey:@"data"]) {
-      [pendingObj setObject:[existingData objectForKey:@"data"] forKey:@"pre"];
-    } else {
-      NSLog(@"@pre is nil");
-    }
+  if([existingData objectForKey:@"data"]){
+    [pendingObj setObject:[existingData objectForKey:@"data"] forKey:@"pre"];
   }
   if(data){
     [pendingObj setObject:data forKey:@"post"];
