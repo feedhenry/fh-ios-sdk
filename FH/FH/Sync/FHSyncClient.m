@@ -307,10 +307,10 @@ static FHSyncClient* shared = nil;
           if([updatesData objectForKey:@"applied"]){
             [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"applied"] AndCode:REMOTE_UPDATE_APPLIED_MESSAGE];
           }
-          if ([resData objectForKey:@"failed"]) {
+          if ([updatesData objectForKey:@"failed"]) {
             [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"failed"] AndCode:REMOTE_UPDATE_FAILED_MESSAGE];
           }
-          if([resData objectForKey:@"collisions"]) {
+          if([updatesData objectForKey:@"collisions"]) {
             [self processDataWithDataId:dataId updates:[updatesData objectForKey:@"collisions"] AndCode:COLLISION_DETECTED_MESSAGE];
           }
         }
