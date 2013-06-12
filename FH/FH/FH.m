@@ -78,7 +78,7 @@ static NSDictionary *props;
       act.method  = FH_CLOUD;
       break;
     case FH_ACTION_AUTH:
-      act         = [[[FHAuthReqeust alloc] initWithProps:props] autorelease];
+      act         = [[[FHAuthRequest alloc] initWithProps:props] autorelease];
       act.method  = FH_AUTH;
       break;
     default:
@@ -101,21 +101,21 @@ static NSDictionary *props;
   [request execAsyncWithSuccess:sucornil AndFailure:failornil];
 }
 
-+ (FHAuthReqeust *) buildAuthRequest {
-  FHAuthReqeust * act = (FHAuthReqeust *) [self buildAction:FH_ACTION_AUTH];
++ (FHAuthRequest *) buildAuthRequest {
+  FHAuthRequest * act = (FHAuthRequest *) [self buildAction:FH_ACTION_AUTH];
   return act;
 }
 
 + (void) performAuthRequest:(NSString *) policyId AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil
 {
-  FHAuthReqeust * auth = [self buildAuthRequest];
+  FHAuthRequest * auth = [self buildAuthRequest];
   [auth authWithPolicyId:policyId];
   [auth execAsyncWithSuccess:sucornil AndFailure:failornil];
 }
 
 + (void) performAuthRequest:(NSString *) policyId WithUserName:(NSString* )username UserPassword:(NSString*)userpass AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil
 {
-  FHAuthReqeust * auth = [self buildAuthRequest];
+  FHAuthRequest * auth = [self buildAuthRequest];
   [auth authWithPolicyId:policyId UserId:username Password:userpass];
   [auth execAsyncWithSuccess:sucornil AndFailure:failornil];
 }

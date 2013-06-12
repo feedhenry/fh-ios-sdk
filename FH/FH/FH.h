@@ -6,7 +6,7 @@
 #import "FHDefines.h"
 
 #import "FHActRequest.h"
-#import "FHAuthReqeust.h"
+#import "FHAuthRequest.h"
 
 @interface FH : NSObject{
         
@@ -49,7 +49,7 @@
  
  @return Returns a new instance of FHAuthRequest
  */
-+ (FHAuthReqeust *) buildAuthRequest;
++ (FHAuthRequest *) buildAuthRequest;
 
 
 /** @name Build and execute API requests */
