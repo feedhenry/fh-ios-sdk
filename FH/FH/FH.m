@@ -34,12 +34,18 @@ static NSDictionary *props;
 
 + (void)initWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
   if(!ready){
-    FHInitRequest * init   = [[FHInitRequest alloc] initWithProps:props];
-    init.method       = FH_INIT;
+    FHInitRequest *init = [[FHInitRequest alloc] initWithProps:props];
+    init.method = FH_INIT;
     
     void (^success)(FHResponse *) = ^(FHResponse * res){
       NSLog(@"the response from init %@",[res rawResponseAsString]);
       props = [res parsedResponse];
+      
+      // Save trackId
+      NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+      [prefs setObject:[props objectForKey:@"trackId"] forKey:@"fh_track_id"];
+      [prefs synchronize];
+      
       ready = true;
       if(sucornil){
         sucornil(nil);

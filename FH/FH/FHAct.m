@@ -54,8 +54,7 @@
   return nil;
 }
 
-- (NSMutableDictionary *) getDefaultParams
-{
+- (NSMutableDictionary *) getDefaultParams {
   NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
   NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
   NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
@@ -64,6 +63,11 @@
   [fhparams setObject:appKey forKey:@"appkey"];
   [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
   [fhparams setValue:@"ios" forKey:@"destination"];
+  
+  // Read trackId
+  NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+  NSString *trackId = [prefs objectForKey:@"fh_track_id"];
+  [fhparams setObject:trackId forKey:@"trackId"];
 
   return fhparams;
 }
