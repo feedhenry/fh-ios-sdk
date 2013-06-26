@@ -64,10 +64,12 @@
   [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
   [fhparams setValue:@"ios" forKey:@"destination"];
   
-  // Read trackId
+  // Read init
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-  NSString *trackId = [prefs objectForKey:@"fh_track_id"];
-  [fhparams setObject:trackId forKey:@"trackId"];
+  NSString *init = [prefs objectForKey:@"init"];
+  if (init != nil) {
+    [fhparams setObject:init forKey:@"init"];
+  }
 
   return fhparams;
 }

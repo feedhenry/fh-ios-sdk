@@ -41,9 +41,9 @@ static NSDictionary *props;
       NSLog(@"the response from init %@",[res rawResponseAsString]);
       props = [res parsedResponse];
       
-      // Save trackId
+      // Save init
       NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-      [prefs setObject:[props objectForKey:@"trackId"] forKey:@"fh_track_id"];
+      [prefs setObject:[props objectForKey:@"init"] forKey:@"init"];
       [prefs synchronize];
       
       ready = true;
