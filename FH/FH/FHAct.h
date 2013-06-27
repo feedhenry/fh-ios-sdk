@@ -11,7 +11,7 @@
 /** Base class for all API request classes */
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 #import "FHDefines.h"
 #import "FHResponseDelegate.h"
 
@@ -23,7 +23,8 @@
   id<FHResponseDelegate>  delegate;
   NSUInteger cacheTimeout;
   NSDictionary * cloudProps;
-  NSString * uid;
+  NSString *uid;
+  NSString *advertiserId;
   BOOL async;
   FHHttpClient * httpClient;
 }

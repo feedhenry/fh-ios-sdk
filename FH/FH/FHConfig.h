@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NSString+MD5.h"
+#import <AdSupport/AdSupport.h>
 
 /** A utility class to get the app configurations from fhconfig.plist file. */
 
@@ -38,6 +39,9 @@
  @return The device's unique ID
  */
 - (NSString *)uid;
+
+- (NSString *)advertiserId;
+- (BOOL)trackingEnabled;
 
 /** Get the singleton instace of this class 
  
