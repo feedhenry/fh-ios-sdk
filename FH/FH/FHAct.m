@@ -82,7 +82,7 @@
   }
 
   // Append to cuidMap
-  [fhparams setObject:cuidMap forKey:@"cuidMap"];  
+  [fhparams setObject:cuidMap forKey:@"cuidMap"];
   
   [fhparams setObject:appId forKey:@"appid"];
   [fhparams setObject:appKey forKey:@"appkey"];
