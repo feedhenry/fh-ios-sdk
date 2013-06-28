@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 FeedHenry. All rights reserved.
 //
 
-#import "FHAuthReqeust.h"
+#import "FHAuthRequest.h"
 #import "FHConfig.h"
 #import "FHHttpClient.h"
 #import "FHOAuthViewController.h"
@@ -14,7 +14,7 @@
 
 #define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"
 
-@implementation FHAuthReqeust
+@implementation FHAuthRequest
 @synthesize policyId,userId,password,parentViewController;
 
 - (id) initWithProps:(NSDictionary *)props AndViewController:(UIViewController*) viewController
@@ -50,12 +50,12 @@
   [params setValue:uid forKey:@"device"];
   [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"clientToken"];
   
-  
   if(self.userId && self.password){
     [innerP setValue:userId forKey:@"userId"];
     [innerP setValue:password forKey:@"password"];
   }
-  [params setValue:[innerP JSONString] forKey:@"params"];
+  
+  [params setValue:innerP forKey:@"params"];
   args = params;
   NSLog(@"args set to  %@",args);
   return;
@@ -97,6 +97,18 @@
           }
         }
       }
+    } else {
+      if (failornil) {
+        // Trigger failure block
+        failornil(res);
+      } else {
+        // Trigger failure delegate method
+        SEL errSel = @selector(requestDidFailWithResponse:);
+        if (self.delegate && [self.delegate respondsToSelector:errSel]) {
+          [(FHAct *)self.delegate performSelectorOnMainThread:errSel withObject:res waitUntilDone:YES];
+        }
+      }
+
     }
   };
   [httpClient sendRequest:self AndSuccess:tmpSuccess AndFailure:failornil];

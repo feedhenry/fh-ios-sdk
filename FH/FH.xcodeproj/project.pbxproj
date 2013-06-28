@@ -35,8 +35,8 @@
 /* Begin PBXBuildFile section */
 		B3346E9515D3D3A000220E6B /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHActRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9615D3D3A000220E6B /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHActRequest.m */; };
-		B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
+		B3346E9A15D3D3C600220E6B /* FHAuthRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9815D3D3C500220E6B /* FHAuthRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3346E9B15D3D3C600220E6B /* FHAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthRequest.m */; };
 		B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9C15D3F92900220E6B /* FHInitRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
 		B3AE9D5C15D51017004EF454 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
@@ -50,7 +50,7 @@
 		B3AE9D6D15D52C40004EF454 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4BA15D28DF40019262E /* FHResponse.m */; };
 		B3AE9D6E15D52C52004EF454 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
 		B3AE9D6F15D52C55004EF454 /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHActRequest.m */; };
-		B3AE9D7015D52C5A004EF454 /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
+		B3AE9D7015D52C5A004EF454 /* FHAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthRequest.m */; };
 		B3AE9D7115D52C70004EF454 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D415D28E130019262E /* ASIDownloadCache.m */; };
 		B3AE9D7215D52C75004EF454 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D615D28E130019262E /* ASIFormDataRequest.m */; };
 		B3AE9D7315D52C87004EF454 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D815D28E130019262E /* ASIHTTPRequest.m */; };
@@ -158,6 +158,7 @@
 		B3D7C54F15D291EF0019262E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
 		B3F31DAC15D5C16000CE9D8F /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
+		D84E94F1177C378E006DCE05 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F0177C378E006DCE05 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,8 +181,8 @@
 /* Begin PBXFileReference section */
 		B3346E9315D3D3A000220E6B /* FHActRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHActRequest.h; sourceTree = "<group>"; };
 		B3346E9415D3D3A000220E6B /* FHActRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHActRequest.m; sourceTree = "<group>"; };
-		B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAuthReqeust.h; sourceTree = "<group>"; };
-		B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAuthReqeust.m; sourceTree = "<group>"; };
+		B3346E9815D3D3C500220E6B /* FHAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHAuthRequest.h; sourceTree = "<group>"; };
+		B3346E9915D3D3C600220E6B /* FHAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAuthRequest.m; sourceTree = "<group>"; };
 		B3346E9C15D3F92900220E6B /* FHInitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHInitRequest.h; sourceTree = "<group>"; };
 		B3346E9D15D3F92900220E6B /* FHInitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHInitRequest.m; sourceTree = "<group>"; };
 		B3951AAB15D2B96A0091054A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -287,6 +288,7 @@
 		B3D7C54E15D291EF0019262E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B3D7C55015D2923C0019262E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B3D7C55215D292A10019262E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D84E94F0177C378E006DCE05 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84E94F1177C378E006DCE05 /* AdSupport.framework in Frameworks */,
 				B3AE9D9715D53141004EF454 /* SystemConfiguration.framework in Frameworks */,
 				B3AE9D9615D5313A004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9515D53134004EF454 /* MobileCoreServices.framework in Frameworks */,
@@ -366,6 +369,7 @@
 		B3D7C48515D28BE30019262E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D84E94F0177C378E006DCE05 /* AdSupport.framework */,
 				B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */,
 				B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */,
 				B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */,
@@ -402,8 +406,8 @@
 				B3D7C48915D28BE30019262E /* Supporting Files */,
 				B3346E9315D3D3A000220E6B /* FHActRequest.h */,
 				B3346E9415D3D3A000220E6B /* FHActRequest.m */,
-				B3346E9815D3D3C500220E6B /* FHAuthReqeust.h */,
-				B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */,
+				B3346E9815D3D3C500220E6B /* FHAuthRequest.h */,
+				B3346E9915D3D3C600220E6B /* FHAuthRequest.m */,
 				B3346E9C15D3F92900220E6B /* FHInitRequest.h */,
 				B3346E9D15D3F92900220E6B /* FHInitRequest.m */,
 				B3AE9D5E15D51733004EF454 /* FHHttpClient.h */,
@@ -622,7 +626,7 @@
 				B3D7C54815D28E2A0019262E /* NSString+Validation.h in Headers */,
 				B3D7C54A15D28EDB0019262E /* FH.h in Headers */,
 				B3346E9515D3D3A000220E6B /* FHActRequest.h in Headers */,
-				B3346E9A15D3D3C600220E6B /* FHAuthReqeust.h in Headers */,
+				B3346E9A15D3D3C600220E6B /* FHAuthRequest.h in Headers */,
 				B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */,
 				B3AE9D6015D51733004EF454 /* FHHttpClient.h in Headers */,
 				B3AE9DA915D566DD004EF454 /* FHOAuthViewController.h in Headers */,
@@ -805,7 +809,7 @@
 				B3D7C54715D28E2A0019262E /* NSString+MD5.m in Sources */,
 				B3D7C54915D28E2A0019262E /* NSString+Validation.m in Sources */,
 				B3346E9615D3D3A000220E6B /* FHActRequest.m in Sources */,
-				B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */,
+				B3346E9B15D3D3C600220E6B /* FHAuthRequest.m in Sources */,
 				B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */,
 				B3AE9D6115D51733004EF454 /* FHHttpClient.m in Sources */,
 				B3AE9DAA15D566DD004EF454 /* FHOAuthViewController.m in Sources */,
@@ -834,7 +838,7 @@
 				B3AE9D6D15D52C40004EF454 /* FHResponse.m in Sources */,
 				B3AE9D6E15D52C52004EF454 /* FHInitRequest.m in Sources */,
 				B3AE9D6F15D52C55004EF454 /* FHActRequest.m in Sources */,
-				B3AE9D7015D52C5A004EF454 /* FHAuthReqeust.m in Sources */,
+				B3AE9D7015D52C5A004EF454 /* FHAuthRequest.m in Sources */,
 				B3AE9D7115D52C70004EF454 /* ASIDownloadCache.m in Sources */,
 				B3AE9D7215D52C75004EF454 /* ASIFormDataRequest.m in Sources */,
 				B3AE9D7315D52C87004EF454 /* ASIHTTPRequest.m in Sources */,
@@ -875,6 +879,7 @@
 		B33842F215E237B3004DE63E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -882,6 +887,7 @@
 		B33842F315E237B3004DE63E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -893,6 +899,7 @@
 					arm6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -904,6 +911,7 @@
 					arm6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -964,6 +972,7 @@
 					"$(inherited)",
 					"${SDKROOT}/usr/include/libxml2",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -991,6 +1000,7 @@
 					"$(inherited)",
 					"${SDKROOT}/usr/include/libxml2",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -1015,6 +1025,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FH/FH-Prefix.pch";
 				INFOPLIST_FILE = "FHTests/FHTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = octest;
@@ -1031,6 +1042,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FH/FH-Prefix.pch";
 				INFOPLIST_FILE = "FHTests/FHTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = octest;
