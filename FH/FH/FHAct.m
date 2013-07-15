@@ -27,8 +27,11 @@
 }
 
 - (void)setArgs:(NSDictionary * )arguments {
-  args = [NSMutableDictionary dictionaryWithDictionary:arguments];
-  NSLog(@"args set to  %@",args);
+    args = [NSMutableDictionary dictionaryWithDictionary:arguments];
+    NSDictionary * defaults = [self getDefaultParams];
+    [args setValue:defaults forKey:@"__fh"];
+    [defaults release];
+   NSLog(@"args set to  %@",args);
 }
 
 - (NSDictionary *)args{

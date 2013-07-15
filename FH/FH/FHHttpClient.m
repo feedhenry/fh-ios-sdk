@@ -11,6 +11,8 @@
 #import "FHResponse.h"
 #import "ASIDownloadCache.h"
 #import "FH.h"
+#import "FHConfig.h"
+#import "JSONKit.h"
 
 
 @implementation FHHttpClient
@@ -44,12 +46,14 @@
   NSLog(@"Request URL is : %@", [apicall absoluteString]);
 #endif
   //startrequest
-  __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
-  [request addRequestHeader:@"Content-Type" value:@"application/json"];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
   //add params to the post request
+    NSString * apiKeyVal = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
+    [request addRequestHeader:@"Content-Type" value:@"application/json"];
+    [request addRequestHeader:@"x-fh-auth-app" value:apiKeyVal];
   if([fhact args] && [[fhact args] count]>0){
-    [request setPostBody:[NSMutableData dataWithData:[[fhact argsAsString] dataUsingEncoding:NSUTF8StringEncoding]]];
-   }
+      [request appendPostData:[[fhact args] JSONData]];
+  }
   //wrap the passed block inside our own success block to allow for
   //further manipulation
   [request setCompletionBlock:^{
@@ -68,7 +72,7 @@
     
     if([request responseStatusCode] == 200){
       NSString* status = [fhResponse.parsedResponse valueForKey:@"status"];
-      if((nil == status) || (nil != status && [[status lowercaseString] isEqualToString:@"ok"])){
+      if((nil == status) || (nil != status)){
         [self successWithResponse:fhResponse AndAction:fhact];
         return;
       }
