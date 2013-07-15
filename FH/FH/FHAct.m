@@ -30,7 +30,6 @@
     args = [NSMutableDictionary dictionaryWithDictionary:arguments];
     NSDictionary * defaults = [self getDefaultParams];
     [args setValue:defaults forKey:@"__fh"];
-    [defaults release];
    NSLog(@"args set to  %@",args);
 }
 
@@ -84,18 +83,6 @@
 - (void) exec:(BOOL)pAsync WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
   async = pAsync;
   [httpClient sendRequest:self AndSuccess:sucornil AndFailure:failornil];
-}
-
-- (void)dealloc{
-  method  = nil;
-  [method release];
-  args    = nil;
-  [args release];
-  cloudProps = nil;
-  [cloudProps release];
-  httpClient = nil;
-  [httpClient release];
-  [super dealloc];
 }
 
 @end

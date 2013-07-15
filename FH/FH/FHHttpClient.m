@@ -36,7 +36,7 @@
   }
 #endif
   if (![FH isOnline]) {
-    FHResponse* res = [[[FHResponse alloc] init] autorelease];
+    FHResponse* res = [[FHResponse alloc] init];
     [res setError:[NSError errorWithDomain:@"FHHttpClient" code:FHSDKNetworkOfflineErrorType userInfo:[NSDictionary dictionaryWithObject:@"offline" forKey:@"error"]]];
     [self failWithResponse:res AndAction:fhact];
     return;
@@ -46,7 +46,7 @@
   NSLog(@"Request URL is : %@", [apicall absoluteString]);
 #endif
   //startrequest
-    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
+    __block __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
   //add params to the post request
     NSString * apiKeyVal = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -64,7 +64,7 @@
 #endif
     //parse, build response, delegate
     NSData * responseData = [request responseData];
-    FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
+    FHResponse * fhResponse = [[FHResponse alloc] init];
     fhResponse.responseStatusCode = [request responseStatusCode];
     fhResponse.rawResponseAsString = [request responseString];
     fhResponse.rawResponse = responseData;
@@ -92,7 +92,7 @@
   [request setFailedBlock:^{
     NSError * reqError = [request error];
     NSData * responseData = [request responseData];
-    FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
+    FHResponse * fhResponse = [[FHResponse alloc] init];
     fhResponse.rawResponseAsString = [request responseString];
     fhResponse.rawResponse = responseData;
     fhResponse.error = reqError;
@@ -139,12 +139,6 @@
   if (action.delegate && [action.delegate respondsToSelector:delFailSel]) {
     [(FHAct *)action.delegate performSelectorOnMainThread:delFailSel withObject:fhres waitUntilDone:YES];
   }
-}
-
--(void)dealloc{
-  [successHandler release];
-  [failureHandler release];
-  [super dealloc];
 }
 
 @end

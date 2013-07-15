@@ -22,7 +22,7 @@
   self = [super init];
   if(self){
     request = [NSURLRequest requestWithURL:_authRequest cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
-    delegate = [_delegate retain];
+    delegate = _delegate;
     finishSeletor = _finishedSelector;
     finished = FALSE;
     authInfo = nil;
@@ -71,7 +71,6 @@
   //create the close button
   UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle: @"Close" style: UIBarButtonSystemItemDone target: self action: @selector(closeView)];
   [titleBarItem setLeftBarButtonItem:done];
-  [done release];
   
   [titleBar pushNavigationItem:titleBarItem animated:NO];
   
@@ -81,7 +80,7 @@
 - (void) closeView
 {
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
-  FHResponse* fhres = [[[FHResponse alloc] init] autorelease];
+  FHResponse* fhres = [[FHResponse alloc] init] ;
   fhres.parsedResponse = authInfo;
   if(delegate != nil && finishSeletor != nil){
     NSMethodSignature* method = [delegate methodSignatureForSelector:finishSeletor];
@@ -90,13 +89,11 @@
     [invocation setTarget:delegate];
     [invocation setArgument:&fhres atIndex:2];
     [invocation invoke];
-    [delegate autorelease];
     delegate = nil;
   }
 #if NS_BLOCKS_AVAILABLE
   if (completeHandler) {
     completeHandler(fhres);
-    [completeHandler autorelease];
     completeHandler = nil;
   }
 #endif
@@ -171,25 +168,6 @@
   [activityView stopAnimating];
   [topView sendSubviewToBack:activityView];
 }
-
--(void)dealloc
-{
-  [activityView release];
-  webView.delegate = nil;
-  [webView release];
-  [topView release];
-  [titleBar release];
-  if(delegate){
-    [delegate release];
-  }
-  [authInfo release];
-#if NS_BLOCKS_AVAILABLE
-  if(completeHandler){
-    [completeHandler release];
-  }
-#endif
-  [super dealloc];
-};
 
 
 @end

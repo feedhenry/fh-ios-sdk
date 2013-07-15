@@ -48,8 +48,5 @@ static FHConfig * shared = nil;
   return [[FH_OpenUDID value] MD5Hash];
 }
 
--(void)dealloc{
-  [super dealloc];
-}
 
 @end

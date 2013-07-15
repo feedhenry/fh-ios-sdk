@@ -20,7 +20,7 @@
 @interface FHAct : NSObject{
   NSString * method;
   NSMutableDictionary * args;
-  id<FHResponseDelegate>  delegate;
+  id<FHResponseDelegate> __weak delegate;
   NSUInteger cacheTimeout;
   NSDictionary * cloudProps;
   NSString * uid;

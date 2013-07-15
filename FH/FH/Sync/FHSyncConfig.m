@@ -11,6 +11,7 @@
 @implementation FHSyncConfig
 
 @synthesize syncFrequency = _syncFrequency;
+@synthesize autoSyncLocalUpdates = _autoSyncLocalUpdates;
 @synthesize notifyClientStorageFailed = _notifyClientStorageFailed;
 @synthesize notifyDeltaReceived = _notifyDeltaReceived;
 @synthesize notifyOfflineUpdate = _notifyOfflineUpdate;
@@ -28,6 +29,7 @@
   self = [super init];
   if(self){
     self.syncFrequency = 10.0;
+    self.autoSyncLocalUpdates = YES;
     self.notifyClientStorageFailed = NO;
     self.notifyDeltaReceived = NO;
     self.notifyOfflineUpdate = NO;

@@ -43,7 +43,7 @@ static Reachability* reachability;
   initCalled = true;
   if(!ready){
     if(!_isOnline){
-      FHResponse* res = [[[FHResponse alloc] init] autorelease];
+      FHResponse* res = [[FHResponse alloc] init];
       [res setError:[NSError errorWithDomain:@"FHInit" code:FHSDKNetworkOfflineErrorType userInfo:[NSDictionary dictionaryWithObject:@"offline" forKey:@"error"]]];
       if (failornil) {
         void (^handler)(FHResponse *resp) = [failornil copy];
@@ -51,7 +51,7 @@ static Reachability* reachability;
       }
       return;
     }
-    FHInitRequest * init   = [[[FHInitRequest alloc] initWithProps:props] autorelease];
+    FHInitRequest * init   = [[FHInitRequest alloc] initWithProps:props];
     init.method       = FH_INIT;
     
     void (^success)(FHResponse *) = ^(FHResponse * res){
@@ -88,7 +88,7 @@ static Reachability* reachability;
 + (void) registerForNetworkReachabilityNotifications
 {
   if(!reachability){
-    reachability = [[Reachability reachabilityForInternetConnection] retain];
+    reachability = [Reachability reachabilityForInternetConnection];
     if([reachability currentReachabilityStatus] == ReachableViaWiFi || [reachability currentReachabilityStatus] == ReachableViaWWAN ){
       _isOnline = YES;
     } else {
@@ -104,7 +104,6 @@ static Reachability* reachability;
   [[NSNotificationCenter defaultCenter] removeObserver:self];
   if(reachability){
     [reachability stopNotifier];
-    [reachability release];
   }
 }
 
@@ -132,11 +131,11 @@ static Reachability* reachability;
   
   switch (action) {
     case FH_ACTION_CLOUD:
-      act         = [[[FHActRequest alloc] initWithProps:props] autorelease];
+      act         = [[FHActRequest alloc] initWithProps:props];
       act.method  = FH_CLOUD;
       break;
     case FH_ACTION_AUTH:
-      act         = [[[FHAuthReqeust alloc] initWithProps:props] autorelease];
+      act         = [[FHAuthReqeust alloc] initWithProps:props];
       act.method  = FH_AUTH;
       break;
     default:

@@ -10,6 +10,7 @@
 
 @interface FHSyncConfig : NSObject{
   double _syncFrequency;
+  BOOL _autoSyncLocalUpdates;
   BOOL _notifySyncStarted;
   BOOL _notifySyncCompleted;
   BOOL _notifySyncCollision;
@@ -23,6 +24,7 @@
 }
 
 @property double syncFrequency;
+@property BOOL autoSyncLocalUpdates;
 @property BOOL notifySyncStarted;
 @property BOOL notifySyncCompleted;
 @property BOOL notifySyncCollision;

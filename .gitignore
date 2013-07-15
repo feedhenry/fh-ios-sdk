@@ -20,3 +20,4 @@ FHSyncTestApp/FHSyncTestApp/build/*
 *.pbxuser
 *.xcworkspace
 xcuserdata
+DerivedData/*

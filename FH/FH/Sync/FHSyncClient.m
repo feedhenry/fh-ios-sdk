@@ -39,12 +39,12 @@
 
 static FHSyncClient* shared = nil;
 
-- (void) initWithConfig:(FHSyncConfig*) config
+- (id) initWithConfig:(FHSyncConfig*) config
 {
   self = [super init];
   if(self){
-    _syncConfig = [config retain];
-    _runningTasks = [[NSMutableDictionary dictionary] retain];
+    _syncConfig = config;
+    _runningTasks = [NSMutableDictionary dictionary];
     NSString* storageFilePath = [self getStorageFilePath];
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:storageFilePath];
     if (fileExists) {
@@ -54,13 +54,14 @@ static FHSyncClient* shared = nil;
         NSLog(@"Failed to read file content from file : %@", storageFilePath );
         _dataSets = [[NSMutableDictionary alloc] init];
       } else {
-        _dataSets = [[fileContent mutableObjectFromJSONString] retain];
+        _dataSets = [fileContent mutableObjectFromJSONString];
       }
     } else {
       _dataSets = [[NSMutableDictionary alloc] init];
     }
     _initialized = YES;
   }
+  return self;
 }
 
 + (FHSyncClient*) getInstance
@@ -243,7 +244,6 @@ static FHSyncClient* shared = nil;
   if(doSend){
     FHSyncNotificationMessage * notification = [[FHSyncNotificationMessage alloc] initWithDataId:dataId AndUID:uid AndCode:code AndMessage:message];
     [[NSNotificationCenter defaultCenter] postNotificationName:kFHSyncStateChangedNotification object:notification];
-    [notification release];
   }
 }
 
@@ -464,11 +464,4 @@ static FHSyncClient* shared = nil;
 
 }
 
-- (void) dealloc
-{
-  _runningTasks = nil;
-  [_runningTasks release];
-  [_dataSets release];
-  [super dealloc];
-}
 @end
