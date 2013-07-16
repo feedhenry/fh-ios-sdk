@@ -8,7 +8,7 @@
 
 #import "GoogleAuthMethod.h"
 #import "FH.h"
-#import "FHAuthReqeust.h"
+#import "FHAuthRequest.h"
 #import "FHResponse.h"
 #import "JSONKit.h"
 
@@ -16,7 +16,7 @@
 
 - (void) performAuthWithViewController:(UIViewController*) viewController
 {
-  FHAuthReqeust* authRequest = [FH buildAuthRequest];
+  FHAuthRequest* authRequest = [FH buildAuthRequest];
   [authRequest authWithPolicyId:policyId];
   authRequest.parentViewController = viewController;
   void (^success)(FHResponse *)=^(FHResponse * res){

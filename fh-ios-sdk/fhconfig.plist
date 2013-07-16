@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>host</key>
-	<string>http://testing.stg2.feedhenry.com</string>
+	<string>http://testing.kissinger.henora.net</string>
 	<key>appid</key>
-	<string>MDN2w3G24qEP6nkY1OPUSCue</string>
+	<string>LU9aH_0NJ--cnIs15ffemVDy</string>
 	<key>appkey</key>
-	<string>7d1d0eb813e9c68152f991e35e95dfc665d19f37</string>
+	<string>b4fa699bdda36afc3a5d8f0ea68a508a52533ad9</string>
 	<key>mode</key>
 	<string>dev</string>
 </dict>

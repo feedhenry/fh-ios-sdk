@@ -88,7 +88,7 @@
   NSMutableDictionary* authRes = [NSMutableDictionary dictionary];
   [authRes setValue:@"testToken" forKey:@"sessionToken"];
   
-  FHAuthReqeust* auth = [[FHAuthReqeust alloc] initWithProps:initRes];
+  FHAuthRequest* auth = [[FHAuthRequest alloc] initWithProps:initRes];
   auth.method = FH_AUTH;
   [auth setHttpClient:httpClient];
   [auth authWithPolicyId:@"testPolicy"];

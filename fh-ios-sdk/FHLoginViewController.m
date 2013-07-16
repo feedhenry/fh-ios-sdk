@@ -8,7 +8,7 @@
 
 #import "FHLoginViewController.h"
 #import "FH.h"
-#import "FHAuthReqeust.h"
+#import "FHAuthRequest.h"
 #import "FHResponse.h"
 
 @interface FHLoginViewController ()
@@ -91,7 +91,7 @@
     return [self showMessage:@"Error" message:@"Password field is required"];
   }
   [self setIsWaiting:YES];
-  FHAuthReqeust* authRequest = [FH buildAuthRequest];
+  FHAuthRequest* authRequest = [FH buildAuthRequest];
   [authRequest authWithPolicyId:policyId UserId:userName Password:password];
   void (^success)(FHResponse *)=^(FHResponse * res){
     [self setIsWaiting:NO];
