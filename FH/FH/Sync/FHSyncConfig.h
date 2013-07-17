@@ -37,4 +37,8 @@
 @property BOOL notifySyncFailed;
 
 - (id) init;
+- (NSDictionary*) JSONData;
+- (NSString*) JSONString;
++ (FHSyncConfig*) objectFromJSONString:(NSString*) jsonStr;
++ (FHSyncConfig*) objectFromJSONData:(NSDictionary*) jsonData;
 @end

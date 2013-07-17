@@ -21,3 +21,4 @@ FHSyncTestApp/FHSyncTestApp/build/*
 *.xcworkspace
 xcuserdata
 DerivedData/*
+FHSyncTestApp/FHSyncTestApp/DerivedData/*

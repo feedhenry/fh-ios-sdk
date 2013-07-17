@@ -30,8 +30,8 @@
 
 + (FHSyncClient*) getInstance;
 - (id) initWithConfig:(FHSyncConfig*) config;
-- (void) manageWithDataId:(NSString* ) dataId AndQuery:(NSDictionary* ) queryParams;
-- (NSDictionary *) readWidthDataId:(NSString*) dataId AndUID:(NSString*) uid;
+- (void) manageWithDataId:(NSString* ) dataId AndConfig:(FHSyncConfig*) config AndQuery:(NSDictionary* ) queryParams;
+- (NSDictionary *) readWithDataId:(NSString*) dataId AndUID:(NSString*) uid;
 - (NSDictionary *) listWithDataId:(NSString*) dataId;
 - (NSDictionary *) createWithDataId:(NSString*) dataId AndData:(NSDictionary *) data;
 - (NSDictionary *) updateWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndData:(NSDictionary *) data;

@@ -14,10 +14,10 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "FH.h"
 #import "FHResponse.h"
+#import "FHSyncUtils.h"
 
 
 
-#define STORAGE_FILE_PATH @".fh_sync.json"
 
 @interface FHSyncClient()
 {
@@ -43,23 +43,11 @@ static FHSyncClient* shared = nil;
 {
   self = [super init];
   if(self){
-    _syncConfig = config;
+    _syncConfig = [config copy];
     _runningTasks = [NSMutableDictionary dictionary];
-    NSString* storageFilePath = [self getStorageFilePath];
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:storageFilePath];
-    if (fileExists) {
-      NSError* error = nil;
-      NSString * fileContent = [NSString stringWithContentsOfFile:storageFilePath encoding:NSUTF8StringEncoding error:&error];
-      if (error){
-        NSLog(@"Failed to read file content from file : %@", storageFilePath );
-        _dataSets = [[NSMutableDictionary alloc] init];
-      } else {
-        _dataSets = [fileContent mutableObjectFromJSONString];
-      }
-    } else {
-      _dataSets = [[NSMutableDictionary alloc] init];
-    }
+    _dataSets = [NSMutableDictionary dictionary];
     _initialized = YES;
+    [self datasetMonitor];
   }
   return self;
 }
@@ -74,36 +62,99 @@ static FHSyncClient* shared = nil;
   return shared;
 }
 
+- (void) datasetMonitor
+{
+  NSLog(@"start to run checkDataets");
+  [self checkDatasets];
+  [NSTimer scheduledTimerWithTimeInterval:500 target:self selector:@selector(datasetMonitor:) userInfo:[NSDictionary dictionary] repeats:NO];
+}
+
+- (void) checkDatasets
+{
+  [self.dataSets enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
+    NSDictionary* dataset = (NSDictionary*) obj;
+    NSNumber* syncRunning = [dataset objectForKey:@"syncRunning"];
+    if( nil != syncRunning && ![syncRunning boolValue]){
+      //sync isn't running for dataId at the moment, check if needs to start it
+      NSDate* lastSyncStart = [dataset objectForKey:@"syncLoopStart"];
+      NSDate* lastSyncCmp = [dataset objectForKey:@"syncLoopEnd"];
+      if( nil == lastSyncStart){
+        //sync never started
+        [dataset setValue:[NSNumber numberWithBool:YES] forKey:@"syncPending"];
+      } else if(nil != lastSyncCmp){
+        //otherwise check how long since the last sync has finished
+        NSTimeInterval timeSinceLastSync = [[NSDate date] timeIntervalSinceDate:lastSyncCmp];
+        FHSyncConfig* dataSyncConfig = [dataset objectForKey:@"config"];
+        if(timeSinceLastSync > dataSyncConfig.syncFrequency){
+          [dataset setValue:[NSNumber numberWithBool:YES] forKey:@"syncPending"];
+        }
+      }
+      if([[dataset objectForKey:@"syncPending"] boolValue]){
+        NSLog(@"start to run syncLoopWithDataId %@", key);
+        [self syncLoopWithDataId:(NSString*)key];
+      }
+    }
+  }];
+}
+
 - (BOOL) isOnline
 {
   return [FH isOnline];
 }
 
-- (NSString*) getStorageFilePath
-{
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-  NSString *documentsDir = [paths objectAtIndex:0];
-  if(![[NSFileManager defaultManager] fileExistsAtPath:documentsDir]){
-    [[NSFileManager defaultManager] createDirectoryAtPath:documentsDir withIntermediateDirectories:YES attributes:nil error:nil];
-  }
-  NSString *storageFilePath = [documentsDir stringByAppendingPathComponent:STORAGE_FILE_PATH];
-  return storageFilePath;
-}
-
-- (void) manageWithDataId:(NSString* ) dataId AndQuery:(NSDictionary* ) queryParams
+- (void) manageWithDataId:(NSString* ) dataId AndConfig:(FHSyncConfig *)config AndQuery:(NSDictionary *)queryParams
 {
   if(!_initialized){
     [NSException raise:@"FHSyncClient isn't initialized" format:@"FHSyncClient hasn't been initialized. Have you called the init function?"];
   }
-  if(![_dataSets objectForKey:dataId]){
-    NSMutableDictionary* dataSet = [NSMutableDictionary dictionary];
-    [dataSet setObject:[NSMutableDictionary dictionary] forKey:@"pending"];
-    NSMutableDictionary* dataSetConfig = [NSMutableDictionary dictionary];
-    [dataSetConfig setObject:queryParams forKey:@"query_params"];
-    [dataSet setObject:dataSetConfig forKey:@"config"];
+  
+  //first, check if the dataset for dataId is already loaded
+  NSMutableDictionary* dataSet = [_dataSets objectForKey:dataId];
+  if(nil == dataSet){
+    //not loaded yet, try to read it from a local file
+    NSError* error = nil;
+    dataSet = [FHSyncUtils loadDataFromFile:[dataId stringByAppendingPathExtension:STORAGE_FILE_PATH] error: error];
+    if (nil == error) {
+      //data loaded successfully
+      [self doNotifyWithDataId:dataId uid:NULL code:LOCAL_UPDATE_APPLIED_MESSAGE message:@"load"];
+    } else {
+      //cat not load data, create a new map for it
+      dataSet = [NSMutableDictionary dictionary];
+      [dataSet setObject:[NSMutableDictionary dictionary] forKey:@"pending"];
+    }
     [_dataSets setObject:dataSet forKey:dataId];
   }
-  [self syncLoopWithDataId:dataId];
+  
+  //allow to set sync config options for each dataset
+  FHSyncConfig* dataSyncConfig = [_syncConfig copy];
+  if (nil != config) {
+    dataSyncConfig = [config copy];
+  }
+  [dataSet setObject:dataSyncConfig forKey:@"config"];
+  
+  //if the dataset is not initialised yet, do the init
+  NSNumber* inited = [dataSet objectForKey:@"initialised"];
+  if(nil == inited || ![inited boolValue]){
+    [dataSet setObject:queryParams forKey:@"query_params"];
+    [dataSet setObject:[NSNumber numberWithBool:NO] forKey:@"syncRunning"];
+    [dataSet setObject:[NSNumber numberWithBool:YES] forKey:@"syncPending"];
+    [dataSet setObject:[NSNumber numberWithBool:YES] forKey:@"initialised"];
+    [dataSet setObject:[NSMutableDictionary dictionary] forKey:@"meta"];
+  }
+  
+  [self saveDataSetWithDataId:dataId];
+}
+
+- (void) saveDataSetWithDataId:(NSString*) dataId
+{
+  @synchronized(self){
+    NSMutableDictionary* data = [_dataSets objectForKey:dataId];
+    NSError* error = nil;
+    [FHSyncUtils saveData:data toFile:[dataId stringByAppendingPathExtension:STORAGE_FILE_PATH] error:error];
+    if (nil != error) {
+      [self doNotifyWithDataId:dataId uid:NULL code:CLIENT_STORAGE_FAILED_MESSAGE message:[NSString stringWithFormat:@"failed to save file. Error: %@", [error localizedDescription]]];
+    }
+  }
 }
 
 - (void) stopWithDataId:(NSString*) dataId
@@ -133,7 +184,7 @@ static FHSyncClient* shared = nil;
   return data;
 }
 
-- (NSDictionary*) readWidthDataId:(NSString *)dataId AndUID:(NSString *)uid
+- (NSDictionary*) readWithDataId:(NSString *)dataId AndUID:(NSString *)uid
 {
   NSDictionary * dataSet = [self listWithDataId:dataId];
   NSDictionary * data = nil;
@@ -158,52 +209,70 @@ static FHSyncClient* shared = nil;
   return [self addPendingObjectWithDataId:dataId uid:uid data:nil AndAction:@"delete"];
 }
 
+- (NSDictionary*) getPending:(NSString*) dataId
+{
+  NSDictionary* dataset = [_dataSets objectForKey:dataId];
+  if(nil != dataset){
+    return [dataset objectForKey:@"pending"];
+  }
+  return nil;
+}
+
+- (void) clearPending:(NSString*) dataId
+{
+  NSMutableDictionary* dataset = [_dataSets objectForKey:dataId];
+  if(nil != dataset){
+    [dataset setObject:[NSMutableDictionary dictionary] forKey:@"pending"];
+    [self saveDataSetWithDataId:dataId];
+  }
+}
+
+- (void) storePendingObjWithDataId:(NSString*) dataId uid:(NSString*) uid obj:(NSMutableDictionary* ) obj action:(NSString* ) action
+{
+  NSString* hashValue = [FHSyncUtils generateHashForData:obj];
+  [obj setObject:hashValue forKey:@"hash"];
+  NSMutableDictionary* dataset = [_dataSets objectForKey:dataId];
+  if(nil != dataset){
+    NSMutableDictionary* pendings = [dataset objectForKey:@"pending"];
+    [pendings setObject:obj forKey:hashValue];
+    [self updateDatasetFromLocal:dataset obj:obj];
+    if(_syncConfig.autoSyncLocalUpdates){
+      [dataset setObject:[NSNumber numberWithBool:YES] forKey:@"syncPending"];
+    }
+    [self saveDataSetWithDataId:dataId];
+    [self doNotifyWithDataId:dataId uid:uid code:LOCAL_UPDATE_APPLIED_MESSAGE message:action];
+  }
+}
+
 - (NSDictionary*) addPendingObjectWithDataId:(NSString*) dataId uid:(NSString*) uid data:(NSDictionary*) data AndAction:(NSString*) action
 {
   if(![self isOnline]){
     [self doNotifyWithDataId:dataId uid:uid code:OFFLINE_UPDATE_MESSAGE message:action];
   }
-  NSDictionary* existingData = [self readWidthDataId:dataId AndUID:uid];
   NSMutableDictionary * pendingObj = [NSMutableDictionary dictionary];
-  if(uid){
-    [pendingObj setValue:uid forKey:@"uid"];
-  }
+  [pendingObj setObject:[NSNumber numberWithBool:NO] forKey:@"inFlight"];
   [pendingObj setValue:action forKey:@"action"];
-  if([existingData objectForKey:@"data"]){
-    [pendingObj setObject:[existingData objectForKey:@"data"] forKey:@"pre"];
-  }
+  
   if(data){
     [pendingObj setObject:data forKey:@"post"];
+    [pendingObj setObject:[FHSyncUtils generateHashForData:data] forKey:@"postHash"];
   }
-  NSString* hash = [self generateHashWithString:[pendingObj JSONString]];
-  [pendingObj setValue:hash forKey:@"hash"];
   NSDate * now = [NSDate date];
   NSNumber *ts = [NSNumber numberWithDouble:[now timeIntervalSince1970] * 1000];
   [pendingObj setValue:ts  forKey:@"timestamp"];
   
-  NSMutableDictionary * dataSet = [_dataSets objectForKey:dataId];
-  if (dataSet) {
-    [[dataSet objectForKey:@"pending"] setObject:pendingObj forKey:hash];
-    [[dataSet objectForKey:@"data"] setObject:data forKey:uid];
-    [self saveData];
-    [self doNotifyWithDataId:dataId uid:uid code:LOCAL_UPDATE_APPLIED_MESSAGE message:action];
-  }
-  return pendingObj;
-}
-
-- (void) saveData
-{
-  @synchronized(self){
-    NSString* dataToWrite = [_dataSets JSONString];
-    NSString* filePath = [self getStorageFilePath];
-    if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
-      [[NSFileManager defaultManager] createFileAtPath:filePath contents:[dataToWrite dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
-    } else {
-      NSError* error = nil;
-      [dataToWrite writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-      if(error){
-        NSLog(@"Failed to write data to file at path %@ with error %@", filePath, error);
+  if([action isEqualToString:@"create"]){
+    [pendingObj setValue:[pendingObj valueForKey:@"postHash"] forKey:@"uid"];
+    [self storePendingObjWithDataId:dataId uid:uid obj:pendingObj action:action];
+  } else {
+    NSDictionary* existingData = [self readWithDataId:dataId AndUID:uid];
+    if(nil != existingData){
+      [pendingObj setValue:uid forKey:@"uid"];
+      if([existingData objectForKey:@"data"]){
+        [pendingObj setObject:[existingData objectForKey:@"data"] forKey:@"pre"];
+        [pendingObj setValue:[FHSyncUtils generateHashForData:[existingData objectForKey:@"data"]] forKey:@"preHash"];
       }
+      [self storePendingObjWithDataId:dataId uid:uid obj:pendingObj action:action];
     }
   }
 }
@@ -246,22 +315,6 @@ static FHSyncClient* shared = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kFHSyncStateChangedNotification object:notification];
   }
 }
-
-- (NSString*) generateHashWithString:(NSString*) text
-{
-  NSData * data = [text dataUsingEncoding:NSUTF8StringEncoding];
-  uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-  
-  CC_SHA1(data.bytes, data.length, digest);
-  
-  NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-  
-  for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
-  {
-    [output appendFormat:@"%02x", digest[i]];
-  }
-  
-  return output;}
 
 - (void) syncLoopWithDataId:(NSString *) dataId
 {

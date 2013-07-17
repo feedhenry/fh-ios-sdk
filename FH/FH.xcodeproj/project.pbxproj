@@ -41,6 +41,19 @@
 		B3346E9B15D3D3C600220E6B /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
 		B3346E9E15D3F92900220E6B /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9C15D3F92900220E6B /* FHInitRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
+		B37370C31796A800000EC27C /* FHSyncUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD2F1795DEA40010EF76 /* FHSyncUtils.m */; };
+		B37370C41796A800000EC27C /* FHSyncUtils.h in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD301795DEA40010EF76 /* FHSyncUtils.h */; };
+		B37370C71796B0E8000EC27C /* FHSyncDataRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B37370C61796B0E8000EC27C /* FHSyncDataRecordTest.m */; };
+		B37370C81796B3EA000EC27C /* FHSyncDataset.h in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD2D1795DEA40010EF76 /* FHSyncDataset.h */; };
+		B37370C91796B3EA000EC27C /* FHSyncDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD2E1795DEA40010EF76 /* FHSyncDataset.m */; };
+		B37370CA1796B3EA000EC27C /* FHSyncPendingDataRecord.h in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD351795E0560010EF76 /* FHSyncPendingDataRecord.h */; };
+		B37370CB1796B3EA000EC27C /* FHSyncPendingDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD361795E0560010EF76 /* FHSyncPendingDataRecord.m */; };
+		B37370CC1796B3EA000EC27C /* FHSyncDataRecord.h in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */; };
+		B37370CD1796B3EA000EC27C /* FHSyncDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */; };
+		B37370CE1796B407000EC27C /* FHSyncConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C3D96F1610BC4600943838 /* FHSyncConfig.m */; };
+		B37370D11796B8B3000EC27C /* FHSyncPendingDataRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B37370D01796B8B3000EC27C /* FHSyncPendingDataRecordTest.m */; };
+		B37370D41796BDE6000EC27C /* FHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B37370D31796BDE6000EC27C /* FHTestUtils.m */; };
+		B37370D71796E3BA000EC27C /* FHSyncDatasetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B37370D61796E3BA000EC27C /* FHSyncDatasetTest.m */; };
 		B3AE9D5C15D51017004EF454 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
 		B3AE9D5D15D5112E004EF454 /* FH_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50515D28E130019262E /* FH_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3AE9D6015D51733004EF454 /* FHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AE9D5E15D51733004EF454 /* FHHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,7 +95,6 @@
 		B3AE9DA915D566DD004EF454 /* FHOAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AE9DA715D566DD004EF454 /* FHOAuthViewController.h */; };
 		B3AE9DAA15D566DD004EF454 /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
 		B3C3D96C1610BB4E00943838 /* FHSyncClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B3C3D96A1610BB4E00943838 /* FHSyncClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3C3D96D1610BB4E00943838 /* FHSyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C3D96B1610BB4E00943838 /* FHSyncClient.m */; };
 		B3C3D9701610BC4600943838 /* FHSyncConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3C3D96E1610BC4600943838 /* FHSyncConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3C3D9711610BC4600943838 /* FHSyncConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C3D96F1610BC4600943838 /* FHSyncConfig.m */; };
 		B3D7C48715D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
@@ -163,6 +175,15 @@
 		B3D7C54D15D291B40019262E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
 		B3D7C54F15D291EF0019262E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
+		B3E6DD26179584A60010EF76 /* FHSyncUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD25179584A60010EF76 /* FHSyncUtilsTest.m */; };
+		B3E6DD311795DEA40010EF76 /* FHSyncDataset.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E6DD2D1795DEA40010EF76 /* FHSyncDataset.h */; };
+		B3E6DD321795DEA40010EF76 /* FHSyncDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD2E1795DEA40010EF76 /* FHSyncDataset.m */; };
+		B3E6DD331795DEA40010EF76 /* FHSyncUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD2F1795DEA40010EF76 /* FHSyncUtils.m */; };
+		B3E6DD341795DEA40010EF76 /* FHSyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E6DD301795DEA40010EF76 /* FHSyncUtils.h */; };
+		B3E6DD371795E0570010EF76 /* FHSyncPendingDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E6DD351795E0560010EF76 /* FHSyncPendingDataRecord.h */; };
+		B3E6DD381795E0570010EF76 /* FHSyncPendingDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD361795E0560010EF76 /* FHSyncPendingDataRecord.m */; };
+		B3E6DD3B1795E06C0010EF76 /* FHSyncDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */; };
+		B3E6DD3C1795E06C0010EF76 /* FHSyncDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */; };
 		B3F31DAC15D5C16000CE9D8F /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +213,14 @@
 		B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHAuthReqeust.m; sourceTree = "<group>"; };
 		B3346E9C15D3F92900220E6B /* FHInitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHInitRequest.h; sourceTree = "<group>"; };
 		B3346E9D15D3F92900220E6B /* FHInitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHInitRequest.m; sourceTree = "<group>"; };
+		B37370C51796B0E8000EC27C /* FHSyncDataRecordTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSyncDataRecordTest.h; sourceTree = "<group>"; };
+		B37370C61796B0E8000EC27C /* FHSyncDataRecordTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSyncDataRecordTest.m; sourceTree = "<group>"; };
+		B37370CF1796B8B3000EC27C /* FHSyncPendingDataRecordTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSyncPendingDataRecordTest.h; sourceTree = "<group>"; };
+		B37370D01796B8B3000EC27C /* FHSyncPendingDataRecordTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSyncPendingDataRecordTest.m; sourceTree = "<group>"; };
+		B37370D21796BDE6000EC27C /* FHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHTestUtils.h; sourceTree = "<group>"; };
+		B37370D31796BDE6000EC27C /* FHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHTestUtils.m; sourceTree = "<group>"; };
+		B37370D51796E3BA000EC27C /* FHSyncDatasetTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSyncDatasetTest.h; sourceTree = "<group>"; };
+		B37370D61796E3BA000EC27C /* FHSyncDatasetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSyncDatasetTest.m; sourceTree = "<group>"; };
 		B3951AAB15D2B96A0091054A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		B3951AAE15D2B96A0091054A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B3951AAF15D2B96A0091054A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -212,7 +241,7 @@
 		B3AE9DA715D566DD004EF454 /* FHOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHOAuthViewController.h; sourceTree = "<group>"; };
 		B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHOAuthViewController.m; sourceTree = "<group>"; };
 		B3C3D96A1610BB4E00943838 /* FHSyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncClient.h; path = Sync/FHSyncClient.h; sourceTree = "<group>"; };
-		B3C3D96B1610BB4E00943838 /* FHSyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncClient.m; path = Sync/FHSyncClient.m; sourceTree = "<group>"; };
+		B3C3D96B1610BB4E00943838 /* FHSyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; name = FHSyncClient.m; path = Sync/FHSyncClient.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		B3C3D96E1610BC4600943838 /* FHSyncConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncConfig.h; path = Sync/FHSyncConfig.h; sourceTree = "<group>"; };
 		B3C3D96F1610BC4600943838 /* FHSyncConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncConfig.m; path = Sync/FHSyncConfig.m; sourceTree = "<group>"; };
 		B3D7C48315D28BE30019262E /* libFH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFH.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +328,16 @@
 		B3D7C54E15D291EF0019262E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B3D7C55015D2923C0019262E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B3D7C55215D292A10019262E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		B3E6DD24179584A60010EF76 /* FHSyncUtilsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSyncUtilsTest.h; sourceTree = "<group>"; };
+		B3E6DD25179584A60010EF76 /* FHSyncUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSyncUtilsTest.m; sourceTree = "<group>"; };
+		B3E6DD2D1795DEA40010EF76 /* FHSyncDataset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncDataset.h; path = Sync/FHSyncDataset.h; sourceTree = "<group>"; };
+		B3E6DD2E1795DEA40010EF76 /* FHSyncDataset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncDataset.m; path = Sync/FHSyncDataset.m; sourceTree = "<group>"; };
+		B3E6DD2F1795DEA40010EF76 /* FHSyncUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncUtils.m; path = Sync/FHSyncUtils.m; sourceTree = "<group>"; };
+		B3E6DD301795DEA40010EF76 /* FHSyncUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncUtils.h; path = Sync/FHSyncUtils.h; sourceTree = "<group>"; };
+		B3E6DD351795E0560010EF76 /* FHSyncPendingDataRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncPendingDataRecord.h; path = Sync/FHSyncPendingDataRecord.h; sourceTree = "<group>"; };
+		B3E6DD361795E0560010EF76 /* FHSyncPendingDataRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncPendingDataRecord.m; path = Sync/FHSyncPendingDataRecord.m; sourceTree = "<group>"; };
+		B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncDataRecord.h; path = Sync/FHSyncDataRecord.h; sourceTree = "<group>"; };
+		B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncDataRecord.m; path = Sync/FHSyncDataRecord.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,12 +398,20 @@
 		B3C3D9681610BB0A00943838 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				B3E6DD2D1795DEA40010EF76 /* FHSyncDataset.h */,
+				B3E6DD2E1795DEA40010EF76 /* FHSyncDataset.m */,
+				B3E6DD2F1795DEA40010EF76 /* FHSyncUtils.m */,
+				B3E6DD301795DEA40010EF76 /* FHSyncUtils.h */,
 				B3C3D96A1610BB4E00943838 /* FHSyncClient.h */,
 				B3C3D96B1610BB4E00943838 /* FHSyncClient.m */,
 				B3C3D96E1610BC4600943838 /* FHSyncConfig.h */,
 				B3C3D96F1610BC4600943838 /* FHSyncConfig.m */,
 				B32B65641610EC6A008B0DF5 /* FHSyncNotificationMessage.h */,
 				B32B65651610EC6A008B0DF5 /* FHSyncNotificationMessage.m */,
+				B3E6DD351795E0560010EF76 /* FHSyncPendingDataRecord.h */,
+				B3E6DD361795E0560010EF76 /* FHSyncPendingDataRecord.m */,
+				B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */,
+				B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */,
 			);
 			name = Sync;
 			sourceTree = "<group>";
@@ -459,6 +506,16 @@
 				B3AE9D6615D52604004EF454 /* FHTests.m */,
 				B3AE9D9E15D54796004EF454 /* FHAct+SetHttpClient.h */,
 				B3AE9D9F15D54796004EF454 /* FHAct+SetHttpClient.m */,
+				B3E6DD24179584A60010EF76 /* FHSyncUtilsTest.h */,
+				B3E6DD25179584A60010EF76 /* FHSyncUtilsTest.m */,
+				B37370C51796B0E8000EC27C /* FHSyncDataRecordTest.h */,
+				B37370C61796B0E8000EC27C /* FHSyncDataRecordTest.m */,
+				B37370CF1796B8B3000EC27C /* FHSyncPendingDataRecordTest.h */,
+				B37370D01796B8B3000EC27C /* FHSyncPendingDataRecordTest.m */,
+				B37370D21796BDE6000EC27C /* FHTestUtils.h */,
+				B37370D31796BDE6000EC27C /* FHTestUtils.m */,
+				B37370D51796E3BA000EC27C /* FHSyncDatasetTest.h */,
+				B37370D61796E3BA000EC27C /* FHSyncDatasetTest.m */,
 			);
 			path = FHTests;
 			sourceTree = "<group>";
@@ -655,6 +712,10 @@
 				B3C3D96C1610BB4E00943838 /* FHSyncClient.h in Headers */,
 				B3C3D9701610BC4600943838 /* FHSyncConfig.h in Headers */,
 				B32B65661610EC6A008B0DF5 /* FHSyncNotificationMessage.h in Headers */,
+				B3E6DD311795DEA40010EF76 /* FHSyncDataset.h in Headers */,
+				B3E6DD341795DEA40010EF76 /* FHSyncUtils.h in Headers */,
+				B3E6DD371795E0570010EF76 /* FHSyncPendingDataRecord.h in Headers */,
+				B3E6DD3B1795E06C0010EF76 /* FHSyncDataRecord.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,9 +899,12 @@
 				B3346E9F15D3F92900220E6B /* FHInitRequest.m in Sources */,
 				B3AE9D6115D51733004EF454 /* FHHttpClient.m in Sources */,
 				B3AE9DAA15D566DD004EF454 /* FHOAuthViewController.m in Sources */,
-				B3C3D96D1610BB4E00943838 /* FHSyncClient.m in Sources */,
 				B3C3D9711610BC4600943838 /* FHSyncConfig.m in Sources */,
 				B32B65671610EC6A008B0DF5 /* FHSyncNotificationMessage.m in Sources */,
+				B3E6DD321795DEA40010EF76 /* FHSyncDataset.m in Sources */,
+				B3E6DD331795DEA40010EF76 /* FHSyncUtils.m in Sources */,
+				B3E6DD381795E0570010EF76 /* FHSyncPendingDataRecord.m in Sources */,
+				B3E6DD3C1795E06C0010EF76 /* FHSyncDataRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,6 +912,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B37370CE1796B407000EC27C /* FHSyncConfig.m in Sources */,
+				B37370C81796B3EA000EC27C /* FHSyncDataset.h in Sources */,
+				B37370C91796B3EA000EC27C /* FHSyncDataset.m in Sources */,
+				B37370CA1796B3EA000EC27C /* FHSyncPendingDataRecord.h in Sources */,
+				B37370CB1796B3EA000EC27C /* FHSyncPendingDataRecord.m in Sources */,
+				B37370CC1796B3EA000EC27C /* FHSyncDataRecord.h in Sources */,
+				B37370CD1796B3EA000EC27C /* FHSyncDataRecord.m in Sources */,
+				B37370C31796A800000EC27C /* FHSyncUtils.m in Sources */,
+				B37370C41796A800000EC27C /* FHSyncUtils.h in Sources */,
 				B3AE9D8915D52DB6004EF454 /* FH.m in Sources */,
 				B3AE9D8815D52D5E004EF454 /* Reachability.m in Sources */,
 				B3AE9D8715D52D56004EF454 /* JSONKit.m in Sources */,
@@ -874,6 +947,11 @@
 				B3AE9DA115D55093004EF454 /* NSString+MD5.m in Sources */,
 				B3AE9DA215D5509A004EF454 /* NSString+Validation.m in Sources */,
 				B3F31DAC15D5C16000CE9D8F /* FHOAuthViewController.m in Sources */,
+				B3E6DD26179584A60010EF76 /* FHSyncUtilsTest.m in Sources */,
+				B37370C71796B0E8000EC27C /* FHSyncDataRecordTest.m in Sources */,
+				B37370D11796B8B3000EC27C /* FHSyncPendingDataRecordTest.m in Sources */,
+				B37370D41796BDE6000EC27C /* FHTestUtils.m in Sources */,
+				B37370D71796E3BA000EC27C /* FHSyncDatasetTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
