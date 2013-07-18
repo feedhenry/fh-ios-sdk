@@ -20,6 +20,7 @@
   FHSyncDataRecord* _preData;
   FHSyncDataRecord* _postData;
   NSString * _hashValue;
+  int _crashedCount;
 }
 
 @property BOOL inFlight;
@@ -31,6 +32,7 @@
 @property FHSyncDataRecord* preData;
 @property FHSyncDataRecord* postData;
 @property (readonly) NSString* hashValue;
+@property int crashedCount;
 
 - (id) init;
 - (NSDictionary*) JSONData;

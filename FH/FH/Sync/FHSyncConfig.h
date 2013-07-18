@@ -21,6 +21,9 @@
   BOOL _notifyDeltaReceived;
   BOOL _notifyClientStorageFailed;
   BOOL _notifySyncFailed;
+  BOOL _debug;
+  int _crashCountWait;
+  BOOL _resendCrashedUpdates;
 }
 
 @property double syncFrequency;
@@ -35,6 +38,9 @@
 @property BOOL notifyDeltaReceived;
 @property BOOL notifyClientStorageFailed;
 @property BOOL notifySyncFailed;
+@property BOOL debug;
+@property int crashCountWait;
+@property BOOL resendCrashedUpdates;
 
 - (id) init;
 - (NSDictionary*) JSONData;

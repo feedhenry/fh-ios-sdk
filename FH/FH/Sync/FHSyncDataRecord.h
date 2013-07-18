@@ -12,10 +12,12 @@
 {
   NSString* _hashValue;
   NSDictionary* _data;
+  NSString* _uid;
 }
 
 @property NSString* hashValue;
 @property NSDictionary* data;
+@property NSString* uid;
 
 - (id) init;
 - (id) initWithData: (NSDictionary*) data;

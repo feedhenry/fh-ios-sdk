@@ -9,6 +9,8 @@
 #import "FHSyncUtils.h"
 #import "JSONKit.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "FHSyncClient.h"
+#import "FHSyncNotificationMessage.h"
 
 @implementation FHSyncUtils
 
@@ -106,6 +108,45 @@
   id results = [FHSyncUtils sortData:data];
   NSString* jsonStr = [results JSONString];
   return [FHSyncUtils generateHashWithString:jsonStr];
+}
+
++ (void) doNotifyWithDataId:(NSString*) dataId config:(FHSyncConfig*) config uid:(NSString*) uid code:(NSString*) code message:(NSString*) message
+{
+  BOOL doSend = NO;
+  if(config.notifySyncStarted && [code isEqualToString:SYNC_STARTED_MESSAGE]){
+    doSend = YES;
+  }
+  if(config.notifySyncCompleted && [code isEqualToString:SYNC_COMPLETE_MESSAGE]) {
+    doSend = YES;
+  }
+  if(config.notifyClientStorageFailed && [code isEqualToString:CLIENT_STORAGE_FAILED_MESSAGE]){
+    doSend = YES;
+  }
+  if(config.notifyDeltaReceived && [code isEqualToString:DELTA_RECEIVED_MESSAGE ]){
+    doSend = YES;
+  }
+  if(config.notifyOfflineUpdate && [code isEqualToString:OFFLINE_UPDATE_MESSAGE]){
+    doSend = YES;
+  }
+  if(config.notifySyncCollision && [code isEqualToString:COLLISION_DETECTED_MESSAGE]){
+    doSend = YES;
+  }
+  if(config.notifyRemoteUpdateApplied && [code isEqualToString:REMOTE_UPDATE_APPLIED_MESSAGE]){
+    doSend = YES;
+  }
+  if(config.notifyRemoteUpdateFailed && [code isEqualToString:REMOTE_UPDATE_FAILED_MESSAGE]){
+    doSend = YES;
+  }
+  if(config.notifyRemoteUpdateApplied && [code isEqualToString:LOCAL_UPDATE_APPLIED_MESSAGE]){
+    doSend = YES;
+  }
+  if(config.notifySyncFailed && [code isEqualToString:SYNC_FAILED_MESSAGE]){
+    doSend = YES;
+  }
+  if(doSend){
+    FHSyncNotificationMessage * notification = [[FHSyncNotificationMessage alloc] initWithDataId:dataId AndUID:uid AndCode:code AndMessage:message];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFHSyncStateChangedNotification object:notification];
+  }
 }
 
 

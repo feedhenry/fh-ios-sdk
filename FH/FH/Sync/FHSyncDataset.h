@@ -25,6 +25,9 @@
   NSDictionary* _queryParams;
   NSMutableDictionary* _metaData;
   NSString* _hashValue;
+  BOOL _syncStarted;
+  NSMutableArray* _acknowledgements;
+  BOOL _stopSync;
 }
 
 /** Indicate if the sync process is currently running **/
@@ -51,6 +54,9 @@
 @property NSMutableDictionary* metaData;
 /** The SHA1 hash value of this data set **/
 @property NSString* hashValue;
+@property BOOL syncStarted;
+@property NSMutableArray* acknowledgements;
+@property BOOL stopSync;
 
 - (id) initWithDataId:(NSString* )dataId;
 -(id) initFromFileWithDataId:(NSString*) dataId error:(NSError*) error;
@@ -60,5 +66,11 @@
 + (FHSyncDataset*) objectFromJSONString:(NSString*) jsonStr;
 + (FHSyncDataset*) objectFromJSONData:(NSDictionary*) jsonData;
 - (void) saveToFile:(NSError*) error;
+- (void) startSyncLoop;
+- (NSDictionary*) listData;
+- (NSDictionary*) readDataWithUID: (NSString*) uid;
+- (BOOL) createWithData:(NSDictionary*) data;
+- (BOOL) updateWithUID:(NSString*) uid data:(NSDictionary*) data;
+- (BOOL) deleteWithUID: (NSString*) uid;
 
 @end

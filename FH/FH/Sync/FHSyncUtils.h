@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FHSyncConfig.h"
 
 @interface FHSyncUtils : NSObject
 
@@ -15,5 +16,6 @@
 + (void) saveData: (NSString*) data toFile: (NSString* ) fileName error:(NSError*) error;
 + (NSString*) generateHashWithString: (NSString*) text;
 + (NSString*) generateHashForData:(NSDictionary *) data;
++ (void) doNotifyWithDataId:(NSString*) dataId config:(FHSyncConfig*) config uid:(NSString*) uid code:(NSString*) code message:(NSString*) message;
 
 @end

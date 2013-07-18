@@ -32,6 +32,7 @@
 @synthesize preData = _preData;
 @synthesize postData = _postData;
 @synthesize hashValue = _hashValue;
+@synthesize crashedCount = _crashedCount;
 
 - (id) init
 {
@@ -41,10 +42,13 @@
     self.inFlightDate = nil;
     self.crashed = NO;
     self.action = nil;
-    self.timestamp = nil;
+    NSDate * now = [NSDate date];
+    NSNumber *ts = [NSNumber numberWithDouble:[now timeIntervalSince1970] * 1000];
+    self.timestamp = ts;
     self.uid = nil;
     self.preData = nil;
     self.postData = nil;
+    self.crashedCount = 0;
   }
   return self;
 }

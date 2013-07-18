@@ -21,6 +21,9 @@
 #define KEY_NOTIFY_LOCAL_UPDATE_APPLIED @"notifyLocalUpdateApplied"
 #define KEY_NOTIFY_REMOTE_UPDATE_FAILED @"notifyRemoteUpdateFailed"
 #define KEY_NOTIFY_SYNC_FAILED @"notifySyncFailed"
+#define KEY_DEBUG @"debug"
+#define KEY_CRASHCOUNTWAIT @"crashCountWait"
+#define KEY_RESEND_CRASH @"resendCrashedUpdates"
 
 @implementation FHSyncConfig
 
@@ -36,6 +39,9 @@
 @synthesize notifyLocalUpdateApplied = _notifyLocalUpdateApplied;
 @synthesize notifyRemoteUpdateFailed = _notifyRemoteUpdateFailed;
 @synthesize notifySyncFailed = _notifySyncFailed;
+@synthesize debug = _debug;
+@synthesize crashCountWait = _crashCountWait;
+@synthesize resendCrashedUpdates = _resendCrashedUpdates;
 
 
 - (id) init
@@ -54,6 +60,9 @@
     self.notifyLocalUpdateApplied = NO;
     self.notifyRemoteUpdateFailed = NO;
     self.notifySyncFailed = NO;
+    self.debug = NO;
+    self.crashCountWait = 10;
+    self.resendCrashedUpdates = YES;
   }
   return self;
 }
@@ -73,6 +82,9 @@
   [dict setObject:[NSNumber numberWithBool:self.notifyLocalUpdateApplied] forKey:KEY_NOTIFY_LOCAL_UPDATE_APPLIED];
   [dict setObject:[NSNumber numberWithBool:self.notifyRemoteUpdateFailed] forKey:KEY_NOTIFY_REMOTE_UPDATE_FAILED];
   [dict setObject:[NSNumber numberWithBool:self.notifySyncFailed] forKey:KEY_NOTIFY_SYNC_FAILED];
+  [dict setObject:[NSNumber numberWithBool:self.debug] forKey:KEY_DEBUG];
+  [dict setObject:[NSNumber numberWithInt:self.crashCountWait] forKey:KEY_CRASHCOUNTWAIT];
+  [dict setObject:[NSNumber numberWithBool:self.resendCrashedUpdates] forKey:KEY_RESEND_CRASH];
   return dict;
 }
 
@@ -97,6 +109,9 @@
   config.notifyLocalUpdateApplied = [[jsonObj objectForKey:KEY_NOTIFY_LOCAL_UPDATE_APPLIED] boolValue];
   config.notifyRemoteUpdateFailed = [[jsonObj objectForKey:KEY_NOTIFY_REMOTE_UPDATE_FAILED] boolValue];
   config.notifySyncFailed = [[jsonObj objectForKey:KEY_NOTIFY_SYNC_FAILED] boolValue];
+  config.debug = [[jsonObj objectForKey:KEY_DEBUG] boolValue];
+  config.crashCountWait = [[jsonObj objectForKey:KEY_CRASHCOUNTWAIT] integerValue];
+  config.resendCrashedUpdates = [[jsonObj objectForKey:KEY_RESEND_CRASH] boolValue];
   return config;
 
 }
@@ -122,6 +137,9 @@
   another.notifyLocalUpdateApplied = self.notifyLocalUpdateApplied;
   another.notifyRemoteUpdateFailed = self.notifyRemoteUpdateFailed;
   another.notifySyncFailed = self.notifySyncFailed;
+  another.debug = self.debug;
+  another.crashCountWait = self.crashCountWait;
+  another.resendCrashedUpdates = self.resendCrashedUpdates;
   return another;
 }
 
