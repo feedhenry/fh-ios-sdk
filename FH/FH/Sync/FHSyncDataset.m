@@ -24,6 +24,7 @@
 #define KEY_PENDING_RECORDS @"pendingDataRecords"
 #define KEY_DATA_RECORDS @"dataRecords"
 #define KEY_HASHVALUE @"hashValue"
+#define KEY_ACK @"acknowledgements"
 
 @implementation FHSyncDataset
 
@@ -39,7 +40,6 @@
 @synthesize  queryParams = _queryParams;
 @synthesize  metaData = _metaData;
 @synthesize  hashValue = _hashValue;
-@synthesize  syncStarted = _syncStarted;
 @synthesize  acknowledgements = _acknowledgements;
 @synthesize  stopSync = _stopSync;
 
@@ -59,7 +59,6 @@
     self.metaData = [NSMutableDictionary dictionary];
     self.hashValue = nil;
     self.initialised = NO;
-    self.syncStarted = NO;
     self.acknowledgements = [NSMutableArray array];
     self.stopSync = NO;
   }
@@ -98,6 +97,7 @@
   if(nil != self.syncLoopEnd){
     [dict setObject:[NSNumber numberWithDouble:[self.syncLoopEnd timeIntervalSince1970]] forKey:KEY_SYNCLOOP_END];
   }
+  [dict setObject:self.acknowledgements forKey:KEY_ACK];
   return dict;
 }
 
@@ -143,6 +143,9 @@
   if([jsonObj objectForKey:KEY_SYNCLOOP_END]){
     instance.syncLoopEnd = [NSDate dateWithTimeIntervalSince1970:[[jsonObj objectForKey:KEY_SYNCLOOP_END] doubleValue]];
   }
+  if ([jsonObj objectForKey:KEY_ACK]) {
+    instance.acknowledgements = [jsonObj objectForKey:KEY_ACK];
+  }
   instance.initialised = YES;
   return instance;
 
@@ -165,7 +168,10 @@
   if(self.dataRecords){
     [self.dataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
       FHSyncDataRecord* record = (FHSyncDataRecord*) obj;
-      [data setObject:record.data forKey:record.uid];
+      NSMutableDictionary* ret = [NSMutableDictionary dictionary];
+      [ret setObject:record.data forKey:@"data"];
+      [ret setObject:key forKey:@"uid"];
+      [data setObject:ret forKey:key];
     }];
   }
   return data;
@@ -175,30 +181,59 @@
 {
   FHSyncDataRecord* record = [self.dataRecords objectForKey:uid];
   if(record){
-    return [record data];
+    NSMutableDictionary* ret = [NSMutableDictionary dictionary];
+    [ret setObject:record.data forKey:@"data"];
+    [ret setObject:uid forKey:@"uid"];
+    return ret;
   } else {
     return nil;
   }
 }
 
-- (BOOL) createWithData:(NSDictionary*) data
+- (NSDictionary*) createWithData:(NSDictionary*) data
 {
-  return [self addPendingObject:nil data:data AndAction:@"create"];
+  FHSyncPendingDataRecord* pending = [self addPendingObject:nil data:data AndAction:@"create"];
+  FHSyncDataRecord* rec = [self.dataRecords objectForKey:pending.uid];
+  if (rec) {
+    NSMutableDictionary* ret = [NSMutableDictionary dictionary];
+    [ret setObject:rec.data forKey:@"data"];
+    [ret setObject:pending.uid forKey:@"uid"];
+    return ret;
+  } else {
+    return nil;
+  }
 }
 
-- (BOOL) updateWithUID:(NSString*) uid data:(NSDictionary*) data
+- (NSDictionary*) updateWithUID:(NSString*) uid data:(NSDictionary*) data
 {
-  return [self addPendingObject:uid data:data AndAction:@"update"];
+  FHSyncPendingDataRecord* pending = [self addPendingObject:uid data:data AndAction:@"update"];
+  FHSyncDataRecord* rec = [self.dataRecords objectForKey:uid];
+  if (rec) {
+    NSMutableDictionary* ret = [NSMutableDictionary dictionary];
+    [ret setObject:rec.data forKey:@"data"];
+    [ret setObject:uid forKey:@"uid"];
+    return ret;
+  } else {
+    return nil;
+  }
 }
 
-- (BOOL) deleteWithUID: (NSString*) uid
+- (NSDictionary*) deleteWithUID: (NSString*) uid
 {
-  return [self addPendingObject:uid data:NULL AndAction:@"delete"];
+  FHSyncPendingDataRecord* pending = [self addPendingObject:uid data:NULL AndAction:@"delete"];
+  FHSyncDataRecord* deleted = pending.preData;
+  if(deleted){
+    NSMutableDictionary* ret = [NSMutableDictionary dictionary];
+    [ret setObject:deleted.data forKey:@"data"];
+    [ret setObject:uid forKey:@"uid"];
+    return ret;
+  } else {
+    return nil;
+  }
 }
 
-- (BOOL) addPendingObject:(NSString*) uid data:(NSDictionary*) data AndAction:(NSString*) action
+- (FHSyncPendingDataRecord*) addPendingObject:(NSString*) uid data:(NSDictionary*) data AndAction:(NSString*) action
 {
-  BOOL success = NO;
   if(![FH isOnline]){
     [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:uid code:OFFLINE_UPDATE_MESSAGE message:action];
   }
@@ -222,8 +257,7 @@
       [self storePendingObj:pendingObj];
     }
   }
-  success = YES;
-  return success;
+  return pendingObj;
 }
 
 - (void) storePendingObj:(FHSyncPendingDataRecord*) obj
@@ -325,10 +359,7 @@
 
 - (void) startSyncLoop
 {
-  if (!self.syncStarted) {
-    [self performSelectorInBackground:@selector(startSyncTask:) withObject:nil];
-    self.syncStarted = YES;
-  }
+  [self performSelectorInBackground:@selector(startSyncTask:) withObject:nil];
 }
 
 - (void) startSyncTask
@@ -367,40 +398,7 @@
       [FH performActRequest:self.datasetId WithArgs:syncLoopParams AndSuccess:^(FHResponse* response){
         
         NSMutableDictionary* resData = [[response parsedResponse] mutableCopy];
-        // Check to see if any new pending records need to be updated to reflect the current state of play.
-        [self updatePendingFromNewData:resData];
-        
-        //Check to see if any previously crashed inflight records can now be resolved
-        [self updateCrashedInFlightFromNewData:resData];
-        
-        //Update the new dataset with details of any inflight updates which we have not received a response on
-        [self updateNewDataFromInFlight:resData];
-        
-        // Update the new dataset with details of any pending updates
-        [self updateNewDataFromPending:resData];
-        
-        if([resData objectForKey:@"records"]){
-          // Full Dataset returned
-          [self resetDataRecords:resData];
-        }
-        
-        if([resData objectForKey:@"updates"]){
-          NSMutableArray* ack = [NSMutableArray array];
-          NSDictionary* updates = [resData objectForKey:@"updates"];
-          [self processUpdates:[updates objectForKey:@"applied"] notification:REMOTE_UPDATE_APPLIED_MESSAGE acknowledgements:ack];
-          [self processUpdates:[updates objectForKey:@"failed"] notification:REMOTE_UPDATE_FAILED_MESSAGE acknowledgements:ack];
-          [self processUpdates:[updates objectForKey:@"collisions"] notification:COLLISION_DETECTED_MESSAGE acknowledgements:ack];
-          self.acknowledgements = ack;
-        } else if([resData objectForKey:@"hash"] && ![[resData objectForKey:@"hash"] isEqualToString:self.hashValue]){
-          NSString* remoteHash = [resData objectForKey:@"hash"];
-          NSLog(@"Local dataset stale - syncing records :: local hash= %@ - remoteHash = %@", self.hashValue, remoteHash);
-           // Different hash value returned - Sync individual records
-          [self syncRecords];
-        } else {
-          NSLog(@"LOcal dataset up to date");
-        }
-        
-        [self syncCompleteWithCode:@"online"];
+        [self syncRequestSuccess: resData];
         
       } AndFailure:^(FHResponse* response){
         // The AJAX call failed to complete succesfully, so the state of the current pending updates is unknown
@@ -421,6 +419,44 @@
   }
 }
 
+- (void) syncRequestSuccess:(NSMutableDictionary*) resData
+{
+  // Check to see if any new pending records need to be updated to reflect the current state of play.
+  [self updatePendingFromNewData:resData];
+  
+  //Check to see if any previously crashed inflight records can now be resolved
+  [self updateCrashedInFlightFromNewData:resData];
+  
+  //Update the new dataset with details of any inflight updates which we have not received a response on
+  [self updateNewDataFromInFlight:resData];
+  
+  // Update the new dataset with details of any pending updates
+  [self updateNewDataFromPending:resData];
+  
+  if([resData objectForKey:@"records"]){
+    // Full Dataset returned
+    [self resetDataRecords:resData];
+  }
+  
+  if([resData objectForKey:@"updates"]){
+    NSMutableArray* ack = [NSMutableArray array];
+    NSDictionary* updates = [resData objectForKey:@"updates"];
+    [self processUpdates:[updates objectForKey:@"applied"] notification:REMOTE_UPDATE_APPLIED_MESSAGE acknowledgements:ack];
+    [self processUpdates:[updates objectForKey:@"failed"] notification:REMOTE_UPDATE_FAILED_MESSAGE acknowledgements:ack];
+    [self processUpdates:[updates objectForKey:@"collisions"] notification:COLLISION_DETECTED_MESSAGE acknowledgements:ack];
+    self.acknowledgements = ack;
+  } else if([resData objectForKey:@"hash"] && ![[resData objectForKey:@"hash"] isEqualToString:self.hashValue]){
+    NSString* remoteHash = [resData objectForKey:@"hash"];
+    NSLog(@"Local dataset stale - syncing records :: local hash= %@ - remoteHash = %@", self.hashValue, remoteHash);
+    // Different hash value returned - Sync individual records
+    [self syncRecords];
+  } else {
+    NSLog(@"LOcal dataset up to date");
+  }
+  
+  [self syncCompleteWithCode:@"online"];
+}
+
 - (void) syncRecords
 {
   NSMutableDictionary* clientRecs = [NSMutableDictionary dictionary];
@@ -439,46 +475,50 @@
   NSLog(@"syncRecParams :: %@", [syncRecsParams JSONString] );
   
   [FH performActRequest:self.datasetId WithArgs:syncRecsParams AndSuccess:^(FHResponse* response){
-    NSDictionary* dataCreated =[[response parsedResponse] objectForKey:@"create"];
-    if (nil != dataCreated) {
-      [dataCreated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
-        FHSyncDataRecord* rec = [[FHSyncDataRecord alloc] initWithData:[obj objectForKey:@"data"]];
-        rec.hashValue = [obj objectForKey:@"hash"];
-        [self.dataRecords setObject:rec forKey:key];
-        [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:key code:DELTA_RECEIVED_MESSAGE message:@"create"];
-      }];
-    }
-    
-    NSDictionary* dataUpdated = [[response parsedResponse] objectForKey:@"update"];
-    if (nil != dataUpdated) {
-      [dataUpdated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
-        FHSyncDataRecord* rec = [self.dataRecords objectForKey:key];
-        if (rec) {
-          rec.data = [obj objectForKey:@"data"];
-          rec.hashValue = [obj objectForKey:@"hash"];
-          [self.dataRecords setObject:rec forKey:key];
-          [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:key code:DELTA_RECEIVED_MESSAGE message:@"update"];
-        }
-      }];
-    }
-    
-    NSDictionary* deleted = [[response parsedResponse] objectForKey:@"delete"];
-    if (nil != deleted) {
-      [deleted enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
-        [self.dataRecords removeObjectForKey:key];
-        [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:key code:DELTA_RECEIVED_MESSAGE message:@"delete"];
-      }];
-    }
-    
-    if ([[response parsedResponse] objectForKey:@"hash"]) {
-      self.hashValue = [[response parsedResponse] objectForKey:@"hash"];
-    }
-   [self syncCompleteWithCode:@"online"];
-   
+    [self syncRecordsSuccess: [response parsedResponse]];
   } AndFailure:^(FHResponse* response){
     NSLog(@"syncRecords failed : %@", [[response parsedResponse] JSONString]);
     [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
   }];
+}
+
+- (void) syncRecordsSuccess: (NSDictionary*) resData
+{
+  NSDictionary* dataCreated =[resData objectForKey:@"create"];
+  if (nil != dataCreated) {
+    [dataCreated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
+      FHSyncDataRecord* rec = [[FHSyncDataRecord alloc] initWithData:[obj objectForKey:@"data"]];
+      rec.hashValue = [obj objectForKey:@"hash"];
+      [self.dataRecords setObject:rec forKey:key];
+      [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:key code:DELTA_RECEIVED_MESSAGE message:@"create"];
+    }];
+  }
+  
+  NSDictionary* dataUpdated = [resData objectForKey:@"update"];
+  if (nil != dataUpdated) {
+    [dataUpdated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
+      FHSyncDataRecord* rec = [self.dataRecords objectForKey:key];
+      if (rec) {
+        rec.data = [obj objectForKey:@"data"];
+        rec.hashValue = [obj objectForKey:@"hash"];
+        [self.dataRecords setObject:rec forKey:key];
+        [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:key code:DELTA_RECEIVED_MESSAGE message:@"update"];
+      }
+    }];
+  }
+  
+  NSDictionary* deleted = [resData objectForKey:@"delete"];
+  if (nil != deleted) {
+    [deleted enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
+      [self.dataRecords removeObjectForKey:key];
+      [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:key code:DELTA_RECEIVED_MESSAGE message:@"delete"];
+    }];
+  }
+  
+  if ([resData objectForKey:@"hash"]) {
+    self.hashValue = [resData objectForKey:@"hash"];
+  }
+  [self syncCompleteWithCode:@"online"];
 }
 
 - (void) resetDataRecords: (NSDictionary*) resData
@@ -527,7 +567,7 @@
   self.syncLoopEnd = [NSDate date];
   BOOL isMainThread = [NSThread isMainThread];
   if (isMainThread) {
-    [self performSelectorInBackground:@selector(saveToFile) withObject:nil];
+    [self performSelectorInBackground:@selector(saveToFile:) withObject:nil];
   } else {
     [self saveToFile:nil];
   }

@@ -63,7 +63,7 @@ static FHSyncClient* shared = nil;
 {
   NSLog(@"start to run checkDataets");
   [self checkDatasets];
-  [NSTimer scheduledTimerWithTimeInterval:500 target:self selector:@selector(datasetMonitor:) userInfo:[NSDictionary dictionary] repeats:NO];
+  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(datasetMonitor:) userInfo:[NSDictionary dictionary] repeats:NO];
 }
 
 - (void) checkDatasets
@@ -131,6 +131,7 @@ static FHSyncClient* shared = nil;
     dataSet.queryParams = queryParams;
     dataSet.syncRunning = NO;
     dataSet.syncLoopPending = YES;
+    dataSet.stopSync = NO;
     dataSet.initialised = YES;
   }
   

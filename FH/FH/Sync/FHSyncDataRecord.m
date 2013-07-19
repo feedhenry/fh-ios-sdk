@@ -35,9 +35,15 @@
 {
   self = [super init];
   if(self){
-    self.uid = nil;
-    self.data = data;
-    self.hashValue = [FHSyncUtils generateHashForData:self.data];
+    if ([data objectForKey:@"data"] && [data objectForKey:@"hash"]) {
+      self.uid = nil;
+      self.data = [data objectForKey:@"data"];
+      self.hashValue = [data objectForKey:@"hash"];
+    } else {
+      self.uid = nil;
+      self.data = data;
+      self.hashValue = [FHSyncUtils generateHashForData:self.data];
+    }
   }
   return self;
 }

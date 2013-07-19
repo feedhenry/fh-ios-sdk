@@ -15,7 +15,7 @@
 + (NSString*) loadDataFromFile: (NSString*) fileName error:(NSError*) error;
 + (void) saveData: (NSString*) data toFile: (NSString* ) fileName error:(NSError*) error;
 + (NSString*) generateHashWithString: (NSString*) text;
-+ (NSString*) generateHashForData:(NSDictionary *) data;
++ (NSString*) generateHashForData:(id) data;
 + (void) doNotifyWithDataId:(NSString*) dataId config:(FHSyncConfig*) config uid:(NSString*) uid code:(NSString*) code message:(NSString*) message;
 
 @end

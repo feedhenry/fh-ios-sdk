@@ -25,7 +25,6 @@
   NSDictionary* _queryParams;
   NSMutableDictionary* _metaData;
   NSString* _hashValue;
-  BOOL _syncStarted;
   NSMutableArray* _acknowledgements;
   BOOL _stopSync;
 }
@@ -54,7 +53,6 @@
 @property NSMutableDictionary* metaData;
 /** The SHA1 hash value of this data set **/
 @property NSString* hashValue;
-@property BOOL syncStarted;
 @property NSMutableArray* acknowledgements;
 @property BOOL stopSync;
 
@@ -69,8 +67,8 @@
 - (void) startSyncLoop;
 - (NSDictionary*) listData;
 - (NSDictionary*) readDataWithUID: (NSString*) uid;
-- (BOOL) createWithData:(NSDictionary*) data;
-- (BOOL) updateWithUID:(NSString*) uid data:(NSDictionary*) data;
-- (BOOL) deleteWithUID: (NSString*) uid;
+- (NSDictionary*) createWithData:(NSDictionary*) data;
+- (NSDictionary*) updateWithUID:(NSString*) uid data:(NSDictionary*) data;
+- (NSDictionary*) deleteWithUID: (NSString*) uid;
 
 @end

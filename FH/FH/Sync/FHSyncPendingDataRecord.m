@@ -86,8 +86,11 @@
 
 - (NSString*) hashValue
 {
-  NSDictionary* dict = [self JSONData];
-  return [FHSyncUtils generateHashForData:dict];
+  if(!_hashValue){
+    NSDictionary* dict = [self JSONData];
+    _hashValue = [FHSyncUtils generateHashForData:dict];
+  }
+  return _hashValue;
 }
 
 + (FHSyncPendingDataRecord*) objectFromJSONData:(NSDictionary*) jsonObj
