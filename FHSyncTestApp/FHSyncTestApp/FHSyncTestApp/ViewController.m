@@ -19,6 +19,8 @@
 }
 @end
 
+#define DATAID @"myShoppingList"
+
 @implementation ViewController
 
 - (void)viewDidLoad
@@ -42,7 +44,7 @@
 
 - (void) startSyncClient
 {
-  _fhSyncClient = [[FHSyncClient getInstance] retain];
+  _fhSyncClient = [FHSyncClient getInstance];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncMessage:) name:kFHSyncStateChangedNotification object:nil];
   FHSyncConfig* conf = [[FHSyncConfig alloc] init];
   conf.notifySyncStarted = YES;
@@ -51,8 +53,7 @@
   conf.notifyRemoteUpdateFailed = YES;
   conf.notifyLocalUpdateApplied = YES;
   [_fhSyncClient initWithConfig:conf];
-  [conf release];
-  [_fhSyncClient manageWithDataId:@"foo" AndQuery:[NSMutableDictionary dictionary]];
+  [_fhSyncClient manageWithDataId:DATAID AndConfig:nil AndQuery:[NSDictionary dictionary]];
 }
 
 - (void) onSyncMessage:(NSNotification*) note
@@ -61,7 +62,7 @@
   NSLog(@"Got notification %@", msg);
   NSString* code = [msg getCode];
   if([code isEqualToString:SYNC_COMPLETE_MESSAGE]){
-    NSDictionary* data = [_fhSyncClient listWithDataId:@"foo"];
+    NSDictionary* data = [_fhSyncClient listWithDataId:DATAID];
     [self performSelectorOnMainThread:@selector(setResultText:) withObject:data waitUntilDone:NO];
   }
 }
@@ -76,16 +77,17 @@
 - (IBAction)selectCreateButton:(id)sender
 {
   NSMutableDictionary* data = [NSMutableDictionary dictionary];
-  NSString* str = [NSString stringWithFormat:@"Data created by ios client %f", [[NSDate date] timeIntervalSince1970]];
-  [data setObject:str forKey:@"ios"];
-  [_fhSyncClient createWithDataId:@"foo" AndData:data];
+  NSString* str = uidField.text;
+  [data setObject:str forKey:@"name"];
+  [data setObject:[[NSDate date] description] forKey:@"created"];
+  [_fhSyncClient createWithDataId:DATAID AndData:data];
 }
 
 - (IBAction)selectReadButton:(id)sender
 {
   NSString* uid = uidField.text;
   if(![uid isEqualToString:@""]){
-    NSDictionary* data = [_fhSyncClient readWidthDataId:@"foo" AndUID:uid];
+    NSDictionary* data = [_fhSyncClient readWithDataId:DATAID AndUID:uid];
     [self setResultText:data];
   }
 }
@@ -96,8 +98,9 @@
   if(![uid isEqualToString:@""]){
     NSMutableDictionary* data = [NSMutableDictionary dictionary];
     NSString* str = [NSString stringWithFormat:@"Data updated by ios client %f", [[NSDate date] timeIntervalSince1970]];
-    [data setObject:str forKey:@"ios"];
-    [_fhSyncClient updateWithDataId:@"foo" AndUID:uid AndData:data];
+    [data setObject:str forKey:@"name"];
+    [data setObject:[[NSDate date] description] forKey:@"created"];
+    [_fhSyncClient updateWithDataId:DATAID AndUID:uid AndData:data];
   }
 }
 
@@ -105,7 +108,7 @@
 {
   NSString* uid = uidField.text;
   if(![uid isEqualToString:@""]){
-    [_fhSyncClient deleteWithDataId:@"foo" AndUID:uid];
+    [_fhSyncClient deleteWithDataId:DATAID AndUID:uid];
   }
 }
 

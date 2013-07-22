@@ -16,10 +16,13 @@
 #define KEY_ACTION @"action"
 #define KEY_TIMESTAMP @"timestamp"
 #define KEY_UID @"uid"
-#define KEY_PRE @"preData"
-#define KEY_POST @"postData"
+#define KEY_PRE @"pre"
+#define KEY_PRE_DATA_HASH @"preHash"
+#define KEY_POST @"post"
+#define KEY_POST_DATA_HASH @"postHash"
 #define KEY_INFLIGHT_DATE @"inFlightDate"
 #define KEY_CRASHED @"crashed"
+#define KEY_HASH @"hash"
 
 @implementation FHSyncPendingDataRecord
 
@@ -43,7 +46,7 @@
     self.crashed = NO;
     self.action = nil;
     NSDate * now = [NSDate date];
-    NSNumber *ts = [NSNumber numberWithDouble:[now timeIntervalSince1970] * 1000];
+    NSNumber *ts = [NSNumber numberWithLongLong:[now timeIntervalSince1970]];
     self.timestamp = ts;
     self.uid = nil;
     self.preData = nil;
@@ -52,13 +55,13 @@
   }
   return self;
 }
-- (NSDictionary*) JSONData
+- (NSMutableDictionary*) JSONData
 {
   NSMutableDictionary* dict = [NSMutableDictionary dictionary];
   [dict setObject:[NSNumber numberWithBool:self.inFlight]  forKey:KEY_INFIGHT];
   [dict setObject:[NSNumber numberWithBool:self.crashed] forKey:KEY_CRASHED];
   if(self.inFlightDate){
-    [dict setObject:[NSNumber numberWithDouble:[self.inFlightDate timeIntervalSince1970]] forKey:KEY_INFLIGHT_DATE];
+    [dict setObject:[NSNumber numberWithLong:[self.inFlightDate timeIntervalSince1970]] forKey:KEY_INFLIGHT_DATE];
   }
   if(self.action){
     [dict setObject:self.action forKey:KEY_ACTION];
@@ -70,17 +73,20 @@
     [dict setObject:self.uid forKey:KEY_UID];
   }
   if(self.preData){
-    [dict setObject:[self.preData JSONData] forKey:KEY_PRE];
+    [dict setObject:[self.preData data] forKey:KEY_PRE];
+    [dict setObject:[self.preData hashValue] forKey:KEY_PRE_DATA_HASH];
   }
   if(self.postData){
-    [dict setObject:[self.postData JSONData] forKey:KEY_POST];
+    [dict setObject:[self.postData data] forKey:KEY_POST];
+    [dict setObject:[self.postData hashValue] forKey:KEY_POST_DATA_HASH];
   }
   return dict;
 }
 
 - (NSString*) JSONString
 {
-  NSDictionary* dict = [self JSONData];
+  NSMutableDictionary* dict = [self JSONData];
+  [dict setObject:self.hashValue forKey:KEY_HASH];
   return [dict JSONString];
 }
 
@@ -115,10 +121,16 @@
     record.uid = [jsonObj  objectForKey:KEY_UID];
   }
   if([jsonObj objectForKey:KEY_PRE]){
-    record.preData = [FHSyncDataRecord objectFromJSONData:[jsonObj objectForKey:KEY_PRE]];
+    FHSyncDataRecord* preData = [[FHSyncDataRecord alloc] init];
+    preData.data = [jsonObj objectForKey:KEY_PRE];
+    preData.hashValue = [jsonObj objectForKey:KEY_PRE_DATA_HASH];
+    record.preData = preData;
   }
   if([jsonObj objectForKey:KEY_POST]){
-    record.postData = [FHSyncDataRecord objectFromJSONData:[jsonObj objectForKey:KEY_POST]];
+    FHSyncDataRecord* postData = [[FHSyncDataRecord alloc] init];
+    postData.data = [jsonObj objectForKey:KEY_POST];
+    postData.hashValue = [jsonObj objectForKey:KEY_POST_DATA_HASH];
+    record.postData = postData;
   }
   return record;
 

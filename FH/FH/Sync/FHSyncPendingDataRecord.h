@@ -35,7 +35,7 @@
 @property int crashedCount;
 
 - (id) init;
-- (NSDictionary*) JSONData;
+- (NSMutableDictionary*) JSONData;
 + (FHSyncPendingDataRecord*) objectFromJSONData:(NSDictionary*) jsonData;
 - (NSString*) JSONString;
 + (FHSyncPendingDataRecord*) objectFromJSONString:(NSString*) jsonStr;

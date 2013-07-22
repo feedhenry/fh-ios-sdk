@@ -15,7 +15,7 @@
 #import "FHSyncNotificationMessage.h"
 #import "FHResponse.h"
 
-#define STORAGE_FILE_PATH @".sync.json"
+#define STORAGE_FILE_PATH @"sync.json"
 
 #define KEY_DATASETID @"dataSetId"
 #define KEY_SYNCLOOP_START @"syncLoopStart"
@@ -55,7 +55,7 @@
     self.syncConfig = nil;
     self.pendingDataRecords = [NSMutableDictionary dictionary];
     self.dataRecords = [NSMutableDictionary dictionary];
-    self.queryParams = nil;
+    self.queryParams = [NSMutableDictionary dictionary];
     self.metaData = [NSMutableDictionary dictionary];
     self.hashValue = nil;
     self.initialised = NO;
@@ -71,7 +71,7 @@
   if(nil != data){
     return [FHSyncDataset objectFromJSONString:data];
   } else {
-    return nil;
+    return [[FHSyncDataset alloc] initWithDataId:dataId];
   }
 }
 
@@ -111,7 +111,7 @@
 - (void) saveToFile: (NSError*) error
 {
   NSString* jsonStr = [self JSONString];
-  NSLog(@"content = %@", jsonStr);
+  //NSLog(@"content = %@", jsonStr);
   @synchronized(self){
     [FHSyncUtils saveData:jsonStr toFile:[self.datasetId stringByAppendingPathExtension:STORAGE_FILE_PATH] error:error];
   }
@@ -362,7 +362,7 @@
   [self performSelectorInBackground:@selector(startSyncTask:) withObject:nil];
 }
 
-- (void) startSyncTask
+- (void) startSyncTask:(NSDictionary*) info
 {
   self.syncLoopPending = NO;
   self.syncRunning = YES;
@@ -375,7 +375,9 @@
     [syncLoopParams setObject:@"sync" forKey:@"fn"];
     [syncLoopParams setObject:self.datasetId forKey:@"dataset_id"];
     [syncLoopParams setObject:self.queryParams forKey:@"query_params"];
-    [syncLoopParams setObject:self.hashValue forKey:@"dataset_hash"];
+    if(self.hashValue){
+      [syncLoopParams setObject:self.hashValue forKey:@"dataset_hash"];
+    }
     [syncLoopParams setObject:self.acknowledgements forKey:@"acknowledgements"];
     
     NSMutableArray* pendingArray = [NSMutableArray array];
@@ -384,7 +386,9 @@
       if(!pendingRecord.inFlight && !pendingRecord.crashed){
         pendingRecord.inFlight = YES;
         pendingRecord.inFlightDate = [NSDate date];
-        [pendingArray addObject:[pendingRecord JSONData]];
+        NSMutableDictionary* pendingJSON = [pendingRecord JSONData];
+        [pendingJSON setObject:pendingRecord.hashValue forKey:@"hash"];
+        [pendingArray addObject:pendingJSON];
       }
     }];
     
@@ -398,6 +402,10 @@
       [FH performActRequest:self.datasetId WithArgs:syncLoopParams AndSuccess:^(FHResponse* response){
         
         NSMutableDictionary* resData = [[response parsedResponse] mutableCopy];
+        if ([resData objectForKey:@"records"]) {
+          NSMutableDictionary* recordsCopy = [[resData objectForKey:@"records"] mutableCopy];
+          [resData setObject:recordsCopy forKey:@"records"];
+        }
         [self syncRequestSuccess: resData];
         
       } AndFailure:^(FHResponse* response){

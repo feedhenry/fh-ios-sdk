@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30003D1179D4AD0008195AB /* RootViewCotroller.m in Sources */ = {isa = PBXBuildFile; fileRef = B30003D0179D4AD0008195AB /* RootViewCotroller.m */; };
+		B30003D9179D4D94008195AB /* shopping-basket.png in Resources */ = {isa = PBXBuildFile; fileRef = B30003D7179D4D94008195AB /* shopping-basket.png */; };
+		B30003DA179D4D94008195AB /* shopping-basket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B30003D8179D4D94008195AB /* shopping-basket@2x.png */; };
+		B3000416179D5C68008195AB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3000415179D5C68008195AB /* CoreData.framework */; };
 		B3171A721611BC2800DEC978 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3171A711611BC2800DEC978 /* UIKit.framework */; };
 		B3171A741611BC2800DEC978 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3171A731611BC2800DEC978 /* Foundation.framework */; };
 		B3171A761611BC2800DEC978 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3171A751611BC2800DEC978 /* CoreGraphics.framework */; };
@@ -19,6 +23,10 @@
 		B3171A8B1611BC2800DEC978 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3171A891611BC2800DEC978 /* MainStoryboard_iPhone.storyboard */; };
 		B3171A8E1611BC2800DEC978 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3171A8C1611BC2800DEC978 /* MainStoryboard_iPad.storyboard */; };
 		B3171A911611BC2800DEC978 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3171A901611BC2800DEC978 /* ViewController.m */; };
+		B32FB9E0179D454400625FF7 /* ShoppingItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B32FB9DE179D454400625FF7 /* ShoppingItem.xcdatamodeld */; };
+		B33C6C38179D947A00352119 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B33C6C37179D947A00352119 /* DataManager.m */; };
+		B38BC2E0179D6CC20078EE9D /* ShoppingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B38BC2DF179D6CC20078EE9D /* ShoppingItem.m */; };
+		B38BC2E6179D7EF10078EE9D /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38BC2E5179D7EF10078EE9D /* DetailsViewController.m */; };
 		B38D4EEC1611CF29008F0A47 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38D4EEB1611CF29008F0A47 /* CFNetwork.framework */; };
 		B38D4EEE1611CF31008F0A47 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B38D4EED1611CF31008F0A47 /* libxml2.2.dylib */; };
 		B38D4EF01611CF64008F0A47 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38D4EEF1611CF64008F0A47 /* SystemConfiguration.framework */; };
@@ -54,6 +62,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B30003CF179D4AD0008195AB /* RootViewCotroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewCotroller.h; sourceTree = "<group>"; };
+		B30003D0179D4AD0008195AB /* RootViewCotroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewCotroller.m; sourceTree = "<group>"; };
+		B30003D7179D4D94008195AB /* shopping-basket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shopping-basket.png"; path = "images/shopping-basket.png"; sourceTree = "<group>"; };
+		B30003D8179D4D94008195AB /* shopping-basket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shopping-basket@2x.png"; path = "images/shopping-basket@2x.png"; sourceTree = "<group>"; };
+		B3000415179D5C68008195AB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B3171A6D1611BC2800DEC978 /* FHSyncTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHSyncTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3171A711611BC2800DEC978 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3171A731611BC2800DEC978 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,6 +84,13 @@
 		B3171A8D1611BC2800DEC978 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B3171A8F1611BC2800DEC978 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B3171A901611BC2800DEC978 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B32FB9DF179D454400625FF7 /* ShoppingItem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingItem.xcdatamodel; sourceTree = "<group>"; };
+		B33C6C36179D947A00352119 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		B33C6C37179D947A00352119 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		B38BC2DE179D6CC20078EE9D /* ShoppingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingItem.h; sourceTree = "<group>"; };
+		B38BC2DF179D6CC20078EE9D /* ShoppingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingItem.m; sourceTree = "<group>"; };
+		B38BC2E4179D7EF10078EE9D /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		B38BC2E5179D7EF10078EE9D /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		B38D4ED71611C29C008F0A47 /* FH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FH.xcodeproj; path = ../../FH/FH.xcodeproj; sourceTree = "<group>"; };
 		B38D4EEB1611CF29008F0A47 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B38D4EED1611CF31008F0A47 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -86,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3000416179D5C68008195AB /* CoreData.framework in Frameworks */,
 				B3A5D2771611DA6F004E3973 /* libz.dylib in Frameworks */,
 				B3A5D2751611DA41004E3973 /* libFH.a in Frameworks */,
 				B3A5D26F1611CFBC004E3973 /* CoreFoundation.framework in Frameworks */,
@@ -123,6 +144,7 @@
 		B3171A701611BC2800DEC978 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3000415179D5C68008195AB /* CoreData.framework */,
 				B3A5D2761611DA6F004E3973 /* libz.dylib */,
 				B3A5D26E1611CFBC004E3973 /* CoreFoundation.framework */,
 				B3A5D26C1611CFB6004E3973 /* MobileCoreServices.framework */,
@@ -139,6 +161,8 @@
 		B3171A771611BC2800DEC978 /* FHSyncTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				B30003D7179D4D94008195AB /* shopping-basket.png */,
+				B30003D8179D4D94008195AB /* shopping-basket@2x.png */,
 				B3171A801611BC2800DEC978 /* AppDelegate.h */,
 				B3171A811611BC2800DEC978 /* AppDelegate.m */,
 				B3171A891611BC2800DEC978 /* MainStoryboard_iPhone.storyboard */,
@@ -146,6 +170,15 @@
 				B3171A8F1611BC2800DEC978 /* ViewController.h */,
 				B3171A901611BC2800DEC978 /* ViewController.m */,
 				B3171A781611BC2800DEC978 /* Supporting Files */,
+				B32FB9DE179D454400625FF7 /* ShoppingItem.xcdatamodeld */,
+				B38BC2DE179D6CC20078EE9D /* ShoppingItem.h */,
+				B38BC2DF179D6CC20078EE9D /* ShoppingItem.m */,
+				B30003CF179D4AD0008195AB /* RootViewCotroller.h */,
+				B30003D0179D4AD0008195AB /* RootViewCotroller.m */,
+				B38BC2E4179D7EF10078EE9D /* DetailsViewController.h */,
+				B38BC2E5179D7EF10078EE9D /* DetailsViewController.m */,
+				B33C6C36179D947A00352119 /* DataManager.h */,
+				B33C6C37179D947A00352119 /* DataManager.m */,
 			);
 			path = FHSyncTestApp;
 			sourceTree = "<group>";
@@ -256,6 +289,8 @@
 				B3171A8B1611BC2800DEC978 /* MainStoryboard_iPhone.storyboard in Resources */,
 				B3171A8E1611BC2800DEC978 /* MainStoryboard_iPad.storyboard in Resources */,
 				B3A5D2731611D51E004E3973 /* fhconfig.plist in Resources */,
+				B30003D9179D4D94008195AB /* shopping-basket.png in Resources */,
+				B30003DA179D4D94008195AB /* shopping-basket@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +304,11 @@
 				B3171A7E1611BC2800DEC978 /* main.m in Sources */,
 				B3171A821611BC2800DEC978 /* AppDelegate.m in Sources */,
 				B3171A911611BC2800DEC978 /* ViewController.m in Sources */,
+				B32FB9E0179D454400625FF7 /* ShoppingItem.xcdatamodeld in Sources */,
+				B30003D1179D4AD0008195AB /* RootViewCotroller.m in Sources */,
+				B38BC2E0179D6CC20078EE9D /* ShoppingItem.m in Sources */,
+				B38BC2E6179D7EF10078EE9D /* DetailsViewController.m in Sources */,
+				B33C6C38179D947A00352119 /* DataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +410,7 @@
 		B3171A951611BC2800DEC978 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FHSyncTestApp/FHSyncTestApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../FH/\"/**";
@@ -389,6 +430,7 @@
 		B3171A961611BC2800DEC978 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FHSyncTestApp/FHSyncTestApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../FH/\"/**";
@@ -427,6 +469,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B32FB9DE179D454400625FF7 /* ShoppingItem.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B32FB9DF179D454400625FF7 /* ShoppingItem.xcdatamodel */,
+			);
+			currentVersion = B32FB9DF179D454400625FF7 /* ShoppingItem.xcdatamodel */;
+			path = ShoppingItem.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B3171A641611BC2800DEC978 /* Project object */;
 }

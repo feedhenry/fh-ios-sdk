@@ -44,7 +44,7 @@ static FHSyncClient* shared = nil;
     self.syncConfig = config;
     self.dataSets = [NSMutableDictionary dictionary];
     _initialized = YES;
-    [self datasetMonitor];
+    [self datasetMonitor:nil];
   }
   return self;
 }
@@ -59,11 +59,11 @@ static FHSyncClient* shared = nil;
   return shared;
 }
 
-- (void) datasetMonitor
+- (void) datasetMonitor:(NSDictionary*) info
 {
   NSLog(@"start to run checkDataets");
   [self checkDatasets];
-  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(datasetMonitor:) userInfo:[NSDictionary dictionary] repeats:NO];
+  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(datasetMonitor:) userInfo:nil repeats:NO];
 }
 
 - (void) checkDatasets
@@ -88,7 +88,7 @@ static FHSyncClient* shared = nil;
           }
         }
         if(dataset.syncLoopPending){
-          NSLog(@"start to run syncLoopWithDataId %@", key);
+          //NSLog(@"start to run syncLoopWithDataId %@", key);
           [dataset startSyncLoop];
         }
       }
@@ -127,13 +127,11 @@ static FHSyncClient* shared = nil;
   dataSet.syncConfig = dataSyncConfig;
   
   //if the dataset is not initialised yet, do the init
-  if(!dataSet.initialised){
-    dataSet.queryParams = queryParams;
-    dataSet.syncRunning = NO;
-    dataSet.syncLoopPending = YES;
-    dataSet.stopSync = NO;
-    dataSet.initialised = YES;
-  }
+  dataSet.queryParams = queryParams;
+  dataSet.syncRunning = NO;
+  dataSet.syncLoopPending = YES;
+  dataSet.stopSync = NO;
+  dataSet.initialised = YES;
   
   NSError* saveError = nil;
   [dataSet saveToFile:saveError];
