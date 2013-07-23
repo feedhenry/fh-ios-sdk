@@ -748,6 +748,7 @@
             // Modify the new Record to have the updates from the pending record so the local dataset is consistent
             [remoteRecord setObject:pendingRecord.postData.data forKey:@"data"];
             [remoteRecord setObject:pendingRecord.postData.hashValue forKey:@"hash"];
+            [[remoteData objectForKey:@"records"] setObject:remoteRecord forKey:pendingRecord.uid];
           } else if ( [pendingRecord.action isEqualToString:@"delete"] && (nil != remoteRecord)){
             // Remove the record from the new dataset so the local dataset is consistent
             [[remoteData objectForKey:@"records"] removeObjectForKey:pendingRecord.uid];
@@ -773,11 +774,12 @@
       
       if (!pendingRecord.inFlight) {
         NSLog(@"updateNewDataFromPending - Found Non inFlight record -> action=%@ :: uid=%@ :: hash=%@", pendingRecord.action, pendingRecord.uid, pendingRecord.hashValue);
-        NSMutableDictionary* remoteRecord = [[remoteData objectForKey:@"records"] objectForKey:pendingRecord.uid];
+        NSMutableDictionary* remoteRecord = [[[remoteData objectForKey:@"records"] objectForKey:pendingRecord.uid] mutableCopy];
         if ([pendingRecord.action isEqualToString:@"update"] && (nil != remoteRecord)) {
           // Modify the new Record to have the updates from the pending record so the local dataset is consistent
           [remoteRecord setObject:pendingRecord.postData.data forKey:@"data"];
           [remoteRecord setObject:pendingRecord.postData.hashValue forKey:@"hash"];
+          [[remoteData objectForKey:@"records"] setObject:remoteRecord forKey:pendingRecord.uid];
         } else if ([pendingRecord.action isEqualToString:@"delete"] && (nil != remoteRecord)){
           [[remoteData objectForKey:@"records"] removeObjectForKey:pendingRecord.uid];
         } else if([pendingRecord.action isEqualToString:@"create"]){
