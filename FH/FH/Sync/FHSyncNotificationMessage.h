@@ -1,11 +1,4 @@
-//
-//  FHSyncNotificationMessage.h
-//  FH
-//
-//  Created by Wei Li on 24/09/2012.
-//  Copyright (c) 2012 FeedHenry. All rights reserved.
-//
-
+/** The notification message created by the sync client */
 #import <Foundation/Foundation.h>
 
 #define kFHSyncStateChangedNotification @"kFHSyncStateChangedNotification"
@@ -30,9 +23,17 @@
 }
 
 - (id) initWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndCode:(NSString*) code AndMessage:(NSString*) message;
+
+/** Get the data set id associated with the notification */
 - (NSString*) getDataId;
+
+/** Get the id of the data record associated with the notification (if any)*/
 - (NSString*) getUID;
+
+/** Get the code of the notification */
 - (NSString*) getCode;
+
+/** Extra message of the noification */
 - (NSString*) getMessage;
 - (NSString*) description;
 

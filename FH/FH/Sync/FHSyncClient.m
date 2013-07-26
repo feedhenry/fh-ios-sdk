@@ -206,4 +206,14 @@ static FHSyncClient* shared = nil;
   return nil;
 }
 
+- (void) listCollisionWithCallbacksForDataId:(NSString*) dataId AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
+{
+  [FH performActRequest:dataId WithArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"listCollisions", @"fn", nil] AndSuccess:sucornil AndFailure:failornil];
+}
+
+- (void) removeCollisionWithCallbacksForDataId:(NSString*) dataId hash:(NSString*) collisionHash AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
+{
+  [FH performActRequest:dataId WithArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"removeCollisions", @"fn", collisionHash, @"hash", nil] AndSuccess:sucornil AndFailure:failornil];
+}
+
 @end

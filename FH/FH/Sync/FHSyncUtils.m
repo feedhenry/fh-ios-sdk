@@ -107,6 +107,7 @@
 {
   id results = [FHSyncUtils sortData:data];
   NSString* jsonStr = [results JSONString];
+  NSLog(@"sorted data = %@", jsonStr);
   return [FHSyncUtils generateHashWithString:jsonStr];
 }
 
