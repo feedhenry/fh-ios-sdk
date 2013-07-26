@@ -421,6 +421,7 @@
     @catch (NSException * ex)
     {
       NSLog(@"Error performing sync - %@", ex);
+      [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:SYNC_FAILED_MESSAGE message:[ex description]];
       [self syncCompleteWithCode:ex.reason];
     }
   
@@ -486,6 +487,7 @@
     [self syncRecordsSuccess: [response parsedResponse]];
   } AndFailure:^(FHResponse* response){
     NSLog(@"syncRecords failed : %@", [[response parsedResponse] JSONString]);
+    [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:SYNC_FAILED_MESSAGE message:[[response parsedResponse] JSONString]];
     [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
   }];
 }
