@@ -35,6 +35,7 @@
 		B3A5D2731611D51E004E3973 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3A5D2721611D51E004E3973 /* fhconfig.plist */; };
 		B3A5D2751611DA41004E3973 /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5D2681611CF9A004E3973 /* libFH.a */; };
 		B3A5D2771611DA6F004E3973 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5D2761611DA6F004E3973 /* libz.dylib */; };
+		B3BE542F17A2C83B00C9D59E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3BE542E17A2C83B00C9D59E /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		B3A5D26E1611CFBC004E3973 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		B3A5D2721611D51E004E3973 /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fhconfig.plist; sourceTree = "<group>"; };
 		B3A5D2761611DA6F004E3973 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B3BE542E17A2C83B00C9D59E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BE542F17A2C83B00C9D59E /* AdSupport.framework in Frameworks */,
 				B3000416179D5C68008195AB /* CoreData.framework in Frameworks */,
 				B3A5D2771611DA6F004E3973 /* libz.dylib in Frameworks */,
 				B3A5D2751611DA41004E3973 /* libFH.a in Frameworks */,
@@ -144,6 +147,7 @@
 		B3171A701611BC2800DEC978 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3BE542E17A2C83B00C9D59E /* AdSupport.framework */,
 				B3000415179D5C68008195AB /* CoreData.framework */,
 				B3A5D2761611DA6F004E3973 /* libz.dylib */,
 				B3A5D26E1611CFBC004E3973 /* CoreFoundation.framework */,

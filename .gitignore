@@ -22,3 +22,4 @@ FHSyncTestApp/FHSyncTestApp/build/*
 xcuserdata
 DerivedData/*
 FHSyncTestApp/FHSyncTestApp/DerivedData/*
+FH/DerivedData/*

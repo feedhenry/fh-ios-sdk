@@ -6,7 +6,7 @@
 #import "FHDefines.h"
 
 #import "FHActRequest.h"
-#import "FHAuthReqeust.h"
+#import "FHAuthRequest.h"
 
 typedef enum _FHSDKNetworkErrorType {
   FHSDKNetworkOfflineErrorType = 1
@@ -59,7 +59,7 @@ typedef enum _FHSDKNetworkErrorType {
  
  @return Returns a new instance of FHAuthRequest
  */
-+ (FHAuthReqeust *) buildAuthRequest;
++ (FHAuthRequest *) buildAuthRequest;
 
 
 /** @name Build and execute API requests */

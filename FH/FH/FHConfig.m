@@ -49,4 +49,18 @@ static FHConfig * shared = nil;
 }
 
 
+- (NSString *)advertiserId {
+  ASIdentifierManager *manager = [ASIdentifierManager sharedManager];
+  NSUUID *advertId = [manager advertisingIdentifier];
+  NSString *advertIdString = [advertId UUIDString];
+  return advertIdString;
+}
+
+- (BOOL)trackingEnabled {
+  ASIdentifierManager *manager = [ASIdentifierManager sharedManager];
+  BOOL trackingEnabled = manager.advertisingTrackingEnabled;
+  return trackingEnabled;
+}
+
+
 @end
