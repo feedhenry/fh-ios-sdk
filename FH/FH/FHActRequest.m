@@ -45,10 +45,4 @@
   return (NSDictionary *) args;
 }
 
-- (void)dealloc{
-  remoteAction = nil;
-  [remoteAction dealloc];
-  [super dealloc];
-}
-
 @end

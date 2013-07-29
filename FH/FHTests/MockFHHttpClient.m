@@ -29,15 +29,15 @@
   [cloutRes setValue:@"ok" forKey:@"status"];
   
   NSDictionary* resp = nil;
-  if(fhact.method == FH_INIT){
+  if([fhact.method isEqual: FH_INIT]){
     resp = initRes;
-  } else if(fhact.method == FH_CLOUD){
+  } else if([fhact.method isEqual: FH_CLOUD]){
     resp = cloutRes;
-  } else if(fhact.method == FH_AUTH){
+  } else if([fhact.method isEqual: FH_AUTH]){
     resp = authRes;
   }
   
-  FHResponse * fhResponse = [[[FHResponse alloc] init] autorelease];
+  FHResponse * fhResponse = [[FHResponse alloc] init];
   fhResponse.parsedResponse = resp;
   //if user has defined their own call back pass control to them
   if(sucornil)sucornil(fhResponse);

@@ -19,6 +19,7 @@
 #import "FHResponse.h"
 #import "JSONKit.h"
 #import "FHInitRequest.h"
+#import "Reachability.h"
 
 @implementation FH
 /*
@@ -31,11 +32,27 @@
  */ 
 static BOOL ready = false;
 static NSDictionary *props;
+static BOOL _isOnline = false;
+static BOOL initCalled = false;
+static Reachability* reachability;
 
 + (void)initWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil{
+  if(!initCalled){
+    [FH registerForNetworkReachabilityNotifications];
+  }
+  initCalled = true;
   if(!ready){
-    FHInitRequest *init = [[FHInitRequest alloc] initWithProps:props];
-    init.method = FH_INIT;
+    if(!_isOnline){
+      FHResponse* res = [[FHResponse alloc] init];
+      [res setError:[NSError errorWithDomain:@"FHInit" code:FHSDKNetworkOfflineErrorType userInfo:[NSDictionary dictionaryWithObject:@"offline" forKey:@"error"]]];
+      if (failornil) {
+        void (^handler)(FHResponse *resp) = [failornil copy];
+        handler(res);
+      }
+      return;
+    }
+    FHInitRequest * init   = [[FHInitRequest alloc] initWithProps:props];
+    init.method       = FH_INIT;
     
     void (^success)(FHResponse *) = ^(FHResponse * res){
       NSLog(@"the response from init %@",[res rawResponseAsString]);
@@ -69,9 +86,49 @@ static NSDictionary *props;
   }
 }
 
++ (BOOL) isOnline
+{
+  return _isOnline;
+}
+
++ (void) registerForNetworkReachabilityNotifications
+{
+  if(!reachability){
+    reachability = [Reachability reachabilityForInternetConnection];
+    if([reachability currentReachabilityStatus] == ReachableViaWiFi || [reachability currentReachabilityStatus] == ReachableViaWWAN ){
+      _isOnline = YES;
+    } else {
+      _isOnline = NO;
+    }
+    [reachability startNotifier];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+  }
+}
+
++ (void) unregisterForNetworkReachabilityNotification
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+  if(reachability){
+    [reachability stopNotifier];
+  }
+}
+
++ (void) networkReachabilityChanged:(NSNotification *)note
+{
+  if([reachability currentReachabilityStatus] == ReachableViaWiFi || [reachability currentReachabilityStatus] == ReachableViaWWAN){
+    _isOnline = YES;
+  } else {
+    _isOnline = NO;
+  }
+  NSLog(@"FH network status changed. Current status: %d", _isOnline);
+  if (_isOnline && !ready) {
+    [FH initWithSuccess:nil AndFailure:nil];
+  }
+}
+
 + (FHAct *)buildAction:(FH_ACTION)action{
   
-  if(!ready){
+  if(!initCalled){
     @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:[NSDictionary dictionary]]);
   }
   
@@ -80,11 +137,11 @@ static NSDictionary *props;
   
   switch (action) {
     case FH_ACTION_CLOUD:
-      act         = [[[FHActRequest alloc] initWithProps:props] autorelease];
+      act         = [[FHActRequest alloc] initWithProps:props];
       act.method  = FH_CLOUD;
       break;
     case FH_ACTION_AUTH:
-      act         = [[[FHAuthRequest alloc] initWithProps:props] autorelease];
+      act         = [[FHAuthRequest alloc] initWithProps:props];
       act.method  = FH_AUTH;
       break;
     default:

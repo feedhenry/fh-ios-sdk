@@ -3,7 +3,7 @@ build/*
 FH/build/*
 FHStarterProject/build/*
 FHStarterProject/FH.framework/*
- 
+FHSyncTestApp/FHSyncTestApp/build/*
 # Exclude temp nibs and swap files
 *~.nib
 *.swp
@@ -20,3 +20,7 @@ FHStarterProject/FH.framework/*
 *.pbxuser
 *.xcworkspace
 xcuserdata
+DerivedData/*
+FHSyncTestApp/FHSyncTestApp/DerivedData/*
+FH/DerivedData/*
+FHStarterProject/DerivedData/*

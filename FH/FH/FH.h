@@ -8,6 +8,10 @@
 #import "FHActRequest.h"
 #import "FHAuthRequest.h"
 
+typedef enum _FHSDKNetworkErrorType {
+  FHSDKNetworkOfflineErrorType = 1
+} FHSDKNetworkErrorType;
+
 @interface FH : NSObject{
         
 }
@@ -34,6 +38,12 @@
  @param failornil Block to be called if init is failed. It could be nil.
  */
 + (void)initWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
+
+/** Check if the device is online. The device is online if either WIFI or 3G network is available.
+ 
+ @return Returns if the device is online
+ */
++ (BOOL) isOnline;
 
 /** @name Create API request instances */
 

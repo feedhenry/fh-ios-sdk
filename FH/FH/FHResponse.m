@@ -22,12 +22,8 @@
 
 - (void)dealloc{
     rawResponse         = nil;
-    [rawResponse release];
     rawResponseAsString = nil;
-    [rawResponseAsString release];
     parsedResponse      = nil;
-    [parsedResponse release];
-    [super dealloc];
     
 }
 

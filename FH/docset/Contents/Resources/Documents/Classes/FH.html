@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -47,6 +47,8 @@
 	<option value="//api/name/buildAuthRequest">&nbsp;&nbsp;&nbsp;&nbsp;+ buildAuthRequest</option>
 	
 	<option value="//api/name/initWithSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;+ initWithSuccess:AndFailure:</option>
+	
+	<option value="//api/name/isOnline">&nbsp;&nbsp;&nbsp;&nbsp;+ isOnline</option>
 	
 	<option value="//api/name/performActRequest:WithArgs:AndSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;+ performActRequest:WithArgs:AndSuccess:AndFailure:</option>
 	
@@ -93,6 +95,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildAuthRequest">buildAuthRequest</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSuccess:AndFailure:">initWithSuccess:AndFailure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isOnline">isOnline</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performActRequest:WithArgs:AndSuccess:AndFailure:">performActRequest:WithArgs:AndSuccess:AndFailure:</a></span></li>
 	
@@ -162,6 +166,13 @@
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isOnline">+&nbsp;isOnline</a></code>
+		<span class="tooltip"><p>Check if the device is online. The device is online if either WIFI or 3G network is available.</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -180,7 +191,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/buildAuthRequest">+&nbsp;buildAuthRequest</a></code>
-		<span class="tooltip"><p>Create a new instance of FHAuthRequest class to perform authentication.</p></span>
+		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class to perform authentication.</p></span>
 	</span>
 	
 	
@@ -202,14 +213,14 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/performAuthRequest:AndSuccess:AndFailure:">+&nbsp;performAuthRequest:AndSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>Create a new instance of FHAuthRequest class with the given auth policy id and execute it immediately with the success and failure blocks.</p></span>
+		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and execute it immediately with the success and failure blocks.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:">+&nbsp;performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>Create a new instance of FHAuthRequest class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.</p></span>
+		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.</p></span>
 	</span>
 	
 	
@@ -296,12 +307,12 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Create a new instance of FHAuthRequest class to perform authentication.</p>
+		<p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class to perform authentication.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (FHAuthReqeust *)buildAuthRequest</code></div>
+	<div class="method-subsection method-declaration"><code>+ (FHAuthRequest *)buildAuthRequest</code></div>
 
     
 	
@@ -309,7 +320,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a new instance of FHAuthRequest</p>
+		<p>Returns a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a></p>
 	</div>
 	
 	
@@ -318,7 +329,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Create a new instance of FHAuthRequest class to perform authentication.</p>
+		<p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class to perform authentication.</p>
 	</div>
 	
 	
@@ -390,6 +401,52 @@
 
  [FH initWithSuccess:success AndFailure:failure];
 </code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FH.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isOnline" title="isOnline"></a>
+	<h3 class="subsubtitle method-title">isOnline</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if the device is online. The device is online if either WIFI or 3G network is available.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isOnline</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns if the device is online</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Check if the device is online. The device is online if either WIFI or 3G network is available.</p>
 	</div>
 	
 	
@@ -481,7 +538,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Create a new instance of FHAuthRequest class with the given auth policy id and execute it immediately with the success and failure blocks.</p>
+		<p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and execute it immediately with the success and failure blocks.</p>
 	</div>		
 	
     
@@ -518,7 +575,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Create a new instance of FHAuthRequest class with the given auth policy id and execute it immediately with the success and failure blocks.</p>
+		<p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and execute it immediately with the success and failure blocks.</p>
 
 <p>The request runs asynchronously. It should be used if the user credentials are not required at this point (for example, OAuth).</p>
 	</div>
@@ -544,7 +601,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Create a new instance of FHAuthRequest class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.</p>
+		<p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.</p>
 	</div>		
 	
     
@@ -591,7 +648,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Create a new instance of FHAuthRequest class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.</p>
+		<p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.</p>
 
 <p>The request runs asynchronously. It should be used if the user credentials should be provided at this point (for example, LDAP).</p>
 	</div>
@@ -625,9 +682,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 FeedHenry. All rights reserved. (Last updated: 2012-08-23)</span><br />
+						<p><span class="copyright">&copy; 2013 FeedHenry. All rights reserved. (Last updated: 2013-07-29)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

@@ -85,7 +85,7 @@
           }
         };
         NSURL* request = [NSURL URLWithString:oauthUrl];
-        FHOAuthViewController* controller = [[[FHOAuthViewController alloc] initWith:request completeHandler:complete] autorelease];
+        FHOAuthViewController* controller = [[FHOAuthViewController alloc] initWith:request completeHandler:complete];
         [self.parentViewController presentModalViewController:controller animated:YES];
       } else {
         if(sucornil){
@@ -112,17 +112,6 @@
     }
   };
   [httpClient sendRequest:self AndSuccess:tmpSuccess AndFailure:failornil];
-}
-
-- (void)dealloc
-{
-  self.policyId = nil;
-  self.userId = nil;
-  self.password = nil;
-  [self.policyId release];
-  [self.userId release];
-  [self.password release];
-  [super dealloc];
 }
 
 @end
