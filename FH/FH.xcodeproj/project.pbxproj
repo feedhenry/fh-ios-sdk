@@ -67,7 +67,7 @@
 		B3AE9D6D15D52C40004EF454 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4BA15D28DF40019262E /* FHResponse.m */; };
 		B3AE9D6E15D52C52004EF454 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9D15D3F92900220E6B /* FHInitRequest.m */; };
 		B3AE9D6F15D52C55004EF454 /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9415D3D3A000220E6B /* FHActRequest.m */; };
-		B3AE9D7015D52C5A004EF454 /* FHAuthReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthReqeust.m */; };
+		B3AE9D7015D52C5A004EF454 /* FHAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3346E9915D3D3C600220E6B /* FHAuthRequest.m */; };
 		B3AE9D7115D52C70004EF454 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D415D28E130019262E /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3AE9D7215D52C75004EF454 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D615D28E130019262E /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3AE9D7315D52C87004EF454 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4D815D28E130019262E /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -819,7 +819,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore FHInitRequest.h \\\n--ignore FHHttpClient.h \\\n--ignore Categories \\\n--ignore FHOAuthViewController.h \\\n--ignore UnitTest \\\n--ignore FHSyncDataset.h \\\n--ignore FHSyncUtils.h \\\n--ignore FHSyncPendingDataRecord.h \\\n--ignore FHSyncDataRecord.h \\\n--docsetutil-path \"/Developer/Xcode-4.3.2.app/Contents/Developer/usr/bin/docsetutil\" \\\n\"${PROJECT_DIR}/FH\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore FHInitRequest.h \\\n--ignore FHHttpClient.h \\\n--ignore Categories \\\n--ignore FHOAuthViewController.h \\\n--ignore UnitTest \\\n--ignore FHSyncDataset.h \\\n--ignore FHSyncUtils.h \\\n--ignore FHSyncPendingDataRecord.h \\\n--ignore FHSyncDataRecord.h \\\n\"${PROJECT_DIR}/FH\"";
 		};
 		B349A04F15D2A98500254861 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

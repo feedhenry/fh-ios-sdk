@@ -114,7 +114,18 @@
   //NSLog(@"content = %@", jsonStr);
   @synchronized(self){
     [FHSyncUtils saveData:jsonStr toFile:[self.datasetId stringByAppendingPathExtension:STORAGE_FILE_PATH] error:error];
+    if(nil != error){
+      [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:CLIENT_STORAGE_FAILED_MESSAGE message:[error localizedDescription]];
+    }
   }
+}
+
+- (void) saveToFileAndNofiyComplete:(NSDictionary*) info
+{
+  NSError* error = nil;
+  [self saveToFile:error];
+  NSString* message = [info objectForKey:@"message"];
+  [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:self.hashValue code:SYNC_COMPLETE_MESSAGE message:message];
 }
 
 + (FHSyncDataset*) objectFromJSONData:(NSDictionary*) jsonObj
@@ -577,11 +588,11 @@
   self.syncLoopEnd = [NSDate date];
   BOOL isMainThread = [NSThread isMainThread];
   if (isMainThread) {
-    [self performSelectorInBackground:@selector(saveToFile:) withObject:nil];
+    [self performSelectorInBackground:@selector(saveToFileAndNofiyComplete:) withObject:[NSDictionary dictionaryWithObjectsAndKeys:code, @"message", nil]];
   } else {
-    [self saveToFile:nil];
+    [self saveToFileAndNofiyComplete:[NSDictionary dictionaryWithObjectsAndKeys:code, @"message", nil]];
   }
-  [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:self.hashValue code:SYNC_COMPLETE_MESSAGE message:code];
+  
 }
 
 - (void) updatePendingFromNewData: (NSDictionary*) remoteData
