@@ -48,6 +48,7 @@ static FHConfig * shared = nil;
   return [[FH_OpenUDID value] MD5Hash];
 }
 
+
 - (NSString *)advertiserId {
   ASIdentifierManager *manager = [ASIdentifierManager sharedManager];
   NSUUID *advertId = [manager advertisingIdentifier];
@@ -61,8 +62,5 @@ static FHConfig * shared = nil;
   return trackingEnabled;
 }
 
--(void)dealloc{
-  [super dealloc];
-}
 
 @end

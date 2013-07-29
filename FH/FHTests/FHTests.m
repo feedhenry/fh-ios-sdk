@@ -24,12 +24,15 @@
 
 - (void)tearDown
 {
+  //Looks like there is a bug in Xcode sometimes some tests are not finished if you run a suite of tests together.
+  //add the following line seems fix it. see http://stackoverflow.com/questions/12308297/some-of-my-unit-tests-tests-are-not-finishing-in-xcode-4-4
+  [NSThread sleepForTimeInterval:1.0];
   [super tearDown];
 }
 
 - (void) testInit 
 {
-  MockFHHttpClient* httpClient = [[[MockFHHttpClient alloc]init]autorelease];
+  MockFHHttpClient* httpClient = [[MockFHHttpClient alloc]init];
   FHInitRequest * init   = [[FHInitRequest alloc]init];
   init.method       = FH_INIT;
   [init setHttpClient:httpClient];
@@ -39,13 +42,12 @@
     STAssertTrue(nil != [data objectForKey:@"hosts"], @"Can not find hosts in init response");
   };
   [init execWithSuccess:success AndFailure:nil];
-  [init dealloc];
 }
 
 
 -(void) testCloud
 {
-  MockFHHttpClient* httpClient = [[[MockFHHttpClient alloc]init]autorelease];
+  MockFHHttpClient* httpClient = [[MockFHHttpClient alloc]init];
   
   NSMutableDictionary* initRes = [NSMutableDictionary dictionary];
   NSMutableDictionary* innerP = [NSMutableDictionary dictionary];
@@ -56,7 +58,7 @@
   [initRes setValue:FALSE forKey:@"firstTime"];
   [initRes setValue:innerP forKey:@"hosts"];
   
-  FHCloudRequest * cloud = [[FHCloudRequest alloc]initWithProps:initRes];
+  FHActRequest * cloud = [[FHActRequest alloc]initWithProps:initRes];
   cloud.method = FH_CLOUD;
   [cloud setHttpClient:httpClient];
   
@@ -69,12 +71,11 @@
   };
   
   [cloud execWithSuccess:success AndFailure:nil];
-  [cloud dealloc];
 }
 
 -(void) testAuth
 {
-  MockFHHttpClient* httpClient = [[[MockFHHttpClient alloc]init]autorelease];
+  MockFHHttpClient* httpClient = [[MockFHHttpClient alloc]init];
   
   NSMutableDictionary* initRes = [NSMutableDictionary dictionary];
   NSMutableDictionary* innerP = [NSMutableDictionary dictionary];
@@ -99,7 +100,6 @@
   };
   
   [auth execWithSuccess:success AndFailure:nil];
-  [auth dealloc];
 }
 
 @end

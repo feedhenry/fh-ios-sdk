@@ -20,7 +20,7 @@
 @interface FHAct : NSObject{
   NSString * method;
   NSMutableDictionary * args;
-  id<FHResponseDelegate>  delegate;
+  id<FHResponseDelegate> __weak delegate;
   NSUInteger cacheTimeout;
   NSDictionary * cloudProps;
   NSString *uid;
@@ -64,6 +64,12 @@
  @return Returns the parameters.
  */
 - (NSDictionary *)args;
+
+/** Get the parameters for the API request as NSString.
+ 
+ @return Returns the parameters as string.
+ */
+- (NSString *) argsAsString;
 
 /** Get the URL of the API request 
  
