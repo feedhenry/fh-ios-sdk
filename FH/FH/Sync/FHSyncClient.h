@@ -1,6 +1,6 @@
 /**
  The sync client is part of the FeedHenry data sync framework. It provides a mechanism to manage bi-direction data synchronization.
- For more details, please check [data sync framewrok docs](http://docs.feedhenry.com/v2/index.html)
+ For more details, please check [data sync framework docs](http://docs.feedhenry.com/v2/index.html)
  */
 
 #import <Foundation/Foundation.h>
