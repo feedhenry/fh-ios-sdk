@@ -152,7 +152,6 @@
 		A2CD31EF14D0300200C4D3F0 = {
 			isa = PBXGroup;
 			children = (
-				D84E94F2177C3AA7006DCE05 /* AdSupport.framework */,
 				B339FA8F15DA7D900040E5FF /* FH.xcodeproj */,
 				A2CD320414D0300200C4D3F0 /* fh-ios-sdk */,
 				A2CD31FD14D0300200C4D3F0 /* Frameworks */,
@@ -172,6 +171,7 @@
 		A2CD31FD14D0300200C4D3F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D84E94F2177C3AA7006DCE05 /* AdSupport.framework */,
 				A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */,
 				A2CD342F14D067A700C4D3F0 /* libxml2.dylib */,
 				A2CD323614D065F100C4D3F0 /* libz.dylib */,
@@ -499,7 +499,7 @@
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
@@ -508,7 +508,7 @@
 				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
-				VALID_ARCHS = "armv6 armv7 i386";
+				VALID_ARCHS = "armv6 armv7 i386 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -534,7 +534,7 @@
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
@@ -543,7 +543,7 @@
 				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
-				VALID_ARCHS = "armv6 armv7 i386";
+				VALID_ARCHS = "armv6 armv7 i386 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

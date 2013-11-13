@@ -38,8 +38,31 @@ static FHConfig * shared = nil;
 }
 
 - (NSString *)getConfigValueForKey:(NSString *)key{
-  return [self.properties valueForKey:key];
+  NSString* ret = [self.properties valueForKey:key];
+  if ([self isStringEmpty:ret]) {
+    return nil;
+  } else {
+    return ret;
+  }
 }
+
+- (BOOL) isStringEmpty:(NSString*) value
+{
+  if ((NSNull*) value == [NSNull null]) {
+    return YES;
+  } else if (value == nil) {
+    return YES;
+  } else if ([value length] == 0){
+    return YES;
+  } else {
+    value = [value stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([value length] == 0) {
+      return YES;
+    }
+  }
+  return NO;
+}
+
 - (void)setConfigValue:(NSString *)val ForKey:(NSString *)key{
   [self.properties setValue:val forKey:key];
 }

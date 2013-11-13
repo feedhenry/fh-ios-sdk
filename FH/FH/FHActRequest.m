@@ -14,22 +14,28 @@
 @synthesize remoteAction;
 
 - (NSURL *)buildURL {
-  NSString * mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
-  NSString * appTypeKey = @"releaseCloudType";
-  NSString * propName = @"releaseCloudUrl";
-  if( [mode isEqualToString:@"dev"]){
-    propName = @"debugCloudUrl";
-    appTypeKey = @"debugCloudType";
-  }
-  NSString * cloudUrl = [[cloudProps objectForKey:@"hosts"] objectForKey:propName];
-  NSString * appType = [[cloudProps objectForKey:@"hosts"] objectForKey:appTypeKey];
-  NSString * format   = ([[cloudUrl substringToIndex:[cloudUrl length]-1] isEqualToString:@"/"]) ? @"%@" : @"%@/";
-  NSString * api      = [NSMutableString stringWithFormat:format,cloudUrl];
-  if([appType isEqualToString:@"node"]){
-    api = [api stringByAppendingString:[self getPath]];
+  NSString * api;
+  NSString* resUrl = [cloudProps objectForKey:@"url"];
+  if (nil != resUrl) {
+    api = resUrl;
   } else {
-    NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
-    api = [api stringByAppendingFormat:@"box/srv/1.1/act/%@/%@/%@/%@",[cloudProps objectForKey:@"domain"],appId,self.remoteAction,appId];
+    NSString * mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
+    NSString * appTypeKey = @"releaseCloudType";
+    NSString * propName = @"releaseCloudUrl";
+    if( [mode isEqualToString:@"dev"]){
+      propName = @"debugCloudUrl";
+      appTypeKey = @"debugCloudType";
+    }
+    NSString * cloudUrl = [[cloudProps objectForKey:@"hosts"] objectForKey:propName];
+    NSString * appType = [[cloudProps objectForKey:@"hosts"] objectForKey:appTypeKey];
+    NSString * format   = ([[cloudUrl substringToIndex:[cloudUrl length]-1] isEqualToString:@"/"]) ? @"%@" : @"%@/";
+    api      = [NSMutableString stringWithFormat:format,cloudUrl];
+    if([appType isEqualToString:@"node"]){
+      api = [api stringByAppendingString:[self getPath]];
+    } else {
+      NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
+      api = [api stringByAppendingFormat:@"box/srv/1.1/act/%@/%@/%@/%@",[cloudProps objectForKey:@"domain"],appId,self.remoteAction,appId];
+    }
   }
   NSLog(@"Request url is %@", api);
   NSURL * uri = [[NSURL alloc]initWithString:api];

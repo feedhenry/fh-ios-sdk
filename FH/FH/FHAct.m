@@ -62,6 +62,7 @@
 - (NSMutableDictionary *) getDefaultParams {
   NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
   NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
+  NSString* projectId = [[FHConfig getSharedInstance] getConfigValueForKey:@"projectid"];
   NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
   
   [fhparams setObject:uid forKey:@"cuid"];
@@ -90,6 +91,9 @@
   
   [fhparams setObject:appId forKey:@"appid"];
   [fhparams setObject:appKey forKey:@"appkey"];
+  if (nil != projectId) {
+    [fhparams setObject:projectId forKey:@"projectid"];
+  }
   [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
   [fhparams setValue:@"ios" forKey:@"destination"];
   
