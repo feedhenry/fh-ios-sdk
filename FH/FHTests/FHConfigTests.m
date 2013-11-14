@@ -32,6 +32,7 @@
   NSLog(@"%@", [fhconfig getConfigValueForKey:@"appid"]);
   STAssertTrue([[fhconfig getConfigValueForKey:@"host"] isEqualToString: @"http://testing.feedhenry.com"] , @"");
   STAssertTrue([[fhconfig getConfigValueForKey:@"appid"] isEqualToString:@"testappid"], @"");
+  STAssertNil([fhconfig getConfigValueForKey:@"invalidkey"], @"");
 }
 
 @end

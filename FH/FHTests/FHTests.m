@@ -71,6 +71,16 @@
   };
   
   [cloud execWithSuccess:success AndFailure:nil];
+  
+  [initRes setValue:@"http://dev.test.example.com" forKey:@"url"];
+  FHActRequest* another = [[FHActRequest alloc]initWithProps:initRes];
+  another.method = FH_CLOUD;
+  another.remoteAction = @"test";
+  
+  [another setHttpClient:httpClient];
+  
+  NSURL* anotherUrl = [another buildURL];
+  STAssertTrue([[anotherUrl absoluteString] isEqualToString:@"http://dev.test.example.com/cloud/test"], @"Cloud host url should equal to http://dev.test.example.com/cloud/test");
 }
 
 -(void) testAuth

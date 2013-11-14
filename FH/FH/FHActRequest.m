@@ -14,15 +14,24 @@
 @synthesize remoteAction;
 
 - (NSURL *)buildURL {
-  NSString * mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
-  NSString * appTypeKey = @"releaseCloudType";
-  NSString * propName = @"releaseCloudUrl";
-  if( [mode isEqualToString:@"dev"]){
-    propName = @"debugCloudUrl";
-    appTypeKey = @"debugCloudType";
+  NSString * cloudUrl;
+  NSString* appType;
+  NSString* resUrl = [cloudProps objectForKey:@"url"];
+  if (nil != resUrl) {
+    cloudUrl = resUrl;
+    appType = @"node";
+  } else {
+    NSString * mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
+    NSString * appTypeKey = @"releaseCloudType";
+    NSString * propName = @"releaseCloudUrl";
+    if( [mode isEqualToString:@"dev"]){
+      propName = @"debugCloudUrl";
+      appTypeKey = @"debugCloudType";
+    }
+    cloudUrl = [[cloudProps objectForKey:@"hosts"] objectForKey:propName];
+    appType = [[cloudProps objectForKey:@"hosts"] objectForKey:appTypeKey];
+    
   }
-  NSString * cloudUrl = [[cloudProps objectForKey:@"hosts"] objectForKey:propName];
-  NSString * appType = [[cloudProps objectForKey:@"hosts"] objectForKey:appTypeKey];
   NSString * format   = ([[cloudUrl substringToIndex:[cloudUrl length]-1] isEqualToString:@"/"]) ? @"%@" : @"%@/";
   NSString * api      = [NSMutableString stringWithFormat:format,cloudUrl];
   if([appType isEqualToString:@"node"]){
