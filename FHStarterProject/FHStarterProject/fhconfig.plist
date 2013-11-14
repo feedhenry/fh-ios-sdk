@@ -4,6 +4,8 @@
 <dict>
 	<key>host</key>
 	<string>&lt;Replace with the corret host value&gt;</string>
+  <key>projectid</key>
+  <string>&lt;Replace with your project id (if available)&gt;</string>
 	<key>appid</key>
 	<string>&lt;Replace with your app id&gt;</string>
 	<key>appkey</key>
