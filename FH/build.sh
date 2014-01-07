@@ -11,7 +11,7 @@ BUILD_CONFIGURATION="Release"
 
 XC_BUILD="xcodebuild"
 
-$XC_BUILD VALID_ARCHS="i386 armv6 armv7 arm7s" -project "$BUILD_PROJECT_NAME" -target "$BUILD_TARGET_NAME" -configuration "$BUILD_CONFIGURATION" clean build
+$XC_BUILD VALID_ARCHS="i386 armv7 armv7s" -project "$BUILD_PROJECT_NAME" -target "$BUILD_TARGET_NAME" -configuration "$BUILD_CONFIGURATION" clean build
 if [ "$?" != "0" ]; then echo >&2 "Error: xcodebuild failed"; exit 1; fi
 
 FH_SDK_VERSION=`head -1 VERSION.txt`
