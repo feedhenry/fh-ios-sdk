@@ -60,9 +60,10 @@
 }
 
 - (NSMutableDictionary *) getDefaultParams {
-  NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
-  NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
-  NSString* projectId = [[FHConfig getSharedInstance] getConfigValueForKey:@"projectid"];
+  NSString *appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
+  NSString *appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
+  NSString *projectId = [[FHConfig getSharedInstance] getConfigValueForKey:@"projectid"];
+  NSString *connectionTag = [[FHConfig getSharedInstance] getConfigValueForKey:@"connectiontag"];
   NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
   
   [fhparams setObject:uid forKey:@"cuid"];
@@ -93,6 +94,9 @@
   [fhparams setObject:appKey forKey:@"appkey"];
   if (nil != projectId) {
     [fhparams setObject:projectId forKey:@"projectid"];
+  }
+  if (nil != projectId) {
+    [fhparams setObject:connectionTag forKey:@"connectiontag"];
   }
   [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
   [fhparams setValue:@"ios" forKey:@"destination"];
