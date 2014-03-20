@@ -95,7 +95,7 @@
   if (nil != projectId) {
     [fhparams setObject:projectId forKey:@"projectid"];
   }
-  if (nil != projectId) {
+  if (nil != connectionTag) {
     [fhparams setObject:connectionTag forKey:@"connectiontag"];
   }
   [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
