@@ -33,9 +33,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		B307034A190EB968005C65CB /* FHCloudProps.h in Headers */ = {isa = PBXBuildFile; fileRef = B3070348190EB968005C65CB /* FHCloudProps.h */; };
+		B307034A190EB968005C65CB /* FHCloudProps.h in Headers */ = {isa = PBXBuildFile; fileRef = B3070348190EB968005C65CB /* FHCloudProps.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B307034B190EB968005C65CB /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = B3070349190EB968005C65CB /* FHCloudProps.m */; };
-		B307034E190EC337005C65CB /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B307034C190EC337005C65CB /* FHCloudRequest.h */; };
+		B307034E190EC337005C65CB /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B307034C190EC337005C65CB /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B307034F190EC337005C65CB /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B307034D190EC337005C65CB /* FHCloudRequest.m */; };
 		B307D3D71834255300903A6B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F0177C378E006DCE05 /* AdSupport.framework */; };
 		B32B65661610EC6A008B0DF5 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = B32B65641610EC6A008B0DF5 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,7 +113,7 @@
 		B3D7C4A415D28BE30019262E /* FHConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4A315D28BE30019262E /* FHConfigTests.m */; };
 		B3D7C4BC15D28DF40019262E /* FHAct.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B015D28DF40019262E /* FHAct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4BD15D28DF40019262E /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B115D28DF40019262E /* FHAct.m */; };
-		B3D7C4BE15D28DF40019262E /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B215D28DF40019262E /* FHConfig.h */; settings = {ATTRIBUTES = (); }; };
+		B3D7C4BE15D28DF40019262E /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B215D28DF40019262E /* FHConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4BF15D28DF40019262E /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
 		B3D7C4C015D28DF40019262E /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B415D28DF40019262E /* FHDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C4C515D28DF40019262E /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C4B915D28DF40019262E /* FHResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -848,7 +848,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\nFH_SDK_VERSION=`head -1 VERSION.txt`\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild VALID_ARCHS=\"i386 armv7 arm7s\" -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/$FH_SDK_VERSION/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/$FH_SDK_VERSION/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/$FH_SDK_VERSION/${SF_TARGET_NAME}\"";
+			shellScript = "set -e\nset +u\nFH_SDK_VERSION=`head -1 VERSION.txt`\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild VALID_ARCHS=\"i386 x86_64 armv7 armv7s arm64\" -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"";
 			showEnvVarsInLog = 0;
 		};
 		B3D7C49115D28BE30019262E /* ShellScript */ = {
@@ -876,7 +876,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nFH_SDK_VERSION=`head -1 VERSION.txt`\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/$FH_SDK_VERSION/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh $FH_SDK_VERSION \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/$FH_SDK_VERSION/Headers\"";
+			shellScript = "set -e\nFH_SDK_VERSION=\"Current\"\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n\n# Link the \"Current\" version to \"A\"\n#/bin/ln -sfh $FH_SDK_VERSION \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n#/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n#/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1029,9 +1029,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64 i386";
 			};
 			name = Debug;
 		};
@@ -1040,9 +1040,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64 i386";
 			};
 			name = Release;
 		};
@@ -1115,7 +1115,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
-				VALID_ARCHS = "armv6 armv7 armv7s";
+				VALID_ARCHS = "i386 arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1143,7 +1143,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
-				VALID_ARCHS = "armv6 armv7 armv7s";
+				VALID_ARCHS = "i386 arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

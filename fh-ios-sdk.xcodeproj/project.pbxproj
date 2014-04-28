@@ -509,7 +509,7 @@
 				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
-				VALID_ARCHS = "armv7 i386 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -545,7 +545,7 @@
 				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
-				VALID_ARCHS = "armv7 i386 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
