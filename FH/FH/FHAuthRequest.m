@@ -17,9 +17,9 @@
 @implementation FHAuthRequest
 @synthesize policyId,userId,password,parentViewController;
 
-- (id) initWithProps:(NSDictionary *)props AndViewController:(UIViewController*) viewController
+- (id) initWithViewController:(UIViewController*) viewController
 {
-  self = [super initWithProps:props];
+  self = [super init];
   if(self){
     self.parentViewController = viewController;
   }
@@ -47,7 +47,7 @@
   NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
   
   [params setValue:policyId forKey:@"policyId"];
-  [params setValue:uid forKey:@"device"];
+  [params setValue:[[FHConfig getSharedInstance] uid] forKey:@"device"];
   [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"clientToken"];
   
   if(self.userId && self.password){
@@ -62,7 +62,6 @@
 }
 
 - (NSDictionary *)args{
-  [args setObject:[self getDefaultParams] forKey:@"__fh"];
   return (NSDictionary *) args;
 }
 

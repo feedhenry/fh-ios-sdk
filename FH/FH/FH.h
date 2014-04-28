@@ -7,6 +7,8 @@
 
 #import "FHActRequest.h"
 #import "FHAuthRequest.h"
+#import "FHCloudRequest.h"
+#import "FHConfig.h"
 
 typedef enum _FHSDKNetworkErrorType {
   FHSDKNetworkOfflineErrorType = 1
@@ -61,6 +63,7 @@ typedef enum _FHSDKNetworkErrorType {
  */
 + (FHAuthRequest *) buildAuthRequest;
 
++(FHCloudRequest*) buildCloudRequest:(NSString*) path WithMethod:(NSString*)requestMethod AndHeaders:(NSDictionary*) headers AndArgs:(NSDictionary*) arguments;
 
 /** @name Build and execute API requests */
 
@@ -98,4 +101,11 @@ typedef enum _FHSDKNetworkErrorType {
  */
 + (void) performAuthRequest:(NSString *) policyId WithUserName:(NSString* )username UserPassword:(NSString*)userpass AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil;
 
++ (void) performCloudRequest:(NSString*) path WithMethod:(NSString*)requestMethod AndHeaders:(NSDictionary*) headers AndArgs:(NSDictionary*)arguments AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
+
++ (NSString*) getCloudHost;
+
++ (NSDictionary*) getDefaultParams;
+
++ (NSDictionary*) getDefaultParamsAsHeaders;
 @end

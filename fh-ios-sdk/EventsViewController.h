@@ -12,6 +12,7 @@
     UITableView * eventsTable;
     NSArray * events;
 }
+@property (retain) NSArray* events;
 @property(nonatomic,retain)IBOutlet UITableView * eventsTable;
 
 

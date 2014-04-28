@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 #import "FHDefines.h"
 #import "FHResponseDelegate.h"
+#import "FHCloudProps.h"
 
 @class FHHttpClient;
 
@@ -22,21 +23,28 @@
   NSMutableDictionary * args;
   id<FHResponseDelegate> __weak delegate;
   NSUInteger cacheTimeout;
-  NSDictionary * cloudProps;
-  NSString *uid;
-  NSString *advertiserId;
+  FHCloudProps * cloudProps;
   BOOL async;
   FHHttpClient * httpClient;
+  NSDictionary* headers;
+  NSString* requestMethod;
+  NSTimeInterval requestTimeout;
 }
 
 /** The type of the request */
 @property(strong)NSString * method;
+
+@property (retain) NSString* requestMethod;
+
+@property (assign) NSTimeInterval requestTimeout;
 
 /** The response delegate for this request.
  
  @see FHResponseDelegate
  */
 @property(weak, readwrite)id<FHResponseDelegate> delegate;
+
+@property(retain) NSDictionary* headers;
 
 /** How long the response should be cached for.
  
@@ -47,11 +55,10 @@
 
 /** @name Set properties of the API request */
 
-/** Create a new instance of the API request with the given configurations. 
- 
- @param props The configurations of the application (i.e. host, appid, appkey, mode)
+
+/** Create a new instance of the API request.
  */
-- (id)initWithProps:(NSDictionary *) props;
+- (id) init;
 
 /** Set the parameters for the API request. 
  
@@ -115,5 +122,7 @@
  @see FHResponseDelegate
  */
 - (void) execAsyncWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
+
+- (NSDictionary *) buildHeaders;
 
 @end

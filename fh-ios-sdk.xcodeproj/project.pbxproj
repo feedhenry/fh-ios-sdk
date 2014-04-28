@@ -500,7 +500,7 @@
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
@@ -536,7 +536,7 @@
 					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",

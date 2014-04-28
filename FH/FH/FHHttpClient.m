@@ -47,13 +47,20 @@
 #endif
   //startrequest
     __block __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
+  
+  //set headers
+  NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:[fhact buildHeaders]];
+  NSString * apiKeyVal = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
+  [headers setValue:@"application/json" forKey:@"Content-Type"];
+  [headers setValue:apiKeyVal forKeyPath:@"x-fh-auth-app"];
+  [request setRequestHeaders:headers];
   //add params to the post request
-    NSString * apiKeyVal = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
-    [request addRequestHeader:@"Content-Type" value:@"application/json"];
-    [request addRequestHeader:@"x-fh-auth-app" value:apiKeyVal];
   if([fhact args] && [[fhact args] count]>0){
       [request appendPostData:[[fhact args] JSONData]];
   }
+  //setMethod
+  [request setRequestMethod:fhact.requestMethod];
+  [request setTimeOutSeconds:fhact.requestTimeout];
   //wrap the passed block inside our own success block to allow for
   //further manipulation
   [request setCompletionBlock:^{
