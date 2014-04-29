@@ -835,7 +835,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore FHInitRequest.h \\\n--ignore FHHttpClient.h \\\n--ignore Categories \\\n--ignore FHOAuthViewController.h \\\n--ignore UnitTest \\\n--ignore FHSyncDataset.h \\\n--ignore FHSyncUtils.h \\\n--ignore FHSyncPendingDataRecord.h \\\n--ignore FHSyncDataRecord.h \\\n\"${PROJECT_DIR}/FH\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore FHInitRequest.h \\\n--ignore FHHttpClient.h \\\n--ignore Categories \\\n--ignore FHOAuthViewController.h \\\n--ignore UnitTest \\\n--ignore FHSyncDataset.h \\\n--ignore FHSyncUtils.h \\\n--ignore FHSyncPendingDataRecord.h \\\n--ignore FHSyncDataRecord.h \\\n--ignore \"${PROJECT_DIR}/FH/ThirdParty\" \\\n--no-create-docset \\\n--create-html \\\n-o \"${PROJECT_DIR}\" \\\n\"${PROJECT_DIR}/FH\"\nmkdir -p \"${PROJECT_DIR}/docset/Contents/Resources/Documents\"\ncp -R \"${PROJECT_DIR}/html/\" \"${PROJECT_DIR}/docset/Contents/Resources/Documents/\"\nrm -rf \"${PROJECT_DIR}/html/\"";
 		};
 		B349A04F15D2A98500254861 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

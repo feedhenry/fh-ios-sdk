@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>FHSyncClient Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -168,14 +167,14 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>The sync client is part of the FeedHenry data sync framework. It provides a mechanism to manage bi-direction data synchronization.
-For more details, please check <a href="http://docs.feedhenry.com/v2/index.html">data sync framewrok docs</a></p>
+For more details, please check <a href="http://docs.feedhenry.com/v2/index.html">data sync framework docs</a></p>
 					</div>
 					
 					
@@ -194,14 +193,12 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getInstance">+&nbsp;getInstance</a></code>
-		<span class="tooltip"><p>Get the singleton instance of the sync client</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithConfig:">&ndash;&nbsp;initWithConfig:</a></code>
-		<span class="tooltip"><p>Initialize the sync client with the sync configuration</p></span>
 	</span>
 	
 	
@@ -216,7 +213,6 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/manageWithDataId:AndConfig:AndQuery:">&ndash;&nbsp;manageWithDataId:AndConfig:AndQuery:</a></code>
-		<span class="tooltip"><p>Use sync client to manage a dataset with id dataId.</p></span>
 	</span>
 	
 	
@@ -231,35 +227,30 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/readWithDataId:AndUID:">&ndash;&nbsp;readWithDataId:AndUID:</a></code>
-		<span class="tooltip"><p>Read a data record with id uid within data set with id dataId</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/listWithDataId:">&ndash;&nbsp;listWithDataId:</a></code>
-		<span class="tooltip"><p>List all the data records with in the data set with id dataId</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/createWithDataId:AndData:">&ndash;&nbsp;createWithDataId:AndData:</a></code>
-		<span class="tooltip"><p>Create a data record within data set with id dataId</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/updateWithDataId:AndUID:AndData:">&ndash;&nbsp;updateWithDataId:AndUID:AndData:</a></code>
-		<span class="tooltip"><p>Update an existing data record with id uid within data set with id dataId</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/deleteWithDataId:AndUID:">&ndash;&nbsp;deleteWithDataId:AndUID:</a></code>
-		<span class="tooltip"><p>delete a data record with id uid within data set with id dataId</p></span>
 	</span>
 	
 	
@@ -274,14 +265,12 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:">&ndash;&nbsp;listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>List the collisions for data set with id dataId</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:">&ndash;&nbsp;removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>Remove a collision with hash collisionHash for data set with id dataId</p></span>
 	</span>
 	
 	
@@ -296,14 +285,12 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stopWithDataId:">&ndash;&nbsp;stopWithDataId:</a></code>
-		<span class="tooltip"><p>Stop the sync service for data set with id dataId</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/destroy">&ndash;&nbsp;destroy</a></code>
-		<span class="tooltip"><p>Stop all sync services and destroy the sync client</p></span>
 	</span>
 	
 	
@@ -1010,6 +997,8 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1020,9 +1009,9 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 FeedHenry. All rights reserved. (Last updated: 2013-07-29)</span><br />
+						<p><span class="copyright">&copy; 2014 FeedHenry. All rights reserved. (Last updated: 2014-04-29)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

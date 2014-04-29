@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>FH Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -46,6 +45,14 @@
 	
 	<option value="//api/name/buildAuthRequest">&nbsp;&nbsp;&nbsp;&nbsp;+ buildAuthRequest</option>
 	
+	<option value="//api/name/buildCloudRequest:WithMethod:AndHeaders:AndArgs:">&nbsp;&nbsp;&nbsp;&nbsp;+ buildCloudRequest:WithMethod:AndHeaders:AndArgs:</option>
+	
+	<option value="//api/name/getCloudHost">&nbsp;&nbsp;&nbsp;&nbsp;+ getCloudHost</option>
+	
+	<option value="//api/name/getDefaultParams">&nbsp;&nbsp;&nbsp;&nbsp;+ getDefaultParams</option>
+	
+	<option value="//api/name/getDefaultParamsAsHeaders">&nbsp;&nbsp;&nbsp;&nbsp;+ getDefaultParamsAsHeaders</option>
+	
 	<option value="//api/name/initWithSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;+ initWithSuccess:AndFailure:</option>
 	
 	<option value="//api/name/isOnline">&nbsp;&nbsp;&nbsp;&nbsp;+ isOnline</option>
@@ -55,6 +62,8 @@
 	<option value="//api/name/performAuthRequest:AndSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;+ performAuthRequest:AndSuccess:AndFailure:</option>
 	
 	<option value="//api/name/performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;+ performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:</option>
+	
+	<option value="//api/name/performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;+ performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:</option>
 	
 	
 	
@@ -94,6 +103,14 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildAuthRequest">buildAuthRequest</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildCloudRequest:WithMethod:AndHeaders:AndArgs:">buildCloudRequest:WithMethod:AndHeaders:AndArgs:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCloudHost">getCloudHost</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getDefaultParams">getDefaultParams</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getDefaultParamsAsHeaders">getDefaultParamsAsHeaders</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSuccess:AndFailure:">initWithSuccess:AndFailure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isOnline">isOnline</a></span></li>
@@ -103,6 +120,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performAuthRequest:AndSuccess:AndFailure:">performAuthRequest:AndSuccess:AndFailure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:">performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:">performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:</a></span></li>
 	
 </ul></li>
 
@@ -137,8 +156,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -162,14 +181,12 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithSuccess:AndFailure:">+&nbsp;initWithSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>Initialize the library.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isOnline">+&nbsp;isOnline</a></code>
-		<span class="tooltip"><p>Check if the device is online. The device is online if either WIFI or 3G network is available.</p></span>
 	</span>
 	
 	
@@ -184,14 +201,18 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/buildActRequest:WithArgs:">+&nbsp;buildActRequest:WithArgs:</a></code>
-		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHActRequest.html">FHActRequest</a> class to perform cloud side functions.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/buildAuthRequest">+&nbsp;buildAuthRequest</a></code>
-		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class to perform authentication.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/buildCloudRequest:WithMethod:AndHeaders:AndArgs:">+&nbsp;buildCloudRequest:WithMethod:AndHeaders:AndArgs:</a></code>
 	</span>
 	
 	
@@ -206,21 +227,42 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/performActRequest:WithArgs:AndSuccess:AndFailure:">+&nbsp;performActRequest:WithArgs:AndSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHActRequest.html">FHActRequest</a> class and execute it immediately with the success and failure blocks.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/performAuthRequest:AndSuccess:AndFailure:">+&nbsp;performAuthRequest:AndSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and execute it immediately with the success and failure blocks.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:">+&nbsp;performAuthRequest:WithUserName:UserPassword:AndSuccess:AndFailure:</a></code>
-		<span class="tooltip"><p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class with the given auth policy id and user credentials and execute it immediately with the success and failure blocks.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:">+&nbsp;performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getCloudHost">+&nbsp;getCloudHost</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getDefaultParams">+&nbsp;getDefaultParams</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getDefaultParamsAsHeaders">+&nbsp;getDefaultParamsAsHeaders</a></code>
 	</span>
 	
 	
@@ -330,6 +372,219 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Create a new instance of <a href="../Classes/FHAuthRequest.html">FHAuthRequest</a> class to perform authentication.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FH.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/buildCloudRequest:WithMethod:AndHeaders:AndArgs:" title="buildCloudRequest:WithMethod:AndHeaders:AndArgs:"></a>
+	<h3 class="subsubtitle method-title">buildCloudRequest:WithMethod:AndHeaders:AndArgs:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new instance of <a href="../Classes/FHCloudRequest.html">FHCloudRequest</a> class to perform cloud API calls.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (FHCloudRequest *)buildCloudRequest:(NSString *)<em>path</em> WithMethod:(NSString *)<em>requestMethod</em> AndHeaders:(NSDictionary *)<em>headers</em> AndArgs:(NSDictionary *)<em>arguments</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>path</em></dt>
+			<dd><p>The path of the cloud API</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>requestMethod</em></dt>
+			<dd><p>The HTTP request method to use for the request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>headers</em></dt>
+			<dd><p>The HTTP headers to use for the request. Can be nil.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>arguments</em></dt>
+			<dd><p>The request body data. Can be nil.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns a new instance of <a href="../Classes/FHCloudRequest.html">FHCloudRequest</a></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a new instance of <a href="../Classes/FHCloudRequest.html">FHCloudRequest</a> class to perform cloud API calls.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FH.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getCloudHost" title="getCloudHost"></a>
+	<h3 class="subsubtitle method-title">getCloudHost</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the cloud host the app is communicating with.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)getCloudHost</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The url of the cloud host.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get the cloud host the app is communicating with.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FH.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getDefaultParams" title="getDefaultParams"></a>
+	<h3 class="subsubtitle method-title">getDefaultParams</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the default params for customised HTTP Requests. Those params will be required to enable app analytics on the FH platform.
+You can either add the params to your request body as a JSONObject with the key &ldquo;__fh&rdquo;,
+or use the <a href="#//api/name/getDefaultParamsAsHeaders">getDefaultParamsAsHeaders</a> method to add them as HTTP request headers.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSDictionary *)getDefaultParams</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The default parameters as JSONObject.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get the default params for customised HTTP Requests. Those params will be required to enable app analytics on the FH platform.
+You can either add the params to your request body as a JSONObject with the key &ldquo;__fh&rdquo;,
+or use the <a href="#//api/name/getDefaultParamsAsHeaders">getDefaultParamsAsHeaders</a> method to add them as HTTP request headers.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FH.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getDefaultParamsAsHeaders" title="getDefaultParamsAsHeaders"></a>
+	<h3 class="subsubtitle method-title">getDefaultParamsAsHeaders</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Similar to <a href="#//api/name/getDefaultParams">getDefaultParams</a>. But returns the data as HTTP headers.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSDictionary *)getDefaultParamsAsHeaders</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The default parameters as HTTP headers.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Similar to <a href="#//api/name/getDefaultParams">getDefaultParams</a>. But returns the data as HTTP headers.</p>
 	</div>
 	
 	
@@ -667,11 +922,91 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:" title="performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:"></a>
+	<h3 class="subsubtitle method-title">performCloudRequest:WithMethod:AndHeaders:AndArgs:AndSuccess:AndFailure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new instance of <a href="../Classes/FHCloudRequest.html">FHCloudRequest</a> class and execute it immediately with the success and failure blocks.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)performCloudRequest:(NSString *)<em>path</em> WithMethod:(NSString *)<em>requestMethod</em> AndHeaders:(NSDictionary *)<em>headers</em> AndArgs:(NSDictionary *)<em>arguments</em> AndSuccess:(void ( ^ ) ( id success ))<em>sucornil</em> AndFailure:(void ( ^ ) ( id failed ))<em>failornil</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>path</em></dt>
+			<dd><p>The path of the cloud API</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>requestMethod</em></dt>
+			<dd><p>The HTTP request method to use for the request</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>headers</em></dt>
+			<dd><p>The HTTP headers to use for the request. Can be nil.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>arguments</em></dt>
+			<dd><p>The request body data. Can be nil.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sucornil</em></dt>
+			<dd><p>Block to be executed if the execution of the cloud side function is successful</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failornil</em></dt>
+			<dd><p>Block to be executed if the execution of the cloud side function is failed</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a new instance of <a href="../Classes/FHCloudRequest.html">FHCloudRequest</a> class and execute it immediately with the success and failure blocks.</p>
+
+<p>The request runs asynchronously.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FH.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -682,9 +1017,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 FeedHenry. All rights reserved. (Last updated: 2013-07-29)</span><br />
+						<p><span class="copyright">&copy; 2014 FeedHenry. All rights reserved. (Last updated: 2014-04-29)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>
