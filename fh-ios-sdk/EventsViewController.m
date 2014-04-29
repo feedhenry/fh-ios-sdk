@@ -11,7 +11,7 @@
 #import "FHResponse.h"
 
 @implementation EventsViewController
-@synthesize eventsTable;
+@synthesize eventsTable, events;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,12 +35,12 @@
 {
    
     self.navigationItem.title = @"FeedHenry Tweets";
-    events = [NSArray array];
+    self.events = [NSArray array];
     void (^success)(FHResponse *)=^(FHResponse * res){
 #if DEBUG
         NSLog(@"parsed response %@ type=%@",res.parsedResponse,[res.parsedResponse class]);
 #endif
-      events = (NSArray *) [res.parsedResponse objectForKey:@"tweets"];
+      self.events = [NSArray arrayWithArray: (NSArray*) [res.parsedResponse objectForKey:@"tweets"]];
       [eventsTable reloadData];
         
     };
@@ -52,8 +52,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
-  FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getTweets" WithArgs:[NSDictionary dictionary]];
-  action.cacheTimeout = (60 * 60 * 2); //2 hours
+  FHCloudRequest* action = [FH buildCloudRequest:@"getTweets" WithMethod:@"GET" AndHeaders:nil AndArgs:nil];
   [action execAsyncWithSuccess:success AndFailure:failure];
 }
 
@@ -79,7 +78,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [events count];
+    return [self.events count];
 }
 
 #pragma mark UITableViewDelegate
@@ -91,9 +90,9 @@
         cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid] autorelease];
     }
 #if DEBUG
-    NSLog(@"event = %@",[events objectAtIndex:[indexPath row]]);
+    NSLog(@"event = %@",[self.events objectAtIndex:[indexPath row]]);
 #endif
-    cell.textLabel.text = (NSString *)[[events objectAtIndex:[indexPath row]]objectForKey:@"text"];
+    cell.textLabel.text = (NSString *)[[self.events objectAtIndex:[indexPath row]]objectForKey:@"text"];
     return cell;
 }
 
@@ -109,8 +108,8 @@
 - (void)dealloc{
     eventsTable = nil;
     [eventsTable release];
-    events = nil;
-    [events release];
+    self.events = nil;
+    [self.events release];
     [super dealloc];
 }
 

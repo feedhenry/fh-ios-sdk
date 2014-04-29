@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>host</key>
-	<string>&lt;Replace with the corret host value&gt;</string>
-  <key>projectid</key>
-  <string>&lt;Replace with your project id (if available)&gt;</string>
+	<string><host></string>
 	<key>appid</key>
-	<string>&lt;Replace with your app id&gt;</string>
+	<string><appid></string>
+	<key>projectid</key>
+	<string><projectid></string>
 	<key>appkey</key>
-	<string>&lt;Replace with your app key&gt;</string>
-	<key>mode</key>
-	<string>&lt;dev or live&gt;</string>
+	<string><appkey></string>
+	<key>connectiontag</key>
+	<string><connectiontag></string>
 </dict>
 </plist>

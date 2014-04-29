@@ -14,8 +14,9 @@
 
 @implementation FHInitRequest
 
-- (id)initWithProps:(NSDictionary *) props{
-  self = [super initWithProps:props];
+- (id)init
+{
+  self = [super init];
   if(self){
     [self initArgs];
   }

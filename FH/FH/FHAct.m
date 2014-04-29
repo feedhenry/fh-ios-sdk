@@ -11,26 +11,26 @@
 #import "FHConfig.h"
 #import "FHHttpClient.h"
 #import "FHDefines.h"
+#import "FH.h"
 
 @implementation FHAct
-@synthesize method, delegate, cacheTimeout;
+@synthesize method, delegate, cacheTimeout, headers, requestMethod, requestTimeout;
 
-- (id)initWithProps:(NSDictionary *) props{
+- (id) init
+{
   self = [super init];
-  if(self){
+  if (self) {
     args = [NSMutableDictionary dictionary];
-    cloudProps = props;
-    uid = [[FHConfig getSharedInstance] uid];
-    advertiserId = [[FHConfig getSharedInstance] advertiserId];
     httpClient = [[FHHttpClient alloc]init];
+    requestMethod = @"POST";
+    headers = [NSMutableDictionary dictionary];
+    requestTimeout = 60;
   }
   return self;
 }
 
 - (void)setArgs:(NSDictionary * )arguments {
-    args = [NSMutableDictionary dictionaryWithDictionary:arguments];
-    NSDictionary * defaults = [self getDefaultParams];
-    [args setValue:defaults forKey:@"__fh"];
+   args = [NSMutableDictionary dictionaryWithDictionary:arguments];
    NSLog(@"args set to  %@",args);
 }
 
@@ -60,51 +60,12 @@
 }
 
 - (NSMutableDictionary *) getDefaultParams {
-  NSString* appId = [[FHConfig getSharedInstance] getConfigValueForKey:@"appid"];
-  NSString* appKey = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
-  NSString* projectId = [[FHConfig getSharedInstance] getConfigValueForKey:@"projectid"];
-  NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
-  
-  [fhparams setObject:uid forKey:@"cuid"];
-  
-  // Generate cuidMap
-  NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
-  
-  // OpenUDID
-  NSMutableDictionary *openUdidMap = [[NSMutableDictionary alloc] init];
-  [openUdidMap setObject:@"OpenUDID" forKey:@"name"];
-  [openUdidMap setObject:uid forKey:@"cuid"];
-  [cuidMap addObject:openUdidMap];  
-  
-  // advertisingIdentifier - iOS 6+
-  if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
-    NSMutableDictionary *advertIdMap = [[NSMutableDictionary alloc] init];
-    [advertIdMap setObject:@"advertisingIdentifier" forKey:@"name"];
-    [advertIdMap setObject:advertiserId forKey:@"cuid"];
-    NSLog(@"enabled: %d", [[FHConfig getSharedInstance] trackingEnabled]);
-    [advertIdMap setObject:[NSNumber numberWithBool:[[FHConfig getSharedInstance] trackingEnabled]] forKey:@"tracking_enabled"];
-    [cuidMap addObject:advertIdMap];
-  }
+  return [NSMutableDictionary dictionaryWithDictionary:[FH getDefaultParams]];
+}
 
-  // Append to cuidMap
-  [fhparams setObject:cuidMap forKey:@"cuidMap"];
-  
-  [fhparams setObject:appId forKey:@"appid"];
-  [fhparams setObject:appKey forKey:@"appkey"];
-  if (nil != projectId) {
-    [fhparams setObject:projectId forKey:@"projectid"];
-  }
-  [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
-  [fhparams setValue:@"ios" forKey:@"destination"];
-  
-  // Read init
-  NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-  NSString *init = [prefs objectForKey:@"init"];
-  if (init != nil) {
-    [fhparams setObject:init forKey:@"init"];
-  }
-
-  return fhparams;
+- (NSDictionary *) buildHeaders
+{
+  return headers;
 }
 
 - (void) execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {

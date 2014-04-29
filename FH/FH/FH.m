@@ -20,6 +20,7 @@
 #import "JSONKit.h"
 #import "FHInitRequest.h"
 #import "Reachability.h"
+#import "FHCloudProps.h"
 
 @implementation FH
 /*
@@ -31,7 +32,7 @@
  If it is not called FH will throw an exception
  */ 
 static BOOL ready = false;
-static NSDictionary *props;
+static FHCloudProps *cloudProps;
 static BOOL _isOnline = false;
 static BOOL initCalled = false;
 static Reachability* reachability;
@@ -51,12 +52,13 @@ static Reachability* reachability;
       }
       return;
     }
-    FHInitRequest * init   = [[FHInitRequest alloc] initWithProps:props];
+    FHInitRequest * init   = [[FHInitRequest alloc] init];
     init.method       = FH_INIT;
     
     void (^success)(FHResponse *) = ^(FHResponse * res){
       NSLog(@"the response from init %@",[res rawResponseAsString]);
-      props = [res parsedResponse];
+      NSDictionary* props = [res parsedResponse];
+      cloudProps = [[FHCloudProps alloc] initWithCloudProps:props];
       
       // Save init
       NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -136,13 +138,17 @@ static Reachability* reachability;
   //needs to be shared 
   
   switch (action) {
-    case FH_ACTION_CLOUD:
-      act         = [[FHActRequest alloc] initWithProps:props];
-      act.method  = FH_CLOUD;
+    case FH_ACTION_ACT:
+      act         = [[FHActRequest alloc] initWithProps:cloudProps];
+      act.method  = FH_ACT;
       break;
     case FH_ACTION_AUTH:
-      act         = [[FHAuthRequest alloc] initWithProps:props];
+      act         = [[FHAuthRequest alloc] init];
       act.method  = FH_AUTH;
+      break;
+    case FH_ACTION_CLOUD:
+      act         = [[FHCloudRequest alloc] initWithProps:cloudProps];
+      act.method = FH_CLOUD;
       break;
     default:
       @throw([NSException exceptionWithName:@"Unknown Action" reason:@"you asked for an action that is not available or unknown" userInfo:[NSDictionary dictionary]]); 
@@ -152,10 +158,20 @@ static Reachability* reachability;
 }
 
 + (FHActRequest *) buildActRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments {
-  FHActRequest * act = (FHActRequest *) [self buildAction:FH_ACTION_CLOUD];
+  FHActRequest * act = (FHActRequest *) [self buildAction:FH_ACTION_ACT];
   act.remoteAction = funcName;
   [act setArgs:arguments];
   return act;
+}
+
++(FHCloudRequest*) buildCloudRequest:(NSString*) path WithMethod:(NSString*)requestMethod AndHeaders:(NSDictionary*) headers AndArgs:(NSDictionary*) arguments
+{
+  FHCloudRequest* request = (FHCloudRequest *) [self buildAction:FH_ACTION_CLOUD];
+  request.path = path;
+  request.requestMethod = requestMethod;
+  request.headers = headers;
+  [request setArgs:arguments];
+  return request;
 }
 
 + (void) performActRequest:(NSString *) funcName WithArgs:(NSDictionary *) arguments AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
@@ -182,6 +198,87 @@ static Reachability* reachability;
   [auth authWithPolicyId:policyId UserId:username Password:userpass];
   [auth execAsyncWithSuccess:sucornil AndFailure:failornil];
 }
+
++(void) performCloudRequest:(NSString*) path WithMethod:(NSString*)requestMethod AndHeaders:(NSDictionary*) headers AndArgs:(NSDictionary*)arguments AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
+{
+  FHCloudRequest* cloudRequest = [self buildCloudRequest:path WithMethod:requestMethod AndHeaders:headers AndArgs:arguments];
+  [cloudRequest execAsyncWithSuccess:sucornil AndFailure:failornil];
+}
+
++(NSString*) getCloudHost
+{
+  if (nil == cloudProps) {
+     @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:[NSDictionary dictionary]]);
+  }
+  return [cloudProps getCloudHost];
+}
+
++(NSDictionary*) getDefaultParams
+{
+  FHConfig* appConfig = [FHConfig getSharedInstance];
+  NSString *appId = [appConfig getConfigValueForKey:@"appid"];
+  NSString *appKey = [appConfig getConfigValueForKey:@"appkey"];
+  NSString *projectId = [appConfig getConfigValueForKey:@"projectid"];
+  NSString *connectionTag = [appConfig getConfigValueForKey:@"connectiontag"];
+  NSString* uid = [appConfig uid];
+  NSString* advertiserId = [appConfig advertiserId];
+  NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
+  
+  [fhparams setObject:uid forKey:@"cuid"];
+  
+  // Generate cuidMap
+  NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
+  
+  // OpenUDID
+  NSMutableDictionary *openUdidMap = [[NSMutableDictionary alloc] init];
+  [openUdidMap setObject:@"OpenUDID" forKey:@"name"];
+  [openUdidMap setObject:uid forKey:@"cuid"];
+  [cuidMap addObject:openUdidMap];
+  
+  // advertisingIdentifier - iOS 6+
+  if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
+    NSMutableDictionary *advertIdMap = [[NSMutableDictionary alloc] init];
+    [advertIdMap setObject:@"advertisingIdentifier" forKey:@"name"];
+    [advertIdMap setObject:advertiserId forKey:@"cuid"];
+    NSLog(@"enabled: %d", [[FHConfig getSharedInstance] trackingEnabled]);
+    [advertIdMap setObject:[NSNumber numberWithBool:[[FHConfig getSharedInstance] trackingEnabled]] forKey:@"tracking_enabled"];
+    [cuidMap addObject:advertIdMap];
+  }
+  
+  // Append to cuidMap
+  [fhparams setObject:cuidMap forKey:@"cuidMap"];
+  
+  [fhparams setObject:appId forKey:@"appid"];
+  [fhparams setObject:appKey forKey:@"appkey"];
+  if (nil != projectId) {
+    [fhparams setObject:projectId forKey:@"projectid"];
+  }
+  if (nil != projectId) {
+    [fhparams setObject:connectionTag forKey:@"connectiontag"];
+  }
+  [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
+  [fhparams setValue:@"ios" forKey:@"destination"];
+  
+  // Read init
+  NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+  NSString *init = [prefs objectForKey:@"init"];
+  if (init != nil) {
+    [fhparams setObject:init forKey:@"init"];
+  }
+  return fhparams;
+}
+
++ (NSDictionary*) getDefaultParamsAsHeaders
+{
+  NSDictionary* defaultParams = [FH getDefaultParams];
+  __block NSMutableDictionary* headers = [NSMutableDictionary dictionary];
+  [defaultParams enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    NSString* headerName = [NSString stringWithFormat:@"X-FH-%@", key];
+    [headers setValue:[obj JSONString] forKey:headerName];
+  }];
+  return headers;
+}
+
 
 
 @end

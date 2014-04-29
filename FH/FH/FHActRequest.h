@@ -17,4 +17,6 @@
 /** The cloud side function name */
 @property(nonatomic,retain)NSString * remoteAction;
 
+- (id)initWithProps:(FHCloudProps *) props;
+
 @end
