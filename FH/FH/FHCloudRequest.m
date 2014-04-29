@@ -7,6 +7,7 @@
 //
 
 #import "FHCloudRequest.h"
+#import "FH.h"
 
 @implementation FHCloudRequest
 
@@ -54,5 +55,17 @@
   }
   return qs;
 }
+
+- (NSDictionary *) buildHeaders
+{
+  __block NSMutableDictionary* defaultHeaders = [NSMutableDictionary dictionaryWithDictionary:[FH getDefaultParamsAsHeaders]];
+  if (nil != headers) {
+    [headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+      [defaultHeaders setObject:obj forKey:key];
+    }];
+  }
+  return defaultHeaders;
+}
+
 
 @end

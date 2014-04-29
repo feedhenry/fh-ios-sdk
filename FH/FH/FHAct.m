@@ -65,13 +65,7 @@
 
 - (NSDictionary *) buildHeaders
 {
-  __block NSMutableDictionary* defaultHeaders = [NSMutableDictionary dictionaryWithDictionary:[FH getDefaultParamsAsHeaders]];
-  if (nil != headers) {
-    [headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-      [defaultHeaders setObject:obj forKey:key];
-    }];
-  }
-  return defaultHeaders;
+  return headers;
 }
 
 - (void) execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {

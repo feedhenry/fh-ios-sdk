@@ -8,6 +8,7 @@
 
 #import "FHActRequest.h"
 #import "FHConfig.h"
+#import "FH.h"
 
 @implementation FHActRequest
 
@@ -32,6 +33,12 @@
 
 - (NSString *)getPath{
   return [NSMutableString stringWithFormat:@"%@/%@", @"cloud", self.remoteAction];
+}
+
+- (void)setArgs:(NSDictionary * )arguments {
+  args = [NSMutableDictionary dictionaryWithDictionary:arguments];
+  [args setObject:[FH getDefaultParams] forKey:@"__fh"]; //keep backward compatible
+  NSLog(@"args set to  %@",args);
 }
 
 @end

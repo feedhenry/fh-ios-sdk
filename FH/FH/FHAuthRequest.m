@@ -11,6 +11,7 @@
 #import "FHHttpClient.h"
 #import "FHOAuthViewController.h"
 #import "JSONKit.h"
+#import "FH.h"
 
 #define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"
 
@@ -46,6 +47,7 @@
   NSMutableDictionary * params    = [NSMutableDictionary dictionary];
   NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
   
+  [params setObject:[FH getDefaultParams] forKey:@"__fh"]; //keep backward compatible
   [params setValue:policyId forKey:@"policyId"];
   [params setValue:[[FHConfig getSharedInstance] uid] forKey:@"device"];
   [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"clientToken"];
