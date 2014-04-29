@@ -34,8 +34,10 @@
 /** The type of the request */
 @property(strong)NSString * method;
 
+/** The HTTP request method */
 @property (retain) NSString* requestMethod;
 
+/** The timeout value of the requesst. Default to 60 seconds */
 @property (assign) NSTimeInterval requestTimeout;
 
 /** The response delegate for this request.
@@ -44,6 +46,8 @@
  */
 @property(weak, readwrite)id<FHResponseDelegate> delegate;
 
+
+/** The HTTP headers of the request */
 @property(retain) NSDictionary* headers;
 
 /** How long the response should be cached for.
@@ -102,6 +106,9 @@
  */
 - (BOOL) isAsync;
 
+/** Return the combined HTTP headers for the request */
+- (NSDictionary *) buildHeaders;
+
 /** @name Execute the API request*/
 
 /** Excute the API request synchronously with the given success and failure blocks. 
@@ -123,6 +130,6 @@
  */
 - (void) execAsyncWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 
-- (NSDictionary *) buildHeaders;
+
 
 @end

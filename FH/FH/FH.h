@@ -63,6 +63,14 @@ typedef enum _FHSDKNetworkErrorType {
  */
 + (FHAuthRequest *) buildAuthRequest;
 
+/** Create a new instance of FHCloudRequest class to perform cloud API calls.
+ @param path The path of the cloud API
+ @param requestMethod The HTTP request method to use for the request.
+ @param headers The HTTP headers to use for the request. Can be nil.
+ @param arguments The request body data. Can be nil.
+ 
+ @return Returns a new instance of FHCloudRequest
+ */
 +(FHCloudRequest*) buildCloudRequest:(NSString*) path WithMethod:(NSString*)requestMethod AndHeaders:(NSDictionary*) headers AndArgs:(NSDictionary*) arguments;
 
 /** @name Build and execute API requests */
@@ -101,11 +109,36 @@ typedef enum _FHSDKNetworkErrorType {
  */
 + (void) performAuthRequest:(NSString *) policyId WithUserName:(NSString* )username UserPassword:(NSString*)userpass AndSuccess:(void (^)(id sucornil))sucornil AndFailure:(void (^)(id failed))failornil;
 
+/** Create a new instance of FHCloudRequest class and execute it immediately with the success and failure blocks.
+ 
+ The request runs asynchronously.
+ 
+ @param path The path of the cloud API
+ @param requestMethod The HTTP request method to use for the request
+ @param headers The HTTP headers to use for the request. Can be nil.
+ @param arguments The request body data. Can be nil.
+ @param sucornil Block to be executed if the execution of the cloud side function is successful
+ @param failornil Block to be executed if the execution of the cloud side function is failed
+ */
 + (void) performCloudRequest:(NSString*) path WithMethod:(NSString*)requestMethod AndHeaders:(NSDictionary*) headers AndArgs:(NSDictionary*)arguments AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
 
+/** Get the cloud host the app is communicating with.
+ 
+ @return The url of the cloud host.
+ */
 + (NSString*) getCloudHost;
 
+/** Get the default params for customised HTTP Requests. Those params will be required to enable app analytics on the FH platform.
+ You can either add the params to your request body as a JSONObject with the key "__fh",
+ or use the getDefaultParamsAsHeaders method to add them as HTTP request headers.
+ 
+ @return The default parameters as JSONObject.
+ */
 + (NSDictionary*) getDefaultParams;
 
+/** Similar to getDefaultParams. But returns the data as HTTP headers.
+ 
+ @return The default parameters as HTTP headers.
+ */
 + (NSDictionary*) getDefaultParamsAsHeaders;
 @end

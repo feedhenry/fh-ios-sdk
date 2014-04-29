@@ -13,7 +13,7 @@
   NSString* path;
 }
 
-
+/** The path of the cloud API */
 @property(nonatomic,retain)NSString * path;
 
 - (id)initWithProps:(FHCloudProps *) props;
