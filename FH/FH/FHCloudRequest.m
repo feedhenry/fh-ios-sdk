@@ -25,8 +25,8 @@
 - (NSURL *)buildURL {
   NSString * cloudUrl = [cloudProps getCloudHost];
   NSString* url = [cloudUrl stringByAppendingString:path];
-  NSString* requestMethod = [method lowercaseString];
-  if (![requestMethod isEqualToString:@"post"] && ![requestMethod isEqualToString:@"put"] ) {
+  NSString* httpMethod = [requestMethod lowercaseString];
+  if (![httpMethod isEqualToString:@"post"] && ![httpMethod isEqualToString:@"put"] ) {
     NSString* qs = [self getArgsAsQueryString];
     if (qs.length > 0) {
       url = [url rangeOfString:@"?"].location == NSNotFound ? [url stringByAppendingString:@"?"] : [url stringByAppendingString:@"&"];
