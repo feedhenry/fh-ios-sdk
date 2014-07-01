@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<dict>
-  <key>host</key>
-  <string>https://testing.beta.feedhenry.com</string>
-  <key>appid</key>
-  <string>0BiqQ6LGletGDEiuvDNMtZja</string>
-  <key>projectid</key>
-  <string>0BiqQ5g8kfnUw8d1fM9bBAeR</string>
-  <key>appkey</key>
-  <string>49eecc828887b43f4d8ac49c4e32a1132832346b</string>
-  <key>connectiontag</key>
-  <string>0.0.1</string>
-</dict>
+<plist version="1.0">
+  <dict>
+    <key>host</key>
+    <string>https://testing.feedhenry.me</string>
+    <key>appid</key>
+    <string>6dzHbJDlSflnKFcPyWLKK5D_</string>
+    <key>projectid</key>
+    <string>6dzHbPeFoNS3WAYmUGsZmz1T</string>
+    <key>appkey</key>
+    <string>ba3658326cb5040bb232c696abe37178eb5066b5</string>
+    <key>connectiontag</key>
+    <string>0.0.2</string>
+  </dict>
 </plist>

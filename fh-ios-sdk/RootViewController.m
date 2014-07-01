@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "EventsViewController.h"
+#import "HelloViewController.h"
 #import "AuthViewController.h"
 #import "FH.h"
 #import "FHResponse.h"
@@ -37,7 +37,7 @@
   [super viewDidLoad];
   void (^success)(FHResponse *)=^(FHResponse * res){
     if(self.tabBarItem.tag == 101){
-      EventsViewController * eventsController = [[EventsViewController alloc]init];
+      HelloViewController * eventsController = [[HelloViewController alloc]init];
       [self pushViewController:eventsController animated:NO];
       [eventsController release];
     } else if(self.tabBarItem.tag == 102){

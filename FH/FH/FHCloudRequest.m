@@ -24,6 +24,12 @@
 
 - (NSURL *)buildURL {
   NSString * cloudUrl = [cloudProps getCloudHost];
+  
+  // If path starts with /, remove - because cloudUrl will have a trailing /
+  if ([path hasPrefix:@"/"] && [path length] > 1) {
+    path = [path substringFromIndex:1];
+  }
+  
   NSString* url = [cloudUrl stringByAppendingString:path];
   NSString* httpMethod = [requestMethod lowercaseString];
   if (![httpMethod isEqualToString:@"post"] && ![httpMethod isEqualToString:@"put"] ) {

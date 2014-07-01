@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "EventsViewController.h"
+#import "HelloViewController.h"
 #import "FH.h"
 #import "RootViewController.h"
 #import "AuthViewController.h"
@@ -35,11 +35,11 @@
   [tabBarController release];
   RootViewController * actTab     = [[[RootViewController alloc]initWithNibName:nil bundle:nil] autorelease];
   
-  actTab.tabBarItem.title     = @"FHCloud";
+  actTab.tabBarItem.title     = @"Cloud Call";
   actTab.tabBarItem.tag       = 101;
   
   RootViewController * authTab     = [[[RootViewController alloc]initWithNibName:nil bundle:nil] autorelease];
-  authTab.tabBarItem.title = @"FHAuth";
+  authTab.tabBarItem.title = @"Auth Call";
   authTab.tabBarItem.tag = 102;
   
   self.tabBar.viewControllers = [NSArray arrayWithObjects:actTab, authTab, nil];
