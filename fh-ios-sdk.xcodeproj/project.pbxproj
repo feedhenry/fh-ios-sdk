@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		A28DFC0C14D18B6100128B50 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
 		A28DFC0F14D19B0300128B50 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A28DFC0E14D19B0300128B50 /* fhconfig.plist */; };
-		A28DFC1314D1B0CB00128B50 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC1114D1B0CB00128B50 /* EventsViewController.m */; };
-		A28DFC1414D1B0CB00128B50 /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DFC1214D1B0CB00128B50 /* EventsViewController.xib */; };
+		A28DFC1314D1B0CB00128B50 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC1114D1B0CB00128B50 /* HelloViewController.m */; };
+		A28DFC1414D1B0CB00128B50 /* HelloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DFC1214D1B0CB00128B50 /* HelloViewController.xib */; };
 		A2C1018D14D8138900BEF54F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C1018B14D8138900BEF54F /* RootViewController.m */; };
 		A2C1018E14D8138900BEF54F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C1018C14D8138900BEF54F /* RootViewController.xib */; };
 		A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
@@ -74,9 +74,9 @@
 
 /* Begin PBXFileReference section */
 		A28DFC0E14D19B0300128B50 /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fhconfig.plist; sourceTree = "<group>"; };
-		A28DFC1014D1B0CA00128B50 /* EventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsViewController.h; sourceTree = "<group>"; };
-		A28DFC1114D1B0CB00128B50 /* EventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsViewController.m; sourceTree = "<group>"; };
-		A28DFC1214D1B0CB00128B50 /* EventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
+		A28DFC1014D1B0CA00128B50 /* HelloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloViewController.h; sourceTree = "<group>"; };
+		A28DFC1114D1B0CB00128B50 /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloViewController.m; sourceTree = "<group>"; };
+		A28DFC1214D1B0CB00128B50 /* HelloViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelloViewController.xib; sourceTree = "<group>"; };
 		A2C1018A14D8138900BEF54F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A2C1018B14D8138900BEF54F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A2C1018C14D8138900BEF54F /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -194,9 +194,9 @@
 				A2CD320514D0300200C4D3F0 /* Supporting Files */,
 				A2CD320D14D0300200C4D3F0 /* AppDelegate.h */,
 				A2CD320E14D0300200C4D3F0 /* AppDelegate.m */,
-				A28DFC1014D1B0CA00128B50 /* EventsViewController.h */,
-				A28DFC1114D1B0CB00128B50 /* EventsViewController.m */,
-				A28DFC1214D1B0CB00128B50 /* EventsViewController.xib */,
+				A28DFC1014D1B0CA00128B50 /* HelloViewController.h */,
+				A28DFC1114D1B0CB00128B50 /* HelloViewController.m */,
+				A28DFC1214D1B0CB00128B50 /* HelloViewController.xib */,
 				A2C1018A14D8138900BEF54F /* RootViewController.h */,
 				A2C1018B14D8138900BEF54F /* RootViewController.m */,
 				A2C1018C14D8138900BEF54F /* RootViewController.xib */,
@@ -343,7 +343,7 @@
 			files = (
 				A2CD320914D0300200C4D3F0 /* InfoPlist.strings in Resources */,
 				A28DFC0F14D19B0300128B50 /* fhconfig.plist in Resources */,
-				A28DFC1414D1B0CB00128B50 /* EventsViewController.xib in Resources */,
+				A28DFC1414D1B0CB00128B50 /* HelloViewController.xib in Resources */,
 				A2C1018E14D8138900BEF54F /* RootViewController.xib in Resources */,
 				B308505E15D93BE8007E6AD5 /* AuthViewController.xib in Resources */,
 				B308507A15D943A6007E6AD5 /* auth_feedhenry.png in Resources */,
@@ -384,7 +384,7 @@
 			files = (
 				A2CD320B14D0300200C4D3F0 /* main.m in Sources */,
 				A2CD320F14D0300200C4D3F0 /* AppDelegate.m in Sources */,
-				A28DFC1314D1B0CB00128B50 /* EventsViewController.m in Sources */,
+				A28DFC1314D1B0CB00128B50 /* HelloViewController.m in Sources */,
 				A2C1018D14D8138900BEF54F /* RootViewController.m in Sources */,
 				B308505D15D93BE8007E6AD5 /* AuthViewController.m in Sources */,
 				B308506115D940C8007E6AD5 /* AuthMethod.m in Sources */,

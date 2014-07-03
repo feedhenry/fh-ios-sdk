@@ -6,6 +6,8 @@
 #import "FHDefines.h"
 
 #import "FHActRequest.h"
+#import "FHCloudRequest.h"
+#import "FHResponse.h"
 #import "FHAuthRequest.h"
 #import "FHCloudRequest.h"
 #import "FHConfig.h"
