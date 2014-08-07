@@ -46,7 +46,7 @@
   NSLog(@"Request URL is : %@", [apicall absoluteString]);
 #endif
   //startrequest
-    __block __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
   
   //set headers
   NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:[fhact buildHeaders]];
