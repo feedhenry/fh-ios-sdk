@@ -8,7 +8,6 @@
 
 #import "FHConfig.h"
 #import "NSString+MD5.h"
-#include "FH_OpenUDID.h"
 
 @implementation FHConfig
 static FHConfig * shared = nil;
@@ -67,22 +66,33 @@ static FHConfig * shared = nil;
   [self.properties setValue:val forKey:key];
 }
 
-- (NSString *)uid{
-  return [[FH_OpenUDID value] MD5Hash];
+// Unique vendor ID (available in iOS6+)
+- (NSString *)vendorId {
+  NSUUID *vendorId = [[UIDevice currentDevice] identifierForVendor];
+  NSString *uuid = [vendorId UUIDString];
+  return uuid;
 }
 
-
-- (NSString *)advertiserId {
-  ASIdentifierManager *manager = [ASIdentifierManager sharedManager];
-  NSUUID *advertId = [manager advertisingIdentifier];
-  NSString *advertIdString = [advertId UUIDString];
-  return advertIdString;
-}
-
-- (BOOL)trackingEnabled {
-  ASIdentifierManager *manager = [ASIdentifierManager sharedManager];
-  BOOL trackingEnabled = manager.advertisingTrackingEnabled;
-  return trackingEnabled;
+// Fetches existing UUID stored in NSUserDefaults, or generates a new one
+-(NSString *)uuid {
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  static NSString *UUID_KEY = @"FHUUID";
+  
+  NSString *app_uuid = [userDefaults stringForKey:UUID_KEY];
+  
+  if (app_uuid == nil) {
+    CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+    CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
+    
+    app_uuid = [NSString stringWithString:(__bridge NSString*)uuidString];
+    [userDefaults setObject:app_uuid forKey:UUID_KEY];
+    [userDefaults synchronize];
+    
+    CFRelease(uuidString);
+    CFRelease(uuidRef);
+  }
+  
+  return app_uuid;
 }
 
 

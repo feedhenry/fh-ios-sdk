@@ -49,7 +49,7 @@
   
   [params setObject:[FH getDefaultParams] forKey:@"__fh"]; //keep backward compatible
   [params setValue:policyId forKey:@"policyId"];
-  [params setValue:[[FHConfig getSharedInstance] uid] forKey:@"device"];
+  [params setValue:[[FHConfig getSharedInstance] uuid] forKey:@"device"];
   [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"clientToken"];
   
   if(self.userId && self.password){

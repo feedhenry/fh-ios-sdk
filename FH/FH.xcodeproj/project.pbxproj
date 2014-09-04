@@ -37,7 +37,6 @@
 		B307034B190EB968005C65CB /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = B3070349190EB968005C65CB /* FHCloudProps.m */; };
 		B307034E190EC337005C65CB /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B307034C190EC337005C65CB /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B307034F190EC337005C65CB /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B307034D190EC337005C65CB /* FHCloudRequest.m */; };
-		B307D3D71834255300903A6B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F0177C378E006DCE05 /* AdSupport.framework */; };
 		B32B65661610EC6A008B0DF5 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = B32B65641610EC6A008B0DF5 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B32B65671610EC6A008B0DF5 /* FHSyncNotificationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B65651610EC6A008B0DF5 /* FHSyncNotificationMessage.m */; };
 		B3346E9515D3D3A000220E6B /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHActRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -62,7 +61,6 @@
 		B37370D71796E3BA000EC27C /* FHSyncDatasetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B37370D61796E3BA000EC27C /* FHSyncDatasetTest.m */; };
 		B37370D91797290E000EC27C /* FHSyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C3D96B1610BB4E00943838 /* FHSyncClient.m */; };
 		B3AE9D5C15D51017004EF454 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4B315D28DF40019262E /* FHConfig.m */; };
-		B3AE9D5D15D5112E004EF454 /* FH_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50515D28E130019262E /* FH_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3AE9D6015D51733004EF454 /* FHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AE9D5E15D51733004EF454 /* FHHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3AE9D6115D51733004EF454 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D5F15D51733004EF454 /* FHHttpClient.m */; };
 		B3AE9D6415D520C8004EF454 /* MockFHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9D6315D520C8004EF454 /* MockFHHttpClient.m */; };
@@ -170,8 +168,6 @@
 		B3D7C53A15D28E130019262E /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C4FF15D28E130019262E /* ASIS3ServiceRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3D7C53B15D28E130019262E /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50115D28E130019262E /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D7C53C15D28E130019262E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50215D28E130019262E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B3D7C53D15D28E130019262E /* FH_OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50415D28E130019262E /* FH_OpenUDID.h */; };
-		B3D7C53E15D28E130019262E /* FH_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50515D28E130019262E /* FH_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3D7C53F15D28E130019262E /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C50815D28E130019262E /* Reachability.h */; };
 		B3D7C54015D28E130019262E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C50915D28E130019262E /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3D7C54615D28E2A0019262E /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D7C54215D28E2A0019262E /* NSString+MD5.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -192,7 +188,6 @@
 		B3E6DD3B1795E06C0010EF76 /* FHSyncDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */; };
 		B3E6DD3C1795E06C0010EF76 /* FHSyncDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */; };
 		B3F31DAC15D5C16000CE9D8F /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
-		D84E94F1177C378E006DCE05 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F0177C378E006DCE05 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,9 +322,6 @@
 		B3D7C4FF15D28E130019262E /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
 		B3D7C50115D28E130019262E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		B3D7C50215D28E130019262E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		B3D7C50415D28E130019262E /* FH_OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FH_OpenUDID.h; sourceTree = "<group>"; };
-		B3D7C50515D28E130019262E /* FH_OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FH_OpenUDID.m; sourceTree = "<group>"; };
-		B3D7C50615D28E130019262E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		B3D7C50815D28E130019262E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B3D7C50915D28E130019262E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		B3D7C54215D28E2A0019262E /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
@@ -350,7 +342,6 @@
 		B3E6DD361795E0560010EF76 /* FHSyncPendingDataRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncPendingDataRecord.m; path = Sync/FHSyncPendingDataRecord.m; sourceTree = "<group>"; };
 		B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncDataRecord.h; path = Sync/FHSyncDataRecord.h; sourceTree = "<group>"; };
 		B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncDataRecord.m; path = Sync/FHSyncDataRecord.m; sourceTree = "<group>"; };
-		D84E94F0177C378E006DCE05 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,7 +349,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D84E94F1177C378E006DCE05 /* AdSupport.framework in Frameworks */,
 				B3AE9D9715D53141004EF454 /* SystemConfiguration.framework in Frameworks */,
 				B3AE9D9615D5313A004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9515D53134004EF454 /* MobileCoreServices.framework in Frameworks */,
@@ -374,7 +364,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B307D3D71834255300903A6B /* AdSupport.framework in Frameworks */,
 				B3AE9D9415D52FA1004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9315D52F5D004EF454 /* MobileCoreServices.framework in Frameworks */,
 				B3AE9D9215D52F19004EF454 /* SystemConfiguration.framework in Frameworks */,
@@ -453,7 +442,6 @@
 		B3D7C48515D28BE30019262E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D84E94F0177C378E006DCE05 /* AdSupport.framework */,
 				B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */,
 				B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */,
 				B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */,
@@ -554,7 +542,6 @@
 			children = (
 				B3D7C4CB15D28E130019262E /* ASIHTTPRequest */,
 				B3D7C50015D28E130019262E /* JSONKit */,
-				B3D7C50315D28E130019262E /* OpenUDID */,
 				B3D7C50715D28E130019262E /* Reachability */,
 			);
 			path = ThirdParty;
@@ -649,16 +636,6 @@
 			path = JSONKit;
 			sourceTree = "<group>";
 		};
-		B3D7C50315D28E130019262E /* OpenUDID */ = {
-			isa = PBXGroup;
-			children = (
-				B3D7C50415D28E130019262E /* FH_OpenUDID.h */,
-				B3D7C50515D28E130019262E /* FH_OpenUDID.m */,
-				B3D7C50615D28E130019262E /* README.md */,
-			);
-			path = OpenUDID;
-			sourceTree = "<group>";
-		};
 		B3D7C50715D28E130019262E /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,7 +698,6 @@
 				B3D7C53715D28E130019262E /* ASIS3Request.h in Headers */,
 				B3D7C53915D28E130019262E /* ASIS3ServiceRequest.h in Headers */,
 				B3D7C53B15D28E130019262E /* JSONKit.h in Headers */,
-				B3D7C53D15D28E130019262E /* FH_OpenUDID.h in Headers */,
 				B3D7C53F15D28E130019262E /* Reachability.h in Headers */,
 				B3D7C54615D28E2A0019262E /* NSString+MD5.h in Headers */,
 				B3D7C54815D28E2A0019262E /* NSString+Validation.h in Headers */,
@@ -913,7 +889,6 @@
 				B3D7C53815D28E130019262E /* ASIS3Request.m in Sources */,
 				B3D7C53A15D28E130019262E /* ASIS3ServiceRequest.m in Sources */,
 				B3D7C53C15D28E130019262E /* JSONKit.m in Sources */,
-				B3D7C53E15D28E130019262E /* FH_OpenUDID.m in Sources */,
 				B3D7C54015D28E130019262E /* Reachability.m in Sources */,
 				B3D7C54715D28E2A0019262E /* NSString+MD5.m in Sources */,
 				B3D7C54915D28E2A0019262E /* NSString+Validation.m in Sources */,
@@ -957,7 +932,6 @@
 				B3AE9D8415D52D10004EF454 /* ASINetworkQueue.m in Sources */,
 				B3D7C4A415D28BE30019262E /* FHConfigTests.m in Sources */,
 				B3AE9D5C15D51017004EF454 /* FHConfig.m in Sources */,
-				B3AE9D5D15D5112E004EF454 /* FH_OpenUDID.m in Sources */,
 				B3AE9D6415D520C8004EF454 /* MockFHHttpClient.m in Sources */,
 				B3AE9D6715D52604004EF454 /* FHTests.m in Sources */,
 				B3AE9D6B15D52A5F004EF454 /* FHAct.m in Sources */,
