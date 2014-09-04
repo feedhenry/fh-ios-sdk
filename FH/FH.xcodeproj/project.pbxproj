@@ -37,7 +37,6 @@
 		B307034B190EB968005C65CB /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = B3070349190EB968005C65CB /* FHCloudProps.m */; };
 		B307034E190EC337005C65CB /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B307034C190EC337005C65CB /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B307034F190EC337005C65CB /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B307034D190EC337005C65CB /* FHCloudRequest.m */; };
-		B307D3D71834255300903A6B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F0177C378E006DCE05 /* AdSupport.framework */; };
 		B32B65661610EC6A008B0DF5 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = B32B65641610EC6A008B0DF5 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B32B65671610EC6A008B0DF5 /* FHSyncNotificationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B65651610EC6A008B0DF5 /* FHSyncNotificationMessage.m */; };
 		B3346E9515D3D3A000220E6B /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B3346E9315D3D3A000220E6B /* FHActRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -192,7 +191,6 @@
 		B3E6DD3B1795E06C0010EF76 /* FHSyncDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */; };
 		B3E6DD3C1795E06C0010EF76 /* FHSyncDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */; };
 		B3F31DAC15D5C16000CE9D8F /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE9DA815D566DD004EF454 /* FHOAuthViewController.m */; };
-		D84E94F1177C378E006DCE05 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F0177C378E006DCE05 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,7 +348,6 @@
 		B3E6DD361795E0560010EF76 /* FHSyncPendingDataRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncPendingDataRecord.m; path = Sync/FHSyncPendingDataRecord.m; sourceTree = "<group>"; };
 		B3E6DD391795E06B0010EF76 /* FHSyncDataRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncDataRecord.h; path = Sync/FHSyncDataRecord.h; sourceTree = "<group>"; };
 		B3E6DD3A1795E06C0010EF76 /* FHSyncDataRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncDataRecord.m; path = Sync/FHSyncDataRecord.m; sourceTree = "<group>"; };
-		D84E94F0177C378E006DCE05 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,7 +355,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D84E94F1177C378E006DCE05 /* AdSupport.framework in Frameworks */,
 				B3AE9D9715D53141004EF454 /* SystemConfiguration.framework in Frameworks */,
 				B3AE9D9615D5313A004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9515D53134004EF454 /* MobileCoreServices.framework in Frameworks */,
@@ -374,7 +370,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B307D3D71834255300903A6B /* AdSupport.framework in Frameworks */,
 				B3AE9D9415D52FA1004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9315D52F5D004EF454 /* MobileCoreServices.framework in Frameworks */,
 				B3AE9D9215D52F19004EF454 /* SystemConfiguration.framework in Frameworks */,
@@ -453,7 +448,6 @@
 		B3D7C48515D28BE30019262E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D84E94F0177C378E006DCE05 /* AdSupport.framework */,
 				B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */,
 				B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */,
 				B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */,

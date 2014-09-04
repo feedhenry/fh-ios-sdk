@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NSString+MD5.h"
-#import <AdSupport/AdSupport.h>
+#import <UIKit/UIKit.h>
 
 /** A utility class to get the app configurations from fhconfig.plist file. */
 
@@ -36,12 +36,18 @@
 
 /** Get the hash value of the device's unique id (OpenUDID) 
  
- @return The device's unique ID
+ @return The device's unique ID (Using OpenUDID)
  */
 - (NSString *)uid;
 
-- (NSString *)advertiserId;
-- (BOOL)trackingEnabled;
+/** Get or generate and get a new CFUUID (stored in NSUserDefaults)
+ 
+ @return CFUUID
+ */
+- (NSString *)uuid;
+
+// Return vendorIdentifier
+- (NSString *)vendorId;
 
 /** Get the singleton instace of this class 
  

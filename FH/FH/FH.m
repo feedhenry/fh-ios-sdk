@@ -220,8 +220,8 @@ static Reachability* reachability;
   NSString *appKey = [appConfig getConfigValueForKey:@"appkey"];
   NSString *projectId = [appConfig getConfigValueForKey:@"projectid"];
   NSString *connectionTag = [appConfig getConfigValueForKey:@"connectiontag"];
-  NSString* uid = [appConfig uid];
-  NSString* advertiserId = [appConfig advertiserId];
+  NSString *uid = [appConfig uid];
+  NSString *uuid = [appConfig uuid];
   NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
   
   [fhparams setObject:uid forKey:@"cuid"];
@@ -235,14 +235,20 @@ static Reachability* reachability;
   [openUdidMap setObject:uid forKey:@"cuid"];
   [cuidMap addObject:openUdidMap];
   
-  // advertisingIdentifier - iOS 6+
+  // CFUUID - iOS 6+
   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
-    NSMutableDictionary *advertIdMap = [[NSMutableDictionary alloc] init];
-    [advertIdMap setObject:@"advertisingIdentifier" forKey:@"name"];
-    [advertIdMap setObject:advertiserId forKey:@"cuid"];
-    NSLog(@"enabled: %d", [[FHConfig getSharedInstance] trackingEnabled]);
-    [advertIdMap setObject:[NSNumber numberWithBool:[[FHConfig getSharedInstance] trackingEnabled]] forKey:@"tracking_enabled"];
-    [cuidMap addObject:advertIdMap];
+    NSMutableDictionary *cfuuidMap = [[NSMutableDictionary alloc] init];
+    [cfuuidMap setObject:@"CFUUID" forKey:@"name"];
+    [cfuuidMap setObject:uuid forKey:@"cuid"];
+    [cuidMap addObject:cfuuidMap];
+  }
+  
+  // Send vendorId if available
+  if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
+    NSMutableDictionary *vendorIdMap = [[NSMutableDictionary alloc] init];
+    [vendorIdMap setObject:@"vendorIdentifier" forKey:@"name"];
+    [vendorIdMap setObject:[appConfig vendorId] forKey:@"cuid"];
+    [cuidMap addObject:vendorIdMap];
   }
   
   // Append to cuidMap
