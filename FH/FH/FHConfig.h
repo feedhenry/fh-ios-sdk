@@ -34,12 +34,6 @@
  */
 - (void)setConfigValue:(NSString *)val ForKey:(NSString *)key;
 
-/** Get the hash value of the device's unique id (OpenUDID) 
- 
- @return The device's unique ID (Using OpenUDID)
- */
-- (NSString *)uid;
-
 /** Get or generate and get a new CFUUID (stored in NSUserDefaults)
  
  @return CFUUID

@@ -220,20 +220,13 @@ static Reachability* reachability;
   NSString *appKey = [appConfig getConfigValueForKey:@"appkey"];
   NSString *projectId = [appConfig getConfigValueForKey:@"projectid"];
   NSString *connectionTag = [appConfig getConfigValueForKey:@"connectiontag"];
-  NSString *uid = [appConfig uid];
   NSString *uuid = [appConfig uuid];
   NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
   
-  [fhparams setObject:uid forKey:@"cuid"];
+  [fhparams setObject:uuid forKey:@"cuid"];
   
   // Generate cuidMap
   NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
-  
-  // OpenUDID
-  NSMutableDictionary *openUdidMap = [[NSMutableDictionary alloc] init];
-  [openUdidMap setObject:@"OpenUDID" forKey:@"name"];
-  [openUdidMap setObject:uid forKey:@"cuid"];
-  [cuidMap addObject:openUdidMap];
   
   // CFUUID - iOS 6+
   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {

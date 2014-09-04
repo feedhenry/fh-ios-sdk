@@ -8,7 +8,6 @@
 
 #import "FHConfig.h"
 #import "NSString+MD5.h"
-#include "FH_OpenUDID.h"
 
 @implementation FHConfig
 static FHConfig * shared = nil;
@@ -65,11 +64,6 @@ static FHConfig * shared = nil;
 
 - (void)setConfigValue:(NSString *)val ForKey:(NSString *)key{
   [self.properties setValue:val forKey:key];
-}
-
-// Old UUID - generated using OpenUDID - only used on older devices (pre iOS6)
-- (NSString *)uid {
-  return [[FH_OpenUDID value] MD5Hash];
 }
 
 // Unique vendor ID (available in iOS6+)
