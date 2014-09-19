@@ -24,7 +24,7 @@
 #define KEY_DEBUG @"debug"
 #define KEY_CRASHCOUNTWAIT @"crashCountWait"
 #define KEY_RESEND_CRASH @"resendCrashedUpdates"
-#define KEY_HAS_CUSTOM_SYCN @"hasCustomSync"
+#define KEY_HAS_CUSTOM_SYNC @"hasCustomSync"
 #define KEY_ICLOUD_BACKUP @"icloud_backup"
 
 @implementation FHSyncConfig
@@ -91,7 +91,7 @@
   [dict setObject:[NSNumber numberWithBool:self.debug] forKey:KEY_DEBUG];
   [dict setObject:[NSNumber numberWithInt:self.crashCountWait] forKey:KEY_CRASHCOUNTWAIT];
   [dict setObject:[NSNumber numberWithBool:self.resendCrashedUpdates] forKey:KEY_RESEND_CRASH];
-  [dict setObject:[NSNumber numberWithBool:self.hasCustomSync] forKey:KEY_HAS_CUSTOM_SYCN];
+  [dict setObject:[NSNumber numberWithBool:self.hasCustomSync] forKey:KEY_HAS_CUSTOM_SYNC];
   [dict setObject:[NSNumber numberWithBool:self.icloud_backup] forKey:KEY_ICLOUD_BACKUP];
   return dict;
 }
@@ -120,8 +120,8 @@
   config.debug = [[jsonObj objectForKey:KEY_DEBUG] boolValue];
   config.crashCountWait = [[jsonObj objectForKey:KEY_CRASHCOUNTWAIT] integerValue];
   config.resendCrashedUpdates = [[jsonObj objectForKey:KEY_RESEND_CRASH] boolValue];
-  if ([jsonObj objectForKey:KEY_HAS_CUSTOM_SYCN]) {
-    config.hasCustomSync = [jsonObj objectForKey:KEY_HAS_CUSTOM_SYCN];
+  if ([jsonObj objectForKey:KEY_HAS_CUSTOM_SYNC]) {
+    config.hasCustomSync = [jsonObj objectForKey:KEY_HAS_CUSTOM_SYNC];
   }
   if ([jsonObj objectForKey:KEY_ICLOUD_BACKUP]) {
     config.icloud_backup = [jsonObj objectForKey:KEY_ICLOUD_BACKUP];
