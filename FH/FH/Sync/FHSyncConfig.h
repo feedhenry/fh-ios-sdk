@@ -19,6 +19,8 @@
   BOOL _debug;
   int _crashCountWait;
   BOOL _resendCrashedUpdates;
+  BOOL _hasCustomSync;
+  BOOL _icloud_backup;
 }
 
 /** The sync frequency. In seconds.*/
@@ -62,6 +64,13 @@
 
 /** If set to YES, the crashed updates will be discarded if the crash count limit reached */
 @property BOOL resendCrashedUpdates;
+
+/** If use the old sync API on the cloud side, set this to true. Default to false. **/
+@property BOOL hasCustomSync;
+
+/** If the local data file should be synced via iCloud **/
+@property BOOL icloud_backup;
+
 @property BOOL debug;
 
 
