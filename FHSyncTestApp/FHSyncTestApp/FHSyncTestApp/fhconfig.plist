@@ -3,12 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>host</key>
-	<string>https://testing-lon3.feedhenry.com</string>
-	<key>appid</key>
-	<string>nge_BSsKHNQ2slB3B1LuvbWr</string>
-	<key>appkey</key>
-	<string>ddbd3f9d8c6bbf37071acc481cd7b37e10534591</string>
-	<key>mode</key>
-	<string>dev</string>
+    <string>https://testing-lon3.feedhenry.com</string>
+    <key>appid</key>
+    <string>H2dwdCsl_ebOcYMQB_-bSk9K</string>
+    <key>projectid</key>
+    <string>H2dwdBezjFoyr-x-QOnv5U2T</string>
+    <key>appkey</key>
+    <string>5ca4520939ee4f11f8ae5c1811dc8def5a5203d2</string>
+    <key>connectiontag</key>
+    <string>0.0.2</string>
 </dict>
 </plist>

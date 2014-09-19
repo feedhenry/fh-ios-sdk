@@ -41,18 +41,25 @@
   return fileContent;
 }
 
-+ (void) saveData: (NSString*) data toFile:(NSString* ) fileName error:(NSError*) error
++ (void) saveData: (NSString*) data toFile:(NSString* ) fileName backup:(BOOL) backup error:(NSError*) error
 {
   NSString* filePath = [FHSyncUtils getStorageFilePath:fileName];
   if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
     [[NSFileManager defaultManager] createFileAtPath:filePath contents:[data dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+    if(!backup){
+      NSError * error = nil;
+      NSURL* fileUrl = [NSURL fileURLWithPath:filePath];
+      BOOL success = [fileUrl setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:&error];
+      if(!success){
+        NSLog(@"Error excluding %@ from backup %@", filePath, error);
+      }
+    }
   } else {
     [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     if(error){
       NSLog(@"Failed to write data to file at path %@ with error %@", filePath, [error localizedDescription]);
     }
   }
-
 }
 
 + (NSString*) generateHashWithString: (NSString*) text

@@ -113,7 +113,7 @@
   NSString* jsonStr = [self JSONString];
   //NSLog(@"content = %@", jsonStr);
   @synchronized(self){
-    [FHSyncUtils saveData:jsonStr toFile:[self.datasetId stringByAppendingPathExtension:STORAGE_FILE_PATH] error:error];
+    [FHSyncUtils saveData:jsonStr toFile:[self.datasetId stringByAppendingPathExtension:STORAGE_FILE_PATH] backup:self.syncConfig.icloud_backup error:error];
     if(nil != error){
       [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:CLIENT_STORAGE_FAILED_MESSAGE message:[error localizedDescription]];
     }
@@ -410,24 +410,24 @@
     
     @try
     {
-      [FH performActRequest:self.datasetId WithArgs:syncLoopParams AndSuccess:^(FHResponse* response){
-        
-        NSMutableDictionary* resData = [[response parsedResponse] mutableCopy];
-        if ([resData objectForKey:@"records"]) {
-          NSMutableDictionary* recordsCopy = [[resData objectForKey:@"records"] mutableCopy];
-          [resData setObject:recordsCopy forKey:@"records"];
-        }
-        [self syncRequestSuccess: resData];
-        
-      } AndFailure:^(FHResponse* response){
-        // The AJAX call failed to complete succesfully, so the state of the current pending updates is unknown
-        // Mark them as "crashed". The next time a syncLoop completets successfully, we will review the crashed
-        // records to see if we can determine their current state.
-        [self markInFlightAsCrashed];
-        NSLog(@"syncLoop failed : msg = %@", [[response parsedResponse] JSONString]);
-        [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:SYNC_FAILED_MESSAGE message:[[response parsedResponse] JSONString]];
-        [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
-      }];
+        [self doCloudCall:syncLoopParams AndSuccess:^(FHResponse* response){
+            
+            NSMutableDictionary* resData = [[response parsedResponse] mutableCopy];
+            if ([resData objectForKey:@"records"]) {
+                NSMutableDictionary* recordsCopy = [[resData objectForKey:@"records"] mutableCopy];
+                [resData setObject:recordsCopy forKey:@"records"];
+            }
+            [self syncRequestSuccess: resData];
+            
+        } AndFailure:^(FHResponse* response){
+            // The AJAX call failed to complete succesfully, so the state of the current pending updates is unknown
+            // Mark them as "crashed". The next time a syncLoop completets successfully, we will review the crashed
+            // records to see if we can determine their current state.
+            [self markInFlightAsCrashed];
+            NSLog(@"syncLoop failed : msg = %@", [[response parsedResponse] JSONString]);
+            [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:SYNC_FAILED_MESSAGE message:[[response parsedResponse] JSONString]];
+            [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
+        }];
     }
     @catch (NSException * ex)
     {
@@ -437,6 +437,16 @@
     }
   
   }
+}
+
+- (void) doCloudCall:(NSMutableDictionary *) params AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
+{
+    if(self.syncConfig.hasCustomSync) {
+        [FH performActRequest:self.datasetId WithArgs:params AndSuccess:sucornil AndFailure:failornil];
+    } else {
+        NSString * path = [NSString stringWithFormat:@"/mbaas/sync/%@", self.datasetId];
+        [FH performCloudRequest:path WithMethod:@"POST" AndHeaders:nil AndArgs:params AndSuccess:sucornil AndFailure:failornil];
+    }
 }
 
 - (void) syncRequestSuccess:(NSMutableDictionary*) resData
@@ -453,8 +463,10 @@
   // Update the new dataset with details of any pending updates
   [self updateNewDataFromPending:resData];
   
+  BOOL hasRecords = NO;
   if([resData objectForKey:@"records"]){
     // Full Dataset returned
+    hasRecords = YES;
     [self resetDataRecords:resData];
   }
   
@@ -465,7 +477,9 @@
     [self processUpdates:[updates objectForKey:@"failed"] notification:REMOTE_UPDATE_FAILED_MESSAGE acknowledgements:ack];
     [self processUpdates:[updates objectForKey:@"collisions"] notification:COLLISION_DETECTED_MESSAGE acknowledgements:ack];
     self.acknowledgements = ack;
-  } else if([resData objectForKey:@"hash"] && ![[resData objectForKey:@"hash"] isEqualToString:self.hashValue]){
+  }
+    
+  if(!hasRecords && [resData objectForKey:@"hash"] && ![[resData objectForKey:@"hash"] isEqualToString:self.hashValue]){
     NSString* remoteHash = [resData objectForKey:@"hash"];
     NSLog(@"Local dataset stale - syncing records :: local hash= %@ - remoteHash = %@", self.hashValue, remoteHash);
     // Different hash value returned - Sync individual records
@@ -493,14 +507,14 @@
   [syncRecsParams setObject:clientRecs forKey:@"clientRecs"];
   
   NSLog(@"syncRecParams :: %@", [syncRecsParams JSONString] );
-  
-  [FH performActRequest:self.datasetId WithArgs:syncRecsParams AndSuccess:^(FHResponse* response){
-    [self syncRecordsSuccess: [response parsedResponse]];
-  } AndFailure:^(FHResponse* response){
-    NSLog(@"syncRecords failed : %@", [[response parsedResponse] JSONString]);
-    [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:SYNC_FAILED_MESSAGE message:[[response parsedResponse] JSONString]];
-    [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
-  }];
+ 
+    [self doCloudCall:syncRecsParams AndSuccess:^(FHResponse* response){
+        [self syncRecordsSuccess: [response parsedResponse]];
+    } AndFailure:^(FHResponse* response){
+        NSLog(@"syncRecords failed : %@", [[response parsedResponse] JSONString]);
+        [FHSyncUtils doNotifyWithDataId:self.datasetId config:self.syncConfig uid:NULL code:SYNC_FAILED_MESSAGE message:[[response parsedResponse] JSONString]];
+        [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
+    }];
 }
 
 - (void) syncRecordsSuccess: (NSDictionary*) resData
