@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A28DFC0C14D18B6100128B50 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
 		A28DFC0F14D19B0300128B50 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A28DFC0E14D19B0300128B50 /* fhconfig.plist */; };
 		A28DFC1314D1B0CB00128B50 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DFC1114D1B0CB00128B50 /* HelloViewController.m */; };
 		A28DFC1414D1B0CB00128B50 /* HelloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A28DFC1214D1B0CB00128B50 /* HelloViewController.xib */; };
@@ -19,9 +18,6 @@
 		A2CD320914D0300200C4D3F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2CD320714D0300200C4D3F0 /* InfoPlist.strings */; };
 		A2CD320B14D0300200C4D3F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD320A14D0300200C4D3F0 /* main.m */; };
 		A2CD320F14D0300200C4D3F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD320E14D0300200C4D3F0 /* AppDelegate.m */; };
-		A2CD321714D0300200C4D3F0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */; };
-		A2CD321814D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
-		A2CD321914D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
 		A2CD322F14D0633600C4D3F0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */; };
 		A2CD323114D063FE00C4D3F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */; };
 		A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */; };
@@ -37,18 +33,10 @@
 		B308507F15D95268007E6AD5 /* FHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B308507D15D95268007E6AD5 /* FHLoginViewController.m */; };
 		B308508015D95268007E6AD5 /* FHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B308507E15D95268007E6AD5 /* FHLoginViewController.xib */; };
 		B339FA9E15DA7D9E0040E5FF /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FA9915DA7D900040E5FF /* libFH.a */; };
-		D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D82B24AB14D06CC200F91FB4 /* JSONKit.m */; };
 		D84E94F3177C3AA7006DCE05 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F2177C3AA7006DCE05 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A2CD321A14D0300200C4D3F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A2CD31F114D0300200C4D3F0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A2CD31F914D0300200C4D3F0;
-			remoteInfo = "fh-ios-sdk";
-		};
 		B339FA9815DA7D900040E5FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B339FA8F15DA7D900040E5FF /* FH.xcodeproj */;
@@ -90,7 +78,6 @@
 		A2CD320C14D0300200C4D3F0 /* fh-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fh-ios-sdk-Prefix.pch"; sourceTree = "<group>"; };
 		A2CD320D14D0300200C4D3F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2CD320E14D0300200C4D3F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A2CD321514D0300200C4D3F0 /* fh-ios-sdkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fh-ios-sdkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -113,7 +100,6 @@
 		B308507D15D95268007E6AD5 /* FHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHLoginViewController.m; sourceTree = "<group>"; };
 		B308507E15D95268007E6AD5 /* FHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FHLoginViewController.xib; sourceTree = "<group>"; };
 		B339FA8F15DA7D900040E5FF /* FH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FH.xcodeproj; path = FH/FH.xcodeproj; sourceTree = "<group>"; };
-		D82B24AB14D06CC200F91FB4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		D84E94F2177C3AA7006DCE05 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -135,17 +121,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2CD321114D0300200C4D3F0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A28DFC0C14D18B6100128B50 /* libxml2.2.dylib in Frameworks */,
-				A2CD321714D0300200C4D3F0 /* SenTestingKit.framework in Frameworks */,
-				A2CD321814D0300200C4D3F0 /* UIKit.framework in Frameworks */,
-				A2CD321914D0300200C4D3F0 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -163,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				A2CD31FA14D0300200C4D3F0 /* fh-ios-sdk.app */,
-				A2CD321514D0300200C4D3F0 /* fh-ios-sdkTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -266,25 +240,6 @@
 			productReference = A2CD31FA14D0300200C4D3F0 /* fh-ios-sdk.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A2CD321414D0300200C4D3F0 /* fh-ios-sdkTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A2CD322A14D0300200C4D3F0 /* Build configuration list for PBXNativeTarget "fh-ios-sdkTests" */;
-			buildPhases = (
-				A2CD321014D0300200C4D3F0 /* Sources */,
-				A2CD321114D0300200C4D3F0 /* Frameworks */,
-				A2CD321214D0300200C4D3F0 /* Resources */,
-				A2CD321314D0300200C4D3F0 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A2CD321B14D0300200C4D3F0 /* PBXTargetDependency */,
-			);
-			name = "fh-ios-sdkTests";
-			productName = "fh-ios-sdkTests";
-			productReference = A2CD321514D0300200C4D3F0 /* fh-ios-sdkTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -314,7 +269,6 @@
 			projectRoot = "";
 			targets = (
 				A2CD31F914D0300200C4D3F0 /* fh-ios-sdk */,
-				A2CD321414D0300200C4D3F0 /* fh-ios-sdkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -352,30 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2CD321214D0300200C4D3F0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		A2CD321314D0300200C4D3F0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A2CD31F614D0300200C4D3F0 /* Sources */ = {
@@ -394,22 +325,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2CD321014D0300200C4D3F0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D82B24AE14D06CC200F91FB4 /* JSONKit.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A2CD321B14D0300200C4D3F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A2CD31F914D0300200C4D3F0 /* fh-ios-sdk */;
-			targetProxy = A2CD321A14D0300200C4D3F0 /* PBXContainerItemProxy */;
-		};
 		B339FA9D15DA7D990040E5FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FH;
@@ -550,40 +468,6 @@
 			};
 			name = Release;
 		};
-		A2CD322B14D0300200C4D3F0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/fh-ios-sdk.app/fh-ios-sdk";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
-				INFOPLIST_FILE = "fh-ios-sdkTests/fh-ios-sdkTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		A2CD322C14D0300200C4D3F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/fh-ios-sdk.app/fh-ios-sdk";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
-				INFOPLIST_FILE = "fh-ios-sdkTests/fh-ios-sdkTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -601,15 +485,6 @@
 			buildConfigurations = (
 				A2CD322814D0300200C4D3F0 /* Debug */,
 				A2CD322914D0300200C4D3F0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		A2CD322A14D0300200C4D3F0 /* Build configuration list for PBXNativeTarget "fh-ios-sdkTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A2CD322B14D0300200C4D3F0 /* Debug */,
-				A2CD322C14D0300200C4D3F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
