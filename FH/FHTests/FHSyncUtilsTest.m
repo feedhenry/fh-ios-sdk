@@ -37,7 +37,7 @@
   [data setObject:@"test1" forKey:@"test1"];
   [data setObject:@"test2" forKey:@"test2"];
   NSError* error = nil;
-  [FHSyncUtils saveData:[data JSONString] toFile:fileName error:error];
+  [FHSyncUtils saveData:[data JSONString] toFile:fileName backup:NO error:error];
   STAssertNil(error, @"Error when saving data: %@", [error localizedDescription]);
   error = nil;
   NSString* dataContent = [FHSyncUtils loadDataFromFile:fileName error: error];
