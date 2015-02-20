@@ -46,24 +46,25 @@
   NSLog(@"Request URL is : %@", [apicall absoluteString]);
 #endif
   //startrequest
-    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:apicall];
-  
-  //set headers
+    __block ASIHTTPRequest * brequest = [ASIHTTPRequest requestWithURL:apicall];
+    __weak ASIHTTPRequest * request = brequest;
+    
+    //set headers
   NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:[fhact buildHeaders]];
   NSString * apiKeyVal = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
   [headers setValue:@"application/json" forKey:@"Content-Type"];
   [headers setValue:apiKeyVal forKeyPath:@"x-fh-auth-app"];
-  [request setRequestHeaders:headers];
+  [brequest setRequestHeaders:headers];
   //add params to the post request
   if([fhact args] && [[fhact args] count]>0){
-      [request appendPostData:[[fhact args] JSONData]];
+      [brequest appendPostData:[[fhact args] JSONData]];
   }
   //setMethod
-  [request setRequestMethod:fhact.requestMethod];
-  [request setTimeOutSeconds:fhact.requestTimeout];
+  [brequest setRequestMethod:fhact.requestMethod];
+  [brequest setTimeOutSeconds:fhact.requestTimeout];
   //wrap the passed block inside our own success block to allow for
   //further manipulation
-  [request setCompletionBlock:^{
+  [brequest setCompletionBlock:^{
 #if DEBUG
     NSLog(@"reused cache %c",[request didUseCachedResponse]);
     NSLog(@"Response status : %d", [request responseStatusCode]);
@@ -96,7 +97,7 @@
     [self failWithResponse:fhResponse AndAction:fhact];
   }];
   //again wrap the fail block in our own block
-  [request setFailedBlock:^{
+  [brequest setFailedBlock:^{
     NSError * reqError = [request error];
     NSData * responseData = [request responseData];
     FHResponse * fhResponse = [[FHResponse alloc] init];
@@ -108,15 +109,15 @@
   
   if(fhact.cacheTimeout > 0){
     [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
-    [request setDownloadCache:[ASIDownloadCache sharedCache]];
+    [brequest setDownloadCache:[ASIDownloadCache sharedCache]];
     
-    [request setSecondsToCache:fhact.cacheTimeout];
+    [brequest setSecondsToCache:fhact.cacheTimeout];
   }
   
   if([fhact isAsync]){
-    [request startAsynchronous];
+    [brequest startAsynchronous];
   } else {
-    [request startSynchronous];
+    [brequest startSynchronous];
   }
 
 }
