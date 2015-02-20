@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		6F9B35141A979F8A00135274 /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFH.a */; };
 		B307034A190EB968005C65CB /* FHCloudProps.h in Headers */ = {isa = PBXBuildFile; fileRef = B3070348190EB968005C65CB /* FHCloudProps.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B307034B190EB968005C65CB /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = B3070349190EB968005C65CB /* FHCloudProps.m */; };
 		B307034E190EC337005C65CB /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B307034C190EC337005C65CB /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -364,6 +365,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F9B35141A979F8A00135274 /* libFH.a in Frameworks */,
 				B3AE9D9415D52FA1004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9315D52F5D004EF454 /* MobileCoreServices.framework in Frameworks */,
 				B3AE9D9215D52F19004EF454 /* SystemConfiguration.framework in Frameworks */,
