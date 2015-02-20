@@ -217,7 +217,8 @@
 
 - (NSDictionary*) updateWithUID:(NSString*) uid data:(NSDictionary*) data
 {
-  FHSyncPendingDataRecord* pending = [self addPendingObject:uid data:data AndAction:@"update"];
+  [self addPendingObject:uid data:data AndAction:@"update"];
+    
   FHSyncDataRecord* rec = [self.dataRecords objectForKey:uid];
   if (rec) {
     NSMutableDictionary* ret = [NSMutableDictionary dictionary];

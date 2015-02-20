@@ -89,7 +89,7 @@
   [dict setObject:[NSNumber numberWithBool:self.notifyRemoteUpdateFailed] forKey:KEY_NOTIFY_REMOTE_UPDATE_FAILED];
   [dict setObject:[NSNumber numberWithBool:self.notifySyncFailed] forKey:KEY_NOTIFY_SYNC_FAILED];
   [dict setObject:[NSNumber numberWithBool:self.debug] forKey:KEY_DEBUG];
-  [dict setObject:[NSNumber numberWithInt:self.crashCountWait] forKey:KEY_CRASHCOUNTWAIT];
+  [dict setObject:[NSNumber numberWithInteger:self.crashCountWait] forKey:KEY_CRASHCOUNTWAIT];
   [dict setObject:[NSNumber numberWithBool:self.resendCrashedUpdates] forKey:KEY_RESEND_CRASH];
   [dict setObject:[NSNumber numberWithBool:self.hasCustomSync] forKey:KEY_HAS_CUSTOM_SYNC];
   [dict setObject:[NSNumber numberWithBool:self.icloud_backup] forKey:KEY_ICLOUD_BACKUP];

@@ -17,7 +17,7 @@
   BOOL _notifyClientStorageFailed;
   BOOL _notifySyncFailed;
   BOOL _debug;
-  int _crashCountWait;
+  NSInteger _crashCountWait;
   BOOL _resendCrashedUpdates;
   BOOL _hasCustomSync;
   BOOL _icloud_backup;
@@ -60,7 +60,7 @@
 @property BOOL notifySyncFailed;
 
 /** Set the crash count limit before the crashed records either resent or discarded*/
-@property int crashCountWait;
+@property NSInteger crashCountWait;
 
 /** If set to YES, the crashed updates will be discarded if the crash count limit reached */
 @property BOOL resendCrashedUpdates;
