@@ -30,7 +30,7 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
   void (^success)(FHResponse *)=^(FHResponse * res){
-    //Call any other FH APIs after init suceeds
+      NSLog(@"succeeded");
   };
   
   void (^failure)(id)=^(FHResponse * res){
@@ -38,7 +38,7 @@
   };
   
   //View loaded, you can uncomment the following code to init FH object
-  //[FH initWithSuccess:success AndFailure:failure];
+  [FH initWithSuccess:success AndFailure:failure];
 }
 
 - (void)viewDidUnload
