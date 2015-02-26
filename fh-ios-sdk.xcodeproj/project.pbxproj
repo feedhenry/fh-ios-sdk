@@ -35,7 +35,9 @@
 /* Begin PBXBuildFile section */
 		6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
-		6F9B35141A979F8A00135274 /* libfh-ios-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libfh-ios-sdk.a */; };
+		6F2488EF1A9F652700247518 /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C603C1A9B366200C22C92 /* ASIS3Request.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6F2488F01A9F654F00247518 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C602A1A9B366200C22C92 /* ASICloudFilesContainerXMLParserDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6F9B35141A979F8A00135274 /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFH.a */; };
 		6F9C5FC61A9B35E100C22C92 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC41A9B35E100C22C92 /* InfoPlist.strings */; };
 		6F9C5FDB1A9B35F900C22C92 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */; };
 		6F9C607E1A9B369D00C22C92 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FF31A9B366200C22C92 /* NSString+MD5.m */; };
@@ -314,9 +316,9 @@
 		B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B3D7C48315D28BE30019262E /* libfh-ios-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libfh-ios-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D7C48315D28BE30019262E /* libFH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFH.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D7C48615D28BE30019262E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B3D7C49315D28BE30019262E /* fh-ios-sdkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fh-ios-sdkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D7C49315D28BE30019262E /* FHTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FHTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D7C49415D28BE30019262E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B3D7C49615D28BE30019262E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B3D7C54C15D291B40019262E /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -346,7 +348,7 @@
 				6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */,
 				6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */,
 				6FC784D71A9B9D95002485B5 /* UIKit.framework in Frameworks */,
-				6F9B35141A979F8A00135274 /* libfh-ios-sdk.a in Frameworks */,
+				6F9B35141A979F8A00135274 /* libFH.a in Frameworks */,
 				B3AE9D9415D52FA1004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9315D52F5D004EF454 /* MobileCoreServices.framework in Frameworks */,
 				B3AE9D9215D52F19004EF454 /* SystemConfiguration.framework in Frameworks */,
@@ -537,8 +539,8 @@
 		B3D7C48415D28BE30019262E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3D7C48315D28BE30019262E /* libfh-ios-sdk.a */,
-				B3D7C49315D28BE30019262E /* fh-ios-sdkTests.octest */,
+				B3D7C48315D28BE30019262E /* libFH.a */,
+				B3D7C49315D28BE30019262E /* FHTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -678,9 +680,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B3D7C48215D28BE30019262E /* fh-ios-sdk */ = {
+		B3D7C48215D28BE30019262E /* FH */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3D7C4A715D28BE30019262E /* Build configuration list for PBXNativeTarget "fh-ios-sdk" */;
+			buildConfigurationList = B3D7C4A715D28BE30019262E /* Build configuration list for PBXNativeTarget "FH" */;
 			buildPhases = (
 				B3D7C47F15D28BE30019262E /* Sources */,
 				B3D7C48015D28BE30019262E /* Frameworks */,
@@ -691,14 +693,14 @@
 			);
 			dependencies = (
 			);
-			name = "fh-ios-sdk";
+			name = FH;
 			productName = FH;
-			productReference = B3D7C48315D28BE30019262E /* libfh-ios-sdk.a */;
+			productReference = B3D7C48315D28BE30019262E /* libFH.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		B3D7C49215D28BE30019262E /* fh-ios-sdkTests */ = {
+		B3D7C49215D28BE30019262E /* FHTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3D7C4AA15D28BE30019262E /* Build configuration list for PBXNativeTarget "fh-ios-sdkTests" */;
+			buildConfigurationList = B3D7C4AA15D28BE30019262E /* Build configuration list for PBXNativeTarget "FHTests" */;
 			buildPhases = (
 				B3D7C48E15D28BE30019262E /* Sources */,
 				B3D7C48F15D28BE30019262E /* Frameworks */,
@@ -710,9 +712,9 @@
 			dependencies = (
 				B3D7C49A15D28BE30019262E /* PBXTargetDependency */,
 			);
-			name = "fh-ios-sdkTests";
+			name = FHTests;
 			productName = FHTests;
-			productReference = B3D7C49315D28BE30019262E /* fh-ios-sdkTests.octest */;
+			productReference = B3D7C49315D28BE30019262E /* FHTests.octest */;
 			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
@@ -736,8 +738,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3D7C48215D28BE30019262E /* fh-ios-sdk */,
-				B3D7C49215D28BE30019262E /* fh-ios-sdkTests */,
+				B3D7C48215D28BE30019262E /* FH */,
+				B3D7C49215D28BE30019262E /* FHTests */,
 				B349A04915D2A96900254861 /* framework */,
 				B33842F115E237B3004DE63E /* Documentation */,
 			);
@@ -782,7 +784,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\nFH_SDK_VERSION=`head -1 VERSION.txt`\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild VALID_ARCHS=\"i386 x86_64 armv7 armv7s arm64\" -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"";
+			shellScript = "set -e\nset +u\nFH_SDK_VERSION=`head -1 VERSION.txt`\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=\"FH\"\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild VALID_ARCHS=\"i386 x86_64 armv7 armv7s arm64\" -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"";
 			showEnvVarsInLog = 0;
 		};
 		B3D7C49115D28BE30019262E /* ShellScript */ = {
@@ -832,6 +834,8 @@
 				6F9C60A71A9B372600C22C92 /* JSONKit.m in Sources */,
 				6F9C60A91A9B372600C22C92 /* Reachability.m in Sources */,
 				6F9C60931A9B36E000C22C92 /* ASIAuthenticationDialog.m in Sources */,
+				6F2488F01A9F654F00247518 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
+				6F2488EF1A9F652700247518 /* ASIS3Request.m in Sources */,
 				6F9C60961A9B36E000C22C92 /* ASIDataCompressor.m in Sources */,
 				6F9C60981A9B36E000C22C92 /* ASIDataDecompressor.m in Sources */,
 				6F9C609A1A9B36E000C22C92 /* ASIDownloadCache.m in Sources */,
@@ -928,12 +932,12 @@
 /* Begin PBXTargetDependency section */
 		B3951AD015D2BA750091054A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3D7C48215D28BE30019262E /* fh-ios-sdk */;
+			target = B3D7C48215D28BE30019262E /* FH */;
 			targetProxy = B3951ACF15D2BA750091054A /* PBXContainerItemProxy */;
 		};
 		B3D7C49A15D28BE30019262E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3D7C48215D28BE30019262E /* fh-ios-sdk */;
+			target = B3D7C48215D28BE30019262E /* FH */;
 			targetProxy = B3D7C49915D28BE30019262E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -972,7 +976,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FH;
 				VALID_ARCHS = "armv7 armv7s arm64 i386";
 			};
 			name = Debug;
@@ -983,7 +987,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FH;
 				VALID_ARCHS = "armv7 armv7s arm64 i386";
 			};
 			name = Release;
@@ -1159,7 +1163,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3D7C4A715D28BE30019262E /* Build configuration list for PBXNativeTarget "fh-ios-sdk" */ = {
+		B3D7C4A715D28BE30019262E /* Build configuration list for PBXNativeTarget "FH" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3D7C4A815D28BE30019262E /* Debug */,
@@ -1168,7 +1172,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3D7C4AA15D28BE30019262E /* Build configuration list for PBXNativeTarget "fh-ios-sdkTests" */ = {
+		B3D7C4AA15D28BE30019262E /* Build configuration list for PBXNativeTarget "FHTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3D7C4AB15D28BE30019262E /* Debug */,
