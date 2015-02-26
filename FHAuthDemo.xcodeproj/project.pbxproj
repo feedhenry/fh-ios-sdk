@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FB4F7F51A9F237E002693DA /* auth_feedhenry.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F7F31A9F237E002693DA /* auth_feedhenry.png */; };
+		6FB4F7F61A9F237E002693DA /* auth_google.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F7F41A9F237E002693DA /* auth_google.png */; };
+		6FB4F7F81A9F239A002693DA /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F7F71A9F239A002693DA /* fhconfig.plist */; };
+		6FB4F7FD1A9F23CA002693DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F7FB1A9F23CA002693DA /* InfoPlist.strings */; };
+		6FB4F7FF1A9F23D9002693DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F7FE1A9F23D9002693DA /* main.m */; };
+		6FB4F8191A9F241E002693DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F80A1A9F241E002693DA /* AppDelegate.m */; };
+		6FB4F81A1A9F241E002693DA /* AuthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F80B1A9F241E002693DA /* AuthMethod.m */; };
+		6FB4F81B1A9F241E002693DA /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F80C1A9F241E002693DA /* AuthViewController.m */; };
+		6FB4F81C1A9F241E002693DA /* FHAuthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F80D1A9F241E002693DA /* FHAuthMethod.m */; };
+		6FB4F81D1A9F241E002693DA /* FHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F80E1A9F241E002693DA /* FHLoginViewController.m */; };
+		6FB4F81E1A9F241E002693DA /* GoogleAuthMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F80F1A9F241E002693DA /* GoogleAuthMethod.m */; };
+		6FB4F81F1A9F241E002693DA /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F8101A9F241E002693DA /* HelloViewController.m */; };
+		6FB4F8211A9F241E002693DA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4F8121A9F241E002693DA /* RootViewController.m */; };
+		6FB4F8231A9F241E002693DA /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8151A9F241E002693DA /* AuthViewController.xib */; };
+		6FB4F8241A9F241E002693DA /* FHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8161A9F241E002693DA /* FHLoginViewController.xib */; };
+		6FB4F8251A9F241E002693DA /* HelloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8171A9F241E002693DA /* HelloViewController.xib */; };
+		6FB4F8261A9F241E002693DA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8181A9F241E002693DA /* RootViewController.xib */; };
+		A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
+		A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
+		A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */; };
+		A2CD322F14D0633600C4D3F0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */; };
+		A2CD323114D063FE00C4D3F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */; };
+		A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */; };
+		A2CD323714D065F100C4D3F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323614D065F100C4D3F0 /* libz.dylib */; };
+		A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
+		D84E94F3177C3AA7006DCE05 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F2177C3AA7006DCE05 /* AdSupport.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6FB4F7F31A9F237E002693DA /* auth_feedhenry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = auth_feedhenry.png; path = FHAuthDemo/Resources/auth_feedhenry.png; sourceTree = SOURCE_ROOT; };
+		6FB4F7F41A9F237E002693DA /* auth_google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = auth_google.png; path = FHAuthDemo/Resources/auth_google.png; sourceTree = SOURCE_ROOT; };
+		6FB4F7F71A9F239A002693DA /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fhconfig.plist; path = FHAuthDemo/fhconfig.plist; sourceTree = SOURCE_ROOT; };
+		6FB4F7F91A9F23AE002693DA /* FHAuthDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "FHAuthDemo-Info.plist"; path = "FHAuthDemo/FHAuthDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		6FB4F7FC1A9F23CA002693DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = FHAuthDemo/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		6FB4F7FE1A9F23D9002693DA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FHAuthDemo/main.m; sourceTree = SOURCE_ROOT; };
+		6FB4F8001A9F23E6002693DA /* FHAuthDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FHAuthDemo-Prefix.pch"; path = "FHAuthDemo/FHAuthDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		6FB4F8011A9F241E002693DA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FHAuthDemo/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		6FB4F8021A9F241E002693DA /* AuthMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthMethod.h; path = FHAuthDemo/AuthMethod.h; sourceTree = SOURCE_ROOT; };
+		6FB4F8031A9F241E002693DA /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewController.h; path = FHAuthDemo/AuthViewController.h; sourceTree = SOURCE_ROOT; };
+		6FB4F8041A9F241E002693DA /* FHAuthMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHAuthMethod.h; path = FHAuthDemo/FHAuthMethod.h; sourceTree = SOURCE_ROOT; };
+		6FB4F8051A9F241E002693DA /* FHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHLoginViewController.h; path = FHAuthDemo/FHLoginViewController.h; sourceTree = SOURCE_ROOT; };
+		6FB4F8061A9F241E002693DA /* GoogleAuthMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleAuthMethod.h; path = FHAuthDemo/GoogleAuthMethod.h; sourceTree = SOURCE_ROOT; };
+		6FB4F8071A9F241E002693DA /* HelloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloViewController.h; path = FHAuthDemo/HelloViewController.h; sourceTree = SOURCE_ROOT; };
+		6FB4F8081A9F241E002693DA /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "FHAuthDemo/NSString+MD5.h"; sourceTree = SOURCE_ROOT; };
+		6FB4F8091A9F241E002693DA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = FHAuthDemo/RootViewController.h; sourceTree = SOURCE_ROOT; };
+		6FB4F80A1A9F241E002693DA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FHAuthDemo/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		6FB4F80B1A9F241E002693DA /* AuthMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthMethod.m; path = FHAuthDemo/AuthMethod.m; sourceTree = SOURCE_ROOT; };
+		6FB4F80C1A9F241E002693DA /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthViewController.m; path = FHAuthDemo/AuthViewController.m; sourceTree = SOURCE_ROOT; };
+		6FB4F80D1A9F241E002693DA /* FHAuthMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHAuthMethod.m; path = FHAuthDemo/FHAuthMethod.m; sourceTree = SOURCE_ROOT; };
+		6FB4F80E1A9F241E002693DA /* FHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHLoginViewController.m; path = FHAuthDemo/FHLoginViewController.m; sourceTree = SOURCE_ROOT; };
+		6FB4F80F1A9F241E002693DA /* GoogleAuthMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleAuthMethod.m; path = FHAuthDemo/GoogleAuthMethod.m; sourceTree = SOURCE_ROOT; };
+		6FB4F8101A9F241E002693DA /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelloViewController.m; path = FHAuthDemo/HelloViewController.m; sourceTree = SOURCE_ROOT; };
+		6FB4F8121A9F241E002693DA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = FHAuthDemo/RootViewController.m; sourceTree = SOURCE_ROOT; };
+		6FB4F8131A9F241E002693DA /* FHAuthDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FHAuthDemo-Prefix.pch"; path = "FHAuthDemo/FHAuthDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		6FB4F8141A9F241E002693DA /* FHAuthDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "FHAuthDemo-Info.plist"; path = "FHAuthDemo/FHAuthDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		6FB4F8151A9F241E002693DA /* AuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthViewController.xib; path = FHAuthDemo/AuthViewController.xib; sourceTree = SOURCE_ROOT; };
+		6FB4F8161A9F241E002693DA /* FHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FHLoginViewController.xib; path = FHAuthDemo/FHLoginViewController.xib; sourceTree = SOURCE_ROOT; };
+		6FB4F8171A9F241E002693DA /* HelloViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelloViewController.xib; path = FHAuthDemo/HelloViewController.xib; sourceTree = SOURCE_ROOT; };
+		6FB4F8181A9F241E002693DA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = FHAuthDemo/RootViewController.xib; sourceTree = SOURCE_ROOT; };
+		A2CD31FA14D0300200C4D3F0 /* FHAuthDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHAuthDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2CD31FE14D0300200C4D3F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A2CD320014D0300200C4D3F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A2CD323614D065F100C4D3F0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A2CD342F14D067A700C4D3F0 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		D84E94F2177C3AA7006DCE05 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2CD31F714D0300200C4D3F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D84E94F3177C3AA7006DCE05 /* AdSupport.framework in Frameworks */,
+				A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */,
+				A2CD323714D065F100C4D3F0 /* libz.dylib in Frameworks */,
+				A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */,
+				A2CD323114D063FE00C4D3F0 /* SystemConfiguration.framework in Frameworks */,
+				A2CD322F14D0633600C4D3F0 /* CFNetwork.framework in Frameworks */,
+				A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */,
+				A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */,
+				A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A2CD31EF14D0300200C4D3F0 = {
+			isa = PBXGroup;
+			children = (
+				A2CD320414D0300200C4D3F0 /* FHAuthDemo */,
+				A2CD31FD14D0300200C4D3F0 /* Frameworks */,
+				A2CD31FB14D0300200C4D3F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A2CD31FB14D0300200C4D3F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2CD31FA14D0300200C4D3F0 /* FHAuthDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2CD31FD14D0300200C4D3F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D84E94F2177C3AA7006DCE05 /* AdSupport.framework */,
+				A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */,
+				A2CD342F14D067A700C4D3F0 /* libxml2.dylib */,
+				A2CD323614D065F100C4D3F0 /* libz.dylib */,
+				A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */,
+				A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */,
+				A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */,
+				A2CD31FE14D0300200C4D3F0 /* UIKit.framework */,
+				A2CD320014D0300200C4D3F0 /* Foundation.framework */,
+				A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */,
+				A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2CD320414D0300200C4D3F0 /* FHAuthDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6FB4F7F71A9F239A002693DA /* fhconfig.plist */,
+				6FB4F8011A9F241E002693DA /* AppDelegate.h */,
+				6FB4F8021A9F241E002693DA /* AuthMethod.h */,
+				6FB4F80B1A9F241E002693DA /* AuthMethod.m */,
+				6FB4F80A1A9F241E002693DA /* AppDelegate.m */,
+				6FB4F8031A9F241E002693DA /* AuthViewController.h */,
+				6FB4F80C1A9F241E002693DA /* AuthViewController.m */,
+				6FB4F8041A9F241E002693DA /* FHAuthMethod.h */,
+				6FB4F80D1A9F241E002693DA /* FHAuthMethod.m */,
+				6FB4F8051A9F241E002693DA /* FHLoginViewController.h */,
+				6FB4F80E1A9F241E002693DA /* FHLoginViewController.m */,
+				6FB4F8061A9F241E002693DA /* GoogleAuthMethod.h */,
+				6FB4F80F1A9F241E002693DA /* GoogleAuthMethod.m */,
+				6FB4F8071A9F241E002693DA /* HelloViewController.h */,
+				6FB4F8101A9F241E002693DA /* HelloViewController.m */,
+				6FB4F8091A9F241E002693DA /* RootViewController.h */,
+				6FB4F8121A9F241E002693DA /* RootViewController.m */,
+				6FB4F8131A9F241E002693DA /* FHAuthDemo-Prefix.pch */,
+				6FB4F8141A9F241E002693DA /* FHAuthDemo-Info.plist */,
+				6FB4F8081A9F241E002693DA /* NSString+MD5.h */,
+				6FB4F8151A9F241E002693DA /* AuthViewController.xib */,
+				6FB4F8161A9F241E002693DA /* FHLoginViewController.xib */,
+				6FB4F8171A9F241E002693DA /* HelloViewController.xib */,
+				6FB4F8181A9F241E002693DA /* RootViewController.xib */,
+				B308507715D943A6007E6AD5 /* Resources */,
+				A2CD320514D0300200C4D3F0 /* Supporting Files */,
+			);
+			name = FHAuthDemo;
+			path = "fh-ios-sdk";
+			sourceTree = "<group>";
+		};
+		A2CD320514D0300200C4D3F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FB4F7F91A9F23AE002693DA /* FHAuthDemo-Info.plist */,
+				6FB4F7FB1A9F23CA002693DA /* InfoPlist.strings */,
+				6FB4F7FE1A9F23D9002693DA /* main.m */,
+				6FB4F8001A9F23E6002693DA /* FHAuthDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B308507715D943A6007E6AD5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6FB4F7F31A9F237E002693DA /* auth_feedhenry.png */,
+				6FB4F7F41A9F237E002693DA /* auth_google.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2CD31F914D0300200C4D3F0 /* FHAuthDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2CD322714D0300200C4D3F0 /* Build configuration list for PBXNativeTarget "FHAuthDemo" */;
+			buildPhases = (
+				A2CD31F614D0300200C4D3F0 /* Sources */,
+				A2CD31F714D0300200C4D3F0 /* Frameworks */,
+				A2CD31F814D0300200C4D3F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FHAuthDemo;
+			productName = "fh-ios-sdk";
+			productReference = A2CD31FA14D0300200C4D3F0 /* FHAuthDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2CD31F114D0300200C4D3F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Feedhenry;
+			};
+			buildConfigurationList = A2CD31F414D0300200C4D3F0 /* Build configuration list for PBXProject "FHAuthDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				English,
+			);
+			mainGroup = A2CD31EF14D0300200C4D3F0;
+			productRefGroup = A2CD31FB14D0300200C4D3F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2CD31F914D0300200C4D3F0 /* FHAuthDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2CD31F814D0300200C4D3F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FB4F8251A9F241E002693DA /* HelloViewController.xib in Resources */,
+				6FB4F8241A9F241E002693DA /* FHLoginViewController.xib in Resources */,
+				6FB4F8261A9F241E002693DA /* RootViewController.xib in Resources */,
+				6FB4F7F61A9F237E002693DA /* auth_google.png in Resources */,
+				6FB4F7F81A9F239A002693DA /* fhconfig.plist in Resources */,
+				6FB4F8231A9F241E002693DA /* AuthViewController.xib in Resources */,
+				6FB4F7F51A9F237E002693DA /* auth_feedhenry.png in Resources */,
+				6FB4F7FD1A9F23CA002693DA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2CD31F614D0300200C4D3F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FB4F81D1A9F241E002693DA /* FHLoginViewController.m in Sources */,
+				6FB4F81C1A9F241E002693DA /* FHAuthMethod.m in Sources */,
+				6FB4F81B1A9F241E002693DA /* AuthViewController.m in Sources */,
+				6FB4F81F1A9F241E002693DA /* HelloViewController.m in Sources */,
+				6FB4F8211A9F241E002693DA /* RootViewController.m in Sources */,
+				6FB4F81E1A9F241E002693DA /* GoogleAuthMethod.m in Sources */,
+				6FB4F8191A9F241E002693DA /* AppDelegate.m in Sources */,
+				6FB4F81A1A9F241E002693DA /* AuthMethod.m in Sources */,
+				6FB4F7FF1A9F23D9002693DA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6FB4F7FB1A9F23CA002693DA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FB4F7FC1A9F23CA002693DA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A2CD322514D0300200C4D3F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "./FH/FH/**";
+			};
+			name = Debug;
+		};
+		A2CD322614D0300200C4D3F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "./FH/FH/**";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2CD322814D0300200C4D3F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FeedHenry Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/FH/dist/fh-framework-1.0.0\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FHAuthDemo/FHAuthDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml";
+				INFOPLIST_FILE = "FHAuthDemo/FHAuthDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"./FH/FH/**",
+					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lxml2",
+				);
+				PRODUCT_NAME = FHAuthDemo;
+				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
+				VALID_ARCHS = "armv7 armv7s arm64 i386";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A2CD322914D0300200C4D3F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FeedHenry Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/FH/dist/fh-framework-1.0.0\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FHAuthDemo/FHAuthDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml";
+				INFOPLIST_FILE = "FHAuthDemo/FHAuthDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"./FH/FH/**",
+					"\"$(SRCROOT)/FH/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/FH/build/Debug-iphonesimulator\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lxml2",
+				);
+				PRODUCT_NAME = FHAuthDemo;
+				PROVISIONING_PROFILE = "27C169DA-70C6-4A93-BAFE-E7DBF5B0111E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "./FH/FH/** ./FH/FH/Categories/** ./FH/FH/ThirdParty/**";
+				VALID_ARCHS = "armv7 armv7s arm64 i386";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2CD31F414D0300200C4D3F0 /* Build configuration list for PBXProject "FHAuthDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2CD322514D0300200C4D3F0 /* Debug */,
+				A2CD322614D0300200C4D3F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A2CD322714D0300200C4D3F0 /* Build configuration list for PBXNativeTarget "FHAuthDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2CD322814D0300200C4D3F0 /* Debug */,
+				A2CD322914D0300200C4D3F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A2CD31F114D0300200C4D3F0 /* Project object */;
+}
