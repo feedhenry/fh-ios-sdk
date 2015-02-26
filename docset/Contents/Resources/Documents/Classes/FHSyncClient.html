@@ -370,7 +370,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)createWithDataId:(NSString *)<em>dataId</em> AndData:(NSDictionary *)<em>data</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)createWithDataId:(id)<em>dataId</em> AndData:(id)<em>data</em></code></div>
 
     
 	
@@ -431,7 +431,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)deleteWithDataId:(NSString *)<em>dataId</em> AndUID:(NSString *)<em>uid</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)deleteWithDataId:(id)<em>dataId</em> AndUID:(id)<em>uid</em></code></div>
 
     
 	
@@ -533,7 +533,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithConfig:(FHSyncConfig *)<em>config</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithConfig:(id)<em>config</em></code></div>
 
     
 	
@@ -584,7 +584,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)listCollisionWithCallbacksForDataId:(NSString *)<em>dataId</em> AndSuccess:(void ( ^ ) ( id success ))<em>sucornil</em> AndFailure:(void ( ^ ) ( id failed ))<em>failornil</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)listCollisionWithCallbacksForDataId:(id)<em>dataId</em> AndSuccess:(id)<em>sucornil</em> AndFailure:(id)<em>failornil</em></code></div>
 
     
 	
@@ -645,7 +645,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSDictionary *)listWithDataId:(NSString *)<em>dataId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)listWithDataId:(id)<em>dataId</em></code></div>
 
     
 	
@@ -701,7 +701,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)manageWithDataId:(NSString *)<em>dataId</em> AndConfig:(FHSyncConfig *)<em>config</em> AndQuery:(NSDictionary *)<em>queryParams</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)manageWithDataId:(id)<em>dataId</em> AndConfig:(id)<em>config</em> AndQuery:(id)<em>queryParams</em></code></div>
 
     
 	
@@ -762,7 +762,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSDictionary *)readWithDataId:(NSString *)<em>dataId</em> AndUID:(NSString *)<em>uid</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)readWithDataId:(id)<em>dataId</em> AndUID:(id)<em>uid</em></code></div>
 
     
 	
@@ -823,7 +823,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)removeCollisionWithCallbacksForDataId:(NSString *)<em>dataId</em> hash:(NSString *)<em>collisionHash</em> AndSuccess:(void ( ^ ) ( id success ))<em>sucornil</em> AndFailure:(void ( ^ ) ( id failed ))<em>failornil</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)removeCollisionWithCallbacksForDataId:(id)<em>dataId</em> hash:(id)<em>collisionHash</em> AndSuccess:(id)<em>sucornil</em> AndFailure:(id)<em>failornil</em></code></div>
 
     
 	
@@ -889,7 +889,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)stopWithDataId:(NSString *)<em>dataId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)stopWithDataId:(id)<em>dataId</em></code></div>
 
     
 	
@@ -940,7 +940,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)updateWithDataId:(NSString *)<em>dataId</em> AndUID:(NSString *)<em>uid</em> AndData:(NSDictionary *)<em>data</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)updateWithDataId:(id)<em>dataId</em> AndUID:(id)<em>uid</em> AndData:(id)<em>data</em></code></div>
 
     
 	
@@ -999,6 +999,9 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1009,7 +1012,7 @@ For more details, please check <a href="http://docs.feedhenry.com/v2/index.html"
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 FeedHenry. All rights reserved. (Last updated: 2014-04-29)</span><br />
+						<p><span class="copyright">&copy; 2015 FeedHenry. All rights reserved. (Last updated: 2015-02-23)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
