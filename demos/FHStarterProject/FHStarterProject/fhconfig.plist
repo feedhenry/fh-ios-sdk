@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>host</key>
-	<string><host></string>
-	<key>appid</key>
-	<string><appid></string>
-	<key>projectid</key>
-	<string><projectid></string>
-	<key>appkey</key>
-	<string><appkey></string>
-	<key>connectiontag</key>
-	<string><connectiontag></string>
-</dict>
+<plist>
+  <dict>
+    <key>host</key>
+    <string>hosthere</string>
+    <key>appid</key>
+    <string>appidhere</string>
+    <key>projectid</key>
+    <string>projectidhere</string>
+    <key>appkey</key>
+    <string>appkeyhere</string>
+    <key>connectiontag</key>
+    <string>connectiontaghere</string>
+  </dict>
 </plist>
