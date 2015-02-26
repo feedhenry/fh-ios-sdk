@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist>
-  <dict>
-    <key>host</key>
-    <string>https://testing.feedhenry.me</string>
-    <key>appid</key>
-    <string>pdO360TImwQfh5AANOINhBJp</string>
-    <key>projectid</key>
-    <string>pdO362yI3p2OnkkgvUMioZV7</string>
-    <key>appkey</key>
-    <string>68e33f62f1de9748e5bcc407f8bddf0a394385fe</string>
-    <key>connectiontag</key>
-    <string>0.0.2</string>
-  </dict>
+<plist version="1.0">
+<dict>
+	<key>host</key>
+	<string>https://aerogear-t.sandbox.feedhenry.com</string>
+	<key>appid</key>
+	<string>kWIQ1hDu7pzed-U5jke9lVrf</string>
+	<key>projectid</key>
+	<string>kWIQ1druuzHSrONbvEQ_JgEt</string>
+	<key>appkey</key>
+	<string>923c6d10c9a2e81249b8fe4d4090b7bc40f771fb</string>
+	<key>connectiontag</key>
+	<string>0.0.1</string>
+</dict>
 </plist>
