@@ -1,5 +1,9 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 2.2.2 - 2014-10-02 - Cian Clarke
+
+* Fix oAuth view controller mistaking oAuth page redirect with no query string for success
+
 ## 2.2.1 - 2014-09-19 - Wei Li
 
 * 7988 - Update Sync framework to use mBAAS service

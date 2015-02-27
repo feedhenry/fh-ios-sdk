@@ -116,7 +116,7 @@
   NSURL *url = [theRequest URL];
   NSLog(@"Start to load url : %@", url);
   NSString* queryStr = [url query];
-  if([queryStr rangeOfString:@"status=complete"].location != NSNotFound){
+  if(queryStr!=nil && [[url query] rangeOfString:@"status=complete"].location != NSNotFound){
     NSArray* pairs = [queryStr componentsSeparatedByString:@"&"];
     NSMutableDictionary* map = [NSMutableDictionary dictionary];
     for(NSString* p in pairs){
