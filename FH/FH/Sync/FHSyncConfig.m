@@ -120,11 +120,11 @@
   config.debug = [[jsonObj objectForKey:KEY_DEBUG] boolValue];
   config.crashCountWait = [[jsonObj objectForKey:KEY_CRASHCOUNTWAIT] integerValue];
   config.resendCrashedUpdates = [[jsonObj objectForKey:KEY_RESEND_CRASH] boolValue];
-  if ([jsonObj objectForKey:KEY_HAS_CUSTOM_SYNC]) {
-    config.hasCustomSync = [jsonObj objectForKey:KEY_HAS_CUSTOM_SYNC];
+  if ([[jsonObj objectForKey:KEY_HAS_CUSTOM_SYNC] boolValue]) {
+    config.hasCustomSync = [[jsonObj objectForKey:KEY_HAS_CUSTOM_SYNC] boolValue];
   }
-  if ([jsonObj objectForKey:KEY_ICLOUD_BACKUP]) {
-    config.icloud_backup = [jsonObj objectForKey:KEY_ICLOUD_BACKUP];
+  if ([[jsonObj objectForKey:KEY_ICLOUD_BACKUP] boolValue]) {
+    config.icloud_backup = [[jsonObj objectForKey:KEY_ICLOUD_BACKUP] boolValue];
   }
   return config;
 
