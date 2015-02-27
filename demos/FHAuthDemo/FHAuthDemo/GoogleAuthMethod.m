@@ -7,10 +7,10 @@
 //
 
 #import "GoogleAuthMethod.h"
-#import "FH.h"
-#import "FHAuthRequest.h"
-#import "FHResponse.h"
-#import "JSONKit.h"
+#import "FH/FH.h"
+#import "FH/FHAuthRequest.h"
+#import "FH/FHResponse.h"
+#import "FH/JSONKit.h"
 
 @implementation GoogleAuthMethod
 

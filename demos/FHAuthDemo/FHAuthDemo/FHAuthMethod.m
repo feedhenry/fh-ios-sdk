@@ -8,9 +8,9 @@
 
 #import "FHAuthMethod.h"
 #import "FHLoginViewController.h"
-#import "FH.h"
-#import "FHAuthRequest.h"
-#import "FHResponse.h"
+#import "FH/FH.h"
+#import "FH/FHAuthRequest.h"
+#import "FH/FHResponse.h"
 
 @implementation FHAuthMethod
 

@@ -9,8 +9,8 @@
 #import "RootViewController.h"
 #import "HelloViewController.h"
 #import "AuthViewController.h"
-#import "FH.h"
-#import "FHResponse.h"
+#import "FH/FH.h"
+#import "FH/FHResponse.h"
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
