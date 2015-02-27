@@ -12,6 +12,7 @@
 #import "FH.h"
 #import "FHResponse.h"
 #import "FHAct+SetHttpClient.h"
+#import "FHCloudProps.h"
 
 @implementation FHTests
 
@@ -58,7 +59,9 @@
   [initRes setValue:FALSE forKey:@"firstTime"];
   [initRes setValue:innerP forKey:@"hosts"];
   
-  FHActRequest * cloud = [[FHActRequest alloc]initWithProps:initRes];
+  FHCloudProps *cloudProps = [[FHCloudProps alloc] initWithCloudProps:initRes];
+    
+  FHActRequest * cloud = [[FHActRequest alloc]initWithProps:cloudProps];
   cloud.method = FH_CLOUD;
   [cloud setHttpClient:httpClient];
   
@@ -73,7 +76,7 @@
   [cloud execWithSuccess:success AndFailure:nil];
   
   [initRes setValue:@"http://dev.test.example.com" forKey:@"url"];
-  FHActRequest* another = [[FHActRequest alloc]initWithProps:initRes];
+  FHActRequest* another = [[FHActRequest alloc]initWithProps:cloudProps];
   another.method = FH_CLOUD;
   another.remoteAction = @"test";
   
@@ -99,7 +102,7 @@
   NSMutableDictionary* authRes = [NSMutableDictionary dictionary];
   [authRes setValue:@"testToken" forKey:@"sessionToken"];
   
-  FHAuthRequest* auth = [[FHAuthRequest alloc] initWithProps:initRes];
+  FHAuthRequest* auth = [[FHAuthRequest alloc] init];
   auth.method = FH_AUTH;
   [auth setHttpClient:httpClient];
   [auth authWithPolicyId:@"testPolicy"];
