@@ -7,7 +7,7 @@
 //
 
 #import "DataManager.h"
-#import "FHSyncNotificationMessage.h"
+#import "FH/FHSyncNotificationMessage.h"
 #import "ShoppingItem.h"
 
 @implementation DataManager
