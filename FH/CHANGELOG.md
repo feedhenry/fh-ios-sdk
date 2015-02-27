@@ -1,5 +1,8 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 2.2.3 - 2015-02-27 - Wei Li
+* Fix failed sync test
+
 ## 2.2.2 - 2014-10-02 - Cian Clarke
 
 * Fix oAuth view controller mistaking oAuth page redirect with no query string for success
