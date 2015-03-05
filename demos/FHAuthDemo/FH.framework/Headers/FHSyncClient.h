@@ -56,7 +56,7 @@
  @param data the new data
  @return the created data record
  */
-- (BOOL) createWithDataId:(NSString*) dataId AndData:(NSDictionary *) data;
+- (NSDictionary*) createWithDataId:(NSString*) dataId AndData:(NSDictionary *) data;
 
 /**
  Update an existing data record with id uid within data set with id dataId
@@ -65,7 +65,7 @@
  @param data the new data
  @return the data record
  */
-- (BOOL) updateWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndData:(NSDictionary *) data;
+- (NSDictionary*) updateWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndData:(NSDictionary *) data;
 
 /**
  delete a data record with id uid within data set with id dataId
@@ -73,7 +73,7 @@
  @param uid the id of the data record
  @return the deleted data record
  */
-- (BOOL) deleteWithDataId:(NSString*) dataId AndUID:(NSString*) uid;
+- (NSDictionary*) deleteWithDataId:(NSString*) dataId AndUID:(NSString*) uid;
 
 /**@name Manage Collisions */
 

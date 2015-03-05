@@ -1,5 +1,8 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 2.2.4 - 2015-03-05 - Christos Vasilakis
+* extract SDK to be a standalone library target
+
 ## 2.2.3 - 2015-02-27 - Wei Li
 * Fix failed sync test
 
