@@ -68,7 +68,7 @@
 		6F9C60AE1A9B37C000C22C92 /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60491A9B366200C22C92 /* FHCloudProps.m */; };
 		6F9C60AF1A9B37C000C22C92 /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */; };
 		6F9C60B01A9B37C000C22C92 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604B1A9B366200C22C92 /* FHConfig.m */; };
-		6F9C60B11A9B37C000C22C92 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604C1A9B366200C22C92 /* FHHttpClient.m */; };
+		6F9C60B11A9B37C000C22C92 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604C1A9B366200C22C92 /* FHHttpClient.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
 		6F9C60B21A9B37C000C22C92 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604D1A9B366200C22C92 /* FHInitRequest.m */; };
 		6F9C60B41A9B37C000C22C92 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604F1A9B366200C22C92 /* FHResponse.m */; };
 		6FC784D71A9B9D95002485B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC784D61A9B9D95002485B5 /* UIKit.framework */; };
@@ -103,7 +103,7 @@
 		6FCF32071A9B47000014B936 /* FHAct+SetHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC81A9B35F900C22C92 /* FHAct+SetHttpClient.m */; };
 		6FCF32081A9B47000014B936 /* FHConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */; };
 		6FCF32091A9B47000014B936 /* FHSyncDataRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */; };
-		6FCF320A1A9B47000014B936 /* FHSyncDatasetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */; };
+		6FCF320A1A9B47000014B936 /* FHSyncDatasetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
 		6FCF320B1A9B47000014B936 /* FHSyncPendingDataRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD11A9B35F900C22C92 /* FHSyncPendingDataRecordTest.m */; };
 		6FCF320C1A9B47000014B936 /* FHSyncUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD31A9B35F900C22C92 /* FHSyncUtilsTest.m */; };
 		6FCF320D1A9B47000014B936 /* FHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD51A9B35F900C22C92 /* FHTests.m */; };
@@ -149,7 +149,7 @@
 		6FCF32371A9B474A0014B936 /* FHAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60481A9B366200C22C92 /* FHAuthRequest.m */; };
 		6FCF32381A9B474A0014B936 /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60491A9B366200C22C92 /* FHCloudProps.m */; };
 		6FCF32391A9B474A0014B936 /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */; };
-		6FCF323A1A9B474A0014B936 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604C1A9B366200C22C92 /* FHHttpClient.m */; };
+		6FCF323A1A9B474A0014B936 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604C1A9B366200C22C92 /* FHHttpClient.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
 		6FCF323B1A9B474A0014B936 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604D1A9B366200C22C92 /* FHInitRequest.m */; };
 		6FCF323C1A9B474A0014B936 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604F1A9B366200C22C92 /* FHResponse.m */; };
 		6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEF1A9B366200C22C92 /* FHResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1012,7 +1012,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
