@@ -69,7 +69,7 @@
     
     UINavigationItem *titleBarItem = [[UINavigationItem alloc] initWithTitle:@"Login"];
     //create the close button
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle: @"Close" style: UIBarButtonSystemItemDone target: self action: @selector(closeView)];
+    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle: @"Close" style: UIBarButtonItemStyleDone target: self action: @selector(closeView)];
     [titleBarItem setLeftBarButtonItem:done];
     
     [titleBar pushNavigationItem:titleBarItem animated:NO];

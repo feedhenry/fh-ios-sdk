@@ -182,7 +182,7 @@
       NSString* pendingPostHash = [pendingRecord postData].hashValue;
       STAssertEqualObjects(pendingPreHash, data1Hash, @"pre data hash should match");
       STAssertEqualObjects(pendingPostHash, updatedHash, @"post data hash should match");
-      stop = YES;
+     *stop = YES;
     }
   }];
   
@@ -274,6 +274,7 @@
   
   STAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %d", dataset.dataRecords.count);
   STAssertNil([dataset.dataRecords objectForKey:uid2], @"%@ should be removed", uid2);
+  STAssertNotNil([dataset.dataRecords objectForKey:uid3], @"%@ should have been inserted", uid3);
   STAssertEqualObjects([[dataset.dataRecords objectForKey:uid1] hashValue], [FHSyncUtils generateHashForData:updatedata], @"%@ entry should be updated", uid1);
   STAssertNotNil([dataset.dataRecords objectForKey:@"uid4"], @"uid4 should not nil");
 }

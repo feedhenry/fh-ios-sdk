@@ -61,7 +61,7 @@ static FHSyncClient* shared = nil;
 
 - (void) datasetMonitor:(NSDictionary*) info
 {
-  NSLog(@"start to run checkDataets");
+  NSLog(@"start to run checkDatasets");
   [self checkDatasets];
   [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(datasetMonitor:) userInfo:nil repeats:NO];
 }
@@ -179,7 +179,7 @@ static FHSyncClient* shared = nil;
   return nil;
 }
 
-- (BOOL) createWithDataId:(NSString *)dataId AndData:(NSDictionary *)data
+- (NSDictionary*) createWithDataId:(NSString *)dataId AndData:(NSDictionary *)data
 {
   FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
   if(dataSet){
@@ -188,7 +188,7 @@ static FHSyncClient* shared = nil;
   return nil;
 }
 
-- (BOOL) updateWithDataId:(NSString *)dataId AndUID:(NSString *)uid AndData:(NSDictionary *)data
+- (NSDictionary*) updateWithDataId:(NSString *)dataId AndUID:(NSString *)uid AndData:(NSDictionary *)data
 {
   FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
   if(dataSet){
@@ -197,7 +197,7 @@ static FHSyncClient* shared = nil;
   return nil;
 }
 
-- (BOOL) deleteWithDataId:(NSString *)dataId AndUID:(NSString *)uid
+- (NSDictionary*) deleteWithDataId:(NSString *)dataId AndUID:(NSString *)uid
 {
   FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
   if(dataSet){
