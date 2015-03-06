@@ -1,6 +1,6 @@
 ## Build
 
-* Go to *FH* directory, run build.sh. This will generate the zip file for the framework and template app.
+* Invoke the ```build.sh``` shell script from the command line. This will generate the zip file for the framework and template app in the ```/dist``` directory.
 
 ## Update Docs
 
