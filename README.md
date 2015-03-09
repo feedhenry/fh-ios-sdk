@@ -7,7 +7,7 @@
 * Install [appledoc](https://github.com/tomaz/appledoc)
 * Clone the repo, checkout master branch.
 * Make the changes to the docs comments in the code.
-* Go to *FH* directory, open the project in Xcode, run build target "Documentation".
+* open the project in Xcode, run build target "Documentation".
 * Commit the changes.
 * Checkout gh-pages branch. Rebase it to master.
 * Push both branches to the remote.
