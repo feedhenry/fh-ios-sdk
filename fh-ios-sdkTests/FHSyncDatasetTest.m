@@ -62,17 +62,17 @@
   
   NSError* error = nil;
   [dataset saveToFile:error];
-  STAssertNil(error, nil);
+  XCTAssertNil(error);
   
   NSError* createError = nil;
   FHSyncDataset* anotherDataset = [[FHSyncDataset alloc] initFromFileWithDataId:dataId error:createError];
-  STAssertNil(createError, nil);
+  XCTAssertNil(createError);
   
   NSString* hash1 = [FHSyncUtils generateHashForData:[dataset JSONData]];
   NSString* hash2 = [FHSyncUtils generateHashForData:[anotherDataset JSONData]];
   
   NSLog(@"hash1 = %@ :: hash2 = %@", hash1, hash2);
-  STAssertEqualObjects(hash1, hash2, nil);
+  XCTAssertEqualObjects(hash1, hash2);
 }
 
 - (void) testCRUDL
@@ -98,34 +98,34 @@
   NSString* uid2 = [result2 objectForKey:@"uid"];
   NSString* uid3 = [result3 objectForKey:@"uid"];
   
-  STAssertNotNil(uid1, @"data1 should have uid");
-  STAssertNotNil(uid2, @"data1 should have uid");
-  STAssertNotNil(uid3, @"data1 should have uid");
+  XCTAssertNotNil(uid1, @"data1 should have uid");
+  XCTAssertNotNil(uid2, @"data1 should have uid");
+  XCTAssertNotNil(uid3, @"data1 should have uid");
   
   NSLog(@"uid1 = %@", uid1);
   NSLog(@"uid2 = %@", uid2);
   NSLog(@"uid3 = %@", uid3);
   
   NSDictionary* readData = [dataset readDataWithUID:uid1];
-  STAssertNotNil(readData, @"can not read data for uid %@", uid1);
+  XCTAssertNotNil(readData, @"can not read data for uid %@", uid1);
   
   NSDictionary* readDataContent = [readData objectForKey:@"data"];
   NSString* originHash = [FHSyncUtils generateHashForData:data1];
   NSString* readHash = [FHSyncUtils generateHashForData:readDataContent];
-  STAssertEqualObjects(originHash, readHash, @"read data is different from origin data");
+  XCTAssertEqualObjects(originHash, readHash, @"read data is different from origin data");
   
   NSDictionary* data4 = [FHTestUtils generateJSONData];
   NSDictionary* updateResult = [dataset  updateWithUID:uid1 data:data4];
   originHash = [FHSyncUtils generateHashForData:data4];
   NSString* updatedHash = [FHSyncUtils generateHashForData:[updateResult objectForKey:@"data"]];
-  STAssertEqualObjects(originHash, updatedHash, @"update data is different from set data");
+  XCTAssertEqualObjects(originHash, updatedHash, @"update data is different from set data");
   
   NSDictionary* alldata = [dataset listData];
-  STAssertTrue(alldata.count == 3, @"found only %d entries", alldata.count);
+  XCTAssertTrue(alldata.count == 3, @"found only %lu entries", (unsigned long)alldata.count);
   
-  STAssertTrue(dataset.dataRecords.count == 3, @"wrong number of data entries %d", dataset.dataRecords.count);
+  XCTAssertTrue(dataset.dataRecords.count == 3, @"wrong number of data entries %lu", (unsigned long)dataset.dataRecords.count);
   [dataset deleteWithUID:uid2];
-   STAssertTrue(dataset.dataRecords.count == 2, @"wrong number of data entries %d after delete", dataset.dataRecords.count);
+   XCTAssertTrue(dataset.dataRecords.count == 2, @"wrong number of data entries %lu after delete", (unsigned long)dataset.dataRecords.count);
 }
 
 - (void) testSync
@@ -159,35 +159,35 @@
   [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
   
   //expect local dataset has all the records
-  STAssertTrue([dataset.hashValue isEqualToString:globalHash], @"global hash should match");
+  XCTAssertTrue([dataset.hashValue isEqualToString:globalHash], @"global hash should match");
   NSDictionary* currentData = dataset.dataRecords;
-  STAssertTrue(currentData.count == 2, @"only %d entries found", currentData.count);
+  XCTAssertTrue(currentData.count == 2, @"only %lu entries found", (unsigned long)currentData.count);
   
-  STAssertTrue([[[currentData objectForKey:@"uid1"] hashValue] isEqualToString:data1Hash], @"data1 hash value should match");
-  STAssertTrue([[[currentData objectForKey:@"uid2"] hashValue] isEqualToString:data2Hash], @"data2 hash value should match");
+  XCTAssertTrue([[[currentData objectForKey:@"uid1"] hashValue] isEqualToString:data1Hash], @"data1 hash value should match");
+  XCTAssertTrue([[[currentData objectForKey:@"uid2"] hashValue] isEqualToString:data2Hash], @"data2 hash value should match");
   
   //try to update a local data
   //no pending data at the moment
-  STAssertTrue(dataset.pendingDataRecords.count == 0, @"pending records found");
+  XCTAssertTrue(dataset.pendingDataRecords.count == 0, @"pending records found");
   NSDictionary* updatedata = [FHTestUtils generateJSONData];
   [dataset updateWithUID:@"uid1" data:updatedata];
   NSString* updatedHash = [FHSyncUtils generateHashForData:updatedata];
   
   //dataset should have pendingrecords
-  STAssertTrue(dataset.pendingDataRecords.count == 1, @"pending records count = %d", dataset.pendingDataRecords.count);
+  XCTAssertTrue(dataset.pendingDataRecords.count == 1, @"pending records count = %lu", (unsigned long)dataset.pendingDataRecords.count);
   [dataset.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
     FHSyncPendingDataRecord* pendingRecord = (FHSyncPendingDataRecord*)obj;
     if ([pendingRecord.uid isEqualToString:@"uid1"]) {
       NSString* pendingPreHash = [pendingRecord preData].hashValue;
       NSString* pendingPostHash = [pendingRecord postData].hashValue;
-      STAssertEqualObjects(pendingPreHash, data1Hash, @"pre data hash should match");
-      STAssertEqualObjects(pendingPostHash, updatedHash, @"post data hash should match");
+      XCTAssertEqualObjects(pendingPreHash, data1Hash, @"pre data hash should match");
+      XCTAssertEqualObjects(pendingPostHash, updatedHash, @"post data hash should match");
      *stop = YES;
     }
   }];
   
   NSDictionary* readData = [dataset readDataWithUID:@"uid1"];
-  STAssertEqualObjects([FHSyncUtils generateHashForData:[readData objectForKey:@"data"]], updatedHash, @"read data hash doesn't match update data");
+  XCTAssertEqualObjects([FHSyncUtils generateHashForData:[readData objectForKey:@"data"]], updatedHash, @"read data hash doesn't match update data");
   
   //next, construct a response to pretend the update happend and verify the state of dataset
   [records setObject:[NSDictionary dictionaryWithObjectsAndKeys:updatedata, @"data", updatedHash, @"hash", nil] forKey:@"uid1"];
@@ -223,8 +223,8 @@
   [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
   
   //we expect the pending record should be removed
-  STAssertTrue(dataset.pendingDataRecords.count == 0, @"pending records count = %d", dataset.pendingDataRecords.count);
-  STAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %d", dataset.dataRecords.count);
+  XCTAssertTrue(dataset.pendingDataRecords.count == 0, @"pending records count = %lu", (unsigned long)dataset.pendingDataRecords.count);
+  XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu", (unsigned long)dataset.dataRecords.count);
 }
 
 - (void) testSyncRecords
@@ -272,10 +272,10 @@
   
   [dataset performSelector:@selector(syncRecordsSuccess:) withObject:resData];
   
-  STAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %d", dataset.dataRecords.count);
-  STAssertNil([dataset.dataRecords objectForKey:uid2], @"%@ should be removed", uid2);
-  STAssertNotNil([dataset.dataRecords objectForKey:uid3], @"%@ should have been inserted", uid3);
-  STAssertEqualObjects([[dataset.dataRecords objectForKey:uid1] hashValue], [FHSyncUtils generateHashForData:updatedata], @"%@ entry should be updated", uid1);
-  STAssertNotNil([dataset.dataRecords objectForKey:@"uid4"], @"uid4 should not nil");
+  XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu", (unsigned long)dataset.dataRecords.count);
+  XCTAssertNil([dataset.dataRecords objectForKey:uid2], @"%@ should be removed", uid2);
+  XCTAssertNotNil([dataset.dataRecords objectForKey:uid3], @"%@ should have been inserted", uid3);
+  XCTAssertEqualObjects([[dataset.dataRecords objectForKey:uid1] hashValue], [FHSyncUtils generateHashForData:updatedata], @"%@ entry should be updated", uid1);
+  XCTAssertNotNil([dataset.dataRecords objectForKey:@"uid4"], @"uid4 should not nil");
 }
 @end

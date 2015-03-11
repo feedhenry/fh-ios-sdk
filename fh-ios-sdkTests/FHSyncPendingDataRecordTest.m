@@ -31,7 +31,7 @@
   FHSyncPendingDataRecord* anotherRecord = [FHSyncPendingDataRecord objectFromJSONString:jsonStr];
   NSLog(@"pendingRecord hashvalue = %@", pendingRecord.hashValue);
   NSLog(@"anotherRecord hashValue = %@", anotherRecord.hashValue);
-  STAssertEqualObjects(pendingRecord, anotherRecord, nil);
+  XCTAssertEqualObjects(pendingRecord, anotherRecord);
 }
 
 @end
