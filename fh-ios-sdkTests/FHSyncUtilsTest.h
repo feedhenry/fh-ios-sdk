@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 FeedHenry. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface FHSyncUtilsTest : SenTestCase
+@interface FHSyncUtilsTest : XCTestCase
 
 @end

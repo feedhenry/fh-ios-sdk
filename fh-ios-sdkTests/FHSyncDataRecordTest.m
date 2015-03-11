@@ -29,14 +29,14 @@
   NSDictionary* data = [FHTestUtils generateJSONData];
   
   FHSyncDataRecord* record = [[FHSyncDataRecord alloc] initWithData:data];
-  STAssertNotNil(record.hashValue, @"Hashvalue should not be nil");
-  STAssertNotNil(record.data, @"data should not be nil");
+  XCTAssertNotNil(record.hashValue, @"Hashvalue should not be nil");
+  XCTAssertNotNil(record.data, @"data should not be nil");
   
   NSString* jsonStr = [record JSONString];
   NSLog(@"record = %@", jsonStr);
   
   FHSyncDataRecord* anotherRecord = [FHSyncDataRecord objectFromJSONString:jsonStr];
-  STAssertEqualObjects(record, anotherRecord, @"Two records should be the same");
+  XCTAssertEqualObjects(record, anotherRecord, @"Two records should be the same");
 }
 
 @end

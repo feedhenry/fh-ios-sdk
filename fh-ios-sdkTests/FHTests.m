@@ -39,8 +39,8 @@
   [init setHttpClient:httpClient];
   void (^success)(FHResponse *)=^(FHResponse * res){
     NSDictionary* data = res.parsedResponse;
-    STAssertTrue(nil != [data valueForKey:@"domain"], @"Can not find domain in init response");
-    STAssertTrue(nil != [data objectForKey:@"hosts"], @"Can not find hosts in init response");
+    XCTAssertTrue(nil != [data valueForKey:@"domain"], @"Can not find domain in init response");
+    XCTAssertTrue(nil != [data objectForKey:@"hosts"], @"Can not find hosts in init response");
   };
   [init execWithSuccess:success AndFailure:nil];
 }
@@ -66,11 +66,11 @@
   [cloud setHttpClient:httpClient];
   
   NSURL* url = [cloud buildURL];
-  STAssertTrue([[url host] isEqualToString:@"dev.test.example.com"], @"Cloud host url should equal to development cloud host");
+  XCTAssertTrue([[url host] isEqualToString:@"dev.test.example.com"], @"Cloud host url should equal to development cloud host");
   
   void (^success)(FHResponse *)=^(FHResponse * res){
     NSDictionary* data = res.parsedResponse;
-    STAssertTrue(nil != [data valueForKey:@"status"], @"Can not find status in init response");
+    XCTAssertTrue(nil != [data valueForKey:@"status"], @"Can not find status in init response");
   };
   
   [cloud execWithSuccess:success AndFailure:nil];
@@ -83,7 +83,7 @@
   [another setHttpClient:httpClient];
   
   NSURL* anotherUrl = [another buildURL];
-  STAssertTrue([[anotherUrl absoluteString] isEqualToString:@"http://dev.test.example.com/cloud/test"], @"Cloud host url should equal to http://dev.test.example.com/cloud/test");
+  XCTAssertTrue([[anotherUrl absoluteString] isEqualToString:@"http://dev.test.example.com/cloud/test"], @"Cloud host url should equal to http://dev.test.example.com/cloud/test");
 }
 
 -(void) testAuth
@@ -109,7 +109,7 @@
   
   void (^success)(FHResponse *)=^(FHResponse * res){
     NSDictionary* data = res.parsedResponse;
-    STAssertTrue(nil != [data valueForKey:@"sessionToken"], @"Can not find sessionToken in init response");
+    XCTAssertTrue(nil != [data valueForKey:@"sessionToken"], @"Can not find sessionToken in init response");
   };
   
   [auth execWithSuccess:success AndFailure:nil];
