@@ -8,7 +8,7 @@
 
 #import "FHSyncDataset.h"
 #import "FHSyncUtils.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import "FHSyncPendingDataRecord.h"
 #import "FHSyncDataRecord.h"
 #import "FH.h"

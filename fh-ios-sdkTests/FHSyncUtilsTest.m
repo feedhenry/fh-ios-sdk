@@ -9,7 +9,7 @@
 
 #import "FHSyncUtilsTest.h"
 #import "FHSyncUtils.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 
 @implementation FHSyncUtilsTest
 

@@ -7,7 +7,7 @@
 //
 
 #import "FHAct.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import "FHConfig.h"
 #import "FHHttpClient.h"
 #import "FHDefines.h"

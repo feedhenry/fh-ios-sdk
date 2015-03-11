@@ -17,7 +17,7 @@
 
 #import "FH.h"
 #import "FHResponse.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import "FHInitRequest.h"
 #import "Reachability.h"
 #import "FHCloudProps.h"

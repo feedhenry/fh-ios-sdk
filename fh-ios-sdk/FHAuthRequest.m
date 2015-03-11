@@ -10,7 +10,7 @@
 #import "FHConfig.h"
 #import "FHHttpClient.h"
 #import "FHOAuthViewController.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import "FH.h"
 
 #define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"

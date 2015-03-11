@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FHSyncClient.h"
 #import "FHSyncConfig.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import "FHSyncNotificationMessage.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "FH.h"

@@ -5,7 +5,7 @@
 //
 
 #import "FHResponse.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 
 @implementation FHResponse
 @synthesize rawResponse, rawResponseAsString, parsedResponse, responseStatusCode, error;
