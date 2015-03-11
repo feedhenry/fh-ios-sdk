@@ -1,0 +1,1115 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>FHSyncClient Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">FeedHenry iOS SDK </a></h1>
+				<a id="developerHome" href="../index.html">FeedHenry</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">FHSyncClient Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/getInstance">&nbsp;&nbsp;&nbsp;&nbsp;+ getInstance</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/createWithDataId:AndData:">&nbsp;&nbsp;&nbsp;&nbsp;- createWithDataId:AndData:</option>
+	
+	<option value="//api/name/deleteWithDataId:AndUID:">&nbsp;&nbsp;&nbsp;&nbsp;- deleteWithDataId:AndUID:</option>
+	
+	<option value="//api/name/destroy">&nbsp;&nbsp;&nbsp;&nbsp;- destroy</option>
+	
+	<option value="//api/name/initWithConfig:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithConfig:</option>
+	
+	<option value="//api/name/listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;- listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:</option>
+	
+	<option value="//api/name/listWithDataId:">&nbsp;&nbsp;&nbsp;&nbsp;- listWithDataId:</option>
+	
+	<option value="//api/name/manageWithDataId:AndConfig:AndQuery:">&nbsp;&nbsp;&nbsp;&nbsp;- manageWithDataId:AndConfig:AndQuery:</option>
+	
+	<option value="//api/name/readWithDataId:AndUID:">&nbsp;&nbsp;&nbsp;&nbsp;- readWithDataId:AndUID:</option>
+	
+	<option value="//api/name/removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:">&nbsp;&nbsp;&nbsp;&nbsp;- removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:</option>
+	
+	<option value="//api/name/stopWithDataId:">&nbsp;&nbsp;&nbsp;&nbsp;- stopWithDataId:</option>
+	
+	<option value="//api/name/updateWithDataId:AndUID:AndData:">&nbsp;&nbsp;&nbsp;&nbsp;- updateWithDataId:AndUID:AndData:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Init the sync client">Init the sync client</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Use the sync client">Use the sync client</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_CRUDL operations on the data set">CRUDL operations on the data set</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Manage Collisions">Manage Collisions</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Stop the sync service">Stop the sync service</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getInstance">getInstance</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createWithDataId:AndData:">createWithDataId:AndData:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteWithDataId:AndUID:">deleteWithDataId:AndUID:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/destroy">destroy</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithConfig:">initWithConfig:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:">listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/listWithDataId:">listWithDataId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/manageWithDataId:AndConfig:AndQuery:">manageWithDataId:AndConfig:AndQuery:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readWithDataId:AndUID:">readWithDataId:AndUID:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:">removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stopWithDataId:">stopWithDataId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateWithDataId:AndUID:AndData:">updateWithDataId:AndUID:AndData:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="FHSyncClient Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">FHSyncClient Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">FHSyncClient.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The sync client is part of the FeedHenry data sync framework. It provides a mechanism to manage bi-direction data synchronization.
+For more details, please check <a href="http://docs.feedhenry.com/v2/index.html">data sync framework docs</a></p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Init the sync client" name="task_Init the sync client"></a>
+						<h3 class="subsubtitle task-title">Init the sync client</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getInstance">+&nbsp;getInstance</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithConfig:">&ndash;&nbsp;initWithConfig:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Use the sync client" name="task_Use the sync client"></a>
+						<h3 class="subsubtitle task-title">Use the sync client</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/manageWithDataId:AndConfig:AndQuery:">&ndash;&nbsp;manageWithDataId:AndConfig:AndQuery:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="CRUDL operations on the data set" name="task_CRUDL operations on the data set"></a>
+						<h3 class="subsubtitle task-title">CRUDL operations on the data set</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/readWithDataId:AndUID:">&ndash;&nbsp;readWithDataId:AndUID:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/listWithDataId:">&ndash;&nbsp;listWithDataId:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createWithDataId:AndData:">&ndash;&nbsp;createWithDataId:AndData:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/updateWithDataId:AndUID:AndData:">&ndash;&nbsp;updateWithDataId:AndUID:AndData:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteWithDataId:AndUID:">&ndash;&nbsp;deleteWithDataId:AndUID:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Manage Collisions" name="task_Manage Collisions"></a>
+						<h3 class="subsubtitle task-title">Manage Collisions</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:">&ndash;&nbsp;listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:">&ndash;&nbsp;removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Stop the sync service" name="task_Stop the sync service"></a>
+						<h3 class="subsubtitle task-title">Stop the sync service</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stopWithDataId:">&ndash;&nbsp;stopWithDataId:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/destroy">&ndash;&nbsp;destroy</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/getInstance" title="getInstance"></a>
+	<h3 class="subsubtitle method-title">getInstance</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the singleton instance of the sync client</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (FHSyncClient *)getInstance</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get the singleton instance of the sync client</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/createWithDataId:AndData:" title="createWithDataId:AndData:"></a>
+	<h3 class="subsubtitle method-title">createWithDataId:AndData:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a data record within data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)createWithDataId:(id)<em>dataId</em> AndData:(id)<em>data</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the data set</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>the new data</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the created data record</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a data record within data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteWithDataId:AndUID:" title="deleteWithDataId:AndUID:"></a>
+	<h3 class="subsubtitle method-title">deleteWithDataId:AndUID:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>delete a data record with id uid within data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)deleteWithDataId:(id)<em>dataId</em> AndUID:(id)<em>uid</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the data set</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>uid</em></dt>
+			<dd><p>the id of the data record</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the deleted data record</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>delete a data record with id uid within data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/destroy" title="destroy"></a>
+	<h3 class="subsubtitle method-title">destroy</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Stop all sync services and destroy the sync client</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)destroy</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Stop all sync services and destroy the sync client</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithConfig:" title="initWithConfig:"></a>
+	<h3 class="subsubtitle method-title">initWithConfig:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize the sync client with the sync configuration</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithConfig:(id)<em>config</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>config</em></dt>
+			<dd><p>The sync configuration</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialize the sync client with the sync configuration</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:" title="listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:"></a>
+	<h3 class="subsubtitle method-title">listCollisionWithCallbacksForDataId:AndSuccess:AndFailure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>List the collisions for data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)listCollisionWithCallbacksForDataId:(id)<em>dataId</em> AndSuccess:(id)<em>sucornil</em> AndFailure:(id)<em>failornil</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the data set</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sucornil</em></dt>
+			<dd><p>the success callback function</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failornil</em></dt>
+			<dd><p>the failure callback function</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>List the collisions for data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/listWithDataId:" title="listWithDataId:"></a>
+	<h3 class="subsubtitle method-title">listWithDataId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>List all the data records with in the data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)listWithDataId:(id)<em>dataId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the data set</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>all data records</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>List all the data records with in the data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/manageWithDataId:AndConfig:AndQuery:" title="manageWithDataId:AndConfig:AndQuery:"></a>
+	<h3 class="subsubtitle method-title">manageWithDataId:AndConfig:AndQuery:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Use sync client to manage a dataset with id dataId.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)manageWithDataId:(id)<em>dataId</em> AndConfig:(id)<em>config</em> AndQuery:(id)<em>queryParams</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the data set</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>config</em></dt>
+			<dd><p>the sync configuration for this data set</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queryParams</em></dt>
+			<dd><p>the query params for the data set</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Use sync client to manage a dataset with id dataId.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readWithDataId:AndUID:" title="readWithDataId:AndUID:"></a>
+	<h3 class="subsubtitle method-title">readWithDataId:AndUID:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Read a data record with id uid within data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)readWithDataId:(id)<em>dataId</em> AndUID:(id)<em>uid</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the data set</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>uid</em></dt>
+			<dd><p>the id of the data record</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the data record</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Read a data record with id uid within data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:" title="removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:"></a>
+	<h3 class="subsubtitle method-title">removeCollisionWithCallbacksForDataId:hash:AndSuccess:AndFailure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove a collision with hash collisionHash for data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeCollisionWithCallbacksForDataId:(id)<em>dataId</em> hash:(id)<em>collisionHash</em> AndSuccess:(id)<em>sucornil</em> AndFailure:(id)<em>failornil</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the dataset</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>collisionHash</em></dt>
+			<dd><p>the hash value of the collision</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sucornil</em></dt>
+			<dd><p>the success callback function</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failornil</em></dt>
+			<dd><p>the failure callback function</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Remove a collision with hash collisionHash for data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stopWithDataId:" title="stopWithDataId:"></a>
+	<h3 class="subsubtitle method-title">stopWithDataId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Stop the sync service for data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)stopWithDataId:(id)<em>dataId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the dataset</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Stop the sync service for data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updateWithDataId:AndUID:AndData:" title="updateWithDataId:AndUID:AndData:"></a>
+	<h3 class="subsubtitle method-title">updateWithDataId:AndUID:AndData:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Update an existing data record with id uid within data set with id dataId</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)updateWithDataId:(id)<em>dataId</em> AndUID:(id)<em>uid</em> AndData:(id)<em>data</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataId</em></dt>
+			<dd><p>the id of the data set</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>uid</em></dt>
+			<dd><p>the id of the data record</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>the new data</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the data record</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Update an existing data record with id uid within data set with id dataId</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+                    
+                    
+
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2015 FeedHenry. All rights reserved. (Last updated: 2015-02-23)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

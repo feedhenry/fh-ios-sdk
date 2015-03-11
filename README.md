@@ -1,13 +1,13 @@
 ## Build
 
-* Go to *FH* directory, run build.sh. This will generate the zip file for the framework and template app.
+* Invoke the ```build.sh``` shell script from the command line. This will generate the zip file for the framework and template app in the ```/dist``` directory.
 
 ## Update Docs
 
 * Install [appledoc](https://github.com/tomaz/appledoc)
 * Clone the repo, checkout master branch.
 * Make the changes to the docs comments in the code.
-* Go to *FH* directory, open the project in Xcode, run build target "Documentation".
+* open the project in Xcode, run build target "Documentation".
 * Commit the changes.
 * Checkout gh-pages branch. Rebase it to master.
 * Push both branches to the remote.
