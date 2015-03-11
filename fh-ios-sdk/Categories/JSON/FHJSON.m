@@ -9,10 +9,6 @@
 
 @implementation NSString (JSON)
 
-- (NSString *)JSONString {
-    return self;
-}
-
 - (id)objectFromJSONString {
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data objectFromJSONData];

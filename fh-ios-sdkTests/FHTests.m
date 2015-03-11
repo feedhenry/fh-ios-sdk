@@ -13,6 +13,7 @@
 #import "FHResponse.h"
 #import "FHAct+SetHttpClient.h"
 #import "FHCloudProps.h"
+#import "FHJSON.h"
 
 @implementation FHTests
 
@@ -113,6 +114,19 @@
   };
   
   [auth execWithSuccess:success AndFailure:nil];
+}
+
+// the [FH getDefaultParamsAsHeaders] setup's default params
+// containing both raw values as well as json representation
+// of foundation collection clases. After JSON refactor, ensure
+// that there wasn't any side effect
+- (void) testgetDefaultParamsAsHeaders {
+    NSDictionary *params = [FH getDefaultParamsAsHeaders];
+    XCTAssertNotNil(params, @"params should be not nil");
+    // should correctly contain collection class json parsed
+    NSArray *cuiidMap = [params[@"X-FH-cuidMap"] objectFromJSONString];
+    XCTAssertNotNil(cuiidMap, @"params should contain 'X-FH-cuidMap'");
+    XCTAssertTrue(cuiidMap.count == 2, @"X-FH-cuidMap should contain 2 values");
 }
 
 @end

@@ -7,7 +7,6 @@
 
 @interface NSString (JSON)
 
-- (NSString *)JSONString;
 - (id)objectFromJSONString;
 
 @end
