@@ -37,7 +37,9 @@
 		6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
 		6F2488EF1A9F652700247518 /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C603C1A9B366200C22C92 /* ASIS3Request.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F2488F01A9F654F00247518 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C602A1A9B366200C22C92 /* ASICloudFilesContainerXMLParserDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6F862DB71A9F6D2C00157678 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60401A9B366200C22C92 /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F6CD4A01AB03CB500FA5F94 /* FHJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F84682E1AB03C0100EC7593 /* FHJSON.m */; };
+		6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F84682D1AB03C0100EC7593 /* FHJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F8468301AB03C0100EC7593 /* FHJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F84682E1AB03C0100EC7593 /* FHJSON.m */; };
 		6F9B35141A979F8A00135274 /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFH.a */; };
 		6F9C5FC61A9B35E100C22C92 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC41A9B35E100C22C92 /* InfoPlist.strings */; };
 		6F9C5FDB1A9B35F900C22C92 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */; };
@@ -59,7 +61,6 @@
 		6F9C609E1A9B36E000C22C92 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60171A9B366200C22C92 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F9C60A21A9B36E000C22C92 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C601B1A9B366200C22C92 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F9C60A41A9B36E000C22C92 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C601D1A9B366200C22C92 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6F9C60A71A9B372600C22C92 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60411A9B366200C22C92 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F9C60A91A9B372600C22C92 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60441A9B366200C22C92 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F9C60AA1A9B37C000C22C92 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60451A9B366200C22C92 /* FH.m */; };
 		6F9C60AB1A9B37C000C22C92 /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60461A9B366200C22C92 /* FHAct.m */; };
@@ -140,7 +141,6 @@
 		6FCF322E1A9B474A0014B936 /* ASIS3ObjectRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C603A1A9B366200C22C92 /* ASIS3ObjectRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6FCF322F1A9B474A0014B936 /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C603C1A9B366200C22C92 /* ASIS3Request.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6FCF32301A9B474A0014B936 /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C603E1A9B366200C22C92 /* ASIS3ServiceRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6FCF32311A9B474A0014B936 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60411A9B366200C22C92 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6FCF32321A9B474A0014B936 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60441A9B366200C22C92 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6FCF32331A9B474A0014B936 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604B1A9B366200C22C92 /* FHConfig.m */; };
 		6FCF32341A9B474A0014B936 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60451A9B366200C22C92 /* FH.m */; };
@@ -185,6 +185,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F84682D1AB03C0100EC7593 /* FHJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHJSON.h; sourceTree = "<group>"; };
+		6F84682E1AB03C0100EC7593 /* FHJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHJSON.m; sourceTree = "<group>"; };
 		6F9C5FC01A9B359400C22C92 /* fh-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "fh-ios-sdk-Prefix.pch"; path = "fh-ios-sdk/fh-ios-sdk-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		6F9C5FC21A9B35D600C22C92 /* fh-ios-sdkTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "fh-ios-sdkTests-Info.plist"; path = "fh-ios-sdkTests/fh-ios-sdkTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6F9C5FC51A9B35E100C22C92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fh-ios-sdkTests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
@@ -289,8 +291,6 @@
 		6F9C603C1A9B366200C22C92 /* ASIS3Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3Request.m; sourceTree = "<group>"; };
 		6F9C603D1A9B366200C22C92 /* ASIS3ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3ServiceRequest.h; sourceTree = "<group>"; };
 		6F9C603E1A9B366200C22C92 /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
-		6F9C60401A9B366200C22C92 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		6F9C60411A9B366200C22C92 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		6F9C60431A9B366200C22C92 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6F9C60441A9B366200C22C92 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6F9C60451A9B366200C22C92 /* FH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FH.m; path = "fh-ios-sdk/FH.m"; sourceTree = SOURCE_ROOT; };
@@ -356,9 +356,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F84682C1AB03C0100EC7593 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				6F84682D1AB03C0100EC7593 /* FHJSON.h */,
+				6F84682E1AB03C0100EC7593 /* FHJSON.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		6F9C5FF11A9B366200C22C92 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				6F84682C1AB03C0100EC7593 /* JSON */,
 				6F9C5FF21A9B366200C22C92 /* NSString+MD5.h */,
 				6F9C5FF31A9B366200C22C92 /* NSString+MD5.m */,
 				6F9C5FF41A9B366200C22C92 /* NSString+Validation.h */,
@@ -405,7 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				6F9C600A1A9B366200C22C92 /* ASIHTTPRequest */,
-				6F9C603F1A9B366200C22C92 /* JSONKit */,
 				6F9C60421A9B366200C22C92 /* Reachability */,
 			);
 			name = ThirdParty;
@@ -490,15 +499,6 @@
 				6F9C603E1A9B366200C22C92 /* ASIS3ServiceRequest.m */,
 			);
 			path = S3;
-			sourceTree = "<group>";
-		};
-		6F9C603F1A9B366200C22C92 /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				6F9C60401A9B366200C22C92 /* JSONKit.h */,
-				6F9C60411A9B366200C22C92 /* JSONKit.m */,
-			);
-			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		6F9C60421A9B366200C22C92 /* Reachability */ = {
@@ -658,9 +658,9 @@
 				6FCF31F81A9B430F0014B936 /* FHSyncNotificationMessage.h in Headers */,
 				6FCF31EC1A9B41040014B936 /* FHCloudProps.h in Headers */,
 				6FCF31ED1A9B41070014B936 /* FHCloudRequest.h in Headers */,
+				6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */,
 				6FCF31E81A9B40F50014B936 /* FH.h in Headers */,
 				6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */,
-				6F862DB71A9F6D2C00157678 /* JSONKit.h in Headers */,
 				6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */,
 				6FCF31F11A9B41230014B936 /* FHResponseDelegate.h in Headers */,
 				6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */,
@@ -762,7 +762,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore FHInitRequest.h \\\n--ignore FHHttpClient.h \\\n--ignore Categories \\\n--ignore FHOAuthViewController.h \\\n--ignore UnitTest \\\n--ignore FHSyncDataset.h \\\n--ignore FHSyncUtils.h \\\n--ignore FHSyncPendingDataRecord.h \\\n--ignore FHSyncDataRecord.h \\\n--ignore \"${PROJECT_DIR}/fh-ios-sdk/ThirdParty\" \\\n--no-create-docset \\\n--create-html \\\n-o \"${PROJECT_DIR}\" \\\n\"${PROJECT_DIR}/fh-ios-sdk\"\nrm -rf \"${PROJECT_DIR}/docset/Contents/Resources/Documents\"\nmkdir -p \"${PROJECT_DIR}/docset/Contents/Resources/Documents\"\ncp -R \"${PROJECT_DIR}/html/\" \"${PROJECT_DIR}/docset/Contents/Resources/Documents/\"\nrm -rf \"${PROJECT_DIR}/html/\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore FHInitRequest.h \\\n--ignore FHHttpClient.h \\\n--ignore FHOAuthViewController.h \\\n--ignore UnitTest \\\n--ignore FHSyncDataset.h \\\n--ignore FHSyncUtils.h \\\n--ignore FHSyncPendingDataRecord.h \\\n--ignore FHSyncDataRecord.h \\\n--ignore Categories/NSString+MD5.h \\\n--ignore Categories/NSString+Validation.h \\\n--ignore \"${PROJECT_DIR}/fh-ios-sdk/ThirdParty\" \\\n--no-create-docset \\\n--create-html \\\n-o \"${PROJECT_DIR}\" \\\n\"${PROJECT_DIR}/fh-ios-sdk\"\nrm -rf \"${PROJECT_DIR}/docset/Contents/Resources/Documents\"\nmkdir -p \"${PROJECT_DIR}/docset/Contents/Resources/Documents\"\ncp -R \"${PROJECT_DIR}/html/\" \"${PROJECT_DIR}/docset/Contents/Resources/Documents/\"\nrm -rf \"${PROJECT_DIR}/html/\"";
 		};
 		B349A04F15D2A98500254861 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -822,7 +822,6 @@
 				6F9C60B11A9B37C000C22C92 /* FHHttpClient.m in Sources */,
 				6F9C60B21A9B37C000C22C92 /* FHInitRequest.m in Sources */,
 				6F9C60B41A9B37C000C22C92 /* FHResponse.m in Sources */,
-				6F9C60A71A9B372600C22C92 /* JSONKit.m in Sources */,
 				6F9C60A91A9B372600C22C92 /* Reachability.m in Sources */,
 				6F9C60931A9B36E000C22C92 /* ASIAuthenticationDialog.m in Sources */,
 				6F2488F01A9F654F00247518 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
@@ -852,6 +851,7 @@
 				6F9C608A1A9B36B100C22C92 /* FHSyncDataset.m in Sources */,
 				6F9C608D1A9B36B100C22C92 /* FHSyncNotificationMessage.m in Sources */,
 				6F9C608F1A9B36B100C22C92 /* FHSyncPendingDataRecord.m in Sources */,
+				6F8468301AB03C0100EC7593 /* FHJSON.m in Sources */,
 				6F9C60911A9B36B100C22C92 /* FHSyncUtils.m in Sources */,
 				6F9C60821A9B36A200C22C92 /* FHOAuthViewController.m in Sources */,
 				6F9C607E1A9B369D00C22C92 /* NSString+MD5.m in Sources */,
@@ -863,6 +863,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6CD4A01AB03CB500FA5F94 /* FHJSON.m in Sources */,
 				6FCF32101A9B474A0014B936 /* NSString+MD5.m in Sources */,
 				6FCF32111A9B474A0014B936 /* NSString+Validation.m in Sources */,
 				6FCF32121A9B474A0014B936 /* FHOAuthViewController.m in Sources */,
@@ -894,7 +895,6 @@
 				6FCF322E1A9B474A0014B936 /* ASIS3ObjectRequest.m in Sources */,
 				6FCF322F1A9B474A0014B936 /* ASIS3Request.m in Sources */,
 				6FCF32301A9B474A0014B936 /* ASIS3ServiceRequest.m in Sources */,
-				6FCF32311A9B474A0014B936 /* JSONKit.m in Sources */,
 				6FCF32321A9B474A0014B936 /* Reachability.m in Sources */,
 				6FCF32331A9B474A0014B936 /* FHConfig.m in Sources */,
 				6FCF32341A9B474A0014B936 /* FH.m in Sources */,

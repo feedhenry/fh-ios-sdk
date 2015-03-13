@@ -8,7 +8,7 @@
 
 #import "FHSyncDataRecord.h"
 #import "FHSyncUtils.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 
 #define KEY_RECORD_HASH @"hashValue"
 #define KEY_RECORD_DATA @"data"

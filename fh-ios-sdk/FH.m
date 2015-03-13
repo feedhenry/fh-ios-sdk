@@ -17,7 +17,7 @@
 
 #import "FH.h"
 #import "FHResponse.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import "FHInitRequest.h"
 #import "Reachability.h"
 #import "FHCloudProps.h"
@@ -273,7 +273,13 @@ static Reachability* reachability;
   __block NSMutableDictionary* headers = [NSMutableDictionary dictionary];
   [defaultParams enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
     NSString* headerName = [NSString stringWithFormat:@"X-FH-%@", key];
-    [headers setValue:[obj JSONString] forKey:headerName];
+      
+    // append the JSON representation if collection class
+    if ([obj isKindOfClass:[NSArray class]] || [obj isKindOfClass:[NSDictionary class]] ) {
+        [headers setValue:[obj JSONString] forKey:headerName];
+    } else { // else simply set the value
+        [headers setValue:obj forKey:headerName];
+    }
   }];
   return headers;
 }

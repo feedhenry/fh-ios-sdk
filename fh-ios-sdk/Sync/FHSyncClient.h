@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FHSyncClient.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import "FHSyncConfig.h"
 
 

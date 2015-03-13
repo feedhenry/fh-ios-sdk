@@ -12,7 +12,7 @@
 #import "ASIDownloadCache.h"
 #import "FH.h"
 #import "FHConfig.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 
 
 @implementation FHHttpClient

@@ -7,7 +7,7 @@
 //
 
 #import "FHSyncUtils.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "FHSyncClient.h"
 #import "FHSyncNotificationMessage.h"

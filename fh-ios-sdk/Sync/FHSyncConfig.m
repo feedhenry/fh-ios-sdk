@@ -7,7 +7,7 @@
 //
 
 #import "FHSyncConfig.h"
-#import "JSONKit.h"
+#import "FHJSON.h"
 
 #define KEY_SYNC_FREQUENCY @"syncFrequency"
 #define KEY_AUTO_SYNC_UPDATES @"autoSyncLocalUpdates"
