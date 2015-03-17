@@ -21,7 +21,7 @@
 /** Initialize the sync client with the sync configuration 
  @param config The sync configuration
  */
-- (id) initWithConfig:(FHSyncConfig*) config;
+- (instancetype) initWithConfig:(FHSyncConfig*) config;
 
 /**@name Use the sync client */
 

@@ -13,10 +13,10 @@
   NSString* cloudHost;
 }
 
-@property (retain) NSDictionary* cloudProps;
-@property (retain) NSString* cloudHost;
+@property (strong) NSDictionary* cloudProps;
+@property (strong) NSString* cloudHost;
 
-- (id) initWithCloudProps:(NSDictionary*) aCloudProps;
+- (instancetype) initWithCloudProps:(NSDictionary*) aCloudProps;
 
 - (NSString*) getCloudHost;
 

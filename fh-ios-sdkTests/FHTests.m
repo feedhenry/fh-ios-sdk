@@ -41,7 +41,7 @@
   void (^success)(FHResponse *)=^(FHResponse * res){
     NSDictionary* data = res.parsedResponse;
     XCTAssertTrue(nil != [data valueForKey:@"domain"], @"Can not find domain in init response");
-    XCTAssertTrue(nil != [data objectForKey:@"hosts"], @"Can not find hosts in init response");
+    XCTAssertTrue(nil != data[@"hosts"], @"Can not find hosts in init response");
   };
   [init execWithSuccess:success AndFailure:nil];
 }

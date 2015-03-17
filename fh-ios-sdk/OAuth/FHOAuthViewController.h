@@ -24,11 +24,11 @@
 #endif
 }
 
--(id) initWith:(NSURL*)_authRequest delegate:(id)_delegate finishedSelector:(SEL)_finishedSelector; 
+-(instancetype) initWith:(NSURL*)_authRequest delegate:(id)_delegate finishedSelector:(SEL)_finishedSelector; 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation;
 
 #if NS_BLOCKS_AVAILABLE
--(id) initWith:(NSURL *)_authRequest completeHandler:(void(^)(FHResponse* resp))_handler;
+-(instancetype) initWith:(NSURL *)_authRequest completeHandler:(void(^)(FHResponse* resp))_handler;
 #endif
 
 @end

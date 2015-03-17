@@ -17,7 +17,7 @@
 
 @implementation FHHttpClient
 
-- (id) init
+- (instancetype) init
 {
   self = [super init];
   if(self){
@@ -37,7 +37,7 @@
 #endif
   if (![FH isOnline]) {
     FHResponse* res = [[FHResponse alloc] init];
-    [res setError:[NSError errorWithDomain:@"FHHttpClient" code:FHSDKNetworkOfflineErrorType userInfo:[NSDictionary dictionaryWithObject:@"offline" forKey:@"error"]]];
+    [res setError:[NSError errorWithDomain:@"FHHttpClient" code:FHSDKNetworkOfflineErrorType userInfo:@{@"error": @"offline"}]];
     [self failWithResponse:res AndAction:fhact];
     return;
   }
@@ -92,7 +92,7 @@
         msg = [request responseString];
       }
     }
-    NSError* err = [NSError errorWithDomain:NetworkRequestErrorDomain code:[request responseStatusCode] userInfo:[NSDictionary dictionaryWithObjectsAndKeys:msg,NSLocalizedDescriptionKey,nil]];
+    NSError* err = [NSError errorWithDomain:NetworkRequestErrorDomain code:[request responseStatusCode] userInfo:@{NSLocalizedDescriptionKey: msg}];
     fhResponse.error = err;
     [self failWithResponse:fhResponse AndAction:fhact];
   }];

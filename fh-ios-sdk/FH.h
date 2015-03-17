@@ -12,7 +12,7 @@
 #import "FHCloudRequest.h"
 #import "FHConfig.h"
 
-typedef enum _FHSDKNetworkErrorType {
+typedef NS_ENUM(NSInteger,  _FHSDKNetworkErrorType){
   FHSDKNetworkOfflineErrorType = 1
 } FHSDKNetworkErrorType;
 

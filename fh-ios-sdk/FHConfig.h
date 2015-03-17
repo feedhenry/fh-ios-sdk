@@ -18,7 +18,7 @@
 }
 
 /** Access the configurations. */
-@property(nonatomic, retain) NSDictionary* properties;
+@property(nonatomic, strong) NSDictionary* properties;
 
 /** Get a configuration value for a given key.
  

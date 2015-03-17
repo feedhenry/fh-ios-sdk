@@ -45,7 +45,7 @@ static Reachability* reachability;
   if(!ready){
     if(!_isOnline){
       FHResponse* res = [[FHResponse alloc] init];
-      [res setError:[NSError errorWithDomain:@"FHInit" code:FHSDKNetworkOfflineErrorType userInfo:[NSDictionary dictionaryWithObject:@"offline" forKey:@"error"]]];
+      [res setError:[NSError errorWithDomain:@"FHInit" code:FHSDKNetworkOfflineErrorType userInfo:@{@"error": @"offline"}]];
       if (failornil) {
         void (^handler)(FHResponse *resp) = [failornil copy];
         handler(res);
@@ -62,7 +62,7 @@ static Reachability* reachability;
       
       // Save init
       NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-      [prefs setObject:[props objectForKey:@"init"] forKey:@"init"];
+      [prefs setObject:props[@"init"] forKey:@"init"];
       [prefs synchronize];
       
       ready = true;
@@ -131,7 +131,7 @@ static Reachability* reachability;
 + (FHAct *)buildAction:(FH_ACTION)action{
   
   if(!initCalled){
-    @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:[NSDictionary dictionary]]);
+    @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:@{}]);
   }
   
   FHAct * act = nil;
@@ -151,7 +151,7 @@ static Reachability* reachability;
       act.method = FH_CLOUD;
       break;
     default:
-      @throw([NSException exceptionWithName:@"Unknown Action" reason:@"you asked for an action that is not available or unknown" userInfo:[NSDictionary dictionary]]); 
+      @throw([NSException exceptionWithName:@"Unknown Action" reason:@"you asked for an action that is not available or unknown" userInfo:@{}]); 
       break;
   }
   return act;
@@ -208,7 +208,7 @@ static Reachability* reachability;
 +(NSString*) getCloudHost
 {
   if (nil == cloudProps) {
-     @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:[NSDictionary dictionary]]);
+     @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:@{}]);
   }
   return [cloudProps getCloudHost];
 }
@@ -223,7 +223,7 @@ static Reachability* reachability;
   NSString *uuid = [appConfig uuid];
   NSMutableDictionary* fhparams = [[NSMutableDictionary alloc] init];
   
-  [fhparams setObject:uuid forKey:@"cuid"];
+  fhparams[@"cuid"] = uuid;
   
   // Generate cuidMap
   NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
@@ -231,29 +231,29 @@ static Reachability* reachability;
   // CFUUID - iOS 6+
   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
     NSMutableDictionary *cfuuidMap = [[NSMutableDictionary alloc] init];
-    [cfuuidMap setObject:@"CFUUID" forKey:@"name"];
-    [cfuuidMap setObject:uuid forKey:@"cuid"];
+    cfuuidMap[@"name"] = @"CFUUID";
+    cfuuidMap[@"cuid"] = uuid;
     [cuidMap addObject:cfuuidMap];
   }
   
   // Send vendorId if available
   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
     NSMutableDictionary *vendorIdMap = [[NSMutableDictionary alloc] init];
-    [vendorIdMap setObject:@"vendorIdentifier" forKey:@"name"];
-    [vendorIdMap setObject:[appConfig vendorId] forKey:@"cuid"];
+    vendorIdMap[@"name"] = @"vendorIdentifier";
+    vendorIdMap[@"cuid"] = [appConfig vendorId];
     [cuidMap addObject:vendorIdMap];
   }
   
   // Append to cuidMap
-  [fhparams setObject:cuidMap forKey:@"cuidMap"];
+  fhparams[@"cuidMap"] = cuidMap;
   
-  [fhparams setObject:appId forKey:@"appid"];
-  [fhparams setObject:appKey forKey:@"appkey"];
+  fhparams[@"appid"] = appId;
+  fhparams[@"appkey"] = appKey;
   if (nil != projectId) {
-    [fhparams setObject:projectId forKey:@"projectid"];
+    fhparams[@"projectid"] = projectId;
   }
   if (nil != projectId) {
-    [fhparams setObject:connectionTag forKey:@"connectiontag"];
+    fhparams[@"connectiontag"] = connectionTag;
   }
   [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION] forKey:@"sdk_version"];
   [fhparams setValue:@"ios" forKey:@"destination"];
@@ -262,7 +262,7 @@ static Reachability* reachability;
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
   NSString *init = [prefs objectForKey:@"init"];
   if (init != nil) {
-    [fhparams setObject:init forKey:@"init"];
+    fhparams[@"init"] = init;
   }
   return fhparams;
 }

@@ -35,10 +35,10 @@
 {
   self = [super init];
   if(self){
-    if ([data objectForKey:@"data"] && [data objectForKey:@"hash"]) {
+    if (data[@"data"] && data[@"hash"]) {
       self.uid = nil;
-      self.data = [data objectForKey:@"data"];
-      self.hashValue = [data objectForKey:@"hash"];
+      self.data = data[@"data"];
+      self.hashValue = data[@"hash"];
     } else {
       self.uid = nil;
       self.data = data;
@@ -63,13 +63,13 @@
 {
   NSMutableDictionary* dict = [NSMutableDictionary dictionary];
   if(self.uid){
-    [dict setObject:self.uid forKey:KEY_UID];
+    dict[KEY_UID] = self.uid;
   }
   if(self.hashValue){
-    [dict setObject:self.hashValue forKey:KEY_RECORD_HASH];
+    dict[KEY_RECORD_HASH] = self.hashValue;
   }
   if(self.data){
-    [dict setObject:self.data forKey:KEY_RECORD_DATA];
+    dict[KEY_RECORD_DATA] = self.data;
   }
   return dict;
 }
@@ -83,12 +83,12 @@
 + (FHSyncDataRecord*) objectFromJSONData:(NSDictionary*) jsonObj
 {
   FHSyncDataRecord* record = [[FHSyncDataRecord alloc] init];
-  if([jsonObj objectForKey:KEY_UID]){
-    record.uid = [jsonObj objectForKey:KEY_UID];
+  if(jsonObj[KEY_UID]){
+    record.uid = jsonObj[KEY_UID];
   }
-  if ([jsonObj objectForKey:KEY_RECORD_DATA]) {
-    record.data = [jsonObj objectForKey:KEY_RECORD_DATA];
-    record.hashValue = [jsonObj objectForKey:KEY_RECORD_HASH];
+  if (jsonObj[KEY_RECORD_DATA]) {
+    record.data = jsonObj[KEY_RECORD_DATA];
+    record.hashValue = jsonObj[KEY_RECORD_HASH];
   }
   return record;
 }

@@ -56,8 +56,8 @@
 @property NSMutableArray* acknowledgements;
 @property BOOL stopSync;
 
-- (id) initWithDataId:(NSString* )dataId;
--(id) initFromFileWithDataId:(NSString*) dataId error:(NSError*) error;
+- (instancetype) initWithDataId:(NSString* )dataId;
+-(instancetype) initFromFileWithDataId:(NSString*) dataId error:(NSError*) error;
 
 - (NSDictionary*) JSONData;
 - (NSString*) JSONString;

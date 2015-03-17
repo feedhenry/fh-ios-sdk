@@ -74,7 +74,7 @@
 @property BOOL debug;
 
 
-- (id) init;
+- (instancetype) init;
 - (NSDictionary*) JSONData;
 - (NSString*) JSONString;
 + (FHSyncConfig*) objectFromJSONString:(NSString*) jsonStr;

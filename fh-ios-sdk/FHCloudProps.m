@@ -13,7 +13,7 @@
 @implementation FHCloudProps
 @synthesize cloudProps, cloudHost;
 
-- (id) initWithCloudProps:(NSDictionary *)aCloudProps
+- (instancetype) initWithCloudProps:(NSDictionary *)aCloudProps
 {
   self = [super init];
   if (self) {
@@ -26,18 +26,18 @@
 {
   if (nil == self.cloudHost) {
     NSString * cloudUrl;
-    NSString* resUrl = [cloudProps objectForKey:@"url"];
+    NSString* resUrl = cloudProps[@"url"];
     if (nil != resUrl) {
       cloudUrl = resUrl;
-    } else if ([cloudProps objectForKey:@"hosts"] && [[cloudProps objectForKey:@"hosts"] objectForKey:@"url"]){
-      cloudUrl = [[cloudProps objectForKey:@"hosts"] objectForKey:@"url"];
+    } else if (cloudProps[@"hosts"] && cloudProps[@"hosts"][@"url"]){
+      cloudUrl = cloudProps[@"hosts"][@"url"];
     } else {
       NSString * mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
       NSString * propName = @"releaseCloudUrl";
       if( [mode isEqualToString:@"dev"]){
         propName = @"debugCloudUrl";
       }
-      cloudUrl = [[cloudProps objectForKey:@"hosts"] objectForKey:propName];
+      cloudUrl = cloudProps[@"hosts"][propName];
       
     }
     NSString * format   = ([[cloudUrl substringToIndex:[cloudUrl length]-1] isEqualToString:@"/"]) ? @"%@" : @"%@/";

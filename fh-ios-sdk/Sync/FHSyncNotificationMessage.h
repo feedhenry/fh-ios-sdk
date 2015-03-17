@@ -22,7 +22,7 @@
   NSString* _extraMessage;
 }
 
-- (id) initWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndCode:(NSString*) code AndMessage:(NSString*) message;
+- (instancetype) initWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndCode:(NSString*) code AndMessage:(NSString*) message;
 
 /** Get the data set id associated with the notification */
 - (NSString*) getDataId;

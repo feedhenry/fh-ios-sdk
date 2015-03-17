@@ -35,7 +35,7 @@
 @property(strong)NSString * method;
 
 /** The HTTP request method */
-@property (retain) NSString* requestMethod;
+@property (strong) NSString* requestMethod;
 
 /** The timeout value of the requesst. Default to 60 seconds */
 @property (assign) NSTimeInterval requestTimeout;
@@ -48,7 +48,7 @@
 
 
 /** The HTTP headers of the request */
-@property(retain) NSDictionary* headers;
+@property(strong) NSDictionary* headers;
 
 /** How long the response should be cached for.
  
@@ -62,7 +62,7 @@
 
 /** Create a new instance of the API request.
  */
-- (id) init;
+- (instancetype) init;
 
 /** Set the parameters for the API request. 
  

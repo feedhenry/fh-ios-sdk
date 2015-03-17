@@ -16,7 +16,7 @@
 @implementation FHAct
 @synthesize method, delegate, cacheTimeout, headers, requestMethod, requestTimeout;
 
-- (id) init
+- (instancetype) init
 {
   self = [super init];
   if (self) {

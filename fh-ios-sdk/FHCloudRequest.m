@@ -13,7 +13,7 @@
 
 @synthesize path;
 
-- (id)initWithProps:(FHCloudProps *) props
+- (instancetype)initWithProps:(FHCloudProps *) props
 {
   self = [super init];
   if (self) {
@@ -67,7 +67,7 @@
   __block NSMutableDictionary* defaultHeaders = [NSMutableDictionary dictionaryWithDictionary:[FH getDefaultParamsAsHeaders]];
   if (nil != headers) {
     [headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-      [defaultHeaders setObject:obj forKey:key];
+      defaultHeaders[key] = obj;
     }];
   }
   return defaultHeaders;

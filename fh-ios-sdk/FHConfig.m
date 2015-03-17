@@ -13,7 +13,7 @@
 static FHConfig * shared = nil;
 @synthesize properties;
 
-- (id)init{
+- (instancetype)init{
   self = [super init];
   if(self){
     NSString * path = [[NSBundle bundleForClass:[self class]] pathForResource:@"fhconfig" ofType:@"plist"];

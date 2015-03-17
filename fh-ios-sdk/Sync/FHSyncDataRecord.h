@@ -19,8 +19,8 @@
 @property NSDictionary* data;
 @property NSString* uid;
 
-- (id) init;
-- (id) initWithData: (NSDictionary*) data;
+- (instancetype) init;
+- (instancetype) initWithData: (NSDictionary*) data;
 - (NSDictionary*) JSONData;
 + (FHSyncDataRecord*) objectFromJSONData:(NSDictionary*) jsonData;
 - (NSString*) JSONString;

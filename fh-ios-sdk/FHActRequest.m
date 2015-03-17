@@ -14,7 +14,7 @@
 
 @synthesize remoteAction;
 
-- (id)initWithProps:(FHCloudProps *) props{
+- (instancetype)initWithProps:(FHCloudProps *) props{
   self = [super init];
   if(self){
     cloudProps = props;
@@ -37,7 +37,7 @@
 
 - (void)setArgs:(NSDictionary * )arguments {
   args = [NSMutableDictionary dictionaryWithDictionary:arguments];
-  [args setObject:[FH getDefaultParams] forKey:@"__fh"]; //keep backward compatible
+  args[@"__fh"] = [FH getDefaultParams]; //keep backward compatible
   NSLog(@"args set to  %@",args);
 }
 
