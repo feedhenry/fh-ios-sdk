@@ -11,7 +11,7 @@
 @implementation FHAct (SetHttpClient)
 
 -(void) setHttpClient:(FHHttpClient*)pHttpClient {
-  httpClient = pHttpClient;
+  _httpClient = pHttpClient;
 }
 
 @end
