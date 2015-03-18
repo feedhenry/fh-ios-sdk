@@ -8,9 +8,6 @@
 #import "FHJSON.h"
 
 @implementation FHResponse
-@synthesize rawResponse, rawResponseAsString, parsedResponse, responseStatusCode, error;
-
-
 
 - (void)parseResponseString:(NSString *)res{
     self.parsedResponse =  [res objectFromJSONString];    
@@ -18,13 +15,6 @@
 
 - (void)parseResponseData:(NSData *)dat{
     self.parsedResponse = [dat objectFromJSONData];
-}
-
-- (void)dealloc{
-    rawResponse         = nil;
-    rawResponseAsString = nil;
-    parsedResponse      = nil;
-    
 }
 
 @end

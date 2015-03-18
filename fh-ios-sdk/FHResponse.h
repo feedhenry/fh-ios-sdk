@@ -8,14 +8,7 @@
 
 /** Representing the response returned from the server */
 
-@interface FHResponse : NSObject{
-  NSData * rawResponse;
-  NSString * rawResponseString;
-  NSDictionary * parsedResponse;
-  int responseStatusCode;
-  NSError* error;
-}
-
+@interface FHResponse : NSObject
 
 /** Get the raw response data */
 @property(nonatomic,strong)NSData * rawResponse;
@@ -27,7 +20,7 @@
 @property(nonatomic,strong)NSDictionary * parsedResponse;
 
 /** Get the response's status code */
-@property(assign) int responseStatusCode;
+@property(nonatomic, assign) int responseStatusCode;
 
 /** Get the error of the response */
 @property(nonatomic, strong)NSError* error;
