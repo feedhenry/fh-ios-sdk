@@ -9,16 +9,19 @@
 #import "FHConfig.h"
 #import "NSString+MD5.h"
 
+@interface FHConfig () 
+    @property(nonatomic, strong, readwrite) NSMutableDictionary * properties;
+@end
+
 @implementation FHConfig
+
 static FHConfig * shared = nil;
-@synthesize properties;
 
 - (instancetype)init{
   self = [super init];
   if(self){
     NSString * path = [[NSBundle bundleForClass:[self class]] pathForResource:@"fhconfig" ofType:@"plist"];
     if(path){
-      propertiesPath  = path;
       self.properties      = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     }else{
       @throw ([NSException exceptionWithName:@"fhconfigException" reason:@"fhconfig.plist was not located" userInfo:nil]);
