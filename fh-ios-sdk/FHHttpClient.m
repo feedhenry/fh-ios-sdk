@@ -50,7 +50,7 @@
     __weak ASIHTTPRequest * request = brequest;
     
     //set headers
-  NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:[fhact buildHeaders]];
+  NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:fhact.headers];
   NSString * apiKeyVal = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
   [headers setValue:@"application/json" forKey:@"Content-Type"];
   [headers setValue:apiKeyVal forKeyPath:@"x-fh-auth-app"];

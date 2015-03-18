@@ -210,7 +210,7 @@ static Reachability* reachability;
   if (nil == cloudProps) {
      @throw([NSException exceptionWithName:@"FH Not Ready" reason:@"FH failed to initialise" userInfo:@{}]);
   }
-  return [cloudProps getCloudHost];
+  return cloudProps.cloudHost;
 }
 
 +(NSDictionary*) getDefaultParams
