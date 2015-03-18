@@ -28,21 +28,6 @@
 
 @implementation FHSyncDataset
 
-@synthesize  syncRunning = _syncRunning;
-@synthesize  initialised = _initialised;
-@synthesize  datasetId = _datasetId;
-@synthesize  syncLoopStart = _syncLoopStart;
-@synthesize  syncLoopEnd = _syncLoopEnd;
-@synthesize  syncLoopPending = _syncLoopPending;
-@synthesize  syncConfig = _syncConfig;
-@synthesize  pendingDataRecords = _pendingDataRecords;
-@synthesize  dataRecords = _dataRecords;
-@synthesize  queryParams = _queryParams;
-@synthesize  metaData = _metaData;
-@synthesize  hashValue = _hashValue;
-@synthesize  acknowledgements = _acknowledgements;
-@synthesize  stopSync = _stopSync;
-
 - (id) initWithDataId:(NSString* )dataId
 {
   self = [super init];

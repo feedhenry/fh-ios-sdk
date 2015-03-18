@@ -15,35 +15,15 @@
   self = [super init];
   if(self){
     _dataId = dataId;
-    _uid = uid;
-    _codeMessage = code;
-    _extraMessage = message;
+      _UID = uid;
+    _code = code;
+    _message = message;
   }
   return self;
 }
 
-- (NSString*) getDataId
-{
-  return _dataId;
-}
-
-- (NSString*) getUID
-{
-  return _uid;
-}
-
-- (NSString*) getCode
-{
-  return _codeMessage;
-}
-
--(NSString*) getMessage
-{
-  return _extraMessage;
-}
-
 - (NSString*) description
 {
-  return [NSString stringWithFormat:@"dataId:%@-uid:%@-code:%@-message:%@", _dataId, _uid, _codeMessage, _extraMessage];
+  return [NSString stringWithFormat:@"dataId:%@-uid:%@-code:%@-message:%@", _dataId, _UID, _code, _message];
 }
 @end

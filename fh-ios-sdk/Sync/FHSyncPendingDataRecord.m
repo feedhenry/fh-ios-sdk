@@ -24,18 +24,11 @@
 #define KEY_CRASHED @"crashed"
 #define KEY_HASH @"hash"
 
-@implementation FHSyncPendingDataRecord
+@interface FHSyncPendingDataRecord ()
+@property(nonatomic, strong, readwrite) NSString* hashValue;
+@end
 
-@synthesize inFlight = _inFlight;
-@synthesize inFlightDate = _inFlightDate;
-@synthesize crashed = _crashed;
-@synthesize action = _action;
-@synthesize timestamp = _timestamp;
-@synthesize uid = _uid;
-@synthesize preData = _preData;
-@synthesize postData = _postData;
-@synthesize hashValue = _hashValue;
-@synthesize crashedCount = _crashedCount;
+@implementation FHSyncPendingDataRecord
 
 - (id) init
 {

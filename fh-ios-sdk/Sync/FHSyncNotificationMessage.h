@@ -15,26 +15,19 @@
 #define CLIENT_STORAGE_FAILED_MESSAGE @"CLIENT_STORAGE_FAILED"
 
 @interface FHSyncNotificationMessage : NSObject
-{
-  NSString* _dataId;
-  NSString* _uid;
-  NSString* _codeMessage;
-  NSString* _extraMessage;
-}
 
 - (instancetype) initWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndCode:(NSString*) code AndMessage:(NSString*) message;
 
 /** Get the data set id associated with the notification */
-- (NSString*) getDataId;
+@property(nonatomic, strong, readonly) NSString* dataId;
 
 /** Get the id of the data record associated with the notification (if any)*/
-- (NSString*) getUID;
+@property(nonatomic, strong, readonly) NSString *UID;
 
 /** Get the code of the notification */
-- (NSString*) getCode;
+@property(nonatomic, strong, readonly) NSString *code;
 
 /** Extra message of the noification */
-- (NSString*) getMessage;
-- (NSString*) description;
+@property(nonatomic, strong, readonly) NSString *message;
 
 @end

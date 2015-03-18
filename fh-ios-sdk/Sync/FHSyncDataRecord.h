@@ -9,15 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface FHSyncDataRecord : NSObject
-{
-  NSString* _hashValue;
-  NSDictionary* _data;
-  NSString* _uid;
-}
 
-@property NSString* hashValue;
-@property NSDictionary* data;
-@property NSString* uid;
+@property(nonatomic, strong) NSString* hashValue;
+@property(nonatomic, strong) NSDictionary* data;
+@property(nonatomic, strong) NSString* uid;
 
 - (instancetype) init;
 - (instancetype) initWithData: (NSDictionary*) data;

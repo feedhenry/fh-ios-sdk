@@ -3,25 +3,7 @@
  */
 #import <Foundation/Foundation.h>
 
-@interface FHSyncConfig : NSObject{
-  double _syncFrequency;
-  BOOL _autoSyncLocalUpdates;
-  BOOL _notifySyncStarted;
-  BOOL _notifySyncCompleted;
-  BOOL _notifySyncCollision;
-  BOOL _notifyOfflineUpdate;
-  BOOL _notifyRemoteUpdateFailed;
-  BOOL _notifyRemoteUpdateApplied;
-  BOOL _notifyLocalUpdateApplied;
-  BOOL _notifyDeltaReceived;
-  BOOL _notifyClientStorageFailed;
-  BOOL _notifySyncFailed;
-  BOOL _debug;
-  NSInteger _crashCountWait;
-  BOOL _resendCrashedUpdates;
-  BOOL _hasCustomSync;
-  BOOL _icloud_backup;
-}
+@interface FHSyncConfig : NSObject
 
 /** The sync frequency. In seconds.*/
 @property double syncFrequency;

@@ -16,10 +16,6 @@
 
 @implementation FHSyncDataRecord
 
-@synthesize data = _data;
-@synthesize hashValue = _hashValue;
-@synthesize uid = _uid;
-
 - (id) init
 {
   self = [super init];

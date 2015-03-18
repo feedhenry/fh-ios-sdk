@@ -29,25 +29,6 @@
 
 @implementation FHSyncConfig
 
-@synthesize syncFrequency = _syncFrequency;
-@synthesize autoSyncLocalUpdates = _autoSyncLocalUpdates;
-@synthesize notifyClientStorageFailed = _notifyClientStorageFailed;
-@synthesize notifyDeltaReceived = _notifyDeltaReceived;
-@synthesize notifyOfflineUpdate = _notifyOfflineUpdate;
-@synthesize notifySyncCollision = _notifySyncCollision;
-@synthesize notifySyncCompleted = _notifySyncCompleted;
-@synthesize notifySyncStarted = _notifySyncStarted;
-@synthesize notifyRemoteUpdateApplied = _notifyRemoteUpdateApplied;
-@synthesize notifyLocalUpdateApplied = _notifyLocalUpdateApplied;
-@synthesize notifyRemoteUpdateFailed = _notifyRemoteUpdateFailed;
-@synthesize notifySyncFailed = _notifySyncFailed;
-@synthesize debug = _debug;
-@synthesize crashCountWait = _crashCountWait;
-@synthesize resendCrashedUpdates = _resendCrashedUpdates;
-@synthesize hasCustomSync = _hasCustomSync;
-@synthesize icloud_backup = _icloud_backup;
-
-
 - (instancetype) init
 {
   self = [super init];

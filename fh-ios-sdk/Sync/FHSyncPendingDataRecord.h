@@ -10,31 +10,18 @@
 #import "FHSyncDataRecord.h"
 
 @interface FHSyncPendingDataRecord : NSObject
-{
-  BOOL _inFlight;
-  BOOL _crashed;
-  NSDate* _inFlightDate;
-  NSString* _action;
-  NSNumber* _timestamp;
-  NSString* _uid;
-  FHSyncDataRecord* _preData;
-  FHSyncDataRecord* _postData;
-  NSString * _hashValue;
-  int _crashedCount;
-}
 
-@property BOOL inFlight;
-@property BOOL crashed;
-@property NSDate* inFlightDate;
-@property NSString* action;
-@property NSNumber* timestamp;
-@property NSString* uid;
-@property FHSyncDataRecord* preData;
-@property FHSyncDataRecord* postData;
-@property (readonly) NSString* hashValue;
-@property int crashedCount;
+@property(nonatomic, assign) BOOL inFlight;
+@property(nonatomic, assign) BOOL crashed;
+@property(nonatomic, strong) NSDate* inFlightDate;
+@property(nonatomic, strong)  NSString* action;
+@property(nonatomic, strong)  NSNumber* timestamp;
+@property(nonatomic, strong)  NSString* uid;
+@property(nonatomic, strong)  FHSyncDataRecord* preData;
+@property(nonatomic, strong)  FHSyncDataRecord* postData;
+@property(nonatomic, strong, readonly) NSString* hashValue;
+@property(nonatomic, assign)  int crashedCount;
 
-- (instancetype) init;
 - (NSMutableDictionary*) JSONData;
 + (FHSyncPendingDataRecord*) objectFromJSONData:(NSDictionary*) jsonData;
 - (NSString*) JSONString;
