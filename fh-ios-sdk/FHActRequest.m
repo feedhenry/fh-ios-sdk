@@ -12,33 +12,31 @@
 
 @implementation FHActRequest
 
-@synthesize remoteAction;
-
-- (id)initWithProps:(FHCloudProps *) props{
+- (instancetype)initWithProps:(FHCloudProps *) props{
   self = [super init];
   if(self){
-    cloudProps = props;
+    _cloudProps = props;
   }
   return self;
 }
 
 
 - (NSURL *)buildURL {
-  NSString * cloudUrl = [cloudProps getCloudHost];
-  NSString* api = [cloudUrl stringByAppendingString:[self getPath]];
+  NSString * cloudUrl = _cloudProps.cloudHost;
+  NSString* api = [cloudUrl stringByAppendingString:self.path];
   NSLog(@"Request url is %@", api);
   NSURL * uri = [[NSURL alloc]initWithString:api];
   return uri;
 }
 
-- (NSString *)getPath{
-  return [NSMutableString stringWithFormat:@"%@/%@", @"cloud", self.remoteAction];
+- (NSString *)path{
+  return [NSString stringWithFormat:@"%@/%@", @"cloud", self.remoteAction];
 }
 
 - (void)setArgs:(NSDictionary * )arguments {
-  args = [NSMutableDictionary dictionaryWithDictionary:arguments];
-  [args setObject:[FH getDefaultParams] forKey:@"__fh"]; //keep backward compatible
-  NSLog(@"args set to  %@",args);
+  _args = [NSMutableDictionary dictionaryWithDictionary:arguments];
+  _args[@"__fh"] = [FH getDefaultParams]; //keep backward compatible
+  NSLog(@"args set to  %@",_args);
 }
 
 @end

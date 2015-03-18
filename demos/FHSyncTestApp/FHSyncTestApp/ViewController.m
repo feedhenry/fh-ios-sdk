@@ -60,7 +60,7 @@
 {
   FHSyncNotificationMessage* msg = (FHSyncNotificationMessage*) [note object];
   NSLog(@"Got notification %@", msg);
-  NSString* code = [msg getCode];
+  NSString* code = msg.code;
   if([code isEqualToString:SYNC_COMPLETE_MESSAGE]){
     NSDictionary* data = [_fhSyncClient listWithDataId:DATAID];
     [self performSelectorOnMainThread:@selector(setResultText:) withObject:data waitUntilDone:NO];

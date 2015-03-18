@@ -24,18 +24,11 @@
 #define KEY_CRASHED @"crashed"
 #define KEY_HASH @"hash"
 
-@implementation FHSyncPendingDataRecord
+@interface FHSyncPendingDataRecord ()
+@property(nonatomic, strong, readwrite) NSString* hashValue;
+@end
 
-@synthesize inFlight = _inFlight;
-@synthesize inFlightDate = _inFlightDate;
-@synthesize crashed = _crashed;
-@synthesize action = _action;
-@synthesize timestamp = _timestamp;
-@synthesize uid = _uid;
-@synthesize preData = _preData;
-@synthesize postData = _postData;
-@synthesize hashValue = _hashValue;
-@synthesize crashedCount = _crashedCount;
+@implementation FHSyncPendingDataRecord
 
 - (id) init
 {
@@ -58,27 +51,27 @@
 - (NSMutableDictionary*) JSONData
 {
   NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-  [dict setObject:[NSNumber numberWithBool:self.inFlight]  forKey:KEY_INFIGHT];
-  [dict setObject:[NSNumber numberWithBool:self.crashed] forKey:KEY_CRASHED];
+  dict[KEY_INFIGHT] = @(self.inFlight);
+  dict[KEY_CRASHED] = @(self.crashed);
   if(self.inFlightDate){
-    [dict setObject:[NSNumber numberWithLong:[self.inFlightDate timeIntervalSince1970]] forKey:KEY_INFLIGHT_DATE];
+    dict[KEY_INFLIGHT_DATE] = [NSNumber numberWithLong:[self.inFlightDate timeIntervalSince1970]];
   }
   if(self.action){
-    [dict setObject:self.action forKey:KEY_ACTION];
+    dict[KEY_ACTION] = self.action;
   }
   if(self.timestamp){
-    [dict setObject:self.timestamp forKey:KEY_TIMESTAMP];
+    dict[KEY_TIMESTAMP] = self.timestamp;
   }
   if(self.uid){
-    [dict setObject:self.uid forKey:KEY_UID];
+    dict[KEY_UID] = self.uid;
   }
   if(self.preData){
-    [dict setObject:[self.preData data] forKey:KEY_PRE];
-    [dict setObject:[self.preData hashValue] forKey:KEY_PRE_DATA_HASH];
+    dict[KEY_PRE] = [self.preData data];
+    dict[KEY_PRE_DATA_HASH] = [self.preData hashValue];
   }
   if(self.postData){
-    [dict setObject:[self.postData data] forKey:KEY_POST];
-    [dict setObject:[self.postData hashValue] forKey:KEY_POST_DATA_HASH];
+    dict[KEY_POST] = [self.postData data];
+    dict[KEY_POST_DATA_HASH] = [self.postData hashValue];
   }
   return dict;
 }
@@ -86,7 +79,7 @@
 - (NSString*) JSONString
 {
   NSMutableDictionary* dict = [self JSONData];
-  [dict setObject:self.hashValue forKey:KEY_HASH];
+  dict[KEY_HASH] = self.hashValue;
   return [dict JSONString];
 }
 
@@ -102,34 +95,34 @@
 + (FHSyncPendingDataRecord*) objectFromJSONData:(NSDictionary*) jsonObj
 {
   FHSyncPendingDataRecord* record = [[FHSyncPendingDataRecord alloc] init];
-  if([jsonObj objectForKey:KEY_INFIGHT]){
-    record.inFlight = [[jsonObj objectForKey:KEY_INFIGHT] boolValue];
+  if(jsonObj[KEY_INFIGHT]){
+    record.inFlight = [jsonObj[KEY_INFIGHT] boolValue];
   }
-  if([jsonObj objectForKey:KEY_INFLIGHT_DATE]){
-    record.inFlightDate = [NSDate dateWithTimeIntervalSince1970:[[jsonObj objectForKey:KEY_INFLIGHT_DATE] doubleValue]];
+  if(jsonObj[KEY_INFLIGHT_DATE]){
+    record.inFlightDate = [NSDate dateWithTimeIntervalSince1970:[jsonObj[KEY_INFLIGHT_DATE] doubleValue]];
   }
-  if([jsonObj objectForKey:KEY_CRASHED]){
-    record.crashed = [[jsonObj objectForKey:KEY_CRASHED] boolValue];
+  if(jsonObj[KEY_CRASHED]){
+    record.crashed = [jsonObj[KEY_CRASHED] boolValue];
   }
-  if([jsonObj objectForKey:KEY_TIMESTAMP]){
-    record.timestamp = [jsonObj objectForKey:KEY_TIMESTAMP];
+  if(jsonObj[KEY_TIMESTAMP]){
+    record.timestamp = jsonObj[KEY_TIMESTAMP];
   }
-  if([jsonObj objectForKey:KEY_ACTION]){
-    record.action = [jsonObj objectForKey:KEY_ACTION];
+  if(jsonObj[KEY_ACTION]){
+    record.action = jsonObj[KEY_ACTION];
   }
-  if([jsonObj objectForKey:KEY_UID]){
-    record.uid = [jsonObj  objectForKey:KEY_UID];
+  if(jsonObj[KEY_UID]){
+    record.uid = jsonObj[KEY_UID];
   }
-  if([jsonObj objectForKey:KEY_PRE]){
+  if(jsonObj[KEY_PRE]){
     FHSyncDataRecord* preData = [[FHSyncDataRecord alloc] init];
-    preData.data = [jsonObj objectForKey:KEY_PRE];
-    preData.hashValue = [jsonObj objectForKey:KEY_PRE_DATA_HASH];
+    preData.data = jsonObj[KEY_PRE];
+    preData.hashValue = jsonObj[KEY_PRE_DATA_HASH];
     record.preData = preData;
   }
-  if([jsonObj objectForKey:KEY_POST]){
+  if(jsonObj[KEY_POST]){
     FHSyncDataRecord* postData = [[FHSyncDataRecord alloc] init];
-    postData.data = [jsonObj objectForKey:KEY_POST];
-    postData.hashValue = [jsonObj objectForKey:KEY_POST_DATA_HASH];
+    postData.data = jsonObj[KEY_POST];
+    postData.hashValue = jsonObj[KEY_POST_DATA_HASH];
     record.postData = postData;
   }
   return record;

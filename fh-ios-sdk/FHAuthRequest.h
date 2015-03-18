@@ -11,33 +11,28 @@
 #import "FHAct.h"
 #import <UIKit/UIViewController.h>
 
-@interface FHAuthRequest : FHAct {
-  NSString * policyId;
-  NSString * userId;
-  NSString * password;
-  UIViewController* parentViewController;
-}
+@interface FHAuthRequest : FHAct
 
 /** The policyId used by this request. Don't access it directly, use authWithPolicyId:. */
-@property (nonatomic, retain)NSString *policyId;
+@property (nonatomic, strong)NSString *policyId;
 
 /** If the auth policy type is FeedHenry or LDAP, the userId and password should be provided. Don't access it directly, use authWithPolicyId:UserId:Password:. */
-@property (nonatomic, retain)NSString *userId;
+@property (nonatomic, strong)NSString *userId;
 
 /** If the auth policy type is FeedHenry or LDAP, the userId and password should be provided. Don't access it directly, use authWithPolicyId:UserId:Password:. */
-@property (nonatomic, retain)NSString *password;
+@property (nonatomic, strong)NSString *password;
 
 /** If the auth policy type is OAuth, to allow user authenticate with the OAuth provider, a UIWebView is used to load the login page and do the authentication. 
  The library has a built-in UI component to handle this automatially. If this property is set, the built-in UI component will be used. Otherwise you need to handle the OAuth process.
  */
-@property (nonatomic, retain)UIViewController* parentViewController;
+@property (nonatomic, strong)UIViewController* parentViewController;
 
 /** Init a new request and set the parentViewController.
  
  @param props The app configurations
  @param viewController The parent UIViewController to present OAuth UI component. See parentViewController.
  */
-- (id) initWithViewController:(UIViewController*) viewController;
+- (instancetype) initWithViewController:(UIViewController*) viewController;
 
 /** Set the policyId for this auth request.
  

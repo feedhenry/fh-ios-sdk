@@ -9,16 +9,17 @@
 #import "FHConfig.h"
 #import "NSString+MD5.h"
 
-@implementation FHConfig
-static FHConfig * shared = nil;
-@synthesize properties;
+@interface FHConfig () 
+    @property(nonatomic, strong, readwrite) NSMutableDictionary * properties;
+@end
 
-- (id)init{
+@implementation FHConfig
+
+- (instancetype)init{
   self = [super init];
   if(self){
     NSString * path = [[NSBundle bundleForClass:[self class]] pathForResource:@"fhconfig" ofType:@"plist"];
     if(path){
-      propertiesPath  = path;
       self.properties      = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     }else{
       @throw ([NSException exceptionWithName:@"fhconfigException" reason:@"fhconfig.plist was not located" userInfo:nil]);
@@ -28,12 +29,13 @@ static FHConfig * shared = nil;
 }
 
 + (FHConfig *)getSharedInstance{
-  @synchronized(self){
-    if(shared == nil){
-      shared = [[self alloc] init];
-    }
-  }
-  return shared;
+    static FHConfig * _shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _shared = [[FHConfig alloc] init];
+    });
+    
+    return _shared;
 }
 
 - (NSString *)getConfigValueForKey:(NSString *)key{

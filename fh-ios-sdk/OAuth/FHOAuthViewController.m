@@ -121,11 +121,11 @@
         NSMutableDictionary* map = [NSMutableDictionary dictionary];
         for(NSString* p in pairs){
             NSArray* ps = [p componentsSeparatedByString:@"="];
-            if([[ps objectAtIndex:0] isEqualToString:@"authResponse"]){
-                NSDictionary* authRes = [[[ps objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] objectFromJSONString];
-                [map setObject:authRes forKey:[ps objectAtIndex:0]];
+            if([ps[0] isEqualToString:@"authResponse"]){
+                NSDictionary* authRes = [[ps[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] objectFromJSONString];
+                map[ps[0]] = authRes;
             } else {
-                [map setValue:[ps objectAtIndex:1] forKey:[ps objectAtIndex:0]];
+                [map setValue:ps[1] forKey:ps[0]];
             }
         }
         authInfo = [map copy];
@@ -146,7 +146,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    // Release any stronged subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

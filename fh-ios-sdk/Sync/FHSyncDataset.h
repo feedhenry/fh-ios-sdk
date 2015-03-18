@@ -12,52 +12,36 @@
  A class representing a sync dataset managed by the sync service
  **/
 @interface FHSyncDataset : NSObject
-{
-  BOOL _syncRunning;
-  BOOL _initialised;
-  NSString* _datasetId;
-  NSDate* _syncLoopStart;
-  NSDate* _syncLoopEnd;
-  BOOL _syncLoopPending;
-  FHSyncConfig* _syncConfig;
-  NSMutableDictionary* _pendingDataRecords;
-  NSMutableDictionary* _dataRecords;
-  NSDictionary* _queryParams;
-  NSMutableDictionary* _metaData;
-  NSString* _hashValue;
-  NSMutableArray* _acknowledgements;
-  BOOL _stopSync;
-}
 
 /** Indicate if the sync process is currently running **/
-@property BOOL syncRunning;
+@property(nonatomic, assign) BOOL syncRunning;
 /** Indicate if the dataset is initialised **/
-@property BOOL initialised;
+@property(nonatomic, assign) BOOL initialised;
 /** A unique id of the dataset **/
-@property NSString* datasetId;
+@property(nonatomic, strong) NSString* datasetId;
 /** When last sync started **/
-@property (copy) NSDate* syncLoopStart;
+@property(nonatomic, copy) NSDate* syncLoopStart;
 /** Wehn last sync finished **/
-@property (copy) NSDate* syncLoopEnd;
+@property(nonatomic, copy) NSDate* syncLoopEnd;
 /** Indicate if sync should be run in next run loop **/
-@property BOOL syncLoopPending;
+@property(nonatomic, assign) BOOL syncLoopPending;
 /** The sync config for this dataset **/
-@property (copy) FHSyncConfig* syncConfig;
+@property(nonatomic, copy) FHSyncConfig* syncConfig;
 /** A collection of pending data records **/
-@property NSMutableDictionary* pendingDataRecords;
+@property (nonatomic, strong) NSMutableDictionary* pendingDataRecords;
 /** A collection of synced data records **/
-@property NSMutableDictionary* dataRecords;
+@property(nonatomic, strong)  NSMutableDictionary* dataRecords;
 /** The query params for this dataset **/
-@property NSDictionary* queryParams;
+@property(nonatomic, strong)  NSDictionary* queryParams;
 /** Meta data associated with this data set**/
-@property NSMutableDictionary* metaData;
+@property(nonatomic, strong) NSMutableDictionary* metaData;
 /** The SHA1 hash value of this data set **/
-@property NSString* hashValue;
-@property NSMutableArray* acknowledgements;
-@property BOOL stopSync;
+@property(nonatomic, strong) NSString* hashValue;
+@property(nonatomic, strong) NSMutableArray* acknowledgements;
+@property(nonatomic, assign) BOOL stopSync;
 
-- (id) initWithDataId:(NSString* )dataId;
--(id) initFromFileWithDataId:(NSString*) dataId error:(NSError*) error;
+- (instancetype) initWithDataId:(NSString* )dataId;
+-(instancetype) initFromFileWithDataId:(NSString*) dataId error:(NSError*) error;
 
 - (NSDictionary*) JSONData;
 - (NSString*) JSONString;

@@ -17,7 +17,7 @@
 + (NSString*) getStorageFilePath:(NSString*) fileName
 {
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-  NSString *documentsDir = [paths objectAtIndex:0];
+  NSString *documentsDir = paths[0];
   if(![[NSFileManager defaultManager] fileExistsAtPath:documentsDir]){
     [[NSFileManager defaultManager] createDirectoryAtPath:documentsDir withIntermediateDirectories:YES attributes:nil error:nil];
   }
@@ -49,7 +49,7 @@
     if(!backup){
       NSError * error = nil;
       NSURL* fileUrl = [NSURL fileURLWithPath:filePath];
-      BOOL success = [fileUrl setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:&error];
+      BOOL success = [fileUrl setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:&error];
       if(!success){
         NSLog(@"Error excluding %@ from backup %@", filePath, error);
       }
@@ -90,19 +90,19 @@
     NSArray * keys = [(NSDictionary *)data allKeys];
     NSArray* sortedKeys = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     for (int i=0;i<sortedKeys.count; i++) {
-      NSString* key = [sortedKeys objectAtIndex:i];
-      id value = [data objectForKey:key];
+      NSString* key = sortedKeys[i];
+      id value = data[key];
       NSMutableDictionary* record = [NSMutableDictionary dictionary];
-      [record setObject:key forKey:@"key"];
-      [record setObject:[FHSyncUtils sortData:value] forKey:@"value"];
+      record[@"key"] = key;
+      record[@"value"] = [FHSyncUtils sortData:value];
       [results addObject:record];
     }
 
   } else if([data isKindOfClass:[NSArray class]]){
     for(int i=0;i<[data count];i++){
       NSMutableDictionary* record = [NSMutableDictionary dictionary];
-      [record setObject: [NSString stringWithFormat:@"%d", i] forKey:@"key"];
-      [record setObject:[FHSyncUtils sortData: [data objectAtIndex:i]] forKey:@"value"];
+      record[@"key"] = [NSString stringWithFormat:@"%d", i];
+      record[@"value"] = [FHSyncUtils sortData: data[i]];
       [results addObject:record];
     }
   }

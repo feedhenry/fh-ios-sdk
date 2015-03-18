@@ -7,12 +7,12 @@
 //
 
 
-typedef enum{
+typedef NS_ENUM(NSInteger, FH_ACTION){
   FH_ACTION_ACT,
   FH_ACTION_AUTH,
   FH_ACTION_INIT,
   FH_ACTION_CLOUD
-}FH_ACTION;
+};
 
 #define FH_ACT @"act"
 #define FH_CLOUD @"cloud"

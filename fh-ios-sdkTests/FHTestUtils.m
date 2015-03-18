@@ -15,16 +15,16 @@
 + (NSDictionary*) generateJSONData
 {
   NSMutableDictionary* data = [NSMutableDictionary dictionary];
-  [data setObject:[FHTestUtils genRandStringLength:10] forKey:@"testStringKey"];
-  [data setObject:[NSNumber numberWithInt:arc4random()]  forKey:@"testNumberKey"];
+  data[@"testStringKey"] = [FHTestUtils genRandStringLength:10];
+  data[@"testNumberKey"] = [NSNumber numberWithInt:arc4random()];
   NSMutableArray* array = [NSMutableArray array];
   [array addObject:[FHTestUtils genRandStringLength:10]];
   [array addObject:[FHTestUtils genRandStringLength:10]];
-  [data setObject:array forKey:@"testArrayKey"];
+  data[@"testArrayKey"] = array;
   NSMutableDictionary * dict = [NSMutableDictionary dictionary];
-  [dict setObject:[FHTestUtils genRandStringLength:10] forKey:[FHTestUtils genRandStringLength:10]];
-  [dict setObject:[FHTestUtils genRandStringLength:10] forKey:[FHTestUtils genRandStringLength:10]];
-  [data setObject:dict forKey:@"testDictKey"];
+  dict[[FHTestUtils genRandStringLength:10]] = [FHTestUtils genRandStringLength:10];
+  dict[[FHTestUtils genRandStringLength:10]] = [FHTestUtils genRandStringLength:10];
+  data[@"testDictKey"] = dict;
   return data;
 }
 
@@ -55,7 +55,7 @@
   pendingRecord.crashed = NO;
   pendingRecord.inFlightDate = [NSDate date];
   pendingRecord.action = @"create";
-  pendingRecord.timestamp = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
+  pendingRecord.timestamp = @([[NSDate date] timeIntervalSince1970]);
   pendingRecord.uid = [FHTestUtils genRandStringLength: 10];
   pendingRecord.preData = nil;
   pendingRecord.preData = [FHTestUtils generateRandomDataRecord];

@@ -13,59 +13,46 @@
 #import "FHDefines.h"
 #import "FH.h"
 
-@implementation FHAct
-@synthesize method, delegate, cacheTimeout, headers, requestMethod, requestTimeout;
 
-- (id) init
+@implementation FHAct
+
+- (instancetype) init
 {
   self = [super init];
   if (self) {
-    args = [NSMutableDictionary dictionary];
-    httpClient = [[FHHttpClient alloc]init];
-    requestMethod = @"POST";
-    headers = [NSMutableDictionary dictionary];
-    requestTimeout = 60;
+    _args = [NSMutableDictionary dictionary];
+    _httpClient = [[FHHttpClient alloc]init];
+      _headers =  [NSMutableDictionary dictionary];
+    self.requestMethod = @"POST";
+    self.requestTimeout = 60;
   }
   return self;
 }
 
 - (void)setArgs:(NSDictionary * )arguments {
-   args = [NSMutableDictionary dictionaryWithDictionary:arguments];
-   NSLog(@"args set to  %@",args);
-}
-
-- (NSDictionary *)args{
-  return (NSDictionary *) args;
+   _args = [NSMutableDictionary dictionaryWithDictionary:arguments];
+   NSLog(@"args set to  %@",_args);
 }
 
 - (NSString *) argsAsString
 {
-  return [args JSONString];
+  return [_args JSONString];
 }
 
 - (BOOL) isAsync {
-  return async;
+  return _async;
 }
 
 - (NSURL *)buildURL {
   NSString * host = [[FHConfig getSharedInstance] getConfigValueForKey:@"host"];
   NSString * format = ([[host substringToIndex:[host length]-1] isEqualToString:@"/"]) ? @"%@%@" : @"%@/%@";
-  NSString * api = [NSMutableString stringWithFormat:format,host,[self getPath]];
+  NSString * api = [NSMutableString stringWithFormat:format,host, self.path];
   NSURL * uri = [[NSURL alloc]initWithString:api];
   return uri;
 }
 
-- (NSString *)getPath{
-  return nil;
-}
-
-- (NSMutableDictionary *) getDefaultParams {
+- (NSDictionary *) defaultParams {
   return [NSMutableDictionary dictionaryWithDictionary:[FH getDefaultParams]];
-}
-
-- (NSDictionary *) buildHeaders
-{
-  return headers;
 }
 
 - (void) execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
@@ -77,8 +64,8 @@
 }
 
 - (void) exec:(BOOL)pAsync WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
-  async = pAsync;
-  [httpClient sendRequest:self AndSuccess:sucornil AndFailure:failornil];
+  _async = pAsync;
+  [_httpClient sendRequest:self AndSuccess:sucornil AndFailure:failornil];
 }
 
 @end

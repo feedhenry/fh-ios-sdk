@@ -19,30 +19,18 @@
 #import "FHSyncDataRecord.h"
 #import "FHSyncDataset.h"
 
-
-@interface FHSyncClient()
-{
-  NSMutableDictionary * _dataSets;
-  FHSyncConfig * _syncConfig;
-  BOOL _initialized;
+@implementation FHSyncClient {
+    NSMutableDictionary * _dataSets;
+    FHSyncConfig * _syncConfig;
+    BOOL _initialized;
 }
 
-@property (nonatomic, retain) NSMutableDictionary* dataSets;
-@property (nonatomic, copy) FHSyncConfig* syncConfig;
-@end
-
-@implementation FHSyncClient
-@synthesize dataSets = _dataSets;
-@synthesize syncConfig = _syncConfig;
-
-static FHSyncClient* shared = nil;
-
-- (id) initWithConfig:(FHSyncConfig*) config
+- (instancetype) initWithConfig:(FHSyncConfig*) config
 {
   self = [super init];
   if(self){
-    self.syncConfig = config;
-    self.dataSets = [NSMutableDictionary dictionary];
+    _syncConfig = config;
+    _dataSets = [NSMutableDictionary dictionary];
     _initialized = YES;
     [self datasetMonitor:nil];
   }
@@ -51,12 +39,13 @@ static FHSyncClient* shared = nil;
 
 + (FHSyncClient*) getInstance
 {
-  @synchronized(self){
-    if(nil == shared){
-      shared = [[self alloc] init];
-    }
-  }
-  return shared;
+   static FHSyncClient* _shared = nil;
+   static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _shared = [[FHSyncClient alloc] init];
+    });
+
+    return _shared;
 }
 
 - (void) datasetMonitor:(NSDictionary*) info
@@ -68,8 +57,8 @@ static FHSyncClient* shared = nil;
 
 - (void) checkDatasets
 {
-  if (nil != self.dataSets) {
-    [self.dataSets enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
+  if (nil != _dataSets) {
+    [_dataSets enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
       FHSyncDataset* dataset = (FHSyncDataset*) obj;
       BOOL syncRunning = dataset.syncRunning;
       if( !syncRunning && !dataset.stopSync){
@@ -104,7 +93,7 @@ static FHSyncClient* shared = nil;
   }
   
   //first, check if the dataset for dataId is already loaded
-  FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
+  FHSyncDataset* dataSet = _dataSets[dataId];
   //allow to set sync config options for each dataset
   FHSyncConfig* dataSyncConfig = _syncConfig;
   if (nil != config) {
@@ -121,7 +110,7 @@ static FHSyncClient* shared = nil;
       //cat not load data, create a new map for it
       dataSet = [[FHSyncDataset alloc] initWithDataId:dataId];
     }
-    [_dataSets setObject:dataSet forKey:dataId];
+    _dataSets[dataId] = dataSet;
   }
   
   dataSet.syncConfig = dataSyncConfig;
@@ -142,7 +131,7 @@ static FHSyncClient* shared = nil;
 
 - (void) stopWithDataId:(NSString*) dataId
 {
-  FHSyncDataset* dataset = [self.dataSets objectForKey:dataId];
+  FHSyncDataset* dataset = (_dataSets)[dataId];
   if (dataset) {
     dataset.stopSync = YES;
   }
@@ -163,7 +152,7 @@ static FHSyncClient* shared = nil;
 
 - (NSDictionary *) listWithDataId:(NSString *)dataId
 {
-  FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
+  FHSyncDataset* dataSet = _dataSets[dataId];
   if(dataSet){
     return [dataSet listData];
   }
@@ -172,7 +161,7 @@ static FHSyncClient* shared = nil;
 
 - (NSDictionary*) readWithDataId:(NSString *)dataId AndUID:(NSString *)uid
 {
-  FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
+  FHSyncDataset* dataSet = _dataSets[dataId];
   if(dataSet){
     return [dataSet readDataWithUID:uid];
   }
@@ -181,7 +170,7 @@ static FHSyncClient* shared = nil;
 
 - (NSDictionary*) createWithDataId:(NSString *)dataId AndData:(NSDictionary *)data
 {
-  FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
+  FHSyncDataset* dataSet = _dataSets[dataId];
   if(dataSet){
     return [dataSet createWithData:data];
   }
@@ -190,7 +179,7 @@ static FHSyncClient* shared = nil;
 
 - (NSDictionary*) updateWithDataId:(NSString *)dataId AndUID:(NSString *)uid AndData:(NSDictionary *)data
 {
-  FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
+  FHSyncDataset* dataSet = _dataSets[dataId];
   if(dataSet){
     return [dataSet updateWithUID:uid data:data];
   }
@@ -199,7 +188,7 @@ static FHSyncClient* shared = nil;
 
 - (NSDictionary*) deleteWithDataId:(NSString *)dataId AndUID:(NSString *)uid
 {
-  FHSyncDataset* dataSet = [_dataSets objectForKey:dataId];
+  FHSyncDataset* dataSet = _dataSets[dataId];
   if(dataSet){
     return [dataSet deleteWithUID:uid];
   }
@@ -208,12 +197,12 @@ static FHSyncClient* shared = nil;
 
 - (void) listCollisionWithCallbacksForDataId:(NSString*) dataId AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
 {
-  [FH performActRequest:dataId WithArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"listCollisions", @"fn", nil] AndSuccess:sucornil AndFailure:failornil];
+  [FH performActRequest:dataId WithArgs:@{@"fn": @"listCollisions"} AndSuccess:sucornil AndFailure:failornil];
 }
 
 - (void) removeCollisionWithCallbacksForDataId:(NSString*) dataId hash:(NSString*) collisionHash AndSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil
 {
-  [FH performActRequest:dataId WithArgs:[NSDictionary dictionaryWithObjectsAndKeys:@"removeCollisions", @"fn", collisionHash, @"hash", nil] AndSuccess:sucornil AndFailure:failornil];
+  [FH performActRequest:dataId WithArgs:@{@"fn": @"removeCollisions", @"hash": collisionHash} AndSuccess:sucornil AndFailure:failornil];
 }
 
 @end

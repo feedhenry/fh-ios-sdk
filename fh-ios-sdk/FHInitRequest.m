@@ -14,20 +14,16 @@
 
 @implementation FHInitRequest
 
-- (id)init
+- (instancetype)init
 {
-  self = [super init];
-  if(self){
-    [self initArgs];
-  }
-  return self;
+    self = [super init];
+    if(self){
+        _args =  (NSMutableDictionary *)self.defaultParams;
+    }
+    return self;
 }
 
-- (void) initArgs{
-  args = [self getDefaultParams];
-}
-
-- (NSString *) getPath {
+- (NSString *) path {
   return FH_INIT_PATH;
 }
 

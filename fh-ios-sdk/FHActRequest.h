@@ -10,13 +10,11 @@
 
 #import "FHAct.h"
 
-@interface FHActRequest : FHAct{
-  NSString * remoteAction;
-}
+@interface FHActRequest : FHAct
 
 /** The cloud side function name */
-@property(nonatomic,retain)NSString * remoteAction;
+@property(nonatomic,strong)NSString * remoteAction;
 
-- (id)initWithProps:(FHCloudProps *) props;
+- (instancetype)initWithProps:(FHCloudProps *) props;
 
 @end

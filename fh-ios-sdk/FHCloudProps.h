@@ -8,17 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FHCloudProps : NSObject {
-  NSDictionary* cloudProps;
-  NSString* cloudHost;
-}
+@interface FHCloudProps : NSObject
 
-@property (retain) NSDictionary* cloudProps;
-@property (retain) NSString* cloudHost;
+@property (nonatomic, strong, readonly) NSDictionary* cloudProps;
+@property (nonatomic, strong, readonly) NSString* cloudHost;
 
-- (id) initWithCloudProps:(NSDictionary*) aCloudProps;
-
-- (NSString*) getCloudHost;
-
+- (instancetype) initWithCloudProps:(NSDictionary*) aCloudProps;
 
 @end

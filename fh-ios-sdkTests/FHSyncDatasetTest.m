@@ -42,18 +42,18 @@
   FHSyncPendingDataRecord* pendingRecord2 = [FHTestUtils generateRandomPendingRecord];
   FHSyncPendingDataRecord* pendingRecord3 = [FHTestUtils generateRandomPendingRecord];
   
-  [pendings setObject:pendingRecord1 forKey:pendingRecord1.hashValue];
-  [pendings setObject:pendingRecord2 forKey:pendingRecord2.hashValue];
-  [pendings setObject:pendingRecord3 forKey:pendingRecord3.hashValue];
+  pendings[pendingRecord1.hashValue] = pendingRecord1;
+  pendings[pendingRecord2.hashValue] = pendingRecord2;
+  pendings[pendingRecord3.hashValue] = pendingRecord3;
   dataset.pendingDataRecords = pendings;
   
   NSMutableDictionary* data = [NSMutableDictionary dictionary];
   FHSyncDataRecord* record1 = [FHTestUtils generateRandomDataRecord];
   FHSyncDataRecord* record2 = [FHTestUtils generateRandomDataRecord];
   FHSyncDataRecord* record3 = [FHTestUtils generateRandomDataRecord];
-  [data setObject:record1 forKey:record1.hashValue];
-  [data setObject:record2 forKey:record2.hashValue];
-  [data setObject:record3 forKey:record3.hashValue];
+  data[record1.hashValue] = record1;
+  data[record2.hashValue] = record2;
+  data[record3.hashValue] = record3;
   
   dataset.dataRecords = data;
   
@@ -94,9 +94,9 @@
   NSDictionary* result2 = [dataset createWithData:data2];
   NSDictionary* result3 = [dataset createWithData:data3];
   
-  NSString* uid1 = [result1 objectForKey:@"uid"];
-  NSString* uid2 = [result2 objectForKey:@"uid"];
-  NSString* uid3 = [result3 objectForKey:@"uid"];
+  NSString* uid1 = result1[@"uid"];
+  NSString* uid2 = result2[@"uid"];
+  NSString* uid3 = result3[@"uid"];
   
   XCTAssertNotNil(uid1, @"data1 should have uid");
   XCTAssertNotNil(uid2, @"data1 should have uid");
@@ -109,7 +109,7 @@
   NSDictionary* readData = [dataset readDataWithUID:uid1];
   XCTAssertNotNil(readData, @"can not read data for uid %@", uid1);
   
-  NSDictionary* readDataContent = [readData objectForKey:@"data"];
+  NSDictionary* readDataContent = readData[@"data"];
   NSString* originHash = [FHSyncUtils generateHashForData:data1];
   NSString* readHash = [FHSyncUtils generateHashForData:readDataContent];
   XCTAssertEqualObjects(originHash, readHash, @"read data is different from origin data");
@@ -117,7 +117,7 @@
   NSDictionary* data4 = [FHTestUtils generateJSONData];
   NSDictionary* updateResult = [dataset  updateWithUID:uid1 data:data4];
   originHash = [FHSyncUtils generateHashForData:data4];
-  NSString* updatedHash = [FHSyncUtils generateHashForData:[updateResult objectForKey:@"data"]];
+  NSString* updatedHash = [FHSyncUtils generateHashForData:updateResult[@"data"]];
   XCTAssertEqualObjects(originHash, updatedHash, @"update data is different from set data");
   
   NSDictionary* alldata = [dataset listData];
@@ -146,14 +146,14 @@
   NSString* data1Hash = [FHSyncUtils generateHashForData:data1];
   NSString* data2Hash = [FHSyncUtils generateHashForData:data2];
   
-  NSArray* allhashes = [NSArray arrayWithObjects:data1Hash, data2Hash, nil];
+  NSArray* allhashes = @[data1Hash, data2Hash];
   NSString* globalHash = [FHSyncUtils generateHashForData:allhashes];
   
-  [resData setObject:globalHash forKey:@"hash"];
+  resData[@"hash"] = globalHash;
   NSMutableDictionary* records = [NSMutableDictionary dictionary];
-  [records setObject:[NSDictionary dictionaryWithObjectsAndKeys:data1, @"data", data1Hash, @"hash", nil] forKey:@"uid1"];
-  [records setObject:[NSDictionary dictionaryWithObjectsAndKeys:data2, @"data", data2Hash, @"hash", nil] forKey:@"uid2"];
-  [resData setObject:records forKey:@"records"];
+  records[@"uid1"] = @{@"data": data1, @"hash": data1Hash};
+  records[@"uid2"] = @{@"data": data2, @"hash": data2Hash};
+  resData[@"records"] = records;
   
   //sync data
   [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
@@ -163,8 +163,8 @@
   NSDictionary* currentData = dataset.dataRecords;
   XCTAssertTrue(currentData.count == 2, @"only %lu entries found", (unsigned long)currentData.count);
   
-  XCTAssertTrue([[[currentData objectForKey:@"uid1"] hashValue] isEqualToString:data1Hash], @"data1 hash value should match");
-  XCTAssertTrue([[[currentData objectForKey:@"uid2"] hashValue] isEqualToString:data2Hash], @"data2 hash value should match");
+  XCTAssertTrue([[currentData[@"uid1"] hashValue] isEqualToString:data1Hash], @"data1 hash value should match");
+  XCTAssertTrue([[currentData[@"uid2"] hashValue] isEqualToString:data2Hash], @"data2 hash value should match");
   
   //try to update a local data
   //no pending data at the moment
@@ -187,12 +187,12 @@
   }];
   
   NSDictionary* readData = [dataset readDataWithUID:@"uid1"];
-  XCTAssertEqualObjects([FHSyncUtils generateHashForData:[readData objectForKey:@"data"]], updatedHash, @"read data hash doesn't match update data");
+  XCTAssertEqualObjects([FHSyncUtils generateHashForData:readData[@"data"]], updatedHash, @"read data hash doesn't match update data");
   
   //next, construct a response to pretend the update happend and verify the state of dataset
-  [records setObject:[NSDictionary dictionaryWithObjectsAndKeys:updatedata, @"data", updatedHash, @"hash", nil] forKey:@"uid1"];
+  records[@"uid1"] = @{@"data": updatedata, @"hash": updatedHash};
   NSDictionary* data3 = [FHTestUtils generateJSONData];
-  [records setObject:[NSDictionary dictionaryWithObjectsAndKeys:data3, @"data", [FHSyncUtils generateHashForData:data3], @"hash", nil] forKey:@"uid3"];
+  records[@"uid3"] = @{@"data": data3, @"hash": [FHSyncUtils generateHashForData:data3]};
   
   __block FHSyncPendingDataRecord* pendingRecord = nil;
   [dataset.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop){
@@ -207,18 +207,18 @@
   NSMutableDictionary* resUpdates = [NSMutableDictionary dictionary];
   NSMutableDictionary* applied = [NSMutableDictionary dictionary];
   NSMutableDictionary* applieddata = [NSMutableDictionary dictionary];
-  [applieddata setObject:@"update" forKey:@"action"];
-  [applieddata setObject:@"applied" forKey:@"type"];
-  [applieddata setObject:@"uid1" forKey:@"uid"];
-  [applieddata setObject:pendingRecord.hashValue forKey:@"hash"];
-  [applied setObject:applieddata forKey:pendingRecord.hashValue];
-  [resUpdates setObject:applied forKey:@"applied"];
-  [resUpdates setObject:[applied copy] forKey:@"hashes"];
+  applieddata[@"action"] = @"update";
+  applieddata[@"type"] = @"applied";
+  applieddata[@"uid"] = @"uid1";
+  applieddata[@"hash"] = pendingRecord.hashValue;
+  applied[pendingRecord.hashValue] = applieddata;
+  resUpdates[@"applied"] = applied;
+  resUpdates[@"hashes"] = [applied copy];
   
-  [resData setObject:resUpdates forKey:@"updates"];
+  resData[@"updates"] = resUpdates;
   
-  allhashes = [NSArray arrayWithObjects:updatedHash, data2Hash, [FHSyncUtils generateHashForData:data3], nil];
-  [resData setObject:[FHSyncUtils generateHashForData:allhashes] forKey:@"hash"];
+  allhashes = @[updatedHash, data2Hash, [FHSyncUtils generateHashForData:data3]];
+  resData[@"hash"] = [FHSyncUtils generateHashForData:allhashes];
   
   [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
   
@@ -246,9 +246,9 @@
   NSDictionary* result2 = [dataset createWithData:data2];
   NSDictionary* result3 = [dataset createWithData:data3];
   
-  NSString* uid1 = [result1 objectForKey:@"uid"];
-  NSString* uid2 = [result2 objectForKey:@"uid"];
-  NSString* uid3 = [result3 objectForKey:@"uid"];
+  NSString* uid1 = result1[@"uid"];
+  NSString* uid2 = result2[@"uid"];
+  NSString* uid3 = result3[@"uid"];
   
   NSMutableDictionary* resData = [NSMutableDictionary dictionary];
   NSMutableDictionary* createDict = [NSMutableDictionary dictionary];
@@ -259,23 +259,23 @@
   NSDictionary* updatedata = [FHTestUtils generateJSONData];
   
   //add a new record
-  [createDict setObject:[NSDictionary dictionaryWithObjectsAndKeys:data4, @"data", [FHSyncUtils generateHashForData:data4],@"hash", nil] forKey:@"uid4"];
-  [resData setObject:createDict forKey:@"create"];
+  createDict[@"uid4"] = @{@"data": data4, @"hash": [FHSyncUtils generateHashForData:data4]};
+  resData[@"create"] = createDict;
   
   //update a record
-  [updateDict setObject:[NSDictionary dictionaryWithObjectsAndKeys:updatedata, @"data", [FHSyncUtils generateHashForData:updatedata],@"hash", nil] forKey:uid1];
-  [resData setObject:updateDict forKey:@"update"];
+  updateDict[uid1] = @{@"data": updatedata, @"hash": [FHSyncUtils generateHashForData:updatedata]};
+  resData[@"update"] = updateDict;
   
   //delete a record
-  [deleteDict setObject:[NSDictionary dictionaryWithObjectsAndKeys:data2, @"data", [FHSyncUtils generateHashForData:data2],@"hash", nil] forKey:uid2];
-  [resData setObject:deleteDict forKey:@"delete"];
+  deleteDict[uid2] = @{@"data": data2, @"hash": [FHSyncUtils generateHashForData:data2]};
+  resData[@"delete"] = deleteDict;
   
   [dataset performSelector:@selector(syncRecordsSuccess:) withObject:resData];
   
   XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu", (unsigned long)dataset.dataRecords.count);
-  XCTAssertNil([dataset.dataRecords objectForKey:uid2], @"%@ should be removed", uid2);
-  XCTAssertNotNil([dataset.dataRecords objectForKey:uid3], @"%@ should have been inserted", uid3);
-  XCTAssertEqualObjects([[dataset.dataRecords objectForKey:uid1] hashValue], [FHSyncUtils generateHashForData:updatedata], @"%@ entry should be updated", uid1);
-  XCTAssertNotNil([dataset.dataRecords objectForKey:@"uid4"], @"uid4 should not nil");
+  XCTAssertNil((dataset.dataRecords)[uid2], @"%@ should be removed", uid2);
+  XCTAssertNotNil((dataset.dataRecords)[uid3], @"%@ should have been inserted", uid3);
+  XCTAssertEqualObjects([(dataset.dataRecords)[uid1] hashValue], [FHSyncUtils generateHashForData:updatedata], @"%@ entry should be updated", uid1);
+  XCTAssertNotNil((dataset.dataRecords)[@"uid4"], @"uid4 should not nil");
 }
 @end

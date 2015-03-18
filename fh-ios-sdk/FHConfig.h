@@ -12,13 +12,19 @@
 
 /** A utility class to get the app configurations from fhconfig.plist file. */
 
-@interface FHConfig : NSObject{
-    NSMutableDictionary * properties;
-    NSString * propertiesPath;
-}
+@interface FHConfig : NSObject
 
 /** Access the configurations. */
-@property(nonatomic, retain) NSDictionary* properties;
+@property(nonatomic, strong, readonly) NSDictionary* properties;
+
+/** Get or generate and get a new CFUUID (stored in NSUserDefaults)
+ 
+ @return CFUUID
+ */
+@property(nonatomic, strong, readonly) NSString *uuid;
+
+// Return vendorIdentifier
+@property(nonatomic, strong, readonly) NSString *vendorId;
 
 /** Get a configuration value for a given key.
  
@@ -33,15 +39,6 @@
  @param key The configuration key
  */
 - (void)setConfigValue:(NSString *)val ForKey:(NSString *)key;
-
-/** Get or generate and get a new CFUUID (stored in NSUserDefaults)
- 
- @return CFUUID
- */
-- (NSString *)uuid;
-
-// Return vendorIdentifier
-- (NSString *)vendorId;
 
 /** Get the singleton instace of this class 
  
