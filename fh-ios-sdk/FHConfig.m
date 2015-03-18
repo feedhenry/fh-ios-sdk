@@ -15,8 +15,6 @@
 
 @implementation FHConfig
 
-static FHConfig * shared = nil;
-
 - (instancetype)init{
   self = [super init];
   if(self){
@@ -31,12 +29,13 @@ static FHConfig * shared = nil;
 }
 
 + (FHConfig *)getSharedInstance{
-  @synchronized(self){
-    if(shared == nil){
-      shared = [[self alloc] init];
-    }
-  }
-  return shared;
+    static FHConfig * _shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _shared = [[FHConfig alloc] init];
+    });
+    
+    return _shared;
 }
 
 - (NSString *)getConfigValueForKey:(NSString *)key{

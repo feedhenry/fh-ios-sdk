@@ -25,8 +25,6 @@
     BOOL _initialized;
 }
 
-static FHSyncClient* shared = nil;
-
 - (instancetype) initWithConfig:(FHSyncConfig*) config
 {
   self = [super init];
@@ -41,12 +39,13 @@ static FHSyncClient* shared = nil;
 
 + (FHSyncClient*) getInstance
 {
-  @synchronized(self){
-    if(nil == shared){
-      shared = [[self alloc] init];
-    }
-  }
-  return shared;
+   static FHSyncClient* _shared = nil;
+   static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _shared = [[FHSyncClient alloc] init];
+    });
+
+    return _shared;
 }
 
 - (void) datasetMonitor:(NSDictionary*) info
