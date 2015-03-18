@@ -9,12 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FHAct.h"
 
-@interface FHCloudRequest : FHAct {
-  NSString* path;
-}
-
-/** The path of the cloud API */
-@property(nonatomic,strong)NSString * path;
+@interface FHCloudRequest : FHAct
 
 - (instancetype)initWithProps:(FHCloudProps *) props;
 

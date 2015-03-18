@@ -11,12 +11,7 @@
 #import "FHAct.h"
 #import <UIKit/UIViewController.h>
 
-@interface FHAuthRequest : FHAct {
-  NSString * policyId;
-  NSString * userId;
-  NSString * password;
-  UIViewController* parentViewController;
-}
+@interface FHAuthRequest : FHAct
 
 /** The policyId used by this request. Don't access it directly, use authWithPolicyId:. */
 @property (nonatomic, strong)NSString *policyId;

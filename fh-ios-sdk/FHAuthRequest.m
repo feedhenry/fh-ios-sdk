@@ -16,7 +16,6 @@
 #define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"
 
 @implementation FHAuthRequest
-@synthesize policyId,userId,password,parentViewController;
 
 - (instancetype) initWithViewController:(UIViewController*) viewController
 {
@@ -27,20 +26,20 @@
   return self;
 }
 
-- (NSString *) getPath {
+- (NSString *) path {
   return FH_AUTH_PATH;
 }
 
 - (void) authWithPolicyId:(NSString *)aPolicyId {
   self.policyId = aPolicyId;
-  [self setArgs:nil];
+  self.args = nil;
 }
 
 - (void) authWithPolicyId:(NSString *)aPolicyId UserId:(NSString *)aUserId Password:(NSString *)aPassword {
   self.policyId = aPolicyId;
   self.userId = aUserId;
   self.password = aPassword;
-  [self setArgs:nil];
+  self.args = nil;
 }
 
 - (void)setArgs:(NSDictionary * )arguments {
@@ -48,27 +47,23 @@
   NSMutableDictionary * innerP    = [NSMutableDictionary dictionaryWithCapacity:5];
   
   params[@"__fh"] = [FH getDefaultParams]; //keep backward compatible
-  [params setValue:policyId forKey:@"policyId"];
+  [params setValue:self.policyId forKey:@"policyId"];
   [params setValue:[[FHConfig getSharedInstance] uuid] forKey:@"device"];
   [params setValue:[[FHConfig getSharedInstance] getConfigValueForKey:@"appid"] forKey:@"clientToken"];
   
   if(self.userId && self.password){
-    [innerP setValue:userId forKey:@"userId"];
-    [innerP setValue:password forKey:@"password"];
+    [innerP setValue:self.userId forKey:@"userId"];
+    [innerP setValue:self.password forKey:@"password"];
   }
   
   [params setValue:innerP forKey:@"params"];
-  args = params;
-  NSLog(@"args set to  %@",args);
+  _args = params;
+  NSLog(@"args set to  %@",_args);
   return;
 }
 
-- (NSDictionary *)args{
-  return (NSDictionary *) args;
-}
-
 - (void) exec:(BOOL)pAsync WithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
-  async = pAsync;
+  _async = pAsync;
   void (^tmpSuccess)(FHResponse *)=^(FHResponse * res){
     NSDictionary* result = res.parsedResponse;
     NSString* status = [result valueForKey:@"status"];
@@ -112,7 +107,7 @@
 
     }
   };
-  [httpClient sendRequest:self AndSuccess:tmpSuccess AndFailure:failornil];
+  [_httpClient sendRequest:self AndSuccess:tmpSuccess AndFailure:failornil];
 }
 
 @end
