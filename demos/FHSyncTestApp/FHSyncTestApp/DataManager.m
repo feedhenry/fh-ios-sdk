@@ -32,7 +32,7 @@
 {
   FHSyncNotificationMessage* msg = (FHSyncNotificationMessage*) [note object];
   NSLog(@"Got notification %@", msg);
-  NSString* code = [msg getCode];
+  NSString* code = msg.code;
   if([code isEqualToString:SYNC_COMPLETE_MESSAGE]){
     NSMutableDictionary* data = [[self.syncClient listWithDataId:DATA_ID] mutableCopy];
     NSMutableArray* processed = [NSMutableArray array];
