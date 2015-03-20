@@ -1,9 +1,8 @@
 //
 //  FHSyncDelegate.h
-//  FH
+//  fh-ios-sdk
 //
-//  Created by Wei Li on 24/09/2012.
-//  Copyright (c) 2012 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,12 +12,20 @@
 
 @required
 
-- (void) onSyncStarted:(FHSyncNotificationMessage *) message;
-- (void) onSyncCompleted:(FHSyncNotificationMessage *) message;
-- (void) onUpdateOffline:(FHSyncNotificationMessage *) message;
-- (void) onCollisionDetected:(FHSyncNotificationMessage *) message;
-- (void) onUpdateFailed:(FHSyncNotificationMessage* ) message;
-- (void) onUpdateApplied:(FHSyncNotificationMessage* ) message;
-- (void) onDeltaReceived:(FHSyncNotificationMessage *) message;
-- (void) onClientStorageFailed:(FHSyncNotificationMessage *) message;
+- (void)onSyncStarted:(FHSyncNotificationMessage *)message;
+
+- (void)onSyncCompleted:(FHSyncNotificationMessage *)message;
+
+- (void)onUpdateOffline:(FHSyncNotificationMessage *)message;
+
+- (void)onCollisionDetected:(FHSyncNotificationMessage *)message;
+
+- (void)onUpdateFailed:(FHSyncNotificationMessage *)message;
+
+- (void)onUpdateApplied:(FHSyncNotificationMessage *)message;
+
+- (void)onDeltaReceived:(FHSyncNotificationMessage *)message;
+
+- (void)onClientStorageFailed:(FHSyncNotificationMessage *)message;
+
 @end

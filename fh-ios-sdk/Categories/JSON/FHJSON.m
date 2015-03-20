@@ -2,7 +2,7 @@
 //  FHJSON.m
 //  fh-ios-sdk
 //
-//  Copyright (c) 2015 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import "FHJSON.h"
@@ -19,7 +19,8 @@
 @implementation NSData (JSON)
 
 - (id)objectFromJSONData {
-    return [NSJSONSerialization JSONObjectWithData:self options:NSJSONReadingAllowFragments error:nil];
+    return
+        [NSJSONSerialization JSONObjectWithData:self options:NSJSONReadingAllowFragments error:nil];
 }
 
 @end
@@ -31,7 +32,7 @@
     if (data) {
         return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
-    
+
     return nil;
 }
 
@@ -48,7 +49,7 @@
     if (data) {
         return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
-    
+
     return nil;
 }
 
