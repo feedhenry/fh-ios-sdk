@@ -1,9 +1,8 @@
 //
 //  FHCloudRequest.h
-//  FH
+//  fh-ios-sdk
 //
-//  Created by Wei Li on 28/04/2014.
-//  Copyright (c) 2014 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,6 +10,6 @@
 
 @interface FHCloudRequest : FHAct
 
-- (instancetype)initWithProps:(FHCloudProps *) props;
+- (instancetype)initWithProps:(FHCloudProps *)props;
 
 @end

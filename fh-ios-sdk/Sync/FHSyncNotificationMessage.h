@@ -1,4 +1,10 @@
-/** The notification message created by the sync client */
+//
+//  FHSyncDelegate.h
+//  fh-ios-sdk
+//
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 #define kFHSyncStateChangedNotification @"kFHSyncStateChangedNotification"
@@ -14,20 +20,26 @@
 #define DELTA_RECEIVED_MESSAGE @"DELTA_RECEIVED"
 #define CLIENT_STORAGE_FAILED_MESSAGE @"CLIENT_STORAGE_FAILED"
 
+/**
+ The notification message created by the sync client
+ */
 @interface FHSyncNotificationMessage : NSObject
 
-- (instancetype) initWithDataId:(NSString*) dataId AndUID:(NSString*) uid AndCode:(NSString*) code AndMessage:(NSString*) message;
+- (instancetype)initWithDataId:(NSString *)dataId
+                        AndUID:(NSString *)uid
+                       AndCode:(NSString *)code
+                    AndMessage:(NSString *)message;
 
 /** Get the data set id associated with the notification */
-@property(nonatomic, strong, readonly) NSString* dataId;
+@property (nonatomic, strong, readonly) NSString *dataId;
 
 /** Get the id of the data record associated with the notification (if any)*/
-@property(nonatomic, strong, readonly) NSString *UID;
+@property (nonatomic, strong, readonly) NSString *UID;
 
 /** Get the code of the notification */
-@property(nonatomic, strong, readonly) NSString *code;
+@property (nonatomic, strong, readonly) NSString *code;
 
 /** Extra message of the noification */
-@property(nonatomic, strong, readonly) NSString *message;
+@property (nonatomic, strong, readonly) NSString *message;
 
 @end

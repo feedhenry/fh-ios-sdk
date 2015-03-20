@@ -1,9 +1,8 @@
 //
 //  FHCloudProps.m
-//  FH
+//  fh-ios-sdk
 //
-//  Created by Wei Li on 28/04/2014.
-//  Copyright (c) 2014 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import "FHConfig.h"
@@ -11,8 +10,8 @@
 
 @interface FHCloudProps ()
 
-@property (nonatomic, strong, readwrite) NSDictionary* cloudProps;
-@property (nonatomic, strong, readwrite) NSString* cloudHost;
+@property (nonatomic, strong, readwrite) NSDictionary *cloudProps;
+@property (nonatomic, strong, readwrite) NSString *cloudHost;
 
 @end
 
@@ -20,39 +19,38 @@
 
 @synthesize cloudHost = _cloudHost;
 
-- (instancetype) initWithCloudProps:(NSDictionary *)aCloudProps
-{
-  self = [super init];
-  if (self) {
-    self.cloudProps = aCloudProps;
-  }
-  return self;
+- (instancetype)initWithCloudProps:(NSDictionary *)aCloudProps {
+    self = [super init];
+    if (self) {
+        self.cloudProps = aCloudProps;
+    }
+    return self;
 }
 
-- (NSString*) cloudHost
-{
-  if (nil == _cloudHost) {
-    NSString * cloudUrl;
-    NSString* resUrl = self.cloudProps[@"url"];
-    if (nil != resUrl) {
-      cloudUrl = resUrl;
-    } else if (self.cloudProps[@"hosts"] && self.cloudProps[@"hosts"][@"url"]){
-      cloudUrl = self.cloudProps[@"hosts"][@"url"];
-    } else {
-      NSString * mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
-      NSString * propName = @"releaseCloudUrl";
-      if( [mode isEqualToString:@"dev"]){
-        propName = @"debugCloudUrl";
-      }
-      cloudUrl = self.cloudProps[@"hosts"][propName];
-      
+- (NSString *)cloudHost {
+    if (nil == _cloudHost) {
+        NSString *cloudUrl;
+        NSString *resUrl = self.cloudProps[@"url"];
+        if (nil != resUrl) {
+            cloudUrl = resUrl;
+        } else if (self.cloudProps[@"hosts"] && self.cloudProps[@"hosts"][@"url"]) {
+            cloudUrl = self.cloudProps[@"hosts"][@"url"];
+        } else {
+            NSString *mode = [[FHConfig getSharedInstance] getConfigValueForKey:@"mode"];
+            NSString *propName = @"releaseCloudUrl";
+            if ([mode isEqualToString:@"dev"]) {
+                propName = @"debugCloudUrl";
+            }
+            cloudUrl = self.cloudProps[@"hosts"][propName];
+        }
+        NSString *format =
+            ([[cloudUrl substringToIndex:[cloudUrl length] - 1] isEqualToString:@"/"]) ? @"%@"
+                                                                                       : @"%@/";
+        NSString *api = [NSMutableString stringWithFormat:format, cloudUrl];
+        NSLog(@"Request url is %@", api);
+        _cloudHost = api;
     }
-    NSString * format   = ([[cloudUrl substringToIndex:[cloudUrl length]-1] isEqualToString:@"/"]) ? @"%@" : @"%@/";
-    NSString * api      = [NSMutableString stringWithFormat:format,cloudUrl];
-    NSLog(@"Request url is %@", api);
-    _cloudHost = api;
-  }
-  return _cloudHost;
+    return _cloudHost;
 }
 
 @end

@@ -1,20 +1,20 @@
 //
 //  FHCloudRequest.h
-//  FH
+//  fh-ios-sdk
 //
-//  Created by Wei Li on 09/08/2012.
-//  Copyright (c) 2012 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
-
-/** Calling cloud side functions on FeedHenry */
 
 #import "FHAct.h"
 
+/**
+ Calling cloud side functions on FeedHenry
+ */
 @interface FHActRequest : FHAct
 
 /** The cloud side function name */
-@property(nonatomic,strong)NSString * remoteAction;
+@property (nonatomic, strong) NSString *remoteAction;
 
-- (instancetype)initWithProps:(FHCloudProps *) props;
+- (instancetype)initWithProps:(FHCloudProps *)props;
 
 @end

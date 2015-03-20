@@ -1,9 +1,8 @@
 //
 //  FHTestUtils.h
-//  FH
+//  fh-ios-sdk
 //
-//  Created by Wei Li on 17/07/2013.
-//  Copyright (c) 2013 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,8 +11,10 @@
 
 @interface FHTestUtils : NSObject
 
-+ (NSDictionary*) generateJSONData;
-+ (FHSyncDataRecord*) generateRandomDataRecord;
-+ (FHSyncPendingDataRecord*) generateRandomPendingRecord;
++ (NSDictionary *)generateJSONData;
+
++ (FHSyncDataRecord *)generateRandomDataRecord;
+
++ (FHSyncPendingDataRecord *)generateRandomPendingRecord;
 
 @end

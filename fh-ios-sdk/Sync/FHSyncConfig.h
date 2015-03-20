@@ -1,14 +1,22 @@
+//
+//  FHSyncConfig.h
+//  fh-ios-sdk
+//
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
 /**
  The configuration options for the sync client
  */
-#import <Foundation/Foundation.h>
-
 @interface FHSyncConfig : NSObject
 
 /** The sync frequency. In seconds.*/
 @property double syncFrequency;
 
-/** If set to YES, the sync loop will start immediately if there is a local change made */
+/** If set to YES, the sync loop will start immediately if there is a local
+ * change made */
 @property BOOL autoSyncLocalUpdates;
 
 /** If set to YES, a notification will be created when a sync loop start */
@@ -20,13 +28,15 @@
 /** If set to YES, a notification will be created when a sync collision detect*/
 @property BOOL notifySyncCollision;
 
-/** If set to YES, a notification will be created when a offline update finish */
+/** If set to YES, a notification will be created when a offline update finish
+ */
 @property BOOL notifyOfflineUpdate;
 
 /** If set to YES, a notification will be created when a remote update fail */
 @property BOOL notifyRemoteUpdateFailed;
 
-/** If set to YES, a notification will be created when a remote update applied */
+/** If set to YES, a notification will be created when a remote update applied
+ */
 @property BOOL notifyRemoteUpdateApplied;
 
 /** If set to YES, a notification will be create when a local update applied */
@@ -35,19 +45,23 @@
 /** If set to YES, a notification will be created when a delta is received */
 @property BOOL notifyDeltaReceived;
 
-/** If set to YES, a notification will be created when client side storage fail */
+/** If set to YES, a notification will be created when client side storage fail
+ */
 @property BOOL notifyClientStorageFailed;
 
 /** If set to YES, a notification will be created when a sync loop fail */
 @property BOOL notifySyncFailed;
 
-/** Set the crash count limit before the crashed records either resent or discarded*/
+/** Set the crash count limit before the crashed records either resent or
+ * discarded*/
 @property NSInteger crashCountWait;
 
-/** If set to YES, the crashed updates will be discarded if the crash count limit reached */
+/** If set to YES, the crashed updates will be discarded if the crash count
+ * limit reached */
 @property BOOL resendCrashedUpdates;
 
-/** If use the old sync API on the cloud side, set this to true. Default to false. **/
+/** If use the old sync API on the cloud side, set this to true. Default to
+ * false. **/
 @property BOOL hasCustomSync;
 
 /** If the local data file should be synced via iCloud **/
@@ -55,10 +69,14 @@
 
 @property BOOL debug;
 
+- (instancetype)init;
 
-- (instancetype) init;
-- (NSDictionary*) JSONData;
-- (NSString*) JSONString;
-+ (FHSyncConfig*) objectFromJSONString:(NSString*) jsonStr;
-+ (FHSyncConfig*) objectFromJSONData:(NSDictionary*) jsonData;
+- (NSDictionary *)JSONData;
+
+- (NSString *)JSONString;
+
++ (FHSyncConfig *)objectFromJSONString:(NSString *)jsonStr;
+
++ (FHSyncConfig *)objectFromJSONData:(NSDictionary *)jsonData;
+
 @end

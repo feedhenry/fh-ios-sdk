@@ -1,9 +1,8 @@
 //
 //  FHInitRequest.m
-//  FH
+//  fh-ios-sdk
 //
-//  Created by Wei Li on 09/08/2012.
-//  Copyright (c) 2012 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import "FHInitRequest.h"
@@ -14,17 +13,16 @@
 
 @implementation FHInitRequest
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
-    if(self){
-        _args =  (NSMutableDictionary *)self.defaultParams;
+    if (self) {
+        _args = (NSMutableDictionary *)self.defaultParams;
     }
     return self;
 }
 
-- (NSString *) path {
-  return FH_INIT_PATH;
+- (NSString *)path {
+    return FH_INIT_PATH;
 }
 
 @end

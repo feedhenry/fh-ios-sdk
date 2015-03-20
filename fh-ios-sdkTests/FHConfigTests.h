@@ -1,9 +1,8 @@
 //
 //  FHTests.h
-//  FHTests
+//  fh-ios-sdk
 //
-//  Created by Wei Li on 08/08/2012.
-//  Copyright (c) 2012 FeedHenry. All rights reserved.
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

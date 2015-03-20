@@ -1,7 +1,8 @@
 //
 //  FHResponse.m
 //  fh-ios-sdk
-//  Copyright (c) 2012 Feedhenry. All rights reserved.
+//
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
 #import "FHResponse.h"
@@ -9,11 +10,11 @@
 
 @implementation FHResponse
 
-- (void)parseResponseString:(NSString *)res{
-    self.parsedResponse =  [res objectFromJSONString];    
+- (void)parseResponseString:(NSString *)res {
+    self.parsedResponse = [res objectFromJSONString];
 }
 
-- (void)parseResponseData:(NSData *)dat{
+- (void)parseResponseData:(NSData *)dat {
     self.parsedResponse = [dat objectFromJSONData];
 }
 
