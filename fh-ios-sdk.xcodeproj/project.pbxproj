@@ -6,32 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		B33842F115E237B3004DE63E /* Documentation */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B33842F415E237B3004DE63E /* Build configuration list for PBXAggregateTarget "Documentation" */;
-			buildPhases = (
-				B33842F615E237BB004DE63E /* Build Documentation */,
-			);
-			dependencies = (
-			);
-			name = Documentation;
-			productName = Documentation;
-		};
-		B349A04915D2A96900254861 /* framework */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B349A04A15D2A96900254861 /* Build configuration list for PBXAggregateTarget "framework" */;
-			buildPhases = (
-				B349A04F15D2A98500254861 /* ShellScript */,
-			);
-			dependencies = (
-				6F666F991ACECEA700B391D2 /* PBXTargetDependency */,
-			);
-			name = framework;
-			productName = framework;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		55E51DF876A3F51961C76B14 /* libPods-FHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */; };
 		6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
@@ -70,14 +44,14 @@
 		6FCF31EB1A9B40FF0014B936 /* FHAuthRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE71A9B366200C22C92 /* FHAuthRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31EC1A9B41040014B936 /* FHCloudProps.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE81A9B366200C22C92 /* FHCloudProps.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31ED1A9B41070014B936 /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE91A9B366200C22C92 /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEC1A9B366200C22C92 /* FHHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEC1A9B366200C22C92 /* FHHttpClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FCF31F11A9B41230014B936 /* FHResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F21A9B41740014B936 /* FHSyncClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFA1A9B366200C22C92 /* FHSyncClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F31A9B41760014B936 /* FHSyncConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFC1A9B366200C22C92 /* FHSyncConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F81A9B430F0014B936 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60031A9B366200C22C92 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31F91A9B43240014B936 /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF21A9B366200C22C92 /* NSString+MD5.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31FA1A9B43240014B936 /* NSString+Validation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF41A9B366200C22C92 /* NSString+Validation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FCF31F91A9B43240014B936 /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF21A9B366200C22C92 /* NSString+MD5.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6FCF31FA1A9B43240014B936 /* NSString+Validation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF41A9B366200C22C92 /* NSString+Validation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FCF32071A9B47000014B936 /* FHAct+SetHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC81A9B35F900C22C92 /* FHAct+SetHttpClient.m */; };
 		6FCF32081A9B47000014B936 /* FHConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */; };
 		6FCF32091A9B47000014B936 /* FHSyncDataRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */; };
@@ -88,6 +62,11 @@
 		6FCF320E1A9B47000014B936 /* FHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */; };
 		6FCF320F1A9B47000014B936 /* MockFHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD91A9B35F900C22C92 /* MockFHHttpClient.m */; };
 		6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEF1A9B366200C22C92 /* FHResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FE7B3671ACEDEA90029C63F /* FHOAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF71A9B366200C22C92 /* FHOAuthViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6FE7B3681ACEDED10029C63F /* FHSyncDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFE1A9B366200C22C92 /* FHSyncDataRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6FE7B3691ACEDED10029C63F /* FHSyncDataset.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60001A9B366200C22C92 /* FHSyncDataset.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6FE7B36A1ACEDEF60029C63F /* FHSyncPendingDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60051A9B366200C22C92 /* FHSyncPendingDataRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6FE7B36B1ACEDF1A0029C63F /* FHSyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60071A9B366200C22C92 /* FHSyncUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B3AE9D7415D52CEB004EF454 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
 		B3AE9D8A15D52DEE004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
 		B3AE9D8B15D52DFF004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
@@ -104,13 +83,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6F666F981ACECEA700B391D2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B3D7C47A15D28BE30019262E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B3D7C48215D28BE30019262E;
-			remoteInfo = FH;
-		};
 		B3D7C49915D28BE30019262E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B3D7C47A15D28BE30019262E /* Project object */;
@@ -460,17 +432,22 @@
 				6FCF31F31A9B41760014B936 /* FHSyncConfig.h in Headers */,
 				6FCF31EA1A9B40FC0014B936 /* FHActRequest.h in Headers */,
 				6FCF31EB1A9B40FF0014B936 /* FHAuthRequest.h in Headers */,
-				6FCF31F91A9B43240014B936 /* NSString+MD5.h in Headers */,
-				6FCF31FA1A9B43240014B936 /* NSString+Validation.h in Headers */,
 				6FCF31F81A9B430F0014B936 /* FHSyncNotificationMessage.h in Headers */,
 				6FCF31EC1A9B41040014B936 /* FHCloudProps.h in Headers */,
 				6FCF31ED1A9B41070014B936 /* FHCloudRequest.h in Headers */,
 				6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */,
 				6FCF31E81A9B40F50014B936 /* FH.h in Headers */,
-				6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */,
 				6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */,
 				6FCF31F11A9B41230014B936 /* FHResponseDelegate.h in Headers */,
+				6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */,
 				6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */,
+				6FE7B36B1ACEDF1A0029C63F /* FHSyncUtils.h in Headers */,
+				6FE7B3681ACEDED10029C63F /* FHSyncDataRecord.h in Headers */,
+				6FE7B3691ACEDED10029C63F /* FHSyncDataset.h in Headers */,
+				6FE7B36A1ACEDEF60029C63F /* FHSyncPendingDataRecord.h in Headers */,
+				6FE7B3671ACEDEA90029C63F /* FHOAuthViewController.h in Headers */,
+				6FCF31FA1A9B43240014B936 /* NSString+Validation.h in Headers */,
+				6FCF31F91A9B43240014B936 /* NSString+MD5.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,8 +519,6 @@
 			targets = (
 				B3D7C48215D28BE30019262E /* FH */,
 				B3D7C49215D28BE30019262E /* FHTests */,
-				B349A04915D2A96900254861 /* framework */,
-				B33842F115E237B3004DE63E /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -574,34 +549,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FHTests/Pods-FHTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B33842F615E237BB004DE63E /* Build Documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"FeedHenry iOS SDK\" \\\n--project-company \"FeedHenry\" \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore FHInitRequest.h \\\n--ignore FHHttpClient.h \\\n--ignore FHOAuthViewController.h \\\n--ignore UnitTest \\\n--ignore FHSyncDataset.h \\\n--ignore FHSyncUtils.h \\\n--ignore FHSyncPendingDataRecord.h \\\n--ignore FHSyncDataRecord.h \\\n--ignore Categories/NSString+MD5.h \\\n--ignore Categories/NSString+Validation.h \\\n--ignore \"${PROJECT_DIR}/fh-ios-sdk/ThirdParty\" \\\n--no-create-docset \\\n--create-html \\\n-o \"${PROJECT_DIR}\" \\\n\"${PROJECT_DIR}/fh-ios-sdk\"\nrm -rf \"${PROJECT_DIR}/docset/Contents/Resources/Documents\"\nmkdir -p \"${PROJECT_DIR}/docset/Contents/Resources/Documents\"\ncp -R \"${PROJECT_DIR}/html/\" \"${PROJECT_DIR}/docset/Contents/Resources/Documents/\"\nrm -rf \"${PROJECT_DIR}/html/\"";
-		};
-		B349A04F15D2A98500254861 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\nFH_SDK_VERSION=`head -1 VERSION.txt`\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=\"FH\"\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild VALID_ARCHS=\"i386 x86_64 armv7 armv7s arm64\" -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/${SF_TARGET_NAME}\"";
 			showEnvVarsInLog = 0;
 		};
 		B3D7C49115D28BE30019262E /* ShellScript */ = {
@@ -726,11 +673,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6F666F991ACECEA700B391D2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B3D7C48215D28BE30019262E /* FH */;
-			targetProxy = 6F666F981ACECEA700B391D2 /* PBXContainerItemProxy */;
-		};
 		B3D7C49A15D28BE30019262E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B3D7C48215D28BE30019262E /* FH */;
@@ -750,36 +692,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B33842F215E237B3004DE63E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B33842F315E237B3004DE63E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		B349A04B15D2A96900254861 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = FH;
-			};
-			name = Debug;
-		};
-		B349A04C15D2A96900254861 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = FH;
-			};
-			name = Release;
-		};
 		B3D7C4A515D28BE30019262E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -929,24 +841,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B33842F415E237B3004DE63E /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B33842F215E237B3004DE63E /* Debug */,
-				B33842F315E237B3004DE63E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B349A04A15D2A96900254861 /* Build configuration list for PBXAggregateTarget "framework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B349A04B15D2A96900254861 /* Debug */,
-				B349A04C15D2A96900254861 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B3D7C47D15D28BE30019262E /* Build configuration list for PBXProject "fh-ios-sdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
