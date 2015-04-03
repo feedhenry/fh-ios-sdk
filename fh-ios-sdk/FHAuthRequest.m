@@ -88,7 +88,7 @@
                 NSURL *request = [NSURL URLWithString:oauthUrl];
                 FHOAuthViewController *controller =
                     [[FHOAuthViewController alloc] initWith:request completeHandler:complete];
-                [self.parentViewController presentModalViewController:controller animated:YES];
+                [self.parentViewController presentViewController:controller animated:YES completion:nil];
             } else {
                 if (sucornil) {
                     sucornil(res);

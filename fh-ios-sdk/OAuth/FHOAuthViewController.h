@@ -29,8 +29,6 @@
                 delegate:(id)_delegate
         finishedSelector:(SEL)_finishedSelector;
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
-
 #if NS_BLOCKS_AVAILABLE
 - (instancetype)initWith:(NSURL *)_authRequest completeHandler:(void (^)(FHResponse *resp))_handler;
 #endif
