@@ -5,7 +5,7 @@
 # Exclude OS X folder attributes
 .DS_Store
  
-# Exclude user-specific XCode 3 and 4 files
+# Exclude user-specific XCode files
 *.mode1
 *.mode1v3
 *.mode2v3
@@ -16,6 +16,10 @@
 xcuserdata
 DerivedData/*
 docset-installed.txt
+
+# CocoaPods
+Podfile.lock
+Pods/
 
 # Exclude the build directory
 build/*
