@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FH/FHSyncClient.h"
+#import <FeedHenry/FHSyncClient.h>
+
 #import "DataManager.h"
 
 @interface RootViewCotroller : UITableViewController

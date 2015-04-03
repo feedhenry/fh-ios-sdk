@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FH/FHResponseDelegate.h"
 
 @interface HelloViewController : UIViewController {
   UITextField *name;

@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 Feedhenry. All rights reserved.
 //
 
+#import <FeedHenry/FH.h>
+
 #import "HelloViewController.h"
-#import "FH/FH.h"
 
 @interface HelloViewController ()
 

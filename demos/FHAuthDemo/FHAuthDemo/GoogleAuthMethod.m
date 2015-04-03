@@ -6,11 +6,9 @@
 //  Copyright (c) 2012 Feedhenry. All rights reserved.
 //
 
+#import <FeedHenry/FH.h>
+
 #import "GoogleAuthMethod.h"
-#import "FH/FH.h"
-#import "FH/FHAuthRequest.h"
-#import "FH/FHResponse.h"
-#import "FH/FHJSON.h"
 
 @implementation GoogleAuthMethod
 

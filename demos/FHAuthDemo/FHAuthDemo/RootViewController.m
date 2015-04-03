@@ -6,11 +6,12 @@
 //  Copyright (c) 2012 Feedhenry. All rights reserved.
 //
 
+#import <FeedHenry/FH.h>
+
 #import "RootViewController.h"
 #import "HelloViewController.h"
 #import "AuthViewController.h"
-#import "FH/FH.h"
-#import "FH/FHResponse.h"
+
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

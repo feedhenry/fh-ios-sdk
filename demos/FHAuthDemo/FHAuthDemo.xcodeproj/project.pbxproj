@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F2AC6851ACEF914003F2874 /* FeedHenry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F2AC6841ACEF914003F2874 /* FeedHenry.framework */; };
 		6FB4F7F51A9F237E002693DA /* auth_feedhenry.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F7F31A9F237E002693DA /* auth_feedhenry.png */; };
 		6FB4F7F61A9F237E002693DA /* auth_google.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F7F41A9F237E002693DA /* auth_google.png */; };
 		6FB4F7F81A9F239A002693DA /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F7F71A9F239A002693DA /* fhconfig.plist */; };
@@ -24,7 +25,6 @@
 		6FB4F8241A9F241E002693DA /* FHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8161A9F241E002693DA /* FHLoginViewController.xib */; };
 		6FB4F8251A9F241E002693DA /* HelloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8171A9F241E002693DA /* HelloViewController.xib */; };
 		6FB4F8261A9F241E002693DA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8181A9F241E002693DA /* RootViewController.xib */; };
-		6FDD5EC51AA05B75005B5A82 /* FH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FDD5EC41AA05B75005B5A82 /* FH.framework */; };
 		A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
 		A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
 		A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */; };
@@ -37,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F2AC6841ACEF914003F2874 /* FeedHenry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedHenry.framework; sourceTree = "<group>"; };
 		6FB4F7F31A9F237E002693DA /* auth_feedhenry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = auth_feedhenry.png; path = FHAuthDemo/Resources/auth_feedhenry.png; sourceTree = SOURCE_ROOT; };
 		6FB4F7F41A9F237E002693DA /* auth_google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = auth_google.png; path = FHAuthDemo/Resources/auth_google.png; sourceTree = SOURCE_ROOT; };
 		6FB4F7F71A9F239A002693DA /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fhconfig.plist; path = FHAuthDemo/fhconfig.plist; sourceTree = SOURCE_ROOT; };
@@ -67,7 +68,6 @@
 		6FB4F8161A9F241E002693DA /* FHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FHLoginViewController.xib; path = FHAuthDemo/FHLoginViewController.xib; sourceTree = SOURCE_ROOT; };
 		6FB4F8171A9F241E002693DA /* HelloViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelloViewController.xib; path = FHAuthDemo/HelloViewController.xib; sourceTree = SOURCE_ROOT; };
 		6FB4F8181A9F241E002693DA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = FHAuthDemo/RootViewController.xib; sourceTree = SOURCE_ROOT; };
-		6FDD5EC41AA05B75005B5A82 /* FH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FH.framework; sourceTree = "<group>"; };
 		A2CD31FA14D0300200C4D3F0 /* FHAuthDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHAuthDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CD31FE14D0300200C4D3F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A2CD320014D0300200C4D3F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,7 +94,7 @@
 				A2CD323114D063FE00C4D3F0 /* SystemConfiguration.framework in Frameworks */,
 				A2CD322F14D0633600C4D3F0 /* CFNetwork.framework in Frameworks */,
 				A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */,
-				6FDD5EC51AA05B75005B5A82 /* FH.framework in Frameworks */,
+				6F2AC6851ACEF914003F2874 /* FeedHenry.framework in Frameworks */,
 				A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */,
 				A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -123,7 +123,7 @@
 		A2CD31FD14D0300200C4D3F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6FDD5EC41AA05B75005B5A82 /* FH.framework */,
+				6F2AC6841ACEF914003F2874 /* FeedHenry.framework */,
 				D84E94F2177C3AA7006DCE05 /* AdSupport.framework */,
 				A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */,
 				A2CD342F14D067A700C4D3F0 /* libxml2.dylib */,
@@ -366,6 +366,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FHAuthDemo/FHAuthDemo-Prefix.pch";
@@ -390,6 +391,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FHAuthDemo/FHAuthDemo-Prefix.pch";

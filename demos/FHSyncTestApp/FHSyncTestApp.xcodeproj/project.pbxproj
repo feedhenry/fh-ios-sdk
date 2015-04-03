@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6F3B8B771AA062A400E1B156 /* FH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3B8B761AA062A400E1B156 /* FH.framework */; };
+		6FB886971ACF0554006D3910 /* FeedHenry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB886961ACF0554006D3910 /* FeedHenry.framework */; };
 		B30003D1179D4AD0008195AB /* RootViewCotroller.m in Sources */ = {isa = PBXBuildFile; fileRef = B30003D0179D4AD0008195AB /* RootViewCotroller.m */; };
 		B30003D9179D4D94008195AB /* shopping-basket.png in Resources */ = {isa = PBXBuildFile; fileRef = B30003D7179D4D94008195AB /* shopping-basket.png */; };
 		B30003DA179D4D94008195AB /* shopping-basket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B30003D8179D4D94008195AB /* shopping-basket@2x.png */; };
@@ -39,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6F3B8B761AA062A400E1B156 /* FH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FH.framework; sourceTree = "<group>"; };
+		6FB886961ACF0554006D3910 /* FeedHenry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedHenry.framework; sourceTree = "<group>"; };
 		B30003CF179D4AD0008195AB /* RootViewCotroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewCotroller.h; sourceTree = "<group>"; };
 		B30003D0179D4AD0008195AB /* RootViewCotroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewCotroller.m; sourceTree = "<group>"; };
 		B30003D7179D4D94008195AB /* shopping-basket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shopping-basket.png"; path = "images/shopping-basket.png"; sourceTree = "<group>"; };
@@ -84,12 +84,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3B8B771AA062A400E1B156 /* FH.framework in Frameworks */,
 				B3BE542F17A2C83B00C9D59E /* AdSupport.framework in Frameworks */,
 				B3000416179D5C68008195AB /* CoreData.framework in Frameworks */,
 				B3A5D2771611DA6F004E3973 /* libz.dylib in Frameworks */,
 				B3A5D26F1611CFBC004E3973 /* CoreFoundation.framework in Frameworks */,
 				B3A5D26D1611CFB6004E3973 /* MobileCoreServices.framework in Frameworks */,
+				6FB886971ACF0554006D3910 /* FeedHenry.framework in Frameworks */,
 				B38D4EF01611CF64008F0A47 /* SystemConfiguration.framework in Frameworks */,
 				B38D4EEE1611CF31008F0A47 /* libxml2.2.dylib in Frameworks */,
 				B38D4EEC1611CF29008F0A47 /* CFNetwork.framework in Frameworks */,
@@ -122,7 +122,7 @@
 		B3171A701611BC2800DEC978 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B8B761AA062A400E1B156 /* FH.framework */,
+				6FB886961ACF0554006D3910 /* FeedHenry.framework */,
 				B3BE542E17A2C83B00C9D59E /* AdSupport.framework */,
 				B3000415179D5C68008195AB /* CoreData.framework */,
 				B3A5D2761611DA6F004E3973 /* libz.dylib */,
