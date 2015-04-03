@@ -25,7 +25,7 @@
 				B349A04F15D2A98500254861 /* ShellScript */,
 			);
 			dependencies = (
-				B3951AD015D2BA750091054A /* PBXTargetDependency */,
+				6F666F991ACECEA700B391D2 /* PBXTargetDependency */,
 			);
 			name = framework;
 			productName = framework;
@@ -58,7 +58,7 @@
 		6F9C60AE1A9B37C000C22C92 /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60491A9B366200C22C92 /* FHCloudProps.m */; };
 		6F9C60AF1A9B37C000C22C92 /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */; };
 		6F9C60B01A9B37C000C22C92 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604B1A9B366200C22C92 /* FHConfig.m */; };
-		6F9C60B11A9B37C000C22C92 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604C1A9B366200C22C92 /* FHHttpClient.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
+		6F9C60B11A9B37C000C22C92 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604C1A9B366200C22C92 /* FHHttpClient.m */; };
 		6F9C60B21A9B37C000C22C92 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604D1A9B366200C22C92 /* FHInitRequest.m */; };
 		6F9C60B41A9B37C000C22C92 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604F1A9B366200C22C92 /* FHResponse.m */; };
 		6FC784D71A9B9D95002485B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC784D61A9B9D95002485B5 /* UIKit.framework */; };
@@ -104,7 +104,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B3951ACF15D2BA750091054A /* PBXContainerItemProxy */ = {
+		6F666F981ACECEA700B391D2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B3D7C47A15D28BE30019262E /* Project object */;
 			proxyType = 1;
@@ -726,10 +726,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B3951AD015D2BA750091054A /* PBXTargetDependency */ = {
+		6F666F991ACECEA700B391D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B3D7C48215D28BE30019262E /* FH */;
-			targetProxy = B3951ACF15D2BA750091054A /* PBXContainerItemProxy */;
+			targetProxy = 6F666F981ACECEA700B391D2 /* PBXContainerItemProxy */;
 		};
 		B3D7C49A15D28BE30019262E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -753,7 +753,6 @@
 		B33842F215E237B3004DE63E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -761,7 +760,6 @@
 		B33842F315E237B3004DE63E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -769,7 +767,6 @@
 		B349A04B15D2A96900254861 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = FH;
 			};
@@ -778,7 +775,6 @@
 		B349A04C15D2A96900254861 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = FH;
 			};
@@ -861,7 +857,6 @@
 					"$(inherited)",
 					"${SDKROOT}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -887,7 +882,6 @@
 					"$(inherited)",
 					"${SDKROOT}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
