@@ -7,6 +7,7 @@
 
 #import "MockFHHttpClient.h"
 #import "FHResponse.h"
+#import "FHDefines.h"
 
 @implementation MockFHHttpClient
 

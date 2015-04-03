@@ -5,15 +5,14 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "FHDefines.h"
-
 #import "FHActRequest.h"
 #import "FHCloudRequest.h"
 #import "FHResponse.h"
 #import "FHAuthRequest.h"
 #import "FHCloudRequest.h"
+#import "FHCloudProps.h"
 #import "FHConfig.h"
+#import "FHJSON.h"
 
 typedef NS_ENUM(NSInteger, FHSDKNetworkErrorType) {
     FHSDKNetworkOfflineErrorType = 1

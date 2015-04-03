@@ -6,7 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "FHResponse.h"
+#import "FHJSON.h"
 
 /**
  Present a customized UIWebView to perform OAuth authentication.

@@ -5,10 +5,11 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "FH.h"
 #import "FHSyncClient.h"
-#import "FHJSON.h"
 #import "FHSyncConfig.h"
+#import "FHSyncNotificationMessage.h"
+#import "FHSyncDelegate.h"
 
 /**
  The sync client is part of the FeedHenry data sync framework. It provides a mechanism to manage

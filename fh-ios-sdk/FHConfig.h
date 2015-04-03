@@ -5,10 +5,6 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "NSString+MD5.h"
-#import <UIKit/UIKit.h>
-
 /**
  A utility class to get the app configurations from fhconfig.plist file.
  */

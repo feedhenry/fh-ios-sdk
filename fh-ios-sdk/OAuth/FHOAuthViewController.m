@@ -6,7 +6,6 @@
 //
 
 #import "FHOAuthViewController.h"
-#import "FHJSON.h"
 
 @interface FHOAuthViewController () {
     BOOL finished;

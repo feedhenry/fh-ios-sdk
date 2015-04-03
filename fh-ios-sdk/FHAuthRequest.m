@@ -5,12 +5,10 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHAuthRequest.h"
-#import "FHConfig.h"
+#import "FH.h"
 #import "FHHttpClient.h"
 #import "FHOAuthViewController.h"
-#import "FHJSON.h"
-#import "FH.h"
+
 
 #define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"
 

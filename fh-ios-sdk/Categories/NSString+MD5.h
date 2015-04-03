@@ -9,7 +9,6 @@
 // There's NO WARRANTY AT ALL.
 //
 
-#import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonDigest.h>
 
 @interface NSString (MD5)

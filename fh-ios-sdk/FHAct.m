@@ -5,12 +5,10 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHAct.h"
-#import "FHJSON.h"
-#import "FHConfig.h"
+#import "FH.h"
+
 #import "FHHttpClient.h"
 #import "FHDefines.h"
-#import "FH.h"
 
 @implementation FHAct
 

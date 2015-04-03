@@ -5,6 +5,8 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #import "FHConfig.h"
 #import "NSString+MD5.h"
 
