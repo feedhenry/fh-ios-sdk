@@ -146,7 +146,7 @@
         return failureHandler(fhres);
     }
 #endif
-    SEL delFailSel = @selector(requestDidFailWithError:);
+    SEL delFailSel = @selector(requestDidFailWithResponse:);
     if (action.delegate && [action.delegate respondsToSelector:delFailSel]) {
         [(FHAct *)action.delegate performSelectorOnMainThread:delFailSel
                                                    withObject:fhres

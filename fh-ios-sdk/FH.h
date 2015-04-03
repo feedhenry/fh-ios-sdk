@@ -15,9 +15,9 @@
 #import "FHCloudRequest.h"
 #import "FHConfig.h"
 
-typedef NS_ENUM(NSInteger, _FHSDKNetworkErrorType) {
+typedef NS_ENUM(NSInteger, FHSDKNetworkErrorType) {
     FHSDKNetworkOfflineErrorType = 1
-} FHSDKNetworkErrorType;
+};
 
 /**
 This class provides static methods to initialize the library and create new
