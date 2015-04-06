@@ -12,7 +12,7 @@
 		6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
 		6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F84682D1AB03C0100EC7593 /* FHJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F8468301AB03C0100EC7593 /* FHJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F84682E1AB03C0100EC7593 /* FHJSON.m */; };
-		6F9B35141A979F8A00135274 /* libFH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFH.a */; };
+		6F9B35141A979F8A00135274 /* libFeedHenry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFeedHenry.a */; };
 		6F9C5FC61A9B35E100C22C92 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC41A9B35E100C22C92 /* InfoPlist.strings */; };
 		6F9C5FDB1A9B35F900C22C92 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */; };
 		6F9C607E1A9B369D00C22C92 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FF31A9B366200C22C92 /* NSString+MD5.m */; };
@@ -175,7 +175,7 @@
 		B3AE9D8C15D52E5B004EF454 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B3AE9D8E15D52E87004EF454 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B3AE9D9115D52F19004EF454 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B3D7C48315D28BE30019262E /* libFH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFH.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D7C48315D28BE30019262E /* libFeedHenry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFeedHenry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D7C48615D28BE30019262E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3D7C49315D28BE30019262E /* FHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D7C49615D28BE30019262E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -207,7 +207,7 @@
 				6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */,
 				6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */,
 				6FC784D71A9B9D95002485B5 /* UIKit.framework in Frameworks */,
-				6F9B35141A979F8A00135274 /* libFH.a in Frameworks */,
+				6F9B35141A979F8A00135274 /* libFeedHenry.a in Frameworks */,
 				B3AE9D9415D52FA1004EF454 /* CoreGraphics.framework in Frameworks */,
 				B3AE9D9315D52F5D004EF454 /* MobileCoreServices.framework in Frameworks */,
 				B3AE9D9215D52F19004EF454 /* SystemConfiguration.framework in Frameworks */,
@@ -311,7 +311,7 @@
 		B3D7C48415D28BE30019262E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3D7C48315D28BE30019262E /* libFH.a */,
+				B3D7C48315D28BE30019262E /* libFeedHenry.a */,
 				B3D7C49315D28BE30019262E /* FHTests.xctest */,
 			);
 			name = Products;
@@ -471,7 +471,7 @@
 			);
 			name = FH;
 			productName = FH;
-			productReference = B3D7C48315D28BE30019262E /* libFH.a */;
+			productReference = B3D7C48315D28BE30019262E /* libFeedHenry.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		B3D7C49215D28BE30019262E /* FHTests */ = {
@@ -761,6 +761,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E6E7A1924B17EF8B3DD8023 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/FH.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -774,7 +775,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FeedHenry;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
@@ -785,6 +786,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/FH.dst;
@@ -799,7 +801,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FeedHenry;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
@@ -810,6 +812,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0DDDA6554CB424F893F45FB6 /* Pods-FHTests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -817,7 +820,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
 				INFOPLIST_FILE = "fh-ios-sdkTests/fh-ios-sdkTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -826,6 +828,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 545041B32263D5936453A81E /* Pods-FHTests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -833,7 +836,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
 				INFOPLIST_FILE = "fh-ios-sdkTests/fh-ios-sdkTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
