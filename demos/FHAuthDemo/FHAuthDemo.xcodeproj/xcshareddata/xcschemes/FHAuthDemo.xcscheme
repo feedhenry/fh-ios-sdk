@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F293F1F4BB4DE438A38A8BA"
-               BuildableName = "libPods-FeedHenry.a"
-               BlueprintName = "Pods-FeedHenry"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "A2CD31F914D0300200C4D3F0"
+               BuildableName = "FHAuthDemo.app"
+               BlueprintName = "FHAuthDemo"
+               ReferencedContainer = "container:FHAuthDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A2CD31F914D0300200C4D3F0"
+            BuildableName = "FHAuthDemo.app"
+            BlueprintName = "FHAuthDemo"
+            ReferencedContainer = "container:FHAuthDemo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -39,6 +48,16 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A2CD31F914D0300200C4D3F0"
+            BuildableName = "FHAuthDemo.app"
+            BlueprintName = "FHAuthDemo"
+            ReferencedContainer = "container:FHAuthDemo.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -48,6 +67,16 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A2CD31F914D0300200C4D3F0"
+            BuildableName = "FHAuthDemo.app"
+            BlueprintName = "FHAuthDemo"
+            ReferencedContainer = "container:FHAuthDemo.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
