@@ -25,15 +25,6 @@
 		6FB4F8241A9F241E002693DA /* FHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8161A9F241E002693DA /* FHLoginViewController.xib */; };
 		6FB4F8251A9F241E002693DA /* HelloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8171A9F241E002693DA /* HelloViewController.xib */; };
 		6FB4F8261A9F241E002693DA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4F8181A9F241E002693DA /* RootViewController.xib */; };
-		A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD31FE14D0300200C4D3F0 /* UIKit.framework */; };
-		A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320014D0300200C4D3F0 /* Foundation.framework */; };
-		A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */; };
-		A2CD322F14D0633600C4D3F0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */; };
-		A2CD323114D063FE00C4D3F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */; };
-		A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */; };
-		A2CD323714D065F100C4D3F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD323614D065F100C4D3F0 /* libz.dylib */; };
-		A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */; };
-		D84E94F3177C3AA7006DCE05 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84E94F2177C3AA7006DCE05 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,18 +60,7 @@
 		6FB4F8171A9F241E002693DA /* HelloViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelloViewController.xib; path = FHAuthDemo/HelloViewController.xib; sourceTree = SOURCE_ROOT; };
 		6FB4F8181A9F241E002693DA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = FHAuthDemo/RootViewController.xib; sourceTree = SOURCE_ROOT; };
 		A2CD31FA14D0300200C4D3F0 /* FHAuthDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHAuthDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2CD31FE14D0300200C4D3F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A2CD320014D0300200C4D3F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		A2CD323614D065F100C4D3F0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		A2CD342F14D067A700C4D3F0 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		B075ADE3F24AB53980686AD4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D84E94F2177C3AA7006DCE05 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		DA653BD6F626CDB743ADEC77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,15 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D84E94F3177C3AA7006DCE05 /* AdSupport.framework in Frameworks */,
-				A2CD343214D067D900C4D3F0 /* libxml2.2.dylib in Frameworks */,
-				A2CD323714D065F100C4D3F0 /* libz.dylib in Frameworks */,
-				A2CD323314D0640B00C4D3F0 /* MobileCoreServices.framework in Frameworks */,
-				A2CD323114D063FE00C4D3F0 /* SystemConfiguration.framework in Frameworks */,
-				A2CD322F14D0633600C4D3F0 /* CFNetwork.framework in Frameworks */,
-				A2CD31FF14D0300200C4D3F0 /* UIKit.framework in Frameworks */,
-				A2CD320114D0300200C4D3F0 /* Foundation.framework in Frameworks */,
-				A2CD320314D0300200C4D3F0 /* CoreGraphics.framework in Frameworks */,
 				5FBACCC8D0DF146058DCCE34 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,17 +106,6 @@
 		A2CD31FD14D0300200C4D3F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D84E94F2177C3AA7006DCE05 /* AdSupport.framework */,
-				A2CD343114D067D800C4D3F0 /* libxml2.2.dylib */,
-				A2CD342F14D067A700C4D3F0 /* libxml2.dylib */,
-				A2CD323614D065F100C4D3F0 /* libz.dylib */,
-				A2CD323214D0640B00C4D3F0 /* MobileCoreServices.framework */,
-				A2CD323014D063FE00C4D3F0 /* SystemConfiguration.framework */,
-				A2CD322E14D0633600C4D3F0 /* CFNetwork.framework */,
-				A2CD31FE14D0300200C4D3F0 /* UIKit.framework */,
-				A2CD320014D0300200C4D3F0 /* Foundation.framework */,
-				A2CD320214D0300200C4D3F0 /* CoreGraphics.framework */,
-				A2CD321614D0300200C4D3F0 /* SenTestingKit.framework */,
 				DA653BD6F626CDB743ADEC77 /* libPods.a */,
 			);
 			name = Frameworks;

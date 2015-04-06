@@ -8,46 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		775E88873AD48948B58C7201 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C944AE97B2CD5466CDA8B856 /* libPods.a */; };
-		B339FAD615DA88920040E5FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FAD515DA88920040E5FF /* UIKit.framework */; };
-		B339FAD815DA88920040E5FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FAD715DA88920040E5FF /* Foundation.framework */; };
-		B339FADA15DA88920040E5FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FAD915DA88920040E5FF /* CoreGraphics.framework */; };
 		B339FAE015DA88920040E5FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B339FADE15DA88920040E5FF /* InfoPlist.strings */; };
 		B339FAE215DA88920040E5FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B339FAE115DA88920040E5FF /* main.m */; };
 		B339FAE615DA88920040E5FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B339FAE515DA88920040E5FF /* AppDelegate.m */; };
-		B339FAEF15DA88E50040E5FF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FAEE15DA88E50040E5FF /* MobileCoreServices.framework */; };
-		B339FAF115DA88F10040E5FF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FAF015DA88F10040E5FF /* CFNetwork.framework */; };
-		B339FAFE15DA89210040E5FF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FAFD15DA89210040E5FF /* SystemConfiguration.framework */; };
-		B339FB0015DA892A0040E5FF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FAFF15DA892A0040E5FF /* libz.dylib */; };
-		B339FB0415DA89410040E5FF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B339FB0315DA89410040E5FF /* libxml2.dylib */; };
 		B339FB0A15DA8A330040E5FF /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B339FB0915DA8A330040E5FF /* fhconfig.plist */; };
 		B339FB0E15DA8BDB0040E5FF /* FHStarterProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B339FB0C15DA8BDB0040E5FF /* FHStarterProjectViewController.m */; };
 		B339FB0F15DA8BDB0040E5FF /* FHStarterProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B339FB0D15DA8BDB0040E5FF /* FHStarterProjectViewController.xib */; };
-		B3BE543417A2CDD300C9D59E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3BE543317A2CDD300C9D59E /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		35BA05D12B8C74673B60C805 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		819B7143F1470CE714A19352 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B339FAD115DA88920040E5FF /* FHStarterProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHStarterProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B339FAD515DA88920040E5FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B339FAD715DA88920040E5FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B339FAD915DA88920040E5FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B339FADD15DA88920040E5FF /* FHStarterProject-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FHStarterProject-Info.plist"; sourceTree = "<group>"; };
 		B339FADF15DA88920040E5FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B339FAE115DA88920040E5FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B339FAE315DA88920040E5FF /* FHStarterProject-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FHStarterProject-Prefix.pch"; sourceTree = "<group>"; };
 		B339FAE415DA88920040E5FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B339FAE515DA88920040E5FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B339FAEE15DA88E50040E5FF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		B339FAF015DA88F10040E5FF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		B339FAFD15DA89210040E5FF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B339FAFF15DA892A0040E5FF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		B339FB0315DA89410040E5FF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		B339FB0915DA8A330040E5FF /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fhconfig.plist; sourceTree = "<group>"; };
 		B339FB0B15DA8BDB0040E5FF /* FHStarterProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHStarterProjectViewController.h; sourceTree = "<group>"; };
 		B339FB0C15DA8BDB0040E5FF /* FHStarterProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHStarterProjectViewController.m; sourceTree = "<group>"; };
 		B339FB0D15DA8BDB0040E5FF /* FHStarterProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FHStarterProjectViewController.xib; sourceTree = "<group>"; };
-		B3BE543317A2CDD300C9D59E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C944AE97B2CD5466CDA8B856 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,15 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3BE543417A2CDD300C9D59E /* AdSupport.framework in Frameworks */,
-				B339FB0415DA89410040E5FF /* libxml2.dylib in Frameworks */,
-				B339FB0015DA892A0040E5FF /* libz.dylib in Frameworks */,
-				B339FAFE15DA89210040E5FF /* SystemConfiguration.framework in Frameworks */,
-				B339FADA15DA88920040E5FF /* CoreGraphics.framework in Frameworks */,
-				B339FAF115DA88F10040E5FF /* CFNetwork.framework in Frameworks */,
-				B339FAEF15DA88E50040E5FF /* MobileCoreServices.framework in Frameworks */,
-				B339FAD615DA88920040E5FF /* UIKit.framework in Frameworks */,
-				B339FAD815DA88920040E5FF /* Foundation.framework in Frameworks */,
 				775E88873AD48948B58C7201 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,15 +66,6 @@
 		B339FAD415DA88920040E5FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3BE543317A2CDD300C9D59E /* AdSupport.framework */,
-				B339FB0315DA89410040E5FF /* libxml2.dylib */,
-				B339FAFF15DA892A0040E5FF /* libz.dylib */,
-				B339FAFD15DA89210040E5FF /* SystemConfiguration.framework */,
-				B339FAF015DA88F10040E5FF /* CFNetwork.framework */,
-				B339FAEE15DA88E50040E5FF /* MobileCoreServices.framework */,
-				B339FAD515DA88920040E5FF /* UIKit.framework */,
-				B339FAD715DA88920040E5FF /* Foundation.framework */,
-				B339FAD915DA88920040E5FF /* CoreGraphics.framework */,
 				C944AE97B2CD5466CDA8B856 /* libPods.a */,
 			);
 			name = Frameworks;
