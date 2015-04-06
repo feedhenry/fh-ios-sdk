@@ -37,7 +37,7 @@
     textArea.text = res.rawResponseAsString;
   } AndFailure:^(FHResponse * actFailRes){
     // Errors
-    NSLog(@"Failed to call. Response = %@", actFailRes.rawResponse);
+    NSLog(@"Failed to call. Response = %@", [actFailRes.error description]);
   }];
 }
 

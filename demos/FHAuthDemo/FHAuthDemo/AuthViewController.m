@@ -32,7 +32,7 @@
   self.navigationItem.title = @"Login With ...";
   [super viewDidLoad];
   AuthMethod* fhauth = [[FHAuthMethod alloc] initWithName:@"FeedHenry" icon:@"auth_feedhenry" policyId:@"MyFeedHenryPolicy"];
-  AuthMethod* googleauth = [[GoogleAuthMethod alloc] initWithName:@"Google OAuth" icon:@"auth_google" policyId:@"MyGooglePolicy"];
+  AuthMethod* googleauth = [[GoogleAuthMethod alloc] initWithName:@"Google OAuth" icon:@"auth_google" policyId:@"AsciiSinker"];
   self.authMethods = [NSArray arrayWithObjects:fhauth, googleauth, nil];
   [fhauth release];
   [googleauth release];
