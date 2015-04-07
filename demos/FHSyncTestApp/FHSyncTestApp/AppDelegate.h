@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FeedHenry/FHSyncClient.h>
+#import <FH/FHSyncClient.h>
 
 #import "DataManager.h"
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import <FeedHenry/FHSyncClient.h>
+#import <FH/FHSyncClient.h>
 
 #import "ShoppingItem.h"
 

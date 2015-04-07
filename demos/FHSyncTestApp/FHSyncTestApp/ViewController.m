@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FH/FHSyncClient.h>
 #import "ViewController.h"
-#import <FeedHenry/FH.h>
-#import <FeedHenry/FHSyncClient.h>
-#import <FeedHenry/FHSyncNotificationMessage.h>
+
 
 @interface ViewController ()
 {

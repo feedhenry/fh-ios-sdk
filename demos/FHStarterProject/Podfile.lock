@@ -1,21 +1,21 @@
 PODS:
   - ASIHTTPRequest/Core (1.8.2):
     - Reachability
-  - FeedHenry (2.2.5):
+  - FH (2.2.5):
     - ASIHTTPRequest/Core (= 1.8.2)
     - Reachability (= 3.2)
   - Reachability (3.2)
 
 DEPENDENCIES:
-  - FeedHenry (from `../../`)
+  - FH (from `../../`)
 
 EXTERNAL SOURCES:
-  FeedHenry:
+  FH:
     :path: "../../"
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
-  FeedHenry: 9bb946ce50a3b6bfc2b846937364ece57200e571
+  FH: 3c1e132caf0e68029cbce45ea49b27ea4fc8dce2
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
 COCOAPODS: 0.36.3

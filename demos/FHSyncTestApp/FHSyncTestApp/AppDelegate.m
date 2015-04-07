@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <FeedHenry/FHSyncClient.h>
+#import <FH/FHSyncClient.h>
 #import <CoreData/CoreData.h>
 
 #import "RootViewCotroller.h"

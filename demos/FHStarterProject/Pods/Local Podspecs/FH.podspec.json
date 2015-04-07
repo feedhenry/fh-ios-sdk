@@ -1,5 +1,5 @@
 {
-  "name": "FeedHenry",
+  "name": "FH",
   "version": "2.2.5",
   "summary": "FeedHenry iOS Software Development Kit",
   "homepage": "https://www.feedhenry.com",
@@ -7,8 +7,8 @@
   "license": "FeedHenry",
   "authors": "Red Hat, Inc.",
   "source": {
-    "git": "https://github.com/cvasilak/fh-ios-sdk",
-    "branch": "FHMOBSDK-19-cocoapods"
+    "git": "https://github.com/feedhenry/fh-ios-sdk",
+    "tag": "2.2.5"
   },
   "platforms": {
     "ios": 7.0
@@ -32,6 +32,10 @@
     "fh-ios-sdk/Categories/JSON/FHJSON.h"
   ],
   "requires_arc": true,
+  "libraries": [
+    "xml2",
+    "z"
+  ],
   "dependencies": {
     "ASIHTTPRequest/Core": [
       "1.8.2"

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Feedhenry. All rights reserved.
 //
 
-#import <FeedHenry/FH.h>
+#import <FH/FH.h>
 
 #import "AppDelegate.h"
 #import "HelloViewController.h"

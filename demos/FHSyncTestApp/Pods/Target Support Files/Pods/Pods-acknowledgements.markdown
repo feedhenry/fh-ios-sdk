@@ -32,9 +32,9 @@ A different license may apply to other software included in this package,
 including GHUnit and Andrew Donoho's Reachability class. Please consult their 
 respective headers for the terms of their individual licenses.
 
-## FeedHenry
+## FH
 
-Copyright (c) 2014 FeedHenry Ltd, All Rights Reserved.
+Copyright (c) 2012-2015 FeedHenry Ltd, All Rights Reserved.
 
 Please refer to your contract with FeedHenry for the software license agreement.
 If you do not have a contract, you do not have a license to use this software.

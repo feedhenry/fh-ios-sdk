@@ -49,13 +49,13 @@ respective headers for the terms of their individual licenses.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2014 FeedHenry Ltd, All Rights Reserved.
+			<string>Copyright (c) 2012-2015 FeedHenry Ltd, All Rights Reserved.
 
 Please refer to your contract with FeedHenry for the software license agreement.
 If you do not have a contract, you do not have a license to use this software.
 </string>
 			<key>Title</key>
-			<string>FeedHenry</string>
+			<string>FH</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

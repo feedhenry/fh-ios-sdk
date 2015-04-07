@@ -3,4 +3,4 @@ source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'FHSyncTestApp.xcodeproj'
 platform :ios, '7.0'
 
-pod 'FeedHenry', :path => '../../'
+pod 'FH', :path => '../../'
