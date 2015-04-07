@@ -1,10 +1,10 @@
 # Exclude temp nibs and swap files
 *~.nib
 *.swp
- 
+
 # Exclude OS X folder attributes
 .DS_Store
- 
+
 # Exclude user-specific XCode files
 *.mode1
 *.mode1v3
@@ -12,25 +12,17 @@
 *.perspective
 *.perspectivev3
 *.pbxuser
-*.xcworkspace
+xcuserdatad/*
 xcuserdata
-DerivedData/*
+*.xccheckout
 docset-installed.txt
-
-# CocoaPods
-Podfile.lock
-Pods/
+DerivedData/*
 
 # Exclude the build directory
 build/*
-demos/FHStarterProject/build/*
-demos/FHStarterProject/FH.framework/*
-
-demos/FHAuthDemo/build/*
-demos/FHAuthDemo/FH.framework/*
-
-demos/FHSyncTestApp/build/*
-demos/FHSyncTestApp/FH.framework/*
-
 # Exclude the /dist directory
 dist/
+
+# Exclude the output of the 'pod package' directory when build.
+# The output is of the form 'FH-{VERSION}''
+FH-*/
