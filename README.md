@@ -6,7 +6,7 @@ The iOS Software Development Kit to connect to the [FeedHenry platform.](http://
 The project relies on [Cocoapods](http://cocoapods.org) and it's respective plugins  ['cocoapods-packager'](https://github.com/CocoaPods/cocoapods-packager) and ['cocoapods-appledoc'](https://github.com/CocoaPods/cocoapods-appledoc), so please ensure that are installed in your system. If not, please execute the following:
 
 ```
-sudo gem install cocoapods cocoapods-packager cocoapods-appledoc
+[sudo] gem install cocoapods cocoapods-packager cocoapods-appledoc
 ```
 
 ### Common Actions
@@ -14,9 +14,19 @@ sudo gem install cocoapods cocoapods-packager cocoapods-appledoc
 * Update the ```VERSION.txt``` and ```fh-ios-sdk/FHDefines.h ``` with the new version number.
 
 ### a) Release on Cocoapods  [Required Step]
-* Update ```FeedHenry.podspec``` with the new version number.
-* Tag the repository with the new version number.
-* Push the new release tag on GitHub
+* Update ```FeedHenry.podspec```, ```s.version``` attribute with the new version number.
+* Tag the repository with the new version number:
+
+```
+git tag -s -a {VERSION} -m 'version {VERSION}'   // e.g. {VERSION} format is  '2.2.5'
+```
+
+* Push the new release tag on GitHub:
+
+```
+git push origin {TAG}
+```
+
 * Publish the ```FeedHenry.podspec``` on the [Cocoapods](http://cocoapods.org) repo with:
 
 	```
@@ -36,7 +46,7 @@ This will produce a ```FeedHenry.framework``` binary artifact on ```FeedHenry-{V
 
 ### c) Generate API Documentation
 
-To produce API documentation invoke the following command:
+To generate API documentation invoke the following command:
 
 ```
 pod appledoc FeedHenry
