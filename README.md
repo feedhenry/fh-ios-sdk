@@ -14,7 +14,7 @@ The project relies on [Cocoapods](http://cocoapods.org) and it's respective plug
 * Update the ```VERSION.txt``` and ```fh-ios-sdk/FHDefines.h ``` with the new version number.
 
 ### a) Release on Cocoapods  [Required Step]
-* Update ```FeedHenry.podspec```, ```s.version``` attribute with the new version number.
+* Update ```FH.podspec```, ```s.version``` attribute with the new version number.
 * Tag the repository with the new version number:
 
 ```
@@ -27,11 +27,11 @@ git tag -s -a {VERSION} -m 'version {VERSION}'   // e.g. {VERSION} format is  '2
 git push origin {TAG}
 ```
 
-* Publish the ```FeedHenry.podspec``` on the [Cocoapods](http://cocoapods.org) repo with:
+* Publish the ```FH.podspec``` on the [Cocoapods](http://cocoapods.org) repo with:
 
-	```
+```
  	pod trunk push --allow-warnings
-	```
+```
 
 >	```--allow-warnings``` is required to skip some deprecation warnings from a underlying dependency library. This will be circumvented in a future release.
 
@@ -39,19 +39,14 @@ git push origin {TAG}
 * Once you have published on Cocoapods it's time to do a GitHub release. To do so invoke the following command to produce the binary ```framework artifact```:
 
 ```
-pod package FeedHenry.podspec
+pod package FH.podspec
 ```
 
-This will produce a ```FeedHenry.framework``` binary artifact on ```FeedHenry-{VERSION}/ios/``` folder,  that you can then attach on the [GitHub release page](https://help.github.com/articles/creating-releases/).
+This will produce a ```FH.framework``` binary artifact on ```FH-{VERSION}/ios/``` folder,  that you can then attach on the [GitHub release page](https://help.github.com/articles/creating-releases/).
 
 ### c) Generate API Documentation
 
-To generate API documentation invoke the following command:
-
-```
-pod appledoc FeedHenry
-```
-The resulting documentation will reside in ```FeedHenry-{VERSION}/html/``` folder.
+To generate API documentation and sync with the [GitHub pages placeholder](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html), switch to ['gh-pages'](https://github.com/cvasilak/fh-ios-sdk/tree/gh-pages) branch and follow the instructions there.
 
 ## Usage
 
