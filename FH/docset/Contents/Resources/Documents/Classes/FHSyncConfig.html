@@ -11,8 +11,8 @@
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">FeedHenry iOS SDK </a></h1>
-				<a id="developerHome" href="../index.html">FeedHenry</a>
+				<h1><a id="libraryTitle" href="../index.html">FH </a></h1>
+				<a id="developerHome" href="../index.html">Red Hat, Inc.</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -44,6 +44,10 @@
 	<option value="//api/name/crashCountWait">&nbsp;&nbsp;&nbsp;&nbsp;crashCountWait</option>
 	
 	<option value="//api/name/debug">&nbsp;&nbsp;&nbsp;&nbsp;debug</option>
+	
+	<option value="//api/name/hasCustomSync">&nbsp;&nbsp;&nbsp;&nbsp;hasCustomSync</option>
+	
+	<option value="//api/name/icloud_backup">&nbsp;&nbsp;&nbsp;&nbsp;icloud_backup</option>
 	
 	<option value="//api/name/notifyClientStorageFailed">&nbsp;&nbsp;&nbsp;&nbsp;notifyClientStorageFailed</option>
 	
@@ -118,6 +122,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/crashCountWait">crashCountWait</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debug">debug</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasCustomSync">hasCustomSync</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/icloud_backup">icloud_backup</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/notifyClientStorageFailed">notifyClientStorageFailed</a></span></li>
 	
@@ -304,6 +312,18 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/hasCustomSync">&nbsp;&nbsp;hasCustomSync</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/icloud_backup">&nbsp;&nbsp;icloud_backup</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/debug">&nbsp;&nbsp;debug</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -358,7 +378,8 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>If set to YES, the sync loop will start immediately if there is a local change made</p>
+		<p>If set to YES, the sync loop will start immediately if there is a local
+change made</p>
 	</div>		
 	
     
@@ -375,7 +396,8 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If set to YES, the sync loop will start immediately if there is a local change made</p>
+		<p>If set to YES, the sync loop will start immediately if there is a local
+change made</p>
 	</div>
 	
 	
@@ -399,12 +421,13 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set the crash count limit before the crashed records either resent or discarded</p>
+		<p>Set the crash count limit before the crashed records either resent or
+discarded</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property int crashCountWait</code></div>
+	<div class="method-subsection method-declaration"><code>@property NSInteger crashCountWait</code></div>
 
     
 	
@@ -416,7 +439,8 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Set the crash count limit before the crashed records either resent or discarded</p>
+		<p>Set the crash count limit before the crashed records either resent or
+discarded</p>
 	</div>
 	
 	
@@ -442,6 +466,90 @@
 	<div class="method-subsection method-declaration"><code>@property BOOL debug</code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hasCustomSync" title="hasCustomSync"></a>
+	<h3 class="subsubtitle method-title">hasCustomSync</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If use the old sync API on the cloud side, set this to true. Default to
+false. *</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property BOOL hasCustomSync</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If use the old sync API on the cloud side, set this to true. Default to
+false. *</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/icloud_backup" title="icloud_backup"></a>
+	<h3 class="subsubtitle method-title">icloud_backup</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If the local data file should be synced via iCloud *</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property BOOL icloud_backup</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If the local data file should be synced via iCloud *</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">FHSyncConfig.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -861,7 +969,8 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>If set to YES, the crashed updates will be discarded if the crash count limit reached</p>
+		<p>If set to YES, the crashed updates will be discarded if the crash count
+limit reached</p>
 	</div>		
 	
     
@@ -878,7 +987,8 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If set to YES, the crashed updates will be discarded if the crash count limit reached</p>
+		<p>If set to YES, the crashed updates will be discarded if the crash count
+limit reached</p>
 	</div>
 	
 	
@@ -950,7 +1060,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (FHSyncConfig *)objectFromJSONData:(NSDictionary *)<em>jsonData</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (FHSyncConfig *)objectFromJSONData:(id)<em>jsonData</em></code></div>
 
     
 </div>
@@ -961,7 +1071,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (FHSyncConfig *)objectFromJSONString:(NSString *)<em>jsonStr</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (FHSyncConfig *)objectFromJSONString:(id)<em>jsonStr</em></code></div>
 
     
 </div>
@@ -1002,7 +1112,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+	<div class="method-subsection method-declaration"><code>- (instancetype)init</code></div>
 
     
 </div>
@@ -1012,6 +1122,9 @@
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1022,7 +1135,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 FeedHenry. All rights reserved. (Last updated: 2014-04-29)</span><br />
+						<p><span class="copyright">&copy; 2015 Red Hat, Inc.. All rights reserved. (Last updated: 2015-04-08)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

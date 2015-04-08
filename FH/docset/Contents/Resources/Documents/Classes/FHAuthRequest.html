@@ -11,8 +11,8 @@
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">FeedHenry iOS SDK </a></h1>
-				<a id="developerHome" href="../index.html">FeedHenry</a>
+				<h1><a id="libraryTitle" href="../index.html">FH </a></h1>
+				<a id="developerHome" href="../index.html">Red Hat, Inc.</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -221,13 +221,16 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>If the auth policy type is OAuth, to allow user authenticate with the OAuth provider, a UIWebView is used to load the login page and do the authentication.
-The library has a built-in UI component to handle this automatially. If this property is set, the built-in UI component will be used. Otherwise you need to handle the OAuth process.</p>
+		<p>If the auth policy type is OAuth, to allow user authenticate with the OAuth
+provider, a UIWebView is used to load the login page and do the authentication.
+The library has a built-in UI component to handle this automatially. If this
+property is set, the built-in UI component will be used. Otherwise you need to
+handle the OAuth process.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIViewController *parentViewController</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) UIViewController *parentViewController</code></div>
 
     
 	
@@ -239,8 +242,11 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If the auth policy type is OAuth, to allow user authenticate with the OAuth provider, a UIWebView is used to load the login page and do the authentication.
-The library has a built-in UI component to handle this automatially. If this property is set, the built-in UI component will be used. Otherwise you need to handle the OAuth process.</p>
+		<p>If the auth policy type is OAuth, to allow user authenticate with the OAuth
+provider, a UIWebView is used to load the login page and do the authentication.
+The library has a built-in UI component to handle this automatially. If this
+property is set, the built-in UI component will be used. Otherwise you need to
+handle the OAuth process.</p>
 	</div>
 	
 	
@@ -264,12 +270,13 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
 	
 	<div class="method-subsection brief-description">
-		<p>If the auth policy type is FeedHenry or LDAP, the <a href="#//api/name/userId">userId</a> and password should be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
+		<p>If the auth policy type is FeedHenry or LDAP, the <a href="#//api/name/userId">userId</a> and password should
+be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *password</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *password</code></div>
 
     
 	
@@ -281,7 +288,8 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If the auth policy type is FeedHenry or LDAP, the <a href="#//api/name/userId">userId</a> and password should be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
+		<p>If the auth policy type is FeedHenry or LDAP, the <a href="#//api/name/userId">userId</a> and password should
+be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
 	</div>
 	
 	
@@ -305,12 +313,13 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The policyId used by this request. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:">authWithPolicyId:</a>.</p>
+		<p>The policyId used by this request. Don&rsquo;t access it directly, use
+<a href="#//api/name/authWithPolicyId:">authWithPolicyId:</a>.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *policyId</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *policyId</code></div>
 
     
 	
@@ -322,7 +331,8 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The policyId used by this request. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:">authWithPolicyId:</a>.</p>
+		<p>The policyId used by this request. Don&rsquo;t access it directly, use
+<a href="#//api/name/authWithPolicyId:">authWithPolicyId:</a>.</p>
 	</div>
 	
 	
@@ -346,12 +356,13 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
 	
 	<div class="method-subsection brief-description">
-		<p>If the auth policy type is FeedHenry or LDAP, the userId and <a href="#//api/name/password">password</a> should be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
+		<p>If the auth policy type is FeedHenry or LDAP, the userId and <a href="#//api/name/password">password</a> should
+be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *userId</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *userId</code></div>
 
     
 	
@@ -363,7 +374,8 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If the auth policy type is FeedHenry or LDAP, the userId and <a href="#//api/name/password">password</a> should be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
+		<p>If the auth policy type is FeedHenry or LDAP, the userId and <a href="#//api/name/password">password</a> should
+be provided. Don&rsquo;t access it directly, use <a href="#//api/name/authWithPolicyId:UserId:Password:">authWithPolicyId:UserId:Password:</a>.</p>
 	</div>
 	
 	
@@ -402,7 +414,7 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)authWithPolicyId:(NSString *)<em>policyId</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authWithPolicyId:(id)<em>policyId</em></code></div>
 
     
 	
@@ -455,7 +467,7 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)authWithPolicyId:(NSString *)<em>policyId</em> UserId:(NSString *)<em>userId</em> Password:(NSString *)<em>password</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authWithPolicyId:(id)<em>policyId</em> UserId:(id)<em>userId</em> Password:(id)<em>password</em></code></div>
 
     
 	
@@ -518,7 +530,7 @@ The library has a built-in UI component to handle this automatially. If this pro
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithViewController:(UIViewController *)<em>viewController</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithViewController:(id)<em>viewController</em></code></div>
 
     
 	
@@ -532,7 +544,8 @@ The library has a built-in UI component to handle this automatially. If this pro
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>viewController</em></dt>
-			<dd><p>The parent UIViewController to present OAuth UI component. See <a href="#//api/name/parentViewController">parentViewController</a>.</p></dd>
+			<dd><p>The parent UIViewController to present OAuth UI component.
+See <a href="#//api/name/parentViewController">parentViewController</a>.</p></dd>
 		</dl>
 		
 	</div>
@@ -567,6 +580,9 @@ The library has a built-in UI component to handle this automatially. If this pro
 					
                     
                     
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -577,7 +593,7 @@ The library has a built-in UI component to handle this automatially. If this pro
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 FeedHenry. All rights reserved. (Last updated: 2014-04-29)</span><br />
+						<p><span class="copyright">&copy; 2015 Red Hat, Inc.. All rights reserved. (Last updated: 2015-04-08)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
