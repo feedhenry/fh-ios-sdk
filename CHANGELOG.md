@@ -1,5 +1,8 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 2.2.5 - 2015-03-08 - Christos Vasilakis
+* added cocoapods support
+
 ## 2.2.4 - 2015-03-05 - Christos Vasilakis
 * extract SDK to be a standalone library target
 
