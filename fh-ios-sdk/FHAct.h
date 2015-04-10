@@ -5,9 +5,8 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "FHDefines.h"
+
 #import "FHResponseDelegate.h"
 #import "FHCloudProps.h"
 

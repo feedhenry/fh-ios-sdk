@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FH/FHSyncClient.h"
+#import <FH/FHSyncClient.h>
+
 #import "DataManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

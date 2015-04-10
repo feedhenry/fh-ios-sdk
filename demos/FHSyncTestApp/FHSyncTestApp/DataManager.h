@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "FH/FHSyncClient.h"
+#import <FH/FHSyncClient.h>
+
 #import "ShoppingItem.h"
 
 #define kAppDataUpdatedNotification @"kAppDataUpdatedNotification"

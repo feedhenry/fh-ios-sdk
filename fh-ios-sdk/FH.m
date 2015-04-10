@@ -13,12 +13,11 @@ CFRelease(uuidRef);
 and store that in config
 */
 
+#import <Reachability/Reachability.h>
+
 #import "FH.h"
-#import "FHResponse.h"
-#import "FHJSON.h"
+#import "FHDefines.h"
 #import "FHInitRequest.h"
-#import "Reachability.h"
-#import "FHCloudProps.h"
 
 @implementation FH
 

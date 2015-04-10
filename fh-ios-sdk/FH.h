@@ -5,19 +5,18 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "FHDefines.h"
-
 #import "FHActRequest.h"
 #import "FHCloudRequest.h"
 #import "FHResponse.h"
 #import "FHAuthRequest.h"
 #import "FHCloudRequest.h"
+#import "FHCloudProps.h"
 #import "FHConfig.h"
+#import "FHJSON.h"
 
-typedef NS_ENUM(NSInteger, _FHSDKNetworkErrorType) {
+typedef NS_ENUM(NSInteger, FHSDKNetworkErrorType) {
     FHSDKNetworkOfflineErrorType = 1
-} FHSDKNetworkErrorType;
+};
 
 /**
 This class provides static methods to initialize the library and create new

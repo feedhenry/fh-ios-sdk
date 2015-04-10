@@ -5,14 +5,9 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "FHSyncClient.h"
-#import "FHSyncConfig.h"
-#import "FHJSON.h"
-#import "FHSyncNotificationMessage.h"
 #import <CommonCrypto/CommonDigest.h>
-#import "FH.h"
-#import "FHResponse.h"
+
+#import "FHSyncClient.h"
 #import "FHSyncUtils.h"
 #import "FHSyncPendingDataRecord.h"
 #import "FHSyncDataRecord.h"

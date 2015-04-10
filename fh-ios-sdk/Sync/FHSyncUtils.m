@@ -5,11 +5,10 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHSyncUtils.h"
-#import "FHJSON.h"
 #import <CommonCrypto/CommonDigest.h>
+
+#import "FHSyncUtils.h"
 #import "FHSyncClient.h"
-#import "FHSyncNotificationMessage.h"
 
 @implementation FHSyncUtils
 

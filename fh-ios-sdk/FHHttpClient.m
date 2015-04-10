@@ -5,12 +5,11 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHHttpClient.h"
-#import "ASIFormDataRequest.h"
-#import "FHResponse.h"
-#import "ASIDownloadCache.h"
+#import <ASIHTTPRequest/ASIFormDataRequest.h>
+#import <ASIHTTPRequest/ASIDownloadCache.h>
+
 #import "FH.h"
-#import "FHConfig.h"
+#import "FHHttpClient.h"
 #import "FHJSON.h"
 
 @implementation FHHttpClient
@@ -146,7 +145,7 @@
         return failureHandler(fhres);
     }
 #endif
-    SEL delFailSel = @selector(requestDidFailWithError:);
+    SEL delFailSel = @selector(requestDidFailWithResponse:);
     if (action.delegate && [action.delegate respondsToSelector:delFailSel]) {
         [(FHAct *)action.delegate performSelectorOnMainThread:delFailSel
                                                    withObject:fhres

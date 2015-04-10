@@ -6,9 +6,7 @@
 //
 
 #import "FHActRequest.h"
-#import "FHConfig.h"
 #import "FH.h"
-
 @implementation FHActRequest
 
 - (instancetype)initWithProps:(FHCloudProps *)props {

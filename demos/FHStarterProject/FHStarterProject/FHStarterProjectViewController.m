@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 FeedHenry. All rights reserved.
 //
 
+#import <FH/FH.h>
+
 #import "FHStarterProjectViewController.h"
-#import "FH/FH.h"
-#import "FH/FHResponse.h"
 
 @interface FHStarterProjectViewController ()
 

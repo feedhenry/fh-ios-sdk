@@ -6,7 +6,6 @@
 //
 
 #import "FHAct.h"
-#import <UIKit/UIViewController.h>
 
 /**
  Authentication & authorization using FeedHenry

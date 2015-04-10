@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FH/FHSyncClient.h>
 #import "ViewController.h"
-#import "FH/FH.h"
-#import "FH/FHSyncClient.h"
-#import "FH/FHSyncNotificationMessage.h"
-#import "FH/FHResponse.h"
+
 
 @interface ViewController ()
 {

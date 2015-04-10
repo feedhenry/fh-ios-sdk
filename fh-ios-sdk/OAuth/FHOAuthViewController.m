@@ -6,7 +6,6 @@
 //
 
 #import "FHOAuthViewController.h"
-#import "FHJSON.h"
 
 @interface FHOAuthViewController () {
     BOOL finished;
@@ -85,7 +84,7 @@
 }
 
 - (void)closeView {
-    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     FHResponse *fhres = [[FHResponse alloc] init];
     fhres.parsedResponse = authInfo;
     if (delegate != nil && finishSeletor != nil) {
@@ -156,13 +155,8 @@
     // Release any stronged subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    if (nil != self.parentViewController) {
-        return
-            [self.parentViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
-    }
-
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)showActivityView {

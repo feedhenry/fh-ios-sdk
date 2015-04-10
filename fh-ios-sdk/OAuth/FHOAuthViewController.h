@@ -6,7 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "FHResponse.h"
+#import "FHJSON.h"
 
 /**
  Present a customized UIWebView to perform OAuth authentication.
@@ -28,8 +30,6 @@
 - (instancetype)initWith:(NSURL *)_authRequest
                 delegate:(id)_delegate
         finishedSelector:(SEL)_finishedSelector;
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
 #if NS_BLOCKS_AVAILABLE
 - (instancetype)initWith:(NSURL *)_authRequest completeHandler:(void (^)(FHResponse *resp))_handler;

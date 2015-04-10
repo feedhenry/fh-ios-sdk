@@ -5,8 +5,6 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 /**
  The configuration options for the sync client
  */

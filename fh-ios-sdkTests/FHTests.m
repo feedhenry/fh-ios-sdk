@@ -5,14 +5,12 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
+#import "FH.h"
 #import "FHTests.h"
 #import "MockFHHttpClient.h"
 #import "FHInitRequest.h"
-#import "FH.h"
-#import "FHResponse.h"
+#import "FHDefines.h"
 #import "FHAct+SetHttpClient.h"
-#import "FHCloudProps.h"
-#import "FHJSON.h"
 
 @implementation FHTests
 

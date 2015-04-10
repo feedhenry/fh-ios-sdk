@@ -5,8 +5,6 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #define kFHSyncStateChangedNotification @"kFHSyncStateChangedNotification"
 
 #define SYNC_STARTED_MESSAGE @"SYNC_STARTED"

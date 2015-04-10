@@ -7,13 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <FH/FHSyncClient.h>
 #import <CoreData/CoreData.h>
-#import <UIKit/UIKit.h>
+
 #import "RootViewCotroller.h"
-#import "FH/FHSyncClient.h"
-#import "FH/FHSyncNotificationMessage.h"
-#import "FH/FH.h"
-#import "FH/FHResponse.h"
 #import "ShoppingItem.h"
 
 @implementation AppDelegate

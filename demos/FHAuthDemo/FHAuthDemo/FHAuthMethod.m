@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Feedhenry. All rights reserved.
 //
 
+#import <FH/FH.h>
+
 #import "FHAuthMethod.h"
 #import "FHLoginViewController.h"
-#import "FH/FH.h"
-#import "FH/FHAuthRequest.h"
-#import "FH/FHResponse.h"
+
 
 @implementation FHAuthMethod
 

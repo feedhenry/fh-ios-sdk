@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 Feedhenry. All rights reserved.
 //
 
+#import <FH/FH.h>
+
 #import "HelloViewController.h"
-#import "FH/FH.h"
 
 @interface HelloViewController ()
 
@@ -36,7 +37,7 @@
     textArea.text = res.rawResponseAsString;
   } AndFailure:^(FHResponse * actFailRes){
     // Errors
-    NSLog(@"Failed to call. Response = %@", actFailRes.rawResponse);
+    NSLog(@"Failed to call. Response = %@", [actFailRes.error description]);
   }];
 }
 

@@ -16,4 +16,4 @@ typedef NS_ENUM(NSInteger, FH_ACTION) {
 #define FH_CLOUD @"cloud"
 #define FH_AUTH @"auth"
 #define FH_INIT @"init"
-#define FH_SDK_VERSION @"2.2.4"
+#define FH_SDK_VERSION @"2.2.5"
