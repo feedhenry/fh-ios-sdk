@@ -1,22 +1,22 @@
-## Build
+# GitHub pages for [FeedHenry API](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html)
 
-* Go to *FH* directory, run build.sh. This will generate the zip file for the framework and template app.
+> As part of [FHMOBSDK-61](https://issues.jboss.org/browse/FHMOBSDK-61) this branch will be eventually removed .
 
 ## Update Docs
 
-* Install [appledoc](https://github.com/tomaz/appledoc)
-* Clone the repo, checkout master branch.
-* Make the changes to the docs comments in the code.
-* Go to *FH* directory, open the project in Xcode, run build target "Documentation".
-* Commit the changes.
-* Checkout gh-pages branch. Rebase it to master.
-* Push both branches to the remote.
+>To generate API documentation, ensure the release has been published in [Cocoapods](https://cocoapods.org) repository first.
 
-## Usage
+Invoke the following command, replacing {VERSION} as appropriate:
 
-See [iOS SDK Guide](http://docs.feedhenry.com/v2/sdk_ios.html).
-	
-### Links
-* [FeedHenry Documentation](http://docs.feedhenry.com)
-* [ASIHttpRequest](http://allseeing-i.com/ASIHTTPRequest/)
-* [JSONKit](https://github.com/johnezang/JSONKit)
+```
+pod appledoc FH && rm -rf FH/docset/ && mv -f FH-{VERSION}/docset ./FH/
+```
+
+The command will fetch latest Cocoapod spec, compile the API documentation and update local copy. Once that is done,  sync with remote repo:
+
+```
+git commit -a -m "sync docset"
+git push origin gh-pages
+```
+
+Access the  [FeedHenry API GitHub page](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html) and ensure any changes have been propagated.

@@ -1,27 +1,16 @@
-# Exclude the build directory
-build/*
-FH/build/*
-FHStarterProject/build/*
-FHStarterProject/FH.framework/*
-FHSyncTestApp/FHSyncTestApp/build/*
-# Exclude temp nibs and swap files
-*~.nib
-*.swp
- 
+# Exclude redundant doc artifacts
+*.plist
+*.xml
+*.dsidx
+*.dsidx-shm
+*.dsidx-wal
+*.mom
+*.skidx
+*.toc
+*.tokencache
+
 # Exclude OS X folder attributes
 .DS_Store
- 
-# Exclude user-specific XCode 3 and 4 files
-*.mode1
-*.mode1v3
-*.mode2v3
-*.perspective
-*.perspectivev3
-*.pbxuser
-*.xcworkspace
-xcuserdata
-DerivedData/*
-FHSyncTestApp/FHSyncTestApp/DerivedData/*
-FH/DerivedData/*
-FHStarterProject/DerivedData/*
-FH/docset-installed.txt
+
+# Exlude gen. FH-{VERSION}
+FH-*/
