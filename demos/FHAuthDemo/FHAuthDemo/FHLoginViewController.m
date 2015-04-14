@@ -50,6 +50,13 @@
   self.usernameField.delegate = self;
   self.passwordField.delegate = self;
   [self.usernameField becomeFirstResponder];
+    BOOL hasSession = [FH hasAuthSession];
+    if (hasSession) {
+        self.logoutButton.hidden = false;
+    } else {
+        self.logoutButton.hidden = true;
+    }
+
 }
 
 - (void)viewDidUnload
@@ -113,6 +120,10 @@
   [authRequest execAsyncWithSuccess:success AndFailure:failure];
 }
 
+- (IBAction)logout:(id)sender {
+    [FH clearAuthSessionWithSuccess:nil AndFailure:nil];
+}
+
 - (void) showMessage:(NSString* )title message:(NSString*)msg 
 {
   UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -132,6 +143,7 @@
   [self.loginButton release];
   [self.spinner release];
   [policyId release];
+    [_logoutButton release];
   [super dealloc];
 }
 

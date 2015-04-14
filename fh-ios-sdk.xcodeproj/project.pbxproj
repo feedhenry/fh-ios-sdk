@@ -79,6 +79,8 @@
 		B3D7C48715D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C49815D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
+		B3F685D81AD8352A002240DA /* FHDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B3F685D61AD8352A002240DA /* FHDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3F685D91AD8352A002240DA /* FHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F685D71AD8352A002240DA /* FHDataManager.m */; };
 		E816D4D62D22C4E20B1F1233 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC8A0A7417DA495FFDD185F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +185,8 @@
 		B3D7C54E15D291EF0019262E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B3D7C55015D2923C0019262E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B3D7C55215D292A10019262E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		B3F685D61AD8352A002240DA /* FHDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHDataManager.h; path = "fh-ios-sdk/FHDataManager.h"; sourceTree = SOURCE_ROOT; };
+		B3F685D71AD8352A002240DA /* FHDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHDataManager.m; path = "fh-ios-sdk/FHDataManager.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +372,8 @@
 				6F9C604F1A9B366200C22C92 /* FHResponse.m */,
 				6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */,
 				B3D7C48915D28BE30019262E /* Supporting Files */,
+				B3F685D61AD8352A002240DA /* FHDataManager.h */,
+				B3F685D71AD8352A002240DA /* FHDataManager.m */,
 			);
 			name = "fh-ios-sdk";
 			path = FH;
@@ -438,6 +444,7 @@
 				6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */,
 				6FCF31E81A9B40F50014B936 /* FH.h in Headers */,
 				6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */,
+				B3F685D81AD8352A002240DA /* FHDataManager.h in Headers */,
 				6FCF31F11A9B41230014B936 /* FHResponseDelegate.h in Headers */,
 				6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */,
 				6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */,
@@ -651,6 +658,7 @@
 				6F9C60821A9B36A200C22C92 /* FHOAuthViewController.m in Sources */,
 				6F9C607E1A9B369D00C22C92 /* NSString+MD5.m in Sources */,
 				6F9C60801A9B369D00C22C92 /* NSString+Validation.m in Sources */,
+				B3F685D91AD8352A002240DA /* FHDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

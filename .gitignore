@@ -16,12 +16,18 @@ xcuserdatad/*
 xcuserdata
 *.xccheckout
 docset-installed.txt
-DerivedData/*
+**/DerivedData/*
 
 # Exclude the build directory
 build/*
 # Exclude the /dist directory
 dist/
+
+# Exclude fhconfig.plist files in demos for local development.
+demos/**/fhconfig.plist
+
+# Exclude Github releases dirs
+Releases-*/*
 
 # Exclude the output of the 'pod package' directory when build.
 # The output is of the form 'FH-{VERSION}''

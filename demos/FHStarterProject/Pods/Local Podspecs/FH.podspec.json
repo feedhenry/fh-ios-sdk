@@ -1,14 +1,14 @@
 {
   "name": "FH",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "summary": "FeedHenry iOS Software Development Kit",
   "homepage": "https://www.feedhenry.com",
   "social_media_url": "https://twitter.com/feedhenry",
   "license": "FeedHenry",
   "authors": "Red Hat, Inc.",
   "source": {
-    "git": "https://github.com/feedhenry/fh-ios-sdk",
-    "tag": "2.2.5"
+    "git": "https://github.com/feedhenry/fh-ios-sdk.git",
+    "tag": "2.2.6"
   },
   "platforms": {
     "ios": 7.0
@@ -29,7 +29,8 @@
     "fh-ios-sdk/Sync/FHSyncConfig.h",
     "fh-ios-sdk/Sync/FHSyncNotificationMessage.h",
     "fh-ios-sdk/Sync/FHSyncDelegate.h",
-    "fh-ios-sdk/Categories/JSON/FHJSON.h"
+    "fh-ios-sdk/Categories/JSON/FHJSON.h",
+    "fh-ios-sdk/FHDataManager.h"
   ],
   "requires_arc": true,
   "libraries": [

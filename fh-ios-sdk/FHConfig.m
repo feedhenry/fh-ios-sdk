@@ -9,6 +9,7 @@
 
 #import "FHConfig.h"
 #import "NSString+MD5.h"
+#import "FHDataManager.h"
 
 @interface FHConfig ()
 @property (nonatomic, strong, readwrite) NSMutableDictionary *properties;
@@ -81,18 +82,16 @@
 
 // Fetches existing UUID stored in NSUserDefaults, or generates a new one
 - (NSString *)uuid {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     static NSString *UUID_KEY = @"FHUUID";
 
-    NSString *app_uuid = [userDefaults stringForKey:UUID_KEY];
+    NSString *app_uuid = [FHDataManager read:UUID_KEY];
 
     if (app_uuid == nil) {
         CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
         CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
 
         app_uuid = [NSString stringWithString:(__bridge NSString *)uuidString];
-        [userDefaults setObject:app_uuid forKey:UUID_KEY];
-        [userDefaults synchronize];
+        [FHDataManager save:UUID_KEY withObject:app_uuid];
 
         CFRelease(uuidString);
         CFRelease(uuidRef);

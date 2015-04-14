@@ -6,8 +6,10 @@
 //
 
 #import "FH.h"
+#import "FHDefines.h"
 #import "FHHttpClient.h"
 #import "FHOAuthViewController.h"
+#import "FHDataManager.h"
 
 
 #define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"
@@ -88,6 +90,10 @@
                     [[FHOAuthViewController alloc] initWith:request completeHandler:complete];
                 [self.parentViewController presentViewController:controller animated:YES completion:nil];
             } else {
+                NSObject* session = [result objectForKey:SESSION_TOKEN_KEY];
+                if (nil != session) {
+                    [FHDataManager save:SESSION_TOKEN_KEY withObject:session];
+                }
                 if (sucornil) {
                     sucornil(res);
                 } else {

@@ -33,7 +33,8 @@
   [super viewDidLoad];
   AuthMethod* fhauth = [[FHAuthMethod alloc] initWithName:@"FeedHenry" icon:@"auth_feedhenry" policyId:@"MyFeedHenryPolicy"];
   AuthMethod* googleauth = [[GoogleAuthMethod alloc] initWithName:@"Google OAuth" icon:@"auth_google" policyId:@"AsciiSinker"];
-  self.authMethods = [NSArray arrayWithObjects:fhauth, googleauth, nil];
+  AuthMethod* mbaasauth = [[FHAuthMethod alloc] initWithName:@"FeedHenry MBAAS" icon:@"auth_feedhenry" policyId:@"LdapTest"];
+  self.authMethods = [NSArray arrayWithObjects:fhauth, googleauth, mbaasauth, nil];
   [fhauth release];
   [googleauth release];
   [authList reloadData];
