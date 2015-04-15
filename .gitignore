@@ -16,7 +16,6 @@ xcuserdatad/*
 xcuserdata
 *.xccheckout
 docset-installed.txt
-**/DerivedData/*
 
 # Exclude the build directory
 build/*
@@ -32,3 +31,5 @@ Releases-*/*
 # Exclude the output of the 'pod package' directory when build.
 # The output is of the form 'FH-{VERSION}''
 FH-*/
+!fh-ios-sdk/
+**/DerivedData/*
