@@ -18,6 +18,7 @@ and store that in config
 #import "FH.h"
 #import "FHDefines.h"
 #import "FHInitRequest.h"
+#import "FHDataManager.h"
 
 @implementation FH
 
@@ -59,10 +60,8 @@ static Reachability *reachability;
             cloudProps = [[FHCloudProps alloc] initWithCloudProps:props];
 
             // Save init
-            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-            [prefs setObject:props[@"init"] forKey:@"init"];
-            [prefs synchronize];
-
+            [FHDataManager save:@"init" withObject:props[@"init"]];
+          
             ready = true;
             if (sucornil) {
                 sucornil(nil);
@@ -277,11 +276,16 @@ static Reachability *reachability;
     [fhparams setValue:@"ios" forKey:@"destination"];
 
     // Read init
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *init = [prefs objectForKey:@"init"];
+    NSString *init = [FHDataManager read:@"init"];
     if (init != nil) {
         fhparams[@"init"] = init;
     }
+  
+    id sessionToken = [FHDataManager read:SESSION_TOKEN_KEY];
+    if (nil != sessionToken) {
+      fhparams[SESSION_TOKEN_KEY] = sessionToken;
+    }
+  
     return fhparams;
 }
 
@@ -299,6 +303,39 @@ static Reachability *reachability;
         }
     }];
     return headers;
+}
+
++ (BOOL)hasAuthSession {
+    return nil != [FHDataManager read:SESSION_TOKEN_KEY];
+}
+
++ (void)clearAuthSessionWithSuccess:(void (^)(id success))sucornil
+                         AndFailure:(void (^)(id failed))failornil {
+    id session = [FHDataManager read:SESSION_TOKEN_KEY];
+    if (nil != session) {
+        [FHDataManager remove:SESSION_TOKEN_KEY];
+        FHAct *request = [[FHAct alloc] init];
+        request.path = REVOKE_SESSION_PATH;
+        request.args = [[NSDictionary alloc]
+            initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
+        [request execAsyncWithSuccess:sucornil AndFailure:failornil];
+    }
+}
+
++ (void)verifyAuthSessionWithSuccess:(void (^)(BOOL valid))sucornil
+                          AndFailure:(void (^)(id failed))failornil {
+    id session = [FHDataManager read:SESSION_TOKEN_KEY];
+    if (nil != session) {
+        FHAct *request = [[FHAct alloc] init];
+        request.path = VERIFY_SESSION_PATH;
+        request.args = [[NSDictionary alloc]
+            initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
+        void (^tmpSuccess)(FHResponse *) = ^(FHResponse *res) {
+            NSDictionary *result = res.parsedResponse;
+            sucornil([result objectForKey:@"isValid"]);
+        };
+        [request execAsyncWithSuccess:tmpSuccess AndFailure:failornil];
+    }
 }
 
 @end

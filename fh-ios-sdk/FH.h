@@ -177,4 +177,33 @@ or use the getDefaultParamsAsHeaders method to add them as HTTP request headers.
 */
 + (NSDictionary *)getDefaultParamsAsHeaders;
 
+/**
+ Check if there is an authenticated session exists.
+
+ @return If the session exists
+ */
++ (BOOL)hasAuthSession;
+
+/**
+ Remove the current auth session if exists (locally and remotely).
+ @param sucornil Block to be executed if the execution of the cloud side
+ function
+ is successful
+ @param failornil Block to be executed if the execution of the cloud side
+ function is failed
+ */
++ (void)clearAuthSessionWithSuccess:(void (^)(id success))sucornil
+                         AndFailure:(void (^)(id failed))failornil;
+
+/**
+ Verify the auth session to make sure it's still valid.
+ @param sucornil Block to be executed if the execution of the cloud side
+ function
+ is successful
+ @param failornil Block to be executed if the execution of the cloud side
+ function is failed
+ */
++ (void)verifyAuthSessionWithSuccess:(void (^)(BOOL valid))sucornil
+                          AndFailure:(void (^)(id failed))failornil;
+
 @end

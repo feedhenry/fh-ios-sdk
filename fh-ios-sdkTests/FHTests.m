@@ -108,6 +108,8 @@
         NSDictionary *data = res.parsedResponse;
         XCTAssertTrue(nil != [data valueForKey:@"sessionToken"],
                       @"Can not find sessionToken in init response");
+        BOOL hasSession = [FH hasAuthSession];
+        XCTAssertTrue(hasSession);
     };
 
     [auth execWithSuccess:success AndFailure:nil];

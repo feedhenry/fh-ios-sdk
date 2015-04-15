@@ -1,5 +1,8 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 2.2.6 - 2015-04-14 - Wei Li
+* Add new auth APIs
+
 ## 2.2.5 - 2015-03-08 - Christos Vasilakis
 * added cocoapods support
 

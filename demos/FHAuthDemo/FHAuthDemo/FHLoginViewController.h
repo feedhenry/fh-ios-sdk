@@ -23,7 +23,9 @@
 @property(nonatomic, retain) IBOutlet UITextField * passwordField;
 @property(nonatomic, retain) IBOutlet UIButton * loginButton;
 @property(nonatomic, retain) IBOutlet UIActivityIndicatorView* spinner;
+@property (retain, nonatomic) IBOutlet UIButton *logoutButton;
 
 - (IBAction)submit:(id)sender;
+- (IBAction)logout:(id)sender;
 
 @end

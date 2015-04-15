@@ -16,7 +16,7 @@
          AndFailure:(void (^)(id failed))failornil {
     NSMutableDictionary *initRes = [NSMutableDictionary dictionary];
     NSMutableDictionary *authRes = [NSMutableDictionary dictionary];
-    NSMutableDictionary *cloutRes = [NSMutableDictionary dictionary];
+    NSMutableDictionary *cloudRes = [NSMutableDictionary dictionary];
 
     NSMutableDictionary *innerP = [NSMutableDictionary dictionary];
     [innerP setValue:@"http://test.example.com" forKey:@"development-url"];
@@ -28,15 +28,17 @@
 
     [authRes setValue:@"testToken" forKey:@"sessionToken"];
 
-    [cloutRes setValue:@"ok" forKey:@"status"];
+    [cloudRes setValue:@"ok" forKey:@"status"];
 
     NSDictionary *resp = nil;
     if ([fhact.method isEqual:FH_INIT]) {
         resp = initRes;
     } else if ([fhact.method isEqual:FH_CLOUD]) {
-        resp = cloutRes;
+        resp = cloudRes;
     } else if ([fhact.method isEqual:FH_AUTH]) {
         resp = authRes;
+    } else {
+        resp = cloudRes;
     }
 
     FHResponse *fhResponse = [[FHResponse alloc] init];

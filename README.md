@@ -36,13 +36,13 @@ git push origin {TAG}
 >	```--allow-warnings``` is required to skip some deprecation warnings from a underlying dependency library. This will be circumvented in a future release.
 
 ### b) Release on GitHub
-* Once you have published on Cocoapods it's time to do a GitHub release. To do so invoke the following command to produce the binary ```framework artifact```:
+* Once you have published on Cocoapods it's time to do a GitHub release. To do so run the script:
 
 ```
-pod package FH.podspec
+./github-release.sh
 ```
 
-This will produce a ```FH.framework``` binary artifact on ```FH-{VERSION}/ios/``` folder,  that you can then attach on the [GitHub release page](https://help.github.com/articles/creating-releases/).
+This will produce two files in the ``Releases-{version}`` directory.  You can then attach them on the [GitHub release page](https://help.github.com/articles/creating-releases/).
 
 ### c) Generate API Documentation
 
