@@ -90,7 +90,7 @@
                     [[FHOAuthViewController alloc] initWith:request completeHandler:complete];
                 [self.parentViewController presentViewController:controller animated:YES completion:nil];
             } else {
-                NSObject* session = [result objectForKey:SESSION_TOKEN_KEY];
+                id session = [result objectForKey:SESSION_TOKEN_KEY];
                 if (nil != session) {
                     [FHDataManager save:SESSION_TOKEN_KEY withObject:session];
                 }

@@ -281,7 +281,7 @@ static Reachability *reachability;
         fhparams[@"init"] = init;
     }
   
-    NSObject* sessionToken = [FHDataManager read:SESSION_TOKEN_KEY];
+    id sessionToken = [FHDataManager read:SESSION_TOKEN_KEY];
     if (nil != sessionToken) {
       fhparams[SESSION_TOKEN_KEY] = sessionToken;
     }
@@ -305,28 +305,31 @@ static Reachability *reachability;
     return headers;
 }
 
-+ (BOOL) hasAuthSession {
-    NSObject* session = [FHDataManager read:SESSION_TOKEN_KEY];
-    return nil != session;
++ (BOOL)hasAuthSession {
+    return nil != [FHDataManager read:SESSION_TOKEN_KEY];
 }
 
-+ (void) clearAuthSessionWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
-    NSObject* session = [FHDataManager read:SESSION_TOKEN_KEY];
++ (void)clearAuthSessionWithSuccess:(void (^)(id success))sucornil
+                         AndFailure:(void (^)(id failed))failornil {
+    id session = [FHDataManager read:SESSION_TOKEN_KEY];
     if (nil != session) {
         [FHDataManager remove:SESSION_TOKEN_KEY];
-        FHAct* request = [[FHAct alloc]init];
+        FHAct *request = [[FHAct alloc] init];
         request.path = REVOKE_SESSION_PATH;
-        request.args = [[NSDictionary alloc]initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
+        request.args = [[NSDictionary alloc]
+            initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
         [request execAsyncWithSuccess:sucornil AndFailure:failornil];
     }
 }
 
-+ (void) verifyAuthSessionWithSuccess:(void (^)(BOOL valid))sucornil AndFailure:(void (^)(id failed))failornil {
-    NSObject* session = [FHDataManager read:SESSION_TOKEN_KEY];
++ (void)verifyAuthSessionWithSuccess:(void (^)(BOOL valid))sucornil
+                          AndFailure:(void (^)(id failed))failornil {
+    id session = [FHDataManager read:SESSION_TOKEN_KEY];
     if (nil != session) {
-        FHAct* request = [[FHAct alloc]init];
+        FHAct *request = [[FHAct alloc] init];
         request.path = VERIFY_SESSION_PATH;
-        request.args = [[NSDictionary alloc]initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
+        request.args = [[NSDictionary alloc]
+            initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
         void (^tmpSuccess)(FHResponse *) = ^(FHResponse *res) {
             NSDictionary *result = res.parsedResponse;
             sucornil([result objectForKey:@"isValid"]);
