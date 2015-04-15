@@ -33,3 +33,4 @@ Releases-*/*
 FH-*/
 !fh-ios-sdk/
 **/DerivedData/*
+templates/FHStarterProject/FH.framework/*
