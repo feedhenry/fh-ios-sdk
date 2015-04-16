@@ -24,6 +24,14 @@
     return self;
 }
 
+- (instancetype)initWithProps:(FHCloudProps *)props {
+    self = [super init];
+    if (self) {
+        _cloudProps = props;
+    }
+    return self;
+}
+
 - (void)setArgs:(NSDictionary *)arguments {
     _args = [NSMutableDictionary dictionaryWithDictionary:arguments];
     NSLog(@"args set to  %@", _args);

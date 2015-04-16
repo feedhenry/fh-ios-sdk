@@ -82,6 +82,11 @@
 */
 - (BOOL)isAsync;
 
+/** Init a new request and set the FHCloudProps
+ @param props the cloud app details
+ */
+- (instancetype)initWithProps:(FHCloudProps *)props;
+
 /** Excute the API request synchronously with the given success and failure
 blocks.
 

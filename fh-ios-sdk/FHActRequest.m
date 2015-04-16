@@ -9,14 +9,6 @@
 #import "FH.h"
 @implementation FHActRequest
 
-- (instancetype)initWithProps:(FHCloudProps *)props {
-    self = [super init];
-    if (self) {
-        _cloudProps = props;
-    }
-    return self;
-}
-
 - (NSURL *)buildURL {
     NSString *cloudUrl = _cloudProps.cloudHost;
     NSString *api = [cloudUrl stringByAppendingString:self.path];

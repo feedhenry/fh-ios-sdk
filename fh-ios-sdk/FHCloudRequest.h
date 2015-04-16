@@ -9,6 +9,4 @@
 
 @interface FHCloudRequest : FHAct
 
-- (instancetype)initWithProps:(FHCloudProps *)props;
-
 @end

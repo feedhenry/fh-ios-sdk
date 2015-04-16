@@ -10,14 +10,6 @@
 
 @implementation FHCloudRequest
 
-- (instancetype)initWithProps:(FHCloudProps *)props {
-    self = [super init];
-    if (self) {
-        _cloudProps = props;
-    }
-    return self;
-}
-
 - (NSURL *)buildURL {
     NSString *cloudUrl = _cloudProps.cloudHost;
 

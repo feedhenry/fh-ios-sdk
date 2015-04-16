@@ -143,7 +143,7 @@ static Reachability *reachability;
         act.method = FH_ACT;
         break;
     case FH_ACTION_AUTH:
-        act = [[FHAuthRequest alloc] init];
+        act = [[FHAuthRequest alloc] initWithProps:cloudProps];
         act.method = FH_AUTH;
         break;
     case FH_ACTION_CLOUD:
