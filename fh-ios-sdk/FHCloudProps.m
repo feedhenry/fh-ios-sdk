@@ -18,9 +18,6 @@
 
 @implementation FHCloudProps
 
-@synthesize cloudHost = _cloudHost;
-@synthesize env =_env;
-
 - (instancetype)initWithCloudProps:(NSDictionary *)aCloudProps {
     self = [super init];
     if (self) {

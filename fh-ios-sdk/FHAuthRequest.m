@@ -24,14 +24,6 @@
     return self;
 }
 
-- (instancetype)initWithProps:(FHCloudProps *)props {
-    self = [super init];
-    if (self) {
-        _cloudProps = props;
-    }
-    return self;
-}
-
 - (NSString *)path {
     return FH_AUTH_PATH;
 }
@@ -66,7 +58,7 @@
     }
 
     [params setValue:innerP forKey:@"params"];
-    if (nil != _cloudProps.env) {
+    if (_cloudProps &&  _cloudProps.env) {
         [params setValue:_cloudProps.env forKey:@"environment"];
     }
     _args = params;
