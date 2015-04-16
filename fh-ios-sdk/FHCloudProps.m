@@ -12,12 +12,14 @@
 
 @property (nonatomic, strong, readwrite) NSDictionary *cloudProps;
 @property (nonatomic, strong, readwrite) NSString *cloudHost;
+@property (nonatomic, strong, readwrite) NSString *env;
 
 @end
 
 @implementation FHCloudProps
 
 @synthesize cloudHost = _cloudHost;
+@synthesize env =_env;
 
 - (instancetype)initWithCloudProps:(NSDictionary *)aCloudProps {
     self = [super init];
@@ -51,6 +53,15 @@
         _cloudHost = api;
     }
     return _cloudHost;
+}
+
+- (NSString *)env {
+    if (nil == _env) {
+        if (self.cloudProps[@"hosts"] && self.cloudProps[@"hosts"][@"environment"]) {
+            _env = self.cloudProps[@"hosts"][@"environment"];
+        }
+    }
+    return _env;
 }
 
 @end

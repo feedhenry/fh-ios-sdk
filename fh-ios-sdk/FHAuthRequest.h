@@ -35,12 +35,15 @@ handle the OAuth process.
 @property (nonatomic, strong) UIViewController *parentViewController;
 
 /** Init a new request and set the parentViewController.
-
-@param props The app configurations
 @param viewController The parent UIViewController to present OAuth UI component.
 See parentViewController.
 */
 - (instancetype)initWithViewController:(UIViewController *)viewController;
+
+/** Init a new request and set the FHCloudProps 
+ @param props the cloud app details
+ */
+- (instancetype)initWithProps:(FHCloudProps *)props;
 
 /** Set the policyId for this auth request.
 
