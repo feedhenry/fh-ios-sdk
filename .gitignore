@@ -14,3 +14,9 @@
 
 # Exlude gen. FH-{VERSION}
 FH-*/
+DerivedData/*
+Pods/*
+Releases-*/
+build/*
+demos/*
+templates/*
