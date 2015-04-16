@@ -35,8 +35,6 @@ handle the OAuth process.
 @property (nonatomic, strong) UIViewController *parentViewController;
 
 /** Init a new request and set the parentViewController.
-
-@param props The app configurations
 @param viewController The parent UIViewController to present OAuth UI component.
 See parentViewController.
 */

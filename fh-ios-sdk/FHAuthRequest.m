@@ -58,6 +58,9 @@
     }
 
     [params setValue:innerP forKey:@"params"];
+    if (_cloudProps &&  _cloudProps.env) {
+        [params setValue:_cloudProps.env forKey:@"environment"];
+    }
     _args = params;
     NSLog(@"args set to  %@", _args);
     return;

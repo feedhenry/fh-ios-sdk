@@ -9,6 +9,7 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *cloudProps;
 @property (nonatomic, strong, readonly) NSString *cloudHost;
+@property (nonatomic, strong, readonly) NSString *env;
 
 - (instancetype)initWithCloudProps:(NSDictionary *)aCloudProps;
 
