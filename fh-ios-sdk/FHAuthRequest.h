@@ -40,11 +40,6 @@ See parentViewController.
 */
 - (instancetype)initWithViewController:(UIViewController *)viewController;
 
-/** Init a new request and set the FHCloudProps 
- @param props the cloud app details
- */
-- (instancetype)initWithProps:(FHCloudProps *)props;
-
 /** Set the policyId for this auth request.
 
 Normally should be used if the auth type is OAuth.
