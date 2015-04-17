@@ -13,22 +13,20 @@
 @implementation FHAct
 
 - (instancetype)init {
-    self = [super init];
-    if (self) {
-        _args = [NSMutableDictionary dictionary];
-        _httpClient = [[FHHttpClient alloc] init];
-        _headers = [NSMutableDictionary dictionary];
-        self.requestMethod = @"POST";
-        self.requestTimeout = 60;
-    }
-    return self;
+    return [self initWithProps:nil];
 }
 
 - (instancetype)initWithProps:(FHCloudProps *)props {
     self = [super init];
     if (self) {
         _cloudProps = props;
+        _args = [NSMutableDictionary dictionary];
+        _httpClient = [[FHHttpClient alloc] init];
+        _headers = [NSMutableDictionary dictionary];
+        self.requestMethod = @"POST";
+        self.requestTimeout = 60;
     }
+    
     return self;
 }
 
