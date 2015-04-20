@@ -1,4 +1,9 @@
 # CHANGELOG - FeedHenry iOS SDK
+## 2.2.9 - 2015-04-20 - Christos Vasilakis
+* Refactor constructor
+
+## 2.2.7 - 2015-04-16 - Wei Li
+* Add environment to the auth API requests if it's available
 
 ## 2.2.6 - 2015-04-14 - Wei Li
 * Add new auth APIs

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FH'
-  s.version      = '2.2.7'
+  s.version      = '2.2.8'
   s.summary      = 'FeedHenry iOS Software Development Kit'
   s.homepage     = 'https://www.feedhenry.com'
   s.social_media_url = 'https://twitter.com/feedhenry'
