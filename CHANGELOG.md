@@ -1,5 +1,5 @@
 # CHANGELOG - FeedHenry iOS SDK
-## 2.2.9 - 2015-04-20 - Christos Vasilakis
+## 2.2.8 - 2015-04-20 - Christos Vasilakis
 * Refactor constructor
 
 ## 2.2.7 - 2015-04-16 - Wei Li
