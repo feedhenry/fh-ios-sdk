@@ -1,0 +1,15 @@
+language: objective-c
+osx_image: xcode63
+xcode_workspace: fh-ios-sdk.xcworkspace
+xcode_scheme: FH
+xcode_sdk: iphonesimulator
+
+before_install:
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+
+notifications:
+  irc: "irc.freenode.org#feedhenry"
+
+branches:
+  only:
+    - master

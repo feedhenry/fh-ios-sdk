@@ -256,7 +256,9 @@ static Reachability *reachability;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
         NSMutableDictionary *vendorIdMap = [[NSMutableDictionary alloc] init];
         vendorIdMap[@"name"] = @"vendorIdentifier";
-        vendorIdMap[@"cuid"] = [appConfig vendorId];
+        if ([appConfig vendorId]) {
+            vendorIdMap[@"cuid"] = [appConfig vendorId];
+        }
         [cuidMap addObject:vendorIdMap];
     }
 
