@@ -46,7 +46,7 @@ best way to do it is using the success block.
 @param sucornil Block to be called if init is successful. It could be nil.
 @param failornil Block to be called if init is failed. It could be nil.
 */
-+ (void)initWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
++ (void)initWithSuccess:(void (^)(FHResponse *success))sucornil AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /** Check if the device is online. The device is online if either WIFI or 3G
 network is available.
@@ -98,8 +98,8 @@ function is failed
 */
 + (void)performActRequest:(NSString *)funcName
                  WithArgs:(NSDictionary *)arguments
-               AndSuccess:(void (^)(id sucornil))sucornil
-               AndFailure:(void (^)(id failed))failornil;
+               AndSuccess:(void (^)(FHResponse *success))sucornil
+               AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /** Create a new instance of FHAuthRequest class with the given auth policy id
 and execute it immediately with the success and failure blocks.
@@ -131,8 +131,8 @@ should be provided at this point (for example, LDAP).
 + (void)performAuthRequest:(NSString *)policyId
               WithUserName:(NSString *)username
               UserPassword:(NSString *)userpass
-                AndSuccess:(void (^)(id sucornil))sucornil
-                AndFailure:(void (^)(id failed))failornil;
+                AndSuccess:(void (^)(FHResponse *sucornil))sucornil
+                AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /** Create a new instance of FHCloudRequest class and execute it immediately
 with the success and failure blocks.
@@ -152,8 +152,8 @@ function is failed
                  WithMethod:(NSString *)requestMethod
                  AndHeaders:(NSDictionary *)headers
                     AndArgs:(NSDictionary *)arguments
-                 AndSuccess:(void (^)(id success))sucornil
-                 AndFailure:(void (^)(id failed))failornil;
+                 AndSuccess:(void (^)(FHResponse *success))sucornil
+                 AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /** Get the cloud host the app is communicating with.
 
@@ -192,8 +192,8 @@ or use the getDefaultParamsAsHeaders method to add them as HTTP request headers.
  @param failornil Block to be executed if the execution of the cloud side
  function is failed
  */
-+ (void)clearAuthSessionWithSuccess:(void (^)(id success))sucornil
-                         AndFailure:(void (^)(id failed))failornil;
++ (void)clearAuthSessionWithSuccess:(void (^)(FHResponse *success))sucornil
+                         AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /**
  Verify the auth session to make sure it's still valid.

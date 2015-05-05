@@ -12,8 +12,8 @@
 @implementation MockFHHttpClient
 
 - (void)sendRequest:(FHAct *)fhact
-         AndSuccess:(void (^)(id success))sucornil
-         AndFailure:(void (^)(id failed))failornil {
+         AndSuccess:(void (^)(FHResponse *success))sucornil
+         AndFailure:(void (^)(FHResponse *failed))failornil {
     NSMutableDictionary *initRes = [NSMutableDictionary dictionary];
     NSMutableDictionary *authRes = [NSMutableDictionary dictionary];
     NSMutableDictionary *cloudRes = [NSMutableDictionary dictionary];

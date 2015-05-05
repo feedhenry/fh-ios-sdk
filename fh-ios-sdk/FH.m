@@ -32,7 +32,7 @@ static Reachability *reachability;
  initializeFH must be called before any other FH method can be used.
  If it is not called FH will throw an exception
  */
-+ (void)initWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
++ (void)initWithSuccess:(void (^)(FHResponse *success))sucornil AndFailure:(void (^)(FHResponse *failed))failornil {
     if (!initCalled) {
         [FH registerForNetworkReachabilityNotifications];
     }
@@ -181,8 +181,8 @@ static Reachability *reachability;
 
 + (void)performActRequest:(NSString *)funcName
                  WithArgs:(NSDictionary *)arguments
-               AndSuccess:(void (^)(id success))sucornil
-               AndFailure:(void (^)(id failed))failornil {
+               AndSuccess:(void (^)(FHResponse *success))sucornil
+               AndFailure:(void (^)(FHResponse *failed))failornil {
     FHActRequest *request = [self buildActRequest:funcName WithArgs:arguments];
     [request execAsyncWithSuccess:sucornil AndFailure:failornil];
 }
@@ -203,8 +203,8 @@ static Reachability *reachability;
 + (void)performAuthRequest:(NSString *)policyId
               WithUserName:(NSString *)username
               UserPassword:(NSString *)userpass
-                AndSuccess:(void (^)(id sucornil))sucornil
-                AndFailure:(void (^)(id failed))failornil {
+                AndSuccess:(void (^)(FHResponse *success))sucornil
+                AndFailure:(void (^)(FHResponse *failed))failornil {
     FHAuthRequest *auth = [self buildAuthRequest];
     [auth authWithPolicyId:policyId UserId:username Password:userpass];
     [auth execAsyncWithSuccess:sucornil AndFailure:failornil];
@@ -214,8 +214,8 @@ static Reachability *reachability;
                  WithMethod:(NSString *)requestMethod
                  AndHeaders:(NSDictionary *)headers
                     AndArgs:(NSDictionary *)arguments
-                 AndSuccess:(void (^)(id success))sucornil
-                 AndFailure:(void (^)(id failed))failornil {
+                 AndSuccess:(void (^)(FHResponse *success))sucornil
+                 AndFailure:(void (^)(FHResponse *failed))failornil {
     FHCloudRequest *cloudRequest =
         [self buildCloudRequest:path WithMethod:requestMethod AndHeaders:headers AndArgs:arguments];
     [cloudRequest execAsyncWithSuccess:sucornil AndFailure:failornil];
@@ -311,8 +311,8 @@ static Reachability *reachability;
     return nil != [FHDataManager read:SESSION_TOKEN_KEY];
 }
 
-+ (void)clearAuthSessionWithSuccess:(void (^)(id success))sucornil
-                         AndFailure:(void (^)(id failed))failornil {
++ (void)clearAuthSessionWithSuccess:(void (^)(FHResponse *success))sucornil
+                         AndFailure:(void (^)(FHResponse *failed))failornil {
     id session = [FHDataManager read:SESSION_TOKEN_KEY];
     if (nil != session) {
         [FHDataManager remove:SESSION_TOKEN_KEY];

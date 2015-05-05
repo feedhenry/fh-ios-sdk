@@ -19,7 +19,7 @@
 }
 
 - (void)sendRequest:(FHAct *)fhact
-         AndSuccess:(void (^)(id success))sucornil
-         AndFailure:(void (^)(id failed))failornil;
+         AndSuccess:(void (^)(FHResponse *success))sucornil
+         AndFailure:(void (^)(FHResponse *failed))failornil;
 
 @end

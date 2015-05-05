@@ -67,8 +67,8 @@
 }
 
 - (void)exec:(BOOL)pAsync
-    WithSuccess:(void (^)(id success))sucornil
-     AndFailure:(void (^)(id failed))failornil {
+    WithSuccess:(void (^)(FHResponse *success))sucornil
+     AndFailure:(void (^)(FHResponse *failed))failornil {
     _async = pAsync;
     void (^tmpSuccess)(FHResponse *) = ^(FHResponse *res) {
         NSDictionary *result = res.parsedResponse;

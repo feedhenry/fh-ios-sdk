@@ -22,8 +22,8 @@
 }
 
 - (void)sendRequest:(FHAct *)fhact
-         AndSuccess:(void (^)(id success))sucornil
-         AndFailure:(void (^)(id failed))failornil {
+         AndSuccess:(void (^)(FHResponse *success))sucornil
+         AndFailure:(void (^)(FHResponse *failed))failornil {
 #if NS_BLOCKS_AVAILABLE
     if (sucornil) {
         successHandler = [sucornil copy];
