@@ -200,8 +200,8 @@
 }
 
 - (void)listCollisionWithCallbacksForDataId:(NSString *)dataId
-                                 AndSuccess:(void (^)(id success))sucornil
-                                 AndFailure:(void (^)(id failed))failornil {
+                                 AndSuccess:(void (^)(FHResponse *success))sucornil
+                                 AndFailure:(void (^)(FHResponse *failed))failornil {
     [FH performActRequest:dataId
                  WithArgs:@{
                      @"fn" : @"listCollisions"
@@ -212,8 +212,8 @@
 
 - (void)removeCollisionWithCallbacksForDataId:(NSString *)dataId
                                          hash:(NSString *)collisionHash
-                                   AndSuccess:(void (^)(id success))sucornil
-                                   AndFailure:(void (^)(id failed))failornil {
+                                   AndSuccess:(void (^)(FHResponse *success))sucornil
+                                   AndFailure:(void (^)(FHResponse *failed))failornil {
     [FH performActRequest:dataId
                  WithArgs:@{
                      @"fn" : @"removeCollisions",

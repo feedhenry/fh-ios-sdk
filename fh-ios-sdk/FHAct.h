@@ -100,7 +100,7 @@ exectued.
 
 @see FHResponseDelegate
 */
-- (void)execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil;
+- (void)execWithSuccess:(void (^)(FHResponse *success))sucornil AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /** Excute the API request asynchronously with the given success and failure
 blocks.
@@ -115,7 +115,7 @@ the delegate's [FHResponseDelegate requestDidFailWithResponse:] will be
 exectued.
 @see FHResponseDelegate
 */
-- (void)execAsyncWithSuccess:(void (^)(id success))sucornil
-                  AndFailure:(void (^)(id failed))failornil;
+- (void)execAsyncWithSuccess:(void (^)(FHResponse *success))sucornil
+                  AndFailure:(void (^)(FHResponse *failed))failornil;
 
 @end

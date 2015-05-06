@@ -444,8 +444,8 @@
 }
 
 - (void)doCloudCall:(NSMutableDictionary *)params
-         AndSuccess:(void (^)(id success))sucornil
-         AndFailure:(void (^)(id failed))failornil {
+         AndSuccess:(void (^)(FHResponse *success))sucornil
+         AndFailure:(void (^)(FHResponse *failed))failornil {
     if (self.syncConfig.hasCustomSync) {
         [FH performActRequest:self.datasetId
                      WithArgs:params

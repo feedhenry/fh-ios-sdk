@@ -56,18 +56,18 @@
     return [NSMutableDictionary dictionaryWithDictionary:[FH getDefaultParams]];
 }
 
-- (void)execWithSuccess:(void (^)(id success))sucornil AndFailure:(void (^)(id failed))failornil {
+- (void)execWithSuccess:(void (^)(FHResponse *success))sucornil AndFailure:(void (^)(FHResponse *failed))failornil {
     [self exec:FALSE WithSuccess:sucornil AndFailure:failornil];
 }
 
-- (void)execAsyncWithSuccess:(void (^)(id success))sucornil
-                  AndFailure:(void (^)(id failed))failornil {
+- (void)execAsyncWithSuccess:(void (^)(FHResponse *success))sucornil
+                  AndFailure:(void (^)(FHResponse *failed))failornil {
     [self exec:TRUE WithSuccess:sucornil AndFailure:failornil];
 }
 
 - (void)exec:(BOOL)pAsync
-    WithSuccess:(void (^)(id success))sucornil
-     AndFailure:(void (^)(id failed))failornil {
+    WithSuccess:(void (^)(FHResponse *success))sucornil
+     AndFailure:(void (^)(FHResponse *failed))failornil {
     _async = pAsync;
     [_httpClient sendRequest:self AndSuccess:sucornil AndFailure:failornil];
 }

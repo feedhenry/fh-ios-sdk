@@ -6,7 +6,6 @@
 //
 
 #import "FH.h"
-#import "FHSyncClient.h"
 #import "FHSyncConfig.h"
 #import "FHSyncNotificationMessage.h"
 #import "FHSyncDelegate.h"
@@ -98,8 +97,8 @@
  @param failornil the failure callback function
  */
 - (void)listCollisionWithCallbacksForDataId:(NSString *)dataId
-                                 AndSuccess:(void (^)(id success))sucornil
-                                 AndFailure:(void (^)(id failed))failornil;
+                                 AndSuccess:(void (^)(FHResponse *success))sucornil
+                                 AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /**
  Remove a collision with hash collisionHash for data set with id dataId
@@ -111,8 +110,8 @@
  */
 - (void)removeCollisionWithCallbacksForDataId:(NSString *)dataId
                                          hash:(NSString *)collisionHash
-                                   AndSuccess:(void (^)(id success))sucornil
-                                   AndFailure:(void (^)(id failed))failornil;
+                                   AndSuccess:(void (^)(FHResponse *success))sucornil
+                                   AndFailure:(void (^)(FHResponse *failed))failornil;
 
 /**
  Stop the sync service for data set with id dataId
