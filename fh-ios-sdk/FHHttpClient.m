@@ -43,9 +43,9 @@
         return;
     }
     NSURL *apicall = [fhact buildURL];
-#if DEBUG
-    NSLog(@"Request URL is : %@", [apicall absoluteString]);
-#endif
+
+    DLog(@"Request URL is : %@", [apicall absoluteString]);
+    
     // startrequest
     __block ASIHTTPRequest *brequest = [ASIHTTPRequest requestWithURL:apicall];
     __weak ASIHTTPRequest *request = brequest;
@@ -66,11 +66,10 @@
     // wrap the passed block inside our own success block to allow for
     // further manipulation
     [brequest setCompletionBlock:^{
-#if DEBUG
-        NSLog(@"reused cache %c", [request didUseCachedResponse]);
-        NSLog(@"Response status : %d", [request responseStatusCode]);
-        NSLog(@"Response data : %@", [request responseString]);
-#endif
+        DLog(@"reused cache %c", [request didUseCachedResponse]);
+        DLog(@"Response status : %d", [request responseStatusCode]);
+        DLog(@"Response data : %@", [request responseString]);
+
         // parse, build response, delegate
         NSData *responseData = [request responseData];
         FHResponse *fhResponse = [[FHResponse alloc] init];

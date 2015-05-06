@@ -118,7 +118,7 @@
     shouldStartLoadWithRequest:(NSURLRequest *)theRequest
                 navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *url = [theRequest URL];
-    NSLog(@"Start to load url : %@", url);
+    DLog(@"Start to load url : %@", url);
     NSString *queryStr = [url query];
     if (queryStr != nil && [queryStr rangeOfString:@"status=complete"].location != NSNotFound) {
         NSArray *pairs = [queryStr componentsSeparatedByString:@"&"];

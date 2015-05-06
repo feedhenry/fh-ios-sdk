@@ -12,7 +12,7 @@
 - (NSURL *)buildURL {
     NSString *cloudUrl = _cloudProps.cloudHost;
     NSString *api = [cloudUrl stringByAppendingString:self.path];
-    NSLog(@"Request url is %@", api);
+    DLog(@"Request url is %@", api);
     NSURL *uri = [[NSURL alloc] initWithString:api];
     return uri;
 }
@@ -24,7 +24,7 @@
 - (void)setArgs:(NSDictionary *)arguments {
     _args = [NSMutableDictionary dictionaryWithDictionary:arguments];
     _args[@"__fh"] = [FH getDefaultParams]; // keep backward compatible
-    NSLog(@"args set to  %@", _args);
+    DLog(@"args set to  %@", _args);
 }
 
 @end

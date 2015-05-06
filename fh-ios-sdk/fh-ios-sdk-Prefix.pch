@@ -6,4 +6,11 @@
 
 #import <Foundation/Foundation.h>
 
+// cater for debug/release mode of logging
+#ifdef DEBUG
+    #define DLog(...) NSLog(@"%s(%p) %@", __PRETTY_FUNCTION__, self, [NSString stringWithFormat:__VA_ARGS__])
+#else
+    #define DLog(...) /* */
+#endif
+
 #endif

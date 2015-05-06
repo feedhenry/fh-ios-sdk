@@ -62,7 +62,7 @@ static NSString *const kAuthPath = @"box/srv/1.1/admin/authpolicy/auth";
         [params setValue:_cloudProps.env forKey:@"environment"];
     }
     _args = params;
-    NSLog(@"args set to  %@", _args);
+    DLog(@"args set to  %@", _args);
     return;
 }
 

@@ -23,7 +23,7 @@
                                                         error:nil];
     }
     NSString *storageFilePath = [documentsDir stringByAppendingPathComponent:fileName];
-    NSLog(@"file path is %@", storageFilePath);
+    DLog(@"file path is %@", storageFilePath);
     return storageFilePath;
 }
 
@@ -37,7 +37,7 @@
                                                 encoding:NSUTF8StringEncoding
                                                    error:&error];
         if (error) {
-            NSLog(@"Failed to read file content from file : %@ with error %@", storageFilePath,
+            DLog(@"Failed to read file content from file : %@ with error %@", storageFilePath,
                   [error localizedDescription]);
         }
     }
@@ -60,13 +60,13 @@
             BOOL success =
                 [fileUrl setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:&error];
             if (!success) {
-                NSLog(@"Error excluding %@ from backup %@", filePath, error);
+                DLog(@"Error excluding %@ from backup %@", filePath, error);
             }
         }
     } else {
         [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
         if (error) {
-            NSLog(@"Failed to write data to file at path %@ with error %@", filePath,
+            DLog(@"Failed to write data to file at path %@ with error %@", filePath,
                   [error localizedDescription]);
         }
     }
@@ -123,7 +123,7 @@
 + (NSString *)generateHashForData:(id)data {
     id results = [FHSyncUtils sortData:data];
     NSString *jsonStr = [results JSONString];
-    NSLog(@"sorted data = %@", jsonStr);
+    DLog(@"sorted data = %@", jsonStr);
     return [FHSyncUtils generateHashWithString:jsonStr];
 }
 
