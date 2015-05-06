@@ -8,23 +8,23 @@
 #import "FHSyncConfig.h"
 #import "FHJSON.h"
 
-#define KEY_SYNC_FREQUENCY @"syncFrequency"
-#define KEY_AUTO_SYNC_UPDATES @"autoSyncLocalUpdates"
-#define KEY_NOTIFY_CLIENT_STORAGE_FAILED @"notifyClientStorageFailed"
-#define KEY_NOTIFY_DELTA_RECEIVED @"notifyDeltaReceived"
-#define KEY_NOTIFY_OFFline_UPDATED @"notifyOfflineUpdated"
-#define KEY_NOTIFY_SYNC_COLLISION @"notifySyncCollision"
-#define KEY_NOTIFY_SYNC_COMPLETED @"notifySyncCompleted"
-#define KEY_NOTIFY_SYNC_STATED @"notifySyncStarted"
-#define KEY_NOTIFY_REMOTE_UPDATE_APPLIED @"notityRemoteUpdateApplied"
-#define KEY_NOTIFY_LOCAL_UPDATE_APPLIED @"notifyLocalUpdateApplied"
-#define KEY_NOTIFY_REMOTE_UPDATE_FAILED @"notifyRemoteUpdateFailed"
-#define KEY_NOTIFY_SYNC_FAILED @"notifySyncFailed"
-#define KEY_DEBUG @"debug"
-#define KEY_CRASHCOUNTWAIT @"crashCountWait"
-#define KEY_RESEND_CRASH @"resendCrashedUpdates"
-#define KEY_HAS_CUSTOM_SYNC @"hasCustomSync"
-#define KEY_ICLOUD_BACKUP @"icloud_backup"
+static NSString *const kSyncFrequency = @"syncFrequency";
+static NSString *const kAutoSyncUpdates = @"autoSyncLocalUpdates";
+static NSString *const kNotifyClientStorageFailed = @"notifyClientStorageFailed";
+static NSString *const kNotifyDeltaReceived = @"notifyDeltaReceived";
+static NSString *const kNotifyOFFlineUpdated = @"notifyOfflineUpdated";
+static NSString *const kNotifySyncCollision = @"notifySyncCollision";
+static NSString *const kNotifySyncCompleted = @"notifySyncCompleted";
+static NSString *const kNotifySyncStarted = @"notifySyncStarted";
+static NSString *const kNotifyRemoteUpdateApplied = @"notityRemoteUpdateApplied";
+static NSString *const kNotifyLocalUpdateApplied = @"notifyLocalUpdateApplied";
+static NSString *const kNotifyRemoteUpdateFailed = @"notifyRemoteUpdateFailed";
+static NSString *const kNotifySyncFailed = @"notifySyncFailed";
+static NSString *const kDebug = @"debug";
+static NSString *const kCrashCountWait = @"crashCountWait";
+static NSString *const kResentCrashUpdates = @"resendCrashedUpdates";
+static NSString *const kHasCustomSync = @"hasCustomSync";
+static NSString *const kICloudBackup = @"icloud_backup";
 
 @implementation FHSyncConfig
 
@@ -54,23 +54,23 @@
 
 - (NSDictionary *)JSONData {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[KEY_SYNC_FREQUENCY] = @(self.syncFrequency);
-    dict[KEY_AUTO_SYNC_UPDATES] = @(self.autoSyncLocalUpdates);
-    dict[KEY_NOTIFY_CLIENT_STORAGE_FAILED] = @(self.notifyClientStorageFailed);
-    dict[KEY_NOTIFY_DELTA_RECEIVED] = @(self.notifyDeltaReceived);
-    dict[KEY_NOTIFY_OFFline_UPDATED] = @(self.notifyOfflineUpdate);
-    dict[KEY_NOTIFY_SYNC_COLLISION] = @(self.notifySyncCollision);
-    dict[KEY_NOTIFY_SYNC_COMPLETED] = @(self.notifySyncCompleted);
-    dict[KEY_NOTIFY_SYNC_STATED] = @(self.notifySyncStarted);
-    dict[KEY_NOTIFY_REMOTE_UPDATE_APPLIED] = @(self.notifyRemoteUpdateApplied);
-    dict[KEY_NOTIFY_LOCAL_UPDATE_APPLIED] = @(self.notifyLocalUpdateApplied);
-    dict[KEY_NOTIFY_REMOTE_UPDATE_FAILED] = @(self.notifyRemoteUpdateFailed);
-    dict[KEY_NOTIFY_SYNC_FAILED] = @(self.notifySyncFailed);
-    dict[KEY_DEBUG] = @(self.debug);
-    dict[KEY_CRASHCOUNTWAIT] = @(self.crashCountWait);
-    dict[KEY_RESEND_CRASH] = @(self.resendCrashedUpdates);
-    dict[KEY_HAS_CUSTOM_SYNC] = @(self.hasCustomSync);
-    dict[KEY_ICLOUD_BACKUP] = @(self.icloud_backup);
+    dict[kSyncFrequency] = @(self.syncFrequency);
+    dict[kAutoSyncUpdates] = @(self.autoSyncLocalUpdates);
+    dict[kNotifyClientStorageFailed] = @(self.notifyClientStorageFailed);
+    dict[kNotifyDeltaReceived] = @(self.notifyDeltaReceived);
+    dict[kNotifyOFFlineUpdated] = @(self.notifyOfflineUpdate);
+    dict[kNotifySyncCollision] = @(self.notifySyncCollision);
+    dict[kNotifySyncCompleted] = @(self.notifySyncCompleted);
+    dict[kNotifySyncStarted] = @(self.notifySyncStarted);
+    dict[kNotifyRemoteUpdateApplied] = @(self.notifyRemoteUpdateApplied);
+    dict[kNotifyLocalUpdateApplied] = @(self.notifyLocalUpdateApplied);
+    dict[kNotifyRemoteUpdateFailed] = @(self.notifyRemoteUpdateFailed);
+    dict[kNotifySyncFailed] = @(self.notifySyncFailed);
+    dict[kDebug] = @(self.debug);
+    dict[kCrashCountWait] = @(self.crashCountWait);
+    dict[kResentCrashUpdates] = @(self.resendCrashedUpdates);
+    dict[kHasCustomSync] = @(self.hasCustomSync);
+    dict[kICloudBackup] = @(self.icloud_backup);
     return dict;
 }
 
@@ -81,26 +81,26 @@
 
 + (FHSyncConfig *)objectFromJSONData:(NSDictionary *)jsonObj {
     FHSyncConfig *config = [[FHSyncConfig alloc] init];
-    config.syncFrequency = [jsonObj[KEY_SYNC_FREQUENCY] doubleValue];
-    config.autoSyncLocalUpdates = [jsonObj[KEY_AUTO_SYNC_UPDATES] boolValue];
-    config.notifyClientStorageFailed = [jsonObj[KEY_NOTIFY_CLIENT_STORAGE_FAILED] boolValue];
-    config.notifyDeltaReceived = [jsonObj[KEY_NOTIFY_DELTA_RECEIVED] boolValue];
-    config.notifyOfflineUpdate = [jsonObj[KEY_NOTIFY_OFFline_UPDATED] boolValue];
-    config.notifySyncCollision = [jsonObj[KEY_NOTIFY_SYNC_COLLISION] boolValue];
-    config.notifySyncCompleted = [jsonObj[KEY_NOTIFY_SYNC_COMPLETED] boolValue];
-    config.notifySyncStarted = [jsonObj[KEY_NOTIFY_SYNC_STATED] boolValue];
-    config.notifyRemoteUpdateApplied = [jsonObj[KEY_NOTIFY_REMOTE_UPDATE_APPLIED] boolValue];
-    config.notifyLocalUpdateApplied = [jsonObj[KEY_NOTIFY_LOCAL_UPDATE_APPLIED] boolValue];
-    config.notifyRemoteUpdateFailed = [jsonObj[KEY_NOTIFY_REMOTE_UPDATE_FAILED] boolValue];
-    config.notifySyncFailed = [jsonObj[KEY_NOTIFY_SYNC_FAILED] boolValue];
-    config.debug = [jsonObj[KEY_DEBUG] boolValue];
-    config.crashCountWait = [jsonObj[KEY_CRASHCOUNTWAIT] integerValue];
-    config.resendCrashedUpdates = [jsonObj[KEY_RESEND_CRASH] boolValue];
-    if ([jsonObj[KEY_HAS_CUSTOM_SYNC] boolValue]) {
-        config.hasCustomSync = [jsonObj[KEY_HAS_CUSTOM_SYNC] boolValue];
+    config.syncFrequency = [jsonObj[kSyncFrequency] doubleValue];
+    config.autoSyncLocalUpdates = [jsonObj[kAutoSyncUpdates] boolValue];
+    config.notifyClientStorageFailed = [jsonObj[kNotifyClientStorageFailed] boolValue];
+    config.notifyDeltaReceived = [jsonObj[kNotifyDeltaReceived] boolValue];
+    config.notifyOfflineUpdate = [jsonObj[kNotifyOFFlineUpdated] boolValue];
+    config.notifySyncCollision = [jsonObj[kNotifySyncCollision] boolValue];
+    config.notifySyncCompleted = [jsonObj[kNotifySyncCompleted] boolValue];
+    config.notifySyncStarted = [jsonObj[kNotifySyncStarted] boolValue];
+    config.notifyRemoteUpdateApplied = [jsonObj[kNotifyRemoteUpdateApplied] boolValue];
+    config.notifyLocalUpdateApplied = [jsonObj[kNotifyLocalUpdateApplied] boolValue];
+    config.notifyRemoteUpdateFailed = [jsonObj[kNotifyRemoteUpdateFailed] boolValue];
+    config.notifySyncFailed = [jsonObj[kNotifySyncFailed] boolValue];
+    config.debug = [jsonObj[kDebug] boolValue];
+    config.crashCountWait = [jsonObj[kCrashCountWait] integerValue];
+    config.resendCrashedUpdates = [jsonObj[kResentCrashUpdates] boolValue];
+    if ([jsonObj[kHasCustomSync] boolValue]) {
+        config.hasCustomSync = [jsonObj[kHasCustomSync] boolValue];
     }
-    if ([jsonObj[KEY_ICLOUD_BACKUP] boolValue]) {
-        config.icloud_backup = [jsonObj[KEY_ICLOUD_BACKUP] boolValue];
+    if ([jsonObj[kICloudBackup] boolValue]) {
+        config.icloud_backup = [jsonObj[kICloudBackup] boolValue];
     }
     return config;
 }

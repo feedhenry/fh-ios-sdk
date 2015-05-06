@@ -5,18 +5,18 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#define kFHSyncStateChangedNotification @"kFHSyncStateChangedNotification"
+extern NSString *const kFHSyncStateChangedNotification;
 
-#define SYNC_STARTED_MESSAGE @"SYNC_STARTED"
-#define SYNC_COMPLETE_MESSAGE @"SYNC_COMPLETE"
-#define SYNC_FAILED_MESSAGE @"SYNC_FAILED"
-#define OFFLINE_UPDATE_MESSAGE @"OFFLINE_UPDATE"
-#define COLLISION_DETECTED_MESSAGE @"COLLISION_DETECTED"
-#define REMOTE_UPDATE_FAILED_MESSAGE @"REMOTE_UPDATE_FAILED"
-#define REMOTE_UPDATE_APPLIED_MESSAGE @"REMOTE_UPDATE_APPLIED"
-#define LOCAL_UPDATE_APPLIED_MESSAGE @"LOCAL_UPDATE_APPLIED"
-#define DELTA_RECEIVED_MESSAGE @"DELTA_RECEIVED"
-#define CLIENT_STORAGE_FAILED_MESSAGE @"CLIENT_STORAGE_FAILED"
+extern NSString *const SYNC_STARTED_MESSAGE;
+extern NSString *const SYNC_COMPLETE_MESSAGE;
+extern NSString *const SYNC_FAILED_MESSAGE;
+extern NSString *const OFFLINE_UPDATE_MESSAGE;
+extern NSString *const COLLISION_DETECTED_MESSAGE;
+extern NSString *const REMOTE_UPDATE_FAILED_MESSAGE;
+extern NSString *const REMOTE_UPDATE_APPLIED_MESSAGE;
+extern NSString *const LOCAL_UPDATE_APPLIED_MESSAGE;
+extern NSString *const DELTA_RECEIVED_MESSAGE;
+extern NSString *const CLIENT_STORAGE_FAILED_MESSAGE;
 
 /**
  The notification message created by the sync client

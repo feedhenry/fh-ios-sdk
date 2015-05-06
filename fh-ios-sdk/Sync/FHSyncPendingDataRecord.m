@@ -10,17 +10,17 @@
 #import "FHSyncDataRecord.h"
 #import "FHSyncUtils.h"
 
-#define KEY_INFIGHT @"inFlight"
-#define KEY_ACTION @"action"
-#define KEY_TIMESTAMP @"timestamp"
-#define KEY_UID @"uid"
-#define KEY_PRE @"pre"
-#define KEY_PRE_DATA_HASH @"preHash"
-#define KEY_POST @"post"
-#define KEY_POST_DATA_HASH @"postHash"
-#define KEY_INFLIGHT_DATE @"inFlightDate"
-#define KEY_CRASHED @"crashed"
-#define KEY_HASH @"hash"
+static NSString *const kInFlight = @"inFlight";
+static NSString *const kAction = @"action";
+static NSString *const  kTimestamp = @"timestamp";
+static NSString *const kUIID = @"uid";
+static NSString *const  kPre = @"pre";
+static NSString *const kPreDataHash = @"preHash";
+static NSString *const kPost = @"post";
+static NSString *const  kPostDataHash = @"postHash";
+static NSString *const kInflightDate = @"inFlightDate";
+static NSString *const kCrashed = @"crashed";
+static NSString *const kHash = @"hash";
 
 @interface FHSyncPendingDataRecord ()
 @property (nonatomic, strong, readwrite) NSString *hashValue;
@@ -48,35 +48,35 @@
 
 - (NSMutableDictionary *)JSONData {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[KEY_INFIGHT] = @(self.inFlight);
-    dict[KEY_CRASHED] = @(self.crashed);
+    dict[kInFlight] = @(self.inFlight);
+    dict[kCrashed] = @(self.crashed);
     if (self.inFlightDate) {
-        dict[KEY_INFLIGHT_DATE] =
+        dict[kInflightDate] =
             [NSNumber numberWithLong:[self.inFlightDate timeIntervalSince1970]];
     }
     if (self.action) {
-        dict[KEY_ACTION] = self.action;
+        dict[kAction] = self.action;
     }
     if (self.timestamp) {
-        dict[KEY_TIMESTAMP] = self.timestamp;
+        dict[kTimestamp] = self.timestamp;
     }
     if (self.uid) {
-        dict[KEY_UID] = self.uid;
+        dict[kUIID] = self.uid;
     }
     if (self.preData) {
-        dict[KEY_PRE] = [self.preData data];
-        dict[KEY_PRE_DATA_HASH] = [self.preData hashValue];
+        dict[kPre] = [self.preData data];
+        dict[kPreDataHash] = [self.preData hashValue];
     }
     if (self.postData) {
-        dict[KEY_POST] = [self.postData data];
-        dict[KEY_POST_DATA_HASH] = [self.postData hashValue];
+        dict[kPost] = [self.postData data];
+        dict[kPostDataHash] = [self.postData hashValue];
     }
     return dict;
 }
 
 - (NSString *)JSONString {
     NSMutableDictionary *dict = [self JSONData];
-    dict[KEY_HASH] = self.hashValue;
+    dict[kHash] = self.hashValue;
     return [dict JSONString];
 }
 
@@ -90,35 +90,35 @@
 
 + (FHSyncPendingDataRecord *)objectFromJSONData:(NSDictionary *)jsonObj {
     FHSyncPendingDataRecord *record = [[FHSyncPendingDataRecord alloc] init];
-    if (jsonObj[KEY_INFIGHT]) {
-        record.inFlight = [jsonObj[KEY_INFIGHT] boolValue];
+    if (jsonObj[kInFlight]) {
+        record.inFlight = [jsonObj[kInFlight] boolValue];
     }
-    if (jsonObj[KEY_INFLIGHT_DATE]) {
+    if (jsonObj[kInflightDate]) {
         record.inFlightDate =
-            [NSDate dateWithTimeIntervalSince1970:[jsonObj[KEY_INFLIGHT_DATE] doubleValue]];
+            [NSDate dateWithTimeIntervalSince1970:[jsonObj[kInflightDate] doubleValue]];
     }
-    if (jsonObj[KEY_CRASHED]) {
-        record.crashed = [jsonObj[KEY_CRASHED] boolValue];
+    if (jsonObj[kCrashed]) {
+        record.crashed = [jsonObj[kCrashed] boolValue];
     }
-    if (jsonObj[KEY_TIMESTAMP]) {
-        record.timestamp = jsonObj[KEY_TIMESTAMP];
+    if (jsonObj[kTimestamp]) {
+        record.timestamp = jsonObj[kTimestamp];
     }
-    if (jsonObj[KEY_ACTION]) {
-        record.action = jsonObj[KEY_ACTION];
+    if (jsonObj[kAction]) {
+        record.action = jsonObj[kAction];
     }
-    if (jsonObj[KEY_UID]) {
-        record.uid = jsonObj[KEY_UID];
+    if (jsonObj[kUIID]) {
+        record.uid = jsonObj[kUIID];
     }
-    if (jsonObj[KEY_PRE]) {
+    if (jsonObj[kPre]) {
         FHSyncDataRecord *preData = [[FHSyncDataRecord alloc] init];
-        preData.data = jsonObj[KEY_PRE];
-        preData.hashValue = jsonObj[KEY_PRE_DATA_HASH];
+        preData.data = jsonObj[kPre];
+        preData.hashValue = jsonObj[kPreDataHash];
         record.preData = preData;
     }
-    if (jsonObj[KEY_POST]) {
+    if (jsonObj[kPost]) {
         FHSyncDataRecord *postData = [[FHSyncDataRecord alloc] init];
-        postData.data = jsonObj[KEY_POST];
-        postData.hashValue = jsonObj[KEY_POST_DATA_HASH];
+        postData.data = jsonObj[kPost];
+        postData.hashValue = jsonObj[kPostDataHash];
         record.postData = postData;
     }
     return record;

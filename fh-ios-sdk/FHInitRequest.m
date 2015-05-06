@@ -9,7 +9,7 @@
 #import "FHConfig.h"
 #import "FHDefines.h"
 
-#define FH_INIT_PATH @"box/srv/1.1/app/init"
+static NSString *const kInitPath = @"box/srv/1.1/app/init";
 
 @implementation FHInitRequest
 
@@ -22,7 +22,7 @@
 }
 
 - (NSString *)path {
-    return FH_INIT_PATH;
+    return kInitPath;
 }
 
 @end
