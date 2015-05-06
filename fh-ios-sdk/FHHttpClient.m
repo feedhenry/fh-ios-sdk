@@ -12,6 +12,11 @@
 #import "FHHttpClient.h"
 #import "FHJSON.h"
 
+@interface FHHttpClient ()
+@property (nonatomic, copy) void (^successHandler)(FHResponse *resp);
+@property (nonatomic, copy) void (^failureHandler)(FHResponse *resp);
+@end
+
 @implementation FHHttpClient
 
 - (instancetype)init {
@@ -24,14 +29,10 @@
 - (void)sendRequest:(FHAct *)fhact
          AndSuccess:(void (^)(FHResponse *success))sucornil
          AndFailure:(void (^)(FHResponse *failed))failornil {
-#if NS_BLOCKS_AVAILABLE
-    if (sucornil) {
-        successHandler = [sucornil copy];
-    }
-    if (failornil) {
-        failureHandler = [failornil copy];
-    }
-#endif
+
+    self.successHandler = sucornil;
+    self.failureHandler = failornil;
+
     if (![FH isOnline]) {
         FHResponse *res = [[FHResponse alloc] init];
         [res setError:[NSError errorWithDomain:@"FHHttpClient"
@@ -45,14 +46,16 @@
     NSURL *apicall = [fhact buildURL];
 
     DLog(@"Request URL is : %@", [apicall absoluteString]);
-    
+
     // startrequest
     __block ASIHTTPRequest *brequest = [ASIHTTPRequest requestWithURL:apicall];
     __weak ASIHTTPRequest *request = brequest;
 
     // set headers
-    NSMutableDictionary *headers = [NSMutableDictionary dictionaryWithDictionary:fhact.headers];
-    NSString *apiKeyVal = [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
+    NSMutableDictionary *headers =
+        [NSMutableDictionary dictionaryWithDictionary:fhact.headers];
+    NSString *apiKeyVal =
+        [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
     [headers setValue:@"application/json" forKey:@"Content-Type"];
     [headers setValue:apiKeyVal forKeyPath:@"x-fh-auth-app"];
     [brequest setRequestHeaders:headers];
@@ -79,7 +82,8 @@
         [fhResponse parseResponseData:responseData];
 
         if ([request responseStatusCode] == 200) {
-            NSString *status = [fhResponse.parsedResponse valueForKey:@"status"];
+            NSString *status =
+                [fhResponse.parsedResponse valueForKey:@"status"];
             if ((nil == status) || (nil != status)) {
                 [self successWithResponse:fhResponse AndAction:fhact];
                 return;
@@ -92,9 +96,10 @@
                 msg = [request responseString];
             }
         }
-        NSError *err = [NSError errorWithDomain:NetworkRequestErrorDomain
-                                           code:[request responseStatusCode]
-                                       userInfo:@{NSLocalizedDescriptionKey : msg}];
+        NSError *err =
+            [NSError errorWithDomain:NetworkRequestErrorDomain
+                                code:[request responseStatusCode]
+                            userInfo:@{NSLocalizedDescriptionKey : msg}];
         fhResponse.error = err;
         [self failWithResponse:fhResponse AndAction:fhact];
     }];
@@ -124,12 +129,11 @@
 }
 
 - (void)successWithResponse:(FHResponse *)fhres AndAction:(FHAct *)action {
-// if user has defined their own call back pass control to them
-#if NS_BLOCKS_AVAILABLE
-    if (successHandler) {
-        return successHandler(fhres);
+    // if user has defined their own call back pass control to them
+    if (self.successHandler) {
+        return self.successHandler(fhres);
     }
-#endif
+
     SEL sucSel = @selector(requestDidSucceedWithResponse:);
     if (action.delegate && [action.delegate respondsToSelector:sucSel]) {
         [(FHAct *)action.delegate performSelectorOnMainThread:sucSel
@@ -139,11 +143,10 @@
 }
 
 - (void)failWithResponse:(FHResponse *)fhres AndAction:(FHAct *)action {
-#if NS_BLOCKS_AVAILABLE
-    if (failureHandler) {
-        return failureHandler(fhres);
+    if (self.failureHandler) {
+        return self.failureHandler(fhres);
     }
-#endif
+
     SEL delFailSel = @selector(requestDidFailWithResponse:);
     if (action.delegate && [action.delegate respondsToSelector:delFailSel]) {
         [(FHAct *)action.delegate performSelectorOnMainThread:delFailSel
