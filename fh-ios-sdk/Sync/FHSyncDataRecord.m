@@ -9,9 +9,9 @@
 #import "FHSyncUtils.h"
 #import "FHJSON.h"
 
-#define KEY_RECORD_HASH @"hashValue"
-#define KEY_RECORD_DATA @"data"
-#define KEY_UID @"uid"
+static NSString *const kRecordHash = @"hashValue";
+static NSString *const kRecordData = @"data";
+static NSString *const kUIID = @"uid";
 
 @implementation FHSyncDataRecord
 
@@ -56,13 +56,13 @@
 - (NSDictionary *)JSONData {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     if (self.uid) {
-        dict[KEY_UID] = self.uid;
+        dict[kUIID] = self.uid;
     }
     if (self.hashValue) {
-        dict[KEY_RECORD_HASH] = self.hashValue;
+        dict[kRecordHash] = self.hashValue;
     }
     if (self.data) {
-        dict[KEY_RECORD_DATA] = self.data;
+        dict[kRecordData] = self.data;
     }
 
     return dict;
@@ -75,12 +75,12 @@
 
 + (FHSyncDataRecord *)objectFromJSONData:(NSDictionary *)jsonObj {
     FHSyncDataRecord *record = [[FHSyncDataRecord alloc] init];
-    if (jsonObj[KEY_UID]) {
-        record.uid = jsonObj[KEY_UID];
+    if (jsonObj[kUIID]) {
+        record.uid = jsonObj[kUIID];
     }
-    if (jsonObj[KEY_RECORD_DATA]) {
-        record.data = jsonObj[KEY_RECORD_DATA];
-        record.hashValue = jsonObj[KEY_RECORD_HASH];
+    if (jsonObj[kRecordData]) {
+        record.data = jsonObj[kRecordData];
+        record.hashValue = jsonObj[kRecordHash];
     }
 
     return record;

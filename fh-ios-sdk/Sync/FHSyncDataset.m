@@ -14,16 +14,16 @@
 #import "FHSyncNotificationMessage.h"
 #import "FHResponse.h"
 
-#define STORAGE_FILE_PATH @"sync.json"
+static NSString *const kStorageFilePath = @"sync.json";
 
-#define KEY_DATASETID @"dataSetId"
-#define KEY_SYNCLOOP_START @"syncLoopStart"
-#define KEY_SYNCLOOP_END @"syncLoopEnd"
-#define KEY_SYNCCONFIG @"syncConfig"
-#define KEY_PENDING_RECORDS @"pendingDataRecords"
-#define KEY_DATA_RECORDS @"dataRecords"
-#define KEY_HASHVALUE @"hashValue"
-#define KEY_ACK @"acknowledgements"
+static NSString *const kDataSetId = @"dataSetId";
+static NSString *const kSyncLoopStart = @"syncLoopStart";
+static NSString *const kSyncLoopEnd = @"syncLoopEnd";
+static NSString *const kSyncConfig = @"syncConfig";
+static NSString *const kPendingRecords = @"pendingDataRecords";
+static NSString *const kDataRecords = @"dataRecords";
+static NSString *const kHashValue = @"hashValue";
+static NSString *const kAck = @"acknowledgements";
 
 @implementation FHSyncDataset
 
@@ -50,7 +50,7 @@
 
 - (id)initFromFileWithDataId:(NSString *)dataId error:(NSError *)error {
     NSString *data =
-        [FHSyncUtils loadDataFromFile:[dataId stringByAppendingPathExtension:STORAGE_FILE_PATH]
+        [FHSyncUtils loadDataFromFile:[dataId stringByAppendingPathExtension:kStorageFilePath]
                                 error:error];
     if (nil != data) {
         return [FHSyncDataset objectFromJSONString:data];
@@ -61,26 +61,26 @@
 
 - (NSDictionary *)JSONData {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[KEY_DATASETID] = self.datasetId;
-    dict[KEY_SYNCCONFIG] = [self.syncConfig JSONData];
+    dict[kDataSetId] = self.datasetId;
+    dict[kSyncConfig] = [self.syncConfig JSONData];
     NSMutableDictionary *pendingDataDict = [NSMutableDictionary dictionary];
     [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         pendingDataDict[key] = [obj JSONData];
     }];
-    dict[KEY_PENDING_RECORDS] = pendingDataDict;
+    dict[kPendingRecords] = pendingDataDict;
     NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
     [self.dataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         dataDict[key] = [obj JSONData];
     }];
-    dict[KEY_DATA_RECORDS] = dataDict;
+    dict[kDataRecords] = dataDict;
 
     if (nil != self.syncLoopStart) {
-        dict[KEY_SYNCLOOP_START] = @([self.syncLoopStart timeIntervalSince1970]);
+        dict[kSyncLoopStart] = @([self.syncLoopStart timeIntervalSince1970]);
     }
     if (nil != self.syncLoopEnd) {
-        dict[KEY_SYNCLOOP_END] = @([self.syncLoopEnd timeIntervalSince1970]);
+        dict[kSyncLoopEnd] = @([self.syncLoopEnd timeIntervalSince1970]);
     }
-    dict[KEY_ACK] = self.acknowledgements;
+    dict[kAck] = self.acknowledgements;
     return dict;
 }
 
@@ -95,7 +95,7 @@
     // NSLog(@"content = %@", jsonStr);
     @synchronized(self) {
         [FHSyncUtils saveData:jsonStr
-                       toFile:[self.datasetId stringByAppendingPathExtension:STORAGE_FILE_PATH]
+                       toFile:[self.datasetId stringByAppendingPathExtension:kStorageFilePath]
                        backup:self.syncConfig.icloud_backup
                         error:error];
         if (nil != error) {
@@ -121,33 +121,33 @@
 
 + (FHSyncDataset *)objectFromJSONData:(NSDictionary *)jsonObj {
     FHSyncDataset *instance = [[FHSyncDataset alloc] init];
-    instance.datasetId = jsonObj[KEY_DATASETID];
-    instance.syncConfig = [FHSyncConfig objectFromJSONData:jsonObj[KEY_SYNCCONFIG]];
-    instance.hashValue = jsonObj[KEY_HASHVALUE];
+    instance.datasetId = jsonObj[kDataSetId];
+    instance.syncConfig = [FHSyncConfig objectFromJSONData:jsonObj[kSyncConfig]];
+    instance.hashValue = jsonObj[kHashValue];
     instance.pendingDataRecords = [NSMutableDictionary dictionary];
-    NSDictionary *pendingJson = jsonObj[KEY_PENDING_RECORDS];
+    NSDictionary *pendingJson = jsonObj[kPendingRecords];
     if (nil != pendingJson) {
         [pendingJson enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             (instance.pendingDataRecords)[key] = [FHSyncPendingDataRecord objectFromJSONData:obj];
         }];
     }
     instance.dataRecords = [NSMutableDictionary dictionary];
-    NSDictionary *dataJson = jsonObj[KEY_DATA_RECORDS];
+    NSDictionary *dataJson = jsonObj[kDataRecords];
     if (nil != dataJson) {
         [dataJson enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             (instance.dataRecords)[key] = [FHSyncDataRecord objectFromJSONData:obj];
         }];
     }
-    if (jsonObj[KEY_SYNCLOOP_START]) {
+    if (jsonObj[kSyncLoopStart]) {
         instance.syncLoopStart =
-            [NSDate dateWithTimeIntervalSince1970:[jsonObj[KEY_SYNCLOOP_START] doubleValue]];
+            [NSDate dateWithTimeIntervalSince1970:[jsonObj[kSyncLoopStart] doubleValue]];
     }
-    if (jsonObj[KEY_SYNCLOOP_END]) {
+    if (jsonObj[kSyncLoopEnd]) {
         instance.syncLoopEnd =
-            [NSDate dateWithTimeIntervalSince1970:[jsonObj[KEY_SYNCLOOP_END] doubleValue]];
+            [NSDate dateWithTimeIntervalSince1970:[jsonObj[kSyncLoopEnd] doubleValue]];
     }
-    if (jsonObj[KEY_ACK]) {
-        instance.acknowledgements = jsonObj[KEY_ACK];
+    if (jsonObj[kAck]) {
+        instance.acknowledgements = jsonObj[kAck];
     }
     instance.initialised = YES;
     return instance;
