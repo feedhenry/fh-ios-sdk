@@ -42,7 +42,7 @@
 }
 
 - (void)datasetMonitor:(NSDictionary *)info {
-    NSLog(@"start to run checkDatasets");
+    DLog(@"start to run checkDatasets");
     [self checkDatasets];
     [NSTimer scheduledTimerWithTimeInterval:1
                                      target:self
@@ -75,7 +75,7 @@
                     }
                 }
                 if (dataset.syncLoopPending) {
-                    // NSLog(@"start to run syncLoopWithDataId %@", key);
+                    // DLog(@"start to run syncLoopWithDataId %@", key);
                     [dataset startSyncLoop];
                 }
             }
@@ -129,7 +129,7 @@
     NSError *saveError = nil;
     [dataSet saveToFile:saveError];
     if (saveError) {
-        NSLog(@"Failed to save dataset with dataId %@", dataId);
+        DLog(@"Failed to save dataset with dataId %@", dataId);
     }
 }
 

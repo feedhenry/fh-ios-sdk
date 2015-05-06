@@ -55,7 +55,7 @@ static Reachability *reachability;
         init.method = FH_INIT;
 
         void (^success)(FHResponse *) = ^(FHResponse *res) {
-            NSLog(@"the response from init %@", [res rawResponseAsString]);
+            DLog(@"the response from init %@", [res rawResponseAsString]);
             NSDictionary *props = [res parsedResponse];
             cloudProps = [[FHCloudProps alloc] initWithCloudProps:props];
 
@@ -69,7 +69,7 @@ static Reachability *reachability;
         };
 
         void (^failure)(FHResponse *) = ^(FHResponse *res) {
-            NSLog(@"init failed");
+            DLog(@"init failed");
             ready = false;
             if (failornil) {
                 failornil(res);
@@ -78,7 +78,7 @@ static Reachability *reachability;
 
         [init execAsyncWithSuccess:success AndFailure:failure];
     } else {
-        NSLog(@"FH is ready");
+        DLog(@"FH is ready");
         if (sucornil) {
             sucornil(nil);
         }
@@ -120,7 +120,7 @@ static Reachability *reachability;
     } else {
         _isOnline = NO;
     }
-    NSLog(@"FH network status changed. Current status: %d", _isOnline);
+    DLog(@"FH network status changed. Current status: %d", _isOnline);
     if (_isOnline && !ready) {
         [FH initWithSuccess:nil AndFailure:nil];
     }

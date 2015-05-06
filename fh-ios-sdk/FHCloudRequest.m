@@ -30,7 +30,7 @@
         }
         _args = [NSMutableDictionary dictionary];
     }
-    NSLog(@"Request url is %@", url);
+    DLog(@"Request url is %@", url);
     NSURL *uri = [[NSURL alloc] initWithString:url];
     return uri;
 }
