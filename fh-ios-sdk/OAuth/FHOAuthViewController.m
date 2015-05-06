@@ -7,39 +7,47 @@
 
 #import "FHOAuthViewController.h"
 
-@interface FHOAuthViewController () {
-    BOOL finished;
-    NSDictionary *authInfo;
-}
+@interface FHOAuthViewController ()
+@property (nonatomic, copy) void (^completeHandler)(FHResponse *resp);
 @end
 
-@implementation FHOAuthViewController
+@implementation FHOAuthViewController {
+    UIView *_topView;
+    UINavigationBar *_titleBar;
+    UIWebView *_webView;
+    UIActivityIndicatorView *_activityView;
+    id _delegate;
+    SEL _finishSeletor;
+    NSURLRequest *_request;
+    BOOL _finished;
+    NSDictionary *_authInfo;
+}
 
-- (id)initWith:(NSURL *)_authRequest
-            delegate:(id)_delegate
-    finishedSelector:(SEL)_finishedSelector {
+- (id)initWith:(NSURL *)authRequest
+            delegate:(id)delegate
+    finishedSelector:(SEL)finishedSelector {
     self = [super init];
     if (self) {
-        request = [NSURLRequest requestWithURL:_authRequest
-                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-                               timeoutInterval:20.0];
-        delegate = _delegate;
-        finishSeletor = _finishedSelector;
-        finished = FALSE;
-        authInfo = nil;
+        _request =
+            [NSURLRequest requestWithURL:authRequest
+                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                         timeoutInterval:20.0];
+        _delegate = delegate;
+        _finishSeletor = finishedSelector;
+        _finished = FALSE;
+        _authInfo = nil;
     }
     return self;
 }
 
-#if NS_BLOCKS_AVAILABLE
-- (id)initWith:(NSURL *)_authRequest completeHandler:(void (^)(FHResponse *resp))_handler {
-    self = [self initWith:_authRequest delegate:nil finishedSelector:nil];
+- (id)initWith:(NSURL *)authRequest
+    completeHandler:(void (^)(FHResponse *resp))handler {
+    self = [self initWith:authRequest delegate:nil finishedSelector:nil];
     if (self) {
-        completeHandler = [_handler copy];
+        _completeHandler = [handler copy];
     }
     return self;
 }
-#endif
 
 - (void)loadView {
     UIWindow *appWindow = [[[UIApplication sharedApplication] delegate] window];
@@ -47,67 +55,77 @@
     float titleBarHeight = 45;
     float appHeight = appWindow.frame.size.height;
     float appWidth = appWindow.frame.size.width;
-    topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, appWidth, appHeight)];
-    topView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    titleBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, appWidth, titleBarHeight)];
-    titleBar.barStyle = UIBarStyleBlack;
-    titleBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _topView =
+        [[UIView alloc] initWithFrame:CGRectMake(0, 0, appWidth, appHeight)];
+    _topView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _titleBar = [[UINavigationBar alloc]
+        initWithFrame:CGRectMake(0, 0, appWidth, titleBarHeight)];
+    _titleBar.barStyle = UIBarStyleBlack;
+    _titleBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, titleBarHeight, appWidth,
-                                                          appHeight - titleBar.frame.size.height)];
-    webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    webView.scalesPageToFit = YES;
+    _webView = [[UIWebView alloc]
+        initWithFrame:CGRectMake(0, titleBarHeight, appWidth,
+                                 appHeight - _titleBar.frame.size.height)];
+    _webView.autoresizingMask =
+        UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _webView.scalesPageToFit = YES;
 
-    activityView = [[UIActivityIndicatorView alloc]
-        initWithFrame:CGRectMake(appWidth / 2 - 12.5, appHeight / 2 - 12.5, 25, 25)];
-    activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    [activityView sizeToFit];
-    activityView.autoresizingMask =
-        UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
-        UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    _activityView = [[UIActivityIndicatorView alloc]
+        initWithFrame:CGRectMake(appWidth / 2 - 12.5, appHeight / 2 - 12.5, 25,
+                                 25)];
+    _activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [_activityView sizeToFit];
+    _activityView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
+                                     UIViewAutoresizingFlexibleRightMargin |
+                                     UIViewAutoresizingFlexibleTopMargin |
+                                     UIViewAutoresizingFlexibleBottomMargin;
 
-    [topView addSubview:titleBar];
-    [topView addSubview:activityView];
-    [topView addSubview:webView];
+    [_topView addSubview:_titleBar];
+    [_topView addSubview:_activityView];
+    [_topView addSubview:_webView];
 
-    UINavigationItem *titleBarItem = [[UINavigationItem alloc] initWithTitle:@"Login"];
+    UINavigationItem *titleBarItem =
+        [[UINavigationItem alloc] initWithTitle:@"Login"];
     // create the close button
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Close"
-                                                             style:UIBarButtonItemStyleDone
-                                                            target:self
-                                                            action:@selector(closeView)];
+    UIBarButtonItem *done =
+        [[UIBarButtonItem alloc] initWithTitle:@"Close"
+                                         style:UIBarButtonItemStyleDone
+                                        target:self
+                                        action:@selector(closeView)];
     [titleBarItem setLeftBarButtonItem:done];
 
-    [titleBar pushNavigationItem:titleBarItem animated:NO];
+    [_titleBar pushNavigationItem:titleBarItem animated:NO];
 
-    self.view = topView;
+    self.view = _topView;
 }
 
 - (void)closeView {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES
+                                                      completion:nil];
     FHResponse *fhres = [[FHResponse alloc] init];
-    fhres.parsedResponse = authInfo;
-    if (delegate != nil && finishSeletor != nil) {
-        NSMethodSignature *method = [delegate methodSignatureForSelector:finishSeletor];
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:method];
-        [invocation setSelector:finishSeletor];
-        [invocation setTarget:delegate];
+    fhres.parsedResponse = _authInfo;
+    if (_delegate != nil && _finishSeletor != nil) {
+        NSMethodSignature *method =
+            [_delegate methodSignatureForSelector:_finishSeletor];
+        NSInvocation *invocation =
+            [NSInvocation invocationWithMethodSignature:method];
+        [invocation setSelector:_finishSeletor];
+        [invocation setTarget:_delegate];
         [invocation setArgument:&fhres atIndex:2];
         [invocation invoke];
-        delegate = nil;
+        _delegate = nil;
     }
-#if NS_BLOCKS_AVAILABLE
-    if (completeHandler) {
-        completeHandler(fhres);
-        completeHandler = nil;
+
+    if (_completeHandler) {
+        _completeHandler(fhres);
+        _completeHandler = nil;
     }
-#endif
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    webView.delegate = self;
-    [webView loadRequest:request];
+    _webView.delegate = self;
+    [_webView loadRequest:_request];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)theWebView {
@@ -120,23 +138,25 @@
     NSURL *url = [theRequest URL];
     DLog(@"Start to load url : %@", url);
     NSString *queryStr = [url query];
-    if (queryStr != nil && [queryStr rangeOfString:@"status=complete"].location != NSNotFound) {
+    if (queryStr != nil &&
+        [queryStr rangeOfString:@"status=complete"].location != NSNotFound) {
         NSArray *pairs = [queryStr componentsSeparatedByString:@"&"];
         NSMutableDictionary *map = [NSMutableDictionary dictionary];
 
         for (NSString *p in pairs) {
             NSArray *ps = [p componentsSeparatedByString:@"="];
             if ([ps[0] isEqualToString:@"authResponse"]) {
-                NSDictionary *authRes = [[ps[1] stringByReplacingPercentEscapesUsingEncoding:
-                                                    NSUTF8StringEncoding] objectFromJSONString];
+                NSDictionary *authRes =
+                    [[ps[1] stringByReplacingPercentEscapesUsingEncoding:
+                                NSUTF8StringEncoding] objectFromJSONString];
                 map[ps[0]] = authRes;
             } else {
                 [map setValue:ps[1] forKey:ps[0]];
             }
         }
 
-        authInfo = [map copy];
-        finished = TRUE;
+        _authInfo = [map copy];
+        _finished = TRUE;
     }
 
     return YES;
@@ -144,8 +164,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView {
     [self hideActivityView];
-    if (finished) {
-        finished = FALSE;
+    if (_finished) {
+        _finished = FALSE;
         [self closeView];
     }
 }
@@ -160,13 +180,13 @@
 }
 
 - (void)showActivityView {
-    [topView bringSubviewToFront:activityView];
-    [activityView startAnimating];
+    [_topView bringSubviewToFront:_activityView];
+    [_activityView startAnimating];
 }
 
 - (void)hideActivityView {
-    [activityView stopAnimating];
-    [topView sendSubviewToBack:activityView];
+    [_activityView stopAnimating];
+    [_topView sendSubviewToBack:_activityView];
 }
 
 @end

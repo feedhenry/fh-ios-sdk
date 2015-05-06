@@ -7,6 +7,7 @@
 
 #import "FHActRequest.h"
 #import "FH.h"
+
 @implementation FHActRequest
 
 - (NSURL *)buildURL {

@@ -13,26 +13,13 @@
 /**
  Present a customized UIWebView to perform OAuth authentication.
  */
-@interface FHOAuthViewController : UIViewController <UIWebViewDelegate> {
-    UIView *topView;
-    UINavigationBar *titleBar;
-    UIWebView *webView;
-    UIActivityIndicatorView *activityView;
-    id delegate;
-    SEL finishSeletor;
-    NSURLRequest *request;
+@interface FHOAuthViewController : UIViewController <UIWebViewDelegate>
 
-#if NS_BLOCKS_AVAILABLE
-    void (^completeHandler)(FHResponse *resp);
-#endif
-}
+- (instancetype)initWith:(NSURL *)authRequest
+                delegate:(id)delegate
+        finishedSelector:(SEL)finishedSelector;
 
-- (instancetype)initWith:(NSURL *)_authRequest
-                delegate:(id)_delegate
-        finishedSelector:(SEL)_finishedSelector;
-
-#if NS_BLOCKS_AVAILABLE
-- (instancetype)initWith:(NSURL *)_authRequest completeHandler:(void (^)(FHResponse *resp))_handler;
-#endif
+- (instancetype)initWith:(NSURL *)authRequest
+         completeHandler:(void (^)(FHResponse *resp))handler;
 
 @end

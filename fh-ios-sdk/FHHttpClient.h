@@ -7,16 +7,7 @@
 
 #import "FHAct.h"
 
-@interface FHHttpClient : NSObject {
-
-#if NS_BLOCKS_AVAILABLE
-
-    void (^successHandler)(FHResponse *resp);
-
-    void (^failureHandler)(FHResponse *resp);
-
-#endif
-}
+@interface FHHttpClient : NSObject
 
 - (void)sendRequest:(FHAct *)fhact
          AndSuccess:(void (^)(FHResponse *success))sucornil
