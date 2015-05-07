@@ -7,6 +7,7 @@
 
 #import "FHConfig.h"
 #import "FHCloudProps.h"
+#import "FHDefines.h"
 
 @interface FHCloudProps ()
 

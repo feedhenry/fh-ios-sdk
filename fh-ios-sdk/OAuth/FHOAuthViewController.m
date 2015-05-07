@@ -6,6 +6,7 @@
 //
 
 #import "FHOAuthViewController.h"
+#import "FHDefines.h"
 
 @interface FHOAuthViewController ()
 @property (nonatomic, copy) void (^completeHandler)(FHResponse *resp);

@@ -7,6 +7,7 @@
 
 #import "FHActRequest.h"
 #import "FH.h"
+#import "FHDefines.h"
 
 @implementation FHActRequest
 

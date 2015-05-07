@@ -20,3 +20,10 @@ typedef NS_ENUM(NSInteger, FH_ACTION) {
 #define SESSION_TOKEN_KEY @"sessionToken"
 #define VERIFY_SESSION_PATH @"/box/srv/1.1/admin/authpolicy/verifysession"
 #define REVOKE_SESSION_PATH @"/box/srv/1.1/admin/authpolicy/revokesession"
+
+// cater for debug/release mode of logging
+#ifdef DEBUG
+#define DLog(...) NSLog(@"%s(%p) %@", __PRETTY_FUNCTION__, self, [NSString stringWithFormat:__VA_ARGS__])
+#else
+#define DLog(...) /* */
+#endif

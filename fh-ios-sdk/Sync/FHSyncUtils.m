@@ -9,6 +9,7 @@
 
 #import "FHSyncUtils.h"
 #import "FHSyncClient.h"
+#import "FHDefines.h"
 
 @implementation FHSyncUtils
 

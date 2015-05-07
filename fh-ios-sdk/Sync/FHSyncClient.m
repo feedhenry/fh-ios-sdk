@@ -12,6 +12,7 @@
 #import "FHSyncPendingDataRecord.h"
 #import "FHSyncDataRecord.h"
 #import "FHSyncDataset.h"
+#import "FHDefines.h"
 
 @implementation FHSyncClient {
     NSMutableDictionary *_dataSets;
