@@ -7,6 +7,7 @@
 
 #import "FHCloudRequest.h"
 #import "FH.h"
+#import "FHDefines.h"
 
 @implementation FHCloudRequest
 

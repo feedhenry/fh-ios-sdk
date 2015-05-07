@@ -9,8 +9,10 @@
 #import <ASIHTTPRequest/ASIDownloadCache.h>
 
 #import "FH.h"
+#import "FHDefines.h"
 #import "FHHttpClient.h"
 #import "FHJSON.h"
+
 
 @interface FHHttpClient ()
 @property (nonatomic, copy) void (^successHandler)(FHResponse *resp);

@@ -11,6 +11,7 @@
 #import "FHSyncPendingDataRecord.h"
 #import "FHSyncDataRecord.h"
 #import "FH.h"
+#import "FHDefines.h"
 #import "FHSyncNotificationMessage.h"
 #import "FHResponse.h"
 
