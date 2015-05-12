@@ -85,6 +85,71 @@ static Reachability *reachability;
     }
 }
 
++(void)pushEnabledForRemoteNotification:(UIApplication*)application {
+    // when running under iOS 8 we will use the new API for APNS registration
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif
+}
+
++(void)pushRegister:(NSData*)deviceToken
+         andSuccess:(void (^)(FHResponse *success))sucornil
+         andFailure:(void (^)(FHResponse *failed))failornil {
+    [self pushRegister:deviceToken withPushConfig:nil andSuccess:sucornil andFailure:failornil];
+}
+
++(void)pushRegister:(NSData*)deviceToken
+          withPushConfig:(FHPushConfig*)pushConfig
+         andSuccess:(void (^)(FHResponse *success))sucornil
+         andFailure:(void (^)(FHResponse *failed))failornil {
+    AGDeviceRegistration* registration = [[AGDeviceRegistration alloc] initWithFile:@"fhconfig"];
+    [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
+        [clientInfo setDeviceToken:deviceToken];
+        [clientInfo setAlias:pushConfig.alias];
+        [clientInfo setCategories:pushConfig.categories];
+    } success:^{
+        sucornil([[FHResponse alloc] init]);
+    } failure:^(NSError *error) {
+        FHResponse* resp = [[FHResponse alloc] init];
+        [resp setError:error];
+        failornil(resp);
+    }];
+}
+
++(void)setPushAlias:(NSString*)alias
+         andSuccess:(void (^)(FHResponse *success))sucornil
+         andFailure:(void (^)(FHResponse *failed))failornil {
+    FHPushConfig* conf = [[FHPushConfig alloc] init];
+    conf.alias = alias;
+    [self pushRegister:nil withPushConfig:conf andSuccess:sucornil andFailure:failornil];
+}
+
++(void)setPushCategories:(NSArray*)categories
+              andSuccess:(void (^)(FHResponse *success))sucornil
+              andFailure:(void (^)(FHResponse *failed))failornil {
+    FHPushConfig* conf = [[FHPushConfig alloc] init];
+    conf.categories = categories;
+    [self pushRegister:nil withPushConfig:conf andSuccess:sucornil andFailure:failornil];
+}
+
++(void)sendMetricsWhenAppLaunched:(NSDictionary *)launchOptions {
+    [AGPushAnalytics sendMetricsWhenAppLaunched:launchOptions];
+}
+
++ (void)sendMetricsWhenAppAwoken:(UIApplicationState) applicationState
+                         userInfo:(NSDictionary *)userInfo {
+    [AGPushAnalytics sendMetricsWhenAppAwoken:applicationState userInfo: userInfo];
+}
+
 + (BOOL)isOnline {
     return _isOnline;
 }

@@ -17,6 +17,10 @@ xcuserdata
 *.xccheckout
 docset-installed.txt
 
+# Exclude cocoapods folder
+Pods/
+*.xcworkspace
+
 # Exclude the build directory
 build/*
 # Exclude the /dist directory

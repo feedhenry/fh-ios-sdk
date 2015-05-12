@@ -9,9 +9,10 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/feedhenry/fh-ios-sdk.git', :tag => s.version }
   s.platform     = :ios, 7.0
   s.source_files = 'fh-ios-sdk/**/*.{h,m}'
-  s.public_header_files =  'fh-ios-sdk/FH.h', 'fh-ios-sdk/FHAct.h', 'fh-ios-sdk/FHActRequest.h', 'fh-ios-sdk/FHAuthRequest.h', 'fh-ios-sdk/FHCloudProps.h', 'fh-ios-sdk/FHCloudRequest.h', 'fh-ios-sdk/FHConfig.h', 'fh-ios-sdk/FHConfig.h',  'fh-ios-sdk/FHResponse.h', 'fh-ios-sdk/FHResponseDelegate.h', 'fh-ios-sdk/Sync/FHSyncClient.h', 'fh-ios-sdk/Sync/FHSyncConfig.h', 'fh-ios-sdk/Sync/FHSyncNotificationMessage.h', 'fh-ios-sdk/Sync/FHSyncDelegate.h', 'fh-ios-sdk/Categories/JSON/FHJSON.h', 'fh-ios-sdk/FHDataManager.h'
+  s.public_header_files =  'fh-ios-sdk/FH.h', 'fh-ios-sdk/FHAct.h', 'fh-ios-sdk/FHActRequest.h', 'fh-ios-sdk/FHAuthRequest.h', 'fh-ios-sdk/FHCloudProps.h', 'fh-ios-sdk/FHCloudRequest.h', 'fh-ios-sdk/FHPushConfig.h', 'fh-ios-sdk/FHConfig.h',  'fh-ios-sdk/FHResponse.h', 'fh-ios-sdk/FHResponseDelegate.h', 'fh-ios-sdk/Sync/FHSyncClient.h', 'fh-ios-sdk/Sync/FHSyncConfig.h', 'fh-ios-sdk/Sync/FHSyncNotificationMessage.h', 'fh-ios-sdk/Sync/FHSyncDelegate.h', 'fh-ios-sdk/Categories/JSON/FHJSON.h', 'fh-ios-sdk/FHDataManager.h'
   s.requires_arc = true
   s.libraries = 'xml2', 'z'
   s.dependency 'ASIHTTPRequest/Core', '1.8.2'
   s.dependency 'Reachability', '3.2'
+  s.dependency 'AeroGear-Push', '1.1.0-beta.2'
 end
