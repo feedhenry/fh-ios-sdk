@@ -10,6 +10,7 @@
 		55E51DF876A3F51961C76B14 /* libPods-FHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */; };
 		6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
+		6F4337031AFBAC70003CBA02 /* FeedHenry.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F4337021AFBAC70003CBA02 /* FeedHenry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F84682D1AB03C0100EC7593 /* FHJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F8468301AB03C0100EC7593 /* FHJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F84682E1AB03C0100EC7593 /* FHJSON.m */; };
 		6F9B35141A979F8A00135274 /* libFeedHenry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFeedHenry.a */; };
@@ -37,7 +38,7 @@
 		6F9C60B41A9B37C000C22C92 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604F1A9B366200C22C92 /* FHResponse.m */; };
 		6FC784D71A9B9D95002485B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC784D61A9B9D95002485B5 /* UIKit.framework */; };
 		6FCF31E61A9B40E90014B936 /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEA1A9B366200C22C92 /* FHConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31E71A9B40F20014B936 /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEB1A9B366200C22C92 /* FHDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FCF31E71A9B40F20014B936 /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEB1A9B366200C22C92 /* FHDefines.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FCF31E81A9B40F50014B936 /* FH.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE41A9B366200C22C92 /* FH.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31E91A9B40F80014B936 /* FHAct.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE51A9B366200C22C92 /* FHAct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31EA1A9B40FC0014B936 /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE61A9B366200C22C92 /* FHActRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -100,6 +101,7 @@
 		2BC8A0A7417DA495FFDD185F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		545041B32263D5936453A81E /* Pods-FHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FHTests/Pods-FHTests.release.xcconfig"; sourceTree = "<group>"; };
+		6F4337021AFBAC70003CBA02 /* FeedHenry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedHenry.h; path = "fh-ios-sdk/FeedHenry.h"; sourceTree = SOURCE_ROOT; };
 		6F84682D1AB03C0100EC7593 /* FHJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHJSON.h; sourceTree = "<group>"; };
 		6F84682E1AB03C0100EC7593 /* FHJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHJSON.m; sourceTree = "<group>"; };
 		6F9C5FC01A9B359400C22C92 /* fh-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "fh-ios-sdk-Prefix.pch"; path = "fh-ios-sdk/fh-ios-sdk-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -349,6 +351,7 @@
 				6F9C5FF11A9B366200C22C92 /* Categories */,
 				6F9C5FF61A9B366200C22C92 /* OAuth */,
 				6F9C5FF91A9B366200C22C92 /* Sync */,
+				6F4337021AFBAC70003CBA02 /* FeedHenry.h */,
 				6F9C5FEA1A9B366200C22C92 /* FHConfig.h */,
 				6F9C604B1A9B366200C22C92 /* FHConfig.m */,
 				6F9C5FEB1A9B366200C22C92 /* FHDefines.h */,
@@ -431,9 +434,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4337031AFBAC70003CBA02 /* FeedHenry.h in Headers */,
 				6FCF31E61A9B40E90014B936 /* FHConfig.h in Headers */,
 				6FCF31F21A9B41740014B936 /* FHSyncClient.h in Headers */,
-				6FCF31E71A9B40F20014B936 /* FHDefines.h in Headers */,
 				6FCF31E91A9B40F80014B936 /* FHAct.h in Headers */,
 				6FCF31F31A9B41760014B936 /* FHSyncConfig.h in Headers */,
 				6FCF31EA1A9B40FC0014B936 /* FHActRequest.h in Headers */,
@@ -446,6 +449,7 @@
 				6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */,
 				B3F685D81AD8352A002240DA /* FHDataManager.h in Headers */,
 				6FCF31F11A9B41230014B936 /* FHResponseDelegate.h in Headers */,
+				6FCF31E71A9B40F20014B936 /* FHDefines.h in Headers */,
 				6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */,
 				6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */,
 				6FE7B36B1ACEDF1A0029C63F /* FHSyncUtils.h in Headers */,
@@ -771,6 +775,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
 				DSTROOT = /tmp/FH.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
@@ -782,6 +787,7 @@
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
+				MODULEMAP_FILE = "fh-ios-sdk/module.modulemap";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = FeedHenry;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
@@ -797,6 +803,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
 				DSTROOT = /tmp/FH.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fh-ios-sdk/fh-ios-sdk-Prefix.pch";
@@ -808,6 +815,7 @@
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
+				MODULEMAP_FILE = "fh-ios-sdk/module.modulemap";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = FeedHenry;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
