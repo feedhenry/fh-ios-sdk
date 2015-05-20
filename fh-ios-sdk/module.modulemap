@@ -1,0 +1,6 @@
+framework module FH {
+  umbrella header "FeedHenry.h"
+
+  export *
+  module * { export * }
+}
