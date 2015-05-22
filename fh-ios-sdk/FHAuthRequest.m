@@ -12,7 +12,7 @@
 #import "FHDataManager.h"
 
 
-#define FH_AUTH_PATH @"box/srv/1.1/admin/authpolicy/auth"
+static NSString *const kAuthPath = @"box/srv/1.1/admin/authpolicy/auth";
 
 @implementation FHAuthRequest
 
@@ -25,7 +25,7 @@
 }
 
 - (NSString *)path {
-    return FH_AUTH_PATH;
+    return kAuthPath;
 }
 
 - (void)authWithPolicyId:(NSString *)aPolicyId {
@@ -62,7 +62,7 @@
         [params setValue:_cloudProps.env forKey:@"environment"];
     }
     _args = params;
-    NSLog(@"args set to  %@", _args);
+    DLog(@"args set to  %@", _args);
     return;
 }
 

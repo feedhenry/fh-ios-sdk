@@ -5,9 +5,6 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#ifndef fh_ios_sdk_FHResponseDelegate_h
-#define fh_ios_sdk_FHResponseDelegate_h
-
 @class FHResponse;
 @class FHAct;
 
@@ -33,5 +30,3 @@
 - (void)requestDidFailWithResponse:(FHResponse *)res;
 
 @end
-
-#endif

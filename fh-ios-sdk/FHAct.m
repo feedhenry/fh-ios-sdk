@@ -32,7 +32,7 @@
 
 - (void)setArgs:(NSDictionary *)arguments {
     _args = [NSMutableDictionary dictionaryWithDictionary:arguments];
-    NSLog(@"args set to  %@", _args);
+    DLog(@"args set to  %@", _args);
 }
 
 - (NSString *)argsAsString {

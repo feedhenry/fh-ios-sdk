@@ -7,6 +7,7 @@
 
 #import "FHConfig.h"
 #import "FHCloudProps.h"
+#import "FHDefines.h"
 
 @interface FHCloudProps ()
 
@@ -46,7 +47,7 @@
             ([[cloudUrl substringToIndex:[cloudUrl length] - 1] isEqualToString:@"/"]) ? @"%@"
                                                                                        : @"%@/";
         NSString *api = [NSMutableString stringWithFormat:format, cloudUrl];
-        NSLog(@"Request url is %@", api);
+        DLog(@"Request url is %@", api);
         _cloudHost = api;
     }
     return _cloudHost;

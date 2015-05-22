@@ -7,6 +7,7 @@
 
 #import "FHCloudRequest.h"
 #import "FH.h"
+#import "FHDefines.h"
 
 @implementation FHCloudRequest
 
@@ -30,7 +31,7 @@
         }
         _args = [NSMutableDictionary dictionary];
     }
-    NSLog(@"Request url is %@", url);
+    DLog(@"Request url is %@", url);
     NSURL *uri = [[NSURL alloc] initWithString:url];
     return uri;
 }
