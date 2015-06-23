@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-#import <AeroGear-Push/AeroGearPush.h>
+#import <FH/FH.h>
 
 @interface AppDelegate ()
 
@@ -49,15 +49,11 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // initialize "Registration helper" object using the
-    // base URL where the "AeroGear Unified Push Server" is running.
-    AGDeviceRegistration *registration =
     
     [FH pushRegister:deviceToken andSuccess:^(FHResponse *success) {
         NSLog(@"Unified Push registration successful");
     } andFailure:^(FHResponse *failed) {
         NSLog(@"Unified Push registration Error: %@", failed.error);
-
     }];
 }
 

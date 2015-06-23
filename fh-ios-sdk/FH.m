@@ -6,12 +6,12 @@
 //
 
 /**
-currently uses udid should prob change to something like
-CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-NSString *uuidString = (NSString *)CFUUIDCreateString(NULL,uuidRef);
-CFRelease(uuidRef);
-and store that in config
-*/
+ currently uses udid should prob change to something like
+ CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+ NSString *uuidString = (NSString *)CFUUIDCreateString(NULL,uuidRef);
+ CFRelease(uuidRef);
+ and store that in config
+ */
 
 #import <Reachability/Reachability.h>
 
@@ -19,6 +19,7 @@ and store that in config
 #import "FHDefines.h"
 #import "FHInitRequest.h"
 #import "FHDataManager.h"
+#import "AeroGearPush.h"
 
 @implementation FH
 
@@ -43,8 +44,8 @@ static Reachability *reachability;
             [res setError:[NSError errorWithDomain:@"FHInit"
                                               code:FHSDKNetworkOfflineErrorType
                                           userInfo:@{
-                                              @"error" : @"offline"
-                                          }]];
+                                                     @"error" : @"offline"
+                                                     }]];
             if (failornil) {
                 void (^handler)(FHResponse *resp) = [failornil copy];
                 handler(res);
@@ -53,21 +54,21 @@ static Reachability *reachability;
         }
         FHInitRequest *init = [[FHInitRequest alloc] init];
         init.method = FH_INIT;
-
+        
         void (^success)(FHResponse *) = ^(FHResponse *res) {
             DLog(@"the response from init %@", [res rawResponseAsString]);
             NSDictionary *props = [res parsedResponse];
             cloudProps = [[FHCloudProps alloc] initWithCloudProps:props];
-
+            
             // Save init
             [FHDataManager save:@"init" withObject:props[@"init"]];
-          
+            
             ready = true;
             if (sucornil) {
                 sucornil(nil);
             }
         };
-
+        
         void (^failure)(FHResponse *) = ^(FHResponse *res) {
             DLog(@"init failed");
             ready = false;
@@ -75,7 +76,7 @@ static Reachability *reachability;
                 failornil(res);
             }
         };
-
+        
         [init execAsyncWithSuccess:success AndFailure:failure];
     } else {
         DLog(@"FH is ready");
@@ -108,7 +109,7 @@ static Reachability *reachability;
 }
 
 +(void)pushRegister:(NSData*)deviceToken
-          withPushConfig:(FHPushConfig*)pushConfig
+     withPushConfig:(FHPushConfig*)pushConfig
          andSuccess:(void (^)(FHResponse *success))sucornil
          andFailure:(void (^)(FHResponse *failed))failornil {
     AGDeviceRegistration* registration = [[AGDeviceRegistration alloc] initWithFile:@"fhconfig"];
@@ -146,9 +147,10 @@ static Reachability *reachability;
 }
 
 + (void)sendMetricsWhenAppAwoken:(UIApplicationState) applicationState
-                         userInfo:(NSDictionary *)userInfo {
+                        userInfo:(NSDictionary *)userInfo {
     [AGPushAnalytics sendMetricsWhenAppAwoken:applicationState userInfo: userInfo];
 }
+
 
 + (BOOL)isOnline {
     return _isOnline;
@@ -192,35 +194,35 @@ static Reachability *reachability;
 }
 
 + (FHAct *)buildAction:(FH_ACTION)action {
-
+    
     if (!initCalled) {
         @throw([NSException exceptionWithName:@"FH Not Ready"
                                        reason:@"FH failed to initialise"
                                      userInfo:@{}]);
     }
-
+    
     FHAct *act = nil;
     // needs to be shared
-
+    
     switch (action) {
-    case FH_ACTION_ACT:
-        act = [[FHActRequest alloc] initWithProps:cloudProps];
-        act.method = FH_ACT;
-        break;
-    case FH_ACTION_AUTH:
-        act = [[FHAuthRequest alloc] initWithProps:cloudProps];
-        act.method = FH_AUTH;
-        break;
-    case FH_ACTION_CLOUD:
-        act = [[FHCloudRequest alloc] initWithProps:cloudProps];
-        act.method = FH_CLOUD;
-        break;
-    default:
-        @throw([NSException
-            exceptionWithName:@"Unknown Action"
-                       reason:@"you asked for an action that is " @"not available or unknown"
-                     userInfo:@{}]);
-        break;
+        case FH_ACTION_ACT:
+            act = [[FHActRequest alloc] initWithProps:cloudProps];
+            act.method = FH_ACT;
+            break;
+        case FH_ACTION_AUTH:
+            act = [[FHAuthRequest alloc] initWithProps:cloudProps];
+            act.method = FH_AUTH;
+            break;
+        case FH_ACTION_CLOUD:
+            act = [[FHCloudRequest alloc] initWithProps:cloudProps];
+            act.method = FH_CLOUD;
+            break;
+        default:
+            @throw([NSException
+                    exceptionWithName:@"Unknown Action"
+                    reason:@"you asked for an action that is " @"not available or unknown"
+                    userInfo:@{}]);
+            break;
     }
     return act;
 }
@@ -282,7 +284,7 @@ static Reachability *reachability;
                  AndSuccess:(void (^)(FHResponse *success))sucornil
                  AndFailure:(void (^)(FHResponse *failed))failornil {
     FHCloudRequest *cloudRequest =
-        [self buildCloudRequest:path WithMethod:requestMethod AndHeaders:headers AndArgs:arguments];
+    [self buildCloudRequest:path WithMethod:requestMethod AndHeaders:headers AndArgs:arguments];
     [cloudRequest execAsyncWithSuccess:sucornil AndFailure:failornil];
 }
 
@@ -303,12 +305,12 @@ static Reachability *reachability;
     NSString *connectionTag = [appConfig getConfigValueForKey:@"connectiontag"];
     NSString *uuid = [appConfig uuid];
     NSMutableDictionary *fhparams = [[NSMutableDictionary alloc] init];
-
+    
     fhparams[@"cuid"] = uuid;
-
+    
     // Generate cuidMap
     NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
-
+    
     // CFUUID - iOS 6+
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
         NSMutableDictionary *cfuuidMap = [[NSMutableDictionary alloc] init];
@@ -316,7 +318,7 @@ static Reachability *reachability;
         cfuuidMap[@"cuid"] = uuid;
         [cuidMap addObject:cfuuidMap];
     }
-
+    
     // Send vendorId if available
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
         NSMutableDictionary *vendorIdMap = [[NSMutableDictionary alloc] init];
@@ -326,10 +328,10 @@ static Reachability *reachability;
         }
         [cuidMap addObject:vendorIdMap];
     }
-
+    
     // Append to cuidMap
     fhparams[@"cuidMap"] = cuidMap;
-
+    
     fhparams[@"appid"] = appId;
     fhparams[@"appkey"] = appKey;
     if (nil != projectId) {
@@ -341,18 +343,18 @@ static Reachability *reachability;
     [fhparams setValue:[NSString stringWithFormat:@"FH_IOS_SDK/%@", FH_SDK_VERSION]
                 forKey:@"sdk_version"];
     [fhparams setValue:@"ios" forKey:@"destination"];
-
+    
     // Read init
     NSString *init = [FHDataManager read:@"init"];
     if (init != nil) {
         fhparams[@"init"] = init;
     }
-  
+    
     id sessionToken = [FHDataManager read:SESSION_TOKEN_KEY];
     if (nil != sessionToken) {
-      fhparams[SESSION_TOKEN_KEY] = sessionToken;
+        fhparams[SESSION_TOKEN_KEY] = sessionToken;
     }
-  
+    
     return fhparams;
 }
 
@@ -361,7 +363,7 @@ static Reachability *reachability;
     __block NSMutableDictionary *headers = [NSMutableDictionary dictionary];
     [defaultParams enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *headerName = [NSString stringWithFormat:@"X-FH-%@", key];
-
+        
         // append the JSON representation if collection class
         if ([obj isKindOfClass:[NSArray class]] || [obj isKindOfClass:[NSDictionary class]]) {
             [headers setValue:[obj JSONString] forKey:headerName];
@@ -384,7 +386,7 @@ static Reachability *reachability;
         FHAct *request = [[FHAct alloc] init];
         request.path = REVOKE_SESSION_PATH;
         request.args = [[NSDictionary alloc]
-            initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
+                        initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
         [request execAsyncWithSuccess:sucornil AndFailure:failornil];
     }
 }
@@ -396,7 +398,7 @@ static Reachability *reachability;
         FHAct *request = [[FHAct alloc] init];
         request.path = VERIFY_SESSION_PATH;
         request.args = [[NSDictionary alloc]
-            initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
+                        initWithObjectsAndKeys:session, SESSION_TOKEN_KEY, nil];
         void (^tmpSuccess)(FHResponse *) = ^(FHResponse *res) {
             NSDictionary *result = res.parsedResponse;
             sucornil([result objectForKey:@"isValid"]);
