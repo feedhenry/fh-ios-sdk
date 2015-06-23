@@ -12,6 +12,7 @@ The project relies on [Cocoapods](http://cocoapods.org) and it's respective plug
 ### Common Actions
 
 * Update the ```VERSION.txt``` and ```fh-ios-sdk/FHDefines.h ``` with the new version number.
+* Update CHANGELOG.m with the new release and content.
 
 ### a) Release on Cocoapods  [Required Step]
 * Update ```FH.podspec```, ```s.version``` attribute with the new version number.
@@ -56,3 +57,4 @@ See [iOS SDK Guide](http://docs.feedhenry.com/v2/sdk_ios.html).
 * [FeedHenry Documentation](http://docs.feedhenry.com)
 * [ASIHttpRequest](http://allseeing-i.com/ASIHTTPRequest/)
 * [JSONKit](https://github.com/johnezang/JSONKit)
+* [AeroGear iOS Push](https://github.com/aerogear/aerogear-ios-push)

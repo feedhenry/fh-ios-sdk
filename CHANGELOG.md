@@ -1,4 +1,8 @@
 # CHANGELOG - FeedHenry iOS SDK
+
+## 2.2.9 - 2015-06-23 - Corinne Krych
+* Add AeroGear UnifiedPush support for push notification
+
 ## 2.2.8 - 2015-04-20 - Christos Vasilakis
 * Refactor constructor
 
