@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist>
+    <dict>
+        <key>host</key>
+        <string>HostHere</string>
+        <key>appid</key>
+        <string>AppIdHere</string>
+        <key>projectid</key>
+        <string>ProjectIdHere</string>
+        <key>appkey</key>
+        <string>AppKeyHere</string>
+        <key>connectiontag</key>
+        <string>ConnectionTagHere</string>
+        <key>serverURL</key>
+        <string>UnifiedPushServerHere</string>
+        <key>variantID</key>
+        <string>VariantIdgHere</string>
+        <key>variantSecret</key>
+        <string>VariantSecretHere</string>
+    </dict>
+</plist>

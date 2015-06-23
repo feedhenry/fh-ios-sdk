@@ -1,1 +1,0 @@
-PODS_FH_OTHER_LDFLAGS = -l"xml2" -l"z"
