@@ -12,7 +12,7 @@ The project relies on [Cocoapods](http://cocoapods.org) and it's respective plug
 ### Common Actions
 
 * Update the ```VERSION.txt``` and ```fh-ios-sdk/FHDefines.h ``` with the new version number.
-* Update CHANGELOG.m with the new release and content.
+* Update ```CHANGELOG.md`` with the new release and content.
 
 ### a) Release on Cocoapods  [Required Step]
 * Update ```FH.podspec```, ```s.version``` attribute with the new version number.
@@ -47,7 +47,7 @@ This will produce two files in the ``Releases-{version}`` directory.  You can th
 
 ### c) Generate API Documentation
 
-To generate API documentation and sync with the [GitHub pages placeholder](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html), switch to ['gh-pages'](https://github.com/cvasilak/fh-ios-sdk/tree/gh-pages) branch and follow the instructions there.
+To generate API documentation and sync with the [GitHub pages placeholder](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html), switch to ['gh-pages'](https://github.com/feedhenry/fh-ios-sdk/tree/gh-pages) branch and follow the instructions there.
 
 ## Usage
 
