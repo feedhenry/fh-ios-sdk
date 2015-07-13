@@ -1,4 +1,4 @@
-# FeedHenry iOS SDK [![Build Status](https://travis-ci.org//feedhenry/fh-ios-sdk.png)](https://travis-ci.org/feedhenry/fh-ios-sdk)
+# FeedHenry iOS SDK [![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.png)](https://travis-ci.org/feedhenry/fh-ios-sdk)
 The iOS Software Development Kit to connect to the [FeedHenry platform.](http://www.feedhenry.com)
 
 ## Release Process
