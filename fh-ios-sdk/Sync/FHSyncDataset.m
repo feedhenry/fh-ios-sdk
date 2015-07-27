@@ -648,16 +648,17 @@ static NSString *const kAck = @"acknowledgements";
  background thread.
  */
 - (void)syncCompleteWithCode:(NSString *)code {
+    NSString* message = code?code: @"unknown error";
     self.syncRunning = NO;
     self.syncLoopEnd = [NSDate date];
     BOOL isMainThread = [NSThread isMainThread];
     if (isMainThread) {
         [self performSelectorInBackground:@selector(saveToFileAndNofiyComplete:)
                                withObject:@{
-                                   @"message" : code
+                                   @"message" : message
                                }];
     } else {
-        [self saveToFileAndNofiyComplete:@{ @"message" : code }];
+        [self saveToFileAndNofiyComplete:@{ @"message" : message }];
     }
 }
 
