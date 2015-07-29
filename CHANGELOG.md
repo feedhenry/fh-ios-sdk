@@ -1,6 +1,6 @@
 # CHANGELOG - FeedHenry iOS SDK
 ## 2.2.10 - 2015-07-27 - Wei Li
-* Fix a uncaught exeception thrown by the sync framework when the cloud app is not running.
+* Fix an uncaught exception thrown by the sync framework when the cloud app is not running.
 
 ## 2.2.9 - 2015-06-23 - Corinne Krych
 * Add AeroGear UnifiedPush support for push notification
