@@ -423,13 +423,15 @@ static NSString *const kAck = @"acknowledgements";
                     // will review the crashed
                     // records to see if we can determine their current state.
                     [self markInFlightAsCrashed];
-                    DLog(@"syncLoop failed : msg = %@", [[response parsedResponse] JSONString]);
+                    NSString* message = response?[[response parsedResponse] JSONString]: @"null response recieved";
+
+                    DLog(@"syncLoop failed : msg = %@", message);
                     [FHSyncUtils doNotifyWithDataId:self.datasetId
                                              config:self.syncConfig
                                                 uid:NULL
                                                code:SYNC_FAILED_MESSAGE
-                                            message:[[response parsedResponse] JSONString]];
-                    [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
+                                            message:message];
+                    [self syncCompleteWithCode:message];
                 }];
         }
         @catch (NSException *ex) {
