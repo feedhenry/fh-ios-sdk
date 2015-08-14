@@ -1,4 +1,10 @@
 # CHANGELOG - FeedHenry iOS SDK
+
+## 2.2.11 - 2015-08-14
+* PR 37 - downgrade cocoapods version
+* PR 38 - Added a check for null response (otherwise App crashes on SSL Handshake error) 
+* PR 39 - ensure we are loading from the main bundle for the config file
+
 ## 2.2.10 - 2015-07-27 - Wei Li
 * Fix an uncaught exception thrown by the sync framework when the cloud app is not running.
 
