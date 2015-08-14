@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, FH_ACTION) {
 #define FH_CLOUD @"cloud"
 #define FH_AUTH @"auth"
 #define FH_INIT @"init"
-#define FH_SDK_VERSION @"2.2.11"
+#define FH_SDK_VERSION @"2.2.12"
 #define SESSION_TOKEN_KEY @"sessionToken"
 #define VERIFY_SESSION_PATH @"/box/srv/1.1/admin/authpolicy/verifysession"
 #define REVOKE_SESSION_PATH @"/box/srv/1.1/admin/authpolicy/revokesession"

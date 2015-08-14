@@ -1,4 +1,6 @@
 # CHANGELOG - FeedHenry iOS SDK
+## 2.2.12 - 2015-08-14
+* PR 40 - Fix build errors
 
 ## 2.2.11 - 2015-08-14
 * PR 37 - downgrade cocoapods version
