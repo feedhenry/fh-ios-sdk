@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode63
+osx_image: xcode6.4
 xcode_workspace: fh-ios-sdk.xcworkspace
 xcode_scheme: FH
 xcode_sdk: iphonesimulator
