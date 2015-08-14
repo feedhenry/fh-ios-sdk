@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         NSString *path =
-            [[NSBundle bundleForClass:[self class]] pathForResource:@"fhconfig" ofType:@"plist"];
+            [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
         if (path) {
             self.properties = [NSMutableDictionary dictionaryWithContentsOfFile:path];
         } else {
