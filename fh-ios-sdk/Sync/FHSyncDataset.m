@@ -381,7 +381,6 @@ static NSString *const kAck = @"acknowledgements";
         syncLoopParams[@"fn"] = @"sync";
         syncLoopParams[@"dataset_id"] = self.datasetId;
         syncLoopParams[@"query_params"] = self.queryParams;
-        syncLoopParams[@"meta_data"] = self.metaData;
         if (self.hashValue) {
             syncLoopParams[@"dataset_hash"] = self.hashValue;
         }
@@ -528,7 +527,6 @@ static NSString *const kAck = @"acknowledgements";
     syncRecsParams[@"fn"] = @"syncRecords";
     syncRecsParams[@"dataset_id"] = self.datasetId;
     syncRecsParams[@"query_params"] = self.queryParams;
-    syncRecsParams[@"meta_data"] = self.metaData;
     syncRecsParams[@"clientRecs"] = clientRecs;
 
     DLog(@"syncRecParams :: %@", [syncRecsParams JSONString]);
