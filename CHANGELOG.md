@@ -1,4 +1,7 @@
 # CHANGELOG - FeedHenry iOS SDK
+## 2.2.13 - 2015-09-16
+*PR 43 - Rewrite HTTP unit tests to no longer mock a HTTP client but use Nocilla. Fix bug in init calling succ and fail, fix status check crashes.
+
 ## 2.2.12 - 2015-08-14
 * PR 40 - Fix build errors
 

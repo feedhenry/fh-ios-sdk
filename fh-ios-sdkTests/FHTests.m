@@ -82,12 +82,13 @@ float TEST_TIMEOUT = 5.0;
     }];
 }
 
-- (void)testCloudPlaintextResponse {
+- (void)testCloudPlaintextScrewyResponse {
     FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
     stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
     andReturn(200).
-    withHeaders(@{@"Content-Type": @"text/plain"}).
-    withBody(@"Some plain text");
+    // We do this on app not found - should really really really fix this
+    withHeaders(@{@"Content-Type": @"application/json"}).
+    withBody(@"\"App not found: someappguid\"");
     
     XCTestExpectation *cloudExpectation = [self expectationWithDescription:@"testCloudPlaintextResponse"];
     [action execAsyncWithSuccess:^(FHResponse * actRes){
