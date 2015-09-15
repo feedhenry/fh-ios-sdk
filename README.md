@@ -1,15 +1,34 @@
 # FeedHenry iOS SDK [![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.png)](https://travis-ci.org/feedhenry/fh-ios-sdk)
 The iOS Software Development Kit to connect to the [FeedHenry platform.](http://www.feedhenry.com)
 
-## Release Process
+## Usage
+
+See [iOS SDK Guide](http://docs.feedhenry.com/v2/sdk_ios.html).
+
+### Links
+* [FeedHenry Documentation](http://docs.feedhenry.com)
+* [ASIHttpRequest](http://allseeing-i.com/ASIHTTPRequest/)
+* [JSONKit](https://github.com/johnezang/JSONKit)
+* [AeroGear iOS Push](https://github.com/aerogear/aerogear-ios-push)
+
+
+## Developing
 
 The project relies on [Cocoapods](http://cocoapods.org) and it's respective plugins  ['cocoapods-packager'](https://github.com/CocoaPods/cocoapods-packager) and ['cocoapods-appledoc'](https://github.com/CocoaPods/cocoapods-appledoc), so please ensure that are installed in your system. If not, please execute the following:
 
 ```
 [sudo] gem install cocoapods cocoapods-packager cocoapods-appledoc
 ```
+Then, install coccopods dependencies.  
+```
+pod install
+```
+Lastly, in Finder open the file `fh-ios-sdk.xcworkspace` - NOT the `fh-ios-sdk.xcodeproj`. This ensures both the iOS SDK project and the CoccoPods dependencies subprjoect are included in xCode. The SDK should now build successfully. 
 
-### Common Actions
+##Running Tests
+Tests can be run in xCode by navigating to Product -> Test. 
+
+## Common Actions
 
 * Update the ```VERSION.txt``` and ```fh-ios-sdk/FHDefines.h ``` with the new version number.
 * Update ```CHANGELOG.md`` with the new release and content.
@@ -48,13 +67,3 @@ This will produce two files in the ``Releases-{version}`` directory.  You can th
 ### c) Generate API Documentation
 
 To generate API documentation and sync with the [GitHub pages placeholder](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html), switch to ['gh-pages'](https://github.com/feedhenry/fh-ios-sdk/tree/gh-pages) branch and follow the instructions there.
-
-## Usage
-
-See [iOS SDK Guide](http://docs.feedhenry.com/v2/sdk_ios.html).
-
-### Links
-* [FeedHenry Documentation](http://docs.feedhenry.com)
-* [ASIHttpRequest](http://allseeing-i.com/ASIHTTPRequest/)
-* [JSONKit](https://github.com/johnezang/JSONKit)
-* [AeroGear iOS Push](https://github.com/aerogear/aerogear-ios-push)

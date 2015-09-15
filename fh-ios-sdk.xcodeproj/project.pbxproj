@@ -10,7 +10,6 @@
 		48B4D0511B316CCC00385BAC /* libFeedHenry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFeedHenry.a */; };
 		48B4D0541B316F2500385BAC /* FHPushConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B4D0521B316F2500385BAC /* FHPushConfig.h */; };
 		48B4D0551B316F2500385BAC /* FHPushConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B4D0531B316F2500385BAC /* FHPushConfig.m */; };
-		55E51DF876A3F51961C76B14 /* libPods-FHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */; };
 		6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
 		6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F84682D1AB03C0100EC7593 /* FHJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,7 +53,6 @@
 		6FCF31F81A9B430F0014B936 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60031A9B366200C22C92 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F91A9B43240014B936 /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF21A9B366200C22C92 /* NSString+MD5.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FCF31FA1A9B43240014B936 /* NSString+Validation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF41A9B366200C22C92 /* NSString+Validation.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		6FCF32071A9B47000014B936 /* FHAct+SetHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC81A9B35F900C22C92 /* FHAct+SetHttpClient.m */; };
 		6FCF32081A9B47000014B936 /* FHConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */; };
 		6FCF32091A9B47000014B936 /* FHSyncDataRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */; };
 		6FCF320A1A9B47000014B936 /* FHSyncDatasetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
@@ -62,13 +60,13 @@
 		6FCF320C1A9B47000014B936 /* FHSyncUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD31A9B35F900C22C92 /* FHSyncUtilsTest.m */; };
 		6FCF320D1A9B47000014B936 /* FHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD51A9B35F900C22C92 /* FHTests.m */; };
 		6FCF320E1A9B47000014B936 /* FHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */; };
-		6FCF320F1A9B47000014B936 /* MockFHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD91A9B35F900C22C92 /* MockFHHttpClient.m */; };
 		6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEF1A9B366200C22C92 /* FHResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FE7B3671ACEDEA90029C63F /* FHOAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF71A9B366200C22C92 /* FHOAuthViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B3681ACEDED10029C63F /* FHSyncDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFE1A9B366200C22C92 /* FHSyncDataRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B3691ACEDED10029C63F /* FHSyncDataset.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60001A9B366200C22C92 /* FHSyncDataset.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B36A1ACEDEF60029C63F /* FHSyncPendingDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60051A9B366200C22C92 /* FHSyncPendingDataRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B36B1ACEDF1A0029C63F /* FHSyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60071A9B366200C22C92 /* FHSyncUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		A982BA8B3B12BED0C4B7941F /* libPods-FHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */; };
 		B3AE9D7415D52CEB004EF454 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
 		B3AE9D8A15D52DEE004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
 		B3AE9D8B15D52DFF004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
@@ -83,7 +81,7 @@
 		B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
 		B3F685D81AD8352A002240DA /* FHDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B3F685D61AD8352A002240DA /* FHDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3F685D91AD8352A002240DA /* FHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F685D71AD8352A002240DA /* FHDataManager.m */; };
-		E816D4D62D22C4E20B1F1233 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC8A0A7417DA495FFDD185F /* libPods.a */; };
+		BB9DCD7622E40258E06B3A75 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC8A0A7417DA495FFDD185F /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,8 +107,6 @@
 		6F9C5FC01A9B359400C22C92 /* fh-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "fh-ios-sdk-Prefix.pch"; path = "fh-ios-sdk/fh-ios-sdk-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		6F9C5FC21A9B35D600C22C92 /* fh-ios-sdkTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "fh-ios-sdkTests-Info.plist"; path = "fh-ios-sdkTests/fh-ios-sdkTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6F9C5FC51A9B35E100C22C92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fh-ios-sdkTests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
-		6F9C5FC71A9B35F900C22C92 /* FHAct+SetHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FHAct+SetHttpClient.h"; path = "fh-ios-sdkTests/FHAct+SetHttpClient.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FC81A9B35F900C22C92 /* FHAct+SetHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FHAct+SetHttpClient.m"; path = "fh-ios-sdkTests/FHAct+SetHttpClient.m"; sourceTree = SOURCE_ROOT; };
 		6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fhconfig.plist; path = "fh-ios-sdkTests/fhconfig.plist"; sourceTree = SOURCE_ROOT; };
 		6F9C5FCA1A9B35F900C22C92 /* FHConfigTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHConfigTests.h; path = "fh-ios-sdkTests/FHConfigTests.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHConfigTests.m; path = "fh-ios-sdkTests/FHConfigTests.m"; sourceTree = SOURCE_ROOT; };
@@ -126,8 +122,6 @@
 		6F9C5FD51A9B35F900C22C92 /* FHTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHTests.m; path = "fh-ios-sdkTests/FHTests.m"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD61A9B35F900C22C92 /* FHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHTestUtils.h; path = "fh-ios-sdkTests/FHTestUtils.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHTestUtils.m; path = "fh-ios-sdkTests/FHTestUtils.m"; sourceTree = SOURCE_ROOT; };
-		6F9C5FD81A9B35F900C22C92 /* MockFHHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MockFHHttpClient.h; path = "fh-ios-sdkTests/MockFHHttpClient.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FD91A9B35F900C22C92 /* MockFHHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MockFHHttpClient.m; path = "fh-ios-sdkTests/MockFHHttpClient.m"; sourceTree = SOURCE_ROOT; };
 		6F9C5FE41A9B366200C22C92 /* FH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FH.h; path = "fh-ios-sdk/FH.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FE51A9B366200C22C92 /* FHAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHAct.h; path = "fh-ios-sdk/FHAct.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FE61A9B366200C22C92 /* FHActRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHActRequest.h; path = "fh-ios-sdk/FHActRequest.h"; sourceTree = SOURCE_ROOT; };
@@ -204,7 +198,7 @@
 				B3AE9D9515D53134004EF454 /* MobileCoreServices.framework in Frameworks */,
 				B3AE9D8B15D52DFF004EF454 /* CoreFoundation.framework in Frameworks */,
 				B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */,
-				E816D4D62D22C4E20B1F1233 /* libPods.a in Frameworks */,
+				BB9DCD7622E40258E06B3A75 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +216,7 @@
 				B3AE9D8A15D52DEE004EF454 /* CoreFoundation.framework in Frameworks */,
 				B3AE9D7415D52CEB004EF454 /* CFNetwork.framework in Frameworks */,
 				B3D7C49815D28BE30019262E /* Foundation.framework in Frameworks */,
-				55E51DF876A3F51961C76B14 /* libPods-FHTests.a in Frameworks */,
+				A982BA8B3B12BED0C4B7941F /* libPods-FHTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,8 +391,6 @@
 			isa = PBXGroup;
 			children = (
 				6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */,
-				6F9C5FC71A9B35F900C22C92 /* FHAct+SetHttpClient.h */,
-				6F9C5FC81A9B35F900C22C92 /* FHAct+SetHttpClient.m */,
 				6F9C5FCA1A9B35F900C22C92 /* FHConfigTests.h */,
 				6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */,
 				6F9C5FCC1A9B35F900C22C92 /* FHSyncDataRecordTest.h */,
@@ -413,8 +405,6 @@
 				6F9C5FD51A9B35F900C22C92 /* FHTests.m */,
 				6F9C5FD61A9B35F900C22C92 /* FHTestUtils.h */,
 				6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */,
-				6F9C5FD81A9B35F900C22C92 /* MockFHHttpClient.h */,
-				6F9C5FD91A9B35F900C22C92 /* MockFHHttpClient.m */,
 				B3D7C49D15D28BE30019262E /* Supporting Files */,
 			);
 			name = "fh-ios-sdkTests";
@@ -496,7 +486,7 @@
 				B3D7C48E15D28BE30019262E /* Sources */,
 				B3D7C48F15D28BE30019262E /* Frameworks */,
 				B3D7C49015D28BE30019262E /* Resources */,
-				B3D7C49115D28BE30019262E /* ShellScript */,
+				B3D7C49115D28BE30019262E /* Run Script */,
 				15FBBB6F69523D9EBF1567B2 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -565,13 +555,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FHTests/Pods-FHTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B3D7C49115D28BE30019262E /* ShellScript */ = {
+		B3D7C49115D28BE30019262E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,7 +665,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FCF32071A9B47000014B936 /* FHAct+SetHttpClient.m in Sources */,
 				6FCF32081A9B47000014B936 /* FHConfigTests.m in Sources */,
 				6FCF32091A9B47000014B936 /* FHSyncDataRecordTest.m in Sources */,
 				6FCF320A1A9B47000014B936 /* FHSyncDatasetTest.m in Sources */,
@@ -682,7 +672,6 @@
 				6FCF320C1A9B47000014B936 /* FHSyncUtilsTest.m in Sources */,
 				6FCF320D1A9B47000014B936 /* FHTests.m in Sources */,
 				6FCF320E1A9B47000014B936 /* FHTestUtils.m in Sources */,
-				6FCF320F1A9B47000014B936 /* MockFHHttpClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

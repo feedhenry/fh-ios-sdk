@@ -7,17 +7,44 @@
 
 #import "FH.h"
 #import "FHTests.h"
-#import "MockFHHttpClient.h"
 #import "FHInitRequest.h"
 #import "FHDefines.h"
-#import "FHAct+SetHttpClient.h"
+#import "FHAct.h"
+#import "FHAuthRequest.h"
+#import "Nocilla.h"
 
+float TEST_TIMEOUT = 5.0;
 @implementation FHTests
 
 - (void)setUp {
+    [[LSNocilla sharedInstance] start];
+    
+    // Stub our init API
+    stubRequest(@"POST", @"http://testing.feedhenry.com/box/srv/1.1/app/init").
+    andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).
+    withBody(@"{\"domain\":\"testing\", \"firstTime\" : \"false\", \"hosts\" : { \"environment\" : \"dev\", \"type\" : \"cloud_nodejs\", \"url\" : \"http://dev.test.example.com\" } }");
+    
+    XCTestExpectation *initExpectation = [self expectationWithDescription:@"init"];
+    void (^success)(FHResponse *)=^(FHResponse * res){
+        [initExpectation fulfill];
+    };
+    
+    void (^failure)(id)=^(FHResponse * res){
+        XCTAssertTrue(false == true, @"Init request failed");
+        [initExpectation fulfill];
+        NSLog(@"FH init failed. Response = %@", res.rawResponse);
+    };
+    
+    // We need to first init the SDK against our mocked API call, so the subsequent operations will work.
+    [FH initWithSuccess:success AndFailure:failure];
+    [self waitForExpectationsWithTimeout:TEST_TIMEOUT handler:^(NSError *error) {
+        if (error) {
+            XCTAssertTrue(false == true, @"Init failed within timeout");
+            NSLog(@"Timeout Error: %@", error);
+        }
+    }];
     [super setUp];
-
-    // Set-up code here.
 }
 
 - (void)tearDown {
@@ -26,95 +53,157 @@
     // add the following line seems fix it. see
     // http://stackoverflow.com/questions/12308297/some-of-my-unit-tests-tests-are-not-finishing-in-xcode-4-4
     [NSThread sleepForTimeInterval:1.0];
+    [[LSNocilla sharedInstance] stop];
     [super tearDown];
 }
 
-- (void)testInit {
-    MockFHHttpClient *httpClient = [[MockFHHttpClient alloc] init];
-    FHInitRequest *init = [[FHInitRequest alloc] init];
-    init.method = FH_INIT;
-    [init setHttpClient:httpClient];
-    void (^success)(FHResponse *) = ^(FHResponse *res) {
-        NSDictionary *data = res.parsedResponse;
-        XCTAssertTrue(nil != [data valueForKey:@"domain"], @"Can not find domain in init response");
-        XCTAssertTrue(nil != data[@"hosts"], @"Can not find hosts in init response");
-    };
-    [init execWithSuccess:success AndFailure:nil];
-}
-
 - (void)testCloud {
-    MockFHHttpClient *httpClient = [[MockFHHttpClient alloc] init];
+    FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getTweets" WithArgs:[NSDictionary dictionary]];
+    stubRequest(@"POST", @"http://dev.test.example.com/cloud/getTweets").
+    andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).
+    withBody(@"{\"tweets\" : [ \"Hi there\", \"Another tweet\"] }");
 
-    NSMutableDictionary *initRes = [NSMutableDictionary dictionary];
-    NSMutableDictionary *innerP = [NSMutableDictionary dictionary];
-    [innerP setValue:@"http://dev.test.example.com" forKey:@"debugCloudUrl"];
-    [innerP setValue:@"http://live.test.example.com" forKey:@"releaseCloudUrl"];
-
-    [initRes setValue:@"test" forKey:@"domain"];
-    [initRes setValue:FALSE forKey:@"firstTime"];
-    [initRes setValue:innerP forKey:@"hosts"];
-
-    FHCloudProps *cloudProps = [[FHCloudProps alloc] initWithCloudProps:initRes];
-
-    FHActRequest *cloud = [[FHActRequest alloc] initWithProps:cloudProps];
-    cloud.method = FH_CLOUD;
-    [cloud setHttpClient:httpClient];
-
-    NSURL *url = [cloud buildURL];
-    XCTAssertTrue([[url host] isEqualToString:@"dev.test.example.com"],
-                  @"Cloud host url should equal to development cloud host");
-
-    void (^success)(FHResponse *) = ^(FHResponse *res) {
-        NSDictionary *data = res.parsedResponse;
-        XCTAssertTrue(nil != [data valueForKey:@"status"], @"Can not find status in init response");
-    };
-
-    [cloud execWithSuccess:success AndFailure:nil];
-
-    [initRes setValue:@"http://dev.test.example.com" forKey:@"url"];
-    FHActRequest *another = [[FHActRequest alloc] initWithProps:cloudProps];
-    another.method = FH_CLOUD;
-    another.remoteAction = @"test";
-
-    [another setHttpClient:httpClient];
-
-    NSURL *anotherUrl = [another buildURL];
-    XCTAssertTrue(
-        [[anotherUrl absoluteString] isEqualToString:@"http://dev.test.example.com/cloud/test"],
-        @"Cloud host url should equal to " @"http://dev.test.example.com/cloud/test");
+    XCTestExpectation *cloudExpectation = [self expectationWithDescription:@"testCloud"];
+    [action execAsyncWithSuccess:^(FHResponse * actRes){
+        XCTAssertTrue( actRes != nil, @"");
+        XCTAssertTrue( actRes.parsedResponse != nil, @"");
+        XCTAssertTrue( [actRes.parsedResponse objectForKey:@"tweets"] != nil, @"");
+        [cloudExpectation fulfill];
+    } AndFailure:^(FHResponse * actFailRes){
+        NSLog(@"Failed to read tweets. Response = %@", actFailRes.rawResponse);
+        XCTAssertTrue(false == true, @"Cloud request failed");
+        [cloudExpectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:TEST_TIMEOUT handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Timeout Error: %@", error);
+        }
+    }];
 }
 
-- (void)testAuth {
-    MockFHHttpClient *httpClient = [[MockFHHttpClient alloc] init];
-
-    NSMutableDictionary *initRes = [NSMutableDictionary dictionary];
-    NSMutableDictionary *innerP = [NSMutableDictionary dictionary];
-    [innerP setValue:@"http://dev.test.example.com" forKey:@"development-url"];
-    [innerP setValue:@"http://live.test.example.com" forKey:@"live-url"];
-
-    [initRes setValue:@"test" forKey:@"domain"];
-    [initRes setValue:FALSE forKey:@"firstTime"];
-    [initRes setValue:innerP forKey:@"hosts"];
-
-    NSMutableDictionary *authRes = [NSMutableDictionary dictionary];
-    [authRes setValue:@"testToken" forKey:@"sessionToken"];
-
-    FHAuthRequest *auth = [[FHAuthRequest alloc] init];
-    auth.method = FH_AUTH;
-    [auth setHttpClient:httpClient];
-    [auth authWithPolicyId:@"testPolicy"];
-
-    void (^success)(FHResponse *) = ^(FHResponse *res) {
-        NSDictionary *data = res.parsedResponse;
-        XCTAssertTrue(nil != [data valueForKey:@"sessionToken"],
-                      @"Can not find sessionToken in init response");
-        BOOL hasSession = [FH hasAuthSession];
-        XCTAssertTrue(hasSession);
-    };
-
-    [auth execWithSuccess:success AndFailure:nil];
+- (void)testCloudPlaintextResponse {
+    FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
+    stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
+    andReturn(200).
+    withHeaders(@{@"Content-Type": @"text/plain"}).
+    withBody(@"Some plain text");
+    
+    XCTestExpectation *cloudExpectation = [self expectationWithDescription:@"testCloudPlaintextResponse"];
+    [action execAsyncWithSuccess:^(FHResponse * actRes){
+        XCTAssertTrue(actRes != nil, @"Cloud request should return OK");
+        XCTAssertTrue(actRes.rawResponseAsString != nil, @"Cloud request should return response text as string");
+        [cloudExpectation fulfill];
+    } AndFailure:^(FHResponse * actFailRes){
+        XCTAssertTrue(false == true, @"Cloud request should not fail with plaintext response");
+        [cloudExpectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:TEST_TIMEOUT handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Timeout Error: %@", error);
+        }
+    }];
 }
 
+- (void)testCloud500Response {
+    FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
+    stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
+    andReturn(500).
+    withHeaders(@{@"Content-Type": @"text/plain"}).
+    withBody(@"Some plain error text like socked hung up");
+    
+    XCTestExpectation *cloudExpectation = [self expectationWithDescription:@"testCloudPlaintextResponse"];
+    [action execAsyncWithSuccess:^(FHResponse * actRes){
+        XCTAssertTrue(false == true, @"Cloud request should fail on 500");
+        [cloudExpectation fulfill];
+    } AndFailure:^(FHResponse * actFailRes){
+        XCTAssertTrue(actFailRes != nil, @"Cloud request should return its failed response");
+        XCTAssertTrue(actFailRes.rawResponseAsString != nil, @"Cloud request should return response text as string");
+        [cloudExpectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:TEST_TIMEOUT handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Timeout Error: %@", error);
+        }
+    }];
+}
+
+- (void)testCloudHttpErrorResponse {
+    FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
+    stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
+    andFailWithError([NSError errorWithDomain:@"foo" code:123 userInfo:nil]);
+    
+    XCTestExpectation *cloudExpectation = [self expectationWithDescription:@"testCloudPlaintextResponse"];
+    [action execAsyncWithSuccess:^(FHResponse * actRes){
+        XCTAssertTrue(false == true, @"Cloud request should fail on http error");
+        [cloudExpectation fulfill];
+    } AndFailure:^(FHResponse * actFailRes){
+        XCTAssertTrue(actFailRes != nil, @"Cloud request should return some failure");
+        XCTAssertTrue(actFailRes.error != nil, @"Cloud request should return an error object");
+        [cloudExpectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:TEST_TIMEOUT handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Timeout Error: %@", error);
+        }
+    }];
+}
+
+- (void)testAuthFailure {
+    stubRequest(@"POST", @"http://testing.feedhenry.com/box/srv/1.1/admin/authpolicy/auth").
+    andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).
+    withBody(@"{\"message\":\"User login failed\",\"status\":\"error\"}");
+
+    XCTestExpectation *authExpectation = [self expectationWithDescription:@"testAuthFailure"];
+    FHAuthRequest* authRequest = [FH buildAuthRequest];
+    [authRequest authWithPolicyId:@"MyFeedHenryPolicy" UserId:@"user" Password:@"pass"];
+    void (^success)(FHResponse *)=^(FHResponse * res){
+        [authExpectation fulfill];
+        XCTAssertTrue(true == false, @"Failed auth request should fail");
+        NSLog(@"parsed response %@ type=%@",res.parsedResponse,[res.parsedResponse class]);
+    };
+    void (^failure)(FHResponse *)=^(FHResponse* res){
+        [authExpectation fulfill];
+        XCTAssertTrue(res != nil, @"Failed auth request should return something");
+        XCTAssertTrue([@"error" isEqualToString:[res.parsedResponse objectForKey:@"status"]], @"Failed auth request should return an error status");
+        NSLog(@"parsed response %@ type=%@",res.parsedResponse,[res.parsedResponse class]);
+    };
+    [authRequest execAsyncWithSuccess:success AndFailure:failure];
+    [self waitForExpectationsWithTimeout:TEST_TIMEOUT handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Timeout Error: %@", error);
+        }
+    }];
+}
+
+- (void)testAuthSuccess {
+    stubRequest(@"POST", @"http://testing.feedhenry.com/box/srv/1.1/admin/authpolicy/auth").
+    andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).
+    withBody(@"{\"message\":\"Authentication successful\",\"sessionToken\":\"qtqerlp42qom4h5orezrm2uf\",\"status\":\"ok\",\"userId\":\"ciclarke@redhat.com\"}");
+    
+    XCTestExpectation *authExpectation = [self expectationWithDescription:@"testAuthSuccess"];
+    FHAuthRequest* authRequest = [FH buildAuthRequest];
+    [authRequest authWithPolicyId:@"MyFeedHenryPolicy" UserId:@"user" Password:@"pass"];
+    void (^success)(FHResponse *)=^(FHResponse * res){
+        [authExpectation fulfill];
+        XCTAssertTrue(res != nil, @"Auth request should return success");
+        XCTAssertTrue([res.parsedResponse objectForKey:@"sessionToken"] != nil, @"Auth request should return success");
+        NSLog(@"parsed response %@ type=%@",res.parsedResponse,[res.parsedResponse class]);
+    };
+    void (^failure)(FHResponse *)=^(FHResponse* res){
+        [authExpectation fulfill];
+        XCTAssertTrue(true == false, @"Successful auth request should succeed");
+        NSLog(@"parsed response %@ type=%@",res.parsedResponse,[res.parsedResponse class]);
+    };
+    [authRequest execAsyncWithSuccess:success AndFailure:failure];
+    [self waitForExpectationsWithTimeout:TEST_TIMEOUT handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Timeout Error: %@", error);
+        }
+    }];
+}
 // the [FH getDefaultParamsAsHeaders] setup's default params
 // containing both raw values as well as json representation
 // of foundation collection clases. After JSON refactor, ensure

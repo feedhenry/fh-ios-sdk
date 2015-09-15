@@ -84,12 +84,8 @@
         [fhResponse parseResponseData:responseData];
 
         if ([request responseStatusCode] == 200) {
-            NSString *status =
-                [fhResponse.parsedResponse valueForKey:@"status"];
-            if ((nil == status) || (nil != status)) {
-                [self successWithResponse:fhResponse AndAction:fhact];
-                return;
-            }
+            [self successWithResponse:fhResponse AndAction:fhact];
+            return;
         }
         NSString *msg = [fhResponse.parsedResponse valueForKey:@"msg"];
         if (nil == msg) {
