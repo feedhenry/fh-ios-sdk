@@ -779,7 +779,7 @@
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FeedHenry;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SKIP_INSTALL = YES;
@@ -805,7 +805,7 @@
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FeedHenry;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SKIP_INSTALL = YES;

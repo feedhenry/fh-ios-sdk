@@ -38,6 +38,19 @@
                 AndQuery:(NSDictionary *)queryParams;
 
 /**
+ Use sync client to manage a dataset with id dataId.
+ 
+ @param dataId the id of the data set
+ @param config the sync configuration for this data set
+ @param queryParams the query params for the data set
+ @param metaData the meta data for the data set
+ */
+- (void)manageWithDataId:(NSString *)dataId
+               AndConfig:(FHSyncConfig *)config
+                AndQuery:(NSDictionary *)queryParams
+             AndMetaData:(NSMutableDictionary *)metaData;
+
+/**
  Read a data record with id uid within data set with id dataId
 
  @param dataId the id of the data set

@@ -1,4 +1,7 @@
 # CHANGELOG - FeedHenry iOS SDK
+## 2.2.14 - 2015-09-21
+* PR 42 - Add metadata to datasets
+
 ## 2.2.13 - 2015-09-16
 *PR 43 - Rewrite HTTP unit tests to no longer mock a HTTP client but use Nocilla. Fix bug in init calling succ and fail, fix status check crashes.
 

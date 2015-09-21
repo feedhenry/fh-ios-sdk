@@ -14,6 +14,13 @@
 #import "FHSyncDataset.h"
 #import "FHDefines.h"
 
+@interface FHSyncClient ()
+    - (void)doManage:(NSString *)dataId
+           AndConfig:(FHSyncConfig *)config
+            AndQuery:(NSDictionary *)queryParams
+             AndMetaData:(NSMutableDictionary *)metaData;
+@end
+
 @implementation FHSyncClient {
     NSMutableDictionary *_dataSets;
     FHSyncConfig *_syncConfig;
@@ -40,6 +47,58 @@
     });
 
     return _shared;
+}
+
+- (void)doManage:(NSString *)dataId
+       AndConfig:(FHSyncConfig *)config
+        AndQuery:(NSDictionary *)queryParams
+     AndMetaData:(NSMutableDictionary *)metaData {
+    if (!_initialized) {
+        [NSException
+         raise:@"FHSyncClient isn't initialized"
+         format:@"FHSyncClient hasn't been initialized. Have you " @"called the init function?"];
+    }
+    
+    // first, check if the dataset for dataId is already loaded
+    FHSyncDataset *dataSet = _dataSets[dataId];
+    // allow to set sync config options for each dataset
+    FHSyncConfig *dataSyncConfig = _syncConfig;
+    if (nil != config) {
+        dataSyncConfig = config;
+    }
+    if (nil == dataSet) {
+        // not loaded yet, try to read it from a local file
+        NSError *error = nil;
+        dataSet = [[FHSyncDataset alloc] initFromFileWithDataId:dataId error:error];
+        if (nil == error) {
+            // data loaded successfully
+            [FHSyncUtils doNotifyWithDataId:dataId
+                                     config:dataSyncConfig
+                                        uid:NULL
+                                       code:LOCAL_UPDATE_APPLIED_MESSAGE
+                                    message:@"load"];
+        } else {
+            // cat not load data, create a new map for it
+            dataSet = [[FHSyncDataset alloc] initWithDataId:dataId];
+        }
+        _dataSets[dataId] = dataSet;
+    }
+    
+    dataSet.syncConfig = dataSyncConfig;
+    
+    // if the dataset is not initialised yet, do the init
+    dataSet.queryParams = queryParams;
+    dataSet.syncRunning = NO;
+    dataSet.syncLoopPending = YES;
+    dataSet.stopSync = NO;
+    dataSet.metaData = metaData;
+    dataSet.initialised = YES;
+    
+    NSError *saveError = nil;
+    [dataSet saveToFile:saveError];
+    if (saveError) {
+        DLog(@"Failed to save dataset with dataId %@", dataId);
+    }
 }
 
 - (void)datasetMonitor:(NSDictionary *)info {
@@ -87,51 +146,11 @@
 - (void)manageWithDataId:(NSString *)dataId
                AndConfig:(FHSyncConfig *)config
                 AndQuery:(NSDictionary *)queryParams {
-    if (!_initialized) {
-        [NSException
-             raise:@"FHSyncClient isn't initialized"
-            format:@"FHSyncClient hasn't been initialized. Have you " @"called the init function?"];
-    }
+    [self doManage:dataId AndConfig:config AndQuery:queryParams AndMetaData:nil];
+}
 
-    // first, check if the dataset for dataId is already loaded
-    FHSyncDataset *dataSet = _dataSets[dataId];
-    // allow to set sync config options for each dataset
-    FHSyncConfig *dataSyncConfig = _syncConfig;
-    if (nil != config) {
-        dataSyncConfig = config;
-    }
-    if (nil == dataSet) {
-        // not loaded yet, try to read it from a local file
-        NSError *error = nil;
-        dataSet = [[FHSyncDataset alloc] initFromFileWithDataId:dataId error:error];
-        if (nil == error) {
-            // data loaded successfully
-            [FHSyncUtils doNotifyWithDataId:dataId
-                                     config:dataSyncConfig
-                                        uid:NULL
-                                       code:LOCAL_UPDATE_APPLIED_MESSAGE
-                                    message:@"load"];
-        } else {
-            // cat not load data, create a new map for it
-            dataSet = [[FHSyncDataset alloc] initWithDataId:dataId];
-        }
-        _dataSets[dataId] = dataSet;
-    }
-
-    dataSet.syncConfig = dataSyncConfig;
-
-    // if the dataset is not initialised yet, do the init
-    dataSet.queryParams = queryParams;
-    dataSet.syncRunning = NO;
-    dataSet.syncLoopPending = YES;
-    dataSet.stopSync = NO;
-    dataSet.initialised = YES;
-
-    NSError *saveError = nil;
-    [dataSet saveToFile:saveError];
-    if (saveError) {
-        DLog(@"Failed to save dataset with dataId %@", dataId);
-    }
+- (void)manageWithDataId:(NSString *)dataId AndConfig:(FHSyncConfig *)config AndQuery:(NSDictionary *)queryParams AndMetaData:(NSMutableDictionary *)metaData {
+    [self doManage:dataId AndConfig:config AndQuery:queryParams AndMetaData:metaData];
 }
 
 - (void)stopWithDataId:(NSString *)dataId {
