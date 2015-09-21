@@ -249,7 +249,7 @@ static NSString *const kAck = @"acknowledgements";
     }
 
     if ([action isEqualToString:@"create"]) {
-        pendingObj.uid = pendingObj.postData.hashValue;
+        pendingObj.uid = pendingObj.hashValue;
         [self storePendingObj:pendingObj];
     } else {
         FHSyncDataRecord *existingData = (self.dataRecords)[uid];
