@@ -1,4 +1,7 @@
 # CHANGELOG - FeedHenry iOS SDK
+## 2.2.15 - 2015-09-22
+* PR 44 - Return the temp uid of a new data record once it's synced
+
 ## 2.2.14 - 2015-09-21
 * PR 42 - Add metadata to datasets
 

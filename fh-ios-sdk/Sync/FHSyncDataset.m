@@ -249,7 +249,9 @@ static NSString *const kAck = @"acknowledgements";
     }
 
     if ([action isEqualToString:@"create"]) {
-        pendingObj.uid = pendingObj.postData.hashValue;
+        //use the hashvalue of the pending record as the uid here, as the hashvalue will returned later by the cloud code
+        //when the data is synced. This way we can link the old uid with the new uid.
+        pendingObj.uid = pendingObj.hashValue;
         [self storePendingObj:pendingObj];
     } else {
         FHSyncDataRecord *existingData = (self.dataRecords)[uid];
