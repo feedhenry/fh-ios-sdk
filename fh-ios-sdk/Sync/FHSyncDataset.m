@@ -384,7 +384,7 @@ static NSString *const kAck = @"acknowledgements";
         syncLoopParams[@"fn"] = @"sync";
         syncLoopParams[@"dataset_id"] = self.datasetId;
         syncLoopParams[@"query_params"] = self.queryParams;
-        syncLoopParams[@"meta_data"] = self.syncMetaData;
+        syncLoopParams[@"meta_data"] = self.customMetaData;
         if (self.hashValue) {
             syncLoopParams[@"dataset_hash"] = self.hashValue;
         }
