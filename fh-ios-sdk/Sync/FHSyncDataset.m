@@ -133,7 +133,8 @@ static NSString *const kAck = @"acknowledgements";
     if (jsonObj[@"syncMetaData"] == nil) {
         instance.syncMetaData = [NSMutableDictionary dictionary];
     } else {
-        instance.syncMetaData = [jsonObj[@"syncMetaData"] mutableCopy];
+        NSMutableDictionary *mutableCopy = (NSMutableDictionary *)CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)jsonObj[@"syncMetaData"], kCFPropertyListMutableContainers));
+        instance.syncMetaData = mutableCopy;
     }
     
     NSDictionary *pendingJson = jsonObj[kPendingRecords];
