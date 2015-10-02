@@ -293,6 +293,7 @@ static NSString *const kAck = @"acknowledgements";
     NSString *previousePendingUID = nil;
     FHSyncPendingDataRecord *previousePendingObj = nil;
     NSString *uid = pendingObj.uid;
+    NSString *uidToSave = pendingObj.hashValue;
     DLog(@"updating local dataset for uid %@ - action = %@", uid, pendingObj.action);
     NSMutableDictionary *metadata = (self.syncMetaData)[uid];
     if (nil == metadata) {
@@ -331,6 +332,7 @@ static NSString *const kAck = @"acknowledgements";
                     // update
                     previousePendingObj.postData = pendingObj.postData;
                     [self.pendingDataRecords removeObjectForKey:pendingObj.hashValue];
+                    uidToSave = previousePendingUID;
                 }
             }
         }
@@ -370,7 +372,7 @@ static NSString *const kAck = @"acknowledgements";
         FHSyncDataRecord *record = pendingObj.postData;
         (self.dataRecords)[uid] = record;
         metadata[@"fromPending"] = @YES;
-        metadata[@"pendingUid"] = pendingObj.hashValue;
+        metadata[@"pendingUid"] = uidToSave;
     }
 }
 
