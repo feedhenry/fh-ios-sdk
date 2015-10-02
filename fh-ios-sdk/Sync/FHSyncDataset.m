@@ -65,6 +65,9 @@ static NSString *const kAck = @"acknowledgements";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[kDataSetId] = self.datasetId;
     dict[kSyncConfig] = [self.syncConfig JSONData];
+    if (self.syncMetaData != nil) {
+        dict[@"syncMetaData"] = self.syncMetaData;
+    }
     NSMutableDictionary *pendingDataDict = [NSMutableDictionary dictionary];
     [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         pendingDataDict[key] = [obj JSONData];
@@ -127,6 +130,12 @@ static NSString *const kAck = @"acknowledgements";
     instance.syncConfig = [FHSyncConfig objectFromJSONData:jsonObj[kSyncConfig]];
     instance.hashValue = jsonObj[kHashValue];
     instance.pendingDataRecords = [NSMutableDictionary dictionary];
+    if (jsonObj[@"syncMetaData"] == nil) {
+        instance.syncMetaData = [NSMutableDictionary dictionary];
+    } else {
+        instance.syncMetaData = [jsonObj[@"syncMetaData"] mutableCopy];
+    }
+    
     NSDictionary *pendingJson = jsonObj[kPendingRecords];
     if (nil != pendingJson) {
         [pendingJson enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -286,8 +295,8 @@ static NSString *const kAck = @"acknowledgements";
     DLog(@"updating local dataset for uid %@ - action = %@", uid, pendingObj.action);
     NSMutableDictionary *metadata = (self.syncMetaData)[uid];
     if (nil == metadata) {
-        metadata = [NSMutableDictionary dictionary];
-        (self.syncMetaData)[uid] = metadata;
+        metadata = [[NSMutableDictionary alloc] init];
+        [self.syncMetaData setObject:metadata forKey:uid];
     }
 
     FHSyncDataRecord *existing = (self.dataRecords)[uid];
@@ -531,7 +540,7 @@ static NSString *const kAck = @"acknowledgements";
     syncRecsParams[@"fn"] = @"syncRecords";
     syncRecsParams[@"dataset_id"] = self.datasetId;
     syncRecsParams[@"query_params"] = self.queryParams;
-    syncRecsParams[@"meta_data"] = self.syncMetaData;
+    syncRecsParams[@"meta_data"] = self.customMetaData;
     syncRecsParams[@"clientRecs"] = clientRecs;
 
     DLog(@"syncRecParams :: %@", [syncRecsParams JSONString]);
