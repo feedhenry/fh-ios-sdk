@@ -53,7 +53,7 @@
     dataset.dataRecords = data;
 
     dataset.queryParams = [NSMutableDictionary dictionary];
-    dataset.metaData = [NSMutableDictionary dictionary];
+    dataset.syncMetaData = [NSMutableDictionary dictionary];
 
     NSError *error = nil;
     [dataset saveToFile:error];

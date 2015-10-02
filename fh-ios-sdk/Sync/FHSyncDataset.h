@@ -32,8 +32,10 @@ A class representing a sync dataset managed by the sync service
 @property (nonatomic, strong) NSMutableDictionary *dataRecords;
 /** The query params for this dataset **/
 @property (nonatomic, strong) NSDictionary *queryParams;
-/** Meta data associated with this data set**/
-@property (nonatomic, strong) NSMutableDictionary *metaData;
+/** Sync Meta data associated with this data set, used internally for the sync**/
+@property (nonatomic, strong) NSMutableDictionary *syncMetaData;
+/** Custom Meta data associated with this data set, used by user to customise the dataset ie: a subset of dataset.**/
+@property (nonatomic, strong) NSMutableDictionary *customMetaData;
 /** The SHA1 hash value of this data set **/
 @property (nonatomic, strong) NSString *hashValue;
 @property (nonatomic, strong) NSMutableArray *acknowledgements;
