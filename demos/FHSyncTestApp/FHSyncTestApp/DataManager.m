@@ -24,6 +24,7 @@
   conf.notifyRemoteUpdateFailed = YES;
   conf.notifyLocalUpdateApplied = YES;
   conf.notifyDeltaReceived = YES;
+  conf.crashCountWait = 0;
   [_syncClient initWithConfig:conf];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncMessage:) name:kFHSyncStateChangedNotification object:nil];
   [self.syncClient manageWithDataId:DATA_ID AndConfig:nil AndQuery:[NSDictionary dictionary]];
