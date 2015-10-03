@@ -5,6 +5,9 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
+
+// Version 2.2.16
+
 #import "FHActRequest.h"
 #import "FHCloudRequest.h"
 #import "FHResponse.h"

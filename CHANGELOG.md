@@ -1,4 +1,8 @@
 # CHANGELOG - FeedHenry iOS SDK
+
+## 2.2.16 - 2015-10-05
+* FH-2262 - Fix wronlgy squashed sync operation
+
 ## 2.2.15 - 2015-09-22
 * PR 44 - Return the temp uid of a new data record once it's synced
 
