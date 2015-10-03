@@ -91,7 +91,9 @@
     dataSet.syncRunning = NO;
     dataSet.syncLoopPending = YES;
     dataSet.stopSync = NO;
-    dataSet.metaData = metaData;
+    // custom metadata are used to select a subset of data set
+    dataSet.customMetaData = metaData;
+    
     dataSet.initialised = YES;
     
     NSError *saveError = nil;

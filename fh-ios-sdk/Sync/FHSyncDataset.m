@@ -40,7 +40,7 @@ static NSString *const kAck = @"acknowledgements";
         self.pendingDataRecords = [NSMutableDictionary dictionary];
         self.dataRecords = [NSMutableDictionary dictionary];
         self.queryParams = [NSMutableDictionary dictionary];
-        self.metaData = [NSMutableDictionary dictionary];
+        self.syncMetaData = [NSMutableDictionary dictionary];
         self.hashValue = nil;
         self.initialised = NO;
         self.acknowledgements = [NSMutableArray array];
@@ -50,6 +50,7 @@ static NSString *const kAck = @"acknowledgements";
 }
 
 - (id)initFromFileWithDataId:(NSString *)dataId error:(NSError *)error {
+
     NSString *data =
         [FHSyncUtils loadDataFromFile:[dataId stringByAppendingPathExtension:kStorageFilePath]
                                 error:error];
@@ -64,6 +65,9 @@ static NSString *const kAck = @"acknowledgements";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[kDataSetId] = self.datasetId;
     dict[kSyncConfig] = [self.syncConfig JSONData];
+    if (self.syncMetaData != nil) {
+        dict[@"syncMetaData"] = self.syncMetaData;
+    }
     NSMutableDictionary *pendingDataDict = [NSMutableDictionary dictionary];
     [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         pendingDataDict[key] = [obj JSONData];
@@ -126,6 +130,13 @@ static NSString *const kAck = @"acknowledgements";
     instance.syncConfig = [FHSyncConfig objectFromJSONData:jsonObj[kSyncConfig]];
     instance.hashValue = jsonObj[kHashValue];
     instance.pendingDataRecords = [NSMutableDictionary dictionary];
+    if (jsonObj[@"syncMetaData"] == nil) {
+        instance.syncMetaData = [NSMutableDictionary dictionary];
+    } else {
+        NSMutableDictionary *mutableCopy = (NSMutableDictionary *)CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)jsonObj[@"syncMetaData"], kCFPropertyListMutableContainers));
+        instance.syncMetaData = mutableCopy;
+    }
+    
     NSDictionary *pendingJson = jsonObj[kPendingRecords];
     if (nil != pendingJson) {
         [pendingJson enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -282,11 +293,12 @@ static NSString *const kAck = @"acknowledgements";
     NSString *previousePendingUID = nil;
     FHSyncPendingDataRecord *previousePendingObj = nil;
     NSString *uid = pendingObj.uid;
+    NSString *uidToSave = pendingObj.hashValue;
     DLog(@"updating local dataset for uid %@ - action = %@", uid, pendingObj.action);
-    NSMutableDictionary *metadata = (self.metaData)[uid];
+    NSMutableDictionary *metadata = (self.syncMetaData)[uid];
     if (nil == metadata) {
-        metadata = [NSMutableDictionary dictionary];
-        (self.metaData)[uid] = metadata;
+        metadata = [[NSMutableDictionary alloc] init];
+        [self.syncMetaData setObject:metadata forKey:uid];
     }
 
     FHSyncDataRecord *existing = (self.dataRecords)[uid];
@@ -320,6 +332,7 @@ static NSString *const kAck = @"acknowledgements";
                     // update
                     previousePendingObj.postData = pendingObj.postData;
                     [self.pendingDataRecords removeObjectForKey:pendingObj.hashValue];
+                    uidToSave = previousePendingUID;
                 }
             }
         }
@@ -359,7 +372,7 @@ static NSString *const kAck = @"acknowledgements";
         FHSyncDataRecord *record = pendingObj.postData;
         (self.dataRecords)[uid] = record;
         metadata[@"fromPending"] = @YES;
-        metadata[@"pendingUid"] = pendingObj.hashValue;
+        metadata[@"pendingUid"] = uidToSave;
     }
 }
 
@@ -383,7 +396,7 @@ static NSString *const kAck = @"acknowledgements";
         syncLoopParams[@"fn"] = @"sync";
         syncLoopParams[@"dataset_id"] = self.datasetId;
         syncLoopParams[@"query_params"] = self.queryParams;
-        syncLoopParams[@"meta_data"] = self.metaData;
+        syncLoopParams[@"meta_data"] = self.customMetaData;
         if (self.hashValue) {
             syncLoopParams[@"dataset_hash"] = self.hashValue;
         }
@@ -530,7 +543,7 @@ static NSString *const kAck = @"acknowledgements";
     syncRecsParams[@"fn"] = @"syncRecords";
     syncRecsParams[@"dataset_id"] = self.datasetId;
     syncRecsParams[@"query_params"] = self.queryParams;
-    syncRecsParams[@"meta_data"] = self.metaData;
+    syncRecsParams[@"meta_data"] = self.customMetaData;
     syncRecsParams[@"clientRecs"] = clientRecs;
 
     DLog(@"syncRecParams :: %@", [syncRecsParams JSONString]);
@@ -672,10 +685,10 @@ static NSString *const kAck = @"acknowledgements";
     if (self.pendingDataRecords && remoteData[@"records"]) {
         [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-            NSMutableDictionary *metadata = (self.metaData)[pendingRecord.uid];
+            NSMutableDictionary *metadata = (self.syncMetaData)[pendingRecord.uid];
             if (nil == metadata) {
                 metadata = [NSMutableDictionary dictionary];
-                (self.metaData)[pendingRecord.uid] = metadata;
+                (self.syncMetaData)[pendingRecord.uid] = metadata;
             }
             if (!pendingRecord.inFlight) {
                 // Pending record that has not been submitted
