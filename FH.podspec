@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.libraries = 'xml2', 'z'
   s.dependency 'ASIHTTPRequest/Core', '1.8.2'
   s.dependency 'Reachability', '3.2'
-  s.dependency 'AeroGear-Push', '1.1.0-beta.2'
+  s.dependency 'AeroGear-Push', '1.1.1'
 end
