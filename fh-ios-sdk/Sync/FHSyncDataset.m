@@ -168,7 +168,10 @@ static NSString *const kChangeHistory = @"changeHistory";
         instance.acknowledgements = jsonObj[kAck];
     }
     if (jsonObj[kChangeHistory]) {
-      instance.changeHistory = [NSMutableDictionary dictionaryWithDictionary:jsonObj[kChangeHistory]];
+      instance.changeHistory = [NSMutableDictionary dictionary];
+      [jsonObj[kChangeHistory] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        instance.changeHistory[key] = [[NSMutableArray alloc] initWithArray:obj];
+      }];
     }
     instance.initialised = YES;
     return instance;
