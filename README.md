@@ -1,4 +1,6 @@
 # FeedHenry iOS SDK [![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.png)](https://travis-ci.org/feedhenry/fh-ios-sdk)
+[![Coverage Status](https://coveralls.io/repos/corinnekrych/fh-ios-sdk/badge.svg?branch=master&service=github)](https://coveralls.io/github/corinnekrych/fh-ios-sdk?branch=master)
+
 The iOS Software Development Kit to connect to the [FeedHenry platform.](http://www.feedhenry.com)
 
 ## Usage
