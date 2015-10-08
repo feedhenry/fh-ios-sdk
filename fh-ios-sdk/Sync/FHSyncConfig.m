@@ -31,8 +31,8 @@ static NSString *const kICloudBackup = @"icloud_backup";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.syncFrequency = 30.0;
-        self.autoSyncLocalUpdates = NO;
+        self.syncFrequency = 10.0;
+        self.autoSyncLocalUpdates = YES;
         self.notifyClientStorageFailed = NO;
         self.notifyDeltaReceived = NO;
         self.notifyOfflineUpdate = NO;
