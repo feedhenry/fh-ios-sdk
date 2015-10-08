@@ -39,6 +39,7 @@ A class representing a sync dataset managed by the sync service
 /** The SHA1 hash value of this data set **/
 @property (nonatomic, strong) NSString *hashValue;
 @property (nonatomic, strong) NSMutableArray *acknowledgements;
+@property (nonatomic, strong) NSMutableDictionary *changeHistory;
 @property (nonatomic, assign) BOOL stopSync;
 
 - (instancetype)initWithDataId:(NSString *)dataId;

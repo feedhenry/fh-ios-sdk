@@ -25,6 +25,7 @@ static NSString *const kPendingRecords = @"pendingDataRecords";
 static NSString *const kDataRecords = @"dataRecords";
 static NSString *const kHashValue = @"hashValue";
 static NSString *const kAck = @"acknowledgements";
+static NSString *const kChangeHistory = @"changeHistory";
 
 @implementation FHSyncDataset
 
@@ -45,6 +46,7 @@ static NSString *const kAck = @"acknowledgements";
         self.initialised = NO;
         self.acknowledgements = [NSMutableArray array];
         self.stopSync = NO;
+        self.changeHistory = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -86,6 +88,10 @@ static NSString *const kAck = @"acknowledgements";
         dict[kSyncLoopEnd] = @([self.syncLoopEnd timeIntervalSince1970]);
     }
     dict[kAck] = self.acknowledgements;
+    if (self.hashValue != nil) {
+      dict[kHashValue] = self.hashValue;
+    }
+    dict[kChangeHistory] = self.changeHistory;
     return dict;
 }
 
@@ -160,6 +166,9 @@ static NSString *const kAck = @"acknowledgements";
     }
     if (jsonObj[kAck]) {
         instance.acknowledgements = jsonObj[kAck];
+    }
+    if (jsonObj[kChangeHistory]) {
+      instance.changeHistory = jsonObj[kChangeHistory];
     }
     instance.initialised = YES;
     return instance;
@@ -376,6 +385,25 @@ static NSString *const kAck = @"acknowledgements";
     }
 }
 
+- (void) updateChangeHistory:(FHSyncPendingDataRecord*) pendingRecord
+{
+  if ([[pendingRecord action] isEqualToString:@"update"]) {
+    NSString* uid = [pendingRecord uid];
+    NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
+    if (!historyForRecord) {
+      historyForRecord = [NSMutableArray array];
+      self.changeHistory[uid] = historyForRecord;
+    }
+    NSString* preDataHash = [[pendingRecord preData] hashValue];
+    if (![historyForRecord containsObject:preDataHash]) {
+      [historyForRecord addObject:preDataHash];
+    }
+    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
+      [historyForRecord removeObjectAtIndex:0];
+    }
+  }
+}
+
 - (void)startSyncLoop {
     [self performSelectorInBackground:@selector(startSyncTask:) withObject:nil];
 }
@@ -405,6 +433,7 @@ static NSString *const kAck = @"acknowledgements";
         NSMutableArray *pendingArray = [NSMutableArray array];
         [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
+            [self updateChangeHistory:pendingRecord];
             if (!pendingRecord.inFlight && !pendingRecord.crashed) {
                 pendingRecord.inFlight = YES;
                 pendingRecord.inFlightDate = [NSDate date];
@@ -526,6 +555,7 @@ static NSString *const kAck = @"acknowledgements";
         [self syncRecords];
     } else {
         DLog(@"Local dataset up to date");
+      [self syncRecords];
     }
 
     [self syncCompleteWithCode:@"online"];
@@ -581,17 +611,23 @@ static NSString *const kAck = @"acknowledgements";
     NSDictionary *dataUpdated = resData[@"update"];
     if (nil != dataUpdated) {
         [dataUpdated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+          NSMutableArray* history = [self.changeHistory objectForKey:key];
+          if (history && [history containsObject:obj[@"hash"]]) {
+            DLog(@"ignore update with hash %@ as it's outdated", obj[@"hash"]);
+            [history removeObject:obj[@"hash"]];
+          } else {
             FHSyncDataRecord *rec = (self.dataRecords)[key];
             if (rec) {
-                rec.data = obj[@"data"];
-                rec.hashValue = obj[@"hash"];
-                (self.dataRecords)[key] = rec;
-                [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                         config:self.syncConfig
-                                            uid:key
-                                           code:DELTA_RECEIVED_MESSAGE
-                                        message:@"update"];
+              rec.data = obj[@"data"];
+              rec.hashValue = obj[@"hash"];
+              (self.dataRecords)[key] = rec;
+              [FHSyncUtils doNotifyWithDataId:self.datasetId
+                                       config:self.syncConfig
+                                          uid:key
+                                         code:DELTA_RECEIVED_MESSAGE
+                                      message:@"update"];
             }
+          }
         }];
     }
 
