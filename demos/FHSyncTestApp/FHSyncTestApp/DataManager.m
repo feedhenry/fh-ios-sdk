@@ -18,6 +18,7 @@
 - (void) start
 {
   FHSyncConfig* conf = [[FHSyncConfig alloc] init];
+  conf.syncFrequency = 30;
   conf.notifySyncStarted = YES;
   conf.notifySyncCompleted = YES;
   conf.notifyRemoteUpdateApplied = YES;
@@ -25,6 +26,7 @@
   conf.notifyLocalUpdateApplied = YES;
   conf.notifyDeltaReceived = YES;
   conf.crashCountWait = 0;
+  conf.autoSyncLocalUpdates = NO;
   [_syncClient initWithConfig:conf];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncMessage:) name:kFHSyncStateChangedNotification object:nil];
   [self.syncClient manageWithDataId:DATA_ID AndConfig:nil AndQuery:[NSDictionary dictionary]];
@@ -91,9 +93,7 @@
     }
   }
   
-  if([code isEqualToString:SYNC_COMPLETE_MESSAGE]) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAppDataUpdatedNotification object:nil];
-  }
+  [[NSNotificationCenter defaultCenter] postNotificationName:kAppDataUpdatedNotification object:nil]; 
 }
 
 - (ShoppingItem*) findItemByUid:(NSString*) uid
