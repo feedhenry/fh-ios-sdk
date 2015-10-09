@@ -447,6 +447,12 @@ static NSString *const kUIDMapping = @"uidMapping";
       [historyForRecord removeObjectAtIndex:0];
     }
   }
+    if ([[pendingRecord action] isEqualToString:@"delete"]) {
+        NSString* uid = [pendingRecord uid];
+        if (self.changeHistory[uid]) {
+            [self.changeHistory removeObjectForKey:uid];
+        }
+    }
 }
 
 - (void)startSyncLoop {
@@ -724,12 +730,17 @@ static NSString *const kUIDMapping = @"uidMapping";
     NSDictionary *deleted = resData[@"delete"];
     if (nil != deleted) {
         [deleted enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            [self.dataRecords removeObjectForKey:key];
-            [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                     config:self.syncConfig
-                                        uid:key
-                                       code:DELTA_RECEIVED_MESSAGE
-                                    message:@"delete"];
+            NSMutableArray* history = [self.changeHistory objectForKey:key];
+            if(history && [history containsObject:obj[@"hash"]]){
+                DLog(@"ignore delete with hash %@ as it's outdated", obj[@"hash"]);
+            } else {
+                [self.dataRecords removeObjectForKey:key];
+                [FHSyncUtils doNotifyWithDataId:self.datasetId
+                                         config:self.syncConfig
+                                            uid:key
+                                           code:DELTA_RECEIVED_MESSAGE
+                                        message:@"delete"];
+            }
         }];
     }
 
