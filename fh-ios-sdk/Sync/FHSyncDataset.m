@@ -558,7 +558,6 @@ static NSString *const kChangeHistory = @"changeHistory";
         [self syncRecords];
     } else {
         DLog(@"Local dataset up to date");
-      [self syncRecords];
     }
 
     [self syncCompleteWithCode:@"online"];
