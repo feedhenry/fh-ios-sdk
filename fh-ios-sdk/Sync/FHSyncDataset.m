@@ -404,6 +404,13 @@ static NSString *const kChangeHistory = @"changeHistory";
     if (historyForRecord.count > self.syncConfig.changeHistorySize) {
       [historyForRecord removeObjectAtIndex:0];
     }
+    NSString* postDataHash = [[pendingRecord postData] hashValue];
+    if (![historyForRecord containsObject:postDataHash]) {
+      [historyForRecord addObject:postDataHash];
+    }
+    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
+      [historyForRecord removeObjectAtIndex:0];
+    }
   }
 }
 
