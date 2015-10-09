@@ -357,7 +357,8 @@ static NSString *const kUIDMapping = @"uidMapping";
                 previousePendingUID = metadata[@"pendingUid"];
                 metadata[@"previousPendingUid"] = previousePendingUID;
                 previousePendingObj = (self.pendingDataRecords)[previousePendingUID];
-                if (nil != previousePendingObj && !previousePendingObj.inFlight) {
+                if (nil != previousePendingObj) {
+                  if (!previousePendingObj.inFlight) {
                     DLog(@"existing pre-flight pending record = %@", previousePendingObj);
                     // We are trying to perform an update on an existing pending record
                     // modify the original record to have the latest value and delete the pending
@@ -365,6 +366,13 @@ static NSString *const kUIDMapping = @"uidMapping";
                     previousePendingObj.postData = pendingObj.postData;
                     [self.pendingDataRecords removeObjectForKey:pendingObj.hashValue];
                     uidToSave = previousePendingUID;
+                  } else {
+                    //we are performing changes to a pending record which is inFlight. Until the status of this pending record is resolved,
+                    //we should not submit this pending record to the cloud. Mark it as delayed.
+                    pendingObj.delayed = YES;
+                    pendingObj.waitingFor = [previousePendingObj hashValue];
+                  }
+
                 }
             }
         }
@@ -378,28 +386,33 @@ static NSString *const kUIDMapping = @"uidMapping";
                 previousePendingUID = metadata[@"pendingUid"];
                 metadata[@"previousPendingUid"] = previousePendingUID;
                 previousePendingObj = (self.pendingDataRecords)[previousePendingUID];
-                if (previousePendingObj && !previousePendingObj.inFlight) {
-                    DLog(@"existing pending record = %@", previousePendingObj);
-                    if ([previousePendingObj.action isEqualToString:@"create"]) {
-                        // We are trying to perform a delete on an existing pending create
-                        // These cancel each other out so remove them both
-                        [self.pendingDataRecords removeObjectForKey:pendingObj.hashValue];
-                        [self.pendingDataRecords removeObjectForKey:previousePendingUID];
-                    }
-                    if ([previousePendingObj.action isEqualToString:@"update"]) {
-                        // We are trying to perform a delete on an existing pending update
-                        // Use the pre value from the pending update for the delete and
-                        // get rid of the pending update
-                        pendingObj.preData = previousePendingObj.preData;
-                        pendingObj.inFlight = false;
-                        [self.pendingDataRecords removeObjectForKey:previousePendingUID];
+                if (nil != previousePendingObj) {
+                    if (!previousePendingObj.inFlight) {
+                        DLog(@"existing pending record = %@", previousePendingObj);
+                        if ([previousePendingObj.action isEqualToString:@"create"]) {
+                            // We are trying to perform a delete on an existing pending create
+                            // These cancel each other out so remove them both
+                            [self.pendingDataRecords removeObjectForKey:pendingObj.hashValue];
+                            [self.pendingDataRecords removeObjectForKey:previousePendingUID];
+                        }
+                        if ([previousePendingObj.action isEqualToString:@"update"]) {
+                            // We are trying to perform a delete on an existing pending update
+                            // Use the pre value from the pending update for the delete and
+                            // get rid of the pending update
+                            pendingObj.preData = previousePendingObj.preData;
+                            pendingObj.inFlight = false;
+                            [self.pendingDataRecords removeObjectForKey:previousePendingUID];
+                        }
+                    } else {
+                        pendingObj.delayed = YES;
+                        pendingObj.waitingFor = [previousePendingObj hashValue];
                     }
                 }
             }
             [self.dataRecords removeObjectForKey:uid];
         }
     }
-
+    
     if ((self.dataRecords)[uid]) {
         FHSyncDataRecord *record = pendingObj.postData;
         (self.dataRecords)[uid] = record;
@@ -484,7 +497,9 @@ static NSString *const kUIDMapping = @"uidMapping";
         NSMutableArray *pendingArray = [NSMutableArray array];
         [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-            if (!pendingRecord.inFlight && !pendingRecord.crashed) {
+            [self updateChangeHistory:pendingRecord];
+            if (!pendingRecord.inFlight && !pendingRecord.crashed && !pendingRecord.delayed) {
+
                 pendingRecord.inFlight = YES;
                 pendingRecord.inFlightDate = [NSDate date];
                 NSMutableDictionary *pendingJSON = [pendingRecord JSONData];
@@ -564,6 +579,8 @@ static NSString *const kUIDMapping = @"uidMapping";
 
     // Check to see if any previously crashed inflight records can now be resolved
     [self updateCrashedInFlightFromNewData:resData];
+    
+    [self updateDelayedFromNewData:resData];
 
     BOOL hasRecords = NO;
     if (resData[@"records"]) {
@@ -640,6 +657,25 @@ static NSString *const kUIDMapping = @"uidMapping";
         }];
     }
   }
+}
+
+- (void) updateDelayedFromNewData:(NSDictionary*) res
+{
+    [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        FHSyncPendingDataRecord* pendingObject = (FHSyncPendingDataRecord*) obj;
+        if (pendingObject.delayed && pendingObject.waitingFor) {
+            NSDictionary* updates = res[@"updates"];
+            if (updates) {
+                NSDictionary* updatedHashes = updates[@"hashes"];
+                NSDictionary* updatedRecord = updatedHashes[pendingObject.waitingFor];
+                if (updatedRecord) {
+                    //the waitingFor pendingRecord is now resolved, we should allow this pendingRequest to be sent
+                    pendingObject.delayed = false;
+                    pendingObject.waitingFor = nil;
+                }
+            }
+        }
+    }];
 }
 
 - (void)syncRecords {
@@ -940,18 +976,6 @@ static NSString *const kUIDMapping = @"uidMapping";
             DLog(@"Marking in flight pending record as crashed : %@", pendingHash);
             pendingRecord.crashed = YES;
             crashedRecords[pendingRecord.uid] = pendingRecord;
-        }
-    }];
-
-    // Check for any pending updates that would be modifying a crashed record. These can not go out
-    // until the
-    // status of the crashed record is determined
-    [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-        if (!pendingRecord.inFlight) {
-            if (crashedRecords[pendingRecord.uid]) {
-                pendingRecord.crashed = YES;
-            }
         }
     }];
 }
