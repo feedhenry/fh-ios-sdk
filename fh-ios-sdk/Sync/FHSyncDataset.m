@@ -410,8 +410,8 @@ static NSString *const kUIDMapping = @"uidMapping";
 - (void) updateChangeHistory:(FHSyncPendingDataRecord*) pendingRecord
 {
   if ([[pendingRecord action] isEqualToString:@"create"]) {
-    NSString* uid = [[pendingRecord postData] hashValue];
-    NSString* postHash = [[pendingRecord postData] hashValue];
+    NSString* uid = [pendingRecord hashValue];
+    NSString* postHash = [pendingRecord hashValue];
     NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
     if (!historyForRecord) {
       historyForRecord = [NSMutableArray array];
