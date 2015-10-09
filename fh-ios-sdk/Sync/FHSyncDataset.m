@@ -625,18 +625,23 @@ static NSString *const kUIDMapping = @"uidMapping";
           self.dataRecords[newUid] = dataRecord;
           [self.dataRecords removeObjectForKey:oldUid];
         }
+        NSMutableArray* history = self.changeHistory[oldUid];
+        if (history) {
+            self.changeHistory[newUid] = history;
+            [self.changeHistory removeObjectForKey:oldUid];
+        }
       }
     }];
     if ([newUids count] > 0) {
-      //we need to check all existing pendingRecords and update their UIDs if they are still the old values
-      [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        FHSyncPendingDataRecord* pendingRecord = (FHSyncPendingDataRecord*)obj;
-        NSString* pendingRecordUid = pendingRecord.uid;
-        NSString* newUID = newUids[pendingRecordUid];
-        if (newUID) {
-          pendingRecord.uid = newUID;
-        }
-      }];
+        //we need to check all existing pendingRecords and update their UIDs if they are still the old values
+        [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            FHSyncPendingDataRecord* pendingRecord = (FHSyncPendingDataRecord*)obj;
+            NSString* pendingRecordUid = pendingRecord.uid;
+            NSString* newUID = newUids[pendingRecordUid];
+            if (newUID) {
+                pendingRecord.uid = newUID;
+            }
+        }];
     }
   }
 }
