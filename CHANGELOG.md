@@ -1,5 +1,9 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 2.2.17 - 2015-10-09
+* RHMAP-2455 - Sync Framework concurrency issues (server latency issues)
+* FH-2659 iOS9 enable bicode
+
 ## 2.2.16 - 2015-10-05
 * FH-2262 - Fix wronlgy squashed sync operation
 
