@@ -1,6 +1,6 @@
 # CHANGELOG - FeedHenry iOS SDK
 
-## 2.2.18 - 2015-10-09
+## 2.2.18-beta1 - 2015-10-09
 * RHMAP-2455 - Further Sync Framework concurrency issues (server latency issues)
 
 ## 2.2.17 - 2015-10-09
