@@ -309,6 +309,7 @@ static NSString *const kUIDMapping = @"uidMapping";
 - (void)storePendingObj:(FHSyncPendingDataRecord *)obj {
     (self.pendingDataRecords)[obj.hashValue] = obj;
     [self updateDatasetFromLocal:obj];
+    [self updateChangeHistory:obj];
     if (self.syncConfig.autoSyncLocalUpdates) {
         self.syncLoopPending = YES;
     }
@@ -477,7 +478,6 @@ static NSString *const kUIDMapping = @"uidMapping";
         NSMutableArray *pendingArray = [NSMutableArray array];
         [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-            [self updateChangeHistory:pendingRecord];
             if (!pendingRecord.inFlight && !pendingRecord.crashed) {
                 pendingRecord.inFlight = YES;
                 pendingRecord.inFlightDate = [NSDate date];
