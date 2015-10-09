@@ -390,6 +390,21 @@ static NSString *const kChangeHistory = @"changeHistory";
 
 - (void) updateChangeHistory:(FHSyncPendingDataRecord*) pendingRecord
 {
+  if ([[pendingRecord action] isEqualToString:@"create"]) {
+    NSString* uid = [[pendingRecord postData] hashValue];
+    NSString* postHash = [[pendingRecord postData] hashValue];
+    NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
+    if (!historyForRecord) {
+      historyForRecord = [NSMutableArray array];
+      self.changeHistory[uid] = historyForRecord;
+    }
+    if (![historyForRecord containsObject:postHash]) {
+      [historyForRecord addObject:postHash];
+    }
+    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
+      [historyForRecord removeObjectAtIndex:0];
+    }
+  }
   if ([[pendingRecord action] isEqualToString:@"update"]) {
     NSString* uid = [pendingRecord uid];
     NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
@@ -606,14 +621,21 @@ static NSString *const kChangeHistory = @"changeHistory";
     NSDictionary *dataCreated = resData[@"create"];
     if (nil != dataCreated) {
         [dataCreated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            FHSyncDataRecord *rec = [[FHSyncDataRecord alloc] initWithData:obj[@"data"]];
-            rec.hashValue = obj[@"hash"];
-            (self.dataRecords)[key] = rec;
-            [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                     config:self.syncConfig
-                                        uid:key
-                                       code:DELTA_RECEIVED_MESSAGE
-                                    message:@"create"];
+            NSString* hashKey = obj[@"hash"];
+            NSMutableArray* history = [self.changeHistory objectForKey:hashKey];
+            if (history && [history containsObject:obj[@"hash"]]) {
+              DLog(@"ignore update with hash %@ as it's outdated", obj[@"hash"]);
+              [history removeObject:obj[@"hash"]];
+            } else {
+              FHSyncDataRecord *rec = [[FHSyncDataRecord alloc] initWithData:obj[@"data"]];
+              rec.hashValue = obj[@"hash"];
+              (self.dataRecords)[key] = rec;
+              [FHSyncUtils doNotifyWithDataId:self.datasetId
+                                       config:self.syncConfig
+                                          uid:key
+                                         code:DELTA_RECEIVED_MESSAGE
+                                      message:@"create"];
+            }
         }];
     }
 
