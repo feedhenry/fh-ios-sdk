@@ -48,6 +48,8 @@ static NSString *const kICloudBackup = @"icloud_backup";
         self.resendCrashedUpdates = YES;
         self.hasCustomSync = NO;
         self.icloud_backup = NO;
+        self.changeHistorySize = 10;
+      
     }
     return self;
 }

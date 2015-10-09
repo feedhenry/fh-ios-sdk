@@ -25,6 +25,8 @@ static NSString *const kPendingRecords = @"pendingDataRecords";
 static NSString *const kDataRecords = @"dataRecords";
 static NSString *const kHashValue = @"hashValue";
 static NSString *const kAck = @"acknowledgements";
+static NSString *const kChangeHistory = @"changeHistory";
+static NSString *const kUIDMapping = @"uidMapping";
 
 @implementation FHSyncDataset
 
@@ -45,6 +47,8 @@ static NSString *const kAck = @"acknowledgements";
         self.initialised = NO;
         self.acknowledgements = [NSMutableArray array];
         self.stopSync = NO;
+        self.changeHistory = [NSMutableDictionary dictionary];
+        self.uidMapping = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -86,6 +90,11 @@ static NSString *const kAck = @"acknowledgements";
         dict[kSyncLoopEnd] = @([self.syncLoopEnd timeIntervalSince1970]);
     }
     dict[kAck] = self.acknowledgements;
+    if (self.hashValue != nil) {
+      dict[kHashValue] = self.hashValue;
+    }
+    dict[kChangeHistory] = self.changeHistory;
+    dict[kUIDMapping] = self.uidMapping;
     return dict;
 }
 
@@ -161,6 +170,15 @@ static NSString *const kAck = @"acknowledgements";
     if (jsonObj[kAck]) {
         instance.acknowledgements = jsonObj[kAck];
     }
+    if (jsonObj[kChangeHistory]) {
+      instance.changeHistory = [NSMutableDictionary dictionary];
+      [jsonObj[kChangeHistory] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        instance.changeHistory[key] = [[NSMutableArray alloc] initWithArray:obj];
+      }];
+    }
+    if (jsonObj[kUIDMapping]) {
+      instance.uidMapping = jsonObj[kUIDMapping];
+    }
     instance.initialised = YES;
     return instance;
 }
@@ -188,8 +206,19 @@ static NSString *const kAck = @"acknowledgements";
     return data;
 }
 
+- (NSString *) getReadUID:(NSString*) oldOrNewUid
+{
+    NSString* dataUid = oldOrNewUid;
+    if (self.uidMapping[dataUid]) {
+      //incase we are receiving the old temp uid, translate it ot the new one
+      dataUid = self.uidMapping[dataUid];
+    }
+    return dataUid;
+}
+
 - (NSDictionary *)readDataWithUID:(NSString *)uid {
-    FHSyncDataRecord *record = (self.dataRecords)[uid];
+    NSString* dataUid = [self getReadUID:uid];
+    FHSyncDataRecord *record = (self.dataRecords)[dataUid];
     if (record) {
         NSMutableDictionary *ret = [NSMutableDictionary dictionary];
         ret[@"data"] = record.data;
@@ -214,9 +243,10 @@ static NSString *const kAck = @"acknowledgements";
 }
 
 - (NSDictionary *)updateWithUID:(NSString *)uid data:(NSDictionary *)data {
-    [self addPendingObject:uid data:data AndAction:@"update"];
+    NSString* dataUid = [self getReadUID:uid];
+    [self addPendingObject:dataUid data:data AndAction:@"update"];
 
-    FHSyncDataRecord *rec = (self.dataRecords)[uid];
+    FHSyncDataRecord *rec = (self.dataRecords)[dataUid];
     if (rec) {
         NSMutableDictionary *ret = [NSMutableDictionary dictionary];
         ret[@"data"] = rec.data;
@@ -228,7 +258,8 @@ static NSString *const kAck = @"acknowledgements";
 }
 
 - (NSDictionary *)deleteWithUID:(NSString *)uid {
-    FHSyncPendingDataRecord *pending = [self addPendingObject:uid data:NULL AndAction:@"delete"];
+    NSString* dataUid = [self getReadUID:uid];
+    FHSyncPendingDataRecord *pending = [self addPendingObject:dataUid data:NULL AndAction:@"delete"];
     FHSyncDataRecord *deleted = pending.preData;
     if (deleted) {
         NSMutableDictionary *ret = [NSMutableDictionary dictionary];
@@ -376,6 +407,47 @@ static NSString *const kAck = @"acknowledgements";
     }
 }
 
+- (void) updateChangeHistory:(FHSyncPendingDataRecord*) pendingRecord
+{
+  if ([[pendingRecord action] isEqualToString:@"create"]) {
+    NSString* uid = [pendingRecord hashValue];
+    NSString* postHash = [pendingRecord hashValue];
+    NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
+    if (!historyForRecord) {
+      historyForRecord = [NSMutableArray array];
+      self.changeHistory[uid] = historyForRecord;
+    }
+    if (![historyForRecord containsObject:postHash]) {
+      [historyForRecord addObject:postHash];
+    }
+    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
+      [historyForRecord removeObjectAtIndex:0];
+    }
+  }
+  if ([[pendingRecord action] isEqualToString:@"update"]) {
+    NSString* uid = [pendingRecord uid];
+    NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
+    if (!historyForRecord) {
+      historyForRecord = [NSMutableArray array];
+      self.changeHistory[uid] = historyForRecord;
+    }
+    NSString* preDataHash = [[pendingRecord preData] hashValue];
+    if (![historyForRecord containsObject:preDataHash]) {
+      [historyForRecord addObject:preDataHash];
+    }
+    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
+      [historyForRecord removeObjectAtIndex:0];
+    }
+    NSString* postDataHash = [[pendingRecord postData] hashValue];
+    if (![historyForRecord containsObject:postDataHash]) {
+      [historyForRecord addObject:postDataHash];
+    }
+    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
+      [historyForRecord removeObjectAtIndex:0];
+    }
+  }
+}
+
 - (void)startSyncLoop {
     [self performSelectorInBackground:@selector(startSyncTask:) withObject:nil];
 }
@@ -405,6 +477,7 @@ static NSString *const kAck = @"acknowledgements";
         NSMutableArray *pendingArray = [NSMutableArray array];
         [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
+            [self updateChangeHistory:pendingRecord];
             if (!pendingRecord.inFlight && !pendingRecord.crashed) {
                 pendingRecord.inFlight = YES;
                 pendingRecord.inFlightDate = [NSDate date];
@@ -506,7 +579,9 @@ static NSString *const kAck = @"acknowledgements";
     if (resData[@"updates"]) {
         NSMutableArray *ack = [NSMutableArray array];
         NSDictionary *updates = resData[@"updates"];
-        [self processUpdates:updates[@"applied"]
+        NSDictionary *applied = updates[@"applied"];
+        [self checkUidChanges:applied];
+        [self processUpdates:applied
                 notification:REMOTE_UPDATE_APPLIED_MESSAGE
             acknowledgements:ack];
         [self processUpdates:updates[@"failed"]
@@ -529,6 +604,46 @@ static NSString *const kAck = @"acknowledgements";
     }
 
     [self syncCompleteWithCode:@"online"];
+}
+
+- (void) checkUidChanges:(NSDictionary*) appliedUpdates
+{
+  if (appliedUpdates && [appliedUpdates count] > 0) {
+    NSMutableDictionary* newUids = [NSMutableDictionary dictionary];
+    [appliedUpdates enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+      NSString* action = obj[@"action"];
+      if ([action isEqualToString:@"create"]) {
+        //we are receving the results of creations, at this point, we will have the old uid(the hash) and the real uid generated by the cloud
+        NSString* newUid = obj[@"uid"];
+        NSString* oldUid = obj[@"hash"];
+        //remember the mapping
+        self.uidMapping[oldUid] = newUid;
+        newUids[oldUid] = newUid;
+        //we should update the data records to make sure they are now using the new UID
+        FHSyncDataRecord* dataRecord = self.dataRecords[oldUid];
+        if (dataRecord) {
+          self.dataRecords[newUid] = dataRecord;
+          [self.dataRecords removeObjectForKey:oldUid];
+        }
+        NSMutableArray* history = self.changeHistory[oldUid];
+        if (history) {
+            self.changeHistory[newUid] = history;
+            [self.changeHistory removeObjectForKey:oldUid];
+        }
+      }
+    }];
+    if ([newUids count] > 0) {
+        //we need to check all existing pendingRecords and update their UIDs if they are still the old values
+        [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            FHSyncPendingDataRecord* pendingRecord = (FHSyncPendingDataRecord*)obj;
+            NSString* pendingRecordUid = pendingRecord.uid;
+            NSString* newUID = newUids[pendingRecordUid];
+            if (newUID) {
+                pendingRecord.uid = newUID;
+            }
+        }];
+    }
+  }
 }
 
 - (void)syncRecords {
@@ -567,31 +682,44 @@ static NSString *const kAck = @"acknowledgements";
     NSDictionary *dataCreated = resData[@"create"];
     if (nil != dataCreated) {
         [dataCreated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            FHSyncDataRecord *rec = [[FHSyncDataRecord alloc] initWithData:obj[@"data"]];
-            rec.hashValue = obj[@"hash"];
-            (self.dataRecords)[key] = rec;
-            [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                     config:self.syncConfig
-                                        uid:key
-                                       code:DELTA_RECEIVED_MESSAGE
-                                    message:@"create"];
+            NSString* hashKey = obj[@"hash"];
+            NSMutableArray* history = [self.changeHistory objectForKey:hashKey];
+            if (history && [history containsObject:obj[@"hash"]]) {
+              DLog(@"ignore update with hash %@ as it's outdated", obj[@"hash"]);
+              [history removeObject:obj[@"hash"]];
+            } else {
+              FHSyncDataRecord *rec = [[FHSyncDataRecord alloc] initWithData:obj[@"data"]];
+              rec.hashValue = obj[@"hash"];
+              (self.dataRecords)[key] = rec;
+              [FHSyncUtils doNotifyWithDataId:self.datasetId
+                                       config:self.syncConfig
+                                          uid:key
+                                         code:DELTA_RECEIVED_MESSAGE
+                                      message:@"create"];
+            }
         }];
     }
 
     NSDictionary *dataUpdated = resData[@"update"];
     if (nil != dataUpdated) {
         [dataUpdated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+          NSMutableArray* history = [self.changeHistory objectForKey:key];
+          if (history && [history containsObject:obj[@"hash"]]) {
+            DLog(@"ignore update with hash %@ as it's outdated", obj[@"hash"]);
+            [history removeObject:obj[@"hash"]];
+          } else {
             FHSyncDataRecord *rec = (self.dataRecords)[key];
             if (rec) {
-                rec.data = obj[@"data"];
-                rec.hashValue = obj[@"hash"];
-                (self.dataRecords)[key] = rec;
-                [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                         config:self.syncConfig
-                                            uid:key
-                                           code:DELTA_RECEIVED_MESSAGE
-                                        message:@"update"];
+              rec.data = obj[@"data"];
+              rec.hashValue = obj[@"hash"];
+              (self.dataRecords)[key] = rec;
+              [FHSyncUtils doNotifyWithDataId:self.datasetId
+                                       config:self.syncConfig
+                                          uid:key
+                                         code:DELTA_RECEIVED_MESSAGE
+                                      message:@"update"];
             }
+          }
         }];
     }
 

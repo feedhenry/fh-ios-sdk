@@ -18,6 +18,7 @@
 - (void) start
 {
   FHSyncConfig* conf = [[FHSyncConfig alloc] init];
+  conf.syncFrequency = 30;
   conf.notifySyncStarted = YES;
   conf.notifySyncCompleted = YES;
   conf.notifyRemoteUpdateApplied = YES;
@@ -91,9 +92,7 @@
     }
   }
   
-  if([code isEqualToString:SYNC_COMPLETE_MESSAGE]) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAppDataUpdatedNotification object:nil];
-  }
+  [[NSNotificationCenter defaultCenter] postNotificationName:kAppDataUpdatedNotification object:nil]; 
 }
 
 - (ShoppingItem*) findItemByUid:(NSString*) uid
