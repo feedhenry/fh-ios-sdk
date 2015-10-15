@@ -561,19 +561,9 @@ static NSString *const kUIDMapping = @"uidMapping";
 }
 
 - (void)syncRequestSuccess:(NSMutableDictionary *)resData {
-    // Check to see if any new pending records need to be updated to reflect the current state of
-    // play.
-    [self updatePendingFromNewData:resData];
 
     // Check to see if any previously crashed inflight records can now be resolved
     [self updateCrashedInFlightFromNewData:resData];
-    
-    // Update the new dataset with details of any inflight updates which we have not received a
-    // response on
-    [self updateNewDataFromInFlight:resData];
-
-    // Update the new dataset with details of any pending updates
-    [self updateNewDataFromPending:resData];
 
     BOOL hasRecords = NO;
     if (resData[@"records"]) {
@@ -840,95 +830,6 @@ static NSString *const kUIDMapping = @"uidMapping";
         [self saveToFileAndNofiyComplete:@{ @"message" : message }];
     }
 }
-
-- (void)updatePendingFromNewData:(NSDictionary *)remoteData {
-    if (self.pendingDataRecords && remoteData[@"records"]) {
-        [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-            NSMutableDictionary *metadata = (self.syncMetaData)[pendingRecord.uid];
-            if (nil == metadata) {
-                metadata = [NSMutableDictionary dictionary];
-                (self.syncMetaData)[pendingRecord.uid] = metadata;
-            }
-            if (!pendingRecord.inFlight) {
-                // Pending record that has not been submitted
-                DLog(@"updatePendingFromNewData - Found Non inFlight record -> action = %@ :: uid "
-                      @"= %@ :: hash = %@",
-                      pendingRecord.action, pendingRecord.uid, pendingRecord.hashValue);
-                if ([pendingRecord.action isEqualToString:@"update"] ||
-                    [pendingRecord.action isEqualToString:@"delete"]) {
-                    // Update the pre value of pending record to reflect the latest data returned
-                    // from sync.
-                    NSDictionary *remoteRec = remoteData[@"records"][pendingRecord.uid];
-                    if (nil != remoteRec) {
-                        DLog(@"updatePendingFromNewData - updating pre values for existing "
-                              @"pending record %@",
-                              pendingRecord.uid);
-                        FHSyncDataRecord *rec = [[FHSyncDataRecord alloc] initWithData:remoteRec];
-                        pendingRecord.preData = rec;
-                    } else {
-                        // The update/delete may be for a newly created record in which case the uid
-                        // will be changed.
-                        NSString *previousPendingUid = metadata[@"previousPendingUid"];
-                        FHSyncPendingDataRecord *previousPendingRec =
-                            (self.pendingDataRecords)[previousPendingUid];
-                        if (nil != previousPendingRec) {
-                            if (nil != remoteData && remoteData[@"updates"]) {
-                                NSDictionary *updates = remoteData[@"updates"];
-                                if (updates[@"applied"] &&
-                                    updates[@"applied"][previousPendingRec.hashValue]) {
-                                    // There is an update in from a previous pending action
-                                    NSString *remoteUid =
-                                        updates[@"applied"][previousPendingRec.hashValue][
-                                            @"uid"]; // dictionary...:(
-                                    if (nil != remoteUid) {
-                                        remoteRec = remoteData[@"records"][remoteUid];
-                                        if (remoteRec) {
-                                            DLog(@"updatePendingFromNewData - Updating pre values "
-                                                  @"for existing pending record which was "
-                                                  @"previously a create %@ ==> %@",
-                                                  pendingRecord.uid, remoteUid);
-                                            FHSyncDataRecord *record =
-                                                [[FHSyncDataRecord alloc] initWithData:remoteRec];
-                                            pendingRecord.preData = record;
-                                            pendingRecord.uid = remoteUid;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            NSString *pendingHash = (NSString *)key;
-            if ([pendingRecord.action isEqualToString:@"create"]) {
-                if (nil != remoteData && remoteData[@"updates"]) {
-                    NSDictionary *updates = remoteData[@"updates"];
-                    if (updates[@"applied"] && updates[@"applied"][pendingHash]) {
-                        NSDictionary *appliedData = updates[@"applied"][pendingHash];
-                        DLog(@"updatePendingFromNewData - Found an update for a pending create %@",
-                              appliedData);
-                        NSDictionary *remoteRec = remoteData[appliedData[@"uid"]];
-                        if (nil != remoteRec) {
-                            DLog(@"updatePendingFromNewData - Changing pending create to an "
-                                  @"update based on new record %@",
-                                  remoteRec);
-
-                            // Set up the pending as an update
-                            pendingRecord.action = @"update";
-                            FHSyncDataRecord *preData =
-                                [[FHSyncDataRecord alloc] initWithData:remoteRec];
-                            pendingRecord.preData = preData;
-                            pendingRecord.uid = appliedData[@"uid"];
-                        }
-                    }
-                }
-            }
-        }];
-    }
-}
-
 - (void)updateCrashedInFlightFromNewData:(NSDictionary *)remoteData {
     NSDictionary *updateNotifications = @{
         @"applied" : REMOTE_UPDATE_APPLIED_MESSAGE,
@@ -1030,87 +931,6 @@ static NSString *const kUIDMapping = @"uidMapping";
     }];
 
     [self.pendingDataRecords removeObjectsForKeys:keysToRemove];
-}
-
-- (void)updateNewDataFromInFlight:(NSMutableDictionary *)remoteData {
-    if (self.pendingDataRecords && remoteData[@"records"]) {
-        [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-            NSString *pendingHash = (NSString *)key;
-
-            if (pendingRecord.inFlight) {
-                BOOL updateReceivedForPending =
-                    (nil != remoteData) && (nil != remoteData[@"updates"]) &&
-                            (nil != remoteData[@"updates"][@"hashes"]) &&
-                            (nil != remoteData[@"updates"][@"hashes"][pendingHash])
-                        ? YES
-                        : NO;
-                DLog(@"updateNewDataFromInFlight - Found inflight pending Record - action = %@ :: "
-                      @"hash = %@ :: updateReceivedForPending= %d",
-                      pendingRecord.action, pendingHash, updateReceivedForPending);
-                if (!updateReceivedForPending) {
-                    NSMutableDictionary *remoteRecord =
-                        [remoteData[@"records"][pendingRecord.uid] mutableCopy];
-                    if ([pendingRecord.action isEqualToString:@"update"] && (nil != remoteRecord)) {
-                        // Modify the new Record to have the updates from the pending record so the
-                        // local dataset is consistent
-                        remoteRecord[@"data"] = pendingRecord.postData.data;
-                        remoteRecord[@"hash"] = pendingRecord.postData.hashValue;
-                        remoteData[@"records"][pendingRecord.uid] = remoteRecord;
-                    } else if ([pendingRecord.action isEqualToString:@"delete"] &&
-                               (nil != remoteRecord)) {
-                        // Remove the record from the new dataset so the local dataset is consistent
-                        [remoteData[@"records"] removeObjectForKey:pendingRecord.uid];
-                    } else if ([pendingRecord.action isEqualToString:@"create"]) {
-                        // Add the pending create into the new dataset so it is not lost from the UI
-                        DLog(@"updateNewDataFromInFlight - re adding pending create to incomming "
-                              @"dataset");
-                        NSMutableDictionary *dict = [NSMutableDictionary
-                            dictionaryWithObjectsAndKeys:pendingRecord.postData.data, @"data",
-                                                         pendingRecord.postData.hashValue, @"hash",
-                                                         nil];
-                        remoteData[@"records"][pendingRecord.uid] = dict;
-                    }
-                }
-            }
-
-        }];
-    }
-}
-
-- (void)updateNewDataFromPending:(NSMutableDictionary *)remoteData {
-    if (self.pendingDataRecords && remoteData[@"records"]) {
-        [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-
-            if (!pendingRecord.inFlight) {
-                DLog(@"updateNewDataFromPending - Found Non inFlight record -> action=%@ :: "
-                      @"uid=%@ :: hash=%@",
-                      pendingRecord.action, pendingRecord.uid, pendingRecord.hashValue);
-                NSMutableDictionary *remoteRecord =
-                    [remoteData[@"records"][pendingRecord.uid] mutableCopy];
-                if ([pendingRecord.action isEqualToString:@"update"] && (nil != remoteRecord)) {
-                    // Modify the new Record to have the updates from the pending record so the
-                    // local dataset is consistent
-                    remoteRecord[@"data"] = pendingRecord.postData.data;
-                    remoteRecord[@"hash"] = pendingRecord.postData.hashValue;
-                    remoteData[@"records"][pendingRecord.uid] = remoteRecord;
-                } else if ([pendingRecord.action isEqualToString:@"delete"] &&
-                           (nil != remoteRecord)) {
-                    [remoteData[@"records"] removeObjectForKey:pendingRecord.uid];
-                } else if ([pendingRecord.action isEqualToString:@"create"]) {
-                    // Add the pending create into the new dataset so it is not lost from the UI
-                    DLog(@"updateNewDataFromPending - re adding pending create to incomming "
-                          @"dataset");
-                    NSMutableDictionary *dict = [NSMutableDictionary
-                        dictionaryWithObjectsAndKeys:pendingRecord.postData.data, @"data",
-                                                     pendingRecord.postData.hashValue, @"hash",
-                                                     nil];
-                    remoteData[@"records"][pendingRecord.uid] = dict;
-                }
-            }
-        }];
-    }
 }
 
 - (void)markInFlightAsCrashed {
