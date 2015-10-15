@@ -98,7 +98,7 @@
     if ([data isKindOfClass:[NSDictionary class]]) {
         NSArray *keys = [(NSDictionary *)data allKeys];
         NSArray *sortedKeys =
-            [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            [keys sortedArrayUsingSelector:@selector(compare:)];
         for (int i = 0; i < sortedKeys.count; i++) {
             NSString *key = sortedKeys[i];
             id value = data[key];
