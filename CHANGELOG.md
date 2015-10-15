@@ -1,4 +1,9 @@
 # CHANGELOG - FeedHenry iOS SDK
+## 2.2.18-beta12 - 2015-10-13
+* Fix an issue with wrong hash value is generated on iOS for the sync framework
+
+## 2.2.18-beta1 - 2015-10-09
+* RHMAP-2455 - Further Sync Framework concurrency issues (server latency issues)
 
 ## 2.2.17 - 2015-10-09
 * RHMAP-2455 - Sync Framework concurrency issues (server latency issues)
