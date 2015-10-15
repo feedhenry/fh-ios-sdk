@@ -581,6 +581,8 @@ static NSString *const kUIDMapping = @"uidMapping";
     [self updateCrashedInFlightFromNewData:resData];
     
     [self updateDelayedFromNewData:resData];
+    
+    [self updateMetaFromNewData:resData];
 
     BOOL hasRecords = NO;
     if (resData[@"records"]) {
@@ -647,6 +649,7 @@ static NSString *const kUIDMapping = @"uidMapping";
     }];
     if ([newUids count] > 0) {
         //we need to check all existing pendingRecords and update their UIDs if they are still the old values
+
         [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id  key, id  obj, BOOL * stop) {
             FHSyncPendingDataRecord* pendingRecord = (FHSyncPendingDataRecord*)obj;
             NSString* pendingRecordUid = pendingRecord.uid;
@@ -661,7 +664,7 @@ static NSString *const kUIDMapping = @"uidMapping";
 
 - (void) updateDelayedFromNewData:(NSDictionary*) res
 {
-    [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop) {
         FHSyncPendingDataRecord* pendingObject = (FHSyncPendingDataRecord*) obj;
         if (pendingObject.delayed && pendingObject.waitingFor) {
             NSDictionary* updates = res[@"updates"];
@@ -675,6 +678,23 @@ static NSString *const kUIDMapping = @"uidMapping";
                 }
             }
         }
+    }];
+}
+
+- (void) updateMetaFromNewData:(NSDictionary*) res
+{
+    [self.syncMetaData enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop) {
+        NSDictionary* updates = res[@"updates"];
+        if (updates) {
+            NSDictionary* updatedHashes = updates[@"hashes"];
+            NSDictionary* metaData = (NSDictionary*) obj;
+            NSString* pendingHash = metaData[@"pendingUid"];
+            if(pendingHash && [updatedHashes valueForKey:pendingHash]){
+                //the pending change is resolved, no need for the metadata now
+                [self.syncMetaData removeObjectForKey:key];
+            }
+        }
+        
     }];
 }
 
