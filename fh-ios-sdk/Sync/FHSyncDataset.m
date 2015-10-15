@@ -685,14 +685,13 @@ static NSString *const kUIDMapping = @"uidMapping";
 }
 
 - (void)syncRecordsSuccess:(NSDictionary *)resData {
-    NSDictionary *dataCreated = resData[@"create"];
+    
+    NSMutableDictionary *mutableCopyResData = (NSMutableDictionary *)CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)resData, kCFPropertyListMutableContainers));
+    [self applyPendingChangesToRecords:mutableCopyResData];
+    
+    NSDictionary *dataCreated = mutableCopyResData[@"create"];
     if (nil != dataCreated) {
         [dataCreated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSString* hashKey = obj[@"hash"];
-            NSMutableArray* history = [self.changeHistory objectForKey:hashKey];
-            if (history && [history containsObject:obj[@"hash"]]) {
-              DLog(@"ignore update with hash %@ as it's outdated", obj[@"hash"]);
-            } else {
               FHSyncDataRecord *rec = [[FHSyncDataRecord alloc] initWithData:obj[@"data"]];
               rec.hashValue = obj[@"hash"];
               (self.dataRecords)[key] = rec;
@@ -701,17 +700,12 @@ static NSString *const kUIDMapping = @"uidMapping";
                                           uid:key
                                          code:DELTA_RECEIVED_MESSAGE
                                       message:@"create"];
-            }
         }];
     }
 
-    NSDictionary *dataUpdated = resData[@"update"];
+    NSDictionary *dataUpdated = mutableCopyResData[@"update"];
     if (nil != dataUpdated) {
         [dataUpdated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-          NSMutableArray* history = [self.changeHistory objectForKey:key];
-          if (history && [history containsObject:obj[@"hash"]]) {
-            DLog(@"ignore update with hash %@ as it's outdated", obj[@"hash"]);
-          } else {
             FHSyncDataRecord *rec = (self.dataRecords)[key];
             if (rec) {
               rec.data = obj[@"data"];
@@ -723,31 +717,58 @@ static NSString *const kUIDMapping = @"uidMapping";
                                          code:DELTA_RECEIVED_MESSAGE
                                       message:@"update"];
             }
-          }
         }];
     }
 
-    NSDictionary *deleted = resData[@"delete"];
+    NSDictionary *deleted = mutableCopyResData[@"delete"];
     if (nil != deleted) {
         [deleted enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSMutableArray* history = [self.changeHistory objectForKey:key];
-            if(history && [history containsObject:obj[@"hash"]]){
-                DLog(@"ignore delete with hash %@ as it's outdated", obj[@"hash"]);
-            } else {
                 [self.dataRecords removeObjectForKey:key];
                 [FHSyncUtils doNotifyWithDataId:self.datasetId
                                          config:self.syncConfig
                                             uid:key
                                            code:DELTA_RECEIVED_MESSAGE
                                         message:@"delete"];
-            }
         }];
     }
 
-    if (resData[@"hash"]) {
-        self.hashValue = resData[@"hash"];
+    if (mutableCopyResData[@"hash"]) {
+        self.hashValue = mutableCopyResData[@"hash"];
     }
     [self syncCompleteWithCode:@"online"];
+}
+
+- (void)applyPendingChangesToRecords:(NSMutableDictionary *)resData {
+    DLog(@"SyncRecords result = %@ pending = %@", resData, self.pendingDataRecords);
+    [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        FHSyncPendingDataRecord* pendingRecord = (FHSyncPendingDataRecord*)obj;
+        // If the records returned from syncRecord request contains elements in pendings,
+        // it means there are local changes that haven't been applied to the cloud yet.
+        // Remove those records from the response to make sure local data will not be
+        // overridden (blinking desappear / reappear effect).
+        NSMutableDictionary* resRecord = nil;
+        if (resData[@"create"]) {
+            resRecord = resData[@"create"];
+            if (resRecord && resRecord[pendingRecord.uid]) {
+                pendingRecord.preData = resRecord[pendingRecord.uid][@"data"];
+                [resRecord removeObjectForKey: pendingRecord.uid];
+            }
+        }
+        if (resData[@"update"]) {
+            resRecord = resData[@"update"];
+            if (resRecord && resRecord[pendingRecord.uid]) {
+                pendingRecord.preData = resRecord[pendingRecord.uid][@"data"];
+                [resRecord removeObjectForKey: pendingRecord.uid];
+            }
+        }
+        if (resData[@"delete"]) {
+            resRecord = resData[@"delete"];
+            if (resRecord && resRecord[pendingRecord.uid]) {
+                [resRecord removeObjectForKey: pendingRecord.uid];
+            }
+        }
+        DLog(@"SyncRecords result after pending removed = %@", resData);
+    }];
 }
 
 - (void)resetDataRecords:(NSDictionary *)resData {
