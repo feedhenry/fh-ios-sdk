@@ -567,7 +567,7 @@ static NSString *const kUIDMapping = @"uidMapping";
 
     // Check to see if any previously crashed inflight records can now be resolved
     [self updateCrashedInFlightFromNewData:resData];
-
+    
     // Update the new dataset with details of any inflight updates which we have not received a
     // response on
     [self updateNewDataFromInFlight:resData];
@@ -671,7 +671,8 @@ static NSString *const kUIDMapping = @"uidMapping";
 
     [self doCloudCall:syncRecsParams
         AndSuccess:^(FHResponse *response) {
-            [self syncRecordsSuccess:[response parsedResponse]];
+            NSMutableDictionary *resData = (NSMutableDictionary *)CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)[response parsedResponse], kCFPropertyListMutableContainers));
+            [self syncRecordsSuccess:resData];
         }
         AndFailure:^(FHResponse *response) {
             DLog(@"syncRecords failed : %@", [[response parsedResponse] JSONString]);
@@ -684,12 +685,11 @@ static NSString *const kUIDMapping = @"uidMapping";
         }];
 }
 
-- (void)syncRecordsSuccess:(NSDictionary *)resData {
+- (void)syncRecordsSuccess:(NSMutableDictionary *)resData {
     
-    NSMutableDictionary *mutableCopyResData = (NSMutableDictionary *)CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)resData, kCFPropertyListMutableContainers));
-    [self applyPendingChangesToRecords:mutableCopyResData];
+    [self applyPendingChangesToRecords:resData];
     
-    NSDictionary *dataCreated = mutableCopyResData[@"create"];
+    NSDictionary *dataCreated = resData[@"create"];
     if (nil != dataCreated) {
         [dataCreated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
               FHSyncDataRecord *rec = [[FHSyncDataRecord alloc] initWithData:obj[@"data"]];
@@ -703,7 +703,7 @@ static NSString *const kUIDMapping = @"uidMapping";
         }];
     }
 
-    NSDictionary *dataUpdated = mutableCopyResData[@"update"];
+    NSDictionary *dataUpdated = resData[@"update"];
     if (nil != dataUpdated) {
         [dataUpdated enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             FHSyncDataRecord *rec = (self.dataRecords)[key];
@@ -720,7 +720,7 @@ static NSString *const kUIDMapping = @"uidMapping";
         }];
     }
 
-    NSDictionary *deleted = mutableCopyResData[@"delete"];
+    NSDictionary *deleted = resData[@"delete"];
     if (nil != deleted) {
         [deleted enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
                 [self.dataRecords removeObjectForKey:key];
@@ -732,32 +732,34 @@ static NSString *const kUIDMapping = @"uidMapping";
         }];
     }
 
-    if (mutableCopyResData[@"hash"]) {
-        self.hashValue = mutableCopyResData[@"hash"];
+    if (resData[@"hash"]) {
+        self.hashValue = resData[@"hash"];
     }
     [self syncCompleteWithCode:@"online"];
 }
 
+/* 
+ If the records returned from syncRecord request contains elements in pendings,
+ it means there are local changes that haven't been applied to the cloud yet.
+ Remove those records from the response to make sure local data will not be
+ overridden (blinking desappear / reappear effect).
+ */
 - (void)applyPendingChangesToRecords:(NSMutableDictionary *)resData {
     DLog(@"SyncRecords result = %@ pending = %@", resData, self.pendingDataRecords);
     [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         FHSyncPendingDataRecord* pendingRecord = (FHSyncPendingDataRecord*)obj;
-        // If the records returned from syncRecord request contains elements in pendings,
-        // it means there are local changes that haven't been applied to the cloud yet.
-        // Remove those records from the response to make sure local data will not be
-        // overridden (blinking desappear / reappear effect).
         NSMutableDictionary* resRecord = nil;
         if (resData[@"create"]) {
             resRecord = resData[@"create"];
             if (resRecord && resRecord[pendingRecord.uid]) {
-                pendingRecord.preData = resRecord[pendingRecord.uid][@"data"];
+                pendingRecord.preData.data = resRecord[pendingRecord.uid][@"data"];
                 [resRecord removeObjectForKey: pendingRecord.uid];
             }
         }
         if (resData[@"update"]) {
             resRecord = resData[@"update"];
             if (resRecord && resRecord[pendingRecord.uid]) {
-                pendingRecord.preData = resRecord[pendingRecord.uid][@"data"];
+                pendingRecord.preData.data = resRecord[pendingRecord.uid][@"data"];
                 [resRecord removeObjectForKey: pendingRecord.uid];
             }
         }

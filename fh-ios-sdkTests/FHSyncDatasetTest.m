@@ -276,15 +276,104 @@
     resData[@"delete"] = deleteDict;
 
     [dataset performSelector:@selector(syncRecordsSuccess:) withObject:resData];
-    //comment this out for now. Need to review this.
-    //XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu",
-    //              (unsigned long)dataset.dataRecords.count);
-    //XCTAssertNil((dataset.dataRecords)[uid2], @"%@ should be removed", uid2);
+
+    XCTAssertTrue(dataset.dataRecords.count == 4, @"there should be 4 records, but we found %lu",
+                  (unsigned long)dataset.dataRecords.count);
+    XCTAssertNotNil(dataset.dataRecords[uid2], "Delete is present in pending, do not apply it");
+
     XCTAssertNotNil((dataset.dataRecords)[uid3], @"%@ should have been inserted", uid3);
-    XCTAssertEqualObjects([(dataset.dataRecords)[uid1] hashValue],
-                          [FHSyncUtils generateHashForData:updatedata],
-                          @"%@ entry should be updated", uid1);
+
     XCTAssertNotNil((dataset.dataRecords)[@"uid4"], @"uid4 should not nil");
+}
+
+-(void)testApplyPendingChangesToRecords_WhenNoPendingRecords {
+    NSMutableDictionary* dataModel = [@{@"BusinessDataModelName": @"Corinne"} mutableCopy];
+    NSMutableDictionary* result = [@{@"create": @{
+                                             @"123456789": @{
+                                                     @"data": dataModel,
+                                                     @"hash": [FHSyncUtils generateHashForData:dataModel] }
+                                             }
+                                     } mutableCopy];
+    NSString *dataId = @"testDataId";
+    FHSyncDataset *dataset = [[FHSyncDataset alloc] initWithDataId:dataId];
+    [dataset performSelector:@selector(applyPendingChangesToRecords:) withObject:result];
+    
+    XCTAssertEqual(result, result);
+}
+
+-(void)testApplyPendingChangesToRecords_WhenCreatePendingRecords {
+    NSMutableDictionary* dataModel = [@{@"BusinessDataModelName": @"Corinne"} mutableCopy];
+    NSMutableDictionary* result = [@{@"create": [@{
+                                             @"123456789": [@{
+                                                     @"data": dataModel,
+                                                     @"hash": [FHSyncUtils generateHashForData:dataModel] } mutableCopy]
+                                             } mutableCopy]
+                                     } mutableCopy];
+    NSString *dataId = @"testDataId";
+    FHSyncDataset *dataset = [[FHSyncDataset alloc] initWithDataId:dataId];
+   
+    FHSyncPendingDataRecord* pendingRecord = [[FHSyncPendingDataRecord alloc] init];
+    pendingRecord.uid = @"123456789";
+    pendingRecord.preData = [[FHSyncDataRecord alloc] init];
+    pendingRecord.action = @"create";
+    NSMutableDictionary *ret = [@{@"some_has_value": pendingRecord} mutableCopy];
+    dataset.pendingDataRecords = ret;
+    
+    [dataset performSelector:@selector(applyPendingChangesToRecords:) withObject:result];
+    
+    // Create is removed form result as it already exit in pendings
+    XCTAssertEqualObjects(result[@"create"], @{});
+    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData.data, dataModel);
+}
+
+-(void)testApplyPendingChangesToRecords_WhenUpdatePendingRecords {
+    NSMutableDictionary* dataModel = [@{@"BusinessDataModelName": @"Corinne"} mutableCopy];
+    NSMutableDictionary* result = [@{@"update": [@{
+                                                   @"123456789": [@{
+                                                                    @"data": dataModel,
+                                                                    @"hash": [FHSyncUtils generateHashForData:dataModel] } mutableCopy]
+                                                   } mutableCopy]
+                                     } mutableCopy];
+    NSString *dataId = @"testDataId";
+    FHSyncDataset *dataset = [[FHSyncDataset alloc] initWithDataId:dataId];
+    
+    FHSyncPendingDataRecord* pendingRecord = [[FHSyncPendingDataRecord alloc] init];
+    pendingRecord.uid = @"123456789";
+    pendingRecord.preData = [[FHSyncDataRecord alloc] init];
+    pendingRecord.action = @"update";
+    NSMutableDictionary *ret = [@{@"some_has_value": pendingRecord} mutableCopy];
+    dataset.pendingDataRecords = ret;
+    
+    [dataset performSelector:@selector(applyPendingChangesToRecords:) withObject:result];
+    
+    // Create is removed form result as it already exit in pendings
+    XCTAssertEqualObjects(result[@"update"], @{});
+    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData.data, dataModel);
+}
+
+-(void)testApplyPendingChangesToRecords_WhenDeletePendingRecords {
+    NSMutableDictionary* dataModel = [@{@"BusinessDataModelName": @"Corinne"} mutableCopy];
+    NSMutableDictionary* result = [@{@"delete": [@{
+                                                   @"123456789": [@{
+                                                                    @"data": dataModel,
+                                                                    @"hash": [FHSyncUtils generateHashForData:dataModel] } mutableCopy]
+                                                   } mutableCopy]
+                                     } mutableCopy];
+    NSString *dataId = @"testDataId";
+    FHSyncDataset *dataset = [[FHSyncDataset alloc] initWithDataId:dataId];
+    
+    FHSyncPendingDataRecord* pendingRecord = [[FHSyncPendingDataRecord alloc] init];
+    pendingRecord.uid = @"123456789";
+    pendingRecord.preData = [[FHSyncDataRecord alloc] init];
+    pendingRecord.action = @"delete";
+    NSMutableDictionary *ret = [@{@"some_has_value": pendingRecord} mutableCopy];
+    dataset.pendingDataRecords = ret;
+    
+    [dataset performSelector:@selector(applyPendingChangesToRecords:) withObject:result];
+    
+    // Create is removed form result as it already exit in pendings
+    XCTAssertEqualObjects(result[@"delete"], @{});
+    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData, [[FHSyncDataRecord alloc] init]);
 }
 
 @end
