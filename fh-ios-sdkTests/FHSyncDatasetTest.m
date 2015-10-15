@@ -314,7 +314,7 @@
    
     FHSyncPendingDataRecord* pendingRecord = [[FHSyncPendingDataRecord alloc] init];
     pendingRecord.uid = @"123456789";
-    pendingRecord.preData = [[FHSyncDataRecord alloc] init];
+    pendingRecord.preData = [[FHSyncDataRecord alloc] initWithData:@{@"data": @"somevalue"}];
     pendingRecord.action = @"create";
     NSMutableDictionary *ret = [@{@"some_has_value": pendingRecord} mutableCopy];
     dataset.pendingDataRecords = ret;
@@ -339,7 +339,7 @@
     
     FHSyncPendingDataRecord* pendingRecord = [[FHSyncPendingDataRecord alloc] init];
     pendingRecord.uid = @"123456789";
-    pendingRecord.preData = [[FHSyncDataRecord alloc] init];
+    pendingRecord.preData = [[FHSyncDataRecord alloc] initWithData:@{@"data": @"somevalue"}];
     pendingRecord.action = @"update";
     NSMutableDictionary *ret = [@{@"some_has_value": pendingRecord} mutableCopy];
     dataset.pendingDataRecords = ret;
@@ -365,7 +365,7 @@
     
     FHSyncPendingDataRecord* pendingRecord = [[FHSyncPendingDataRecord alloc] init];
     pendingRecord.uid = @"123456789";
-    pendingRecord.preData = [[FHSyncDataRecord alloc] init];
+    pendingRecord.preData = [[FHSyncDataRecord alloc] initWithData:@{@"data": @"somevalue"}];
     pendingRecord.action = @"delete";
     NSMutableDictionary *ret = [@{@"some_has_value": pendingRecord} mutableCopy];
     dataset.pendingDataRecords = ret;
@@ -374,7 +374,7 @@
     
     // Create is removed form result as it already exit in pendings
     XCTAssertEqualObjects(result[@"delete"], @{});
-    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData, [[FHSyncDataRecord alloc] init]);
+    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData, [[FHSyncDataRecord alloc] initWithData:@{@"data": @"somevalue"}]);
 }
 
 @end
