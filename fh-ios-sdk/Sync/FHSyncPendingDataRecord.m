@@ -44,6 +44,8 @@ static NSString *const kWaitingFor = @"waitingFor";
         self.preData = nil;
         self.postData = nil;
         self.crashedCount = 0;
+        self.delayed = NO;
+        self.waitingFor = nil;
     }
     return self;
 }
@@ -128,7 +130,7 @@ static NSString *const kWaitingFor = @"waitingFor";
         record.postData = postData;
     }
     if (jsonObj[kDelayed]) {
-      record.delayed = jsonObj[kDelayed];
+      record.delayed = [jsonObj[kDelayed] boolValue];
     }
     if (jsonObj[kWaitingFor]) {
       record.waitingFor = jsonObj[kWaitingFor];
