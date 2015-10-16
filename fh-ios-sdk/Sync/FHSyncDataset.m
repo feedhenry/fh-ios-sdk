@@ -25,7 +25,6 @@ static NSString *const kPendingRecords = @"pendingDataRecords";
 static NSString *const kDataRecords = @"dataRecords";
 static NSString *const kHashValue = @"hashValue";
 static NSString *const kAck = @"acknowledgements";
-static NSString *const kChangeHistory = @"changeHistory";
 static NSString *const kUIDMapping = @"uidMapping";
 
 @implementation FHSyncDataset
@@ -47,7 +46,6 @@ static NSString *const kUIDMapping = @"uidMapping";
         self.initialised = NO;
         self.acknowledgements = [NSMutableArray array];
         self.stopSync = NO;
-        self.changeHistory = [NSMutableDictionary dictionary];
         self.uidMapping = [NSMutableDictionary dictionary];
     }
     return self;
@@ -93,7 +91,6 @@ static NSString *const kUIDMapping = @"uidMapping";
     if (self.hashValue != nil) {
       dict[kHashValue] = self.hashValue;
     }
-    dict[kChangeHistory] = self.changeHistory;
     dict[kUIDMapping] = self.uidMapping;
     return dict;
 }
@@ -169,12 +166,6 @@ static NSString *const kUIDMapping = @"uidMapping";
     }
     if (jsonObj[kAck]) {
         instance.acknowledgements = jsonObj[kAck];
-    }
-    if (jsonObj[kChangeHistory]) {
-      instance.changeHistory = [NSMutableDictionary dictionary];
-      [jsonObj[kChangeHistory] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        instance.changeHistory[key] = [[NSMutableArray alloc] initWithArray:obj];
-      }];
     }
     if (jsonObj[kUIDMapping]) {
       instance.uidMapping = [NSMutableDictionary dictionaryWithDictionary:jsonObj[kUIDMapping]];
@@ -309,7 +300,7 @@ static NSString *const kUIDMapping = @"uidMapping";
 - (void)storePendingObj:(FHSyncPendingDataRecord *)obj {
     (self.pendingDataRecords)[obj.hashValue] = obj;
     [self updateDatasetFromLocal:obj];
-    [self updateChangeHistory:obj];
+
     if (self.syncConfig.autoSyncLocalUpdates) {
         self.syncLoopPending = YES;
     }
@@ -418,53 +409,6 @@ static NSString *const kUIDMapping = @"uidMapping";
         (self.dataRecords)[uid] = record;
         metadata[@"fromPending"] = @YES;
         metadata[@"pendingUid"] = uidToSave;
-    }
-}
-
-- (void) updateChangeHistory:(FHSyncPendingDataRecord*) pendingRecord
-{
-  if ([[pendingRecord action] isEqualToString:@"create"]) {
-    NSString* uid = [pendingRecord hashValue];
-    NSString* postHash = [[pendingRecord postData] hashValue];
-    NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
-    if (!historyForRecord) {
-      historyForRecord = [NSMutableArray array];
-      self.changeHistory[uid] = historyForRecord;
-    }
-    if (![historyForRecord containsObject:postHash]) {
-      [historyForRecord addObject:postHash];
-    }
-    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
-      [historyForRecord removeObjectAtIndex:0];
-    }
-  }
-  if ([[pendingRecord action] isEqualToString:@"update"]) {
-    NSString* uid = [pendingRecord uid];
-    NSMutableArray* historyForRecord = [self.changeHistory objectForKey:uid];
-    if (!historyForRecord) {
-      historyForRecord = [NSMutableArray array];
-      self.changeHistory[uid] = historyForRecord;
-    }
-    NSString* preDataHash = [[pendingRecord preData] hashValue];
-    if (![historyForRecord containsObject:preDataHash]) {
-      [historyForRecord addObject:preDataHash];
-    }
-    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
-      [historyForRecord removeObjectAtIndex:0];
-    }
-    NSString* postDataHash = [[pendingRecord postData] hashValue];
-    if (![historyForRecord containsObject:postDataHash]) {
-      [historyForRecord addObject:postDataHash];
-    }
-    if (historyForRecord.count > self.syncConfig.changeHistorySize) {
-      [historyForRecord removeObjectAtIndex:0];
-    }
-  }
-    if ([[pendingRecord action] isEqualToString:@"delete"]) {
-        NSString* uid = [pendingRecord uid];
-        if (self.changeHistory[uid]) {
-            [self.changeHistory removeObjectForKey:uid];
-        }
     }
 }
 
@@ -639,11 +583,6 @@ static NSString *const kUIDMapping = @"uidMapping";
         if (dataRecord) {
           self.dataRecords[newUid] = dataRecord;
           [self.dataRecords removeObjectForKey:oldUid];
-        }
-        NSMutableArray* history = self.changeHistory[oldUid];
-        if (history) {
-            self.changeHistory[newUid] = history;
-            [self.changeHistory removeObjectForKey:oldUid];
         }
       }
     }];
