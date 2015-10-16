@@ -323,7 +323,6 @@
     
     // Create is removed form result as it already exit in pendings
     XCTAssertEqualObjects(result[@"create"], @{});
-    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData.data, dataModel);
 }
 
 -(void)testApplyPendingChangesToRecords_WhenUpdatePendingRecords {
@@ -348,8 +347,6 @@
     
     // Create is removed form result as it already exit in pendings
     XCTAssertEqualObjects(result[@"update"], @{});
-    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData.data, dataModel);
-    XCTAssertEqualObjects(((FHSyncPendingDataRecord*)dataset.pendingDataRecords[@"some_has_value"]).preData.hashValue, [FHSyncUtils generateHashForData:dataModel]);
 }
 
 -(void)testApplyPendingChangesToRecords_WhenDeletePendingRecords {
