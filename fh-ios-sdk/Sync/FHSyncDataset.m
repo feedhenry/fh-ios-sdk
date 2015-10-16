@@ -441,7 +441,6 @@ static NSString *const kUIDMapping = @"uidMapping";
         NSMutableArray *pendingArray = [NSMutableArray array];
         [self.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-            [self updateChangeHistory:pendingRecord];
             if (!pendingRecord.inFlight && !pendingRecord.crashed && !pendingRecord.delayed) {
 
                 pendingRecord.inFlight = YES;

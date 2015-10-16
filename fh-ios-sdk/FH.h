@@ -6,7 +6,7 @@
 //
 
 
-// Version 2.2.18
+// Version 2.2.18-final
 
 #import "FHActRequest.h"
 #import "FHCloudRequest.h"
