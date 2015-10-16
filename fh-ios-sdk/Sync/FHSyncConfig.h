@@ -65,8 +65,6 @@
 /** If the local data file should be synced via iCloud **/
 @property BOOL icloud_backup;
 
-@property NSInteger changeHistorySize;
-
 @property BOOL debug;
 
 - (instancetype)init;
