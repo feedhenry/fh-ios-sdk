@@ -1,5 +1,11 @@
 # CHANGELOG - FeedHenry iOS SDK
-## 2.2.18-beta12 - 2015-10-13
+
+## 2.2.18
+* RHMAP-2550 - Fix hash issue
+* RHMAP-2526 - Apply similar strategy for server side recovery (delay/waitFor)
+* Code clean-up: remove changeHistory and unsued code
+
+## 2.2.18-beta2 - 2015-10-13
 * Fix an issue with wrong hash value is generated on iOS for the sync framework
 
 ## 2.2.18-beta1 - 2015-10-09
