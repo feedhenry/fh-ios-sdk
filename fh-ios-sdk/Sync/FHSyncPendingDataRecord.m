@@ -21,6 +21,8 @@ static NSString *const  kPostDataHash = @"postHash";
 static NSString *const kInflightDate = @"inFlightDate";
 static NSString *const kCrashed = @"crashed";
 static NSString *const kHash = @"hash";
+static NSString *const kDelayed = @"delayed";
+static NSString *const kWaitingFor = @"waitingFor";
 
 @interface FHSyncPendingDataRecord ()
 @property (nonatomic, strong, readwrite) NSString *hashValue;
@@ -42,6 +44,8 @@ static NSString *const kHash = @"hash";
         self.preData = nil;
         self.postData = nil;
         self.crashedCount = 0;
+        self.delayed = NO;
+        self.waitingFor = nil;
     }
     return self;
 }
@@ -50,6 +54,7 @@ static NSString *const kHash = @"hash";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[kInFlight] = @(self.inFlight);
     dict[kCrashed] = @(self.crashed);
+    dict[kDelayed] = @(self.delayed);
     if (self.inFlightDate) {
         dict[kInflightDate] =
             [NSNumber numberWithLong:[self.inFlightDate timeIntervalSince1970]];
@@ -70,6 +75,9 @@ static NSString *const kHash = @"hash";
     if (self.postData) {
         dict[kPost] = [self.postData data];
         dict[kPostDataHash] = [self.postData hashValue];
+    }
+    if (self.waitingFor) {
+      dict[kWaitingFor] = self.waitingFor;
     }
     return dict;
 }
@@ -120,6 +128,12 @@ static NSString *const kHash = @"hash";
         postData.data = jsonObj[kPost];
         postData.hashValue = jsonObj[kPostDataHash];
         record.postData = postData;
+    }
+    if (jsonObj[kDelayed]) {
+      record.delayed = [jsonObj[kDelayed] boolValue];
+    }
+    if (jsonObj[kWaitingFor]) {
+      record.waitingFor = jsonObj[kWaitingFor];
     }
     return record;
 }

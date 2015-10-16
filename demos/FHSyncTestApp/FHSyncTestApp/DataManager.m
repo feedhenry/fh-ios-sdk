@@ -21,6 +21,7 @@
   conf.syncFrequency = 30;
   conf.notifySyncStarted = YES;
   conf.notifySyncCompleted = YES;
+  conf.notifySyncFailed = YES;
   conf.notifyRemoteUpdateApplied = YES;
   conf.notifyRemoteUpdateFailed = YES;
   conf.notifyLocalUpdateApplied = YES;

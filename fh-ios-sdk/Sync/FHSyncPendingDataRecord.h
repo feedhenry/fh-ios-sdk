@@ -19,6 +19,8 @@
 @property (nonatomic, strong) FHSyncDataRecord *postData;
 @property (nonatomic, strong, readonly) NSString *hashValue;
 @property (nonatomic, assign) int crashedCount;
+@property (nonatomic, assign) BOOL delayed;
+@property (nonatomic, strong) NSString* waitingFor;
 
 - (NSMutableDictionary *)JSONData;
 
