@@ -742,14 +742,12 @@ static NSString *const kUIDMapping = @"uidMapping";
         if (resData[@"create"]) {
             resRecord = resData[@"create"];
             if (resRecord && resRecord[pendingRecord.uid]) {
-                pendingRecord.preData = [[FHSyncDataRecord alloc] initWithData: resRecord[pendingRecord.uid]];
                 [resRecord removeObjectForKey: pendingRecord.uid];
             }
         }
         if (resData[@"update"]) {
             resRecord = resData[@"update"];
             if (resRecord && resRecord[pendingRecord.uid]) {
-                pendingRecord.preData = [[FHSyncDataRecord alloc] initWithData: resRecord[pendingRecord.uid]];
                 [resRecord removeObjectForKey: pendingRecord.uid];
             }
         }
