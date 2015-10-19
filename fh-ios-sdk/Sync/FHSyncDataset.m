@@ -621,6 +621,7 @@ static NSString *const kUIDMapping = @"uidMapping";
 
 - (void) updateMetaFromNewData:(NSDictionary*) res
 {
+    NSMutableArray *keysToRemove = [NSMutableArray array];
     [self.syncMetaData enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * stop) {
         NSDictionary* updates = res[@"updates"];
         if (updates) {
@@ -629,11 +630,11 @@ static NSString *const kUIDMapping = @"uidMapping";
             NSString* pendingHash = metaData[@"pendingUid"];
             if(pendingHash && [updatedHashes valueForKey:pendingHash]){
                 //the pending change is resolved, no need for the metadata now
-                [self.syncMetaData removeObjectForKey:key];
+                [keysToRemove addObject:key];
             }
         }
-        
     }];
+    [self.syncMetaData removeObjectsForKeys:keysToRemove];
 }
 
 - (void)syncRecords {
