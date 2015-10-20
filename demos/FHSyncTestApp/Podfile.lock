@@ -2,7 +2,7 @@ PODS:
   - AeroGear-Push (1.1.1)
   - ASIHTTPRequest/Core (1.8.2):
     - Reachability
-  - FH (2.2.18-beta2):
+  - FH (2.2.18):
     - AeroGear-Push (= 1.1.1)
     - ASIHTTPRequest/Core (= 1.8.2)
     - Reachability (= 3.2)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AeroGear-Push: 0d4dd12e6311f1231e2517a8597ca199bd1b8683
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
-  FH: 4bf6864807f9282a15ec65862c4ad6c958ea8345
+  FH: 94d494edb0859502eab37d5715362e1a62928f98
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
 COCOAPODS: 0.38.2
