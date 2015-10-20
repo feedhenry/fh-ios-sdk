@@ -1,5 +1,5 @@
 # CHANGELOG - FeedHenry iOS SDK
-## 2.2.19-beta1 - 2015-10-19
+## 2.2.19 - 2015-10-19
 * Make sure do not remove object from a dictionary while iterating
 
 ## 2.2.18
