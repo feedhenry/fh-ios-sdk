@@ -2,11 +2,8 @@
 //  FH.h
 //  fh-ios-sdk
 //
-//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.2.2.18
+//  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
-
-
-// Version 2.2.18-final
 
 #import "FHActRequest.h"
 #import "FHCloudRequest.h"
