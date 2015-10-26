@@ -559,9 +559,8 @@ static NSString *const kUIDMapping = @"uidMapping";
         [self syncRecords];
     } else {
         DLog(@"Local dataset up to date");
+        [self syncCompleteWithCode:@"online"];
     }
-
-    [self syncCompleteWithCode:@"online"];
 }
 
 - (void) checkUidChanges:(NSDictionary*) appliedUpdates
