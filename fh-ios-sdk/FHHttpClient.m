@@ -5,8 +5,6 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import <ASIHTTPRequest/ASIFormDataRequest.h>
-#import <ASIHTTPRequest/ASIDownloadCache.h>
 
 #import "FH.h"
 #import "FHDefines.h"
@@ -17,6 +15,7 @@
 @interface FHHttpClient ()
 @property (nonatomic, copy) void (^successHandler)(FHResponse *resp);
 @property (nonatomic, copy) void (^failureHandler)(FHResponse *resp);
+@property (nonatomic, copy) NSURLSession* session;
 @end
 
 @implementation FHHttpClient
@@ -24,8 +23,30 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     }
     return self;
+}
+
+- (NSMutableURLRequest*)request:(NSURL*)url method:(NSString*)method parameters:(NSDictionary*)parameters headers:(NSDictionary*)headers {
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL: url];
+    request.HTTPMethod = method;
+    
+    // set headers
+    NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+    NSString *apiKeyVal =[[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
+    [mutableHeaders setValue:@"application/json" forKey:@"Content-Type"];
+    [mutableHeaders setValue:apiKeyVal forKeyPath:@"x-fh-auth-app"];
+    [mutableHeaders enumerateKeysAndObjectsUsingBlock:^(id  key, id obj, BOOL* stop) {
+        [request addValue:(NSString*)obj forHTTPHeaderField:(NSString*)key];
+    }];
+    
+    // add params to the post request
+    if (parameters && [parameters count] > 0) {
+        request.HTTPBody = [parameters JSONData];
+    }
+    
+    return request;
 }
 
 - (void)sendRequest:(FHAct *)fhact
@@ -45,45 +66,44 @@
         [self failWithResponse:res AndAction:fhact];
         return;
     }
-    NSURL *apicall = [fhact buildURL];
+    NSURL *apicall = fhact.buildURL;
 
     DLog(@"Request URL is : %@", [apicall absoluteString]);
 
-    // startrequest
-    __block ASIHTTPRequest *brequest = [ASIHTTPRequest requestWithURL:apicall];
-    __weak ASIHTTPRequest *request = brequest;
-
-    // set headers
-    NSMutableDictionary *headers =
-        [NSMutableDictionary dictionaryWithDictionary:fhact.headers];
-    NSString *apiKeyVal =
-        [[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
-    [headers setValue:@"application/json" forKey:@"Content-Type"];
-    [headers setValue:apiKeyVal forKeyPath:@"x-fh-auth-app"];
-    [brequest setRequestHeaders:headers];
-    // add params to the post request
-    if ([fhact args] && [[fhact args] count] > 0) {
-        [brequest appendPostData:[[fhact args] JSONData]];
-    }
-    // setMethod
-    [brequest setRequestMethod:fhact.requestMethod];
-    [brequest setTimeOutSeconds:fhact.requestTimeout];
-    // wrap the passed block inside our own success block to allow for
-    // further manipulation
-    [brequest setCompletionBlock:^{
-        DLog(@"reused cache %c", [request didUseCachedResponse]);
-        DLog(@"Response status : %d", [request responseStatusCode]);
-        DLog(@"Response data : %@", [request responseString]);
-
+    NSMutableURLRequest* brequest = [self request:apicall method:fhact.requestMethod parameters:fhact.args headers:fhact.headers];
+    NSURLRequest* request = [brequest copy];
+    brequest.timeoutInterval = fhact.requestTimeout;
+    
+    NSURLSessionDataTask * task = [_session dataTaskWithRequest:brequest completionHandler:^(NSData* data, NSURLResponse* response, NSError* error) {
+        NSString *encodingName = [response textEncodingName];
+        NSStringEncoding encodingType = NSASCIIStringEncoding;
+        if (encodingName != nil) {
+            encodingType = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)encodingName));
+        }
+        NSString* reponseAsRawString = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:encodingType];
+        int statusCode = (int)((NSHTTPURLResponse*)response).statusCode;
+        if (error) {
+            DLog(@"Error %@", error.description);
+            FHResponse *fhResponse = [[FHResponse alloc] init];
+            fhResponse.rawResponseAsString = reponseAsRawString;
+            fhResponse.rawResponse = data;
+            fhResponse.error = error;
+            [self failWithResponse:fhResponse AndAction:fhact];
+            return;
+        }
+        
+        DLog(@"reused cache %lu", (unsigned long)request.cachePolicy);
+        DLog(@"Response status : %d", statusCode);
+        DLog(@"Response data : %@", ((NSHTTPURLResponse*)response).description);
+        
         // parse, build response, delegate
-        NSData *responseData = [request responseData];
         FHResponse *fhResponse = [[FHResponse alloc] init];
-        fhResponse.responseStatusCode = [request responseStatusCode];
-        fhResponse.rawResponseAsString = [request responseString];
-        fhResponse.rawResponse = responseData;
-        [fhResponse parseResponseData:responseData];
-
-        if ([request responseStatusCode] == 200) {
+        fhResponse.responseStatusCode = (int)((NSHTTPURLResponse*)response).statusCode;
+        fhResponse.rawResponseAsString = reponseAsRawString;
+        fhResponse.rawResponse = data;
+        [fhResponse parseResponseData:data];
+        
+        if (statusCode == 200) {
             [self successWithResponse:fhResponse AndAction:fhact];
             return;
         }
@@ -91,39 +111,31 @@
         if (nil == msg) {
             msg = [fhResponse.parsedResponse valueForKey:@"message"];
             if (nil == msg) {
-                msg = [request responseString];
+                msg = reponseAsRawString;
             }
         }
-        NSError *err =
-            [NSError errorWithDomain:NetworkRequestErrorDomain
-                                code:[request responseStatusCode]
-                            userInfo:@{NSLocalizedDescriptionKey : msg}];
+        NSError *err = [NSError errorWithDomain:@"FeedHenryHTTPRequestErrorDomain"
+                            code:statusCode
+                        userInfo:@{NSLocalizedDescriptionKey : msg}];
         fhResponse.error = err;
         [self failWithResponse:fhResponse AndAction:fhact];
     }];
-    // again wrap the fail block in our own block
-    [brequest setFailedBlock:^{
-        NSError *reqError = [request error];
-        NSData *responseData = [request responseData];
-        FHResponse *fhResponse = [[FHResponse alloc] init];
-        fhResponse.rawResponseAsString = [request responseString];
-        fhResponse.rawResponse = responseData;
-        fhResponse.error = reqError;
-        [self failWithResponse:fhResponse AndAction:fhact];
-    }];
 
-    if (fhact.cacheTimeout > 0) {
-        [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
-        [brequest setDownloadCache:[ASIDownloadCache sharedCache]];
+   
+    // TODO: do we need cache?
+//    if (fhact.cacheTimeout > 0) {
+//        [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
+//        [brequest setDownloadCache:[ASIDownloadCache sharedCache]];
+//
+//        [brequest setSecondsToCache:fhact.cacheTimeout];
+//    }
 
-        [brequest setSecondsToCache:fhact.cacheTimeout];
-    }
-
-    if ([fhact isAsync]) {
-        [brequest startAsynchronous];
-    } else {
-        [brequest startSynchronous];
-    }
+    // TODO: do we still need to support synchronous call?
+    //if ([fhact isAsync]) {
+        [task resume];
+    //} else {
+    //    [brequest startSynchronous];
+    //}
 }
 
 - (void)successWithResponse:(FHResponse *)fhres AndAction:(FHAct *)action {
