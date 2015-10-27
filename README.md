@@ -1,5 +1,4 @@
-# FeedHenry iOS SDK [![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.png)](https://travis-ci.org/feedhenry/fh-ios-sdk)
-[![Coverage Status](https://coveralls.io/repos/feedhenry/fh-ios-sdk/badge.svg?branch=master&service=github)](https://coveralls.io/github/feedhenry/fh-ios-sdk?branch=master)
+# FeedHenry iOS SDK [![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.png)](https://travis-ci.org/feedhenry/fh-ios-sdk) [![Coverage Status](https://coveralls.io/repos/feedhenry/fh-ios-sdk/badge.svg?branch=master&service=github)](https://coveralls.io/github/feedhenry/fh-ios-sdk?branch=master)
 
 The iOS Software Development Kit to connect to the [FeedHenry platform.](http://www.feedhenry.com)
 
@@ -10,7 +9,6 @@ See [iOS SDK Guide](http://docs.feedhenry.com/v2/sdk_ios.html).
 ### Links
 * [FeedHenry Documentation](http://docs.feedhenry.com)
 * [ASIHttpRequest](http://allseeing-i.com/ASIHTTPRequest/)
-* [JSONKit](https://github.com/johnezang/JSONKit)
 * [AeroGear iOS Push](https://github.com/aerogear/aerogear-ios-push)
 
 
