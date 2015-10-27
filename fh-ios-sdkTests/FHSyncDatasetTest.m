@@ -12,11 +12,44 @@
 #import "FHSyncPendingDataRecord.h"
 #import "FHSyncUtils.h"
 
+static BOOL wasCalledFlag = NO;
+/**
+ To assert notification message has been raised, we override FHSyncUtils
+ doNotifyWithDataId: methods using test category.
+ Eventually(FH-2362): introduce OCMock and add dependency injection in FH
+ */
+@interface FHSyncUtils (test)
+
++ (void)doNotifyWithDataId:(NSString *)dataId
+                    config:(FHSyncConfig *)config
+                       uid:(NSString *)uid
+                      code:(NSString *)code
+                   message:(NSString *)message;
+
+@end
+
+@implementation FHSyncUtils (test)
+
++ (void)doNotifyWithDataId:(NSString *)dataId
+                    config:(FHSyncConfig *)config
+                       uid:(NSString *)uid
+                      code:(NSString *)code
+                   message:(NSString *)message {
+    if (config.notifySyncCompleted && [code isEqualToString:@"SYNC_COMPLETE"]) {
+        wasCalledFlag = YES;
+    }
+}
+
+@end
+
 @implementation FHSyncDatasetTest
 
 - (void)setUp {
     [super setUp];
+    wasCalledFlag = NO;
 }
+
+
 
 - (void)tearDown {
     [NSThread sleepForTimeInterval:1.0];
@@ -125,7 +158,7 @@
                   (unsigned long)dataset.dataRecords.count);
 }
 
-- (void)testSync {
+- (void)testSync_When_Online_NoSyncRecordsRequired {
     // create a empty dataset
     NSString *dataId = @"testDataId";
     FHSyncDataset *dataset = [[FHSyncDataset alloc] initWithDataId:dataId];
@@ -134,6 +167,7 @@
     dataset.syncLoopStart = [NSDate date];
     FHSyncConfig *syncConfig = [[FHSyncConfig alloc] init];
     dataset.syncConfig = syncConfig;
+    dataset.syncConfig.notifySyncCompleted = YES;
 
     // create a response object with records:
     NSMutableDictionary *resData = [NSMutableDictionary dictionary];
@@ -229,9 +263,10 @@
                   (unsigned long)dataset.pendingDataRecords.count);
     XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu",
                   (unsigned long)dataset.dataRecords.count);
+    XCTAssertTrue(wasCalledFlag, "sync complete message should be called");
 }
 
-- (void)testSyncRecords {
+- (void)testSyncRecords_offlineUpdate {
     NSString *dataId = @"testDataId";
     FHSyncDataset *dataset = [[FHSyncDataset alloc] initWithDataId:dataId];
     dataset.syncRunning = NO;
