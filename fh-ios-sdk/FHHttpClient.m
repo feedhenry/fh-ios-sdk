@@ -81,22 +81,23 @@
     
     NSURLSessionDataTask * task = [_session dataTaskWithRequest:brequest completionHandler:^(NSData* data, NSURLResponse* response, NSError* error) {
         NSString *encodingName = [response textEncodingName];
-        NSStringEncoding encodingType = NSASCIIStringEncoding;
+        NSStringEncoding encodingType = NSUTF8StringEncoding;
         if (encodingName != nil) {
             encodingType = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)encodingName));
         }
         NSString* reponseAsRawString = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:encodingType];
         int statusCode = (int)((NSHTTPURLResponse*)response).statusCode;
-        if (error) {
-            DLog(@"Error %@", error.description);
-            FHResponse *fhResponse = [[FHResponse alloc] init];
-            fhResponse.rawResponseAsString = reponseAsRawString;
-            fhResponse.rawResponse = data;
-            fhResponse.error = error;
-            [self failWithResponse:fhResponse AndAction:fhact];
-            return;
-        }
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                DLog(@"Error %@", error.description);
+                FHResponse *fhResponse = [[FHResponse alloc] init];
+                fhResponse.rawResponseAsString = reponseAsRawString;
+                fhResponse.rawResponse = data;
+                fhResponse.error = error;
+                [self failWithResponse:fhResponse AndAction:fhact];
+                return;
+            }
+            
             DLog(@"reused cache %lu", (unsigned long)request.cachePolicy);
             DLog(@"Response status : %d", statusCode);
             DLog(@"Response data : %@", ((NSHTTPURLResponse*)response).description);
