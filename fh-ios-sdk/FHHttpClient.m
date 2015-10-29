@@ -28,12 +28,17 @@
     return self;
 }
 
-- (NSMutableURLRequest*)request:(NSURL*)url method:(NSString*)method parameters:(NSDictionary*)parameters headers:(NSDictionary*)headers {
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL: url];
-    request.HTTPMethod = method;
+- (NSMutableURLRequest*)request:(FHAct*)fhact withUrl:(NSURL*)url {
+    NSMutableURLRequest* request;
+    if (fhact.cacheTimeout > 0) {
+        request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:fhact.cacheTimeout];
+    } else { // use default cache timeout (ie: set by server)
+        request = [[NSMutableURLRequest alloc] initWithURL: url];
+    }
+    request.HTTPMethod = fhact.requestMethod;
     
     // set headers
-    NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
+    NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionaryWithDictionary:fhact.headers];
     NSString *apiKeyVal =[[FHConfig getSharedInstance] getConfigValueForKey:@"appkey"];
     [mutableHeaders setValue:@"application/json" forKey:@"Content-Type"];
     [mutableHeaders setValue:apiKeyVal forKeyPath:@"x-fh-auth-app"];
@@ -42,8 +47,8 @@
     }];
     
     // add params to the post request
-    if (parameters && [parameters count] > 0) {
-        request.HTTPBody = [parameters JSONData];
+    if (fhact.args && [fhact.args count] > 0) {
+        request.HTTPBody = [fhact.args  JSONData];
     }
     
     return request;
@@ -70,7 +75,7 @@
 
     DLog(@"Request URL is : %@", [apicall absoluteString]);
 
-    NSMutableURLRequest* brequest = [self request:apicall method:fhact.requestMethod parameters:fhact.args headers:fhact.headers];
+    NSMutableURLRequest* brequest = [self request:fhact withUrl:apicall];
     NSURLRequest* request = [brequest copy];
     brequest.timeoutInterval = fhact.requestTimeout;
     
@@ -121,22 +126,9 @@
             [self failWithResponse:fhResponse AndAction:fhact];
         });
     }];
-
    
-    // TODO: do we need cache?
-//    if (fhact.cacheTimeout > 0) {
-//        [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
-//        [brequest setDownloadCache:[ASIDownloadCache sharedCache]];
-//
-//        [brequest setSecondsToCache:fhact.cacheTimeout];
-//    }
+    [task resume];
 
-    // TODO: do we still need to support synchronous call?
-    //if ([fhact isAsync]) {
-        [task resume];
-    //} else {
-    //    [brequest startSynchronous];
-    //}
 }
 
 - (void)successWithResponse:(FHResponse *)fhres AndAction:(FHAct *)action {

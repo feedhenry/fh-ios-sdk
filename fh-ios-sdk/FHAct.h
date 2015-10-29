@@ -76,12 +76,6 @@
 */
 @property (nonatomic, strong, readonly) NSDictionary *defaultParams;
 
-/** If the API request will be running asynchronously.
-
-@return YES if it's asynchronous otherwise NO
-*/
-- (BOOL)isAsync;
-
 /** Init a new request and set the FHCloudProps
  @param props the cloud app details
  */

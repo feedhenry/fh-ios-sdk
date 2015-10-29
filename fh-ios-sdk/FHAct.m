@@ -39,10 +39,6 @@
     return [_args JSONString];
 }
 
-- (BOOL)isAsync {
-    return _async;
-}
-
 - (NSURL *)buildURL {
     NSString *host = [[FHConfig getSharedInstance] getConfigValueForKey:@"host"];
     NSString *format =
