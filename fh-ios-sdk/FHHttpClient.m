@@ -91,34 +91,35 @@
             [self failWithResponse:fhResponse AndAction:fhact];
             return;
         }
-        
-        DLog(@"reused cache %lu", (unsigned long)request.cachePolicy);
-        DLog(@"Response status : %d", statusCode);
-        DLog(@"Response data : %@", ((NSHTTPURLResponse*)response).description);
-        
-        // parse, build response, delegate
-        FHResponse *fhResponse = [[FHResponse alloc] init];
-        fhResponse.responseStatusCode = (int)((NSHTTPURLResponse*)response).statusCode;
-        fhResponse.rawResponseAsString = reponseAsRawString;
-        fhResponse.rawResponse = data;
-        [fhResponse parseResponseData:data];
-        
-        if (statusCode == 200) {
-            [self successWithResponse:fhResponse AndAction:fhact];
-            return;
-        }
-        NSString *msg = [fhResponse.parsedResponse valueForKey:@"msg"];
-        if (nil == msg) {
-            msg = [fhResponse.parsedResponse valueForKey:@"message"];
-            if (nil == msg) {
-                msg = reponseAsRawString;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            DLog(@"reused cache %lu", (unsigned long)request.cachePolicy);
+            DLog(@"Response status : %d", statusCode);
+            DLog(@"Response data : %@", ((NSHTTPURLResponse*)response).description);
+            
+            // parse, build response, delegate
+            FHResponse *fhResponse = [[FHResponse alloc] init];
+            fhResponse.responseStatusCode = (int)((NSHTTPURLResponse*)response).statusCode;
+            fhResponse.rawResponseAsString = reponseAsRawString;
+            fhResponse.rawResponse = data;
+            [fhResponse parseResponseData:data];
+            
+            if (statusCode == 200) {
+                [self successWithResponse:fhResponse AndAction:fhact];
+                return;
             }
-        }
-        NSError *err = [NSError errorWithDomain:@"FeedHenryHTTPRequestErrorDomain"
-                            code:statusCode
-                        userInfo:@{NSLocalizedDescriptionKey : msg}];
-        fhResponse.error = err;
-        [self failWithResponse:fhResponse AndAction:fhact];
+            NSString *msg = [fhResponse.parsedResponse valueForKey:@"msg"];
+            if (nil == msg) {
+                msg = [fhResponse.parsedResponse valueForKey:@"message"];
+                if (nil == msg) {
+                    msg = reponseAsRawString;
+                }
+            }
+            NSError *err = [NSError errorWithDomain:@"FeedHenryHTTPRequestErrorDomain"
+                                               code:statusCode
+                                           userInfo:@{NSLocalizedDescriptionKey : msg}];
+            fhResponse.error = err;
+            [self failWithResponse:fhResponse AndAction:fhact];
+        });
     }];
 
    
