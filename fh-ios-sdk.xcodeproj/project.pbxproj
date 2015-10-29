@@ -486,8 +486,8 @@
 				B3D7C48E15D28BE30019262E /* Sources */,
 				B3D7C48F15D28BE30019262E /* Frameworks */,
 				B3D7C49015D28BE30019262E /* Resources */,
-				B3D7C49115D28BE30019262E /* Run Script */,
 				15FBBB6F69523D9EBF1567B2 /* Copy Pods Resources */,
+				9A4A576CE138A36BD75D4E49 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -555,19 +555,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FHTests/Pods-FHTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B3D7C49115D28BE30019262E /* Run Script */ = {
+		9A4A576CE138A36BD75D4E49 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FHTests/Pods-FHTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		B3DBAFD115D3086D0092ABA3 /* Prepare Framework */ = {
 			isa = PBXShellScriptBuildPhase;
