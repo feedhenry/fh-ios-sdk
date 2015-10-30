@@ -12,41 +12,12 @@
 #import "FHSyncPendingDataRecord.h"
 #import "FHSyncUtils.h"
 
-static BOOL wasCalledFlag = NO;
-/**
- To assert notification message has been raised, we override FHSyncUtils
- doNotifyWithDataId: methods using test category.
- Eventually(FH-2362): introduce OCMock and add dependency injection in FH
- */
-@interface FHSyncUtils (test)
-
-+ (void)doNotifyWithDataId:(NSString *)dataId
-                    config:(FHSyncConfig *)config
-                       uid:(NSString *)uid
-                      code:(NSString *)code
-                   message:(NSString *)message;
-
-@end
-
-@implementation FHSyncUtils (test)
-
-+ (void)doNotifyWithDataId:(NSString *)dataId
-                    config:(FHSyncConfig *)config
-                       uid:(NSString *)uid
-                      code:(NSString *)code
-                   message:(NSString *)message {
-    if (config.notifySyncCompleted && [code isEqualToString:@"SYNC_COMPLETE"]) {
-        wasCalledFlag = YES;
-    }
-}
-
-@end
+#import <OCMock/OCMock.h>
 
 @implementation FHSyncDatasetTest
 
 - (void)setUp {
     [super setUp];
-    wasCalledFlag = NO;
 }
 
 
@@ -185,6 +156,9 @@ static BOOL wasCalledFlag = NO;
     records[@"uid2"] = @{ @"data" : data2, @"hash" : data2Hash };
     resData[@"records"] = records;
 
+    // mock FHSyncUtils
+    id fhSyncUtilsMock = OCMClassMock([FHSyncUtils class]);
+    
     // sync data
     [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
 
@@ -263,7 +237,11 @@ static BOOL wasCalledFlag = NO;
                   (unsigned long)dataset.pendingDataRecords.count);
     XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu",
                   (unsigned long)dataset.dataRecords.count);
-    XCTAssertTrue(wasCalledFlag, "sync complete message should be called");
+    //XCTAssertTrue(wasCalledFlag, "sync complete message should be called");
+    // verify it has called the expected method
+    OCMVerify([fhSyncUtilsMock doNotifyWithDataId:dataId config:[OCMArg any] uid:[OCMArg any]
+                                                          code:@"SYNC_COMPLETE"
+                                                       message:@"online"]);
 }
 
 - (void)testSyncRecords_offlineUpdate {
