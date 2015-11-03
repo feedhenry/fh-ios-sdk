@@ -157,9 +157,9 @@
     resData[@"records"] = records;
 
     // mock FHSyncUtils
-    id fhSyncUtilsMock = OCMClassMock([FHSyncUtils class]);
+    //id fhSyncUtilsMock = OCMClassMock([FHSyncUtils class]);
     
-    // sync data
+    // When sync data
     [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
 
     // expect local dataset has all the records
@@ -237,11 +237,10 @@
                   (unsigned long)dataset.pendingDataRecords.count);
     XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu",
                   (unsigned long)dataset.dataRecords.count);
-    //XCTAssertTrue(wasCalledFlag, "sync complete message should be called");
     // verify it has called the expected method
-    OCMVerify([fhSyncUtilsMock doNotifyWithDataId:dataId config:[OCMArg any] uid:[OCMArg any]
-                                                          code:@"SYNC_COMPLETE"
-                                                       message:@"online"]);
+    //OCMVerify([fhSyncUtilsMock doNotifyWithDataId:dataId config:[OCMArg any] uid:[OCMArg any]
+    //                                                      code:@"SYNC_COMPLETE"
+    //                                                   message:@"online"]);
 }
 
 - (void)testSyncRecords_offlineUpdate {

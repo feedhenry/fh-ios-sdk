@@ -223,6 +223,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48B5C5CD1BE89DC900D8AA20 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6F9C5FEA1A9B366200C22C92 /* FHConfig.h */,
+				6F9C604B1A9B366200C22C92 /* FHConfig.m */,
+				48B4D0521B316F2500385BAC /* FHPushConfig.h */,
+				48B4D0531B316F2500385BAC /* FHPushConfig.m */,
+				6F9C5FE81A9B366200C22C92 /* FHCloudProps.h */,
+				6F9C60491A9B366200C22C92 /* FHCloudProps.m */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		48B5C5CE1BE89DF200D8AA20 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				6F9C5FE51A9B366200C22C92 /* FHAct.h */,
+				6F9C60461A9B366200C22C92 /* FHAct.m */,
+				6F9C5FE61A9B366200C22C92 /* FHActRequest.h */,
+				6F9C60471A9B366200C22C92 /* FHActRequest.m */,
+				6F9C5FE71A9B366200C22C92 /* FHAuthRequest.h */,
+				6F9C60481A9B366200C22C92 /* FHAuthRequest.m */,
+				6F9C5FE91A9B366200C22C92 /* FHCloudRequest.h */,
+				6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */,
+				6F9C5FEC1A9B366200C22C92 /* FHHttpClient.h */,
+				6F9C604C1A9B366200C22C92 /* FHHttpClient.m */,
+				6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */,
+				6F9C604D1A9B366200C22C92 /* FHInitRequest.m */,
+				6F9C5FEF1A9B366200C22C92 /* FHResponse.h */,
+				6F9C604F1A9B366200C22C92 /* FHResponse.m */,
+				6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */,
+			);
+			name = Cloud;
+			sourceTree = "<group>";
+		};
+		48B5C5CF1BE89E5600D8AA20 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */,
+				6F9C5FCA1A9B35F900C22C92 /* FHConfigTests.h */,
+				6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		48B5C5D01BE8C3A400D8AA20 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				48B5C5D11BE8C3D100D8AA20 /* Mock */,
+				6F9C5FCC1A9B35F900C22C92 /* FHSyncDataRecordTest.h */,
+				6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */,
+				6F9C5FCE1A9B35F900C22C92 /* FHSyncDatasetTest.h */,
+				6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */,
+				6F9C5FD01A9B35F900C22C92 /* FHSyncPendingDataRecordTest.h */,
+				6F9C5FD11A9B35F900C22C92 /* FHSyncPendingDataRecordTest.m */,
+				6F9C5FD21A9B35F900C22C92 /* FHSyncUtilsTest.h */,
+				6F9C5FD31A9B35F900C22C92 /* FHSyncUtilsTest.m */,
+			);
+			name = Sync;
+			sourceTree = "<group>";
+		};
+		48B5C5D11BE8C3D100D8AA20 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				6F9C5FD61A9B35F900C22C92 /* FHTestUtils.h */,
+				6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */,
+			);
+			name = Mock;
+			sourceTree = "<group>";
+		};
+		48B5C5D21BE8C3E100D8AA20 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				6F9C5FD41A9B35F900C22C92 /* FHTests.h */,
+				6F9C5FD51A9B35F900C22C92 /* FHTests.m */,
+			);
+			name = Cloud;
+			sourceTree = "<group>";
+		};
 		6F84682C1AB03C0100EC7593 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,33 +423,14 @@
 		B3D7C48815D28BE30019262E /* fh-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				48B5C5CE1BE89DF200D8AA20 /* Cloud */,
+				48B5C5CD1BE89DC900D8AA20 /* Config */,
 				6F9C5FF11A9B366200C22C92 /* Categories */,
 				6F9C5FF61A9B366200C22C92 /* OAuth */,
 				6F9C5FF91A9B366200C22C92 /* Sync */,
-				6F9C5FEA1A9B366200C22C92 /* FHConfig.h */,
-				6F9C604B1A9B366200C22C92 /* FHConfig.m */,
-				48B4D0521B316F2500385BAC /* FHPushConfig.h */,
-				48B4D0531B316F2500385BAC /* FHPushConfig.m */,
 				6F9C5FEB1A9B366200C22C92 /* FHDefines.h */,
 				6F9C5FE41A9B366200C22C92 /* FH.h */,
 				6F9C60451A9B366200C22C92 /* FH.m */,
-				6F9C5FE51A9B366200C22C92 /* FHAct.h */,
-				6F9C60461A9B366200C22C92 /* FHAct.m */,
-				6F9C5FE61A9B366200C22C92 /* FHActRequest.h */,
-				6F9C60471A9B366200C22C92 /* FHActRequest.m */,
-				6F9C5FE71A9B366200C22C92 /* FHAuthRequest.h */,
-				6F9C60481A9B366200C22C92 /* FHAuthRequest.m */,
-				6F9C5FE81A9B366200C22C92 /* FHCloudProps.h */,
-				6F9C60491A9B366200C22C92 /* FHCloudProps.m */,
-				6F9C5FE91A9B366200C22C92 /* FHCloudRequest.h */,
-				6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */,
-				6F9C5FEC1A9B366200C22C92 /* FHHttpClient.h */,
-				6F9C604C1A9B366200C22C92 /* FHHttpClient.m */,
-				6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */,
-				6F9C604D1A9B366200C22C92 /* FHInitRequest.m */,
-				6F9C5FEF1A9B366200C22C92 /* FHResponse.h */,
-				6F9C604F1A9B366200C22C92 /* FHResponse.m */,
-				6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */,
 				B3D7C48915D28BE30019262E /* Supporting Files */,
 				B3F685D61AD8352A002240DA /* FHDataManager.h */,
 				B3F685D71AD8352A002240DA /* FHDataManager.m */,
@@ -390,21 +450,9 @@
 		B3D7C49C15D28BE30019262E /* fh-ios-sdkTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */,
-				6F9C5FCA1A9B35F900C22C92 /* FHConfigTests.h */,
-				6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */,
-				6F9C5FCC1A9B35F900C22C92 /* FHSyncDataRecordTest.h */,
-				6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */,
-				6F9C5FCE1A9B35F900C22C92 /* FHSyncDatasetTest.h */,
-				6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */,
-				6F9C5FD01A9B35F900C22C92 /* FHSyncPendingDataRecordTest.h */,
-				6F9C5FD11A9B35F900C22C92 /* FHSyncPendingDataRecordTest.m */,
-				6F9C5FD21A9B35F900C22C92 /* FHSyncUtilsTest.h */,
-				6F9C5FD31A9B35F900C22C92 /* FHSyncUtilsTest.m */,
-				6F9C5FD41A9B35F900C22C92 /* FHTests.h */,
-				6F9C5FD51A9B35F900C22C92 /* FHTests.m */,
-				6F9C5FD61A9B35F900C22C92 /* FHTestUtils.h */,
-				6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */,
+				48B5C5D21BE8C3E100D8AA20 /* Cloud */,
+				48B5C5CF1BE89E5600D8AA20 /* Config */,
+				48B5C5D01BE8C3A400D8AA20 /* Sync */,
 				B3D7C49D15D28BE30019262E /* Supporting Files */,
 			);
 			name = "fh-ios-sdkTests";

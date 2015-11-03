@@ -17,15 +17,21 @@
 
 @implementation FHConfig
 
-- (instancetype)init {
+/**
+ Init method called by unit test without using singleton.
+*/
++ (instancetype)config {
+    return [[FHConfig alloc] initWithFileName:@"fhconfig"];
+}
+- (instancetype)initWithFileName:(NSString*)fileName {
     self = [super init];
     if (self) {
         NSString *path =
-            [[NSBundle mainBundle] pathForResource:@"fhconfig" ofType:@"plist"];
+            [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
         if (path) {
             self.properties = [NSMutableDictionary dictionaryWithContentsOfFile:path];
         } else {
-            path = [[NSBundle bundleForClass:[self class]] pathForResource:@"fhconfig" ofType:@"plist"];
+            path = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"plist"];
             if (path) {
                 self.properties = [NSMutableDictionary dictionaryWithContentsOfFile:path];
             } else {
@@ -36,6 +42,10 @@
         }
     }
     return self;
+}
+
+- (instancetype)init {
+    return [self initWithFileName:@"fhconfig"];
 }
 
 + (FHConfig *)getSharedInstance {
@@ -78,7 +88,7 @@
     [self.properties setValue:val forKey:key];
 }
 
-// Unique vendor ID (available in iOS6+)
+// Unique vendor ID
 - (NSString *)vendorId {
     NSUUID *vendorId = [[UIDevice currentDevice] identifierForVendor];
     NSString *uuid = [vendorId UUIDString];
