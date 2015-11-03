@@ -10,10 +10,14 @@
 #import <OCMock/OCMock.h>
 #import "FHDataManager.h"
 
-@implementation FHConfigTests
+@implementation FHConfigTests {
+    SEL _configSelector, _initWithNameSelector;
+}
 
 - (void) setUp {
     [super setUp];
+    _configSelector = NSSelectorFromString(@"config");
+    _initWithNameSelector = NSSelectorFromString(@"initWithFileName:");
     // Set-up code here.
 }
 
@@ -27,7 +31,7 @@
     // given
     
     // when default config file
-    FHConfig *fhconfig = [FHConfig performSelector:@selector(config)];
+    FHConfig *fhconfig = [FHConfig performSelector:_configSelector];
     
     // then
     XCTAssertEqualObjects([fhconfig getConfigValueForKey:@"host"], @"http://testing.feedhenry.com");
@@ -44,10 +48,12 @@
     // given
     
     // when default config file
-    FHConfig *fhconfig = [FHConfig performSelector:@selector(config)];
+    FHConfig *fhconfig = [FHConfig performSelector:_configSelector];
 
     // then
-    XCTAssertThrowsSpecificNamed([fhconfig performSelector:@selector(initWithFileName:) withObject:@"invalidName"], NSException, @"fhconfigException");
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    XCTAssertThrowsSpecificNamed([fhconfig performSelector:_initWithNameSelector withObject:@"invalidName"], NSException, @"fhconfigException");
+    #pragma clang diagnostic pop
 }
 
 -(void) testGetValueExisting {
@@ -63,7 +69,7 @@
 
 -(void) testGetValueEmpty {
     // given
-    FHConfig *fhconfig = [FHConfig performSelector:@selector(config)];
+    FHConfig *fhconfig = [FHConfig performSelector:_configSelector];
     [fhconfig performSelector:@selector(setConfigValue:ForKey:) withObject:@"" withObject:@"appid"];
     
     // when
@@ -75,7 +81,7 @@
 
 -(void) testGetValuefilledWithSpaces {
     // given
-    FHConfig *fhconfig = [FHConfig performSelector:@selector(config)];
+    FHConfig *fhconfig = [FHConfig performSelector:_configSelector];
     [fhconfig performSelector:@selector(setConfigValue:ForKey:) withObject:@"   " withObject:@"appid"];
     
     // when
@@ -87,7 +93,7 @@
 
 -(void) testGetValuefilledNSNull {
     // given
-    FHConfig *fhconfig = [FHConfig performSelector:@selector(config)];
+    FHConfig *fhconfig = [FHConfig performSelector:_configSelector];
     [fhconfig performSelector:@selector(setConfigValue:ForKey:) withObject:[NSNull null] withObject:@"appid"];
     
     // when
@@ -99,7 +105,7 @@
 
 -(void) testUuidAlreadyExistingInDB {
     // given
-    FHConfig *fhconfig = [FHConfig performSelector:@selector(config)];
+    FHConfig *fhconfig = [FHConfig performSelector:_configSelector];
     id mock = OCMClassMock([FHDataManager class]);
     
     // when
@@ -113,7 +119,7 @@
 
 -(void) testNewUuid {
     // given
-    FHConfig *fhconfig = [FHConfig performSelector:@selector(config)];
+    FHConfig *fhconfig = [FHConfig performSelector:_configSelector];
     id mock = OCMClassMock([FHDataManager class]);
     
     // when
