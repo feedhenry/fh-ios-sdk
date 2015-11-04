@@ -14,17 +14,27 @@
 #import "FHSyncDataset.h"
 #import "FHDefines.h"
 
-@interface FHSyncClient ()
-    - (void)doManage:(NSString *)dataId
-           AndConfig:(FHSyncConfig *)config
-            AndQuery:(NSDictionary *)queryParams
-             AndMetaData:(NSMutableDictionary *)metaData;
-@end
-
 @implementation FHSyncClient {
     NSMutableDictionary *_dataSets;
     FHSyncConfig *_syncConfig;
     BOOL _initialized;
+    FHSyncDataset* _dataSetInjected;
+}
+
+/*
+ Unit test DI constructor.
+ */
+- (instancetype)initWithConfig:(FHSyncConfig *)config AndDataSet:(FHSyncDataset*)dataSet {
+    self = [super init];
+    if (self) {
+        _syncConfig = config;
+        _dataSets = [NSMutableDictionary dictionary];
+        _dataSetInjected = dataSet;
+        _initialized = YES;
+        [self datasetMonitor:nil];
+    }
+
+    return self;
 }
 
 - (instancetype)initWithConfig:(FHSyncConfig *)config {
@@ -35,7 +45,7 @@
         _initialized = YES;
         [self datasetMonitor:nil];
     }
-
+    
     return self;
 }
 
@@ -69,18 +79,23 @@
     if (nil == dataSet) {
         // not loaded yet, try to read it from a local file
         NSError *error = nil;
-        dataSet = [[FHSyncDataset alloc] initFromFileWithDataId:dataId error:error];
-        if (nil == error) {
-            // data loaded successfully
-            [FHSyncUtils doNotifyWithDataId:dataId
-                                     config:dataSyncConfig
-                                        uid:NULL
-                                       code:LOCAL_UPDATE_APPLIED_MESSAGE
-                                    message:@"load"];
+        if (_dataSetInjected == nil) {
+            dataSet = [[FHSyncDataset alloc] initFromFileWithDataId:dataId error:error];
+            if (nil == error) {
+                // data loaded successfully
+                [FHSyncUtils doNotifyWithDataId:dataId
+                                         config:dataSyncConfig
+                                            uid:NULL
+                                           code:LOCAL_UPDATE_APPLIED_MESSAGE
+                                        message:@"load"];
+            } else {
+                // cat not load data, create a new map for it
+                dataSet = [[FHSyncDataset alloc] initWithDataId:dataId];
+            }
         } else {
-            // cat not load data, create a new map for it
-            dataSet = [[FHSyncDataset alloc] initWithDataId:dataId];
+            dataSet = _dataSetInjected;
         }
+
         _dataSets[dataId] = dataSet;
     }
     
