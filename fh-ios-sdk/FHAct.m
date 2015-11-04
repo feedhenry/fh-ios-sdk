@@ -42,7 +42,7 @@
 - (NSURL *)buildURL {
     NSString *host = [[FHConfig getSharedInstance] getConfigValueForKey:@"host"];
     NSString *format =
-        ([[host substringToIndex:[host length] - 1] isEqualToString:@"/"]) ? @"%@%@" : @"%@/%@";
+        ([[host substringFromIndex:[host length] - 1] isEqualToString:@"/"]) ? @"%@%@" : @"%@/%@";
     NSString *api = [NSMutableString stringWithFormat:format, host, self.path];
     NSURL *uri = [[NSURL alloc] initWithString:api];
     return uri;
