@@ -7,9 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48627BF71BEA69B30011CA68 /* FHDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627BF51BEA69B30011CA68 /* FHDataManager.h */; };
+		48627BF81BEA69B30011CA68 /* FHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627BF61BEA69B30011CA68 /* FHDataManager.m */; };
+		48627BFD1BEA69C30011CA68 /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627BF91BEA69C30011CA68 /* FHConfig.h */; };
+		48627BFE1BEA69C30011CA68 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627BFA1BEA69C30011CA68 /* FHConfig.m */; };
+		48627BFF1BEA69C30011CA68 /* FHPushConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627BFB1BEA69C30011CA68 /* FHPushConfig.h */; };
+		48627C001BEA69C30011CA68 /* FHPushConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627BFC1BEA69C30011CA68 /* FHPushConfig.m */; };
+		48627C031BEA69FA0011CA68 /* FHCloudProps.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C011BEA69FA0011CA68 /* FHCloudProps.h */; };
+		48627C041BEA69FA0011CA68 /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C021BEA69FA0011CA68 /* FHCloudProps.m */; };
+		48627C141BEA6A0C0011CA68 /* FHAct.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C051BEA6A0C0011CA68 /* FHAct.h */; };
+		48627C151BEA6A0C0011CA68 /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C061BEA6A0C0011CA68 /* FHAct.m */; };
+		48627C161BEA6A0C0011CA68 /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C071BEA6A0C0011CA68 /* FHActRequest.h */; };
+		48627C171BEA6A0C0011CA68 /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C081BEA6A0C0011CA68 /* FHActRequest.m */; };
+		48627C181BEA6A0C0011CA68 /* FHAuthRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C091BEA6A0C0011CA68 /* FHAuthRequest.h */; };
+		48627C191BEA6A0C0011CA68 /* FHAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C0A1BEA6A0C0011CA68 /* FHAuthRequest.m */; };
+		48627C1A1BEA6A0C0011CA68 /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C0B1BEA6A0C0011CA68 /* FHCloudRequest.h */; };
+		48627C1B1BEA6A0C0011CA68 /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C0C1BEA6A0C0011CA68 /* FHCloudRequest.m */; };
+		48627C1C1BEA6A0C0011CA68 /* FHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C0D1BEA6A0C0011CA68 /* FHHttpClient.h */; };
+		48627C1D1BEA6A0C0011CA68 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C0E1BEA6A0C0011CA68 /* FHHttpClient.m */; };
+		48627C1E1BEA6A0C0011CA68 /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C0F1BEA6A0C0011CA68 /* FHInitRequest.h */; };
+		48627C1F1BEA6A0C0011CA68 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C101BEA6A0C0011CA68 /* FHInitRequest.m */; };
+		48627C201BEA6A0C0011CA68 /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C111BEA6A0C0011CA68 /* FHResponse.h */; };
+		48627C211BEA6A0C0011CA68 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C121BEA6A0C0011CA68 /* FHResponse.m */; };
+		48627C221BEA6A0C0011CA68 /* FHResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C131BEA6A0C0011CA68 /* FHResponseDelegate.h */; };
 		48B4D0511B316CCC00385BAC /* libFeedHenry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFeedHenry.a */; };
-		48B4D0541B316F2500385BAC /* FHPushConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B4D0521B316F2500385BAC /* FHPushConfig.h */; };
-		48B4D0551B316F2500385BAC /* FHPushConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B4D0531B316F2500385BAC /* FHPushConfig.m */; };
 		48DCF07B1BE95226001954D6 /* FHResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07A1BE95226001954D6 /* FHResponseTest.m */; };
 		48DCF07D1BE9F778001954D6 /* FHCloudRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */; };
 		48DCF07F1BEA06B5001954D6 /* FHCloudPropsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07E1BEA06B5001954D6 /* FHCloudPropsTest.m */; };
@@ -30,27 +51,9 @@
 		6F9C608F1A9B36B100C22C92 /* FHSyncPendingDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60061A9B366200C22C92 /* FHSyncPendingDataRecord.m */; };
 		6F9C60911A9B36B100C22C92 /* FHSyncUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60081A9B366200C22C92 /* FHSyncUtils.m */; };
 		6F9C60AA1A9B37C000C22C92 /* FH.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60451A9B366200C22C92 /* FH.m */; };
-		6F9C60AB1A9B37C000C22C92 /* FHAct.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60461A9B366200C22C92 /* FHAct.m */; };
-		6F9C60AC1A9B37C000C22C92 /* FHActRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60471A9B366200C22C92 /* FHActRequest.m */; };
-		6F9C60AD1A9B37C000C22C92 /* FHAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60481A9B366200C22C92 /* FHAuthRequest.m */; };
-		6F9C60AE1A9B37C000C22C92 /* FHCloudProps.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C60491A9B366200C22C92 /* FHCloudProps.m */; };
-		6F9C60AF1A9B37C000C22C92 /* FHCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */; };
-		6F9C60B01A9B37C000C22C92 /* FHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604B1A9B366200C22C92 /* FHConfig.m */; };
-		6F9C60B11A9B37C000C22C92 /* FHHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604C1A9B366200C22C92 /* FHHttpClient.m */; };
-		6F9C60B21A9B37C000C22C92 /* FHInitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604D1A9B366200C22C92 /* FHInitRequest.m */; };
-		6F9C60B41A9B37C000C22C92 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C604F1A9B366200C22C92 /* FHResponse.m */; };
 		6FC784D71A9B9D95002485B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC784D61A9B9D95002485B5 /* UIKit.framework */; };
-		6FCF31E61A9B40E90014B936 /* FHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEA1A9B366200C22C92 /* FHConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31E71A9B40F20014B936 /* FHDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEB1A9B366200C22C92 /* FHDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31E81A9B40F50014B936 /* FH.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE41A9B366200C22C92 /* FH.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31E91A9B40F80014B936 /* FHAct.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE51A9B366200C22C92 /* FHAct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31EA1A9B40FC0014B936 /* FHActRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE61A9B366200C22C92 /* FHActRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31EB1A9B40FF0014B936 /* FHAuthRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE71A9B366200C22C92 /* FHAuthRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31EC1A9B41040014B936 /* FHCloudProps.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE81A9B366200C22C92 /* FHCloudProps.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31ED1A9B41070014B936 /* FHCloudRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FE91A9B366200C22C92 /* FHCloudRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEC1A9B366200C22C92 /* FHHttpClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		6FCF31F11A9B41230014B936 /* FHResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F21A9B41740014B936 /* FHSyncClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFA1A9B366200C22C92 /* FHSyncClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F31A9B41760014B936 /* FHSyncConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFC1A9B366200C22C92 /* FHSyncConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F81A9B430F0014B936 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60031A9B366200C22C92 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,7 +64,6 @@
 		6FCF320C1A9B47000014B936 /* FHSyncUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD31A9B35F900C22C92 /* FHSyncUtilsTest.m */; };
 		6FCF320D1A9B47000014B936 /* FHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD51A9B35F900C22C92 /* FHTests.m */; };
 		6FCF320E1A9B47000014B936 /* FHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */; };
-		6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FEF1A9B366200C22C92 /* FHResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FE7B3671ACEDEA90029C63F /* FHOAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF71A9B366200C22C92 /* FHOAuthViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B3681ACEDED10029C63F /* FHSyncDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFE1A9B366200C22C92 /* FHSyncDataRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B3691ACEDED10029C63F /* FHSyncDataset.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60001A9B366200C22C92 /* FHSyncDataset.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -80,8 +82,6 @@
 		B3D7C48715D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C49815D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
-		B3F685D81AD8352A002240DA /* FHDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B3F685D61AD8352A002240DA /* FHDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3F685D91AD8352A002240DA /* FHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F685D71AD8352A002240DA /* FHDataManager.m */; };
 		BB9DCD7622E40258E06B3A75 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC8A0A7417DA495FFDD185F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -100,8 +100,29 @@
 		0E6E7A1924B17EF8B3DD8023 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2BC8A0A7417DA495FFDD185F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		48B4D0521B316F2500385BAC /* FHPushConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHPushConfig.h; path = "fh-ios-sdk/FHPushConfig.h"; sourceTree = SOURCE_ROOT; };
-		48B4D0531B316F2500385BAC /* FHPushConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHPushConfig.m; path = "fh-ios-sdk/FHPushConfig.m"; sourceTree = SOURCE_ROOT; };
+		48627BF51BEA69B30011CA68 /* FHDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHDataManager.h; path = "fh-ios-sdk/Data/FHDataManager.h"; sourceTree = SOURCE_ROOT; };
+		48627BF61BEA69B30011CA68 /* FHDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHDataManager.m; path = "fh-ios-sdk/Data/FHDataManager.m"; sourceTree = SOURCE_ROOT; };
+		48627BF91BEA69C30011CA68 /* FHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHConfig.h; path = "fh-ios-sdk/Config/FHConfig.h"; sourceTree = SOURCE_ROOT; };
+		48627BFA1BEA69C30011CA68 /* FHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHConfig.m; path = "fh-ios-sdk/Config/FHConfig.m"; sourceTree = SOURCE_ROOT; };
+		48627BFB1BEA69C30011CA68 /* FHPushConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHPushConfig.h; path = "fh-ios-sdk/Config/FHPushConfig.h"; sourceTree = SOURCE_ROOT; };
+		48627BFC1BEA69C30011CA68 /* FHPushConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHPushConfig.m; path = "fh-ios-sdk/Config/FHPushConfig.m"; sourceTree = SOURCE_ROOT; };
+		48627C011BEA69FA0011CA68 /* FHCloudProps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHCloudProps.h; path = "fh-ios-sdk/Config/FHCloudProps.h"; sourceTree = SOURCE_ROOT; };
+		48627C021BEA69FA0011CA68 /* FHCloudProps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudProps.m; path = "fh-ios-sdk/Config/FHCloudProps.m"; sourceTree = SOURCE_ROOT; };
+		48627C051BEA6A0C0011CA68 /* FHAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHAct.h; path = "fh-ios-sdk/Cloud/FHAct.h"; sourceTree = SOURCE_ROOT; };
+		48627C061BEA6A0C0011CA68 /* FHAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHAct.m; path = "fh-ios-sdk/Cloud/FHAct.m"; sourceTree = SOURCE_ROOT; };
+		48627C071BEA6A0C0011CA68 /* FHActRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHActRequest.h; path = "fh-ios-sdk/Cloud/FHActRequest.h"; sourceTree = SOURCE_ROOT; };
+		48627C081BEA6A0C0011CA68 /* FHActRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHActRequest.m; path = "fh-ios-sdk/Cloud/FHActRequest.m"; sourceTree = SOURCE_ROOT; };
+		48627C091BEA6A0C0011CA68 /* FHAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHAuthRequest.h; path = "fh-ios-sdk/Cloud/FHAuthRequest.h"; sourceTree = SOURCE_ROOT; };
+		48627C0A1BEA6A0C0011CA68 /* FHAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHAuthRequest.m; path = "fh-ios-sdk/Cloud/FHAuthRequest.m"; sourceTree = SOURCE_ROOT; };
+		48627C0B1BEA6A0C0011CA68 /* FHCloudRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHCloudRequest.h; path = "fh-ios-sdk/Cloud/FHCloudRequest.h"; sourceTree = SOURCE_ROOT; };
+		48627C0C1BEA6A0C0011CA68 /* FHCloudRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudRequest.m; path = "fh-ios-sdk/Cloud/FHCloudRequest.m"; sourceTree = SOURCE_ROOT; };
+		48627C0D1BEA6A0C0011CA68 /* FHHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHHttpClient.h; path = "fh-ios-sdk/Cloud/FHHttpClient.h"; sourceTree = SOURCE_ROOT; };
+		48627C0E1BEA6A0C0011CA68 /* FHHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHHttpClient.m; path = "fh-ios-sdk/Cloud/FHHttpClient.m"; sourceTree = SOURCE_ROOT; };
+		48627C0F1BEA6A0C0011CA68 /* FHInitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHInitRequest.h; path = "fh-ios-sdk/Cloud/FHInitRequest.h"; sourceTree = SOURCE_ROOT; };
+		48627C101BEA6A0C0011CA68 /* FHInitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHInitRequest.m; path = "fh-ios-sdk/Cloud/FHInitRequest.m"; sourceTree = SOURCE_ROOT; };
+		48627C111BEA6A0C0011CA68 /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponse.h; path = "fh-ios-sdk/Cloud/FHResponse.h"; sourceTree = SOURCE_ROOT; };
+		48627C121BEA6A0C0011CA68 /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHResponse.m; path = "fh-ios-sdk/Cloud/FHResponse.m"; sourceTree = SOURCE_ROOT; };
+		48627C131BEA6A0C0011CA68 /* FHResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponseDelegate.h; path = "fh-ios-sdk/Cloud/FHResponseDelegate.h"; sourceTree = SOURCE_ROOT; };
 		48DCF07A1BE95226001954D6 /* FHResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHResponseTest.m; sourceTree = SOURCE_ROOT; };
 		48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudRequestTest.m; path = "fh-ios-sdkTests/FHCloudRequestTest.m"; sourceTree = SOURCE_ROOT; };
 		48DCF07E1BEA06B5001954D6 /* FHCloudPropsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudPropsTest.m; path = "fh-ios-sdkTests/FHCloudPropsTest.m"; sourceTree = SOURCE_ROOT; };
@@ -123,17 +144,7 @@
 		6F9C5FD61A9B35F900C22C92 /* FHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHTestUtils.h; path = "fh-ios-sdkTests/FHTestUtils.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHTestUtils.m; path = "fh-ios-sdkTests/FHTestUtils.m"; sourceTree = SOURCE_ROOT; };
 		6F9C5FE41A9B366200C22C92 /* FH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FH.h; path = "fh-ios-sdk/FH.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FE51A9B366200C22C92 /* FHAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHAct.h; path = "fh-ios-sdk/FHAct.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FE61A9B366200C22C92 /* FHActRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHActRequest.h; path = "fh-ios-sdk/FHActRequest.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FE71A9B366200C22C92 /* FHAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHAuthRequest.h; path = "fh-ios-sdk/FHAuthRequest.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FE81A9B366200C22C92 /* FHCloudProps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHCloudProps.h; path = "fh-ios-sdk/FHCloudProps.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FE91A9B366200C22C92 /* FHCloudRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHCloudRequest.h; path = "fh-ios-sdk/FHCloudRequest.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FEA1A9B366200C22C92 /* FHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHConfig.h; path = "fh-ios-sdk/FHConfig.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FEB1A9B366200C22C92 /* FHDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHDefines.h; path = "fh-ios-sdk/FHDefines.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FEC1A9B366200C22C92 /* FHHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHHttpClient.h; path = "fh-ios-sdk/FHHttpClient.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHInitRequest.h; path = "fh-ios-sdk/FHInitRequest.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FEF1A9B366200C22C92 /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponse.h; path = "fh-ios-sdk/FHResponse.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponseDelegate.h; path = "fh-ios-sdk/FHResponseDelegate.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FF71A9B366200C22C92 /* FHOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHOAuthViewController.h; sourceTree = "<group>"; };
 		6F9C5FF81A9B366200C22C92 /* FHOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHOAuthViewController.m; sourceTree = "<group>"; };
 		6F9C5FFA1A9B366200C22C92 /* FHSyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSyncClient.h; sourceTree = "<group>"; };
@@ -152,15 +163,6 @@
 		6F9C60071A9B366200C22C92 /* FHSyncUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSyncUtils.h; sourceTree = "<group>"; };
 		6F9C60081A9B366200C22C92 /* FHSyncUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSyncUtils.m; sourceTree = "<group>"; };
 		6F9C60451A9B366200C22C92 /* FH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FH.m; path = "fh-ios-sdk/FH.m"; sourceTree = SOURCE_ROOT; };
-		6F9C60461A9B366200C22C92 /* FHAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHAct.m; path = "fh-ios-sdk/FHAct.m"; sourceTree = SOURCE_ROOT; };
-		6F9C60471A9B366200C22C92 /* FHActRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHActRequest.m; path = "fh-ios-sdk/FHActRequest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C60481A9B366200C22C92 /* FHAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHAuthRequest.m; path = "fh-ios-sdk/FHAuthRequest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C60491A9B366200C22C92 /* FHCloudProps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudProps.m; path = "fh-ios-sdk/FHCloudProps.m"; sourceTree = SOURCE_ROOT; };
-		6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudRequest.m; path = "fh-ios-sdk/FHCloudRequest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C604B1A9B366200C22C92 /* FHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHConfig.m; path = "fh-ios-sdk/FHConfig.m"; sourceTree = SOURCE_ROOT; };
-		6F9C604C1A9B366200C22C92 /* FHHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHHttpClient.m; path = "fh-ios-sdk/FHHttpClient.m"; sourceTree = SOURCE_ROOT; };
-		6F9C604D1A9B366200C22C92 /* FHInitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHInitRequest.m; path = "fh-ios-sdk/FHInitRequest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C604F1A9B366200C22C92 /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHResponse.m; path = "fh-ios-sdk/FHResponse.m"; sourceTree = SOURCE_ROOT; };
 		6FC784D61A9B9D95002485B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FHTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3951AAB15D2B96A0091054A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -179,8 +181,6 @@
 		B3D7C54E15D291EF0019262E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B3D7C55015D2923C0019262E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B3D7C55215D292A10019262E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		B3F685D61AD8352A002240DA /* FHDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHDataManager.h; path = "fh-ios-sdk/FHDataManager.h"; sourceTree = SOURCE_ROOT; };
-		B3F685D71AD8352A002240DA /* FHDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHDataManager.m; path = "fh-ios-sdk/FHDataManager.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,12 +222,12 @@
 		48B5C5CD1BE89DC900D8AA20 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				6F9C5FEA1A9B366200C22C92 /* FHConfig.h */,
-				6F9C604B1A9B366200C22C92 /* FHConfig.m */,
-				48B4D0521B316F2500385BAC /* FHPushConfig.h */,
-				48B4D0531B316F2500385BAC /* FHPushConfig.m */,
-				6F9C5FE81A9B366200C22C92 /* FHCloudProps.h */,
-				6F9C60491A9B366200C22C92 /* FHCloudProps.m */,
+				48627BF91BEA69C30011CA68 /* FHConfig.h */,
+				48627BFA1BEA69C30011CA68 /* FHConfig.m */,
+				48627BFB1BEA69C30011CA68 /* FHPushConfig.h */,
+				48627BFC1BEA69C30011CA68 /* FHPushConfig.m */,
+				48627C011BEA69FA0011CA68 /* FHCloudProps.h */,
+				48627C021BEA69FA0011CA68 /* FHCloudProps.m */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -235,21 +235,21 @@
 		48B5C5CE1BE89DF200D8AA20 /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
-				6F9C5FE51A9B366200C22C92 /* FHAct.h */,
-				6F9C60461A9B366200C22C92 /* FHAct.m */,
-				6F9C5FE61A9B366200C22C92 /* FHActRequest.h */,
-				6F9C60471A9B366200C22C92 /* FHActRequest.m */,
-				6F9C5FE71A9B366200C22C92 /* FHAuthRequest.h */,
-				6F9C60481A9B366200C22C92 /* FHAuthRequest.m */,
-				6F9C5FE91A9B366200C22C92 /* FHCloudRequest.h */,
-				6F9C604A1A9B366200C22C92 /* FHCloudRequest.m */,
-				6F9C5FEC1A9B366200C22C92 /* FHHttpClient.h */,
-				6F9C604C1A9B366200C22C92 /* FHHttpClient.m */,
-				6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */,
-				6F9C604D1A9B366200C22C92 /* FHInitRequest.m */,
-				6F9C5FEF1A9B366200C22C92 /* FHResponse.h */,
-				6F9C604F1A9B366200C22C92 /* FHResponse.m */,
-				6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */,
+				48627C051BEA6A0C0011CA68 /* FHAct.h */,
+				48627C061BEA6A0C0011CA68 /* FHAct.m */,
+				48627C071BEA6A0C0011CA68 /* FHActRequest.h */,
+				48627C081BEA6A0C0011CA68 /* FHActRequest.m */,
+				48627C091BEA6A0C0011CA68 /* FHAuthRequest.h */,
+				48627C0A1BEA6A0C0011CA68 /* FHAuthRequest.m */,
+				48627C0B1BEA6A0C0011CA68 /* FHCloudRequest.h */,
+				48627C0C1BEA6A0C0011CA68 /* FHCloudRequest.m */,
+				48627C0D1BEA6A0C0011CA68 /* FHHttpClient.h */,
+				48627C0E1BEA6A0C0011CA68 /* FHHttpClient.m */,
+				48627C0F1BEA6A0C0011CA68 /* FHInitRequest.h */,
+				48627C101BEA6A0C0011CA68 /* FHInitRequest.m */,
+				48627C111BEA6A0C0011CA68 /* FHResponse.h */,
+				48627C121BEA6A0C0011CA68 /* FHResponse.m */,
+				48627C131BEA6A0C0011CA68 /* FHResponseDelegate.h */,
 			);
 			name = Cloud;
 			sourceTree = "<group>";
@@ -299,8 +299,8 @@
 		48DCF0821BEA597D001954D6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B3F685D61AD8352A002240DA /* FHDataManager.h */,
-				B3F685D71AD8352A002240DA /* FHDataManager.m */,
+				48627BF51BEA69B30011CA68 /* FHDataManager.h */,
+				48627BF61BEA69B30011CA68 /* FHDataManager.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -482,24 +482,24 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FCF31E61A9B40E90014B936 /* FHConfig.h in Headers */,
+				48627BF71BEA69B30011CA68 /* FHDataManager.h in Headers */,
 				6FCF31F21A9B41740014B936 /* FHSyncClient.h in Headers */,
+				48627C031BEA69FA0011CA68 /* FHCloudProps.h in Headers */,
+				48627C141BEA6A0C0011CA68 /* FHAct.h in Headers */,
 				6FCF31E71A9B40F20014B936 /* FHDefines.h in Headers */,
-				6FCF31E91A9B40F80014B936 /* FHAct.h in Headers */,
+				48627C1C1BEA6A0C0011CA68 /* FHHttpClient.h in Headers */,
+				48627C161BEA6A0C0011CA68 /* FHActRequest.h in Headers */,
+				48627C1A1BEA6A0C0011CA68 /* FHCloudRequest.h in Headers */,
+				48627BFD1BEA69C30011CA68 /* FHConfig.h in Headers */,
 				6FCF31F31A9B41760014B936 /* FHSyncConfig.h in Headers */,
-				6FCF31EA1A9B40FC0014B936 /* FHActRequest.h in Headers */,
-				6FCF31EB1A9B40FF0014B936 /* FHAuthRequest.h in Headers */,
+				48627C201BEA6A0C0011CA68 /* FHResponse.h in Headers */,
+				48627C181BEA6A0C0011CA68 /* FHAuthRequest.h in Headers */,
 				6FCF31F81A9B430F0014B936 /* FHSyncNotificationMessage.h in Headers */,
-				6FCF31EC1A9B41040014B936 /* FHCloudProps.h in Headers */,
-				6FCF31ED1A9B41070014B936 /* FHCloudRequest.h in Headers */,
 				6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */,
+				48627C221BEA6A0C0011CA68 /* FHResponseDelegate.h in Headers */,
+				48627C1E1BEA6A0C0011CA68 /* FHInitRequest.h in Headers */,
 				6FCF31E81A9B40F50014B936 /* FH.h in Headers */,
-				6FE580D91A9F6DB0005DDA6B /* FHResponse.h in Headers */,
-				B3F685D81AD8352A002240DA /* FHDataManager.h in Headers */,
-				6FCF31F11A9B41230014B936 /* FHResponseDelegate.h in Headers */,
-				6FCF31EF1A9B410E0014B936 /* FHInitRequest.h in Headers */,
-				48B4D0541B316F2500385BAC /* FHPushConfig.h in Headers */,
-				6FCF31EE1A9B41090014B936 /* FHHttpClient.h in Headers */,
+				48627BFF1BEA69C30011CA68 /* FHPushConfig.h in Headers */,
 				6FE7B36B1ACEDF1A0029C63F /* FHSyncUtils.h in Headers */,
 				6FE7B3681ACEDED10029C63F /* FHSyncDataRecord.h in Headers */,
 				6FE7B3691ACEDED10029C63F /* FHSyncDataset.h in Headers */,
@@ -689,27 +689,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48B4D0551B316F2500385BAC /* FHPushConfig.m in Sources */,
+				48627C001BEA69C30011CA68 /* FHPushConfig.m in Sources */,
+				48627C171BEA6A0C0011CA68 /* FHActRequest.m in Sources */,
 				6F9C60AA1A9B37C000C22C92 /* FH.m in Sources */,
-				6F9C60AB1A9B37C000C22C92 /* FHAct.m in Sources */,
-				6F9C60AC1A9B37C000C22C92 /* FHActRequest.m in Sources */,
-				6F9C60AD1A9B37C000C22C92 /* FHAuthRequest.m in Sources */,
-				6F9C60AE1A9B37C000C22C92 /* FHCloudProps.m in Sources */,
-				6F9C60AF1A9B37C000C22C92 /* FHCloudRequest.m in Sources */,
-				6F9C60B01A9B37C000C22C92 /* FHConfig.m in Sources */,
-				6F9C60B11A9B37C000C22C92 /* FHHttpClient.m in Sources */,
-				6F9C60B21A9B37C000C22C92 /* FHInitRequest.m in Sources */,
-				6F9C60B41A9B37C000C22C92 /* FHResponse.m in Sources */,
+				48627BFE1BEA69C30011CA68 /* FHConfig.m in Sources */,
+				48627C1B1BEA6A0C0011CA68 /* FHCloudRequest.m in Sources */,
+				48627C211BEA6A0C0011CA68 /* FHResponse.m in Sources */,
+				48627C041BEA69FA0011CA68 /* FHCloudProps.m in Sources */,
+				48627C1D1BEA6A0C0011CA68 /* FHHttpClient.m in Sources */,
+				48627C151BEA6A0C0011CA68 /* FHAct.m in Sources */,
 				6F9C60841A9B36B100C22C92 /* FHSyncClient.m in Sources */,
 				6F9C60861A9B36B100C22C92 /* FHSyncConfig.m in Sources */,
 				6F9C60881A9B36B100C22C92 /* FHSyncDataRecord.m in Sources */,
 				6F9C608A1A9B36B100C22C92 /* FHSyncDataset.m in Sources */,
 				6F9C608D1A9B36B100C22C92 /* FHSyncNotificationMessage.m in Sources */,
+				48627C1F1BEA6A0C0011CA68 /* FHInitRequest.m in Sources */,
 				6F9C608F1A9B36B100C22C92 /* FHSyncPendingDataRecord.m in Sources */,
+				48627C191BEA6A0C0011CA68 /* FHAuthRequest.m in Sources */,
 				6F8468301AB03C0100EC7593 /* FHJSON.m in Sources */,
 				6F9C60911A9B36B100C22C92 /* FHSyncUtils.m in Sources */,
 				6F9C60821A9B36A200C22C92 /* FHOAuthViewController.m in Sources */,
-				B3F685D91AD8352A002240DA /* FHDataManager.m in Sources */,
+				48627BF81BEA69B30011CA68 /* FHDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
