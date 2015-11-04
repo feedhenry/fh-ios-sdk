@@ -14,6 +14,7 @@
 		48DCF07D1BE9F778001954D6 /* FHCloudRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */; };
 		48DCF07F1BEA06B5001954D6 /* FHCloudPropsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07E1BEA06B5001954D6 /* FHCloudPropsTest.m */; };
 		48DCF0811BEA12FD001954D6 /* FHSyncClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF0801BEA12FD001954D6 /* FHSyncClientTest.m */; };
+		48DCF0851BEA59C5001954D6 /* FHDataManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF0841BEA59C5001954D6 /* FHDataManagerTest.m */; };
 		6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
 		6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F84682D1AB03C0100EC7593 /* FHJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -105,6 +106,7 @@
 		48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudRequestTest.m; path = "fh-ios-sdkTests/FHCloudRequestTest.m"; sourceTree = SOURCE_ROOT; };
 		48DCF07E1BEA06B5001954D6 /* FHCloudPropsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudPropsTest.m; path = "fh-ios-sdkTests/FHCloudPropsTest.m"; sourceTree = SOURCE_ROOT; };
 		48DCF0801BEA12FD001954D6 /* FHSyncClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncClientTest.m; path = "fh-ios-sdkTests/FHSyncClientTest.m"; sourceTree = SOURCE_ROOT; };
+		48DCF0841BEA59C5001954D6 /* FHDataManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHDataManagerTest.m; path = "fh-ios-sdkTests/FHDataManagerTest.m"; sourceTree = SOURCE_ROOT; };
 		545041B32263D5936453A81E /* Pods-FHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FHTests/Pods-FHTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F84682D1AB03C0100EC7593 /* FHJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHJSON.h; sourceTree = "<group>"; };
 		6F84682E1AB03C0100EC7593 /* FHJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHJSON.m; sourceTree = "<group>"; };
@@ -294,6 +296,23 @@
 			name = Cloud;
 			sourceTree = "<group>";
 		};
+		48DCF0821BEA597D001954D6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B3F685D61AD8352A002240DA /* FHDataManager.h */,
+				B3F685D71AD8352A002240DA /* FHDataManager.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		48DCF0831BEA599A001954D6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				48DCF0841BEA59C5001954D6 /* FHDataManagerTest.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		6F84682C1AB03C0100EC7593 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,12 +435,11 @@
 				6F9C5FF11A9B366200C22C92 /* Categories */,
 				6F9C5FF61A9B366200C22C92 /* OAuth */,
 				6F9C5FF91A9B366200C22C92 /* Sync */,
+				48DCF0821BEA597D001954D6 /* Data */,
 				6F9C5FEB1A9B366200C22C92 /* FHDefines.h */,
 				6F9C5FE41A9B366200C22C92 /* FH.h */,
 				6F9C60451A9B366200C22C92 /* FH.m */,
 				B3D7C48915D28BE30019262E /* Supporting Files */,
-				B3F685D61AD8352A002240DA /* FHDataManager.h */,
-				B3F685D71AD8352A002240DA /* FHDataManager.m */,
 			);
 			name = "fh-ios-sdk";
 			path = FH;
@@ -441,6 +459,7 @@
 				48B5C5D21BE8C3E100D8AA20 /* Cloud */,
 				48B5C5CF1BE89E5600D8AA20 /* Config */,
 				48B5C5D01BE8C3A400D8AA20 /* Sync */,
+				48DCF0831BEA599A001954D6 /* Data */,
 				B3D7C49D15D28BE30019262E /* Supporting Files */,
 			);
 			name = "fh-ios-sdkTests";
@@ -699,6 +718,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48DCF07F1BEA06B5001954D6 /* FHCloudPropsTest.m in Sources */,
+				48DCF0851BEA59C5001954D6 /* FHDataManagerTest.m in Sources */,
 				48DCF07B1BE95226001954D6 /* FHResponseTest.m in Sources */,
 				6FCF32081A9B47000014B936 /* FHConfigTests.m in Sources */,
 				6FCF32091A9B47000014B936 /* FHSyncDataRecordTest.m in Sources */,
