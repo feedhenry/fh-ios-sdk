@@ -10,6 +10,8 @@
 		48B4D0511B316CCC00385BAC /* libFeedHenry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFeedHenry.a */; };
 		48B4D0541B316F2500385BAC /* FHPushConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B4D0521B316F2500385BAC /* FHPushConfig.h */; };
 		48B4D0551B316F2500385BAC /* FHPushConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B4D0531B316F2500385BAC /* FHPushConfig.m */; };
+		48DCF07B1BE95226001954D6 /* FHResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07A1BE95226001954D6 /* FHResponseTest.m */; };
+		48DCF07D1BE9F778001954D6 /* FHCloudRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */; };
 		6F1680381A9DD3A100E25BCC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54E15D291EF0019262E /* libz.dylib */; };
 		6F1680391A9DD3B100E25BCC /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C54C15D291B40019262E /* libxml2.2.dylib */; };
 		6F84682F1AB03C0100EC7593 /* FHJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F84682D1AB03C0100EC7593 /* FHJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +103,8 @@
 		3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		48B4D0521B316F2500385BAC /* FHPushConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHPushConfig.h; path = "fh-ios-sdk/FHPushConfig.h"; sourceTree = SOURCE_ROOT; };
 		48B4D0531B316F2500385BAC /* FHPushConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHPushConfig.m; path = "fh-ios-sdk/FHPushConfig.m"; sourceTree = SOURCE_ROOT; };
+		48DCF07A1BE95226001954D6 /* FHResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHResponseTest.m; sourceTree = SOURCE_ROOT; };
+		48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudRequestTest.m; path = "fh-ios-sdkTests/FHCloudRequestTest.m"; sourceTree = SOURCE_ROOT; };
 		545041B32263D5936453A81E /* Pods-FHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FHTests/Pods-FHTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F84682D1AB03C0100EC7593 /* FHJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHJSON.h; sourceTree = "<group>"; };
 		6F84682E1AB03C0100EC7593 /* FHJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHJSON.m; sourceTree = "<group>"; };
@@ -108,17 +112,11 @@
 		6F9C5FC21A9B35D600C22C92 /* fh-ios-sdkTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "fh-ios-sdkTests-Info.plist"; path = "fh-ios-sdkTests/fh-ios-sdkTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6F9C5FC51A9B35E100C22C92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fh-ios-sdkTests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
 		6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fhconfig.plist; path = "fh-ios-sdkTests/fhconfig.plist"; sourceTree = SOURCE_ROOT; };
-		6F9C5FCA1A9B35F900C22C92 /* FHConfigTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHConfigTests.h; path = "fh-ios-sdkTests/FHConfigTests.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHConfigTests.m; path = "fh-ios-sdkTests/FHConfigTests.m"; sourceTree = SOURCE_ROOT; };
-		6F9C5FCC1A9B35F900C22C92 /* FHSyncDataRecordTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncDataRecordTest.h; path = "fh-ios-sdkTests/FHSyncDataRecordTest.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncDataRecordTest.m; path = "fh-ios-sdkTests/FHSyncDataRecordTest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C5FCE1A9B35F900C22C92 /* FHSyncDatasetTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncDatasetTest.h; path = "fh-ios-sdkTests/FHSyncDatasetTest.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncDatasetTest.m; path = "fh-ios-sdkTests/FHSyncDatasetTest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C5FD01A9B35F900C22C92 /* FHSyncPendingDataRecordTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncPendingDataRecordTest.h; path = "fh-ios-sdkTests/FHSyncPendingDataRecordTest.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD11A9B35F900C22C92 /* FHSyncPendingDataRecordTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncPendingDataRecordTest.m; path = "fh-ios-sdkTests/FHSyncPendingDataRecordTest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C5FD21A9B35F900C22C92 /* FHSyncUtilsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHSyncUtilsTest.h; path = "fh-ios-sdkTests/FHSyncUtilsTest.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD31A9B35F900C22C92 /* FHSyncUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncUtilsTest.m; path = "fh-ios-sdkTests/FHSyncUtilsTest.m"; sourceTree = SOURCE_ROOT; };
-		6F9C5FD41A9B35F900C22C92 /* FHTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHTests.h; path = "fh-ios-sdkTests/FHTests.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD51A9B35F900C22C92 /* FHTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHTests.m; path = "fh-ios-sdkTests/FHTests.m"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD61A9B35F900C22C92 /* FHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHTestUtils.h; path = "fh-ios-sdkTests/FHTestUtils.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FD71A9B35F900C22C92 /* FHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHTestUtils.m; path = "fh-ios-sdkTests/FHTestUtils.m"; sourceTree = SOURCE_ROOT; };
@@ -262,7 +260,6 @@
 			isa = PBXGroup;
 			children = (
 				6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */,
-				6F9C5FCA1A9B35F900C22C92 /* FHConfigTests.h */,
 				6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */,
 			);
 			name = Config;
@@ -272,13 +269,9 @@
 			isa = PBXGroup;
 			children = (
 				48B5C5D11BE8C3D100D8AA20 /* Mock */,
-				6F9C5FCC1A9B35F900C22C92 /* FHSyncDataRecordTest.h */,
 				6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */,
-				6F9C5FCE1A9B35F900C22C92 /* FHSyncDatasetTest.h */,
 				6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */,
-				6F9C5FD01A9B35F900C22C92 /* FHSyncPendingDataRecordTest.h */,
 				6F9C5FD11A9B35F900C22C92 /* FHSyncPendingDataRecordTest.m */,
-				6F9C5FD21A9B35F900C22C92 /* FHSyncUtilsTest.h */,
 				6F9C5FD31A9B35F900C22C92 /* FHSyncUtilsTest.m */,
 			);
 			name = Sync;
@@ -296,8 +289,9 @@
 		48B5C5D21BE8C3E100D8AA20 /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
-				6F9C5FD41A9B35F900C22C92 /* FHTests.h */,
 				6F9C5FD51A9B35F900C22C92 /* FHTests.m */,
+				48DCF07A1BE95226001954D6 /* FHResponseTest.m */,
+				48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */,
 			);
 			name = Cloud;
 			sourceTree = "<group>";
@@ -714,6 +708,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DCF07B1BE95226001954D6 /* FHResponseTest.m in Sources */,
 				6FCF32081A9B47000014B936 /* FHConfigTests.m in Sources */,
 				6FCF32091A9B47000014B936 /* FHSyncDataRecordTest.m in Sources */,
 				6FCF320A1A9B47000014B936 /* FHSyncDatasetTest.m in Sources */,
@@ -721,6 +716,7 @@
 				6FCF320C1A9B47000014B936 /* FHSyncUtilsTest.m in Sources */,
 				6FCF320D1A9B47000014B936 /* FHTests.m in Sources */,
 				6FCF320E1A9B47000014B936 /* FHTestUtils.m in Sources */,
+				48DCF07D1BE9F778001954D6 /* FHCloudRequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,14 +5,16 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHSyncDatasetTest.h"
 #import "FHSyncDataset.h"
 #import "FHTestUtils.h"
 #import "FHSyncDataRecord.h"
 #import "FHSyncPendingDataRecord.h"
 #import "FHSyncUtils.h"
-
 #import <OCMock/OCMock.h>
+#import <XCTest/XCTest.h>
+
+@interface FHSyncDatasetTest : XCTestCase
+@end
 
 @implementation FHSyncDatasetTest
 

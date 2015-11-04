@@ -5,10 +5,13 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHConfigTests.h"
 #import "FHConfig.h"
 #import <OCMock/OCMock.h>
 #import "FHDataManager.h"
+#import <XCTest/XCTest.h>
+
+@interface FHConfigTests : XCTestCase
+@end
 
 @implementation FHConfigTests {
     SEL _configSelector, _initWithNameSelector;

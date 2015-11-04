@@ -5,9 +5,12 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHSyncUtilsTest.h"
 #import "FHSyncUtils.h"
 #import "FHJSON.h"
+#import <XCTest/XCTest.h>
+
+@interface FHSyncUtilsTest : XCTestCase
+@end
 
 @implementation FHSyncUtilsTest
 
