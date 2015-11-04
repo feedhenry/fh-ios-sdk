@@ -20,8 +20,6 @@
 		6F8468301AB03C0100EC7593 /* FHJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F84682E1AB03C0100EC7593 /* FHJSON.m */; };
 		6F9C5FC61A9B35E100C22C92 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC41A9B35E100C22C92 /* InfoPlist.strings */; };
 		6F9C5FDB1A9B35F900C22C92 /* fhconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C5FC91A9B35F900C22C92 /* fhconfig.plist */; };
-		6F9C607E1A9B369D00C22C92 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FF31A9B366200C22C92 /* NSString+MD5.m */; };
-		6F9C60801A9B369D00C22C92 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FF51A9B366200C22C92 /* NSString+Validation.m */; };
 		6F9C60821A9B36A200C22C92 /* FHOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FF81A9B366200C22C92 /* FHOAuthViewController.m */; };
 		6F9C60841A9B36B100C22C92 /* FHSyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FFB1A9B366200C22C92 /* FHSyncClient.m */; };
 		6F9C60861A9B36B100C22C92 /* FHSyncConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FFD1A9B366200C22C92 /* FHSyncConfig.m */; };
@@ -55,8 +53,6 @@
 		6FCF31F21A9B41740014B936 /* FHSyncClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFA1A9B366200C22C92 /* FHSyncClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F31A9B41760014B936 /* FHSyncConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FFC1A9B366200C22C92 /* FHSyncConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FCF31F81A9B430F0014B936 /* FHSyncNotificationMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60031A9B366200C22C92 /* FHSyncNotificationMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FCF31F91A9B43240014B936 /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF21A9B366200C22C92 /* NSString+MD5.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		6FCF31FA1A9B43240014B936 /* NSString+Validation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C5FF41A9B366200C22C92 /* NSString+Validation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FCF32081A9B47000014B936 /* FHConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCB1A9B35F900C22C92 /* FHConfigTests.m */; };
 		6FCF32091A9B47000014B936 /* FHSyncDataRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCD1A9B35F900C22C92 /* FHSyncDataRecordTest.m */; };
 		6FCF320A1A9B47000014B936 /* FHSyncDatasetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9C5FCF1A9B35F900C22C92 /* FHSyncDatasetTest.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
@@ -136,10 +132,6 @@
 		6F9C5FED1A9B366200C22C92 /* FHInitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHInitRequest.h; path = "fh-ios-sdk/FHInitRequest.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FEF1A9B366200C22C92 /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponse.h; path = "fh-ios-sdk/FHResponse.h"; sourceTree = SOURCE_ROOT; };
 		6F9C5FF01A9B366200C22C92 /* FHResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponseDelegate.h; path = "fh-ios-sdk/FHResponseDelegate.h"; sourceTree = SOURCE_ROOT; };
-		6F9C5FF21A9B366200C22C92 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
-		6F9C5FF31A9B366200C22C92 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		6F9C5FF41A9B366200C22C92 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
-		6F9C5FF51A9B366200C22C92 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		6F9C5FF71A9B366200C22C92 /* FHOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHOAuthViewController.h; sourceTree = "<group>"; };
 		6F9C5FF81A9B366200C22C92 /* FHOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHOAuthViewController.m; sourceTree = "<group>"; };
 		6F9C5FFA1A9B366200C22C92 /* FHSyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHSyncClient.h; sourceTree = "<group>"; };
@@ -315,10 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				6F84682C1AB03C0100EC7593 /* JSON */,
-				6F9C5FF21A9B366200C22C92 /* NSString+MD5.h */,
-				6F9C5FF31A9B366200C22C92 /* NSString+MD5.m */,
-				6F9C5FF41A9B366200C22C92 /* NSString+Validation.h */,
-				6F9C5FF51A9B366200C22C92 /* NSString+Validation.m */,
 			);
 			name = Categories;
 			path = "fh-ios-sdk/Categories";
@@ -498,8 +486,6 @@
 				6FE7B3691ACEDED10029C63F /* FHSyncDataset.h in Headers */,
 				6FE7B36A1ACEDEF60029C63F /* FHSyncPendingDataRecord.h in Headers */,
 				6FE7B3671ACEDEA90029C63F /* FHOAuthViewController.h in Headers */,
-				6FCF31FA1A9B43240014B936 /* NSString+Validation.h in Headers */,
-				6FCF31F91A9B43240014B936 /* NSString+MD5.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,8 +690,6 @@
 				6F8468301AB03C0100EC7593 /* FHJSON.m in Sources */,
 				6F9C60911A9B36B100C22C92 /* FHSyncUtils.m in Sources */,
 				6F9C60821A9B36A200C22C92 /* FHOAuthViewController.m in Sources */,
-				6F9C607E1A9B369D00C22C92 /* NSString+MD5.m in Sources */,
-				6F9C60801A9B369D00C22C92 /* NSString+Validation.m in Sources */,
 				B3F685D91AD8352A002240DA /* FHDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

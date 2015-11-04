@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 
 #import "FHConfig.h"
-#import "NSString+MD5.h"
 #import "FHDataManager.h"
 
 @interface FHConfig ()
