@@ -38,3 +38,7 @@ FH-*/
 !fh-ios-sdk/
 **/DerivedData/*
 templates/FHStarterProject/FH.framework/*
+
+# code coverage
+fh-ios-sdk-Prefix.gcda
+fh-ios-sdk-Prefix.gcno
