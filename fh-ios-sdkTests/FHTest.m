@@ -111,4 +111,28 @@ id _mockApplication;
     // then
 }
 
+- (void)testSendMetricsWhenAppLaunched {
+    // given
+    id analyticsMock = OCMClassMock([AGPushAnalytics class]);
+    OCMStub([analyticsMock sendMetricsWhenAppLaunched:[OCMArg any]]);
+    
+    // when
+    [FH sendMetricsWhenAppLaunched:@{}];
+    
+    // then
+    OCMVerify([analyticsMock sendMetricsWhenAppLaunched:[OCMArg any]]);
+}
+
+- (void)testSendMetricsWhenAppAwoken {
+    // given
+    id analyticsMock = OCMClassMock([AGPushAnalytics class]);
+    OCMStub([analyticsMock sendMetricsWhenAppAwoken:UIApplicationStateActive userInfo:[OCMArg any]]);
+    
+    // when
+    [FH sendMetricsWhenAppAwoken:UIApplicationStateActive userInfo:@{}];
+    
+    // then
+    OCMVerify([analyticsMock sendMetricsWhenAppAwoken:UIApplicationStateActive userInfo:[OCMArg any]]);
+}
+
 @end
