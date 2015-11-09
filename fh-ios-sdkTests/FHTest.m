@@ -135,4 +135,5 @@ id _mockApplication;
     OCMVerify([analyticsMock sendMetricsWhenAppAwoken:UIApplicationStateActive userInfo:[OCMArg any]]);
 }
 
+
 @end
