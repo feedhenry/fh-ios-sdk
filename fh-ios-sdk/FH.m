@@ -91,14 +91,14 @@ static Reachability *reachability;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [application registerUserNotificationSettings:notificationSettings];
+        [application registerForRemoteNotifications];
     } else {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+        [application registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
     
 #else
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    [[application registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif
 }
 

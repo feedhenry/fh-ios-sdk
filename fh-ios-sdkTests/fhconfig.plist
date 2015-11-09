@@ -5,10 +5,20 @@
         <key>host</key>
         <string>http://testing.feedhenry.com</string>
         <key>appid</key>
-        <string>testappid</string>
+        <string>APP_ID</string>
         <key>appkey</key>
-        <string>testkey</string>
+        <string>APP_KEY</string>
         <key>mode</key>
         <string>dev</string>
+        <key>projectid</key>
+        <string>PROJECT_ID</string>
+        <key>connectiontag</key>
+        <string>CONNECTION_TAG</string>
+        <key>serverURL</key>
+        <string>serverlURL</string>
+        <key>variantID</key>
+        <string>variantID</string>
+        <key>variantSecret</key>
+        <string>variantSecret</string>
     </dict>
 </plist>

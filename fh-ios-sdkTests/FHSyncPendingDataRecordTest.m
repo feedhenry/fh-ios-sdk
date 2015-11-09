@@ -5,9 +5,12 @@
 //  Copyright (c) 2012-2015 FeedHenry. All rights reserved.
 //
 
-#import "FHSyncPendingDataRecordTest.h"
 #import "FHSyncPendingDataRecord.h"
 #import "FHTestUtils.h"
+#import <XCTest/XCTest.h>
+
+@interface FHSyncPendingDataRecordTest : XCTestCase
+@end
 
 @implementation FHSyncPendingDataRecordTest
 - (void)setUp {

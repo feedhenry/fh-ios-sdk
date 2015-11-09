@@ -3,13 +3,13 @@
 <plist>
     <dict>
         <key>host</key>
-        <string>https://engdev-t.sandbox.feedhenry.com</string>
+        <string>https://redhat-demos-t.sandbox.feedhenry.com</string>
         <key>appid</key>
-        <string>kdwlfaovaxrhaaihdzijktmm</string>
+        <string>v63zu2qoi62ontzj3pxkxs6x</string>
         <key>projectid</key>
-        <string>kdwlfamzejuqwxg5nykpwzpp</string>
+        <string>v63zu2r2dgc7mqqy45wuiivk</string>
         <key>appkey</key>
-        <string>1eaa795034a3d39fbe8ceeb58781550c8031058d</string>
+        <string>6e062079da0ad4983aabfd71156405f7c739c62c</string>
         <key>connectiontag</key>
         <string>0.0.2</string>
     </dict>

@@ -6,14 +6,17 @@
 //
 
 #import "FH.h"
-#import "FHTests.h"
 #import "FHInitRequest.h"
 #import "FHDefines.h"
 #import "FHAct.h"
 #import "FHAuthRequest.h"
 #import "Nocilla.h"
+#import <XCTest/XCTest.h>
 
 float TEST_TIMEOUT = 5.0;
+@interface FHTests : XCTestCase
+@end
+
 @implementation FHTests
 
 - (void)setUp {

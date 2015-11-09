@@ -44,7 +44,7 @@
             cloudUrl = self.cloudProps[@"hosts"][propName];
         }
         NSString *format =
-            ([[cloudUrl substringToIndex:[cloudUrl length] - 1] isEqualToString:@"/"]) ? @"%@"
+            ([[cloudUrl substringFromIndex:[cloudUrl length] - 1] isEqualToString:@"/"]) ? @"%@"
                                                                                        : @"%@/";
         NSString *api = [NSMutableString stringWithFormat:format, cloudUrl];
         DLog(@"Request url is %@", api);
