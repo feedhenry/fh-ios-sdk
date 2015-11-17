@@ -8,7 +8,7 @@ See [iOS SDK Guide](http://docs.feedhenry.com/v2/sdk_ios.html).
 
 ### Links
 * [FeedHenry Documentation](http://docs.feedhenry.com)
-* [ASIHttpRequest](http://allseeing-i.com/ASIHTTPRequest/)
+* [Reachability](https://github.com/tonymillion/Reachability)
 * [AeroGear iOS Push](https://github.com/aerogear/aerogear-ios-push)
 
 
@@ -26,7 +26,7 @@ pod install
 Lastly, in Finder open the file `fh-ios-sdk.xcworkspace` - NOT the `fh-ios-sdk.xcodeproj`. This ensures both the iOS SDK project and the CoccoPods dependencies subprjoect are included in xCode. The SDK should now build successfully. 
 
 ##Running Tests
-Tests can be run in xCode by navigating to Product -> Test. 
+Tests can be run in Xcode by navigating to Product -> Test. 
 
 ## Common Actions
 
