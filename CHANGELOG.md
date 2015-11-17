@@ -1,4 +1,11 @@
 # CHANGELOG - FeedHenry iOS SDK
+
+## 3.0.0-beta1 - 2015-11-17
+* RHMAP-1994 - more unit test coverage
+* RHMAP-2577 - remove deprecated library ASIHTTPRequest and remove synchronous http support (breaking API change).
+* RHMAP-2703 - sync complete message only on success
+* RHMAP-1965 - introduce coverall coverage report in travis
+
 ## 2.2.19 - 2015-10-19
 * Make sure do not remove object from a dictionary while iterating
 
@@ -15,7 +22,7 @@
 
 ## 2.2.17 - 2015-10-09
 * RHMAP-2455 - Sync Framework concurrency issues (server latency issues)
-* FH-2659 iOS9 enable bicode
+* FH-2659 iOS9 enable bitcode
 
 ## 2.2.16 - 2015-10-05
 * FH-2262 - Fix wronlgy squashed sync operation
