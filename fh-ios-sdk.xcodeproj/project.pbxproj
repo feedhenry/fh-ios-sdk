@@ -30,7 +30,7 @@
 		48627C201BEA6A0C0011CA68 /* FHResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C111BEA6A0C0011CA68 /* FHResponse.h */; };
 		48627C211BEA6A0C0011CA68 /* FHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 48627C121BEA6A0C0011CA68 /* FHResponse.m */; };
 		48627C221BEA6A0C0011CA68 /* FHResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 48627C131BEA6A0C0011CA68 /* FHResponseDelegate.h */; };
-		4862F9111C0EE3A4002DA2A7 /* FHResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4862F9101C0EE3A4002DA2A7 /* FHResponseTest.m */; };
+		4862F9191C0EFDE1002DA2A7 /* FHResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4862F9181C0EFDE1002DA2A7 /* FHResponseTest.m */; };
 		487190E71BEB5A720006BA0C /* FHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 487190E61BEB5A720006BA0C /* FHTest.m */; };
 		48B4D0511B316CCC00385BAC /* libFeedHenry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48315D28BE30019262E /* libFeedHenry.a */; };
 		48DCF07D1BE9F778001954D6 /* FHCloudRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */; };
@@ -124,7 +124,7 @@
 		48627C111BEA6A0C0011CA68 /* FHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponse.h; path = "fh-ios-sdk/Cloud/FHResponse.h"; sourceTree = SOURCE_ROOT; };
 		48627C121BEA6A0C0011CA68 /* FHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHResponse.m; path = "fh-ios-sdk/Cloud/FHResponse.m"; sourceTree = SOURCE_ROOT; };
 		48627C131BEA6A0C0011CA68 /* FHResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHResponseDelegate.h; path = "fh-ios-sdk/Cloud/FHResponseDelegate.h"; sourceTree = SOURCE_ROOT; };
-		4862F9101C0EE3A4002DA2A7 /* FHResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHResponseTest.m; path = "fh-ios-sdkTests/FHResponseTest.m"; sourceTree = SOURCE_ROOT; };
+		4862F9181C0EFDE1002DA2A7 /* FHResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHResponseTest.m; path = "fh-ios-sdkTests/FHResponseTest.m"; sourceTree = SOURCE_ROOT; };
 		487190E61BEB5A720006BA0C /* FHTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHTest.m; path = "fh-ios-sdkTests/FHTest.m"; sourceTree = SOURCE_ROOT; };
 		48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudRequestTest.m; path = "fh-ios-sdkTests/FHCloudRequestTest.m"; sourceTree = SOURCE_ROOT; };
 		48DCF07E1BEA06B5001954D6 /* FHCloudPropsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudPropsTest.m; path = "fh-ios-sdkTests/FHCloudPropsTest.m"; sourceTree = SOURCE_ROOT; };
@@ -292,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				6F9C5FD51A9B35F900C22C92 /* FHTests.m */,
-				4862F9101C0EE3A4002DA2A7 /* FHResponseTest.m */,
+				4862F9181C0EFDE1002DA2A7 /* FHResponseTest.m */,
 				48DCF07C1BE9F778001954D6 /* FHCloudRequestTest.m */,
 			);
 			name = Cloud;
@@ -698,7 +698,6 @@
 				48627BFE1BEA69C30011CA68 /* FHConfig.m in Sources */,
 				48627C1B1BEA6A0C0011CA68 /* FHCloudRequest.m in Sources */,
 				48627C211BEA6A0C0011CA68 /* FHResponse.m in Sources */,
-				4862F9111C0EE3A4002DA2A7 /* FHResponseTest.m in Sources */,
 				48627C041BEA69FA0011CA68 /* FHCloudProps.m in Sources */,
 				48627C1D1BEA6A0C0011CA68 /* FHHttpClient.m in Sources */,
 				48627C151BEA6A0C0011CA68 /* FHAct.m in Sources */,
@@ -733,6 +732,7 @@
 				6FCF320E1A9B47000014B936 /* FHTestUtils.m in Sources */,
 				487190E71BEB5A720006BA0C /* FHTest.m in Sources */,
 				48DCF07D1BE9F778001954D6 /* FHCloudRequestTest.m in Sources */,
+				4862F9191C0EFDE1002DA2A7 /* FHResponseTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
