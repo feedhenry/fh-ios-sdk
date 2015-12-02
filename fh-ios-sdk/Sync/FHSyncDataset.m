@@ -536,12 +536,12 @@ static NSString *const kUIDMapping = @"uidMapping";
     
     [self updateMetaFromNewData:resData];
 
-    BOOL hasRecords = NO;
-    if (resData[@"records"]) {
-        // Full Dataset returned
-        hasRecords = YES;
-        [self resetDataRecords:resData];
-    }
+//    BOOL hasRecords = NO;
+//    if (resData[@"records"]) {
+//        // Full Dataset returned
+//        hasRecords = YES;
+//        [self resetDataRecords:resData];
+//    }
 
     if (resData[@"updates"]) {
         NSMutableArray *ack = [NSMutableArray array];
@@ -560,7 +560,7 @@ static NSString *const kUIDMapping = @"uidMapping";
         self.acknowledgements = ack;
     }
 
-    if (!hasRecords && resData[@"hash"] && ![resData[@"hash"] isEqualToString:self.hashValue]) {
+    if (resData[@"hash"] && ![resData[@"hash"] isEqualToString:self.hashValue]) {
         NSString *remoteHash = resData[@"hash"];
         DLog(@"Local dataset stale - syncing records :: local hash= %@ - remoteHash = %@",
               self.hashValue, remoteHash);
@@ -764,23 +764,23 @@ static NSString *const kUIDMapping = @"uidMapping";
     }];
 }
 
-- (void)resetDataRecords:(NSDictionary *)resData {
-    NSDictionary *records = resData[@"records"];
-    NSMutableDictionary *allRecords = [NSMutableDictionary dictionary];
-    [records enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSDictionary *data = (NSDictionary *)obj;
-        FHSyncDataRecord *record = [[FHSyncDataRecord alloc] initWithData:data];
-        allRecords[key] = record;
-    }];
-
-    self.dataRecords = allRecords;
-    self.hashValue = resData[@"hash"];
-    [FHSyncUtils doNotifyWithDataId:self.datasetId
-                             config:self.syncConfig
-                                uid:self.hashValue
-                               code:DELTA_RECEIVED_MESSAGE
-                            message:@"full dataset"];
-}
+//- (void)resetDataRecords:(NSDictionary *)resData {
+//    NSDictionary *records = resData[@"records"];
+//    NSMutableDictionary *allRecords = [NSMutableDictionary dictionary];
+//    [records enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+//        NSDictionary *data = (NSDictionary *)obj;
+//        FHSyncDataRecord *record = [[FHSyncDataRecord alloc] initWithData:data];
+//        allRecords[key] = record;
+//    }];
+//
+//    self.dataRecords = allRecords;
+//    self.hashValue = resData[@"hash"];
+//    [FHSyncUtils doNotifyWithDataId:self.datasetId
+//                             config:self.syncConfig
+//                                uid:self.hashValue
+//                               code:DELTA_RECEIVED_MESSAGE
+//                            message:@"full dataset"];
+//}
 
 - (void)processUpdates:(NSDictionary *)updates
           notification:(NSString *)notifcation
