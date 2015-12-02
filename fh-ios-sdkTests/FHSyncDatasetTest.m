@@ -160,98 +160,15 @@
 
     NSArray *allhashes = @[ data1Hash, data2Hash ];
     NSString *globalHash = [FHSyncUtils generateHashForData:allhashes];
-
+    dataset.hashValue = globalHash;
     resData[@"hash"] = globalHash;
-    NSMutableDictionary *records = [NSMutableDictionary dictionary];
-    records[@"uid1"] = @{ @"data" : data1, @"hash" : data1Hash };
-    records[@"uid2"] = @{ @"data" : data2, @"hash" : data2Hash };
-    resData[@"records"] = records;
-
-    // mock FHSyncUtils
-    //id fhSyncUtilsMock = OCMClassMock([FHSyncUtils class]);
     
     // When sync data
     [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
 
     // expect local dataset has all the records
     XCTAssertTrue([dataset.hashValue isEqualToString:globalHash], @"global hash should match");
-    NSDictionary *currentData = dataset.dataRecords;
-    XCTAssertTrue(currentData.count == 2, @"only %lu entries found",
-                  (unsigned long)currentData.count);
 
-    XCTAssertTrue([[currentData[@"uid1"] hashValue] isEqualToString:data1Hash],
-                  @"data1 hash value should match");
-    XCTAssertTrue([[currentData[@"uid2"] hashValue] isEqualToString:data2Hash],
-                  @"data2 hash value should match");
-
-    // try to update a local data
-    // no pending data at the moment
-    XCTAssertTrue(dataset.pendingDataRecords.count == 0, @"pending records found");
-    NSDictionary *updatedata = [FHTestUtils generateJSONData];
-    [dataset updateWithUID:@"uid1" data:updatedata];
-    NSString *updatedHash = [FHSyncUtils generateHashForData:updatedata];
-
-    // dataset should have pendingrecords
-    XCTAssertTrue(dataset.pendingDataRecords.count == 1, @"pending records count = %lu",
-                  (unsigned long)dataset.pendingDataRecords.count);
-    [dataset.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        FHSyncPendingDataRecord *pendingRecord = (FHSyncPendingDataRecord *)obj;
-        if ([pendingRecord.uid isEqualToString:@"uid1"]) {
-            NSString *pendingPreHash = [pendingRecord preData].hashValue;
-            NSString *pendingPostHash = [pendingRecord postData].hashValue;
-            XCTAssertEqualObjects(pendingPreHash, data1Hash, @"pre data hash should match");
-            XCTAssertEqualObjects(pendingPostHash, updatedHash, @"post data hash should match");
-            *stop = YES;
-        }
-    }];
-
-    NSDictionary *readData = [dataset readDataWithUID:@"uid1"];
-    XCTAssertEqualObjects([FHSyncUtils generateHashForData:readData[@"data"]], updatedHash,
-                          @"read data hash doesn't match update data");
-
-    // next, construct a response to pretend the update happend and verify the
-    // state of dataset
-    records[@"uid1"] = @{ @"data" : updatedata, @"hash" : updatedHash };
-    NSDictionary *data3 = [FHTestUtils generateJSONData];
-    records[@"uid3"] = @{ @"data" : data3, @"hash" : [FHSyncUtils generateHashForData:data3] };
-
-    __block FHSyncPendingDataRecord *pendingRecord = nil;
-    [dataset.pendingDataRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        FHSyncPendingDataRecord *pd = (FHSyncPendingDataRecord *)obj;
-        if ([pd.uid isEqualToString:@"uid1"]) {
-            pendingRecord = pd;
-        }
-    }];
-
-    pendingRecord.inFlight = YES;
-
-    NSMutableDictionary *resUpdates = [NSMutableDictionary dictionary];
-    NSMutableDictionary *applied = [NSMutableDictionary dictionary];
-    NSMutableDictionary *applieddata = [NSMutableDictionary dictionary];
-    applieddata[@"action"] = @"update";
-    applieddata[@"type"] = @"applied";
-    applieddata[@"uid"] = @"uid1";
-    applieddata[@"hash"] = pendingRecord.hashValue;
-    applied[pendingRecord.hashValue] = applieddata;
-    resUpdates[@"applied"] = applied;
-    resUpdates[@"hashes"] = [applied copy];
-
-    resData[@"updates"] = resUpdates;
-
-    allhashes = @[ updatedHash, data2Hash, [FHSyncUtils generateHashForData:data3] ];
-    resData[@"hash"] = [FHSyncUtils generateHashForData:allhashes];
-
-    [dataset performSelector:@selector(syncRequestSuccess:) withObject:resData];
-
-    // we expect the pending record should be removed
-    XCTAssertTrue(dataset.pendingDataRecords.count == 0, @"pending records count = %lu",
-                  (unsigned long)dataset.pendingDataRecords.count);
-    XCTAssertTrue(dataset.dataRecords.count == 3, @"there should be 3 records, but we found %lu",
-                  (unsigned long)dataset.dataRecords.count);
-    // verify it has called the expected method
-    //OCMVerify([fhSyncUtilsMock doNotifyWithDataId:dataId config:[OCMArg any] uid:[OCMArg any]
-    //                                                      code:@"SYNC_COMPLETE"
-    //                                                   message:@"online"]);
 }
 
 - (void)testSyncRecords_offlineUpdate {

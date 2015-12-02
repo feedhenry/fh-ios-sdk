@@ -536,13 +536,6 @@ static NSString *const kUIDMapping = @"uidMapping";
     
     [self updateMetaFromNewData:resData];
 
-//    BOOL hasRecords = NO;
-//    if (resData[@"records"]) {
-//        // Full Dataset returned
-//        hasRecords = YES;
-//        [self resetDataRecords:resData];
-//    }
-
     if (resData[@"updates"]) {
         NSMutableArray *ack = [NSMutableArray array];
         NSDictionary *updates = resData[@"updates"];
@@ -763,24 +756,6 @@ static NSString *const kUIDMapping = @"uidMapping";
         DLog(@"SyncRecords result after pending removed = %@", resData);
     }];
 }
-
-//- (void)resetDataRecords:(NSDictionary *)resData {
-//    NSDictionary *records = resData[@"records"];
-//    NSMutableDictionary *allRecords = [NSMutableDictionary dictionary];
-//    [records enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//        NSDictionary *data = (NSDictionary *)obj;
-//        FHSyncDataRecord *record = [[FHSyncDataRecord alloc] initWithData:data];
-//        allRecords[key] = record;
-//    }];
-//
-//    self.dataRecords = allRecords;
-//    self.hashValue = resData[@"hash"];
-//    [FHSyncUtils doNotifyWithDataId:self.datasetId
-//                             config:self.syncConfig
-//                                uid:self.hashValue
-//                               code:DELTA_RECEIVED_MESSAGE
-//                            message:@"full dataset"];
-//}
 
 - (void)processUpdates:(NSDictionary *)updates
           notification:(NSString *)notifcation
