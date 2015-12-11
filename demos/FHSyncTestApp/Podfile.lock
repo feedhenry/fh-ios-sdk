@@ -1,6 +1,6 @@
 PODS:
   - AeroGear-Push (1.1.1)
-  - FH (2.2.19):
+  - FH (3.0.0-beta1):
     - AeroGear-Push (= 1.1.1)
     - Reachability (= 3.2)
   - Reachability (3.2)
@@ -10,11 +10,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   FH:
-    :path: "../../"
+    :path: ../../
 
 SPEC CHECKSUMS:
   AeroGear-Push: 0d4dd12e6311f1231e2517a8597ca199bd1b8683
-  FH: ec5574a3a0638abaf97ab0441bdd39cb6a5e4f96
+  FH: 917138aa557a7f45206365d9f75269ddef46481c
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
 COCOAPODS: 0.39.0
