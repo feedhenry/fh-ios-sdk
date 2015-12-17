@@ -1,5 +1,9 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 3.0.0-beta2 - 2015-12-11
+* RHMAP-3298: http failure not reported in sync
+* RHMAP-2737: remove sync dead code on reset dataset
+
 ## 3.0.0-beta1 - 2015-11-17
 * RHMAP-1994 - more unit test coverage
 * RHMAP-2577 - remove deprecated library ASIHTTPRequest and remove synchronous http support (breaking API change).

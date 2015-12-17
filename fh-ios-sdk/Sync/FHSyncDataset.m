@@ -485,7 +485,7 @@ static NSString *const kUIDMapping = @"uidMapping";
                     // will review the crashed
                     // records to see if we can determine their current state.
                     [self markInFlightAsCrashed];
-                    NSString* message = response?[[response parsedResponse] JSONString]: @"null response recieved";
+                    NSString* message = response.error.localizedDescription;
 
                     DLog(@"syncLoop failed : msg = %@", message);
                     [FHSyncUtils doNotifyWithDataId:self.datasetId
