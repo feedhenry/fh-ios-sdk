@@ -56,7 +56,7 @@
 
 + (FHSyncPendingDataRecord *)generateRandomPendingRecord {
     FHSyncPendingDataRecord *pendingRecord = [[FHSyncPendingDataRecord alloc] init];
-    pendingRecord.inFlight = YES;
+    pendingRecord.inFlight = NO;
     pendingRecord.crashed = NO;
     pendingRecord.inFlightDate = [NSDate date];
     pendingRecord.action = @"create";
