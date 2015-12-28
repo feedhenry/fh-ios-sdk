@@ -33,7 +33,7 @@
 
 - (NSMutableDictionary *)JSONData;
 
-+ (FHSyncPendingDataRecord *)objectFromJSONData:(NSDictionary *)jsonData;
++ (FHSyncPendingDataRecord *)objectFromJSONData:(NSDictionary *)jsonData key:(NSString*) key;
 
 - (NSString *)JSONString;
 

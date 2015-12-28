@@ -155,7 +155,11 @@ static NSString *const kUIDMapping = @"uidMapping";
     NSDictionary *pendingJson = jsonObj[kPendingRecords];
     if (nil != pendingJson) {
         [pendingJson enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            (instance.pendingDataRecords)[key] = [FHSyncPendingDataRecord objectFromJSONData:obj];
+            FHSyncPendingDataRecord* pending = [FHSyncPendingDataRecord objectFromJSONData:obj key: key];
+            if  (pending.inFlight) {
+                pending.crashed = YES;
+            }
+            (instance.pendingDataRecords)[key] = pending;
         }];
     }
     instance.dataRecords = [NSMutableDictionary dictionary];
