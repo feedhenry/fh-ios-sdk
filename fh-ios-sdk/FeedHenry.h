@@ -17,6 +17,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "FHDefines.h"
+
 #pragma mark - core
 #import "FH.h"
 #import "FHConfig.h"
