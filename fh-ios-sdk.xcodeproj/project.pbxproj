@@ -101,6 +101,7 @@
 		0E6E7A1924B17EF8B3DD8023 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2BC8A0A7417DA495FFDD185F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4821F44B1C3C246000538D49 /* FeedHenry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FeedHenry.h; path = "fh-ios-sdk/FeedHenry.h"; sourceTree = SOURCE_ROOT; };
 		48627BF51BEA69B30011CA68 /* FHDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHDataManager.h; path = "fh-ios-sdk/Data/FHDataManager.h"; sourceTree = SOURCE_ROOT; };
 		48627BF61BEA69B30011CA68 /* FHDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHDataManager.m; path = "fh-ios-sdk/Data/FHDataManager.m"; sourceTree = SOURCE_ROOT; };
 		48627BF91BEA69C30011CA68 /* FHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHConfig.h; path = "fh-ios-sdk/Config/FHConfig.h"; sourceTree = SOURCE_ROOT; };
@@ -439,6 +440,7 @@
 				6F9C5FF91A9B366200C22C92 /* Sync */,
 				48DCF0821BEA597D001954D6 /* Data */,
 				6F9C5FEB1A9B366200C22C92 /* FHDefines.h */,
+				4821F44B1C3C246000538D49 /* FeedHenry.h */,
 				6F9C5FE41A9B366200C22C92 /* FH.h */,
 				6F9C60451A9B366200C22C92 /* FH.m */,
 				B3D7C48915D28BE30019262E /* Supporting Files */,
@@ -771,6 +773,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -794,6 +797,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PROFILING_CODE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MODULEMAP_FILE = "fh-ios-sdk/module.modulemap";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -813,6 +817,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(inherited)";
@@ -828,6 +833,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PROFILING_CODE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MODULEMAP_FILE = "fh-ios-sdk/module.modulemap";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
