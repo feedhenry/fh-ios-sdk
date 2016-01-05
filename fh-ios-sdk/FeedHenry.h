@@ -15,25 +15,29 @@
  * limitations under the License.
  */
 
-typedef NS_ENUM(NSInteger, FH_ACTION) {
-    FH_ACTION_ACT,
-    FH_ACTION_AUTH,
-    FH_ACTION_INIT,
-    FH_ACTION_CLOUD
-};
+#import <Foundation/Foundation.h>
 
-#define FH_ACT @"act"
-#define FH_CLOUD @"cloud"
-#define FH_AUTH @"auth"
-#define FH_INIT @"init"
-#define FH_SDK_VERSION @"3.0.0-rc2"
-#define SESSION_TOKEN_KEY @"sessionToken"
-#define VERIFY_SESSION_PATH @"/box/srv/1.1/admin/authpolicy/verifysession"
-#define REVOKE_SESSION_PATH @"/box/srv/1.1/admin/authpolicy/revokesession"
+#import "FHDefines.h"
 
-// cater for debug/release mode of logging
-#ifdef DEBUG
-#define DLog(...) NSLog(@"%s(%p) %@", __PRETTY_FUNCTION__, self, [NSString stringWithFormat:__VA_ARGS__])
-#else
-#define DLog(...) /* */
-#endif
+#pragma mark - core
+#import "FH.h"
+#import "FHConfig.h"
+
+#pragma mark - request
+#import "FHResponse.h"
+#import "FHResponseDelegate.h"
+#import "FHAct.h"
+#import "FHActRequest.h"
+#import "FHCloudRequest.h"
+#import "FHCloudProps.h"
+#import "FHAuthRequest.h"
+
+#pragma mark - sync
+#import "FHSyncClient.h"
+#import "FHSyncConfig.h"
+#import "FHDataManager.h"
+#import "FHSyncDelegate.h"
+#import "FHSyncNotificationMessage.h"
+
+#pragma mark - utils
+#import "FHJSON.h"
