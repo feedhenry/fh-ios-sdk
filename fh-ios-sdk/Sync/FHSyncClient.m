@@ -269,4 +269,11 @@
                AndFailure:failornil];
 }
 
+- (void)forceSync:(NSString*)dataSetId {
+    FHSyncDataset *dataSet = _dataSets[dataSetId];
+    if (dataSet) {
+        dataSet.syncLoopPending = YES;
+    }
+}
+
 @end

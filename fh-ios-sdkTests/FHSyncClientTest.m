@@ -225,4 +225,15 @@
     // then
     XCTAssertNil(result);
 }
+
+- (void)testForceSync {
+    // given
+    XCTAssertTrue(_dataSet.syncLoopPending == NO);
+    // when
+    [_syncClient manageWithDataId:@"myShoppingList" AndConfig:_config AndQuery:_query AndMetaData:_customMetaData];
+    [_syncClient forceSync:@"myShoppingList"];
+    
+    // then
+    XCTAssertTrue(_dataSet.syncLoopPending == YES);
+}
 @end
