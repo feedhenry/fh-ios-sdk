@@ -105,10 +105,13 @@ static NSString *const kWaitingFor = @"waitingFor";
     return _hashValue;
 }
 
-+ (FHSyncPendingDataRecord *)objectFromJSONData:(NSDictionary *)jsonObj {
++ (FHSyncPendingDataRecord *)objectFromJSONData:(NSDictionary *)jsonObj key:(NSString*)key {
     FHSyncPendingDataRecord *record = [[FHSyncPendingDataRecord alloc] init];
     if (jsonObj[kInFlight]) {
         record.inFlight = [jsonObj[kInFlight] boolValue];
+    }
+    if (key) {
+        record.hashValue = key;
     }
     if (jsonObj[kInflightDate]) {
         record.inFlightDate =
@@ -149,7 +152,7 @@ static NSString *const kWaitingFor = @"waitingFor";
 
 + (FHSyncPendingDataRecord *)objectFromJSONString:(NSString *)jsonStr {
     NSDictionary *jsonObj = [jsonStr objectFromJSONString];
-    return [FHSyncPendingDataRecord objectFromJSONData:jsonObj];
+    return [FHSyncPendingDataRecord objectFromJSONData:jsonObj key: nil];
 }
 
 - (NSString *)description {

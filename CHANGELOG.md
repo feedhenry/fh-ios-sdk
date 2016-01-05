@@ -1,4 +1,6 @@
 # CHANGELOG - FeedHenry iOS SDK
+## 3.0.0-beta3 - 2015-12-28
+* RHMAP-3578: stale record, no update sent
 
 ## 3.0.0-beta2 - 2015-12-11
 * RHMAP-3298: http failure not reported in sync
