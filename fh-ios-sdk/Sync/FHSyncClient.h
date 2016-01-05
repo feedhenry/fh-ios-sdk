@@ -152,4 +152,10 @@
  */
 - (void)destroy;
 
+/**
+ Causes the sync framework to schedule for immediate execution a sync.
+ 
+ @param dataSetId The id of the dataset
+ */
+- (void)forceSync:(NSString*)dataSetId;
 @end
