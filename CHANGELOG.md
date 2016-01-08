@@ -1,4 +1,9 @@
 # CHANGELOG - FeedHenry iOS SDK
+
+## 3.0.0-rc2 - 2016-01-05
+* RHMAP-2925: add force sync feature
+* RHMAP-1155: module map to remove warning in iOs app using FH.framework
+
 ## 3.0.0-beta3 - 2015-12-28
 * RHMAP-3578: stale record, no update sent
 
