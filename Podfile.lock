@@ -5,10 +5,21 @@ PODS:
   - Reachability (3.2)
 
 DEPENDENCIES:
-  - AeroGear-Push (= 1.1.1)
+  - AeroGear-Push (from `https://github.com/corinnekrych/aerogear-ios-push.git`, branch
+    `AGIOS-485.ObjC.push.url.properties`)
   - Nocilla (= 0.10.0)
   - OCMock (= 3.2)
   - Reachability (= 3.2)
+
+EXTERNAL SOURCES:
+  AeroGear-Push:
+    :branch: AGIOS-485.ObjC.push.url.properties
+    :git: https://github.com/corinnekrych/aerogear-ios-push.git
+
+CHECKOUT OPTIONS:
+  AeroGear-Push:
+    :commit: 81702e9d5c79a0c99906fa64617a3eadade8bdd6
+    :git: https://github.com/corinnekrych/aerogear-ios-push.git
 
 SPEC CHECKSUMS:
   AeroGear-Push: 0d4dd12e6311f1231e2517a8597ca199bd1b8683
