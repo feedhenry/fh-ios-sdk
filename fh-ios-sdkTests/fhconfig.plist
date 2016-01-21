@@ -14,8 +14,6 @@
         <string>PROJECT_ID</string>
         <key>connectiontag</key>
         <string>CONNECTION_TAG</string>
-        <key>serverURL</key>
-        <string>serverlURL</string>
         <key>variantID</key>
         <string>variantID</string>
         <key>variantSecret</key>

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FH'
-  s.version      = '3.0.0'
+  s.version      = '3.1.0'
   s.summary      = 'FeedHenry iOS Software Development Kit'
   s.homepage     = 'https://www.feedhenry.com'
   s.social_media_url = 'https://twitter.com/feedhenry'
@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.libraries = 'xml2', 'z'
   s.dependency 'Reachability', '3.2'
-  s.dependency 'AeroGear-Push', '1.1.1'
+  s.dependency 'AeroGear-Push', '1.2.0'
 end

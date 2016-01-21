@@ -122,6 +122,9 @@ static Reachability *reachability;
          andSuccess:(void (^)(FHResponse *success))sucornil
          andFailure:(void (^)(FHResponse *failed))failornil {
     AGDeviceRegistration* registration = [[AGDeviceRegistration alloc] initWithFile:@"fhconfig"];
+    NSString* host = [[FHConfig getSharedInstance] getConfigValueForKey:@"host"];
+    NSString* baseURL = [NSString stringWithFormat:@"%@%@", host, @"/api/v2/ag-push"];
+    [registration overridePushProperties:@{@"serverURL": baseURL}];
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         [clientInfo setDeviceToken:deviceToken];
         [clientInfo setAlias:pushConfig.alias];
