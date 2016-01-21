@@ -81,6 +81,3 @@ This will produce two files in the ``Releases-{version}`` directory.  You can th
 
 To generate API documentation and sync with the [GitHub pages placeholder](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html), switch to ['gh-pages'](https://github.com/feedhenry/fh-ios-sdk/tree/gh-pages) branch and follow the instructions there.
 
-### d) Update download package
-
-To generate the [documentation downloadable artefacts](http://docs.feedhenry.com/v3/dev_tools/sdks/ios.html), this [script](https://github.com/fheng/fh-mobile-sdks/blob/master/makefile) need to be updated with the latest version number.
