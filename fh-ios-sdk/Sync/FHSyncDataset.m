@@ -445,7 +445,10 @@ static NSString *const kUIDMapping = @"uidMapping";
         syncLoopParams[@"fn"] = @"sync";
         syncLoopParams[@"dataset_id"] = self.datasetId;
         syncLoopParams[@"query_params"] = self.queryParams;
-        syncLoopParams[@"meta_data"] = self.customMetaData;
+        if (self.customMetaData) {
+            syncLoopParams[@"meta_data"] = self.customMetaData;
+        }
+        
         if (self.hashValue) {
             syncLoopParams[@"dataset_hash"] = self.hashValue;
         }
@@ -654,7 +657,9 @@ static NSString *const kUIDMapping = @"uidMapping";
     syncRecsParams[@"fn"] = @"syncRecords";
     syncRecsParams[@"dataset_id"] = self.datasetId;
     syncRecsParams[@"query_params"] = self.queryParams;
-    syncRecsParams[@"meta_data"] = self.customMetaData;
+    if (self.customMetaData) {
+        syncRecsParams[@"meta_data"] = self.customMetaData;
+    }
     syncRecsParams[@"clientRecs"] = clientRecs;
 
     DLog(@"syncRecParams :: %@", [syncRecsParams JSONString]);
