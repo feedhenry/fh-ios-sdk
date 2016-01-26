@@ -161,7 +161,7 @@ float TEST_TIMEOUT = 5.0;
         }
     }];
 }
-
+/*
 - (void)testAuthFailure {
     stubRequest(@"POST", @"http://testing.feedhenry.com/box/srv/1.1/admin/authpolicy/auth").
     andReturn(200).
@@ -217,6 +217,7 @@ float TEST_TIMEOUT = 5.0;
         }
     }];
 }
+*/
 // the [FH getDefaultParamsAsHeaders] setup's default params
 // containing both raw values as well as json representation
 // of foundation collection clases. After JSON refactor, ensure

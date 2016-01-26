@@ -1,7 +1,0 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-xcodeproj 'FHPushDemo.xcodeproj'
-platform :ios, '7.0'
-
-pod 'FH', :path => '../../'
-
