@@ -21,6 +21,7 @@
 #import "FHSyncUtils.h"
 #import <OCMock/OCMock.h>
 #import <XCTest/XCTest.h>
+#import "FH.h"
 
 @interface FHSyncDatasetTest : XCTestCase
 @end

@@ -1,5 +1,9 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 3.1.0 - 2016-01-08
+* RHMAP-2004: remove demos from SDK
+* RHMAP-2925: Runtime issue noticed when verifying ticket
+
 ## 3.0.0 - 2016-01-08
 
 ## 3.0.0-rc2 - 2016-01-05
