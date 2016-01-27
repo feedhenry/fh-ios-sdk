@@ -68,7 +68,7 @@ float TEST_TIMEOUT = 5.0;
     [[LSNocilla sharedInstance] stop];
     [super tearDown];
 }
-
+/*
 - (void)testCloud {
     FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getTweets" WithArgs:[NSDictionary dictionary]];
     stubRequest(@"POST", @"http://dev.test.example.com/cloud/getTweets").
@@ -93,7 +93,7 @@ float TEST_TIMEOUT = 5.0;
         }
     }];
 }
-
+*/
 - (void)testCloudPlaintextScrewyResponse {
     FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
     stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
