@@ -77,7 +77,7 @@
     _dataSet = [FHSyncDataset objectFromJSONString:_dataSetString];
     _syncClient = [[FHSyncClient alloc] initWithConfig:_config AndDataSet:_dataSet];
     _query = @{};
-    _customMetaData = nil;
+    _customMetaData = [@{} mutableCopy];
 }
 
 - (void)tearDown {
