@@ -14,7 +14,7 @@ See [iOS SDK Guide](http://docs.feedhenry.com/v2/sdk_ios.html).
 
 ## Developing
 
-The project relies on [Cocoapods](http://cocoapods.org) and it's respective plugins  ['cocoapods-packager'](https://github.com/CocoaPods/cocoapods-packager) and ['cocoapods-appledoc'](https://github.com/CocoaPods/cocoapods-appledoc), so please ensure that are installed in your system. If not, please execute the following:
+The project relies on [CocoaPods](http://cocoapods.org) and it's respective plugins  ['cocoapods-packager'](https://github.com/CocoaPods/cocoapods-packager) and ['cocoapods-appledoc'](https://github.com/CocoaPods/cocoapods-appledoc), so please ensure that are installed in your system. If not, please execute the following:
 
 ```
 [sudo] gem install cocoapods cocoapods-packager cocoapods-appledoc
@@ -46,7 +46,7 @@ Given that ```:path``` point to the relative path holding your sdk code source.
 * Update the ```VERSION.txt``` and ```fh-ios-sdk/FHDefines.h ``` with the new version number.
 * Update ```CHANGELOG.md`` with the new release and content.
 
-### a) Release on Cocoapods  [Required Step]
+### a) Release on CocoaPods  [Required Step]
 * Update ```FH.podspec```, ```s.version``` attribute with the new version number.
 * Tag the repository with the new version number:
 
@@ -60,7 +60,7 @@ git tag -s -a {VERSION} -m 'version {VERSION}'   // e.g. {VERSION} format is  '2
 git push origin {TAG}
 ```
 
-* Publish the ```FH.podspec``` on the [Cocoapods](http://cocoapods.org) repo with:
+* Publish the ```FH.podspec``` on the [CocoaPods](http://cocoapods.org) repo with:
 
 ```
  	pod trunk push --allow-warnings
@@ -69,7 +69,7 @@ git push origin {TAG}
 >	```--allow-warnings``` is required to skip some deprecation warnings from a underlying dependency library. This will be circumvented in a future release.
 
 ### b) Release on GitHub
-* Once you have published on Cocoapods it's time to do a GitHub release. To do so run the script:
+* Once you have published on CocoaPods it's time to do a GitHub release. To do so run the script:
 
 ```
 ./github-release.sh
