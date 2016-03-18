@@ -128,14 +128,15 @@ static NSString *const kUIDMapping = @"uidMapping";
     }
 }
 
-- (void)saveToFileAndNofiyComplete:(NSDictionary *)info {
-    NSError *error = nil;
+- (void)saveToFileAndNofiy:(NSDictionary *)info {
+    NSError* error = nil;
     [self saveToFile:error];
-    NSString *message = info[@"message"];
+    NSString* message = info[@"message"];
+    NSString* notification = info[@"notification"];
     [FHSyncUtils doNotifyWithDataId:self.datasetId
                              config:self.syncConfig
                                 uid:self.hashValue
-                               code:SYNC_COMPLETE_MESSAGE
+                               code:notification
                             message:message];
 }
 
@@ -439,7 +440,7 @@ static NSString *const kUIDMapping = @"uidMapping";
                                code:SYNC_STARTED_MESSAGE
                             message:NULL];
     if (![FH isOnline]) {
-        [self syncCompleteWithCode:@"offline"];
+        [self syncCompleteWithCode:@"offline" syncNotification:SYNC_FAILED_MESSAGE];
     } else {
         NSMutableDictionary *syncLoopParams = [NSMutableDictionary dictionary];
         syncLoopParams[@"fn"] = @"sync";
@@ -495,22 +496,12 @@ static NSString *const kUIDMapping = @"uidMapping";
                     NSString* message = response.error.localizedDescription;
 
                     DLog(@"syncLoop failed : msg = %@", message);
-                    [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                             config:self.syncConfig
-                                                uid:NULL
-                                               code:SYNC_FAILED_MESSAGE
-                                            message:message];
-                    [self syncCompleteWithCode:message];
+                    [self syncCompleteWithCode:message syncNotification:SYNC_FAILED_MESSAGE];
                 }];
         }
         @catch (NSException *ex) {
             DLog(@"Error performing sync - %@", ex);
-            [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                     config:self.syncConfig
-                                        uid:NULL
-                                       code:SYNC_FAILED_MESSAGE
-                                    message:[ex description]];
-            [self syncCompleteWithCode:ex.reason];
+            [self syncCompleteWithCode:[ex description] syncNotification:SYNC_FAILED_MESSAGE];
         }
     }
 }
@@ -568,7 +559,7 @@ static NSString *const kUIDMapping = @"uidMapping";
         [self syncRecords];
     } else {
         DLog(@"Local dataset up to date");
-        [self syncCompleteWithCode:@"online"];
+        [self syncCompleteWithCode:@"online" syncNotification:SYNC_COMPLETE_MESSAGE];
     }
 }
 
@@ -671,12 +662,7 @@ static NSString *const kUIDMapping = @"uidMapping";
         }
         AndFailure:^(FHResponse *response) {
             DLog(@"syncRecords failed : %@", [[response parsedResponse] JSONString]);
-            [FHSyncUtils doNotifyWithDataId:self.datasetId
-                                     config:self.syncConfig
-                                        uid:NULL
-                                       code:SYNC_FAILED_MESSAGE
-                                    message:[[response parsedResponse] JSONString]];
-            [self syncCompleteWithCode:[[response parsedResponse] JSONString]];
+            [self syncCompleteWithCode:[[response parsedResponse] JSONString] syncNotification:SYNC_FAILED_MESSAGE];
         }];
 }
 
@@ -730,7 +716,7 @@ static NSString *const kUIDMapping = @"uidMapping";
     if (resData[@"hash"]) {
         self.hashValue = resData[@"hash"];
     }
-    [self syncCompleteWithCode:@"online"];
+    [self syncCompleteWithCode:@"online" syncNotification:SYNC_COMPLETE_MESSAGE];
 }
 
 /* 
@@ -801,18 +787,19 @@ static NSString *const kUIDMapping = @"uidMapping";
  function we invoke the sync task on a background thread and we always do the data saving on the
  background thread.
  */
-- (void)syncCompleteWithCode:(NSString *)code {
+- (void)syncCompleteWithCode:(NSString *)code syncNotification:(NSString*)notification {
     NSString* message = code?code: @"unknown error";
     self.syncRunning = NO;
     self.syncLoopEnd = [NSDate date];
     BOOL isMainThread = [NSThread isMainThread];
     if (isMainThread) {
-        [self performSelectorInBackground:@selector(saveToFileAndNofiyComplete:)
+        [self performSelectorInBackground:@selector(saveToFileAndNofiy:)
                                withObject:@{
-                                   @"message" : message
-                               }];
+                                            @"message" : message,
+                                            @"notification": notification
+                                            }];
     } else {
-        [self saveToFileAndNofiyComplete:@{ @"message" : message }];
+        [self saveToFileAndNofiy:@{ @"message" : message, @"notification": notification}];
     }
 }
 - (void)updateCrashedInFlightFromNewData:(NSDictionary *)remoteData {
