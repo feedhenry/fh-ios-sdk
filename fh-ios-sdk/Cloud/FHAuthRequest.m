@@ -86,6 +86,13 @@ static NSString *const kAuthPath = @"box/srv/1.1/admin/authpolicy/auth";
             NSString *oauthUrl = [result valueForKey:@"url"];
             if (oauthUrl && self.parentViewController != nil) {
                 void (^complete)(FHResponse *) = ^(FHResponse *resp) {
+                    // Put oauth token dataManager to later put in in fh.cloud's headers as key "x-fh-sessiontoken"
+                    NSDictionary* authResponse = resp.parsedResponse[@"authResponse"];
+                    NSString* authToken = authResponse[@"authToken"];
+                    DLog(@"Auth token: %@", authToken);
+                    if (authToken) {
+                        [FHDataManager save:SESSION_TOKEN_KEY withObject:authToken];
+                    }
                     if (sucornil) {
                         sucornil(resp);
                     } else {
