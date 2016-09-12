@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>FHSyncDataset Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">FH </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Red Hat, Inc.</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/acknowledgements">acknowledgements</option>
+		
+		<option value="//api/name/customMetaData">customMetaData</option>
+		
+		<option value="//api/name/dataRecords">dataRecords</option>
+		
+		<option value="//api/name/datasetId">datasetId</option>
+		
+		<option value="//api/name/hashValue">hashValue</option>
+		
+		<option value="//api/name/initialised">initialised</option>
+		
+		<option value="//api/name/pendingDataRecords">pendingDataRecords</option>
+		
+		<option value="//api/name/queryParams">queryParams</option>
+		
+		<option value="//api/name/stopSync">stopSync</option>
+		
+		<option value="//api/name/syncConfig">syncConfig</option>
+		
+		<option value="//api/name/syncLoopEnd">syncLoopEnd</option>
+		
+		<option value="//api/name/syncLoopPending">syncLoopPending</option>
+		
+		<option value="//api/name/syncLoopStart">syncLoopStart</option>
+		
+		<option value="//api/name/syncMetaData">syncMetaData</option>
+		
+		<option value="//api/name/syncRunning">syncRunning</option>
+		
+		<option value="//api/name/uidMapping">uidMapping</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/objectFromJSONData:">+ objectFromJSONData:</option>
+		
+		<option value="//api/name/objectFromJSONString:">+ objectFromJSONString:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/JSONData">- JSONData</option>
+		
+		<option value="//api/name/JSONString">- JSONString</option>
+		
+		<option value="//api/name/createWithData:">- createWithData:</option>
+		
+		<option value="//api/name/deleteWithUID:">- deleteWithUID:</option>
+		
+		<option value="//api/name/initFromFileWithDataId:error:">- initFromFileWithDataId:error:</option>
+		
+		<option value="//api/name/initWithDataId:">- initWithDataId:</option>
+		
+		<option value="//api/name/listData">- listData</option>
+		
+		<option value="//api/name/readDataWithUID:">- readDataWithUID:</option>
+		
+		<option value="//api/name/saveToFile:">- saveToFile:</option>
+		
+		<option value="//api/name/startSyncLoop">- startSyncLoop</option>
+		
+		<option value="//api/name/updateWithUID:data:">- updateWithUID:data:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">FHSyncDataset Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>FHSyncDataset.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A class representing a sync dataset managed by the sync service
+*</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/syncRunning" title="syncRunning"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncRunning">&nbsp;&nbsp;syncRunning</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Indicate if the sync process is currently running *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL syncRunning</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Indicate if the sync process is currently running *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initialised" title="initialised"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initialised">&nbsp;&nbsp;initialised</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Indicate if the dataset is initialised *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL initialised</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Indicate if the dataset is initialised *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/datasetId" title="datasetId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/datasetId">&nbsp;&nbsp;datasetId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A unique id of the dataset *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *datasetId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A unique id of the dataset *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syncLoopStart" title="syncLoopStart"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncLoopStart">&nbsp;&nbsp;syncLoopStart</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>When last sync started *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSDate *syncLoopStart</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>When last sync started *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syncLoopEnd" title="syncLoopEnd"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncLoopEnd">&nbsp;&nbsp;syncLoopEnd</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Wehn last sync finished *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSDate *syncLoopEnd</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Wehn last sync finished *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syncLoopPending" title="syncLoopPending"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncLoopPending">&nbsp;&nbsp;syncLoopPending</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Indicate if sync should be run in next run loop *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL syncLoopPending</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Indicate if sync should be run in next run loop *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syncConfig" title="syncConfig"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncConfig">&nbsp;&nbsp;syncConfig</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The sync config for this dataset *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) FHSyncConfig *syncConfig</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The sync config for this dataset *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pendingDataRecords" title="pendingDataRecords"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pendingDataRecords">&nbsp;&nbsp;pendingDataRecords</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A collection of pending data records *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableDictionary *pendingDataRecords</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A collection of pending data records *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/dataRecords" title="dataRecords"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dataRecords">&nbsp;&nbsp;dataRecords</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A collection of synced data records *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableDictionary *dataRecords</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A collection of synced data records *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/queryParams" title="queryParams"></a>
+	<h3 class="method-title"><code><a href="#//api/name/queryParams">&nbsp;&nbsp;queryParams</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The query params for this dataset *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSDictionary *queryParams</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The query params for this dataset *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syncMetaData" title="syncMetaData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncMetaData">&nbsp;&nbsp;syncMetaData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sync Meta data associated with this data set, used internally for the sync*</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableDictionary *syncMetaData</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Sync Meta data associated with this data set, used internally for the sync*</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/customMetaData" title="customMetaData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/customMetaData">&nbsp;&nbsp;customMetaData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Custom Meta data associated with this data set, used by user to customise the dataset ie: a subset of dataset.*</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableDictionary *customMetaData</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Custom Meta data associated with this data set, used by user to customise the dataset ie: a subset of dataset.*</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hashValue" title="hashValue"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hashValue">&nbsp;&nbsp;hashValue</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The SHA1 hash value of this data set *</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *hashValue</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The SHA1 hash value of this data set *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">FHSyncDataset.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/acknowledgements" title="acknowledgements"></a>
+	<h3 class="method-title"><code><a href="#//api/name/acknowledgements">&nbsp;&nbsp;acknowledgements</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableArray *acknowledgements</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/uidMapping" title="uidMapping"></a>
+	<h3 class="method-title"><code><a href="#//api/name/uidMapping">&nbsp;&nbsp;uidMapping</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableDictionary *uidMapping</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopSync" title="stopSync"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopSync">&nbsp;&nbsp;stopSync</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL stopSync</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithDataId:" title="initWithDataId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithDataId:">&ndash;&nbsp;initWithDataId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithDataId:(NSString *)<em>dataId</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initFromFileWithDataId:error:" title="initFromFileWithDataId:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initFromFileWithDataId:error:">&ndash;&nbsp;initFromFileWithDataId:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initFromFileWithDataId:(NSString *)<em>dataId</em> error:(NSError *)<em>error</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/JSONData" title="JSONData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/JSONData">&ndash;&nbsp;JSONData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *)JSONData</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/JSONString" title="JSONString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/JSONString">&ndash;&nbsp;JSONString</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)JSONString</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/objectFromJSONString:" title="objectFromJSONString:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/objectFromJSONString:">+&nbsp;objectFromJSONString:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (FHSyncDataset *)objectFromJSONString:(NSString *)<em>jsonStr</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/objectFromJSONData:" title="objectFromJSONData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/objectFromJSONData:">+&nbsp;objectFromJSONData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (FHSyncDataset *)objectFromJSONData:(NSDictionary *)<em>jsonData</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/saveToFile:" title="saveToFile:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/saveToFile:">&ndash;&nbsp;saveToFile:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)saveToFile:(NSError *)<em>error</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startSyncLoop" title="startSyncLoop"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startSyncLoop">&ndash;&nbsp;startSyncLoop</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)startSyncLoop</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/listData" title="listData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/listData">&ndash;&nbsp;listData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *)listData</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/readDataWithUID:" title="readDataWithUID:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/readDataWithUID:">&ndash;&nbsp;readDataWithUID:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *)readDataWithUID:(NSString *)<em>uid</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createWithData:" title="createWithData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createWithData:">&ndash;&nbsp;createWithData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *)createWithData:(NSDictionary *)<em>data</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateWithUID:data:" title="updateWithUID:data:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateWithUID:data:">&ndash;&nbsp;updateWithUID:data:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *)updateWithUID:(NSString *)<em>uid</em> data:(NSDictionary *)<em>data</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteWithUID:" title="deleteWithUID:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteWithUID:">&ndash;&nbsp;deleteWithUID:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *)deleteWithUID:(NSString *)<em>uid</em></code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Red Hat, Inc. All rights reserved. Updated: 2016-09-12</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
