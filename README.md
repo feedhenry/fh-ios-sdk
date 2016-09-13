@@ -40,9 +40,11 @@ fh-ios-sdk is used by template app like [sync-ios-app]() to scaffold and demo sy
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
-xcodeproj 'sync-ios-app.xcodeproj'
+project 'sync-ios-app.xcodeproj'
 platform :ios, '7.0'
-pod 'FH', :path => '../fh-ios-sdk/'
+target 'sync-ios-app' do
+    pod 'FH', :path => '../fh-ios-sdk/'
+end
 ```
 Given that ```:path``` point to the relative path holding your sdk code source.
 
