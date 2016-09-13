@@ -1,5 +1,8 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+### coming 3.2.0
+* FH-2557: CocoaPods 1.0.1
+
 ## 3.1.1 - 2016-01-27
 * RHMAP-2004: remove demos from SDK
 * RHMAP-2925: Runtime issue noticed when verifying ticket
