@@ -64,7 +64,7 @@ float TEST_TIMEOUT = 5.0;
     // if you run a suite of tests together.
     // add the following line seems fix it. see
     // http://stackoverflow.com/questions/12308297/some-of-my-unit-tests-tests-are-not-finishing-in-xcode-4-4
-    [NSThread sleepForTimeInterval:1.0];
+    //[NSThread sleepForTimeInterval:1.0];
     [[LSNocilla sharedInstance] stop];
     [super tearDown];
 }
