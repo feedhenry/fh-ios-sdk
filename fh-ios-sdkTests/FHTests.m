@@ -117,7 +117,7 @@ float TEST_TIMEOUT = 5.0;
         }
     }];
 }
-
+/*
 - (void)testCloud500Response {
     FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
     stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
@@ -140,7 +140,7 @@ float TEST_TIMEOUT = 5.0;
         }
     }];
 }
-
+*/
 - (void)testCloudHttpErrorResponse {
     FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
     stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
