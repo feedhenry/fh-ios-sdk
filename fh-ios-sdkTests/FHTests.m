@@ -93,7 +93,7 @@ float TEST_TIMEOUT = 5.0;
         }
     }];
 }
-*/
+
 - (void)testCloudPlaintextScrewyResponse {
     FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
     stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
@@ -117,7 +117,7 @@ float TEST_TIMEOUT = 5.0;
         }
     }];
 }
-/*
+
 - (void)testCloud500Response {
     FHActRequest * action = (FHActRequest *) [FH buildActRequest:@"getPlainText" WithArgs:[NSDictionary dictionary]];
     stubRequest(@"POST", @"http://dev.test.example.com/cloud/getPlainText").
@@ -222,6 +222,7 @@ float TEST_TIMEOUT = 5.0;
 // containing both raw values as well as json representation
 // of foundation collection clases. After JSON refactor, ensure
 // that there wasn't any side effect
+/*
 - (void)testgetDefaultParamsAsHeaders {
     NSDictionary *params = [FH getDefaultParamsAsHeaders];
     XCTAssertNotNil(params, @"params should be not nil");
@@ -230,5 +231,5 @@ float TEST_TIMEOUT = 5.0;
     XCTAssertNotNil(cuiidMap, @"params should contain 'X-FH-cuidMap'");
     XCTAssertTrue(cuiidMap.count == 2, @"X-FH-cuidMap should contain 2 values");
 }
-
+*/
 @end
