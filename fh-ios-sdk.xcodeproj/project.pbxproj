@@ -70,7 +70,6 @@
 		6FE7B3691ACEDED10029C63F /* FHSyncDataset.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60001A9B366200C22C92 /* FHSyncDataset.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B36A1ACEDEF60029C63F /* FHSyncPendingDataRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60051A9B366200C22C92 /* FHSyncPendingDataRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6FE7B36B1ACEDF1A0029C63F /* FHSyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9C60071A9B366200C22C92 /* FHSyncUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		A982BA8B3B12BED0C4B7941F /* libPods-FHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */; };
 		B3AE9D7415D52CEB004EF454 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
 		B3AE9D8A15D52DEE004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
 		B3AE9D8B15D52DFF004EF454 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3951AC315D2BA020091054A /* CoreFoundation.framework */; };
@@ -83,7 +82,8 @@
 		B3D7C48715D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C49815D28BE30019262E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C48615D28BE30019262E /* Foundation.framework */; };
 		B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D7C55015D2923C0019262E /* CFNetwork.framework */; };
-		BB9DCD7622E40258E06B3A75 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC8A0A7417DA495FFDD185F /* libPods.a */; };
+		C2DFB2A96DEC101551B138DB /* libPods-FH-FHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 451DE651D8C4CA49497F9CA5 /* libPods-FH-FHTests.a */; };
+		C53E38E21061237EBF5700D1 /* libPods-FH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97ADCB5B6B89391C185A6896 /* libPods-FH.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,10 +97,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DDDA6554CB424F893F45FB6 /* Pods-FHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FHTests/Pods-FHTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0E6E7A1924B17EF8B3DD8023 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		2BC8A0A7417DA495FFDD185F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		2ED4605563E5C93BF10F2337 /* Pods-FH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FH/Pods-FH.debug.xcconfig"; sourceTree = "<group>"; };
+		3FD8E9D15293A576E24527AF /* Pods-FH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FH.release.xcconfig"; path = "Pods/Target Support Files/Pods-FH/Pods-FH.release.xcconfig"; sourceTree = "<group>"; };
+		451DE651D8C4CA49497F9CA5 /* libPods-FH-FHTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FH-FHTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4821F44B1C3C246000538D49 /* FeedHenry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FeedHenry.h; path = "fh-ios-sdk/FeedHenry.h"; sourceTree = SOURCE_ROOT; };
 		48627BF51BEA69B30011CA68 /* FHDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FHDataManager.h; path = "fh-ios-sdk/Data/FHDataManager.h"; sourceTree = SOURCE_ROOT; };
 		48627BF61BEA69B30011CA68 /* FHDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHDataManager.m; path = "fh-ios-sdk/Data/FHDataManager.m"; sourceTree = SOURCE_ROOT; };
@@ -131,7 +130,7 @@
 		48DCF07E1BEA06B5001954D6 /* FHCloudPropsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHCloudPropsTest.m; path = "fh-ios-sdkTests/FHCloudPropsTest.m"; sourceTree = SOURCE_ROOT; };
 		48DCF0801BEA12FD001954D6 /* FHSyncClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHSyncClientTest.m; path = "fh-ios-sdkTests/FHSyncClientTest.m"; sourceTree = SOURCE_ROOT; };
 		48DCF0841BEA59C5001954D6 /* FHDataManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FHDataManagerTest.m; path = "fh-ios-sdkTests/FHDataManagerTest.m"; sourceTree = SOURCE_ROOT; };
-		545041B32263D5936453A81E /* Pods-FHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FHTests/Pods-FHTests.release.xcconfig"; sourceTree = "<group>"; };
+		684A29C64ECFF3450165B9BD /* Pods-FH-FHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FH-FHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FH-FHTests/Pods-FH-FHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F84682D1AB03C0100EC7593 /* FHJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHJSON.h; sourceTree = "<group>"; };
 		6F84682E1AB03C0100EC7593 /* FHJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHJSON.m; sourceTree = "<group>"; };
 		6F9C5FC01A9B359400C22C92 /* fh-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "fh-ios-sdk-Prefix.pch"; path = "fh-ios-sdk/fh-ios-sdk-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -167,7 +166,8 @@
 		6F9C60081A9B366200C22C92 /* FHSyncUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHSyncUtils.m; sourceTree = "<group>"; };
 		6F9C60451A9B366200C22C92 /* FH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FH.m; path = "fh-ios-sdk/FH.m"; sourceTree = SOURCE_ROOT; };
 		6FC784D61A9B9D95002485B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FHTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97ADCB5B6B89391C185A6896 /* libPods-FH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FH.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		992F278D07A0A39EC9C17A33 /* Pods-FH-FHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FH-FHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FH-FHTests/Pods-FH-FHTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3951AAB15D2B96A0091054A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		B3951AAE15D2B96A0091054A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B3951AAF15D2B96A0091054A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -197,7 +197,7 @@
 				B3AE9D9515D53134004EF454 /* MobileCoreServices.framework in Frameworks */,
 				B3AE9D8B15D52DFF004EF454 /* CoreFoundation.framework in Frameworks */,
 				B3D7C55115D2923C0019262E /* CFNetwork.framework in Frameworks */,
-				BB9DCD7622E40258E06B3A75 /* libPods.a in Frameworks */,
+				C53E38E21061237EBF5700D1 /* libPods-FH.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,13 +215,24 @@
 				B3AE9D8A15D52DEE004EF454 /* CoreFoundation.framework in Frameworks */,
 				B3AE9D7415D52CEB004EF454 /* CFNetwork.framework in Frameworks */,
 				B3D7C49815D28BE30019262E /* Foundation.framework in Frameworks */,
-				A982BA8B3B12BED0C4B7941F /* libPods-FHTests.a in Frameworks */,
+				C2DFB2A96DEC101551B138DB /* libPods-FH-FHTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22ED70B356477EB118A09DA7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2ED4605563E5C93BF10F2337 /* Pods-FH.debug.xcconfig */,
+				3FD8E9D15293A576E24527AF /* Pods-FH.release.xcconfig */,
+				684A29C64ECFF3450165B9BD /* Pods-FH-FHTests.debug.xcconfig */,
+				992F278D07A0A39EC9C17A33 /* Pods-FH-FHTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		48B5C5CD1BE89DC900D8AA20 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,17 +378,6 @@
 			path = "fh-ios-sdk/Sync";
 			sourceTree = SOURCE_ROOT;
 		};
-		759B95AD19FCF027F55925D6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0E6E7A1924B17EF8B3DD8023 /* Pods.debug.xcconfig */,
-				3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */,
-				0DDDA6554CB424F893F45FB6 /* Pods-FHTests.debug.xcconfig */,
-				545041B32263D5936453A81E /* Pods-FHTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		B3951AAD15D2B96A0091054A /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,7 +395,7 @@
 				B3D7C49C15D28BE30019262E /* fh-ios-sdkTests */,
 				B3D7C48515D28BE30019262E /* Frameworks */,
 				B3D7C48415D28BE30019262E /* Products */,
-				759B95AD19FCF027F55925D6 /* Pods */,
+				22ED70B356477EB118A09DA7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -424,8 +424,8 @@
 				B3951AAB15D2B96A0091054A /* Cocoa.framework */,
 				B3951AC315D2BA020091054A /* CoreFoundation.framework */,
 				B3951AAD15D2B96A0091054A /* Other Frameworks */,
-				2BC8A0A7417DA495FFDD185F /* libPods.a */,
-				B07421CC258519C6ABDCAF54 /* libPods-FHTests.a */,
+				97ADCB5B6B89391C185A6896 /* libPods-FH.a */,
+				451DE651D8C4CA49497F9CA5 /* libPods-FH-FHTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -520,12 +520,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3D7C4A715D28BE30019262E /* Build configuration list for PBXNativeTarget "FH" */;
 			buildPhases = (
-				C9ED756C6ABA65DE55166BD2 /* Check Pods Manifest.lock */,
+				E3A3F5E46F1AA812E265A379 /* [CP] Check Pods Manifest.lock */,
 				B3D7C47F15D28BE30019262E /* Sources */,
 				B3D7C48015D28BE30019262E /* Frameworks */,
 				B3D7C48115D28BE30019262E /* Headers */,
 				B3DBAFD115D3086D0092ABA3 /* Prepare Framework */,
-				CFF76EFB4735EB7578AE9F10 /* Copy Pods Resources */,
+				65F1BA4D8CD81FE51F21EACD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -540,12 +540,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3D7C4AA15D28BE30019262E /* Build configuration list for PBXNativeTarget "FHTests" */;
 			buildPhases = (
-				DC89DE963BCBF55CFE166996 /* Check Pods Manifest.lock */,
+				BBD32F9CB1AD10F81B652564 /* [CP] Check Pods Manifest.lock */,
 				B3D7C48E15D28BE30019262E /* Sources */,
 				B3D7C48F15D28BE30019262E /* Frameworks */,
 				B3D7C49015D28BE30019262E /* Resources */,
-				15FBBB6F69523D9EBF1567B2 /* Copy Pods Resources */,
-				9A4A576CE138A36BD75D4E49 /* Embed Pods Frameworks */,
+				5BC52CACC61E8F9F9CC22717 /* [CP] Embed Pods Frameworks */,
+				87575E8BDE631ABD96E20848 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -598,34 +598,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15FBBB6F69523D9EBF1567B2 /* Copy Pods Resources */ = {
+		5BC52CACC61E8F9F9CC22717 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FHTests/Pods-FHTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FH-FHTests/Pods-FH-FHTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9A4A576CE138A36BD75D4E49 /* Embed Pods Frameworks */ = {
+		65F1BA4D8CD81FE51F21EACD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FHTests/Pods-FHTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FH/Pods-FH-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87575E8BDE631ABD96E20848 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FH-FHTests/Pods-FH-FHTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B3DBAFD115D3086D0092ABA3 /* Prepare Framework */ = {
@@ -642,14 +657,14 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\nFH_SDK_VERSION=\"Current\"\necho \"Current FH SDK Version is $FH_SDK_VERSION\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n\n# Link the \"Current\" version to \"A\"\n#/bin/ln -sfh $FH_SDK_VERSION \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n#/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n#/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"";
 		};
-		C9ED756C6ABA65DE55166BD2 /* Check Pods Manifest.lock */ = {
+		BBD32F9CB1AD10F81B652564 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,29 +672,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CFF76EFB4735EB7578AE9F10 /* Copy Pods Resources */ = {
+		E3A3F5E46F1AA812E265A379 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC89DE963BCBF55CFE166996 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -842,7 +842,7 @@
 		};
 		B3D7C4A815D28BE30019262E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E6E7A1924B17EF8B3DD8023 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 2ED4605563E5C93BF10F2337 /* Pods-FH.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
@@ -871,7 +871,7 @@
 		};
 		B3D7C4A915D28BE30019262E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DECFFD167AF12D1C659AD99 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 3FD8E9D15293A576E24527AF /* Pods-FH.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -901,7 +901,7 @@
 		};
 		B3D7C4AB15D28BE30019262E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DDDA6554CB424F893F45FB6 /* Pods-FHTests.debug.xcconfig */;
+			baseConfigurationReference = 684A29C64ECFF3450165B9BD /* Pods-FH-FHTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_TESTABILITY = YES;
@@ -918,7 +918,7 @@
 		};
 		B3D7C4AC15D28BE30019262E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 545041B32263D5936453A81E /* Pods-FHTests.release.xcconfig */;
+			baseConfigurationReference = 992F278D07A0A39EC9C17A33 /* Pods-FH-FHTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_TESTABILITY = YES;
