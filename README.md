@@ -1,7 +1,7 @@
-# FeedHenry iOS SDK 
+# FeedHenry iOS SDK
 
-[![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.png)](https://travis-ci.org/feedhenry/fh-ios-sdk)
-[![Coverage Status](https://coveralls.io/repos/feedhenry/fh-ios-sdk/badge.svg?branch=master&service=github)](https://coveralls.io/github/feedhenry/fh-ios-sdk?branch=master)
+[![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.svg?branch=master)](https://travis-ci.org/feedhenry/fh-ios-sdk)
+[![Coverage Status](https://coveralls.io/repos/github/feedhenry/fh-ios-sdk/badge.svg?branch=master)](https://coveralls.io/github/feedhenry/fh-ios-sdk?branch=master)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FH.svg)](https://img.shields.io/cocoapods/v/FH.svg)
 [![Platform](https://img.shields.io/cocoapods/p/FH.svg?style=flat)](http://cocoadocs.org/docsets/FH)
 
@@ -29,10 +29,10 @@ Then, install cocoapods dependencies.
 pod install
 open fh-ios-sdk.xcworkspace
 ```
-**Note:** Do not open `fh-ios-sdk.xcodeproj`, work with xcworkspace ensures both the iOS SDK project and the cocoapods dependencies are included in Xcode. 
+**Note:** Do not open `fh-ios-sdk.xcodeproj`, work with xcworkspace ensures both the iOS SDK project and the cocoapods dependencies are included in Xcode.
 
 ## Running Tests
-Tests can be run in Xcode by navigating to Product -> Test. 
+Tests can be run in Xcode by navigating to Product -> Test.
 
 ## Working with templates app
 
@@ -87,4 +87,3 @@ This will produce two files in the ``Releases-{version}`` directory.  You can th
 ### c) Generate API Documentation
 
 To generate API documentation and sync with the [GitHub pages placeholder](http://feedhenry.github.io/fh-ios-sdk/FH/docset/Contents/Resources/Documents/index.html), switch to ['gh-pages'](https://github.com/feedhenry/fh-ios-sdk/tree/gh-pages) branch and follow the instructions there.
-

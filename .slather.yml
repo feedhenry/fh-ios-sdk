@@ -1,4 +1,11 @@
-ci_service: travis_ci
 coverage_service: coveralls
+workspace: fh-ios-sdk.xcworkspace
 xcodeproj: fh-ios-sdk.xcodeproj
+scheme: FH
 source_directory: fh-ios-sdk
+build_directory: /Users/travis/Library/Developer/Xcode/DerivedData/
+binary_basename: FH
+ignore:
+  - ../*
+  - Pods/*
+  - fh-ios-sdkTests/*
