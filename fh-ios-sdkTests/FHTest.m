@@ -39,6 +39,10 @@ id _mockApplication;
     [super tearDown];
 }
 
+- (void)testIsTagDisabled {
+    XCTAssertFalse([FH isTagDisabled]);
+}
+
 - (void)testPushEnabledForRemoteNotification {
     // given
     
