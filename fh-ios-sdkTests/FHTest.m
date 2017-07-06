@@ -39,6 +39,14 @@ id _mockApplication;
     [super tearDown];
 }
 
+- (void)testIsInit {
+    XCTAssertFalse([FH isInit]);
+}
+
+- (void)testIsReady {
+    XCTAssertFalse([FH isReady]);
+}
+
 - (void)testPushEnabledForRemoteNotification {
     // given
     

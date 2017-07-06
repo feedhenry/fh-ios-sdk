@@ -79,6 +79,10 @@
         [self failWithResponse:res AndAction:fhact];
         return;
     }
+    if ([FH isInit]&&![FH isReady]) {
+        [self failWithResponse:[FH getInitErrorResponse] AndAction:fhact];
+        return;
+    }
     NSURL *apicall = fhact.buildURL;
 
     DLog(@"Request URL is : %@", [apicall absoluteString]);
