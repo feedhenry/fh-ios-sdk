@@ -58,12 +58,30 @@ best way to do it is using the success block.
 */
 + (void)initWithSuccess:(void (^)(FHResponse *success))sucornil AndFailure:(void (^)(FHResponse *failed))failornil;
 
-/** Check if the device is online. The device is online if either WIFI or 3G
+/** Checks if the device is online. The device is online if either WIFI or 3G
 network is available.
 
 @return Returns if the device is online
 */
 + (BOOL)isOnline;
+
+/** Checks if FH has been init
+
+@return Returns if FH init has been called
+*/
++ (BOOL)isInit;
+
+/** Checks if FH is ready to use because FH init succeeded
+
+@return Returns if FH succeeded
+*/
++ (BOOL)isReady;
+
+/** Provides the FHResponse obtained on FH init failure
+
+@return Returns the response of FH init failure.
+*/
++ (FHResponse *)getInitErrorResponse;
 
 /** Create a new instance of FHActRequest class to perform cloud side functions.
 

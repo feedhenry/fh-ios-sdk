@@ -37,6 +37,7 @@ static FHCloudProps *cloudProps;
 static BOOL _isOnline = false;
 static BOOL initCalled = false;
 static Reachability *reachability;
+static FHResponse * fhInitErrorResponse;
 
 /**
  initializeFH must be called before any other FH method can be used.
@@ -46,7 +47,6 @@ static Reachability *reachability;
     if (!initCalled) {
         [FH registerForNetworkReachabilityNotifications];
     }
-    initCalled = true;
     if (!ready) {
         if (!_isOnline) {
             FHResponse *res = [[FHResponse alloc] init];
@@ -81,12 +81,14 @@ static Reachability *reachability;
         void (^failure)(FHResponse *) = ^(FHResponse *res) {
             DLog(@"init failed");
             ready = false;
+            fhInitErrorResponse = res;
             if (failornil) {
                 failornil(res);
             }
         };
         
         [init execAsyncWithSuccess:success AndFailure:failure];
+        initCalled = true;
     } else {
         DLog(@"FH is ready");
         if (sucornil) {
@@ -166,6 +168,18 @@ static Reachability *reachability;
 
 + (BOOL)isOnline {
     return _isOnline;
+}
+
++ (BOOL)isInit {
+    return initCalled;
+}
+
++ (BOOL)isReady {
+    return ready;
+}
+
++ (FHResponse *)getInitErrorResponse {
+    return fhInitErrorResponse;
 }
 
 + (void)registerForNetworkReachabilityNotifications {
