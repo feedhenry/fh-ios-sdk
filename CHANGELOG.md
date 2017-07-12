@@ -1,7 +1,10 @@
 # CHANGELOG - FeedHenry iOS SDK
 
-### coming 3.2.0
-* FH-2557: CocoaPods 1.0.1
+## 4.0.0 2017-7-11
+* RHMAP-16646 Check if connection tags is disabled
+* Deployment target set to iOS 8
+* Use CocoaPods 1.2.1
+* FH-2460 Only emit the SYNC_COMPLETE notification if the sync loops run successfully
 
 ## 3.1.1 - 2016-01-27
 * RHMAP-2004: remove demos from SDK
@@ -61,7 +64,7 @@
 
 ## 2.2.11 - 2015-08-14
 * PR 37 - downgrade cocoapods version
-* PR 38 - Added a check for null response (otherwise App crashes on SSL Handshake error) 
+* PR 38 - Added a check for null response (otherwise App crashes on SSL Handshake error)
 * PR 39 - ensure we are loading from the main bundle for the config file
 
 ## 2.2.10 - 2015-07-27 - Wei Li
