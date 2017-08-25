@@ -24,12 +24,12 @@ The project relies on [CocoaPods](http://cocoapods.org) and it's respective plug
 ```
 [sudo] gem install cocoapods cocoapods-packager cocoapods-appledoc
 ```
-Then, install cocoapods dependencies.  
+Then, install CocoaPods dependencies.  
 ```
 pod install
 open fh-ios-sdk.xcworkspace
 ```
-**Note:** Do not open `fh-ios-sdk.xcodeproj`, work with xcworkspace ensures both the iOS SDK project and the cocoapods dependencies are included in Xcode.
+**Note:** Do not open `fh-ios-sdk.xcodeproj`, work with xcworkspace ensures both the iOS SDK project and the CocoaPods dependencies are included in Xcode.
 
 ## Running Tests
 Tests can be run in Xcode by navigating to Product -> Test.
@@ -41,7 +41,7 @@ fh-ios-sdk is used by template app like [sync-ios-app]() to scaffold and demo sy
 ```
 source 'https://github.com/CocoaPods/Specs.git'
 project 'sync-ios-app.xcodeproj'
-platform :ios, '7.0'
+platform :ios, '9.0'
 target 'sync-ios-app' do
     pod 'FH', :path => '../fh-ios-sdk/'
 end
