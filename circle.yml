@@ -1,11 +1,11 @@
 machine:
   xcode:
-    version: 8.1
+    version: 9.0
   environment:
     XCODE_WORKSPACE: "fh-ios-sdk.xcworkspace"
     XCODE_SCHEME: "FH"
-    SIMULATOR: "iPhone 6"
-    OS: "10.1"
+    SIMULATOR: "iPhone 7"
+    OS: "11.0"
 
 general:
   branches:
