@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 project 'fh-ios-sdk.xcodeproj'
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'FH' do
 	pod 'Reachability', '3.2'
