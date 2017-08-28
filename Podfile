@@ -8,9 +8,9 @@ target 'FH' do
 	pod 'AeroGear-Push', '1.2.0'
 
 	target 'FHTests' do
-		pod 'OCMock', '3.2'
-    	pod 'Reachability', '3.2'
-    	pod 'AeroGear-Push', '1.2.0'
-    	pod 'Nocilla', '0.10.0'
+		pod 'OCMock', '3.4'
+		pod 'Reachability', '3.2'
+		pod 'AeroGear-Push', '1.2.0'
+		pod 'Nocilla', '0.10.0'
 	end
 end
