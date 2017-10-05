@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.libraries = 'xml2', 'z'
   s.dependency 'Reachability', '3.2'
-  s.dependency 'AeroGear-Push', '1.2.0'
+  s.dependency 'AeroGearPush', '2.0.0'
 end
