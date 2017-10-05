@@ -259,9 +259,9 @@ or use the getDefaultParamsAsHeaders method to add them as HTTP request headers.
  the error that occurred during the registration process.
  */
 +(void)pushRegister:(NSData*)deviceToken
-         withPushConfig:(FHPushConfig*)config
-         andSuccess:(void (^)(FHResponse *success))sucornil
-         andFailure:(void (^)(FHResponse *failed))failornil;
+         withPushConfig:(FHPushConfig*)pushConfig
+         andSuccess:(void (^)(FHResponse *success))success
+         andFailure:(void (^)(FHResponse *failed))failure;
 /**
  Registers your mobile device to unified push server so it can start receiving messages.
  Registration information are provided within fhconfig.plist file
@@ -285,8 +285,8 @@ or use the getDefaultParamsAsHeaders method to add them as HTTP request headers.
  the error that occurred during the registration process.
  */
 +(void)pushRegister:(NSData*)deviceToken
-         andSuccess:(void (^)(FHResponse *success))sucornil
-         andFailure:(void (^)(FHResponse *failed))failornil;
+         andSuccess:(void (^)(FHResponse *success))success
+         andFailure:(void (^)(FHResponse *failed))failure;
 /**
  Add or update alias.
  @param alias is an unique string associated to device installation. ie: a username, phone number.
@@ -297,8 +297,8 @@ or use the getDefaultParamsAsHeaders method to add them as HTTP request headers.
  the error that occurred during the registration process.
  */
 +(void)setPushAlias:(NSString*)alias
-         andSuccess:(void (^)(FHResponse *success))sucornil
-         andFailure:(void (^)(FHResponse *failed))failornil;
+         andSuccess:(void (^)(FHResponse *success))success
+         andFailure:(void (^)(FHResponse *failed))failure;
 
 /**
  Add or update list of categories.
@@ -310,8 +310,8 @@ or use the getDefaultParamsAsHeaders method to add them as HTTP request headers.
  the error that occurred during the registration process.
  */
 +(void)setPushCategories:(NSArray*)categories
-              andSuccess:(void (^)(FHResponse *success))sucornil
-              andFailure:(void (^)(FHResponse *failed))failornil;
+              andSuccess:(void (^)(FHResponse *success))success
+              andFailure:(void (^)(FHResponse *failed))failure;
 /**
  Register the app for APN push remote notification transparently for iOS7 and iOS8. This method should be called
  in AppDelegate's `application:didFinishLaunchingWithOptions:` method.
