@@ -98,19 +98,9 @@ static FHResponse * fhInitErrorResponse;
 }
 
 +(void)pushEnabledForRemoteNotification:(UIApplication*)application {
-    // when running under iOS 8 we will use the new API for APNS registration
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [application registerUserNotificationSettings:notificationSettings];
-        [application registerForRemoteNotifications];
-    } else {
-        [application registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
-    
-#else
-    [[application registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-#endif
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [application registerUserNotificationSettings:notificationSettings];
+    [application registerForRemoteNotifications];
 }
 
 +(void)pushRegister:(NSData*)deviceToken
@@ -337,23 +327,19 @@ static FHResponse * fhInitErrorResponse;
     // Generate cuidMap
     NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
     
-    // CFUUID - iOS 6+
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
-        NSMutableDictionary *cfuuidMap = [[NSMutableDictionary alloc] init];
-        cfuuidMap[@"name"] = @"CFUUID";
-        cfuuidMap[@"cuid"] = uuid;
-        [cuidMap addObject:cfuuidMap];
-    }
+    // CFUUID
+    NSMutableDictionary *cfuuidMap = [[NSMutableDictionary alloc] init];
+    cfuuidMap[@"name"] = @"CFUUID";
+    cfuuidMap[@"cuid"] = uuid;
+    [cuidMap addObject:cfuuidMap];
     
-    // Send vendorId if available
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
-        NSMutableDictionary *vendorIdMap = [[NSMutableDictionary alloc] init];
-        vendorIdMap[@"name"] = @"vendorIdentifier";
-        if ([appConfig vendorId]) {
-            vendorIdMap[@"cuid"] = [appConfig vendorId];
-        }
-        [cuidMap addObject:vendorIdMap];
+    // Send vendorId
+    NSMutableDictionary *vendorIdMap = [[NSMutableDictionary alloc] init];
+    vendorIdMap[@"name"] = @"vendorIdentifier";
+    if ([appConfig vendorId]) {
+        vendorIdMap[@"cuid"] = [appConfig vendorId];
     }
+    [cuidMap addObject:vendorIdMap];
     
     // Append to cuidMap
     fhparams[@"cuidMap"] = cuidMap;

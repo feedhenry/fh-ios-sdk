@@ -157,8 +157,7 @@
             NSArray *ps = [p componentsSeparatedByString:@"="];
             if ([ps[0] isEqualToString:@"authResponse"]) {
                 NSDictionary *authRes =
-                    [[ps[1] stringByReplacingPercentEscapesUsingEncoding:
-                                NSUTF8StringEncoding] objectFromJSONString];
+                    [[ps[1] stringByRemovingPercentEncoding] objectFromJSONString];
                 map[ps[0]] = authRes;
             } else {
                 [map setValue:ps[1] forKey:ps[0]];
