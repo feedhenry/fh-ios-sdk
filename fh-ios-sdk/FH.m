@@ -69,8 +69,9 @@ static FHResponse * fhInitErrorResponse;
             NSDictionary *props = [res parsedResponse];
             cloudProps = [[FHCloudProps alloc] initWithCloudProps:props];
             
-            // Save init
+            // Save init details
             [FHDataManager save:@"init" withObject:props[@"init"]];
+            [FHDataManager save:@"hosts" withObject:props];
             
             ready = true;
             if (sucornil) {
@@ -80,13 +81,31 @@ static FHResponse * fhInitErrorResponse;
         
         void (^failure)(FHResponse *) = ^(FHResponse *res) {
             DLog(@"init failed");
-            ready = false;
             fhInitErrorResponse = res;
-            if (failornil) {
-                failornil(res);
+            BOOL tagDisabled = false;
+            if (res.responseStatusCode == 400) {
+                tagDisabled = true;
+            }
+            NSDictionary * savedProps = [FHDataManager read:@"hosts"];
+            if (savedProps && !tagDisabled) {
+                ready = true;
+                cloudProps =  [[FHCloudProps alloc] initWithCloudProps:savedProps];
+                if (sucornil) {
+                    sucornil(nil);
+                }
+            } else {
+                ready = false;
+                if (tagDisabled) {
+                    DLog(@"%@",res.parsedResponse);
+                } else {
+                    DLog(@"No cache data found for CloudProps");
+                }
+                if (failornil) {
+                    failornil(res);
+                }
             }
         };
-        
+
         [init execAsyncWithSuccess:success AndFailure:failure];
         initCalled = true;
     } else {
