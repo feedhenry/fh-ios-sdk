@@ -1,9 +1,12 @@
 # FeedHenry iOS SDK
 
-[![Build Status](https://travis-ci.org/feedhenry/fh-ios-sdk.svg?branch=master)](https://travis-ci.org/feedhenry/fh-ios-sdk)
-[![Coverage Status](https://coveralls.io/repos/github/feedhenry/fh-ios-sdk/badge.svg?branch=master)](https://coveralls.io/github/feedhenry/fh-ios-sdk?branch=master)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FH.svg)](https://img.shields.io/cocoapods/v/FH.svg)
-[![Platform](https://img.shields.io/cocoapods/p/FH.svg?style=flat)](http://cocoadocs.org/docsets/FH)
+
+![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)
+[![circle-ci](https://img.shields.io/circleci/project/github/feedhenry/fh-ios-sdk/master.svg)](https://circleci.com/gh/feedhenry/fh-ios-sdk)
+[![License](https://img.shields.io/badge/-Apache%202.0-blue.svg)](https://opensource.org/s/Apache-2.0)
+[![GitHub release](https://img.shields.io/github/release/feedhenry/fh-ios-sdk.svg)](https://github.com/feedhenry/fh-ios-sdk/releases)
+[![CocoaPods](https://img.shields.io/cocoapods/v/FH.svg)](https://cocoapods.org/pods/FH)
+[![Platform](https://img.shields.io/cocoapods/p/FH.svg)](https://cocoapods.org/pods/FH)
 
 The iOS Software Development Kit to connect to the [FeedHenry platform.](http://www.feedhenry.com)
 
