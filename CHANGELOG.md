@@ -1,5 +1,15 @@
 # CHANGELOG - FeedHenry iOS SDK
 
+## 5.0.0 2017-10-11
+* FH-4137 Fix dependency build error on Xcode 8.3
+* FH-3973 Move from Travis CI to CircleCI
+* FH-3975 Fix testSyncClientListCollision test
+* FH-3795 Set deployment target to iOS 9
+* FH-4227 Update dependencies
+* FH-3780 Fix documentation issues
+* FH-4228 Remove deprecate warnings
+* FH-4240 Use the cache cloud app url if the init request is failed
+
 ## 4.0.0 2017-7-11
 * RHMAP-16646 Check if connection tags is disabled
 * Deployment target set to iOS 8
