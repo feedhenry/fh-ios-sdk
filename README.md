@@ -3,6 +3,7 @@
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)
 [![circle-ci](https://img.shields.io/circleci/project/github/feedhenry/fh-ios-sdk/master.svg)](https://circleci.com/gh/feedhenry/fh-ios-sdk)
+[![codecov](https://codecov.io/gh/feedhenry/fh-ios-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/feedhenry/fh-ios-sdk)
 [![License](https://img.shields.io/badge/-Apache%202.0-blue.svg)](https://opensource.org/s/Apache-2.0)
 [![GitHub release](https://img.shields.io/github/release/feedhenry/fh-ios-sdk.svg)](https://github.com/feedhenry/fh-ios-sdk/releases)
 [![CocoaPods](https://img.shields.io/cocoapods/v/FH.svg)](https://cocoapods.org/pods/FH)
