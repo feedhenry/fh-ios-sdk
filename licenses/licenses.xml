@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<licenseSummary>
+    <project>fh-ios-sdk</project>
+    <version>0.0.0</version>
+    <license>Apache-2.0</license>
+    <dependencies>
+        <dependency>
+            <packageName>AeroGearPush</packageName>
+            <version>2.0.0</version>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <packageName>Reachability</packageName>
+            <version>3.2</version>
+            <licenses>
+                <license>
+                    <name>BSD 2-clause "Simplified" License</name>
+                    <url>http://www.opensource.org/licenses/BSD-2-Clause</url>
+                </license>
+            </licenses>
+        </dependency>
+    </dependencies>
+</licenseSummary>
